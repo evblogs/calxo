@@ -127,58 +127,46 @@
     margin: 0 0 1rem;
   }
 
-  /* ═══════════ Action bar (row below H1, right-aligned) ═══════════ */
-  .cx-actions-row {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 0 1rem;
-  }
-  @media (max-width: 760px) {
-    .cx-actions-row { justify-content: flex-start; }
-  }
+  /* ═══════════ Action cluster (sits in meta-row, right side) ═══════════ */
   .cx-actions {
     display: flex;
     align-items: center;
-    gap: .85rem;
+    gap: .65rem;
     flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-  @media (max-width: 760px) {
-    .cx-actions { justify-content: flex-start; }
   }
   .cx-actions-helpful {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: .45rem;
+    gap: .35rem;
     color: #475569;
-    font-size: .82rem;
+    font-size: .78rem;
     line-height: 1.3;
     background: #eff6ff;
     border: 1px solid #bfdbfe;
-    padding: .4rem .75rem;
+    padding: .3rem .65rem;
     border-radius: 999px;
+    white-space: nowrap;
   }
   .cx-actions-helpful svg { color: #2563eb; flex-shrink: 0; }
   .cx-actions-helpful strong { color: #0f172a; font-weight: 700; }
   .cx-actions-bar {
-    display: flex;
+    display: inline-flex;
     align-items: stretch;
-    gap: .35rem;
-    background: #fff;
+    gap: .25rem;
   }
   .cx-action-btn {
     background: #fff;
     border: 1px solid #e2e8f0;
-    border-radius: 9px;
-    padding: .55rem .65rem;
+    border-radius: 8px;
+    padding: .42rem .55rem;
     cursor: pointer;
     color: #475569;
     font-family: inherit;
-    font-size: .85rem;
+    font-size: .8rem;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: .35rem;
+    gap: .3rem;
     text-decoration: none;
     transition: border-color .15s ease, background .15s ease, color .15s ease;
   }
@@ -201,73 +189,61 @@
   @media (max-width: 760px) {
     .cx-actions-bar { flex-wrap: wrap; }
   }
-  .cx-byline {
-    font-size: .9rem;
-    color: #475569;
-    margin-bottom: 1.5rem;
-  }
-  .cx-byline strong { color: #2563eb; font-weight: 600; }
-  .cx-byline .cx-byline-sep {
-    margin: 0 .5rem;
-    color: #cbd5e1;
-  }
-  .cx-byline-credential {
-    color: #94a3b8;
-    font-size: .82rem;
-    font-weight: 500;
-    margin-left: .5rem;
-  }
-
-  .cx-trust {
-    background: linear-gradient(135deg, #eff6ff 0%, #ecfeff 100%);
-    border: 1px solid #bfdbfe;
-    border-left: 3px solid #2563eb;
-    padding: 1rem 1.15rem;
-    border-radius: 10px;
-    color: #0f172a;
-    margin: 1.25rem 0 2rem;
-  }
-  .cx-trust-row {
+  /* Compact meta row: byline left, action cluster right */
+  .cx-meta-row {
     display: flex;
-    gap: .85rem;
-    align-items: flex-start;
-    font-size: .92rem;
-    line-height: 1.55;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
   }
-  .cx-trust-icon {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
+  .cx-meta-left {
+    font-size: .88rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+  .cx-meta-left strong { color: #0f172a; font-weight: 700; }
+  .cx-meta-left a { color: inherit; text-decoration: none; }
+  .cx-meta-left a:hover strong { color: #2563eb; }
+  .cx-meta-left .cx-byline-sep { margin: 0 .5rem; color: #cbd5e1; }
+
+  /* Slim trust banner — single line */
+  .cx-trust-slim {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
     border-radius: 8px;
+    padding: .65rem .85rem;
+    font-size: .85rem;
+    color: #1e293b;
+    line-height: 1.4;
+    margin: 0 0 1.85rem;
+    flex-wrap: wrap;
+  }
+  .cx-trust-slim .cx-trust-icon {
+    width: 24px; height: 24px;
+    flex-shrink: 0;
+    border-radius: 6px;
     background: linear-gradient(135deg, #2563eb, #06b6d4);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(37, 99, 235, .25);
   }
-  .cx-trust strong { color: #1d4ed8; font-weight: 700; }
-  .cx-trust-meta {
-    margin-top: .85rem;
-    padding-top: .75rem;
-    border-top: 1px dashed rgba(37, 99, 235, .25);
-    font-size: .8rem;
-    color: #475569;
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    align-items: center;
-  }
-  .cx-trust-meta strong { color: #0f172a; font-weight: 600; }
-  .cx-trust-meta a {
+  .cx-trust-slim strong { color: #1d4ed8; font-weight: 700; }
+  .cx-trust-slim-link {
     color: #2563eb;
     font-weight: 600;
     text-decoration: none;
+    margin-left: auto;
+    white-space: nowrap;
   }
-  .cx-trust-meta a:hover { text-decoration: underline; }
-  @media (max-width: 600px) {
-    .cx-byline-credential { display: block; margin-left: 0; margin-top: .15rem; }
-  }
+  .cx-trust-slim-link:hover { text-decoration: underline; }
 
   .cx-page-content {
     font-size: 1.02rem;
@@ -600,11 +576,21 @@
       </nav>
 
       <h1 itemprop="headline">{{ .Title }}</h1>
-      <div class="cx-actions-row">
+
+      <div class="cx-meta-row">
+        <div class="cx-meta-left">
+          <span>By <a href="/about/" itemprop="author"><strong>Vignesh</strong></a></span>
+          <span class="cx-byline-sep">•</span>
+          <span>Reviewed by <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank"><strong>Prem Anand</strong></a></span>
+          <span class="cx-byline-sep">•</span>
+          <time itemprop="dateModified" datetime="{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}">Updated {{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "Jan 2, 2006" }}{{ end }}</time>
+          <span class="cx-byline-sep">•</span>
+          <span>{{ .ReadingTime }} min read</span>
+        </div>
         <div class="cx-actions" id="cxActions" data-slug="{{ .File.BaseFileName }}">
           <div class="cx-actions-helpful">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9A2 2 0 0 0 19.72 9H14z"/><line x1="7" y1="22" x2="7" y2="11"/></svg>
-            <span><strong id="cxActionsCount">—</strong> people find this calculator helpful</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9A2 2 0 0 0 19.72 9H14z"/><line x1="7" y1="22" x2="7" y2="11"/></svg>
+            <span><strong id="cxActionsCount">—</strong> found helpful</span>
           </div>
           <div class="cx-actions-bar">
             <button type="button" class="cx-action-btn" id="cxActionUp" aria-label="Mark as helpful" title="Helpful">
@@ -631,41 +617,12 @@
         </div>
       </div>
 
-      <div class="cx-byline">
-        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-          Written by <strong itemprop="name">Vignesh</strong>
+      <div class="cx-trust-slim">
+        <span class="cx-trust-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
         </span>
-        <span class="cx-byline-sep">•</span>
-        <span>
-          Reviewed by
-          <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank" itemprop="reviewedBy">
-            <strong>Prem Anand</strong>
-          </a>
-          <span class="cx-byline-credential">BFSI content specialist · 10+ yrs (Mint, Moneycontrol, Outlook)</span>
-        </span>
-        <span class="cx-byline-sep">•</span>
-        <span>Updated <time itemprop="dateModified" datetime="{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}">{{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}</time></span>
-        <span class="cx-byline-sep">•</span>
-        <span>{{ .ReadingTime }} min read</span>
-      </div>
-
-      <div class="cx-trust">
-        <div class="cx-trust-row">
-          <span class="cx-trust-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
-          </span>
-          <div>
-            <strong>Reviewed for FY 2025-26 (AY 2026-27)</strong> by <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank">Prem Anand</a>, BFSI content specialist with 10+ years across Mint, Moneycontrol, Outlook India and AP News.
-            Formula sourced from RBI Master Directions, CBDT circulars and the underlying statute. Calculations run entirely in your browser — we don't store any input.
-          </div>
-        </div>
-        <div class="cx-trust-meta">
-          <span>Last reviewed: <strong>{{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "Jan 2, 2006" }}{{ end }}</strong></span>
-          <span aria-hidden="true">•</span>
-          <a href="/about/methodology/">How we verify calculators</a>
-          <span aria-hidden="true">•</span>
-          <a href="/about/">Editorial team</a>
-        </div>
+        <span><strong>Reviewed for FY 2025-26.</strong> Sourced from RBI Master Directions, CBDT circulars and the underlying statute. Runs entirely in your browser.</span>
+        <a href="/about/methodology/" class="cx-trust-slim-link">Methodology →</a>
       </div>
 
       <div class="cx-page-content" itemprop="articleBody">
