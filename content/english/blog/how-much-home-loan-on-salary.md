@@ -13,24 +13,26 @@ tags:
 image: ""
 ---
 
-The most common question before buying a home: how much loan will the bank actually give me? The answer depends on one number — your FOIR (Fixed Obligations to Income Ratio).
+Before you start touring properties, before you call a builder, before you mentally furnish a flat you've seen online — figure out this one number. How much will the bank actually lend you?
 
-## The FOIR formula every bank uses
+It's not a guess. Banks across India use a specific formula, and once you understand it, you can work out your eligibility in about two minutes.
 
-Most banks cap your total EMI obligations at **50% of your net monthly income**. SBI, HDFC, ICICI, Axis — they all use this as the baseline.
+## The formula: FOIR
+
+FOIR stands for Fixed Obligations to Income Ratio. It's the share of your net monthly income already going toward loan EMIs. Most banks cap this at **50%** — your total monthly EMI burden across all loans cannot exceed half your take-home pay.
+
+The math:
 
 ```
 Maximum total EMI = Net monthly income × 50%
-Eligible new EMI = Maximum total EMI − Existing EMIs
+Eligible home loan EMI = Max total EMI − existing EMIs
 ```
 
-From the eligible EMI, the bank back-calculates the loan amount using the standard EMI formula for your chosen rate and tenure.
+From that eligible EMI, the bank reverse-calculates the loan amount you qualify for at your chosen rate and tenure.
 
-## Quick reference: income vs eligible loan amount
+**At 8.75% rate, 20-year tenure, no existing loans:**
 
-At 8.75% interest rate, 20-year tenure, no existing EMIs:
-
-| Net monthly income | Eligible home loan |
+| Net monthly income | Home loan you qualify for |
 |---|---|
 | ₹30,000 | ~₹14.7 lakh |
 | ₹50,000 | ~₹24.5 lakh |
@@ -38,27 +40,44 @@ At 8.75% interest rate, 20-year tenure, no existing EMIs:
 | ₹1,00,000 | ~₹49 lakh |
 | ₹1,50,000 | ~₹73.5 lakh |
 
-If you have existing EMIs (car loan, personal loan), they reduce your eligible home loan proportionally.
+Already carrying a car loan or personal loan? Subtract those EMIs first. A ₹8,000/month two-wheeler EMI on a ₹75,000 income knocks your eligible home loan down by roughly ₹16 lakh.
 
-## What else banks check
+## The CIBIL score piece
 
-**CIBIL score:** Below 700 = likely rejection or high rate. 750+ = best rates. A 0.5% difference on a ₹40L loan over 20 years is ~₹3 lakh extra in interest.
+Banks don't just look at income. Your CIBIL score determines both whether you get approved and at what rate.
 
-**Age:** The loan tenure cannot extend past retirement. If you're 45, most banks cap at 15 years (to age 60), which raises EMI and reduces eligibility.
+Below 700: most banks reject, or offer the loan at a noticeably higher rate. Above 750: you get the best rates. The gap between a 700 and a 780 score on a ₹40 lakh loan over 20 years can easily cost ₹3–4 lakh in extra interest. If your score is borderline, it's worth spending 6 months improving it before applying — pay every credit card bill in full, don't apply for new credit, check your report for errors.
 
-**LTV limit:** Banks lend only 75–90% of property value. You need the rest as a down payment plus stamp duty + registration (5–10% of property value, paid from pocket).
+## Age caps your tenure — and your eligibility
 
-**Co-applicant:** Adding a working spouse's income combines both for FOIR — often the easiest way to increase eligibility by 40–60%.
+Banks won't let a loan tenure extend beyond your retirement age, usually 60 for salaried employees. If you're 45, most banks cap tenure at 15 years, not 20 or 25. A shorter tenure means a higher EMI — which means a lower loan amount at the same income.
 
-## Use the calculator
+This is one of the underrated reasons why buying a home at 30 works out better than at 45, beyond just property appreciation.
 
-The [Home Loan Eligibility Calculator](/loan/home-loan-eligibility/) on Calxo lets you input your exact income, existing EMIs, and preferred rate to see your eligible amount instantly — along with a FOIR status indicator (green/yellow/red).
+## Down payment — the number people underestimate
 
-## How to increase your eligibility
+Banks don't finance 100% of a property's value. LTV (Loan-to-Value) limits mean:
 
-1. **Close small loans first** — a ₹5,000/month car EMI reduces your home loan eligibility by ~₹10 lakh
-2. **Add a co-applicant** — spouse or parent with income
-3. **Extend tenure** — 25 or 30 years instead of 20 reduces EMI, increases eligible loan (but costs more interest)
-4. **Improve CIBIL** — pay credit card dues in full for 6 months before applying
+- Properties up to ₹30 lakh: bank lends up to 90% (you bring 10%)
+- ₹30–75 lakh: up to 80% (you bring 20%)
+- Above ₹75 lakh: up to 75% (you bring 25%)
 
-The bank pre-approval process takes 3–5 days and is free — worth getting before you start property hunting so you know your real budget.
+And that's separate from stamp duty and registration, which typically runs 5–10% of property value — paid entirely from your pocket, not financed. On a ₹60 lakh flat in Bengaluru, budget ₹12 lakh for down payment plus ₹5–6 lakh for registration. You need roughly ₹17–18 lakh in cash before signing anything.
+
+## Three practical ways to increase what you qualify for
+
+**Add a co-applicant.** A working spouse as co-borrower means both incomes count toward FOIR. If you earn ₹70,000 and your spouse earns ₹50,000, combined eligible EMI goes from ₹35,000 to ₹60,000. That single change can push loan eligibility up by 50–70%.
+
+**Close small loans before applying.** That ₹6,000/month bike EMI is cutting into your FOIR. Pay it off beforehand and your home loan eligibility jumps by ₹12–14 lakh.
+
+**Extend the tenure.** A 25-year tenure has a lower EMI than 20 years, so the same income qualifies for a larger loan — at the cost of more total interest. A lot of people start at 25 years and prepay aggressively once income grows, effectively getting a shorter tenure without the eligibility constraint upfront.
+
+## Check your numbers before the bank does
+
+The [Home Loan Eligibility Calculator](/loan/home-loan-eligibility/) on Calxo takes your income, existing EMIs, rate, and tenure and gives you the eligible amount plus a FOIR indicator — green if you're comfortable, yellow if it's tight, red if rejection is likely.
+
+Running this before you walk into a bank branch avoids an awkward conversation after you've already mentally moved into the place.
+
+## Get a pre-approval letter
+
+Bank pre-approvals for home loans are free. Most major banks turn them around in 3–5 working days. It doesn't guarantee the final loan (property verification happens separately) but it tells you your real number — and property sellers and developers take pre-approved buyers more seriously. Do this before property hunting, not after.

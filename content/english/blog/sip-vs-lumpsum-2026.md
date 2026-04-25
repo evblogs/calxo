@@ -14,51 +14,55 @@ tags:
 image: ""
 ---
 
-Every mutual fund advertisement says "SIP karo" — but is a monthly SIP always better than putting in a lumpsum? The honest answer: **lumpsum beats SIP mathematically about 65% of the time** over long periods. But SIP wins behaviourally for most people. Here's how to think about it.
+Every mutual fund ad in India says "SIP karo." Billboards, YouTube pre-rolls, your bank's RM — all of them push SIP like it's the only way to invest. It's not. And honestly, the math doesn't always back it up.
 
-## Why lumpsum beats SIP in most market conditions
+Here's the blunt version: **lumpsum beats SIP roughly 65% of the time** over long investment horizons. But most people still shouldn't invest as lumpsum. Let me explain why both those statements are true at the same time.
 
-When you invest a lumpsum, all your money starts compounding from day one. In a SIP, money invested in month 12 has 11 fewer months of compounding than the first instalment. Over 20 years, this adds up.
+## Why lumpsum wins mathematically
 
-**Example: ₹12 lakh to invest, 12% annual return, 10-year horizon**
+When you invest a lumpsum on day one, all your money starts compounding immediately. With a SIP, the ₹10,000 you invest in month 24 has had 23 fewer months of compounding than your very first instalment. That gap compounds too — and over 20 years it becomes enormous.
+
+**Same ₹12 lakh, two methods, 12% annual return, 10-year horizon:**
 
 | Method | Final corpus |
 |---|---|
-| Lumpsum (₹12L at start) | ₹37.2 lakh |
+| Lumpsum (₹12L on day one) | ₹37.2 lakh |
 | SIP (₹10,000/month for 10 years) | ₹23.2 lakh |
 
-The lumpsum wins by ₹14 lakh — simply because the money compounds for longer.
+That's a ₹14 lakh difference — not because SIP is bad, but because the money in a SIP simply hasn't been working as long. In rising markets (which is the long-term default for Indian equities), lumpsum almost always comes out ahead. SIP only wins when markets are volatile or fall sharply before recovering — that's when rupee cost averaging actually earns its keep.
 
-In rising markets (which is the long-term trend), lumpsum almost always wins. SIP only wins in volatile or falling-then-rising markets where rupee cost averaging works in your favour.
+## So why does anyone do SIP?
 
-## When SIP is the right choice
+Because most people don't have ₹12 lakh sitting idle in a savings account. That's genuinely the main answer.
 
-**You don't have a lumpsum.** This is the main use case. If you earn ₹60,000/month and can spare ₹10,000 for investments, you don't have a choice — SIP is the only practical option.
+If you earn ₹60,000 a month and can set aside ₹10,000 for investments, you don't have a ₹12 lakh lumpsum. You have ₹10,000. SIP isn't a strategy choice — it's your only practical option.
 
-**You'd spend the money otherwise.** For people who can't hold a large sum without spending it, SIP automates the discipline. The auto-debit on the 5th of every month removes the decision entirely.
+The second reason is behaviour. I've seen people receive a ₹5 lakh bonus, fully intending to invest it, then spend ₹1.5 lakh on a TV, ₹80,000 on a trip, and "invest the rest next month." The rest never gets invested. An auto-debit SIP on the 5th of every month removes the decision entirely. Money leaves before you can think about it.
 
-**You're investing in volatile assets.** For mid-cap and small-cap funds with large swings, SIP smooths out the entry price. A ₹10L lumpsum in a small-cap fund at a market peak can take 3–4 years to recover.
+For volatile funds — mid-cap and small-cap especially — SIP also makes genuine sense regardless of whether you have a lumpsum. Putting ₹10 lakh into a small-cap fund at a market peak can take 3–4 years just to get back to zero. Spreading that entry over 12–18 months absorbs the timing risk.
 
-## What about market timing?
+## What about waiting for the right time?
 
-Nobody consistently times the market. Studies of US and Indian markets show that even if you invested at the absolute worst time each year (peak of the year) for 20 years, lumpsum still beat staying in cash. Time in the market beats timing the market.
+Don't.
 
-If you have a lumpsum but are nervous about the current market level, the compromise is **Systematic Transfer Plan (STP)** — park the lumpsum in a liquid fund, then transfer ₹X to equity each month for 6–12 months. You get the lumpsum's head start on liquid fund returns while phasing into equity.
+There's a Schwab study (US data, but the results hold across markets) comparing five different investment strategies over 20 years. The person who invested a lumpsum at the absolute worst moment each year — peak of every year, worst possible timing — still beat the person who stayed in cash waiting for the right entry point. Every year you spend on the sidelines is a year your money isn't compounding.
 
-## The verdict
+But if you have a lumpsum and the market really does feel stretched — and right now in April 2026, Indian equities aren't exactly cheap — there's a middle path: **STP (Systematic Transfer Plan)**. Park the full amount in a liquid fund today. Set a monthly transfer to equity for the next 6–12 months. You earn liquid fund returns (5.5–6.5%) on the parked money while phasing into equity. Not perfect, but better than a savings account.
 
-| Situation | Recommendation |
+## The decision table
+
+| Your situation | What makes sense |
 |---|---|
-| You have a lumpsum (bonus, inheritance, sale proceeds) | Invest as lumpsum |
-| You invest from monthly salary | SIP |
-| Market seems expensive and you're nervous | STP (lumpsum → liquid → equity) |
-| Mid/small-cap funds | SIP preferred |
-| Large-cap / index funds | Either works; lumpsum slightly better |
+| Received a bonus, inheritance, or sale proceeds | Invest as lumpsum (or STP if nervous) |
+| Investing from monthly salary | SIP |
+| Have a lumpsum but market feels expensive | STP — liquid first, transfer to equity monthly |
+| Mid-cap or small-cap funds | SIP regardless |
+| Large-cap or index funds | Either works; lumpsum has a small mathematical edge |
 
-Use the [SIP Calculator](/investment/sip-calculator/) and [Lumpsum Calculator](/investment/lumpsum-calculator/) on Calxo to compare your specific numbers — plug in the same corpus and rate and see the difference over your investment horizon.
+Run your actual numbers in the [SIP Calculator](/investment/sip-calculator/) and [Lumpsum Calculator](/investment/lumpsum-calculator/) on Calxo. Same corpus, same return assumption, your actual horizon — the gap tells you how much the method matters for your case specifically.
 
-## One thing that matters more than SIP vs lumpsum
+## The thing that matters more than all of this
 
-**Starting early.** A ₹5,000/month SIP started at age 25 builds more corpus than ₹10,000/month started at 35 — even though you invest less total money. The 10 extra years of compounding do the heavy lifting.
+Starting early. A ₹5,000/month SIP at 25 builds more wealth than ₹10,000/month started at 35 — even though the second person invests double the monthly amount. Ten extra years of compounding beats a bigger SIP almost every time.
 
-The SIP vs lumpsum debate is secondary to just starting — whichever method you'll actually stick with is the right one.
+The SIP vs lumpsum debate is worth understanding. But it's secondary to just starting — whichever method you'll actually stick to consistently is the right one.

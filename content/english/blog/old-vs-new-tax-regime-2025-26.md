@@ -13,54 +13,60 @@ tags:
 image: ""
 ---
 
-Budget 2025 made the new tax regime significantly more attractive. The zero-tax limit jumped to ₹12 lakh (after standard deduction), and the slabs were restructured. But the old regime still wins for people with large deductions — home loan interest, HRA, and heavy 80C investments.
+Budget 2025 changed the math quite a bit. The zero-tax threshold under the new regime jumped to ₹12 lakh, and the standard deduction went up to ₹75,000. For a lot of salaried employees that decision just got easier — but not for everyone.
 
-Here's how to think about it clearly.
+Here's how to actually think through this for your situation, rather than copying someone else's answer.
 
-## What changed in the new regime (FY 2025-26)
+## What actually changed in FY 2025-26
 
-The two biggest changes from Budget 2025:
+Two things worth knowing from Budget 2025:
 
-**Standard deduction raised to ₹75,000** (was ₹50,000). This directly reduces your taxable income under the new regime without needing any investment proof.
+**Standard deduction is now ₹75,000 under the new regime.** No investment declarations needed — it applies automatically. That single change made the new regime much more competitive.
 
-**Zero-tax up to ₹12 lakh** via Section 87A rebate. If your taxable income (after ₹75,000 standard deduction) is ₹12 lakh or below, your tax is nil. For a salaried employee, this means gross CTC up to ~₹13.7 lakh = zero income tax under the new regime.
+**Zero tax up to ₹12 lakh** through Section 87A rebate. If your taxable income after the ₹75,000 deduction is ₹12 lakh or below, you owe nothing. For a salaried person, that works out to roughly ₹13.7 lakh gross CTC before a single rupee of tax kicks in under the new regime.
 
-## The simple rule to decide
+That's a meaningful shift from where things stood two years ago.
 
-Add up your deductions under the old regime:
+## How to actually decide
+
+Don't ask "which regime is better." Ask: how much does the old regime save me specifically?
+
+Add up every deduction you'd claim:
 - Standard deduction: ₹50,000
-- HRA exemption (if renting): varies
-- 80C (PPF, ELSS, EPF, LIC): up to ₹1,50,000
-- 80CCD(1B) NPS: up to ₹50,000
-- 80D health insurance: up to ₹25,000
+- HRA exemption (only if you're actually paying rent): depends on city and salary
+- 80C — PPF, ELSS, EPF, LIC combined: up to ₹1,50,000
+- 80CCD(1B) NPS voluntary contribution: up to ₹50,000
+- 80D health insurance: up to ₹25,000 for self and family
 - Section 24(b) home loan interest: up to ₹2,00,000
 
-**If total deductions exceed ₹3.75 lakh** and your income is above ₹15 lakh, the old regime likely saves more. Below that threshold, the new regime wins almost always.
+Compare that total against what the new regime gives you automatically. The rough breakeven: **if your old-regime deductions cross ₹3.75 lakh and your income is above ₹15 lakh**, old regime likely wins. Below that — new regime almost always comes out ahead.
 
-## Who should stick with the old regime
+## Who should stay on old regime
 
-- You have an active home loan with ~₹2 lakh annual interest
-- You rent a flat in a metro city (HRA exemption is large)
-- You have already maximised 80C + NPS (₹2 lakh total)
-- Your income is above ₹15 lakh
+You have an active home loan with close to ₹2 lakh in annual interest. That's the biggest single deduction and the hardest one to replace. Add maxed 80C (₹1.5L) and NPS (₹50K), and you're already past ₹4 lakh in deductions. At that point the old regime starts pulling clearly ahead.
 
-## Who should switch to the new regime
+You're paying substantial rent in a metro. Someone paying ₹25,000/month rent in Mumbai or Bengaluru on a ₹15 lakh salary can claim HRA exemption of ₹1.5–2 lakh. That's real tax savings.
 
-- Your income is below ₹12 lakh gross (zero tax, no contest)
-- You don't have a home loan
-- You haven't been investing in 80C instruments anyway
-- You're self-employed or a freelancer (simplified compliance)
+Your income is above ₹15 lakh and you've consistently used 80C, 80D, and NPS for years. At higher incomes the value of each deduction is magnified because you're saving at a higher slab rate.
 
-## Check your exact numbers
+## Who should switch to new regime
 
-The decision is personal — it depends on your exact salary, rent paid, and investments. Use the [Old vs New Tax Regime Calculator](/tax/old-vs-new-tax-regime/) on Calxo to enter your actual numbers and get an instant comparison.
+Your income is below ₹12 lakh gross. Zero tax. No calculation required.
 
-## Can you switch back?
+You don't have a home loan. Without Section 24(b), the largest deduction disappears. The new regime's wider slabs and higher standard deduction win.
 
-**Salaried employees:** Yes, every year. Tell your employer at the start of the financial year.
+You're not actually investing in 80C instruments. The deduction only works if you're genuinely putting money into PPF, ELSS, or LIC. If you're not doing it anyway, you're not getting the benefit — might as well take the simpler regime.
 
-**Business income earners:** You get one chance to revert. Once you opt out of the new regime, you can only switch back once in a lifetime.
+You're a freelancer or self-employed. Less paperwork, simpler filing, fewer declarations. The compliance advantage alone is worth it if the tax difference is small.
 
-## Bottom line
+## Can you switch back later?
 
-For most salaried employees earning up to ₹15 lakh without a home loan, the new regime is better in FY 2025-26. For those above ₹15 lakh with significant deductions — especially home loan interest and HRA — do the maths before deciding. The calculator above takes 60 seconds.
+**Salaried:** Yes, every year. Your employer asks at the start of the financial year which regime you want for TDS. You can change it again next April.
+
+**Business income earners:** You get one shot to go back. Once you leave the new regime, you can revert to old only once in your lifetime. This matters — don't switch back and forth without thinking it through.
+
+## Run your actual numbers
+
+Generic advice on this question is almost useless. Two people earning ₹18 lakh can have opposite correct answers based entirely on whether one has a home loan and the other doesn't.
+
+Use the [Old vs New Tax Regime Calculator](/tax/old-vs-new-tax-regime/) on Calxo — put in your actual salary, what you're genuinely paying in rent, your real 80C investments, whether you have a home loan. It runs the comparison and tells you the difference in rupees. Takes about 60 seconds.
