@@ -1,12 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60" role="img" aria-label="Calxo">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563eb"/>
-      <stop offset="100%" stop-color="#0891b2"/>
+    <linearGradient id="cxg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="55%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
     </linearGradient>
   </defs>
-  <rect x="6" y="10" width="42" height="42" rx="10" fill="url(#g)"/>
-  <text x="27" y="40" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">C</text>
-  <text x="60" y="42" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="800" fill="#0f172a">calxo</text>
-  <circle cx="180" cy="20" r="3" fill="#2563eb"/>
+
+  <!-- Calculator-key-style tile -->
+  <rect x="2" y="5" width="50" height="50" rx="12" fill="url(#cxg)"/>
+
+  <!-- Subtle top gloss -->
+  <rect x="2" y="5" width="50" height="22" rx="12" fill="rgba(255,255,255,0.16)"/>
+
+  <!-- Equals-sign accent (top-right of tile — math/calc reference) -->
+  <rect x="40" y="14" width="7" height="1.6" rx="0.8" fill="rgba(255,255,255,0.85)"/>
+  <rect x="40" y="17.8" width="7" height="1.6" rx="0.8" fill="rgba(255,255,255,0.85)"/>
+
+  <!-- Bold "C" letter -->
+  <text x="25" y="42" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-1.5">C</text>
+
+  <!-- Wordmark "calxo" with x accent -->
+  <text x="62" y="42" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.8"><tspan fill="#0f172a">cal</tspan><tspan fill="#2563eb">x</tspan><tspan fill="#0f172a">o</tspan></text>
+
+  <!-- Tiny "+" dot above the o (math touch) -->
+  <circle cx="200" cy="22" r="2.2" fill="#06b6d4"/>
 </svg>
