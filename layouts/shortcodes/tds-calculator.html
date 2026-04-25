@@ -1,0 +1,173 @@
+<div class="cx-emi-widget" id="cx-tds">
+<style>
+  #cx-tds.cx-emi-widget {
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  #cx-tds .cx-tds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 760px) {
+    #cx-tds .cx-tds-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
+  #cx-tds label { display: block; margin-bottom: 1.15rem; }
+  #cx-tds label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-tds label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-tds select {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    background: #fff; box-sizing: border-box; cursor: pointer;
+  }
+  #cx-tds select:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  #cx-tds input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-tds input[type="number"]:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  #cx-tds input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-tds .cx-tds-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  #cx-tds .cx-tds-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-tds .cx-tds-result > * { position: relative; }
+  #cx-tds .cx-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-tds .cx-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-tds .cx-tds-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-tds .cx-tds-row:last-of-type { border-bottom: none; }
+  #cx-tds .cx-tds-row strong { font-weight: 700; }
+  #cx-tds .cx-tds-note {
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
+    padding: .75rem 1rem; font-size: .82rem; color: #92400e;
+    margin-top: 1.25rem; line-height: 1.55;
+  }
+</style>
+
+<div class="cx-tds-grid">
+  <div class="cx-emi-inputs">
+    <label>
+      <span>Payment type</span>
+      <select id="cx-tds-type">
+        <option value="fd">FD Interest (Sec 194A)</option>
+        <option value="rent">Rent – Land/Building (Sec 194I)</option>
+        <option value="prof">Professional Fee (Sec 194J)</option>
+        <option value="contract">Contractor Payment (Sec 194C)</option>
+        <option value="commission">Commission / Brokerage (Sec 194H)</option>
+        <option value="dividend">Dividend (Sec 194)</option>
+      </select>
+    </label>
+    <label>
+      <span>Annual payment amount (₹) <em data-out="amount">1,00,000</em></span>
+      <input type="number" id="cx-tds-amount" min="0" max="100000000" step="5000" value="100000" inputmode="numeric">
+      <input type="range" id="cx-tds-amount-r" min="0" max="2000000" step="5000" value="100000">
+    </label>
+    <label>
+      <span>PAN furnished?</span>
+      <select id="cx-tds-pan">
+        <option value="yes">Yes</option>
+        <option value="no">No (higher TDS applies)</option>
+      </select>
+    </label>
+    <label>
+      <span>Payee type</span>
+      <select id="cx-tds-payee">
+        <option value="regular">Regular (below 60)</option>
+        <option value="senior">Senior Citizen (60–80)</option>
+        <option value="supersenior">Super Senior (80+)</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="cx-tds-result">
+    <div class="cx-result-label">TDS to be deducted</div>
+    <div class="cx-result-value" id="cx-tds-tds-amount">—</div>
+    <div class="cx-tds-row"><span>TDS rate applied</span> <strong id="cx-tds-rate-applied">—</strong></div>
+    <div class="cx-tds-row"><span>Threshold limit</span> <strong id="cx-tds-threshold">—</strong></div>
+    <div class="cx-tds-row"><span>Taxable amount</span> <strong id="cx-tds-taxable">—</strong></div>
+    <div class="cx-tds-row"><span>Net amount after TDS</span> <strong id="cx-tds-net">—</strong></div>
+  </div>
+</div>
+
+<div class="cx-tds-note" id="cx-tds-section-note">—</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtPct = function (n) { return n.toFixed(0) + '%'; };
+
+  var typeEl   = document.getElementById('cx-tds-type');
+  var amtEl    = document.getElementById('cx-tds-amount');
+  var amtR     = document.getElementById('cx-tds-amount-r');
+  var panEl    = document.getElementById('cx-tds-pan');
+  var payeeEl  = document.getElementById('cx-tds-payee');
+
+  var rules = {
+    fd:         { section: '194A', noPanRate: 20, threshold: 40000, seniorThreshold: 50000, rate: 10, label: 'FD Interest', note: 'TDS at 10% if PAN furnished. No PAN = 20%. Senior citizens (60+) threshold is ₹50,000/year.' },
+    rent:       { section: '194I', noPanRate: 20, threshold: 240000, rate: 10, label: 'Rent (Land/Building)', note: 'Rent on plant & machinery is 2%; land/building/furniture is 10%. Threshold ₹2.4 lakh per year per landlord.' },
+    prof:       { section: '194J', noPanRate: 20, threshold: 30000, rate: 10, label: 'Professional / Technical Fee', note: 'TDS at 10% for most professional services. Technical services rate is 2% from FY 2020-21.' },
+    contract:   { section: '194C', noPanRate: 20, threshold: 30000, rate: 1,  label: 'Contractor (Individual)', note: 'Single payment threshold ₹30,000; aggregate threshold ₹1,00,000/year. Company contractor rate is 2%.' },
+    commission: { section: '194H', noPanRate: 20, threshold: 15000, rate: 5,  label: 'Commission / Brokerage', note: 'Threshold ₹15,000/year. Insurance commission is covered under Sec 194D at 5%.' },
+    dividend:   { section: '194',  noPanRate: 20, threshold: 5000,  rate: 10, label: 'Dividend', note: 'TDS at 10% for residents on dividends above ₹5,000 per company per year.' }
+  };
+
+  function compute() {
+    var type    = typeEl.value;
+    var amount  = parseFloat(amtEl.value) || 0;
+    var noPan   = panEl.value === 'no';
+    var payee   = payeeEl.value;
+    var rule    = rules[type];
+
+    var threshold = rule.threshold;
+    if (type === 'fd' && payee !== 'regular') threshold = rule.seniorThreshold || threshold;
+
+    var rate = noPan ? rule.noPanRate : rule.rate;
+    var taxable = amount > threshold ? amount : 0;
+    var tds = taxable * rate / 100;
+    var net = amount - tds;
+
+    document.getElementById('cx-tds-tds-amount').textContent  = fmtINR(tds);
+    document.getElementById('cx-tds-rate-applied').textContent = fmtPct(rate) + (noPan ? ' (no PAN)' : '');
+    document.getElementById('cx-tds-threshold').textContent   = fmtINR(threshold) + '/year';
+    document.getElementById('cx-tds-taxable').textContent     = fmtINR(taxable);
+    document.getElementById('cx-tds-net').textContent         = fmtINR(net);
+    document.getElementById('cx-tds-section-note').textContent = 'Section ' + rule.section + ' — ' + rule.note;
+    document.querySelector('#cx-tds [data-out="amount"]').textContent = Math.round(amount).toLocaleString('en-IN');
+  }
+
+  amtEl.addEventListener('input', function () { amtR.value = amtEl.value; compute(); });
+  amtR.addEventListener('input', function () { amtEl.value = amtR.value; compute(); });
+  typeEl.addEventListener('change', compute);
+  panEl.addEventListener('change', compute);
+  payeeEl.addEventListener('change', compute);
+  compute();
+})();
+</script>

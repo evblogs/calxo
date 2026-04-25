@@ -1,0 +1,131 @@
+<div class="cx-emi-widget" id="cx-edu">
+<style>
+  #cx-edu.cx-emi-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-edu.cx-emi-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-edu label { display:block; margin-bottom:1.1rem; }
+  #cx-edu label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-edu label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-edu input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-edu input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-edu input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-edu .cx-emi-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-edu .cx-emi-result::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-edu .cx-emi-result > * { position:relative; }
+  #cx-edu .cx-emi-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-edu .cx-emi-result-value { font-size:clamp(1.85rem,5vw,2.4rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.25rem 0 1.1rem; }
+  #cx-edu .cx-emi-row { display:flex; justify-content:space-between; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-edu .cx-emi-row:last-of-type { border-bottom:none; }
+  #cx-edu .cx-emi-row strong { font-weight:700; }
+  #cx-edu .cx-note { font-size:.75rem; opacity:.8; margin-top:.75rem; line-height:1.5; }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Loan amount (₹) <em data-out="loan">10,00,000</em></span>
+    <input type="number" id="cx-edu-loan" min="10000" max="10000000" step="10000" value="1000000" inputmode="numeric">
+    <input type="range"  id="cx-edu-loan-r" min="50000" max="7500000" step="10000" value="1000000">
+  </label>
+  <label>
+    <span>Interest rate p.a. (%) <em data-out="rate">9.50%</em></span>
+    <input type="number" id="cx-edu-rate" min="6" max="16" step="0.25" value="9.5" inputmode="decimal">
+    <input type="range"  id="cx-edu-rate-r" min="6" max="16" step="0.25" value="9.5">
+  </label>
+  <label>
+    <span>Course duration (years) <em data-out="course">4 yrs</em></span>
+    <input type="number" id="cx-edu-course" min="1" max="6" step="1" value="4" inputmode="numeric">
+    <input type="range"  id="cx-edu-course-r" min="1" max="6" step="1" value="4">
+  </label>
+  <label>
+    <span>Repayment tenure (years) <em data-out="repay">10 yrs</em></span>
+    <input type="number" id="cx-edu-repay" min="1" max="15" step="1" value="10" inputmode="numeric">
+    <input type="range"  id="cx-edu-repay-r" min="1" max="15" step="1" value="10">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">EMI after moratorium</div>
+  <div class="cx-emi-result-value" id="cx-edu-emi">—</div>
+  <div class="cx-emi-row"><span>Principal</span><strong id="cx-edu-principal">—</strong></div>
+  <div class="cx-emi-row"><span>Interest during course</span><strong id="cx-edu-moratorium-int">—</strong></div>
+  <div class="cx-emi-row"><span>Outstanding at repayment start</span><strong id="cx-edu-outstanding">—</strong></div>
+  <div class="cx-emi-row"><span>Total repayment</span><strong id="cx-edu-total">—</strong></div>
+  <div class="cx-emi-row"><span>80E deduction (yr 1 interest)</span><strong id="cx-edu-80e">—</strong></div>
+  <div class="cx-note">Moratorium = course duration + 1 year. Interest accrues during moratorium and is added to principal. Section 80E deduction available on full interest paid (no upper limit) for 8 years.</div>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmtINR = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  function compute(){
+    var loan    = parseFloat(document.getElementById('cx-edu-loan').value)   || 0;
+    var annRate = parseFloat(document.getElementById('cx-edu-rate').value)   || 0;
+    var course  = parseInt(document.getElementById('cx-edu-course').value)   || 0;
+    var repay   = parseInt(document.getElementById('cx-edu-repay').value)    || 0;
+
+    /* Moratorium period = course + 1 year (standard for SBI, HDFC Credila, etc.) */
+    var moratoriumYears = course + 1;
+    var r = annRate / 12 / 100;
+
+    /* Interest capitalised during moratorium */
+    var moratoriumMonths = moratoriumYears * 12;
+    var outstanding = loan * Math.pow(1 + r, moratoriumMonths);
+    var moratoriumInterest = outstanding - loan;
+
+    /* EMI on outstanding amount for repayment tenure */
+    var n   = repay * 12;
+    var emi = (outstanding > 0 && r > 0 && n > 0)
+      ? outstanding * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1)
+      : (n > 0 ? outstanding / n : 0);
+
+    var totalRepay  = emi * n;
+    var repayInterest = totalRepay - outstanding;
+    /* 80E: interest paid in first year of repayment ≈ outstanding × annRate */
+    var sec80e = outstanding * (annRate / 100) * (1 - 1 / Math.pow(1+r,12)); /* approx */
+
+    document.getElementById('cx-edu-emi').textContent            = fmtINR(emi);
+    document.getElementById('cx-edu-principal').textContent      = fmtINR(loan);
+    document.getElementById('cx-edu-moratorium-int').textContent = fmtINR(moratoriumInterest);
+    document.getElementById('cx-edu-outstanding').textContent    = fmtINR(outstanding);
+    document.getElementById('cx-edu-total').textContent          = fmtINR(totalRepay + moratoriumInterest);
+    document.getElementById('cx-edu-80e').textContent            = fmtINR(repayInterest / repay) + '/yr (avg)';
+
+    document.querySelector('#cx-edu [data-out="loan"]').textContent   = Math.round(loan).toLocaleString('en-IN');
+    document.querySelector('#cx-edu [data-out="rate"]').textContent   = annRate.toFixed(2) + '%';
+    document.querySelector('#cx-edu [data-out="course"]').textContent = course + ' yr' + (course !== 1 ? 's' : '');
+    document.querySelector('#cx-edu [data-out="repay"]').textContent  = repay + ' yr' + (repay !== 1 ? 's' : '');
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-edu-loan','cx-edu-loan-r'); syncPair('cx-edu-rate','cx-edu-rate-r');
+  syncPair('cx-edu-course','cx-edu-course-r'); syncPair('cx-edu-repay','cx-edu-repay-r');
+  compute();
+})();
+</script>

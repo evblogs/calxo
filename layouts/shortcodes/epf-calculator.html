@@ -1,0 +1,177 @@
+<div class="cx-emi-widget" id="cx-epf">
+<style>
+  #cx-epf.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-epf.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-epf label { display: block; margin-bottom: 1.15rem; }
+  #cx-epf label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-epf label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-epf input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-epf input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-epf input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-epf .cx-emi-result {
+    background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #34d399 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-epf .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-epf .cx-emi-result > * { position: relative; }
+  #cx-epf .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-epf .cx-emi-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-epf .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-epf .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-epf .cx-emi-row strong { font-weight: 700; }
+  #cx-epf .cx-note {
+    font-size: .75rem; opacity: .8; margin-top: .75rem; line-height: 1.5;
+  }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Monthly Basic + DA (₹) <em data-out="basic">30,000</em></span>
+    <input type="number" id="cx-epf-basic" min="7000" max="500000" step="1000" value="30000" inputmode="numeric">
+    <input type="range" id="cx-epf-basic-r" min="7000" max="200000" step="1000" value="30000">
+  </label>
+  <label>
+    <span>Your age (years) <em data-out="age">30</em></span>
+    <input type="number" id="cx-epf-age" min="18" max="58" step="1" value="30" inputmode="numeric">
+    <input type="range" id="cx-epf-age-r" min="18" max="58" step="1" value="30">
+  </label>
+  <label>
+    <span>EPF interest rate (%) <em data-out="rate">8.25%</em></span>
+    <input type="number" id="cx-epf-rate" min="6" max="12" step="0.05" value="8.25" inputmode="decimal">
+    <input type="range" id="cx-epf-rate-r" min="6" max="10" step="0.05" value="8.25">
+  </label>
+  <label>
+    <span>Annual salary increment (%) <em data-out="incr">8%</em></span>
+    <input type="number" id="cx-epf-incr" min="0" max="25" step="1" value="8" inputmode="numeric">
+    <input type="range" id="cx-epf-incr-r" min="0" max="25" step="1" value="8">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">EPF Corpus at 58</div>
+  <div class="cx-emi-result-value" id="cx-epf-corpus">—</div>
+  <div class="cx-emi-row"><span>Years to retirement</span> <strong id="cx-epf-years">28 yrs</strong></div>
+  <div class="cx-emi-row"><span>Your contribution (monthly)</span> <strong id="cx-epf-emp">₹3,600</strong></div>
+  <div class="cx-emi-row"><span>Employer EPF share (monthly)</span> <strong id="cx-epf-er">₹1,104</strong></div>
+  <div class="cx-emi-row"><span>Total annual contribution (yr 1)</span> <strong id="cx-epf-annual">₹56,448</strong></div>
+  <div class="cx-note">Employer's 8.33% goes to EPS (pension), not EPF corpus. Only the 3.67% employer EPF share + your 12% builds the PF balance shown above.</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  var basicEl = document.getElementById('cx-epf-basic');
+  var basicR  = document.getElementById('cx-epf-basic-r');
+  var ageEl   = document.getElementById('cx-epf-age');
+  var ageR    = document.getElementById('cx-epf-age-r');
+  var rateEl  = document.getElementById('cx-epf-rate');
+  var rateR   = document.getElementById('cx-epf-rate-r');
+  var incrEl  = document.getElementById('cx-epf-incr');
+  var incrR   = document.getElementById('cx-epf-incr-r');
+
+  function compute() {
+    var basic    = parseFloat(basicEl.value) || 0;
+    var age      = parseInt(ageEl.value) || 30;
+    var annRate  = parseFloat(rateEl.value) || 8.25;
+    var incr     = parseFloat(incrEl.value) || 0;
+    var retAge   = 58;
+    var years    = Math.max(0, retAge - age);
+
+    /* EPF contributions:
+       Employee: 12% of Basic+DA
+       Employer to EPF: 3.67% of Basic+DA (8.33% goes to EPS, not EPF)
+       Total EPF monthly = 15.67% of Basic+DA */
+    var empPct   = 0.12;
+    var erPct    = 0.0367;
+    var totalPct = empPct + erPct;  /* 15.67% */
+    var monthlyRate = annRate / 100 / 12;
+
+    /* Simulate year by year with salary growth */
+    var corpus = 0;
+    var currentBasic = basic;
+    for (var y = 0; y < years; y++) {
+      var monthlyContrib = currentBasic * totalPct;
+      /* Each year's monthly contributions compound for (years - y) remaining years */
+      var remainingMonths = (years - y) * 12;
+      /* FV of annuity for 12 monthly payments, then compounded for remaining years */
+      var fvThisYear;
+      if (monthlyRate === 0) {
+        fvThisYear = monthlyContrib * 12;
+      } else {
+        fvThisYear = monthlyContrib * ((Math.pow(1 + monthlyRate, 12) - 1) / monthlyRate) * Math.pow(1 + monthlyRate, remainingMonths - 12);
+      }
+      corpus += fvThisYear;
+      currentBasic *= (1 + incr / 100);
+    }
+
+    var empMonthly = basic * empPct;
+    var erMonthly  = basic * erPct;
+    var annualTotal = (empMonthly + erMonthly) * 12;
+
+    document.getElementById('cx-epf-corpus').textContent = fmtINR(corpus);
+    document.getElementById('cx-epf-years').textContent  = years + ' yr' + (years !== 1 ? 's' : '');
+    document.getElementById('cx-epf-emp').textContent    = fmtINR(empMonthly);
+    document.getElementById('cx-epf-er').textContent     = fmtINR(erMonthly);
+    document.getElementById('cx-epf-annual').textContent = fmtINR(annualTotal);
+
+    document.querySelector('#cx-epf [data-out="basic"]').textContent = Math.round(basic).toLocaleString('en-IN');
+    document.querySelector('#cx-epf [data-out="age"]').textContent   = age + ' yrs';
+    document.querySelector('#cx-epf [data-out="rate"]').textContent  = annRate.toFixed(2) + '%';
+    document.querySelector('#cx-epf [data-out="incr"]').textContent  = incr + '%';
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(basicEl, basicR);
+  syncPair(ageEl, ageR);
+  syncPair(rateEl, rateR);
+  syncPair(incrEl, incrR);
+  compute();
+})();
+</script>

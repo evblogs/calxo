@@ -1,0 +1,135 @@
+<div class="cx-emi-widget" id="cx-nps">
+<style>
+  #cx-nps.cx-emi-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-nps.cx-emi-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-nps label { display:block; margin-bottom:1.1rem; }
+  #cx-nps label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-nps label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-nps input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-nps input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-nps input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-nps .cx-emi-result {
+    background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 50%,#0ea5e9 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-nps .cx-emi-result::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-nps .cx-emi-result > * { position:relative; }
+  #cx-nps .cx-emi-result-label  { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-nps .cx-emi-result-value  { font-size:clamp(1.85rem,5vw,2.4rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.25rem 0 1.1rem; }
+  #cx-nps .cx-emi-row { display:flex; justify-content:space-between; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-nps .cx-emi-row:last-of-type { border-bottom:none; }
+  #cx-nps .cx-emi-row strong { font-weight:700; }
+  #cx-nps .cx-note { font-size:.75rem; opacity:.8; margin-top:.75rem; line-height:1.5; }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Monthly contribution (₹) <em data-out="contrib">5,000</em></span>
+    <input type="number" id="cx-nps-contrib" min="500" max="1000000" step="500" value="5000" inputmode="numeric">
+    <input type="range"  id="cx-nps-contrib-r" min="500" max="100000" step="500" value="5000">
+  </label>
+  <label>
+    <span>Current age <em data-out="age">30 yrs</em></span>
+    <input type="number" id="cx-nps-age" min="18" max="65" step="1" value="30" inputmode="numeric">
+    <input type="range"  id="cx-nps-age-r" min="18" max="65" step="1" value="30">
+  </label>
+  <label>
+    <span>Expected return p.a. (%) <em data-out="rate">10%</em></span>
+    <input type="number" id="cx-nps-rate" min="6" max="14" step="0.5" value="10" inputmode="decimal">
+    <input type="range"  id="cx-nps-rate-r" min="6" max="14" step="0.5" value="10">
+  </label>
+  <label>
+    <span>Annuity purchase (%) <em data-out="annpct">40%</em></span>
+    <input type="number" id="cx-nps-annpct" min="40" max="100" step="5" value="40" inputmode="numeric">
+    <input type="range"  id="cx-nps-annpct-r" min="40" max="100" step="5" value="40">
+  </label>
+  <label>
+    <span>Annuity rate p.a. (%) <em data-out="annrate">6%</em></span>
+    <input type="number" id="cx-nps-annrate" min="4" max="9" step="0.25" value="6" inputmode="decimal">
+    <input type="range"  id="cx-nps-annrate-r" min="4" max="9" step="0.25" value="6">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">NPS Corpus at 60</div>
+  <div class="cx-emi-result-value" id="cx-nps-corpus">—</div>
+  <div class="cx-emi-row"><span>Years to retirement</span><strong id="cx-nps-years">—</strong></div>
+  <div class="cx-emi-row"><span>Total contributed</span><strong id="cx-nps-invested">—</strong></div>
+  <div class="cx-emi-row"><span>Lump sum (tax-free 60%)</span><strong id="cx-nps-lumpsum">—</strong></div>
+  <div class="cx-emi-row"><span>Annuity corpus (40%)</span><strong id="cx-nps-annuity-corpus">—</strong></div>
+  <div class="cx-emi-row"><span>Est. monthly pension</span><strong id="cx-nps-pension">—</strong></div>
+  <div class="cx-note">Min 40% must be used to buy annuity. Lump sum (up to 60%) is fully tax-free at maturity.</div>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmtINR = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  function compute(){
+    var contrib  = parseFloat(document.getElementById('cx-nps-contrib').value) || 0;
+    var age      = parseInt(document.getElementById('cx-nps-age').value) || 30;
+    var rate     = parseFloat(document.getElementById('cx-nps-rate').value) || 10;
+    var annPct   = parseFloat(document.getElementById('cx-nps-annpct').value) || 40;
+    var annRate  = parseFloat(document.getElementById('cx-nps-annrate').value) || 6;
+
+    var years    = Math.max(0, 60 - age);
+    var n        = years * 12;
+    var r        = rate / 12 / 100;
+
+    var corpus = 0;
+    if(contrib > 0 && years > 0){
+      corpus = r > 0 ? contrib * ((Math.pow(1+r,n)-1)/r) * (1+r) : contrib * n;
+    }
+
+    var annuityCorpus = corpus * (annPct / 100);
+    var lumpsum       = corpus - annuityCorpus;
+    var monthlyPension = annuityCorpus * (annRate / 100) / 12;
+    var invested      = contrib * n;
+
+    document.getElementById('cx-nps-corpus').textContent         = fmtINR(corpus);
+    document.getElementById('cx-nps-years').textContent          = years + ' yr' + (years !== 1 ? 's' : '');
+    document.getElementById('cx-nps-invested').textContent       = fmtINR(invested);
+    document.getElementById('cx-nps-lumpsum').textContent        = fmtINR(lumpsum);
+    document.getElementById('cx-nps-annuity-corpus').textContent = fmtINR(annuityCorpus);
+    document.getElementById('cx-nps-pension').textContent        = fmtINR(monthlyPension);
+
+    document.querySelector('#cx-nps [data-out="contrib"]').textContent  = Math.round(contrib).toLocaleString('en-IN');
+    document.querySelector('#cx-nps [data-out="age"]').textContent      = age + ' yrs';
+    document.querySelector('#cx-nps [data-out="rate"]').textContent     = rate + '%';
+    document.querySelector('#cx-nps [data-out="annpct"]').textContent   = annPct + '%';
+    document.querySelector('#cx-nps [data-out="annrate"]').textContent  = annRate + '%';
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-nps-contrib','cx-nps-contrib-r');
+  syncPair('cx-nps-age','cx-nps-age-r');
+  syncPair('cx-nps-rate','cx-nps-rate-r');
+  syncPair('cx-nps-annpct','cx-nps-annpct-r');
+  syncPair('cx-nps-annrate','cx-nps-annrate-r');
+  compute();
+})();
+</script>
