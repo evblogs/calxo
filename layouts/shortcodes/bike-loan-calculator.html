@@ -1,0 +1,136 @@
+<div class="cx-emi-widget" id="cx-bike">
+<style>
+  #cx-bike.cx-emi-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-bike.cx-emi-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-bike label { display:block; margin-bottom:1.1rem; }
+  #cx-bike label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-bike label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-bike input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-bike input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-bike input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-bike .cx-emi-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-bike .cx-emi-result::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-bike .cx-emi-result > * { position:relative; }
+  #cx-bike .cx-emi-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-bike .cx-emi-result-value { font-size:clamp(1.85rem,5vw,2.4rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.25rem 0 1.1rem; }
+  #cx-bike .cx-emi-row { display:flex; justify-content:space-between; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-bike .cx-emi-row:last-of-type { border-bottom:none; }
+  #cx-bike .cx-emi-row strong { font-weight:700; }
+  #cx-bike .cx-emi-bar { display:flex; height:9px; border-radius:5px; overflow:hidden; margin:1rem 0 .5rem; background:rgba(255,255,255,.12); }
+  #cx-bike .cx-emi-bar-p { background:#fff; transition:width .25s ease; }
+  #cx-bike .cx-emi-bar-i { background:rgba(255,255,255,.42); transition:width .25s ease; }
+  #cx-bike .cx-emi-legend { display:flex; gap:1rem; font-size:.76rem; color:rgba(255,255,255,.9); }
+  #cx-bike .cx-emi-dot { width:9px; height:9px; border-radius:50%; display:inline-block; vertical-align:middle; margin-right:.35rem; }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Bike on-road price (₹) <em data-out="price">1,20,000</em></span>
+    <input type="number" id="cx-bike-price" min="20000" max="1000000" step="5000" value="120000" inputmode="numeric">
+    <input type="range"  id="cx-bike-price-r" min="20000" max="1000000" step="5000" value="120000">
+  </label>
+  <label>
+    <span>Down payment (₹) <em data-out="down">20,000</em></span>
+    <input type="number" id="cx-bike-down" min="0" max="500000" step="5000" value="20000" inputmode="numeric">
+    <input type="range"  id="cx-bike-down-r" min="0" max="500000" step="5000" value="20000">
+  </label>
+  <label>
+    <span>Interest rate p.a. (%) <em data-out="rate">10.00%</em></span>
+    <input type="number" id="cx-bike-rate" min="6" max="24" step="0.25" value="10" inputmode="decimal">
+    <input type="range"  id="cx-bike-rate-r" min="6" max="24" step="0.25" value="10">
+  </label>
+  <label>
+    <span>Loan tenure (months) <em data-out="tenure">24 mo</em></span>
+    <input type="number" id="cx-bike-tenure" min="6" max="48" step="6" value="24" inputmode="numeric">
+    <input type="range"  id="cx-bike-tenure-r" min="6" max="48" step="6" value="24">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Monthly EMI</div>
+  <div class="cx-emi-result-value" id="cx-bike-emi">—</div>
+  <div class="cx-emi-row"><span>Loan amount</span><strong id="cx-bike-loan">—</strong></div>
+  <div class="cx-emi-row"><span>Total payment</span><strong id="cx-bike-total">—</strong></div>
+  <div class="cx-emi-row"><span>Total interest</span><strong id="cx-bike-interest">—</strong></div>
+  <div class="cx-emi-row"><span>LTV ratio</span><strong id="cx-bike-ltv">—</strong></div>
+  <div class="cx-emi-bar">
+    <div class="cx-emi-bar-p" id="cx-bike-bar-p" style="width:65%"></div>
+    <div class="cx-emi-bar-i" id="cx-bike-bar-i" style="width:35%"></div>
+  </div>
+  <div class="cx-emi-legend">
+    <span><span class="cx-emi-dot" style="background:#fff"></span>Principal <span id="cx-bike-pct-p">65%</span></span>
+    <span><span class="cx-emi-dot" style="background:rgba(255,255,255,.4)"></span>Interest <span id="cx-bike-pct-i">35%</span></span>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmtINR = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  function compute(){
+    var price   = parseFloat(document.getElementById('cx-bike-price').value) || 0;
+    var down    = parseFloat(document.getElementById('cx-bike-down').value)  || 0;
+    var annRate = parseFloat(document.getElementById('cx-bike-rate').value)  || 0;
+    var months  = parseInt(document.getElementById('cx-bike-tenure').value)  || 0;
+
+    var loan = Math.max(0, price - down);
+    var r    = annRate / 12 / 100;
+    var emi  = (loan > 0 && r > 0 && months > 0)
+      ? loan * r * Math.pow(1+r,months) / (Math.pow(1+r,months)-1)
+      : (months > 0 ? loan / months : 0);
+
+    var total    = emi * months;
+    var interest = total - loan;
+    var ltv      = price > 0 ? (loan / price * 100) : 0;
+    var pctP     = total > 0 ? Math.round((loan / total) * 100) : 0;
+    var pctI     = 100 - pctP;
+
+    document.getElementById('cx-bike-emi').textContent      = fmtINR(emi);
+    document.getElementById('cx-bike-loan').textContent     = fmtINR(loan);
+    document.getElementById('cx-bike-total').textContent    = fmtINR(total);
+    document.getElementById('cx-bike-interest').textContent = fmtINR(interest);
+    document.getElementById('cx-bike-ltv').textContent      = ltv.toFixed(0) + '%';
+    document.getElementById('cx-bike-bar-p').style.width    = pctP + '%';
+    document.getElementById('cx-bike-bar-i').style.width    = pctI + '%';
+    document.getElementById('cx-bike-pct-p').textContent    = pctP + '%';
+    document.getElementById('cx-bike-pct-i').textContent    = pctI + '%';
+
+    document.querySelector('#cx-bike [data-out="price"]').textContent  = Math.round(price).toLocaleString('en-IN');
+    document.querySelector('#cx-bike [data-out="down"]').textContent   = Math.round(down).toLocaleString('en-IN');
+    document.querySelector('#cx-bike [data-out="rate"]').textContent   = annRate.toFixed(2) + '%';
+    document.querySelector('#cx-bike [data-out="tenure"]').textContent = months + ' mo';
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-bike-price','cx-bike-price-r'); syncPair('cx-bike-down','cx-bike-down-r');
+  syncPair('cx-bike-rate','cx-bike-rate-r');   syncPair('cx-bike-tenure','cx-bike-tenure-r');
+  compute();
+})();
+</script>

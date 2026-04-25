@@ -1,0 +1,144 @@
+<div class="cx-hike-widget" id="cx-hike">
+<style>
+  #cx-hike.cx-hike-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-hike.cx-hike-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-hike label { display:block; margin-bottom:1.1rem; }
+  #cx-hike label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-hike label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-hike input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-hike input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-hike input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-hike .cx-hike-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-hike .cx-hike-result::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-hike .cx-hike-result > * { position:relative; }
+  #cx-hike .cx-hike-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-hike .cx-hike-result-value { font-size:clamp(1.85rem,5vw,2.4rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.25rem 0 1.1rem; }
+  #cx-hike .cx-hike-row { display:flex; justify-content:space-between; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-hike .cx-hike-row:last-of-type { border-bottom:none; }
+  #cx-hike .cx-hike-row strong { font-weight:700; }
+  #cx-hike .cx-proj-table {
+    grid-column: 1 / -1;
+    background:#fff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; margin-top:.5rem;
+  }
+  #cx-hike .cx-proj-table table { width:100%; border-collapse:collapse; font-size:.86rem; }
+  #cx-hike .cx-proj-table th {
+    background:#f1f5f9; color:#334155; font-weight:700; text-align:left;
+    padding:.6rem .9rem; font-size:.78rem; text-transform:uppercase; letter-spacing:.8px;
+  }
+  #cx-hike .cx-proj-table td { padding:.6rem .9rem; border-top:1px solid #f1f5f9; color:#0f172a; }
+  #cx-hike .cx-proj-table tr:nth-child(even) td { background:#f8fafc; }
+  #cx-hike .cx-proj-table .hi { color:#2563eb; font-weight:700; }
+</style>
+
+<div class="cx-hike-inputs">
+  <label>
+    <span>Current CTC / annual salary (₹) <em data-out="ctc">10,00,000</em></span>
+    <input type="number" id="cx-hike-ctc" min="100000" max="50000000" step="50000" value="1000000" inputmode="numeric">
+    <input type="range"  id="cx-hike-ctc-r" min="100000" max="10000000" step="50000" value="1000000">
+  </label>
+  <label>
+    <span>Hike percentage (%) <em data-out="hike">15%</em></span>
+    <input type="number" id="cx-hike-pct" min="1" max="100" step="1" value="15" inputmode="numeric">
+    <input type="range"  id="cx-hike-pct-r" min="1" max="100" step="1" value="15">
+  </label>
+  <label>
+    <span>Years to project <em data-out="years">5 yrs</em></span>
+    <input type="number" id="cx-hike-years" min="1" max="20" step="1" value="5" inputmode="numeric">
+    <input type="range"  id="cx-hike-years-r" min="1" max="20" step="1" value="5">
+  </label>
+</div>
+
+<div class="cx-hike-result">
+  <div class="cx-hike-result-label">New Annual CTC</div>
+  <div class="cx-hike-result-value" id="cx-hike-new-ctc">—</div>
+  <div class="cx-hike-row"><span>New monthly salary</span><strong id="cx-hike-monthly">—</strong></div>
+  <div class="cx-hike-row"><span>Monthly increase</span><strong id="cx-hike-monthly-inc">—</strong></div>
+  <div class="cx-hike-row"><span>Annual increase</span><strong id="cx-hike-annual-inc">—</strong></div>
+  <div class="cx-hike-row"><span>Hike amount</span><strong id="cx-hike-amount">—</strong></div>
+</div>
+
+<div class="cx-proj-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Annual CTC</th>
+        <th>Monthly</th>
+        <th>Total increase</th>
+      </tr>
+    </thead>
+    <tbody id="cx-hike-proj-body"></tbody>
+  </table>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmtINR  = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtPct  = function(n){ return n.toFixed(1) + '%'; };
+
+  function compute(){
+    var ctc   = parseFloat(document.getElementById('cx-hike-ctc').value)   || 0;
+    var hike  = parseFloat(document.getElementById('cx-hike-pct').value)   || 0;
+    var years = parseInt(document.getElementById('cx-hike-years').value)   || 1;
+
+    var newCtc     = ctc * (1 + hike / 100);
+    var annualInc  = newCtc - ctc;
+    var monthlyOld = ctc / 12;
+    var monthlyNew = newCtc / 12;
+    var monthlyInc = monthlyNew - monthlyOld;
+
+    document.getElementById('cx-hike-new-ctc').textContent     = fmtINR(newCtc);
+    document.getElementById('cx-hike-monthly').textContent     = fmtINR(monthlyNew);
+    document.getElementById('cx-hike-monthly-inc').textContent = '+' + fmtINR(monthlyInc);
+    document.getElementById('cx-hike-annual-inc').textContent  = '+' + fmtINR(annualInc);
+    document.getElementById('cx-hike-amount').textContent      = fmtINR(annualInc);
+
+    var tbody = document.getElementById('cx-hike-proj-body');
+    var rows  = '';
+    var cur   = ctc;
+    for(var y = 1; y <= years; y++){
+      cur = cur * (1 + hike / 100);
+      var totalInc = cur - ctc;
+      rows += '<tr><td>Year ' + y + '</td><td class="hi">' + fmtINR(cur) + '</td><td>' + fmtINR(cur/12) + '</td><td>+' + fmtINR(totalInc) + '</td></tr>';
+    }
+    tbody.innerHTML = rows;
+
+    document.querySelector('#cx-hike [data-out="ctc"]').textContent   = Math.round(ctc).toLocaleString('en-IN');
+    document.querySelector('#cx-hike [data-out="hike"]').textContent  = hike.toFixed(0) + '%';
+    document.querySelector('#cx-hike [data-out="years"]').textContent = years + ' yr' + (years !== 1 ? 's' : '');
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-hike-ctc','cx-hike-ctc-r');
+  syncPair('cx-hike-pct','cx-hike-pct-r');
+  syncPair('cx-hike-years','cx-hike-years-r');
+  compute();
+})();
+</script>
