@@ -1,21 +1,327 @@
 {{ define "main" }}
+<style>
+  .cx-search-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  .cx-search-hero h1 {
+    font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    margin: 0 0 1rem;
+  }
+  .cx-search-hero p {
+    font-size: 1.05rem;
+    color: #475569;
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
+  }
+  .cx-search-form {
+    display: flex;
+    gap: .5rem;
+    background: #fff;
+    border: 2px solid #2563eb;
+    border-radius: 12px;
+    padding: 4px;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, .12);
+    margin-bottom: 1.5rem;
+  }
+  .cx-search-form input {
+    flex: 1;
+    border: 0;
+    padding: .85rem 1rem;
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: #0f172a;
+    background: transparent;
+    outline: none;
+  }
+  .cx-search-form input::placeholder { color: #94a3b8; font-weight: 500; }
+  .cx-search-form button {
+    background: #2563eb;
+    color: #fff;
+    border: 0;
+    padding: 0 1.5rem;
+    border-radius: 8px;
+    font-size: .95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .cx-search-form button:hover { background: #1d4ed8; }
 
-<section class="section">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div id="search-results"></div>
-        <script id="search-result-template" type="text/x-js-template">
-          <div class="py-4 border-bottom" id="summary-${key}">
-            <h4><a class="post-title" href="${link}">${title}</a></h4>
-            <p>${snippet}</p>
-            ${ isset tags }<p>Tags: ${tags}</p>${ end }
-            ${ isset categories }<p>Categories: ${categories}</p>${ end }
-          </div>
-        </script>
-      </div>
+  .cx-search-meta {
+    font-size: .9rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+  }
+  .cx-search-meta strong { color: #0f172a; }
+
+  .cx-search-results {
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+  }
+  .cx-search-card {
+    display: block;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.15rem 1.35rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .cx-search-card:hover {
+    transform: translateY(-1px);
+    border-color: #2563eb;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, .07);
+    text-decoration: none;
+  }
+  .cx-search-card-cat {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: .35rem;
+  }
+  .cx-search-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 .35rem;
+    line-height: 1.35;
+  }
+  .cx-search-card-title mark {
+    background: #fef08a;
+    color: #0f172a;
+    padding: 0 .15rem;
+    border-radius: 2px;
+  }
+  .cx-search-card-desc {
+    font-size: .9rem;
+    color: #64748b;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .cx-search-empty {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: #475569;
+  }
+  .cx-search-empty h3 {
+    color: #0f172a;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 .5rem;
+  }
+
+  .cx-popular {
+    margin-top: 2.5rem;
+  }
+  .cx-popular h4 {
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #64748b;
+    font-weight: 700;
+    margin: 0 0 .85rem;
+  }
+  .cx-popular-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+  }
+  .cx-popular-grid a {
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: .5rem .95rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all .15s ease;
+  }
+  .cx-popular-grid a:hover {
+    background: #dbeafe;
+    color: #1d4ed8;
+    border-color: #2563eb;
+  }
+</style>
+
+<div class="cx-search-wrap">
+  <header class="cx-search-hero">
+    <h1>Search Calculators</h1>
+    <p>Type any keyword — calculator name, formula, scheme, or tax topic. Calxo searches across all 12 calculators by title and description.</p>
+  </header>
+
+  <form class="cx-search-form" id="cxSearchForm" autocomplete="off" role="search">
+    <input type="text" id="cxSearchInput" name="q" placeholder="Search calculators (e.g. EMI, SIP, GST, HRA)…" aria-label="Search calculators">
+    <button type="submit">Search</button>
+  </form>
+
+  <div class="cx-search-meta" id="cxSearchMeta" style="display:none"></div>
+
+  <div class="cx-search-results" id="cxSearchResults"></div>
+
+  <div class="cx-search-empty" id="cxSearchEmpty" style="display:none">
+    <h3>No calculator matches that yet</h3>
+    <p>Try a broader keyword like "tax", "loan" or "investment" — or pick from the popular options below.</p>
+  </div>
+
+  <div class="cx-popular">
+    <h4>Popular calculators</h4>
+    <div class="cx-popular-grid">
+      <a href="/loan/emi-calculator/">EMI Calculator</a>
+      <a href="/investment/sip-calculator/">SIP Calculator</a>
+      <a href="/tax/income-tax-calculator/">Income Tax FY 2025-26</a>
+      <a href="/gst/gst-calculator/">GST Calculator</a>
+      <a href="/salary/hra-calculator/">HRA Exemption</a>
+      <a href="/investment/fd-calculator/">FD Maturity</a>
+      <a href="/investment/ppf-calculator/">PPF</a>
+      <a href="/loan/foir-calculator/">FOIR / Loan Eligibility</a>
+      <a href="/salary/takehome-calculator/">Take-Home Salary</a>
+      <a href="/salary/gratuity-calculator/">Gratuity</a>
+      <a href="/conversion/currency-converter/">Currency Converter</a>
+      <a href="/investment/compound-interest-calculator/">Compound Interest</a>
     </div>
   </div>
-</section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+(function () {
+  var input = document.getElementById('cxSearchInput');
+  var form = document.getElementById('cxSearchForm');
+  var resultsEl = document.getElementById('cxSearchResults');
+  var emptyEl = document.getElementById('cxSearchEmpty');
+  var metaEl = document.getElementById('cxSearchMeta');
+  var fuse = null;
+  var allItems = [];
+
+  // Read q= from URL on load
+  var params = new URLSearchParams(window.location.search);
+  var initialQuery = (params.get('q') || '').trim();
+  if (initialQuery) input.value = initialQuery;
+
+  // Section → friendly category label
+  var catLabels = {
+    'loan': 'Loan',
+    'investment': 'Investment',
+    'tax': 'Tax',
+    'salary': 'Salary & HR',
+    'gst': 'GST',
+    'conversion': 'Conversion'
+  };
+
+  function categoryFromUrl(url) {
+    var m = url.match(/^\/([^/]+)\//);
+    return m ? (catLabels[m[1]] || m[1]) : '';
+  }
+
+  function escapeHtml(s) {
+    return (s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function highlight(text, query) {
+    if (!query) return escapeHtml(text);
+    var tokens = query.split(/\s+/).filter(Boolean).map(function (t) {
+      return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    });
+    if (!tokens.length) return escapeHtml(text);
+    var re = new RegExp('(' + tokens.join('|') + ')', 'gi');
+    return escapeHtml(text).replace(re, '<mark>$1</mark>');
+  }
+
+  function render(items, query) {
+    resultsEl.innerHTML = '';
+    if (!items.length) {
+      emptyEl.style.display = 'block';
+      metaEl.style.display = 'none';
+      return;
+    }
+    emptyEl.style.display = 'none';
+    metaEl.style.display = 'block';
+    metaEl.innerHTML = '<strong>' + items.length + '</strong> result' + (items.length === 1 ? '' : 's') + (query ? ' for "' + escapeHtml(query) + '"' : '');
+
+    items.forEach(function (item) {
+      var url = item.permalink || item.url || '';
+      // Normalise to relative path
+      try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
+      var cat = categoryFromUrl(url);
+      var card = document.createElement('a');
+      card.className = 'cx-search-card';
+      card.href = url;
+      card.innerHTML =
+        (cat ? '<div class="cx-search-card-cat">' + cat + '</div>' : '') +
+        '<h3 class="cx-search-card-title">' + highlight(item.title || '', query) + '</h3>' +
+        (item.description || item.summary
+          ? '<p class="cx-search-card-desc">' + highlight((item.description || item.summary || '').slice(0, 220), query) + '</p>'
+          : '');
+      resultsEl.appendChild(card);
+    });
+  }
+
+  function runSearch(q) {
+    q = (q || '').trim();
+    // Update URL without reloading
+    var newUrl = window.location.pathname + (q ? '?q=' + encodeURIComponent(q) : '');
+    window.history.replaceState(null, '', newUrl);
+
+    if (!q) {
+      resultsEl.innerHTML = '';
+      emptyEl.style.display = 'none';
+      metaEl.style.display = 'none';
+      return;
+    }
+    if (!fuse) return;
+    var matches = fuse.search(q).map(function (r) { return r.item; });
+    render(matches, q);
+  }
+
+  // Live search on input
+  input.addEventListener('input', function () { runSearch(input.value); });
+  // Submit handler (already updates URL via runSearch)
+  form.addEventListener('submit', function (e) { e.preventDefault(); runSearch(input.value); });
+
+  fetch('/index.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      // Filter to calculator pages only (those with type=calculator) — fall back to all if no type info
+      allItems = (Array.isArray(data) ? data : []).filter(function (item) {
+        if (!item || !item.title) return false;
+        // Drop blog drafts / system pages with empty title
+        return true;
+      });
+      fuse = new Fuse(allItems, {
+        keys: [
+          { name: 'title', weight: 0.7 },
+          { name: 'description', weight: 0.2 },
+          { name: 'contents', weight: 0.1 }
+        ],
+        includeScore: true,
+        threshold: 0.4,
+        ignoreLocation: true,
+        minMatchCharLength: 2
+      });
+      // Run initial query if present
+      if (initialQuery) runSearch(initialQuery);
+    })
+    .catch(function () {
+      resultsEl.innerHTML = '<p style="color:#dc2626">Search index unavailable. Try refreshing.</p>';
+    });
+})();
+</script>
 
 {{ end }}
