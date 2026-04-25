@@ -1,0 +1,138 @@
+<div class="cx-emi-widget" id="cx-pl">
+<style>
+  #cx-pl.cx-emi-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-pl.cx-emi-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-pl label { display:block; margin-bottom:1.1rem; }
+  #cx-pl label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-pl label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-pl input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-pl input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-pl input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-pl .cx-emi-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-pl .cx-emi-result::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-pl .cx-emi-result > * { position:relative; }
+  #cx-pl .cx-emi-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-pl .cx-emi-result-value { font-size:clamp(1.85rem,5vw,2.4rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.25rem 0 1.1rem; }
+  #cx-pl .cx-emi-row { display:flex; justify-content:space-between; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-pl .cx-emi-row:last-of-type { border-bottom:none; }
+  #cx-pl .cx-emi-row strong { font-weight:700; }
+  #cx-pl .cx-emi-bar { display:flex; height:9px; border-radius:5px; overflow:hidden; margin:1rem 0 .5rem; background:rgba(255,255,255,.12); }
+  #cx-pl .cx-emi-bar-p { background:#fff; transition:width .25s ease; }
+  #cx-pl .cx-emi-bar-i { background:rgba(255,255,255,.42); transition:width .25s ease; }
+  #cx-pl .cx-emi-legend { display:flex; gap:1rem; font-size:.76rem; color:rgba(255,255,255,.9); }
+  #cx-pl .cx-emi-dot { width:9px; height:9px; border-radius:50%; display:inline-block; vertical-align:middle; margin-right:.35rem; }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Loan amount (₹) <em data-out="amount">5,00,000</em></span>
+    <input type="number" id="cx-pl-amount" min="10000" max="5000000" step="10000" value="500000" inputmode="numeric">
+    <input type="range"  id="cx-pl-amount-r" min="10000" max="5000000" step="10000" value="500000">
+  </label>
+  <label>
+    <span>Interest rate p.a. (%) <em data-out="rate">12.00%</em></span>
+    <input type="number" id="cx-pl-rate" min="8" max="30" step="0.25" value="12" inputmode="decimal">
+    <input type="range"  id="cx-pl-rate-r" min="8" max="30" step="0.25" value="12">
+  </label>
+  <label>
+    <span>Loan tenure (months) <em data-out="tenure">36 mo</em></span>
+    <input type="number" id="cx-pl-tenure" min="6" max="84" step="6" value="36" inputmode="numeric">
+    <input type="range"  id="cx-pl-tenure-r" min="6" max="84" step="6" value="36">
+  </label>
+  <label>
+    <span>Processing fee (%) <em data-out="fee">1.00%</em></span>
+    <input type="number" id="cx-pl-fee" min="0" max="5" step="0.25" value="1" inputmode="decimal">
+    <input type="range"  id="cx-pl-fee-r" min="0" max="5" step="0.25" value="1">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Monthly EMI</div>
+  <div class="cx-emi-result-value" id="cx-pl-emi">—</div>
+  <div class="cx-emi-row"><span>Total payment</span><strong id="cx-pl-total">—</strong></div>
+  <div class="cx-emi-row"><span>Total interest</span><strong id="cx-pl-interest">—</strong></div>
+  <div class="cx-emi-row"><span>Processing fee</span><strong id="cx-pl-feeval">—</strong></div>
+  <div class="cx-emi-row"><span>Total cost</span><strong id="cx-pl-cost">—</strong></div>
+  <div class="cx-emi-bar">
+    <div class="cx-emi-bar-p" id="cx-pl-bar-p" style="width:60%"></div>
+    <div class="cx-emi-bar-i" id="cx-pl-bar-i" style="width:40%"></div>
+  </div>
+  <div class="cx-emi-legend">
+    <span><span class="cx-emi-dot" style="background:#fff"></span>Principal <span id="cx-pl-pct-p">60%</span></span>
+    <span><span class="cx-emi-dot" style="background:rgba(255,255,255,.4)"></span>Interest <span id="cx-pl-pct-i">40%</span></span>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmtINR = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  function compute(){
+    var loan    = parseFloat(document.getElementById('cx-pl-amount').value) || 0;
+    var annRate = parseFloat(document.getElementById('cx-pl-rate').value)   || 0;
+    var months  = parseInt(document.getElementById('cx-pl-tenure').value)   || 0;
+    var feePct  = parseFloat(document.getElementById('cx-pl-fee').value)    || 0;
+
+    var r   = annRate / 12 / 100;
+    var emi = (loan > 0 && r > 0 && months > 0)
+      ? loan * r * Math.pow(1+r,months) / (Math.pow(1+r,months)-1)
+      : (months > 0 ? loan / months : 0);
+
+    var total    = emi * months;
+    var interest = total - loan;
+    var fee      = loan * feePct / 100;
+    var cost     = total + fee;
+    var pctP     = total > 0 ? Math.round((loan / total) * 100) : 0;
+    var pctI     = 100 - pctP;
+
+    document.getElementById('cx-pl-emi').textContent      = fmtINR(emi);
+    document.getElementById('cx-pl-total').textContent    = fmtINR(total);
+    document.getElementById('cx-pl-interest').textContent = fmtINR(interest);
+    document.getElementById('cx-pl-feeval').textContent   = fmtINR(fee);
+    document.getElementById('cx-pl-cost').textContent     = fmtINR(cost);
+    document.getElementById('cx-pl-bar-p').style.width    = pctP + '%';
+    document.getElementById('cx-pl-bar-i').style.width    = pctI + '%';
+    document.getElementById('cx-pl-pct-p').textContent    = pctP + '%';
+    document.getElementById('cx-pl-pct-i').textContent    = pctI + '%';
+
+    document.querySelector('#cx-pl [data-out="amount"]').textContent = Math.round(loan).toLocaleString('en-IN');
+    document.querySelector('#cx-pl [data-out="rate"]').textContent   = annRate.toFixed(2) + '%';
+    document.querySelector('#cx-pl [data-out="tenure"]').textContent = months + ' mo';
+    document.querySelector('#cx-pl [data-out="fee"]').textContent    = feePct.toFixed(2) + '%';
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-pl-amount','cx-pl-amount-r');
+  syncPair('cx-pl-rate','cx-pl-rate-r');
+  syncPair('cx-pl-tenure','cx-pl-tenure-r');
+  syncPair('cx-pl-fee','cx-pl-fee-r');
+  compute();
+})();
+</script>
