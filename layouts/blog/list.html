@@ -1,0 +1,151 @@
+{{ define "main" }}
+<style>
+  .cx-blog-wrap { max-width: 1180px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .cx-blog-hero { margin-bottom: 2.75rem; max-width: 760px; }
+  .cx-blog-eyebrow {
+    display: inline-block;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #fff;
+    padding: .35rem .85rem;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+  }
+  .cx-blog-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    margin: 0 0 1rem;
+  }
+  .cx-blog-hero p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+  }
+  .cx-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .cx-blog-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    height: 100%;
+  }
+  .cx-blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(15, 23, 42, .10);
+    border-color: #2563eb;
+    text-decoration: none;
+  }
+  .cx-blog-cover {
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+  }
+  .cx-blog-cover::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+  .cx-blog-cover-tag {
+    position: relative;
+    z-index: 2;
+    color: rgba(255,255,255,.95);
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+  }
+  .cx-blog-body {
+    padding: 1.4rem 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .cx-blog-title {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.35;
+    letter-spacing: -.2px;
+    margin: 0 0 .65rem;
+  }
+  .cx-blog-desc {
+    font-size: .9rem;
+    line-height: 1.55;
+    color: #64748b;
+    margin: 0 0 1.1rem;
+    flex: 1;
+  }
+  .cx-blog-meta {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    font-size: .78rem;
+    color: #64748b;
+    margin-top: auto;
+  }
+  .cx-blog-meta-sep { color: #cbd5e1; }
+  .cx-blog-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .85rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-top: .85rem;
+  }
+  .cx-blog-cta::after { content: '→'; transition: transform .2s ease; }
+  .cx-blog-card:hover .cx-blog-cta::after { transform: translateX(3px); }
+</style>
+
+<div class="cx-blog-wrap">
+  <header class="cx-blog-hero">
+    <span class="cx-blog-eyebrow">Calxo Blog</span>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}{{ . }}{{ end }}
+  </header>
+
+  <div class="cx-blog-grid">
+    {{ range .Pages.ByDate.Reverse }}
+    <a href="{{ .RelPermalink }}" class="cx-blog-card">
+      <div class="cx-blog-cover">
+        {{ with .Params.tags }}<span class="cx-blog-cover-tag">{{ index . 0 }}</span>{{ else }}<span class="cx-blog-cover-tag">Personal Finance</span>{{ end }}
+      </div>
+      <div class="cx-blog-body">
+        <h3 class="cx-blog-title">{{ .Title }}</h3>
+        <p class="cx-blog-desc">{{ with .Params.description }}{{ . | truncate 140 }}{{ else }}{{ .Summary | truncate 140 }}{{ end }}</p>
+        <div class="cx-blog-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          <span class="cx-blog-meta-sep">•</span>
+          <span>{{ .ReadingTime }} min read</span>
+        </div>
+        <span class="cx-blog-cta">Read article</span>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

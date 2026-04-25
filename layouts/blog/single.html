@@ -1,0 +1,199 @@
+{{ define "main" }}
+<style>
+  .cx-post-wrap { max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+  .cx-post-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 2.75rem;
+    align-items: start;
+  }
+  @media (max-width: 1080px) { .cx-post-layout { grid-template-columns: 1fr; } .cx-post-aside { display: none; } }
+
+  .cx-post-breadcrumb {
+    font-size: .82rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+  }
+  .cx-post-breadcrumb a { color: #2563eb; text-decoration: none; }
+  .cx-post-breadcrumb a:hover { text-decoration: underline; }
+
+  .cx-post-hero {
+    margin-bottom: 2rem;
+  }
+  .cx-post-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #fff;
+    padding: .3rem .75rem;
+    border-radius: 999px;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: .9rem;
+  }
+  .cx-post-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+    margin: 0 0 1rem;
+  }
+  .cx-post-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: .9rem;
+    color: #64748b;
+    flex-wrap: wrap;
+  }
+  .cx-post-meta strong { color: #2563eb; font-weight: 600; }
+  .cx-post-meta-sep { color: #cbd5e1; }
+
+  .cx-post-body {
+    font-size: 1.08rem;
+    line-height: 1.78;
+    color: #1e293b;
+  }
+  .cx-post-body p { margin: 0 0 1.2rem; }
+  .cx-post-body h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 2.6rem 0 1rem;
+    line-height: 1.25;
+    letter-spacing: -.5px;
+    scroll-margin-top: 80px;
+  }
+  .cx-post-body h3 {
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 1.85rem 0 .65rem;
+    letter-spacing: -.2px;
+    scroll-margin-top: 80px;
+  }
+  .cx-post-body ul, .cx-post-body ol { margin: 0 0 1.2rem 1.4rem; padding: 0; }
+  .cx-post-body li { margin-bottom: .5rem; }
+  .cx-post-body strong { color: #0f172a; font-weight: 700; }
+  .cx-post-body a { color: #2563eb; }
+  .cx-post-body table {
+    width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: .94rem;
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;
+  }
+  .cx-post-body thead { background: #eff6ff; }
+  .cx-post-body th { text-align: left; font-weight: 700; padding: .75rem .95rem; border-bottom: 2px solid #2563eb; font-size: .87rem; color: #0f172a; }
+  .cx-post-body td { padding: .7rem .95rem; border-bottom: 1px solid #e2e8f0; }
+  .cx-post-body tr:last-child td { border-bottom: none; }
+  .cx-post-body blockquote {
+    border-left: 4px solid #2563eb;
+    background: #f8fafc;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    color: #1e293b;
+    font-style: italic;
+  }
+
+  /* Sidebar */
+  .cx-post-aside { position: sticky; top: 1rem; }
+  .cx-post-aside-card {
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .cx-post-aside-card h4 {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #2563eb;
+    font-weight: 700;
+    margin: 0 0 .85rem;
+  }
+  .cx-post-aside-card ul { list-style: none; padding: 0; margin: 0; }
+  .cx-post-aside-card li { margin-bottom: .5rem; }
+  .cx-post-aside-card a {
+    color: #1e293b;
+    text-decoration: none;
+    font-size: .92rem;
+    font-weight: 500;
+    display: block;
+    padding: .55rem .75rem;
+    border-radius: 8px;
+    transition: background .15s ease, color .15s ease;
+  }
+  .cx-post-aside-card a:hover { background: #dbeafe; color: #1d4ed8; }
+</style>
+
+<div class="cx-post-wrap">
+  <div class="cx-post-layout">
+    <article class="cx-post" itemscope itemtype="https://schema.org/Article">
+      <nav class="cx-post-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &rsaquo;
+        <a href="/blog/">Blog</a> &rsaquo;
+        <span itemprop="name">{{ .Title }}</span>
+      </nav>
+
+      <header class="cx-post-hero">
+        {{ with .Params.tags }}<span class="cx-post-tag">{{ index . 0 }}</span>{{ end }}
+        <h1 itemprop="headline">{{ .Title }}</h1>
+        <div class="cx-post-meta">
+          <span>By <strong itemprop="author">Vignesh</strong></span>
+          <span class="cx-post-meta-sep">•</span>
+          <span>Published <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>
+          <span class="cx-post-meta-sep">•</span>
+          <span>{{ .ReadingTime }} min read</span>
+        </div>
+      </header>
+
+      <div class="cx-post-body" itemprop="articleBody">
+        {{ .Content }}
+      </div>
+    </article>
+
+    <aside class="cx-post-aside">
+      {{ with .Params.related_calcs }}
+      <div class="cx-post-aside-card">
+        <h4>Run the numbers yourself</h4>
+        <ul>
+          {{ range . }}
+          <li><a href="{{ .url }}">{{ .label }} →</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
+      <div class="cx-post-aside-card">
+        <h4>Latest articles</h4>
+        <ul>
+          {{ range first 5 (where (where .Site.RegularPages "Section" "blog") "Permalink" "ne" .Permalink) }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ .Params.description | jsonify }},
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}",
+  "author": { "@type": "Person", "name": "Vignesh" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Calxo",
+    "logo": { "@type": "ImageObject", "url": "https://www.calxo.in/images/logo.svg" }
+  },
+  "mainEntityOfPage": "{{ .Permalink }}"
+}
+</script>
+
+{{ end }}

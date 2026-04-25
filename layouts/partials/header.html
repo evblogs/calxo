@@ -9,13 +9,14 @@
       <span></span><span></span><span></span>
     </button>
 
-    <div class="cx-header-search">
-      <form action="/search/" method="get" role="search" class="cx-header-search-form">
+    <div class="cx-header-search" id="cxHeaderSearch">
+      <form action="/search/" method="get" role="search" class="cx-header-search-form" id="cxHeaderSearchForm" autocomplete="off">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
         </svg>
-        <input type="search" name="q" placeholder="Search calculators…" aria-label="Search">
+        <input type="search" name="q" id="cxHeaderSearchInput" placeholder="Search calculators…" aria-label="Search calculators" aria-autocomplete="list" aria-controls="cxHeaderResults" aria-expanded="false">
       </form>
+      <div class="cx-header-results" id="cxHeaderResults" role="listbox" aria-label="Search suggestions" hidden></div>
     </div>
   </div>
 
@@ -108,7 +109,7 @@
   .cx-brand { display: flex; align-items: center; }
   .cx-brand-logo { height: 38px; width: auto; display: block; }
 
-  .cx-header-search { justify-self: end; min-width: 280px; max-width: 380px; width: 100%; }
+  .cx-header-search { justify-self: end; min-width: 280px; max-width: 420px; width: 100%; position: relative; }
   .cx-header-search-form {
     display: flex;
     align-items: center;
@@ -135,6 +136,107 @@
     font-weight: 500;
   }
   .cx-header-search-form input::placeholder { color: #94a3b8; }
+
+  /* Autocomplete dropdown */
+  .cx-header-results {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0; right: 0;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, .14);
+    z-index: 250;
+    max-height: 78vh;
+    overflow-y: auto;
+    padding: .35rem;
+  }
+  .cx-header-results[hidden] { display: none; }
+  .cx-hr-section {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    color: #94a3b8;
+    font-weight: 700;
+    padding: .65rem .85rem .35rem;
+  }
+  .cx-hr-item {
+    display: block;
+    padding: .65rem .85rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: background .12s ease;
+    cursor: pointer;
+  }
+  .cx-hr-item:hover, .cx-hr-item.cx-hr-active {
+    background: #eff6ff;
+    text-decoration: none;
+  }
+  .cx-hr-cat {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: .15rem;
+  }
+  .cx-hr-title {
+    font-size: .92rem;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: .15rem;
+  }
+  .cx-hr-title mark {
+    background: #fef08a;
+    color: #0f172a;
+    padding: 0 .15rem;
+    border-radius: 2px;
+  }
+  .cx-hr-desc {
+    font-size: .8rem;
+    color: #64748b;
+    line-height: 1.45;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .cx-hr-empty {
+    padding: 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: .9rem;
+  }
+  .cx-hr-empty strong { color: #0f172a; }
+  .cx-hr-footer {
+    border-top: 1px solid #f1f5f9;
+    padding: .7rem .85rem;
+    font-size: .82rem;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .25rem;
+  }
+  .cx-hr-footer kbd {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .72rem;
+    color: #1e293b;
+  }
+  .cx-hr-footer-keys { display: flex; gap: .35rem; align-items: center; }
+  .cx-hr-footer-link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .cx-hr-footer-link:hover { text-decoration: underline; }
 
   .cx-mobile-toggle {
     display: none;
@@ -393,6 +495,195 @@
     nav.classList.remove('cx-mega-nav-open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('cx-menu-open');
+  });
+})();
+</script>
+
+{{/* ═══════════════════════ Live search autocomplete (Google-style) ═══════════════════════ */}}
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+(function () {
+  var input = document.getElementById('cxHeaderSearchInput');
+  var resultsEl = document.getElementById('cxHeaderResults');
+  var form = document.getElementById('cxHeaderSearchForm');
+  var wrap = document.getElementById('cxHeaderSearch');
+  if (!input || !resultsEl) return;
+
+  var fuse = null;
+  var allItems = [];
+  var currentItems = [];
+  var activeIndex = -1;
+  var loadStarted = false;
+
+  var catLabels = {
+    'loan': 'Loan',
+    'investment': 'Investment',
+    'tax': 'Tax',
+    'salary': 'Salary & HR',
+    'gst': 'GST',
+    'conversion': 'Conversion',
+    'blog': 'Blog'
+  };
+
+  function categoryFromUrl(url) {
+    try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
+    var m = url.match(/^\/([^/]+)\//);
+    return m ? (catLabels[m[1]] || m[1]) : '';
+  }
+  function escapeHtml(s) {
+    return (s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function highlight(text, query) {
+    if (!query) return escapeHtml(text);
+    var tokens = query.split(/\s+/).filter(Boolean).map(function (t) {
+      return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    });
+    if (!tokens.length) return escapeHtml(text);
+    var re = new RegExp('(' + tokens.join('|') + ')', 'gi');
+    return escapeHtml(text).replace(re, '<mark>$1</mark>');
+  }
+
+  function loadIndex() {
+    if (loadStarted) return;
+    loadStarted = true;
+    fetch('/index.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        allItems = (Array.isArray(data) ? data : []).filter(function (it) { return it && it.title; });
+        fuse = new Fuse(allItems, {
+          keys: [
+            { name: 'title', weight: 0.6 },
+            { name: 'description', weight: 0.25 },
+            { name: 'contents', weight: 0.15 }
+          ],
+          includeScore: true,
+          threshold: 0.4,
+          ignoreLocation: true,
+          minMatchCharLength: 2
+        });
+        // If user already typed something, run search
+        if (input.value.trim()) runSearch(input.value);
+      })
+      .catch(function () {});
+  }
+
+  function open() { resultsEl.hidden = false; input.setAttribute('aria-expanded', 'true'); }
+  function close() { resultsEl.hidden = true; input.setAttribute('aria-expanded', 'false'); activeIndex = -1; }
+
+  function setActive(idx) {
+    var nodes = resultsEl.querySelectorAll('.cx-hr-item');
+    nodes.forEach(function (n) { n.classList.remove('cx-hr-active'); });
+    if (idx >= 0 && idx < nodes.length) {
+      nodes[idx].classList.add('cx-hr-active');
+      nodes[idx].scrollIntoView({ block: 'nearest' });
+      activeIndex = idx;
+    } else {
+      activeIndex = -1;
+    }
+  }
+
+  function render(items, query) {
+    currentItems = items;
+    activeIndex = -1;
+
+    if (!items.length) {
+      resultsEl.innerHTML =
+        '<div class="cx-hr-empty">No matches for <strong>"' + escapeHtml(query) + '"</strong>. ' +
+        '<a href="/search/?q=' + encodeURIComponent(query) + '" class="cx-hr-footer-link">Search anyway →</a></div>';
+      open();
+      return;
+    }
+
+    var html = '<div class="cx-hr-section">Top matches</div>';
+    items.slice(0, 6).forEach(function (item) {
+      var url = item.permalink || item.url || '';
+      try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
+      var cat = categoryFromUrl(url);
+      html += '<a class="cx-hr-item" href="' + escapeHtml(url) + '">' +
+        (cat ? '<div class="cx-hr-cat">' + escapeHtml(cat) + '</div>' : '') +
+        '<div class="cx-hr-title">' + highlight(item.title, query) + '</div>' +
+        (item.description ? '<div class="cx-hr-desc">' + highlight(item.description.slice(0, 120), query) + '</div>' : '') +
+        '</a>';
+    });
+    if (items.length > 6) {
+      html += '<a class="cx-hr-item" href="/search/?q=' + encodeURIComponent(query) + '">' +
+        '<div class="cx-hr-title" style="color:#2563eb">View all ' + items.length + ' results →</div>' +
+        '</a>';
+    }
+    html += '<div class="cx-hr-footer">' +
+      '<div class="cx-hr-footer-keys"><kbd>↑</kbd><kbd>↓</kbd> navigate <kbd>↵</kbd> open <kbd>esc</kbd> close</div>' +
+      '<a href="/search/?q=' + encodeURIComponent(query) + '" class="cx-hr-footer-link">All results →</a>' +
+      '</div>';
+    resultsEl.innerHTML = html;
+    open();
+  }
+
+  function runSearch(q) {
+    q = (q || '').trim();
+    if (!q) { close(); return; }
+    if (!fuse) { loadIndex(); return; }
+    var matches = fuse.search(q).map(function (r) { return r.item; });
+    render(matches, q);
+  }
+
+  // Live search on input
+  input.addEventListener('input', function () { runSearch(input.value); });
+  input.addEventListener('focus', function () {
+    loadIndex();
+    if (input.value.trim()) runSearch(input.value);
+  });
+
+  // Keyboard navigation
+  input.addEventListener('keydown', function (e) {
+    if (resultsEl.hidden) {
+      if (e.key === 'ArrowDown') { input.dispatchEvent(new Event('focus')); }
+      return;
+    }
+    var nodes = resultsEl.querySelectorAll('.cx-hr-item');
+    if (!nodes.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActive((activeIndex + 1) % nodes.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActive((activeIndex - 1 + nodes.length) % nodes.length);
+    } else if (e.key === 'Enter') {
+      if (activeIndex >= 0 && nodes[activeIndex]) {
+        e.preventDefault();
+        window.location.href = nodes[activeIndex].href;
+      }
+    } else if (e.key === 'Escape') {
+      close();
+      input.blur();
+    }
+  });
+
+  // Submit handler — allow form submit fallback to /search/?q=
+  form.addEventListener('submit', function (e) {
+    if (activeIndex >= 0) {
+      var nodes = resultsEl.querySelectorAll('.cx-hr-item');
+      if (nodes[activeIndex]) {
+        e.preventDefault();
+        window.location.href = nodes[activeIndex].href;
+      }
+    }
+    // Otherwise let the form submit naturally to /search/?q=
+  });
+
+  // Click outside closes
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) close();
+  });
+
+  // Cmd-K / Ctrl-K to focus
+  document.addEventListener('keydown', function (e) {
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    }
   });
 })();
 </script>
