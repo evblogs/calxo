@@ -1,28 +1,35 @@
-# evblogs-robots-v6
+# calxo-robots-v1
+# Default: allow all crawlers full access. We want both classic search engines
+# and AI agents (ChatGPT, Claude, Perplexity, Apple Intelligence, etc.) to read
+# Calxo's calculator pages so the formulas show up in answers.
+
 User-agent: *
 Allow: /
 
-# Block IFSC pages (removed from site — stop crawl waste)
-Disallow: /ifsc-finder/*/
+# Block utility URLs that should not appear in search results
+Disallow: /search/
+Disallow: /search?
+Disallow: /*?q=
+Disallow: /404/
 
-# Block world EV charging station pages (removed — low quality)
-Disallow: /electric-vehicle/ev-charging-stations-world/
-Disallow: /ev-charging-stations-global/
-
-# ── Google bots ──────────────────────────────────────────────────────────────
+# ── Google ───────────────────────────────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
 
 User-agent: Googlebot-Image
 Allow: /
 
-User-agent: Googlebot-News
-Allow: /
-
 User-agent: Google-Extended
 Allow: /
 
-# ── OpenAI ───────────────────────────────────────────────────────────────────
+# ── Microsoft / Bing ─────────────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+# ── OpenAI (ChatGPT) ─────────────────────────────────────────────────────────
 User-agent: GPTBot
 Allow: /
 
@@ -46,13 +53,6 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# ── Microsoft / Bing ─────────────────────────────────────────────────────────
-User-agent: Bingbot
-Allow: /
-
-User-agent: BingPreview
-Allow: /
-
 # ── Apple Intelligence ───────────────────────────────────────────────────────
 User-agent: Applebot
 Allow: /
@@ -67,7 +67,7 @@ Allow: /
 User-agent: Meta-ExternalFetcher
 Allow: /
 
-# ── Amazon Alexa ─────────────────────────────────────────────────────────────
+# ── Amazon ───────────────────────────────────────────────────────────────────
 User-agent: Amazonbot
 Allow: /
 
@@ -87,14 +87,5 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# ── Diffbot ──────────────────────────────────────────────────────────────────
-User-agent: Diffbot
-Allow: /
-
 # Sitemaps
-Sitemap: https://www.evblogs.in/sitemap.xml
-Sitemap: https://www.evblogs.in/news-sitemap.xml
-Sitemap: https://www.evblogs.in/sitemaps/ev-subsidy-sitemap.xml
-Sitemap: https://www.evblogs.in/sitemaps/ev-charging-cost-calculators-sitemap.xml
-Sitemap: https://www.evblogs.in/sitemaps/ev-charging-stations-sitemap.xml
-Sitemap: https://www.evblogs.in/sitemaps/ev-subsidy-model-sitemap.xml
+Sitemap: https://www.calxo.in/sitemap.xml
