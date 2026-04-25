@@ -1,0 +1,250 @@
+<div class="cx-tax-widget" id="cx-tax">
+<style>
+  #cx-tax {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-tax { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-tax label { display: block; margin-bottom: 1.15rem; }
+  #cx-tax label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-tax label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-tax input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-tax input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-tax input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-tax .cx-toggle {
+    display: flex; background: #f1f5f9; border-radius: 8px; padding: 3px; margin-bottom: 1rem;
+  }
+  #cx-tax .cx-toggle button {
+    flex: 1; padding: .55rem .8rem; border: 0; background: transparent;
+    font-size: .85rem; font-weight: 600; color: #475569; border-radius: 6px;
+    cursor: pointer; transition: all .15s ease;
+  }
+  #cx-tax .cx-toggle button.active {
+    background: #fff; color: #2563eb; box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+  }
+  #cx-tax .cx-checkbox {
+    display: flex; align-items: center; gap: .5rem; margin-bottom: 1.15rem;
+    font-size: .88rem; color: #0f172a; cursor: pointer;
+  }
+  #cx-tax .cx-checkbox input { width: 18px; height: 18px; accent-color: #2563eb; cursor: pointer; }
+  #cx-tax .cx-deduction-wrap.hidden { display: none; }
+  #cx-tax .cx-tax-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-tax .cx-tax-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-tax .cx-tax-result > * { position: relative; }
+  #cx-tax .cx-tax-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-tax .cx-tax-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 .5rem;
+  }
+  #cx-tax .cx-eff-rate {
+    font-size: .82rem; opacity: .9; margin-bottom: 1rem;
+  }
+  #cx-tax .cx-tax-row {
+    display: flex; justify-content: space-between;
+    padding: .5rem 0; border-bottom: 1px solid rgba(255, 255, 255, .15); font-size: .87rem;
+  }
+  #cx-tax .cx-tax-row:last-of-type { border-bottom: none; }
+  #cx-tax .cx-tax-row strong { font-weight: 700; }
+  #cx-tax .cx-tax-row.cx-total { padding-top: .75rem; font-size: .95rem; border-top: 2px solid rgba(255,255,255,.3); margin-top: .25rem; }
+</style>
+
+<div class="cx-tax-inputs">
+  <div class="cx-toggle" role="tablist">
+    <button type="button" class="active" data-regime="new">New regime (FY 2025-26)</button>
+    <button type="button" data-regime="old">Old regime</button>
+  </div>
+
+  <label>
+    <span>Annual gross income (₹) <em data-out="inc">15,00,000</em></span>
+    <input type="number" id="cx-tax-inc" min="0" max="100000000" step="10000" value="1500000" inputmode="numeric">
+    <input type="range" id="cx-tax-inc-r" min="0" max="5000000" step="25000" value="1500000">
+  </label>
+
+  <label class="cx-checkbox">
+    <input type="checkbox" id="cx-tax-salaried" checked>
+    <span>I'm salaried (apply standard deduction)</span>
+  </label>
+
+  <div class="cx-deduction-wrap hidden" id="cx-tax-ded-wrap">
+    <label>
+      <span>Total deductions / exemptions (₹) <em data-out="ded">1,50,000</em></span>
+      <input type="number" id="cx-tax-ded" min="0" max="5000000" step="5000" value="150000" inputmode="numeric">
+      <input type="range" id="cx-tax-ded-r" min="0" max="500000" step="5000" value="150000">
+    </label>
+    <p style="font-size:.78rem;color:#64748b;margin-top:-.6rem;line-height:1.5;">
+      Sum of 80C (max ₹1.5L), 80D, HRA exemption, home loan interest u/s 24, NPS 80CCD(1B) etc.
+    </p>
+  </div>
+</div>
+
+<div class="cx-tax-result">
+  <div class="cx-tax-result-label">Total tax payable</div>
+  <div class="cx-tax-result-value" id="cx-tax-total">₹97,500</div>
+  <div class="cx-eff-rate">Effective tax rate: <strong id="cx-tax-eff">6.50%</strong></div>
+  <div class="cx-tax-row"><span>Gross income</span> <strong id="cx-tax-gross">₹15,00,000</strong></div>
+  <div class="cx-tax-row"><span>Standard deduction</span> <strong id="cx-tax-std">₹75,000</strong></div>
+  <div class="cx-tax-row"><span>Other deductions</span> <strong id="cx-tax-other">₹0</strong></div>
+  <div class="cx-tax-row"><span>Taxable income</span> <strong id="cx-tax-taxable">₹14,25,000</strong></div>
+  <div class="cx-tax-row"><span>Tax before rebate</span> <strong id="cx-tax-pre">₹93,750</strong></div>
+  <div class="cx-tax-row"><span>87A rebate</span> <strong id="cx-tax-rebate">₹0</strong></div>
+  <div class="cx-tax-row"><span>Surcharge</span> <strong id="cx-tax-sur">₹0</strong></div>
+  <div class="cx-tax-row"><span>Health &amp; education cess (4%)</span> <strong id="cx-tax-cess">₹3,750</strong></div>
+  <div class="cx-tax-row cx-total"><span>Total tax</span> <strong id="cx-tax-total2">₹97,500</strong></div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+
+  var regime = 'new';
+  var inc = document.getElementById('cx-tax-inc');
+  var incR = document.getElementById('cx-tax-inc-r');
+  var ded = document.getElementById('cx-tax-ded');
+  var dedR = document.getElementById('cx-tax-ded-r');
+  var salaried = document.getElementById('cx-tax-salaried');
+  var dedWrap = document.getElementById('cx-tax-ded-wrap');
+  var toggleBtns = document.querySelectorAll('#cx-tax .cx-toggle button');
+
+  // FY 2025-26 (AY 2026-27) slabs
+  var slabsNew = [
+    [400000, 0],
+    [800000, 0.05],
+    [1200000, 0.10],
+    [1600000, 0.15],
+    [2000000, 0.20],
+    [2400000, 0.25],
+    [Infinity, 0.30]
+  ];
+  var slabsOld = [
+    [250000, 0],
+    [500000, 0.05],
+    [1000000, 0.20],
+    [Infinity, 0.30]
+  ];
+
+  function calcSlabTax(taxable, slabs) {
+    var tax = 0, prev = 0;
+    for (var k = 0; k < slabs.length; k++) {
+      var top = slabs[k][0], rate = slabs[k][1];
+      if (taxable <= top) { tax += (taxable - prev) * rate; break; }
+      tax += (top - prev) * rate;
+      prev = top;
+    }
+    return Math.max(0, tax);
+  }
+
+  function calcSurcharge(taxableIncome, taxBeforeSurcharge, isNew) {
+    var rate = 0;
+    if (taxableIncome > 50000000) rate = isNew ? 0.25 : 0.37;
+    else if (taxableIncome > 20000000) rate = 0.25;
+    else if (taxableIncome > 10000000) rate = 0.15;
+    else if (taxableIncome > 5000000) rate = 0.10;
+    return taxBeforeSurcharge * rate;
+  }
+
+  function compute() {
+    var grossInc = parseFloat(inc.value) || 0;
+    var otherDed = (regime === 'old') ? (parseFloat(ded.value) || 0) : 0;
+    var stdDed = 0;
+    if (salaried.checked) stdDed = (regime === 'new') ? 75000 : 50000;
+
+    var taxable = Math.max(0, grossInc - stdDed - otherDed);
+    var slabs = (regime === 'new') ? slabsNew : slabsOld;
+    var taxBeforeRebate = calcSlabTax(taxable, slabs);
+
+    // 87A Rebate
+    var rebate = 0;
+    if (regime === 'new' && taxable <= 1200000) rebate = Math.min(taxBeforeRebate, 60000);
+    if (regime === 'old' && taxable <= 500000) rebate = Math.min(taxBeforeRebate, 12500);
+
+    var taxAfterRebate = taxBeforeRebate - rebate;
+
+    // Marginal relief at 12L (new regime) — tax should not exceed (taxable - 12L)
+    if (regime === 'new' && taxable > 1200000) {
+      var excess = taxable - 1200000;
+      if (taxAfterRebate > excess) taxAfterRebate = excess;
+    }
+
+    var surcharge = calcSurcharge(taxable, taxAfterRebate, regime === 'new');
+    var taxPlusSur = taxAfterRebate + surcharge;
+    var cess = taxPlusSur * 0.04;
+    var total = taxPlusSur + cess;
+    var effRate = grossInc > 0 ? (total / grossInc) * 100 : 0;
+
+    document.getElementById('cx-tax-total').textContent = fmtINR(total);
+    document.getElementById('cx-tax-total2').textContent = fmtINR(total);
+    document.getElementById('cx-tax-eff').textContent = effRate.toFixed(2) + '%';
+    document.getElementById('cx-tax-gross').textContent = fmtINR(grossInc);
+    document.getElementById('cx-tax-std').textContent = fmtINR(stdDed);
+    document.getElementById('cx-tax-other').textContent = fmtINR(otherDed);
+    document.getElementById('cx-tax-taxable').textContent = fmtINR(taxable);
+    document.getElementById('cx-tax-pre').textContent = fmtINR(taxBeforeRebate);
+    document.getElementById('cx-tax-rebate').textContent = fmtINR(rebate);
+    document.getElementById('cx-tax-sur').textContent = fmtINR(surcharge);
+    document.getElementById('cx-tax-cess').textContent = fmtINR(cess);
+
+    document.querySelector('#cx-tax [data-out="inc"]').textContent = fmtRaw(grossInc);
+    var dedOut = document.querySelector('#cx-tax [data-out="ded"]');
+    if (dedOut) dedOut.textContent = fmtRaw(otherDed);
+  }
+
+  function syncPair(numEl, rangeEl) {
+    if (!numEl || !rangeEl) return;
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+  syncPair(inc, incR);
+  syncPair(ded, dedR);
+  salaried.addEventListener('change', compute);
+
+  toggleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      toggleBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      regime = btn.getAttribute('data-regime');
+      if (regime === 'old') dedWrap.classList.remove('hidden');
+      else dedWrap.classList.add('hidden');
+      compute();
+    });
+  });
+
+  compute();
+})();
+</script>

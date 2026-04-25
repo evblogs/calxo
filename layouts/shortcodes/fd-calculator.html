@@ -1,0 +1,179 @@
+<div class="cx-fd-widget" id="cx-fd">
+<style>
+  #cx-fd {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-fd { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-fd label { display: block; margin-bottom: 1.15rem; }
+  #cx-fd label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-fd label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-fd input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-fd input[type="number"], #cx-fd select {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-fd input[type="number"]:focus, #cx-fd select:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-fd .cx-fd-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-fd .cx-fd-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-fd .cx-fd-result > * { position: relative; }
+  #cx-fd .cx-fd-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-fd .cx-fd-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-fd .cx-fd-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255, 255, 255, .18); font-size: .9rem;
+  }
+  #cx-fd .cx-fd-row:last-of-type { border-bottom: none; }
+  #cx-fd .cx-fd-row strong { font-weight: 700; }
+  #cx-fd .cx-fd-bar {
+    display: flex; height: 9px; border-radius: 5px; overflow: hidden;
+    margin: 1rem 0 .5rem; background: rgba(255, 255, 255, .12);
+  }
+  #cx-fd .cx-fd-bar-p { background: #ffffff; transition: width .25s ease; }
+  #cx-fd .cx-fd-bar-i { background: rgba(255, 255, 255, .42); transition: width .25s ease; }
+  #cx-fd .cx-fd-legend {
+    display: flex; gap: 1rem; font-size: .76rem; color: rgba(255, 255, 255, .9);
+  }
+  #cx-fd .cx-fd-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block; vertical-align: middle; margin-right: .35rem;
+  }
+</style>
+
+<div class="cx-fd-inputs">
+  <label>
+    <span>Deposit amount (₹) <em data-out="amt">1,00,000</em></span>
+    <input type="number" id="cx-fd-amt" min="1000" max="100000000" step="1000" value="100000" inputmode="numeric">
+    <input type="range" id="cx-fd-amt-r" min="10000" max="5000000" step="10000" value="100000">
+  </label>
+  <label>
+    <span>Interest rate p.a. (%) <em data-out="rate">7.00%</em></span>
+    <input type="number" id="cx-fd-rate" min="1" max="15" step="0.05" value="7" inputmode="decimal">
+    <input type="range" id="cx-fd-rate-r" min="1" max="12" step="0.05" value="7">
+  </label>
+  <label>
+    <span>Tenure (years) <em data-out="years">5 yrs</em></span>
+    <input type="number" id="cx-fd-years" min="0.5" max="20" step="0.5" value="5" inputmode="decimal">
+    <input type="range" id="cx-fd-years-r" min="0.5" max="10" step="0.5" value="5">
+  </label>
+  <label>
+    <span>Compounding</span>
+    <select id="cx-fd-comp">
+      <option value="4" selected>Quarterly (Indian bank standard)</option>
+      <option value="12">Monthly</option>
+      <option value="2">Half-yearly</option>
+      <option value="1">Annually</option>
+      <option value="0">Simple interest</option>
+    </select>
+  </label>
+</div>
+
+<div class="cx-fd-result">
+  <div class="cx-fd-result-label">Maturity value</div>
+  <div class="cx-fd-result-value" id="cx-fd-maturity">₹1,41,478</div>
+  <div class="cx-fd-row"><span>Principal</span> <strong id="cx-fd-principal">₹1,00,000</strong></div>
+  <div class="cx-fd-row"><span>Interest earned</span> <strong id="cx-fd-interest">₹41,478</strong></div>
+  <div class="cx-fd-row"><span>Effective annual yield</span> <strong id="cx-fd-yield">7.19%</strong></div>
+  <div class="cx-fd-bar">
+    <div class="cx-fd-bar-p" id="cx-fd-bar-p" style="width:71%"></div>
+    <div class="cx-fd-bar-i" id="cx-fd-bar-i" style="width:29%"></div>
+  </div>
+  <div class="cx-fd-legend">
+    <span><span class="cx-fd-dot" style="background:#fff"></span>Principal <span id="cx-fd-pct-p">71%</span></span>
+    <span><span class="cx-fd-dot" style="background:rgba(255,255,255,.4)"></span>Interest <span id="cx-fd-pct-i">29%</span></span>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+
+  var amt = document.getElementById('cx-fd-amt');
+  var amtR = document.getElementById('cx-fd-amt-r');
+  var rate = document.getElementById('cx-fd-rate');
+  var rateR = document.getElementById('cx-fd-rate-r');
+  var yrs = document.getElementById('cx-fd-years');
+  var yrsR = document.getElementById('cx-fd-years-r');
+  var comp = document.getElementById('cx-fd-comp');
+
+  function compute() {
+    var P = parseFloat(amt.value) || 0;
+    var aRate = parseFloat(rate.value) || 0;
+    var t = parseFloat(yrs.value) || 0;
+    var n = parseInt(comp.value, 10);
+    var r = aRate / 100;
+
+    var maturity = 0;
+    if (n === 0) {
+      maturity = P + P * r * t;
+    } else {
+      maturity = P * Math.pow(1 + r / n, n * t);
+    }
+    var interest = maturity - P;
+    var yieldPct = t > 0 && P > 0 ? (Math.pow(maturity / P, 1 / t) - 1) * 100 : 0;
+    var pctP = maturity > 0 ? Math.round((P / maturity) * 100) : 0;
+    var pctI = 100 - pctP;
+
+    document.getElementById('cx-fd-maturity').textContent = fmtINR(maturity);
+    document.getElementById('cx-fd-principal').textContent = fmtINR(P);
+    document.getElementById('cx-fd-interest').textContent = fmtINR(interest);
+    document.getElementById('cx-fd-yield').textContent = yieldPct.toFixed(2) + '%';
+    document.getElementById('cx-fd-bar-p').style.width = pctP + '%';
+    document.getElementById('cx-fd-bar-i').style.width = pctI + '%';
+    document.getElementById('cx-fd-pct-p').textContent = pctP + '%';
+    document.getElementById('cx-fd-pct-i').textContent = pctI + '%';
+
+    document.querySelector('#cx-fd [data-out="amt"]').textContent = fmtRaw(P);
+    document.querySelector('#cx-fd [data-out="rate"]').textContent = aRate.toFixed(2) + '%';
+    document.querySelector('#cx-fd [data-out="years"]').textContent = t + ' yr' + (t !== 1 ? 's' : '');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+  syncPair(amt, amtR);
+  syncPair(rate, rateR);
+  syncPair(yrs, yrsR);
+  comp.addEventListener('change', compute);
+
+  compute();
+})();
+</script>

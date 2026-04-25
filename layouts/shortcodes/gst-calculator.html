@@ -1,0 +1,229 @@
+<div class="cx-gst-widget" id="cx-gst">
+<style>
+  #cx-gst {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-gst { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-gst label { display: block; margin-bottom: 1.15rem; }
+  #cx-gst label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-gst label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-gst input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-gst input[type="number"], #cx-gst select {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-gst input[type="number"]:focus, #cx-gst select:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-gst .cx-toggle {
+    display: flex; background: #f1f5f9; border-radius: 8px; padding: 3px; margin-bottom: 1rem;
+  }
+  #cx-gst .cx-toggle button {
+    flex: 1; padding: .55rem .8rem; border: 0; background: transparent;
+    font-size: .85rem; font-weight: 600; color: #475569; border-radius: 6px;
+    cursor: pointer; transition: all .15s ease;
+  }
+  #cx-gst .cx-toggle button.active {
+    background: #fff; color: #2563eb; box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+  }
+  #cx-gst .cx-rate-pills {
+    display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .4rem;
+  }
+  #cx-gst .cx-rate-pills button {
+    padding: .35rem .7rem; border: 1px solid #cbd5e1; background: #fff;
+    border-radius: 999px; font-size: .82rem; font-weight: 600; color: #475569;
+    cursor: pointer; transition: all .15s ease;
+  }
+  #cx-gst .cx-rate-pills button.active {
+    background: #2563eb; color: #fff; border-color: #2563eb;
+  }
+  #cx-gst .cx-gst-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-gst .cx-gst-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-gst .cx-gst-result > * { position: relative; }
+  #cx-gst .cx-gst-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-gst .cx-gst-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-gst .cx-gst-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255, 255, 255, .18); font-size: .9rem;
+  }
+  #cx-gst .cx-gst-row:last-of-type { border-bottom: none; }
+  #cx-gst .cx-gst-row strong { font-weight: 700; }
+  #cx-gst .cx-gst-row.cx-total {
+    padding-top: .75rem; font-size: .98rem;
+    border-top: 2px solid rgba(255,255,255,.3); margin-top: .25rem;
+  }
+</style>
+
+<div class="cx-gst-inputs">
+  <div class="cx-toggle">
+    <button type="button" class="active" data-mode="add">Add GST</button>
+    <button type="button" data-mode="remove">Remove GST (reverse)</button>
+  </div>
+
+  <label>
+    <span><span id="cx-gst-amt-label">Net amount (₹)</span> <em data-out="amt">10,000</em></span>
+    <input type="number" id="cx-gst-amt" min="0" max="100000000" step="100" value="10000" inputmode="numeric">
+    <input type="range" id="cx-gst-amt-r" min="0" max="500000" step="500" value="10000">
+  </label>
+
+  <label>
+    <span>GST rate (%)</span>
+    <div class="cx-rate-pills">
+      <button type="button" data-rate="0">0%</button>
+      <button type="button" data-rate="0.25">0.25%</button>
+      <button type="button" data-rate="3">3%</button>
+      <button type="button" data-rate="5">5%</button>
+      <button type="button" data-rate="12">12%</button>
+      <button type="button" data-rate="18" class="active">18%</button>
+      <button type="button" data-rate="28">28%</button>
+    </div>
+    <input type="number" id="cx-gst-rate" min="0" max="50" step="0.25" value="18" inputmode="decimal" style="margin-top:.5rem;">
+  </label>
+
+  <label>
+    <span>Transaction type</span>
+    <select id="cx-gst-type">
+      <option value="intra">Intra-state (CGST + SGST)</option>
+      <option value="inter">Inter-state (IGST)</option>
+    </select>
+  </label>
+</div>
+
+<div class="cx-gst-result">
+  <div class="cx-gst-result-label" id="cx-gst-mode-label">GST amount</div>
+  <div class="cx-gst-result-value" id="cx-gst-tax">₹1,800</div>
+  <div class="cx-gst-row"><span id="cx-gst-base-label">Base price</span> <strong id="cx-gst-base">₹10,000</strong></div>
+  <div class="cx-gst-row" id="cx-gst-cgst-row"><span>CGST (9%)</span> <strong id="cx-gst-cgst">₹900</strong></div>
+  <div class="cx-gst-row" id="cx-gst-sgst-row"><span>SGST (9%)</span> <strong id="cx-gst-sgst">₹900</strong></div>
+  <div class="cx-gst-row" id="cx-gst-igst-row" style="display:none"><span>IGST (18%)</span> <strong id="cx-gst-igst">₹1,800</strong></div>
+  <div class="cx-gst-row cx-total"><span id="cx-gst-final-label">Invoice total (incl. GST)</span> <strong id="cx-gst-total">₹11,800</strong></div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + (Math.round(n * 100) / 100).toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 }); };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+
+  var mode = 'add';
+  var amt = document.getElementById('cx-gst-amt');
+  var amtR = document.getElementById('cx-gst-amt-r');
+  var rate = document.getElementById('cx-gst-rate');
+  var typeSel = document.getElementById('cx-gst-type');
+  var modeBtns = document.querySelectorAll('#cx-gst .cx-toggle button');
+  var ratePills = document.querySelectorAll('#cx-gst .cx-rate-pills button');
+
+  function compute() {
+    var A = parseFloat(amt.value) || 0;
+    var R = parseFloat(rate.value) || 0;
+    var isInter = typeSel.value === 'inter';
+
+    var base, gst, total;
+    if (mode === 'add') {
+      base = A;
+      gst = base * R / 100;
+      total = base + gst;
+    } else {
+      total = A;
+      base = total * 100 / (100 + R);
+      gst = total - base;
+    }
+
+    document.getElementById('cx-gst-tax').textContent = fmtINR(gst);
+    document.getElementById('cx-gst-base').textContent = fmtINR(base);
+    document.getElementById('cx-gst-total').textContent = fmtINR(total);
+
+    document.getElementById('cx-gst-mode-label').textContent = (mode === 'add') ? 'GST amount to add' : 'GST extracted';
+    document.getElementById('cx-gst-amt-label').textContent = (mode === 'add') ? 'Net amount excl. GST (₹)' : 'Total amount incl. GST (₹)';
+    document.getElementById('cx-gst-base-label').textContent = (mode === 'add') ? 'Base price' : 'Pre-GST base';
+    document.getElementById('cx-gst-final-label').textContent = (mode === 'add') ? 'Invoice total (incl. GST)' : 'Original invoice (incl. GST)';
+
+    var halfRate = (R / 2).toFixed(R % 1 === 0 ? 0 : 2);
+    document.querySelector('#cx-gst-cgst-row span').textContent = 'CGST (' + halfRate + '%)';
+    document.querySelector('#cx-gst-sgst-row span').textContent = 'SGST (' + halfRate + '%)';
+    document.querySelector('#cx-gst-igst-row span').textContent = 'IGST (' + R + '%)';
+
+    if (isInter) {
+      document.getElementById('cx-gst-cgst-row').style.display = 'none';
+      document.getElementById('cx-gst-sgst-row').style.display = 'none';
+      document.getElementById('cx-gst-igst-row').style.display = 'flex';
+      document.getElementById('cx-gst-igst').textContent = fmtINR(gst);
+    } else {
+      document.getElementById('cx-gst-cgst-row').style.display = 'flex';
+      document.getElementById('cx-gst-sgst-row').style.display = 'flex';
+      document.getElementById('cx-gst-igst-row').style.display = 'none';
+      document.getElementById('cx-gst-cgst').textContent = fmtINR(gst / 2);
+      document.getElementById('cx-gst-sgst').textContent = fmtINR(gst / 2);
+    }
+
+    document.querySelector('#cx-gst [data-out="amt"]').textContent = fmtRaw(A);
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+  syncPair(amt, amtR);
+  rate.addEventListener('input', function () {
+    ratePills.forEach(function (p) {
+      p.classList.toggle('active', parseFloat(p.getAttribute('data-rate')) === parseFloat(rate.value));
+    });
+    compute();
+  });
+  typeSel.addEventListener('change', compute);
+
+  modeBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      modeBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      mode = btn.getAttribute('data-mode');
+      compute();
+    });
+  });
+
+  ratePills.forEach(function (p) {
+    p.addEventListener('click', function () {
+      ratePills.forEach(function (q) { q.classList.remove('active'); });
+      p.classList.add('active');
+      rate.value = p.getAttribute('data-rate');
+      compute();
+    });
+  });
+
+  compute();
+})();
+</script>
