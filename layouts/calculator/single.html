@@ -136,20 +136,63 @@
     margin: 0 .5rem;
     color: #cbd5e1;
   }
+  .cx-byline-credential {
+    color: #94a3b8;
+    font-size: .82rem;
+    font-weight: 500;
+    margin-left: .5rem;
+  }
 
   .cx-trust {
     background: linear-gradient(135deg, #eff6ff 0%, #ecfeff 100%);
+    border: 1px solid #bfdbfe;
     border-left: 3px solid #2563eb;
-    padding: .85rem 1.1rem;
-    border-radius: 8px;
-    font-size: .85rem;
+    padding: 1rem 1.15rem;
+    border-radius: 10px;
     color: #0f172a;
     margin: 1.25rem 0 2rem;
-    display: flex;
-    gap: .65rem;
-    align-items: flex-start;
   }
-  .cx-trust strong { color: #2563eb; }
+  .cx-trust-row {
+    display: flex;
+    gap: .85rem;
+    align-items: flex-start;
+    font-size: .92rem;
+    line-height: 1.55;
+  }
+  .cx-trust-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, .25);
+  }
+  .cx-trust strong { color: #1d4ed8; font-weight: 700; }
+  .cx-trust-meta {
+    margin-top: .85rem;
+    padding-top: .75rem;
+    border-top: 1px dashed rgba(37, 99, 235, .25);
+    font-size: .8rem;
+    color: #475569;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+  }
+  .cx-trust-meta strong { color: #0f172a; font-weight: 600; }
+  .cx-trust-meta a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .cx-trust-meta a:hover { text-decoration: underline; }
+  @media (max-width: 600px) {
+    .cx-byline-credential { display: block; margin-left: 0; margin-top: .15rem; }
+  }
 
   .cx-page-content {
     font-size: 1.02rem;
@@ -227,7 +270,10 @@
       <h1 itemprop="headline">{{ .Title }}</h1>
 
       <div class="cx-byline">
-        <span>By <strong itemprop="author">Vignesh</strong></span>
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          By <strong itemprop="name">Vignesh</strong>
+          <span class="cx-byline-credential">finance writer · 8+ yrs covering Indian personal finance</span>
+        </span>
         <span class="cx-byline-sep">•</span>
         <span>Updated <time itemprop="dateModified" datetime="{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}">{{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "Jan 2, 2006" }}{{ end }}</time></span>
         <span class="cx-byline-sep">•</span>
@@ -235,8 +281,22 @@
       </div>
 
       <div class="cx-trust">
-        <span aria-hidden="true">🇮🇳</span>
-        <span>Built for Indian users. Formula sourced from RBI / CBDT / statute. Calculations run entirely in your browser. We don't store inputs.</span>
+        <div class="cx-trust-row">
+          <span class="cx-trust-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <div>
+            <strong>Reviewed for FY 2025-26 (AY 2026-27).</strong>
+            Formula sourced from RBI Master Directions, CBDT circulars and the underlying statute. Calculations run entirely in your browser — we don't store any input.
+          </div>
+        </div>
+        <div class="cx-trust-meta">
+          <span>Last reviewed: <strong>{{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "Jan 2, 2006" }}{{ end }}</strong></span>
+          <span aria-hidden="true">•</span>
+          <a href="/about/methodology/">How we verify calculators</a>
+          <span aria-hidden="true">•</span>
+          <a href="/about/">About Vignesh</a>
+        </div>
       </div>
 
       <div class="cx-page-content" itemprop="articleBody">

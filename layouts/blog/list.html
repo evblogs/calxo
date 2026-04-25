@@ -53,13 +53,18 @@
   }
   .cx-blog-cover {
     aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
     padding: 1.25rem;
+    color: #fff;
   }
+  .cx-blog-cover.cx-tag-tax       { background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 55%, #a78bfa 100%); }
+  .cx-blog-cover.cx-tag-investing { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #06b6d4 100%); }
+  .cx-blog-cover.cx-tag-mutual    { background: linear-gradient(135deg, #065f46 0%, #10b981 55%, #34d399 100%); }
+  .cx-blog-cover.cx-tag-loan      { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #0891b2 100%); }
+  .cx-blog-cover.cx-tag-default   { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #06b6d4 100%); }
   .cx-blog-cover::before {
     content: ''; position: absolute; inset: 0;
     background-image:
@@ -68,6 +73,16 @@
     background-size: 28px 28px;
     pointer-events: none;
   }
+  .cx-blog-cover-art {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 60%;
+    height: 130%;
+    color: rgba(255, 255, 255, .22);
+    pointer-events: none;
+  }
+  .cx-blog-cover-art svg { width: 100%; height: 100%; }
   .cx-blog-cover-tag {
     position: relative;
     z-index: 2;
@@ -76,6 +91,10 @@
     text-transform: uppercase;
     letter-spacing: 1.2px;
     font-weight: 700;
+    padding: .25rem .6rem;
+    background: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(4px);
+    border-radius: 999px;
   }
   .cx-blog-body {
     padding: 1.4rem 1.4rem 1.5rem;
@@ -129,9 +148,28 @@
 
   <div class="cx-blog-grid">
     {{ range .Pages.ByDate.Reverse }}
+    {{ $tag := "" }}{{ with .Params.tags }}{{ $tag = index . 0 }}{{ end }}
+    {{ $themeClass := "cx-tag-default" }}
+    {{ $art := "trending" }}
+    {{ if in (lower $tag) "tax" }}{{ $themeClass = "cx-tag-tax" }}{{ $art = "percent" }}
+    {{ else if in (lower $tag) "mutual" }}{{ $themeClass = "cx-tag-mutual" }}{{ $art = "coins" }}
+    {{ else if in (lower $tag) "investing" }}{{ $themeClass = "cx-tag-investing" }}{{ $art = "trending" }}
+    {{ else if in (lower $tag) "loan" }}{{ $themeClass = "cx-tag-loan" }}{{ $art = "house" }}
+    {{ end }}
     <a href="{{ .RelPermalink }}" class="cx-blog-card">
-      <div class="cx-blog-cover">
-        {{ with .Params.tags }}<span class="cx-blog-cover-tag">{{ index . 0 }}</span>{{ else }}<span class="cx-blog-cover-tag">Personal Finance</span>{{ end }}
+      <div class="cx-blog-cover {{ $themeClass }}">
+        <div class="cx-blog-cover-art" aria-hidden="true">
+          {{ if eq $art "percent" }}
+          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="14"><circle cx="60" cy="60" r="22"/><circle cx="140" cy="140" r="22"/><line x1="40" y1="160" x2="160" y2="40"/></svg>
+          {{ else if eq $art "trending" }}
+          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,150 70,100 110,130 180,40"/><polyline points="140,40 180,40 180,80"/></svg>
+          {{ else if eq $art "coins" }}
+          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="10"><circle cx="80" cy="100" r="50"/><circle cx="130" cy="100" r="50" opacity=".55"/></svg>
+          {{ else if eq $art "house" }}
+          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><polyline points="30,100 100,40 170,100"/><polyline points="50,90 50,170 150,170 150,90"/></svg>
+          {{ end }}
+        </div>
+        {{ with $tag }}<span class="cx-blog-cover-tag">{{ . }}</span>{{ else }}<span class="cx-blog-cover-tag">Personal Finance</span>{{ end }}
       </div>
       <div class="cx-blog-body">
         <h3 class="cx-blog-title">{{ .Title }}</h3>
