@@ -1,0 +1,181 @@
+<div id="cx-cg">
+<style>
+  #cx-cg {
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-cg .cx-cg-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  @media(max-width:760px){ #cx-cg .cx-cg-grid { grid-template-columns:1fr; } }
+  #cx-cg label { display:block; margin-bottom:1.1rem; }
+  #cx-cg label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-cg label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-cg input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-cg input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-cg input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-cg select {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; background:#fff; box-sizing:border-box;
+  }
+  #cx-cg .cx-cg-result {
+    background:linear-gradient(135deg,#78350f 0%,#d97706 50%,#fbbf24 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-cg .cx-cg-result::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-cg .cx-cg-result > * { position:relative; }
+  #cx-cg .cx-res-label  { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-cg .cx-res-value  { font-size:clamp(1.85rem,5vw,2.4rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.25rem 0 1.1rem; }
+  #cx-cg .cx-res-row    { display:flex; justify-content:space-between; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-cg .cx-res-row:last-of-type { border-bottom:none; }
+  #cx-cg .cx-res-row strong { font-weight:700; }
+  #cx-cg .cx-cg-pill {
+    display:inline-block; padding:.25rem .75rem; border-radius:99px;
+    font-size:.78rem; font-weight:700; letter-spacing:.5px; margin-bottom:.85rem;
+  }
+  #cx-cg .cx-pill-stcg { background:rgba(248,113,113,.3); color:#fca5a5; }
+  #cx-cg .cx-pill-ltcg { background:rgba(52,211,153,.3); color:#6ee7b7; }
+  #cx-cg .cx-note { font-size:.75rem; opacity:.8; margin-top:.75rem; line-height:1.5; }
+</style>
+
+<div class="cx-cg-grid">
+  <div>
+    <label>
+      <span>Asset type</span>
+      <select id="cx-cg-type">
+        <option value="equity">Equity / Mutual Funds (listed)</option>
+        <option value="debt">Debt MF / Bonds</option>
+        <option value="property">Property / Real Estate</option>
+        <option value="gold">Gold / Jewellery</option>
+      </select>
+    </label>
+    <label>
+      <span>Purchase price (₹) <em data-out="buy">5,00,000</em></span>
+      <input type="number" id="cx-cg-buy" min="0" max="100000000" step="10000" value="500000" inputmode="numeric">
+      <input type="range"  id="cx-cg-buy-r" min="10000" max="10000000" step="10000" value="500000">
+    </label>
+    <label>
+      <span>Sale price (₹) <em data-out="sell">8,00,000</em></span>
+      <input type="number" id="cx-cg-sell" min="0" max="100000000" step="10000" value="800000" inputmode="numeric">
+      <input type="range"  id="cx-cg-sell-r" min="10000" max="10000000" step="10000" value="800000">
+    </label>
+    <label>
+      <span>Holding period (months) <em data-out="hold">18 months</em></span>
+      <input type="number" id="cx-cg-hold" min="0" max="360" step="1" value="18" inputmode="numeric">
+      <input type="range"  id="cx-cg-hold-r" min="0" max="120" step="1" value="18">
+    </label>
+    <label>
+      <span>Transfer expenses (₹) <em data-out="exp">5,000</em></span>
+      <input type="number" id="cx-cg-exp" min="0" max="5000000" step="1000" value="5000" inputmode="numeric">
+      <input type="range"  id="cx-cg-exp-r" min="0" max="200000" step="1000" value="5000">
+    </label>
+  </div>
+
+  <div class="cx-cg-result">
+    <div class="cx-res-label">Capital Gains Tax</div>
+    <div class="cx-res-value" id="cx-cg-tax">—</div>
+    <div id="cx-cg-pill" class="cx-cg-pill cx-pill-ltcg">LTCG</div>
+    <div class="cx-res-row"><span>Capital gain</span><strong id="cx-cg-gain">—</strong></div>
+    <div class="cx-res-row"><span>Tax rate</span><strong id="cx-cg-rate">—</strong></div>
+    <div class="cx-res-row"><span>LTCG exemption (equity)</span><strong id="cx-cg-exemption">—</strong></div>
+    <div class="cx-res-row"><span>Taxable gain</span><strong id="cx-cg-taxable">—</strong></div>
+    <div class="cx-res-row"><span>Net gain after tax</span><strong id="cx-cg-netgain">—</strong></div>
+    <div class="cx-note" id="cx-cg-note">—</div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmtINR = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  /* Holding period thresholds (months) for LTCG */
+  var LTCG_THRESH = { equity:12, debt:24, property:24, gold:24 };
+
+  /* Tax rates FY 2025-26 (post Budget 2024) */
+  var RATES = {
+    equity:   { stcg:0.20,  ltcg:0.125, exemption:125000 },  /* STCG 20%, LTCG 12.5% above ₹1.25L */
+    debt:     { stcg:'slab', ltcg:'slab', exemption:0 },       /* Debt MF: slab rate regardless */
+    property: { stcg:'slab', ltcg:0.125, exemption:0 },        /* Property LTCG 12.5% (no indexation from FY25) */
+    gold:     { stcg:'slab', ltcg:0.125, exemption:0 },
+  };
+
+  var NOTES = {
+    equity:   'STCG (held < 12 months): 20%. LTCG (held ≥ 12 months): 12.5% above ₹1.25 lakh exemption. Surcharge capped at 15%.',
+    debt:     'Debt MF bought after Apr 2023: gains taxed at your income slab rate regardless of holding period. No LTCG benefit.',
+    property: 'Property LTCG: 12.5% without indexation (from FY 2024-25 Budget). STCG at slab rate. Section 54/54EC exemptions may apply.',
+    gold:     'Gold LTCG: 12.5% (held ≥ 24 months). STCG at slab rate. Sovereign Gold Bonds held to maturity are fully exempt.',
+  };
+
+  function compute(){
+    var type = document.getElementById('cx-cg-type').value;
+    var buy  = parseFloat(document.getElementById('cx-cg-buy').value)  || 0;
+    var sell = parseFloat(document.getElementById('cx-cg-sell').value) || 0;
+    var hold = parseInt(document.getElementById('cx-cg-hold').value)   || 0;
+    var exp  = parseFloat(document.getElementById('cx-cg-exp').value)  || 0;
+
+    var gain    = Math.max(0, sell - buy - exp);
+    var isLTCG  = hold >= LTCG_THRESH[type];
+    var r       = RATES[type];
+    var taxRate = isLTCG ? r.ltcg : r.stcg;
+
+    var exemption = 0;
+    var tax       = 0;
+    var rateLabel = '';
+
+    if(taxRate === 'slab'){
+      rateLabel = 'Your income slab rate';
+      tax = null; /* can't compute without income */
+    } else {
+      if(isLTCG && r.exemption > 0){
+        exemption = Math.min(gain, r.exemption);
+      }
+      var taxableGain = Math.max(0, gain - exemption);
+      tax = taxableGain * taxRate * 1.04; /* +4% cess */
+      rateLabel = (taxRate * 100).toFixed(1) + '% + 4% cess';
+    }
+
+    var netGain = tax !== null ? gain - tax : gain;
+
+    var pill = document.getElementById('cx-cg-pill');
+    pill.textContent = isLTCG ? 'LTCG' : 'STCG';
+    pill.className = 'cx-cg-pill ' + (isLTCG ? 'cx-pill-ltcg' : 'cx-pill-stcg');
+
+    document.getElementById('cx-cg-tax').textContent       = tax !== null ? fmtINR(tax) : 'At slab rate';
+    document.getElementById('cx-cg-gain').textContent      = fmtINR(gain);
+    document.getElementById('cx-cg-rate').textContent      = rateLabel;
+    document.getElementById('cx-cg-exemption').textContent = r.exemption > 0 ? fmtINR(exemption) + ' (₹1.25L/yr)' : 'N/A';
+    document.getElementById('cx-cg-taxable').textContent   = tax !== null ? fmtINR(Math.max(0, gain - exemption)) : 'Full gain';
+    document.getElementById('cx-cg-netgain').textContent   = fmtINR(netGain);
+    document.getElementById('cx-cg-note').textContent      = NOTES[type];
+
+    document.querySelector('#cx-cg [data-out="buy"]').textContent  = Math.round(buy).toLocaleString('en-IN');
+    document.querySelector('#cx-cg [data-out="sell"]').textContent = Math.round(sell).toLocaleString('en-IN');
+    document.querySelector('#cx-cg [data-out="hold"]').textContent = hold + ' month' + (hold !== 1 ? 's' : '');
+    document.querySelector('#cx-cg [data-out="exp"]').textContent  = Math.round(exp).toLocaleString('en-IN');
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-cg-buy','cx-cg-buy-r'); syncPair('cx-cg-sell','cx-cg-sell-r');
+  syncPair('cx-cg-hold','cx-cg-hold-r'); syncPair('cx-cg-exp','cx-cg-exp-r');
+  document.getElementById('cx-cg-type').addEventListener('change', compute);
+  compute();
+})();
+</script>

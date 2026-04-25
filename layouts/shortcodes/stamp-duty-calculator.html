@@ -1,0 +1,151 @@
+<div id="cx-sd">
+<style>
+  #cx-sd {
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-sd .cx-sd-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  @media(max-width:760px){ #cx-sd .cx-sd-grid { grid-template-columns:1fr; } }
+  #cx-sd label { display:block; margin-bottom:1.1rem; }
+  #cx-sd label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-sd label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-sd input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-sd input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-sd input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-sd select {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; background:#fff; box-sizing:border-box;
+  }
+  #cx-sd .cx-sd-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    position:relative; overflow:hidden;
+  }
+  #cx-sd .cx-sd-result::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-sd .cx-sd-result > * { position:relative; }
+  #cx-sd .cx-res-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-sd .cx-res-value { font-size:clamp(1.85rem,5vw,2.4rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.25rem 0 1.1rem; }
+  #cx-sd .cx-res-row   { display:flex; justify-content:space-between; padding:.55rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-sd .cx-res-row:last-of-type { border-bottom:none; }
+  #cx-sd .cx-res-row strong { font-weight:700; }
+  #cx-sd .cx-sd-note { font-size:.75rem; opacity:.8; margin-top:.75rem; line-height:1.5; }
+</style>
+
+<div class="cx-sd-grid">
+  <div>
+    <label>
+      <span>State</span>
+      <select id="cx-sd-state">
+        <option value="MH">Maharashtra</option>
+        <option value="KA">Karnataka</option>
+        <option value="DL">Delhi</option>
+        <option value="TN">Tamil Nadu</option>
+        <option value="TS">Telangana</option>
+        <option value="AP">Andhra Pradesh</option>
+        <option value="GJ">Gujarat</option>
+        <option value="UP">Uttar Pradesh</option>
+        <option value="WB">West Bengal</option>
+        <option value="RJ">Rajasthan</option>
+      </select>
+    </label>
+    <label>
+      <span>Property value (₹) <em data-out="value">50,00,000</em></span>
+      <input type="number" id="cx-sd-value" min="100000" max="500000000" step="100000" value="5000000" inputmode="numeric">
+      <input type="range"  id="cx-sd-value-r" min="500000" max="50000000" step="100000" value="5000000">
+    </label>
+    <label>
+      <span>Owner gender</span>
+      <select id="cx-sd-gender">
+        <option value="male">Male / Joint (Male)</option>
+        <option value="female">Female</option>
+        <option value="joint_f">Joint (Female as 1st owner)</option>
+      </select>
+    </label>
+    <label>
+      <span>Property type</span>
+      <select id="cx-sd-ptype">
+        <option value="residential">Residential flat / house</option>
+        <option value="plot">Plot / land</option>
+        <option value="commercial">Commercial</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="cx-sd-result">
+    <div class="cx-res-label">Total Registration Cost</div>
+    <div class="cx-res-value" id="cx-sd-total">—</div>
+    <div class="cx-res-row"><span>Stamp duty</span><strong id="cx-sd-stamp">—</strong></div>
+    <div class="cx-res-row"><span>Stamp duty rate</span><strong id="cx-sd-stamp-rate">—</strong></div>
+    <div class="cx-res-row"><span>Registration charges</span><strong id="cx-sd-reg">—</strong></div>
+    <div class="cx-res-row"><span>Registration rate</span><strong id="cx-sd-reg-rate">—</strong></div>
+    <div class="cx-res-row"><span>Total buying cost</span><strong id="cx-sd-buying-cost">—</strong></div>
+    <div class="cx-sd-note" id="cx-sd-note">—</div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmtINR = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  /* Stamp duty rates by state (FY 2025-26) — residential, male owner
+     Format: { sd_m, sd_f, sd_jf, reg, note }
+     sd_m = stamp duty male, sd_f = female, sd_jf = joint (female 1st)
+     reg = registration charge rate */
+  var STATES = {
+    MH: { sd_m:0.05, sd_f:0.04, sd_jf:0.04, reg:0.01, reg_cap:30000,  note:'Maharashtra: 5% stamp duty (4% for women). Registration 1% capped at ₹30,000. Mumbai & Pune add 1% metro cess (LBT).' },
+    KA: { sd_m:0.056, sd_f:0.056, sd_jf:0.056, reg:0.01, reg_cap:null, note:'Karnataka: 5.6% stamp duty (5% + 0.5% surcharge + 0.1% BBMP cess). Registration 1% of property value.' },
+    DL: { sd_m:0.06, sd_f:0.04, sd_jf:0.04, reg:0.01, reg_cap:null,   note:'Delhi: 6% stamp duty for men, 4% for women. Registration 1%. Circle rate applies if property value is below it.' },
+    TN: { sd_m:0.07, sd_f:0.07, sd_jf:0.07, reg:0.04, reg_cap:null,   note:'Tamil Nadu: 7% stamp duty + 4% registration (all genders). One of the highest in India.' },
+    TS: { sd_m:0.04, sd_f:0.04, sd_jf:0.04, reg:0.005, reg_cap:null,  note:'Telangana: 4% stamp duty. Registration 0.5%. Nominal transfer duty 1.5% extra applies.' },
+    AP: { sd_m:0.05, sd_f:0.05, sd_jf:0.05, reg:0.01, reg_cap:null,   note:'Andhra Pradesh: 5% stamp duty. Registration 1%. Stamp duty exemption for SCs/STs on agricultural land.' },
+    GJ: { sd_m:0.045, sd_f:0.03, sd_jf:0.035, reg:0.01, reg_cap:null, note:'Gujarat: 4.5% stamp duty for men, 3% for women. Registration 1%.' },
+    UP: { sd_m:0.07, sd_f:0.06, sd_jf:0.06, reg:0.01, reg_cap:null,   note:'Uttar Pradesh: 7% stamp duty for men, 6% for women. Registration 1%.' },
+    WB: { sd_m:0.06, sd_f:0.06, sd_jf:0.06, reg:0.01, reg_cap:null,   note:'West Bengal: 5% stamp duty + 1% urban development tax = ~6% effectively. Registration 1%.' },
+    RJ: { sd_m:0.06, sd_f:0.05, sd_jf:0.05, reg:0.01, reg_cap:null,   note:'Rajasthan: 6% for men, 5% for women. Registration 1%. Stamp duty on DLC rate if higher than agreement value.' },
+  };
+
+  function compute(){
+    var state   = document.getElementById('cx-sd-state').value;
+    var value   = parseFloat(document.getElementById('cx-sd-value').value) || 0;
+    var gender  = document.getElementById('cx-sd-gender').value;
+
+    var s = STATES[state];
+    var sdRate = gender === 'female' ? s.sd_f : (gender === 'joint_f' ? s.sd_jf : s.sd_m);
+    var stamp  = value * sdRate;
+    var reg    = value * s.reg;
+    if(s.reg_cap) reg = Math.min(reg, s.reg_cap);
+    var total  = stamp + reg;
+
+    document.getElementById('cx-sd-total').textContent       = fmtINR(total);
+    document.getElementById('cx-sd-stamp').textContent       = fmtINR(stamp);
+    document.getElementById('cx-sd-stamp-rate').textContent  = (sdRate * 100).toFixed(1) + '%';
+    document.getElementById('cx-sd-reg').textContent         = fmtINR(reg);
+    document.getElementById('cx-sd-reg-rate').textContent    = (s.reg * 100).toFixed(1) + '%' + (s.reg_cap ? ' (capped)' : '');
+    document.getElementById('cx-sd-buying-cost').textContent = fmtINR(value + total);
+    document.getElementById('cx-sd-note').textContent        = s.note;
+
+    document.querySelector('#cx-sd [data-out="value"]').textContent = Math.round(value).toLocaleString('en-IN');
+  }
+
+  document.getElementById('cx-sd-value').addEventListener('input', function(){ document.getElementById('cx-sd-value-r').value = this.value; compute(); });
+  document.getElementById('cx-sd-value-r').addEventListener('input', function(){ document.getElementById('cx-sd-value').value = this.value; compute(); });
+  document.getElementById('cx-sd-state').addEventListener('change', compute);
+  document.getElementById('cx-sd-gender').addEventListener('change', compute);
+  document.getElementById('cx-sd-ptype').addEventListener('change', compute);
+  compute();
+})();
+</script>

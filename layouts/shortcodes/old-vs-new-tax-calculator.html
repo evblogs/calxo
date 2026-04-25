@@ -1,0 +1,258 @@
+<div id="cx-taxreg">
+<style>
+  #cx-taxreg {
+    background: linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px;
+    padding: 1.85rem; margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-taxreg .cx-tr-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media(max-width:760px){ #cx-taxreg .cx-tr-inputs { grid-template-columns:1fr; } }
+  #cx-taxreg label { display:block; margin-bottom:1.1rem; }
+  #cx-taxreg label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-taxreg label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-taxreg input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-taxreg input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-taxreg input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-taxreg select {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; background:#fff; box-sizing:border-box;
+  }
+  /* Results grid */
+  #cx-taxreg .cx-tr-results {
+    display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;
+  }
+  @media(max-width:760px){ #cx-taxreg .cx-tr-results { grid-template-columns:1fr; } }
+  #cx-taxreg .cx-regime-card {
+    border-radius:12px; padding:1.4rem; color:#fff; position:relative; overflow:hidden;
+  }
+  #cx-taxreg .cx-regime-card::before {
+    content:''; position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-taxreg .cx-regime-card > * { position:relative; }
+  #cx-taxreg .cx-card-old  { background: linear-gradient(135deg,#7c3aed 0%,#a855f7 100%); }
+  #cx-taxreg .cx-card-new  { background: linear-gradient(135deg,#1e3a8a 0%,#2563eb 100%); }
+  #cx-taxreg .cx-regime-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-taxreg .cx-regime-tax   { font-size:clamp(1.6rem,4vw,2.2rem); font-weight:800; letter-spacing:-1px; margin:.2rem 0 .9rem; }
+  #cx-taxreg .cx-regime-row   { display:flex; justify-content:space-between; padding:.45rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.88rem; }
+  #cx-taxreg .cx-regime-row:last-of-type { border-bottom:none; }
+  #cx-taxreg .cx-regime-row strong { font-weight:700; }
+  #cx-taxreg .cx-winner-badge {
+    display:inline-block; background:rgba(255,255,255,.22); border-radius:99px;
+    padding:.2rem .7rem; font-size:.72rem; font-weight:700; letter-spacing:.5px; margin-bottom:.6rem;
+  }
+  #cx-taxreg .cx-verdict {
+    margin-top:1.2rem; padding:1rem 1.2rem; border-radius:10px;
+    background:#f0fdf4; border:1px solid #bbf7d0; color:#166534;
+    font-size:.9rem; font-weight:600; text-align:center;
+  }
+  #cx-taxreg .cx-verdict.cx-verdict-old { background:#faf5ff; border-color:#e9d5ff; color:#5b21b6; }
+  #cx-taxreg .cx-verdict.cx-verdict-tie { background:#eff6ff; border-color:#bfdbfe; color:#1e40af; }
+</style>
+
+<div class="cx-tr-inputs">
+  <div>
+    <label>
+      <span>Annual gross salary (₹) <em data-out="salary">10,00,000</em></span>
+      <input type="number" id="cx-tr-salary" min="0" max="10000000" step="10000" value="1000000" inputmode="numeric">
+      <input type="range"  id="cx-tr-salary-r" min="300000" max="5000000" step="10000" value="1000000">
+    </label>
+    <label>
+      <span>HRA received (₹/yr) <em data-out="hra">1,20,000</em></span>
+      <input type="number" id="cx-tr-hra" min="0" max="3000000" step="5000" value="120000" inputmode="numeric">
+      <input type="range"  id="cx-tr-hra-r" min="0" max="1000000" step="5000" value="120000">
+    </label>
+    <label>
+      <span>Rent paid (₹/yr) <em data-out="rent">1,80,000</em></span>
+      <input type="number" id="cx-tr-rent" min="0" max="3000000" step="5000" value="180000" inputmode="numeric">
+      <input type="range"  id="cx-tr-rent-r" min="0" max="1000000" step="5000" value="180000">
+    </label>
+  </div>
+  <div>
+    <label>
+      <span>80C investments (₹) <em data-out="c80">1,50,000</em></span>
+      <input type="number" id="cx-tr-80c" min="0" max="150000" step="5000" value="150000" inputmode="numeric">
+      <input type="range"  id="cx-tr-80c-r" min="0" max="150000" step="5000" value="150000">
+    </label>
+    <label>
+      <span>NPS 80CCD(1B) (₹) <em data-out="nps">50,000</em></span>
+      <input type="number" id="cx-tr-nps" min="0" max="50000" step="5000" value="50000" inputmode="numeric">
+      <input type="range"  id="cx-tr-nps-r" min="0" max="50000" step="5000" value="50000">
+    </label>
+    <label>
+      <span>Health insurance 80D (₹) <em data-out="d80">25,000</em></span>
+      <input type="number" id="cx-tr-80d" min="0" max="100000" step="5000" value="25000" inputmode="numeric">
+      <input type="range"  id="cx-tr-80d-r" min="0" max="75000" step="5000" value="25000">
+    </label>
+    <label>
+      <span>Home loan interest 24(b) (₹) <em data-out="hl">0</em></span>
+      <input type="number" id="cx-tr-hl" min="0" max="200000" step="5000" value="0" inputmode="numeric">
+      <input type="range"  id="cx-tr-hl-r" min="0" max="200000" step="5000" value="0">
+    </label>
+    <label>
+      <span>City type</span>
+      <select id="cx-tr-city">
+        <option value="metro">Metro (Mumbai/Delhi/Chennai/Kolkata)</option>
+        <option value="nonmetro">Non-Metro</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<div class="cx-tr-results">
+  <div class="cx-regime-card cx-card-old">
+    <div class="cx-regime-label">Old Regime</div>
+    <div class="cx-regime-tax" id="cx-old-tax">—</div>
+    <div id="cx-old-badge" class="cx-winner-badge" style="display:none">BETTER CHOICE</div>
+    <div class="cx-regime-row"><span>Taxable income</span><strong id="cx-old-taxable">—</strong></div>
+    <div class="cx-regime-row"><span>Standard deduction</span><strong>₹50,000</strong></div>
+    <div class="cx-regime-row"><span>HRA exemption</span><strong id="cx-old-hra-ex">—</strong></div>
+    <div class="cx-regime-row"><span>80C + 80D + 24(b)</span><strong id="cx-old-deductions">—</strong></div>
+    <div class="cx-regime-row"><span>Effective tax rate</span><strong id="cx-old-etr">—</strong></div>
+  </div>
+  <div class="cx-regime-card cx-card-new">
+    <div class="cx-regime-label">New Regime (FY 2025-26)</div>
+    <div class="cx-regime-tax" id="cx-new-tax">—</div>
+    <div id="cx-new-badge" class="cx-winner-badge" style="display:none">BETTER CHOICE</div>
+    <div class="cx-regime-row"><span>Taxable income</span><strong id="cx-new-taxable">—</strong></div>
+    <div class="cx-regime-row"><span>Standard deduction</span><strong>₹75,000</strong></div>
+    <div class="cx-regime-row"><span>Rebate u/s 87A</span><strong id="cx-new-rebate">—</strong></div>
+    <div class="cx-regime-row"><span>Effective tax rate</span><strong id="cx-new-etr">—</strong></div>
+  </div>
+</div>
+
+<div id="cx-verdict" class="cx-verdict"></div>
+</div>
+
+<script>
+(function(){
+  var fmtINR = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  function calcHRAExemption(basic, hra, rent, metro){
+    /* Min of: actual HRA | 50/40% of basic | rent - 10% of basic */
+    var pct = metro ? 0.50 : 0.40;
+    return Math.max(0, Math.min(hra, pct * basic, rent - 0.10 * basic));
+  }
+
+  /* Old regime slabs (with cess) */
+  function oldRegimeTax(income){
+    var tax = 0;
+    if(income <= 250000)      tax = 0;
+    else if(income <= 500000) tax = (income - 250000) * 0.05;
+    else if(income <= 1000000) tax = 12500 + (income - 500000) * 0.20;
+    else                       tax = 112500 + (income - 1000000) * 0.30;
+    /* 87A rebate: tax = 0 if income <= 5L */
+    if(income <= 500000) tax = 0;
+    /* 4% cess */
+    return tax * 1.04;
+  }
+
+  /* New regime slabs FY 2025-26 */
+  function newRegimeTax(income){
+    var tax = 0;
+    if(income <= 300000)       tax = 0;
+    else if(income <= 700000)  tax = (income - 300000) * 0.05;
+    else if(income <= 1000000) tax = 20000 + (income - 700000) * 0.10;
+    else if(income <= 1200000) tax = 50000 + (income - 1000000) * 0.15;
+    else if(income <= 1500000) tax = 80000 + (income - 1200000) * 0.20;
+    else                       tax = 140000 + (income - 1500000) * 0.30;
+    /* 87A rebate: up to ₹12,500 if income <= 7L; full rebate if income <= 7L */
+    if(income <= 700000) tax = 0;
+    /* Marginal relief between 7L-7.75L */
+    if(income > 700000 && income <= 775000){
+      var taxWithoutRebate = (income - 300000) * 0.05;
+      tax = Math.min(taxWithoutRebate, income - 700000);
+    }
+    return tax * 1.04;
+  }
+
+  function compute(){
+    var salary  = parseFloat(document.getElementById('cx-tr-salary').value) || 0;
+    var hra     = parseFloat(document.getElementById('cx-tr-hra').value)    || 0;
+    var rent    = parseFloat(document.getElementById('cx-tr-rent').value)   || 0;
+    var c80     = Math.min(parseFloat(document.getElementById('cx-tr-80c').value) || 0, 150000);
+    var nps     = Math.min(parseFloat(document.getElementById('cx-tr-nps').value) || 0, 50000);
+    var d80     = parseFloat(document.getElementById('cx-tr-80d').value)    || 0;
+    var hl      = Math.min(parseFloat(document.getElementById('cx-tr-hl').value) || 0, 200000);
+    var metro   = document.getElementById('cx-tr-city').value === 'metro';
+
+    /* Basic assumed as 40% of gross for HRA calculation */
+    var basic = salary * 0.40;
+
+    /* OLD REGIME */
+    var hraEx   = calcHRAExemption(basic, hra, rent, metro);
+    var oldDeductions = 50000 + hraEx + c80 + nps + d80 + hl;
+    var oldTaxable    = Math.max(0, salary - oldDeductions);
+    var oldTax        = oldRegimeTax(oldTaxable);
+    var oldETR        = salary > 0 ? (oldTax / salary) * 100 : 0;
+
+    /* NEW REGIME */
+    var newTaxable = Math.max(0, salary - 75000); /* only std deduction */
+    var newTax     = newRegimeTax(newTaxable);
+    var newETR     = salary > 0 ? (newTax / salary) * 100 : 0;
+    var newRebate  = newTaxable <= 700000 ? 'Full (₹0 tax)' : '—';
+
+    /* Update DOM */
+    document.getElementById('cx-old-tax').textContent      = fmtINR(oldTax);
+    document.getElementById('cx-old-taxable').textContent  = fmtINR(oldTaxable);
+    document.getElementById('cx-old-hra-ex').textContent   = fmtINR(hraEx);
+    document.getElementById('cx-old-deductions').textContent = fmtINR(c80 + nps + d80 + hl);
+    document.getElementById('cx-old-etr').textContent      = oldETR.toFixed(1) + '%';
+
+    document.getElementById('cx-new-tax').textContent      = fmtINR(newTax);
+    document.getElementById('cx-new-taxable').textContent  = fmtINR(newTaxable);
+    document.getElementById('cx-new-rebate').textContent   = newRebate;
+    document.getElementById('cx-new-etr').textContent      = newETR.toFixed(1) + '%';
+
+    var saving = Math.abs(oldTax - newTax);
+    var verdict = document.getElementById('cx-verdict');
+    var oldBadge = document.getElementById('cx-old-badge');
+    var newBadge = document.getElementById('cx-new-badge');
+    oldBadge.style.display = 'none'; newBadge.style.display = 'none';
+    verdict.className = 'cx-verdict';
+
+    if(oldTax < newTax - 100){
+      oldBadge.style.display = 'inline-block';
+      verdict.className = 'cx-verdict cx-verdict-old';
+      verdict.textContent = 'Old Regime saves you ' + fmtINR(saving) + '/year — stick with it.';
+    } else if(newTax < oldTax - 100){
+      newBadge.style.display = 'inline-block';
+      verdict.className = 'cx-verdict';
+      verdict.textContent = 'New Regime saves you ' + fmtINR(saving) + '/year — switch now.';
+    } else {
+      verdict.className = 'cx-verdict cx-verdict-tie';
+      verdict.textContent = 'Both regimes give nearly the same tax. New Regime wins on simplicity.';
+    }
+
+    /* data-out updates */
+    document.querySelector('#cx-taxreg [data-out="salary"]').textContent = Math.round(salary).toLocaleString('en-IN');
+    document.querySelector('#cx-taxreg [data-out="hra"]').textContent    = Math.round(hra).toLocaleString('en-IN');
+    document.querySelector('#cx-taxreg [data-out="rent"]').textContent   = Math.round(rent).toLocaleString('en-IN');
+    document.querySelector('#cx-taxreg [data-out="c80"]').textContent    = Math.round(c80).toLocaleString('en-IN');
+    document.querySelector('#cx-taxreg [data-out="nps"]').textContent    = Math.round(nps).toLocaleString('en-IN');
+    document.querySelector('#cx-taxreg [data-out="d80"]').textContent    = Math.round(d80).toLocaleString('en-IN');
+    document.querySelector('#cx-taxreg [data-out="hl"]').textContent     = Math.round(hl).toLocaleString('en-IN');
+  }
+
+  function syncPair(numId, rangeId){
+    var n = document.getElementById(numId), r = document.getElementById(rangeId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-tr-salary','cx-tr-salary-r'); syncPair('cx-tr-hra','cx-tr-hra-r');
+  syncPair('cx-tr-rent','cx-tr-rent-r');     syncPair('cx-tr-80c','cx-tr-80c-r');
+  syncPair('cx-tr-nps','cx-tr-nps-r');       syncPair('cx-tr-80d','cx-tr-80d-r');
+  syncPair('cx-tr-hl','cx-tr-hl-r');
+  document.getElementById('cx-tr-city').addEventListener('change', compute);
+  compute();
+})();
+</script>
