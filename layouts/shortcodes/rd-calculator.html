@@ -1,0 +1,170 @@
+<div class="cx-emi-widget" id="cx-rd">
+<style>
+  #cx-rd.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-rd.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-rd label { display: block; margin-bottom: 1.15rem; }
+  #cx-rd label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-rd label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-rd input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-rd input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-rd input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-rd .cx-emi-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-rd .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-rd .cx-emi-result > * { position: relative; }
+  #cx-rd .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-rd .cx-emi-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-rd .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-rd .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-rd .cx-emi-row strong { font-weight: 700; }
+  #cx-rd .cx-emi-bar {
+    display: flex; height: 9px; border-radius: 5px; overflow: hidden;
+    margin: 1rem 0 .5rem; background: rgba(255,255,255,.12);
+  }
+  #cx-rd .cx-emi-bar-p { background: #ffffff; transition: width .25s ease; }
+  #cx-rd .cx-emi-bar-i { background: rgba(255,255,255,.42); transition: width .25s ease; }
+  #cx-rd .cx-emi-legend {
+    display: flex; gap: 1rem; font-size: .76rem; color: rgba(255,255,255,.9);
+  }
+  #cx-rd .cx-emi-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block; vertical-align: middle; margin-right: .35rem;
+  }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Monthly deposit (₹) <em data-out="dep">5,000</em></span>
+    <input type="number" id="cx-rd-dep" min="100" max="10000000" step="500" value="5000" inputmode="numeric">
+    <input type="range" id="cx-rd-dep-r" min="500" max="100000" step="500" value="5000">
+  </label>
+  <label>
+    <span>Interest rate p.a. (%) <em data-out="rate">7.00%</em></span>
+    <input type="number" id="cx-rd-rate" min="1" max="15" step="0.25" value="7" inputmode="decimal">
+    <input type="range" id="cx-rd-rate-r" min="3" max="12" step="0.25" value="7">
+  </label>
+  <label>
+    <span>Tenure (months) <em data-out="months">24 months</em></span>
+    <input type="number" id="cx-rd-months" min="3" max="120" step="1" value="24" inputmode="numeric">
+    <input type="range" id="cx-rd-months-r" min="3" max="120" step="1" value="24">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Maturity Amount</div>
+  <div class="cx-emi-result-value" id="cx-rd-maturity">₹1,28,304</div>
+  <div class="cx-emi-row"><span>Total deposited</span> <strong id="cx-rd-invested">₹1,20,000</strong></div>
+  <div class="cx-emi-row"><span>Total interest earned</span> <strong id="cx-rd-interest">₹8,304</strong></div>
+  <div class="cx-emi-row"><span>Effective yield</span> <strong id="cx-rd-yield">6.92%</strong></div>
+  <div class="cx-emi-bar">
+    <div class="cx-emi-bar-p" id="cx-rd-bar-p" style="width:94%"></div>
+    <div class="cx-emi-bar-i" id="cx-rd-bar-i" style="width:6%"></div>
+  </div>
+  <div class="cx-emi-legend">
+    <span><span class="cx-emi-dot" style="background:#fff"></span>Deposited <span id="cx-rd-pct-p">94%</span></span>
+    <span><span class="cx-emi-dot" style="background:rgba(255,255,255,.4)"></span>Interest <span id="cx-rd-pct-i">6%</span></span>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  var dep   = document.getElementById('cx-rd-dep');
+  var depR  = document.getElementById('cx-rd-dep-r');
+  var rate  = document.getElementById('cx-rd-rate');
+  var rateR = document.getElementById('cx-rd-rate-r');
+  var mon   = document.getElementById('cx-rd-months');
+  var monR  = document.getElementById('cx-rd-months-r');
+
+  function compute() {
+    var R = parseFloat(dep.value) || 0;
+    var r = parseFloat(rate.value) || 0;
+    var n = parseInt(mon.value) || 0;
+
+    /* RBI/bank standard: quarterly compounding
+       Each monthly installment matures at: R × (1 + r/400)^(remaining_quarters)
+       remaining quarters for installment i (1-indexed) = (n - i + 1) months / 3 */
+    var qRate = r / 400;
+    var maturity = 0;
+    for (var i = 1; i <= n; i++) {
+      var remainingMonths = n - i + 1;
+      var quarters = remainingMonths / 3;
+      maturity += R * Math.pow(1 + qRate, quarters);
+    }
+
+    var invested = R * n;
+    var interest = maturity - invested;
+    var effectiveYield = invested > 0 ? (interest / invested) * (12 / n) * 100 : 0;
+    var pctP = maturity > 0 ? Math.round((invested / maturity) * 100) : 0;
+    var pctI = 100 - pctP;
+
+    document.getElementById('cx-rd-maturity').textContent  = fmtINR(maturity);
+    document.getElementById('cx-rd-invested').textContent  = fmtINR(invested);
+    document.getElementById('cx-rd-interest').textContent  = fmtINR(interest);
+    document.getElementById('cx-rd-yield').textContent     = effectiveYield.toFixed(2) + '%';
+    document.getElementById('cx-rd-bar-p').style.width     = pctP + '%';
+    document.getElementById('cx-rd-bar-i').style.width     = pctI + '%';
+    document.getElementById('cx-rd-pct-p').textContent     = pctP + '%';
+    document.getElementById('cx-rd-pct-i').textContent     = pctI + '%';
+
+    document.querySelector('#cx-rd [data-out="dep"]').textContent    = Math.round(R).toLocaleString('en-IN');
+    document.querySelector('#cx-rd [data-out="rate"]').textContent   = r.toFixed(2) + '%';
+    document.querySelector('#cx-rd [data-out="months"]').textContent = n + ' month' + (n !== 1 ? 's' : '');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(dep, depR);
+  syncPair(rate, rateR);
+  syncPair(mon, monR);
+  compute();
+})();
+</script>
