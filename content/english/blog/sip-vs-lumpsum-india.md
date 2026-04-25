@@ -9,6 +9,12 @@ related_calcs:
   - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
   - { label: "Lumpsum Calculator", url: "/investment/lumpsum-calculator/" }
   - { label: "Compound Interest Calculator", url: "/investment/compound-interest-calculator/" }
+ai_summary: |
+  - **Lumpsum mathematically beats SIP about 65% of the time** over 10-year windows in Indian equity, simply because more money sits invested for longer.
+  - Same ₹6 lakh / 10 years / 12% CAGR: lumpsum grows to **₹18.6L**, equivalent SIP only to **₹11.6L** — a ₹7L gap.
+  - **SIP exists because most people don't have a lumpsum**. If you're investing from monthly salary, SIP is the only viable option. The "rupee cost averaging" benefit is real but secondary.
+  - For ₹3-10 lakh chunks, **STP over 6-12 months** is the underrated middle path: park in liquid fund (~6%), transfer monthly into equity. Captures most of lumpsum's edge while smoothing entry-timing regret.
+  - **Decision rule**: have a chunk + 7+ year horizon → lumpsum (or STP if anxious). Investing from cash flow → SIP. Goal under 3 years → not equity at all. Run scenarios via the [SIP](/investment/sip-calculator/) and [lumpsum](/investment/lumpsum-calculator/) calculators.
 ---
 
 A friend gets a year-end bonus of ₹3 lakh and asks: should I lumpsum it into a flexi-cap fund, or run a ₹25,000 SIP for 12 months instead?

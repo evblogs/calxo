@@ -9,6 +9,12 @@ related_calcs:
   - { label: "PPF Calculator", url: "/investment/ppf-calculator/" }
   - { label: "SIP Calculator (for ELSS)", url: "/investment/sip-calculator/" }
   - { label: "Income Tax Calculator", url: "/tax/income-tax-calculator/" }
+ai_summary: |
+  - **PPF**: 7.1% guaranteed (govt-set), 15-year lock-in, fully tax-free (EEE status). Annual cap ₹1.5L. Sovereign-backed, zero credit risk.
+  - **ELSS**: 12-14% expected (market-linked), 3-year lock-in per instalment, LTCG taxed 12.5% above ₹1.25L/year exemption. No annual cap.
+  - **Over 15 years on ₹1.5L/year**: PPF maturity ≈ ₹40.7L (tax-free) vs ELSS @ 12% ≈ ₹62.7L pre-tax (~₹58L post-tax). ELSS wins by ~₹17L for someone able to hold through volatility.
+  - **Best answer for most people: split**. Younger investors weight 70-80% ELSS / 20-30% PPF. Mid-career: 50-50. Pre-retirement: flip to 70-80% PPF.
+  - **Under the new tax regime** (default FY 2025-26), no 80C deduction either way — at that point ELSS becomes a flexi-cap fund with worse liquidity. Drop ELSS, buy a regular flexi-cap. PPF remains useful regardless of regime.
 ---
 
 PPF and ELSS are the two most popular options under section 80C, and the "which is better" question gets asked a million times a year. The honest answer is **neither** — they're complementary, not competitive. If you're forced to pick only one in 2026, the answer depends on your age, tax regime, and risk tolerance.

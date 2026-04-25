@@ -126,6 +126,104 @@
   }
   .cx-post-aside-card a:hover { background: #dbeafe; color: #1d4ed8; }
 
+  /* AI Summary toggle (static pre-generated summary, no live API) */
+  .cx-ai-summary {
+    background: linear-gradient(135deg, #eff6ff 0%, #ecfeff 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 14px;
+    margin: 0 0 2.25rem;
+    padding: 0;
+    overflow: hidden;
+    transition: box-shadow .2s ease;
+  }
+  .cx-ai-summary[open] {
+    box-shadow: 0 8px 28px rgba(37, 99, 235, .10);
+  }
+  .cx-ai-summary > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    user-select: none;
+    color: #0f172a;
+  }
+  .cx-ai-summary > summary::-webkit-details-marker { display: none; }
+  .cx-ai-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, .25);
+  }
+  .cx-ai-icon svg { width: 16px; height: 16px; }
+  .cx-ai-label {
+    font-size: .98rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -.1px;
+  }
+  .cx-ai-meta {
+    color: #64748b;
+    font-size: .8rem;
+    font-weight: 500;
+    margin-left: auto;
+    padding-right: .35rem;
+  }
+  .cx-ai-chevron {
+    width: 18px; height: 18px;
+    color: #2563eb;
+    transition: transform .2s ease;
+    flex-shrink: 0;
+  }
+  .cx-ai-summary[open] .cx-ai-chevron { transform: rotate(180deg); }
+
+  .cx-ai-body {
+    padding: 0 1.4rem 1.35rem 4.05rem;
+    font-size: .98rem;
+    line-height: 1.7;
+    color: #1e293b;
+    border-top: 1px solid rgba(37, 99, 235, .12);
+    margin-top: .25rem;
+    padding-top: 1.1rem;
+  }
+  .cx-ai-body p { margin: 0 0 .75rem; }
+  .cx-ai-body p:last-child { margin: 0; }
+  .cx-ai-body ul {
+    margin: .25rem 0 .75rem; padding: 0; list-style: none;
+  }
+  .cx-ai-body li {
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: .55rem;
+  }
+  .cx-ai-body li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: .65rem;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+  }
+  .cx-ai-body strong { color: #0f172a; font-weight: 700; }
+  .cx-ai-body a { color: #2563eb; }
+  .cx-ai-disclaimer {
+    margin-top: .85rem;
+    padding-top: .65rem;
+    border-top: 1px dashed rgba(37, 99, 235, .25);
+    font-size: .72rem;
+    color: #64748b;
+    line-height: 1.5;
+  }
+  @media (max-width: 600px) {
+    .cx-ai-body { padding-left: 1.4rem; }
+  }
+
   /* Table of Contents */
   .cx-toc {
     background: #fff;
@@ -248,6 +346,23 @@
           <span>{{ .ReadingTime }} min read</span>
         </div>
       </header>
+
+      {{ with .Params.ai_summary }}
+      <details class="cx-ai-summary" id="cxAiSummary">
+        <summary>
+          <span class="cx-ai-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z"/><path d="M19 14L19.5 16.5L22 17L19.5 17.5L19 20L18.5 17.5L16 17L18.5 16.5L19 14Z" opacity=".7"/><path d="M5 14L5.5 16.5L8 17L5.5 17.5L5 20L4.5 17.5L2 17L4.5 16.5L5 14Z" opacity=".5"/></svg>
+          </span>
+          <span class="cx-ai-label">Quick AI Summary</span>
+          <span class="cx-ai-meta">~30 second read</span>
+          <svg class="cx-ai-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="cx-ai-body">
+          {{ . | markdownify }}
+          <div class="cx-ai-disclaimer">AI-assisted summary, manually reviewed and locked. Not regenerated on each visit. Read the full article for the actual analysis and tables.</div>
+        </div>
+      </details>
+      {{ end }}
 
       <div class="cx-post-body" itemprop="articleBody">
         {{ .Content }}

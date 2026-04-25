@@ -9,6 +9,12 @@ related_calcs:
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
+ai_summary: |
+  - **Budget 2025 raised the new-regime ₹87A rebate to ₹60,000**, so salaried income up to **₹12.75 lakh now pays zero tax** (₹12L taxable after the ₹75K standard deduction).
+  - For most salaried Indians, **the new regime now wins**. Old regime only beats new if your **deductions exceed ~₹4.75 lakh** — typically requires HRA (metro), home loan interest, 80C maxed, 80D maxed, NPS 80CCD(1B) all stacked.
+  - The new regime **removes 80C, 80D, HRA, self-occupied home loan interest, LTA** and most other deductions. Standard deduction (₹75K) and employer NPS 80CCD(2) still allowed.
+  - At ₹15L CTC: new regime tax is ₹97,500 vs old regime ~₹2.55L (no deductions) or ~₹86K (full deduction stack). Cross-over moves with CTC.
+  - **Bottom line**: default to new regime. Only switch to old if you have a metro rental + home loan + maxed 80C/80D *and* CTC ≥ ₹15L. Run both regimes through the [income tax calculator](/tax/income-tax-calculator/) before declaring to payroll.
 ---
 
 The Union Budget 2025 effectively killed the old tax regime for most salaried people. Not by removing it — but by raising the new regime's section 87A rebate to ₹60,000, which means anyone earning up to **₹12.75 lakh in gross salary pays zero income tax** under the new regime.
