@@ -162,30 +162,51 @@
   }
 
   .cx-post-body {
-    font-size: 1.08rem;
-    line-height: 1.78;
+    font-size: clamp(1rem, 1.05vw + .85rem, 1.07rem);
+    line-height: 1.7;
     color: #1e293b;
   }
-  .cx-post-body p { margin: 0 0 1.2rem; }
+  .cx-post-body p { margin: 0 0 1.1rem; }
   .cx-post-body h2 {
-    font-size: 1.7rem;
+    font-size: clamp(1.4rem, 1.4vw + 1rem, 1.65rem);
     font-weight: 700;
     color: #0f172a;
-    margin: 2.6rem 0 1rem;
+    margin: 2.4rem 0 .9rem;
     line-height: 1.25;
     letter-spacing: -.5px;
     scroll-margin-top: 80px;
   }
   .cx-post-body h3 {
-    font-size: 1.22rem;
+    font-size: clamp(1.1rem, .8vw + .9rem, 1.2rem);
     font-weight: 700;
     color: #0f172a;
-    margin: 1.85rem 0 .65rem;
+    margin: 1.7rem 0 .55rem;
     letter-spacing: -.2px;
+    line-height: 1.35;
     scroll-margin-top: 80px;
   }
-  .cx-post-body ul, .cx-post-body ol { margin: 0 0 1.2rem 1.4rem; padding: 0; }
-  .cx-post-body li { margin-bottom: .5rem; }
+  .cx-post-body h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 1.4rem 0 .5rem;
+    letter-spacing: -.1px;
+  }
+  .cx-post-body ul, .cx-post-body ol {
+    margin: .25rem 0 1.2rem 1.4rem;
+    padding: 0;
+    line-height: 1.6;
+  }
+  .cx-post-body li { margin-bottom: .35rem; }
+  .cx-post-body li > ul, .cx-post-body li > ol { margin: .2rem 0 .35rem 1.2rem; }
+  .cx-post-body li:last-child { margin-bottom: 0; }
+  .cx-post-body small, .cx-post-body figcaption { font-size: .85rem; color: #64748b; }
+  @media (max-width: 600px) {
+    .cx-post-body p { margin-bottom: .95rem; }
+    .cx-post-body h2 { margin: 1.85rem 0 .65rem; }
+    .cx-post-body h3 { margin: 1.35rem 0 .45rem; }
+    .cx-post-body ul, .cx-post-body ol { margin-left: 1.2rem; }
+  }
   .cx-post-body strong { color: #0f172a; font-weight: 700; }
   .cx-post-body a { color: #2563eb; }
   .cx-post-body table {
