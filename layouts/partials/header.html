@@ -8,39 +8,73 @@
     <button class="cx-mobile-toggle" id="cxMobileToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-
-    <div class="cx-header-search" id="cxHeaderSearch">
-      <form action="/search/" method="get" role="search" class="cx-header-search-form" id="cxHeaderSearchForm" autocomplete="off">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
-        </svg>
-        <input type="search" name="q" id="cxHeaderSearchInput" placeholder="Search calculators…" aria-label="Search calculators" aria-autocomplete="list" aria-controls="cxHeaderResults" aria-expanded="false">
-      </form>
-      <div class="cx-header-results" id="cxHeaderResults" role="listbox" aria-label="Search suggestions" hidden></div>
-    </div>
   </div>
 
   {{/* ═══════════════════════ Mega-menu navigation ═══════════════════════ */}}
   {{ $site := .Site }}
   {{ $currentURL := .RelPermalink }}
 
-  {{/* Build sections list from menu.main, with calculator pages */}}
+  {{/* Per-section column groupings (ClearTax-style multi-column panels).
+       Each column has a header label and an ordered list of calculator slugs. */}}
+  {{ $columnsBySection := dict
+    "loan" (slice
+      (dict "label" "Loan calculators" "slugs" (slice "emi-calculator" "foir-calculator"))
+    )
+    "investment" (slice
+      (dict "label" "Mutual funds" "slugs" (slice "sip-calculator" "lumpsum-calculator" "compound-interest-calculator"))
+      (dict "label" "Fixed income" "slugs" (slice "fd-calculator" "ppf-calculator"))
+    )
+    "tax" (slice
+      (dict "label" "Income tax" "slugs" (slice "income-tax-calculator"))
+    )
+    "salary" (slice
+      (dict "label" "Salary &amp; payroll" "slugs" (slice "hra-calculator" "takehome-calculator"))
+      (dict "label" "Exit benefits" "slugs" (slice "gratuity-calculator"))
+    )
+    "gst" (slice
+      (dict "label" "GST" "slugs" (slice "gst-calculator"))
+    )
+    "conversion" (slice
+      (dict "label" "Currency" "slugs" (slice "currency-converter"))
+    )
+  }}
+
+  {{/* Slug → SVG icon path-data mapping for the icon container next to each item */}}
+  {{ $iconBySlug := dict
+    "emi-calculator"               "M3 11.5L12 4l9 7.5|M5 10v10h14V10"
+    "foir-calculator"              "M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z|M9 12l2 2 4-4"
+    "sip-calculator"               "M3 17l6-6 4 4 8-8|M14 7h7v7"
+    "lumpsum-calculator"           "M9 12m-6 0a6 6 0 1 0 12 0a6 6 0 1 0-12 0|M15 6a6 6 0 0 1 0 12"
+    "compound-interest-calculator" "M3 8l9-4 9 4-9 4z|M3 12l9 4 9-4|M3 16l9 4 9-4"
+    "fd-calculator"                "M3 4h18v16H3z|M12 12m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0-7 0|M12 8.5V12"
+    "ppf-calculator"               "M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z|M12 8v8|M8 12h8"
+    "income-tax-calculator"        "M5 3h14v18l-3-2-3 2-3-2-2 2-3-2z|M9 8h6M9 12h6M9 16h4"
+    "gst-calculator"               "M5 3h14v18H5z|M8 7h8M8 11h2M12 11h2M16 11h.01M8 15h2M12 15h2M16 15h.01M8 19h2M12 19h2M16 19h.01"
+    "hra-calculator"               "M4 21V6l8-3 8 3v15|M9 9h.01M13 9h.01M9 13h.01M13 13h.01M9 17h.01M13 17h.01"
+    "takehome-calculator"          "M3 7h17a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1h13|M17 13a1 1 0 100 0"
+    "gratuity-calculator"          "M3 8h18v13H3z|M3 12h18M12 8v13|M7.5 8a2.5 2.5 0 010-5C9 3 12 6 12 8c0-2 3-5 4.5-5a2.5 2.5 0 010 5"
+    "currency-converter"           "M7 4l-4 4 4 4|M3 8h14|M17 20l4-4-4-4|M21 16H7"
+  }}
+
+  {{/* Build sections list from menu.main, attaching $columnsBySection groupings */}}
   {{ $sections := slice }}
   {{ range $site.Menus.main }}
     {{ $secName := trim .URL "/" }}
     {{ if and $secName (ne $secName "blog") }}
       {{ $pages := where (where $site.RegularPages "Section" $secName) "Type" "calculator" }}
-      {{ if not $pages }}
-        {{ $pages = where $site.RegularPages "Section" $secName }}
-      {{ end }}
-      {{ if $pages }}
-        {{ $sections = $sections | append (dict "name" .Name "url" .URL "section" $secName "pages" ($pages.ByTitle) "isMega" true) }}
+      {{ if not $pages }}{{ $pages = where $site.RegularPages "Section" $secName }}{{ end }}
+      {{ $cols := index $columnsBySection $secName }}
+      {{ if and $pages $cols }}
+        {{ $sections = $sections | append (dict "name" .Name "url" .URL "section" $secName "pages" $pages "cols" $cols "isMega" true) }}
+      {{ else if $pages }}
+        {{/* Fallback: single column with section name */}}
+        {{ $fallback := slice (dict "label" .Name "slugs" (slice)) }}
+        {{ $sections = $sections | append (dict "name" .Name "url" .URL "section" $secName "pages" $pages "cols" $fallback "isMega" true) }}
       {{ else }}
-        {{/* Blog or other simple links */}}
-        {{ $sections = $sections | append (dict "name" .Name "url" .URL "section" $secName "pages" (slice) "isMega" false) }}
+        {{ $sections = $sections | append (dict "name" .Name "url" .URL "section" $secName "pages" (slice) "cols" (slice) "isMega" false) }}
       {{ end }}
     {{ else if eq $secName "blog" }}
-      {{ $sections = $sections | append (dict "name" .Name "url" .URL "section" $secName "pages" (slice) "isMega" false) }}
+      {{ $sections = $sections | append (dict "name" .Name "url" .URL "section" $secName "pages" (slice) "cols" (slice) "isMega" false) }}
     {{ end }}
   {{ end }}
 
@@ -51,6 +85,7 @@
       </li>
 
       {{ range $sections }}
+        {{ $sec := . }}
         {{ $sectionActive := eq $.Section .section }}
         <li class="cx-nav-li {{ if .isMega }}cx-nav-has-mega{{ end }}">
           <a href="{{ .url }}" class="cx-nav-top {{ if $sectionActive }}cx-nav-top-active{{ end }}">
@@ -61,24 +96,35 @@
           {{ if .isMega }}
           <div class="cx-mega-panel" role="menu" aria-label="{{ .name }} calculators">
             <div class="cx-mega-inner">
-              <div class="cx-mega-head">
-                <div>
-                  <div class="cx-mega-eyebrow">{{ .name }}</div>
-                  <h3 class="cx-mega-title">All {{ .name }} calculators</h3>
+              <div class="cx-mega-cols cx-mega-cols-{{ len .cols }}">
+                {{ range $col := .cols }}
+                <div class="cx-mega-col">
+                  <div class="cx-mega-col-head">{{ .label | safeHTML }}</div>
+                  <ul class="cx-mega-col-list">
+                    {{ range $slug := .slugs }}
+                      {{ range where $sec.pages "File.BaseFileName" $slug }}
+                        {{ $shortTitle := .Title }}
+                        {{ if in .Title ":" }}{{ $shortTitle = index (split .Title ":") 0 }}{{ end }}
+                        {{ $iconPaths := index $iconBySlug $slug | default "M5 3h14v18H5z" }}
+                        <li>
+                          <a href="{{ .RelPermalink }}" class="cx-mega-row {{ if eq $currentURL .RelPermalink }}cx-mega-row-active{{ end }}" role="menuitem">
+                            <span class="cx-mega-icon" aria-hidden="true">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                {{ range split $iconPaths "|" }}<path d="{{ . }}"/>{{ end }}
+                              </svg>
+                            </span>
+                            <span class="cx-mega-label">{{ $shortTitle }}</span>
+                          </a>
+                        </li>
+                      {{ end }}
+                    {{ end }}
+                  </ul>
                 </div>
-                <a href="{{ .url }}" class="cx-mega-overview">View overview <span aria-hidden="true">→</span></a>
-              </div>
-
-              <div class="cx-mega-grid">
-                {{ range .pages }}
-                  {{ $shortTitle := .Title }}
-                  {{ if in .Title ":" }}{{ $shortTitle = index (split .Title ":") 0 }}{{ end }}
-                  <a href="{{ .RelPermalink }}" class="cx-mega-item {{ if eq $currentURL .RelPermalink }}cx-mega-item-active{{ end }}" role="menuitem">
-                    <div class="cx-mega-item-title">{{ $shortTitle }}</div>
-                    {{ with .Params.description }}<div class="cx-mega-item-desc">{{ . | truncate 95 }}</div>{{ end }}
-                  </a>
                 {{ end }}
               </div>
+              <a href="{{ .url }}" class="cx-mega-overview-link">
+                View all {{ .name | lower }} calculators →
+              </a>
             </div>
           </div>
           {{ end }}
@@ -101,142 +147,14 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 1rem 1.5rem;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1.5rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
   }
   .cx-brand { display: flex; align-items: center; }
   .cx-brand-logo { height: 38px; width: auto; display: block; }
 
-  .cx-header-search { justify-self: end; min-width: 280px; max-width: 420px; width: 100%; position: relative; }
-  .cx-header-search-form {
-    display: flex;
-    align-items: center;
-    gap: .55rem;
-    background: #f1f5f9;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: .55rem .85rem;
-    transition: border-color .15s ease, background .15s ease;
-  }
-  .cx-header-search-form:focus-within {
-    border-color: #2563eb;
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
-  }
-  .cx-header-search-form svg { color: #64748b; flex-shrink: 0; }
-  .cx-header-search-form input {
-    flex: 1;
-    border: 0;
-    background: transparent;
-    outline: none;
-    font-size: .92rem;
-    color: #0f172a;
-    font-weight: 500;
-  }
-  .cx-header-search-form input::placeholder { color: #94a3b8; }
-
-  /* Autocomplete dropdown */
-  .cx-header-results {
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0; right: 0;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: 0 14px 40px rgba(15, 23, 42, .14);
-    z-index: 250;
-    max-height: 78vh;
-    overflow-y: auto;
-    padding: .35rem;
-  }
-  .cx-header-results[hidden] { display: none; }
-  .cx-hr-section {
-    font-size: .68rem;
-    text-transform: uppercase;
-    letter-spacing: 1.3px;
-    color: #94a3b8;
-    font-weight: 700;
-    padding: .65rem .85rem .35rem;
-  }
-  .cx-hr-item {
-    display: block;
-    padding: .65rem .85rem;
-    border-radius: 8px;
-    text-decoration: none;
-    color: inherit;
-    transition: background .12s ease;
-    cursor: pointer;
-  }
-  .cx-hr-item:hover, .cx-hr-item.cx-hr-active {
-    background: #eff6ff;
-    text-decoration: none;
-  }
-  .cx-hr-cat {
-    font-size: .68rem;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: #2563eb;
-    font-weight: 700;
-    margin-bottom: .15rem;
-  }
-  .cx-hr-title {
-    font-size: .92rem;
-    font-weight: 600;
-    color: #0f172a;
-    line-height: 1.3;
-    margin-bottom: .15rem;
-  }
-  .cx-hr-title mark {
-    background: #fef08a;
-    color: #0f172a;
-    padding: 0 .15rem;
-    border-radius: 2px;
-  }
-  .cx-hr-desc {
-    font-size: .8rem;
-    color: #64748b;
-    line-height: 1.45;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-  .cx-hr-empty {
-    padding: 1.5rem;
-    text-align: center;
-    color: #64748b;
-    font-size: .9rem;
-  }
-  .cx-hr-empty strong { color: #0f172a; }
-  .cx-hr-footer {
-    border-top: 1px solid #f1f5f9;
-    padding: .7rem .85rem;
-    font-size: .82rem;
-    color: #64748b;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: .25rem;
-  }
-  .cx-hr-footer kbd {
-    background: #f1f5f9;
-    border: 1px solid #e2e8f0;
-    border-bottom-width: 2px;
-    border-radius: 4px;
-    padding: 1px 5px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: .72rem;
-    color: #1e293b;
-  }
-  .cx-hr-footer-keys { display: flex; gap: .35rem; align-items: center; }
-  .cx-hr-footer-link {
-    color: #2563eb;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .cx-hr-footer-link:hover { text-decoration: underline; }
 
   .cx-mobile-toggle {
     display: none;
@@ -321,82 +239,93 @@
   .cx-mega-inner {
     max-width: 1180px;
     margin: 0 auto;
-    padding: 2rem 1.5rem 2.25rem;
+    padding: 2.25rem 1.75rem 1.5rem;
   }
-  .cx-mega-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-bottom: 1.1rem;
-    margin-bottom: 1.4rem;
-    border-bottom: 1px solid #f1f5f9;
-    flex-wrap: wrap;
+  .cx-mega-cols {
+    display: grid;
+    gap: 2.5rem 3rem;
+    grid-template-columns: 1fr;
   }
-  .cx-mega-eyebrow {
-    font-size: .68rem;
+  .cx-mega-cols-2 { grid-template-columns: 1fr 1fr; }
+  .cx-mega-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 920px) {
+    .cx-mega-cols-2, .cx-mega-cols-3 { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+  .cx-mega-col-head {
+    font-size: .72rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #2563eb;
     font-weight: 700;
-    margin-bottom: .25rem;
+    color: #94a3b8;
+    padding-bottom: .65rem;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 1rem;
   }
-  .cx-mega-title {
-    font-size: 1.45rem;
-    font-weight: 700;
-    color: #0f172a;
-    letter-spacing: -.5px;
+  .cx-mega-col-list {
+    list-style: none;
+    padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
   }
-  .cx-mega-overview {
-    color: #2563eb;
-    font-size: .88rem;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .cx-mega-overview:hover { text-decoration: underline; }
-  .cx-mega-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: .55rem 1.5rem;
-  }
-  .cx-mega-item {
-    display: block;
-    padding: .75rem .85rem;
+  .cx-mega-row {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    padding: .65rem .55rem;
     border-radius: 8px;
     text-decoration: none;
     color: inherit;
-    border: 1px solid transparent;
-    transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    transition: background .15s ease;
   }
-  .cx-mega-item:hover {
+  .cx-mega-row:hover {
     background: #f8fafc;
-    border-color: #e2e8f0;
     text-decoration: none;
-    transform: translateX(2px);
   }
-  .cx-mega-item-active {
-    background: #dbeafe;
-    border-color: #bfdbfe;
+  .cx-mega-row-active {
+    background: #eff6ff;
   }
-  .cx-mega-item-title {
-    font-size: .92rem;
-    font-weight: 700;
+  .cx-mega-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    transition: background .15s ease;
+  }
+  .cx-mega-row:hover .cx-mega-icon { background: #dbeafe; }
+  .cx-mega-row-active .cx-mega-icon { background: #2563eb; color: #fff; }
+  .cx-mega-label {
+    font-size: .98rem;
+    font-weight: 600;
     color: #0f172a;
     line-height: 1.3;
-    margin-bottom: .15rem;
   }
-  .cx-mega-item-active .cx-mega-item-title { color: #1d4ed8; }
-  .cx-mega-item-desc {
-    font-size: .8rem;
-    color: #64748b;
-    line-height: 1.5;
+  .cx-mega-row-active .cx-mega-label { color: #1d4ed8; }
+
+  .cx-mega-overview-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.75rem;
+    padding: .55rem 0;
+    font-size: .9rem;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+    border-top: 1px solid #f1f5f9;
+    width: 100%;
+    padding-top: 1.1rem;
   }
+  .cx-mega-overview-link:hover { text-decoration: underline; }
 
   /* ═══════════════════════ Mobile responsive ═══════════════════════ */
   @media (max-width: 880px) {
-    .cx-header-top { grid-template-columns: auto auto; gap: .5rem; padding: .85rem 1rem; }
-    .cx-header-search { display: none; }
+    .cx-header-top { gap: .5rem; padding: .85rem 1rem; }
     .cx-mobile-toggle { display: flex; }
 
     .cx-mega-nav {
@@ -445,10 +374,14 @@
       max-height: 800px;
       transition-delay: 0s;
     }
-    .cx-mega-inner { padding: 0 .5rem 1rem 2rem; }
-    .cx-mega-head { display: none; }
-    .cx-mega-grid { grid-template-columns: 1fr; gap: 0; }
-    .cx-mega-item { padding: .55rem .75rem; }
+    .cx-mega-inner { padding: .5rem 1rem 1rem 2rem; }
+    .cx-mega-cols { grid-template-columns: 1fr !important; gap: 1rem; }
+    .cx-mega-col-head { font-size: .65rem; padding-bottom: .4rem; margin-bottom: .55rem; }
+    .cx-mega-row { padding: .5rem .55rem; gap: .65rem; }
+    .cx-mega-icon { width: 32px; height: 32px; }
+    .cx-mega-icon svg { width: 16px; height: 16px; }
+    .cx-mega-label { font-size: .92rem; }
+    .cx-mega-overview-link { margin-top: .5rem; padding-top: .65rem; font-size: .85rem; }
 
     body.cx-menu-open { overflow: hidden; }
     .cx-mobile-toggle { z-index: 201; }
@@ -499,191 +432,3 @@
 })();
 </script>
 
-{{/* ═══════════════════════ Live search autocomplete (Google-style) ═══════════════════════ */}}
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
-<script>
-(function () {
-  var input = document.getElementById('cxHeaderSearchInput');
-  var resultsEl = document.getElementById('cxHeaderResults');
-  var form = document.getElementById('cxHeaderSearchForm');
-  var wrap = document.getElementById('cxHeaderSearch');
-  if (!input || !resultsEl) return;
-
-  var fuse = null;
-  var allItems = [];
-  var currentItems = [];
-  var activeIndex = -1;
-  var loadStarted = false;
-
-  var catLabels = {
-    'loan': 'Loan',
-    'investment': 'Investment',
-    'tax': 'Tax',
-    'salary': 'Salary & HR',
-    'gst': 'GST',
-    'conversion': 'Conversion',
-    'blog': 'Blog'
-  };
-
-  function categoryFromUrl(url) {
-    try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
-    var m = url.match(/^\/([^/]+)\//);
-    return m ? (catLabels[m[1]] || m[1]) : '';
-  }
-  function escapeHtml(s) {
-    return (s || '').replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
-  function highlight(text, query) {
-    if (!query) return escapeHtml(text);
-    var tokens = query.split(/\s+/).filter(Boolean).map(function (t) {
-      return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    });
-    if (!tokens.length) return escapeHtml(text);
-    var re = new RegExp('(' + tokens.join('|') + ')', 'gi');
-    return escapeHtml(text).replace(re, '<mark>$1</mark>');
-  }
-
-  function loadIndex() {
-    if (loadStarted) return;
-    loadStarted = true;
-    fetch('/index.json')
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        allItems = (Array.isArray(data) ? data : []).filter(function (it) { return it && it.title; });
-        fuse = new Fuse(allItems, {
-          keys: [
-            { name: 'title', weight: 0.6 },
-            { name: 'description', weight: 0.25 },
-            { name: 'contents', weight: 0.15 }
-          ],
-          includeScore: true,
-          threshold: 0.4,
-          ignoreLocation: true,
-          minMatchCharLength: 2
-        });
-        // If user already typed something, run search
-        if (input.value.trim()) runSearch(input.value);
-      })
-      .catch(function () {});
-  }
-
-  function open() { resultsEl.hidden = false; input.setAttribute('aria-expanded', 'true'); }
-  function close() { resultsEl.hidden = true; input.setAttribute('aria-expanded', 'false'); activeIndex = -1; }
-
-  function setActive(idx) {
-    var nodes = resultsEl.querySelectorAll('.cx-hr-item');
-    nodes.forEach(function (n) { n.classList.remove('cx-hr-active'); });
-    if (idx >= 0 && idx < nodes.length) {
-      nodes[idx].classList.add('cx-hr-active');
-      nodes[idx].scrollIntoView({ block: 'nearest' });
-      activeIndex = idx;
-    } else {
-      activeIndex = -1;
-    }
-  }
-
-  function render(items, query) {
-    currentItems = items;
-    activeIndex = -1;
-
-    if (!items.length) {
-      resultsEl.innerHTML =
-        '<div class="cx-hr-empty">No matches for <strong>"' + escapeHtml(query) + '"</strong>. ' +
-        '<a href="/search/?q=' + encodeURIComponent(query) + '" class="cx-hr-footer-link">Search anyway →</a></div>';
-      open();
-      return;
-    }
-
-    var html = '<div class="cx-hr-section">Top matches</div>';
-    items.slice(0, 6).forEach(function (item) {
-      var url = item.permalink || item.url || '';
-      try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
-      var cat = categoryFromUrl(url);
-      html += '<a class="cx-hr-item" href="' + escapeHtml(url) + '">' +
-        (cat ? '<div class="cx-hr-cat">' + escapeHtml(cat) + '</div>' : '') +
-        '<div class="cx-hr-title">' + highlight(item.title, query) + '</div>' +
-        (item.description ? '<div class="cx-hr-desc">' + highlight(item.description.slice(0, 120), query) + '</div>' : '') +
-        '</a>';
-    });
-    if (items.length > 6) {
-      html += '<a class="cx-hr-item" href="/search/?q=' + encodeURIComponent(query) + '">' +
-        '<div class="cx-hr-title" style="color:#2563eb">View all ' + items.length + ' results →</div>' +
-        '</a>';
-    }
-    html += '<div class="cx-hr-footer">' +
-      '<div class="cx-hr-footer-keys"><kbd>↑</kbd><kbd>↓</kbd> navigate <kbd>↵</kbd> open <kbd>esc</kbd> close</div>' +
-      '<a href="/search/?q=' + encodeURIComponent(query) + '" class="cx-hr-footer-link">All results →</a>' +
-      '</div>';
-    resultsEl.innerHTML = html;
-    open();
-  }
-
-  function runSearch(q) {
-    q = (q || '').trim();
-    if (!q) { close(); return; }
-    if (!fuse) { loadIndex(); return; }
-    var matches = fuse.search(q).map(function (r) { return r.item; });
-    render(matches, q);
-  }
-
-  // Live search on input
-  input.addEventListener('input', function () { runSearch(input.value); });
-  input.addEventListener('focus', function () {
-    loadIndex();
-    if (input.value.trim()) runSearch(input.value);
-  });
-
-  // Keyboard navigation
-  input.addEventListener('keydown', function (e) {
-    if (resultsEl.hidden) {
-      if (e.key === 'ArrowDown') { input.dispatchEvent(new Event('focus')); }
-      return;
-    }
-    var nodes = resultsEl.querySelectorAll('.cx-hr-item');
-    if (!nodes.length) return;
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setActive((activeIndex + 1) % nodes.length);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setActive((activeIndex - 1 + nodes.length) % nodes.length);
-    } else if (e.key === 'Enter') {
-      if (activeIndex >= 0 && nodes[activeIndex]) {
-        e.preventDefault();
-        window.location.href = nodes[activeIndex].href;
-      }
-    } else if (e.key === 'Escape') {
-      close();
-      input.blur();
-    }
-  });
-
-  // Submit handler — allow form submit fallback to /search/?q=
-  form.addEventListener('submit', function (e) {
-    if (activeIndex >= 0) {
-      var nodes = resultsEl.querySelectorAll('.cx-hr-item');
-      if (nodes[activeIndex]) {
-        e.preventDefault();
-        window.location.href = nodes[activeIndex].href;
-      }
-    }
-    // Otherwise let the form submit naturally to /search/?q=
-  });
-
-  // Click outside closes
-  document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
-  });
-
-  // Cmd-K / Ctrl-K to focus
-  document.addEventListener('keydown', function (e) {
-    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
-      e.preventDefault();
-      input.focus();
-      input.select();
-    }
-  });
-})();
-</script>
