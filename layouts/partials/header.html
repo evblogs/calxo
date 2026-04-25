@@ -17,18 +17,21 @@
        Each column has a header label and an ordered list of calculator slugs. */}}
   {{ $columnsBySection := dict
     "loan" (slice
-      (dict "label" "Loan calculators" "slugs" (slice "emi-calculator" "foir-calculator"))
+      (dict "label" "EMI calculators" "slugs" (slice "emi-calculator" "car-loan-calculator" "education-loan-calculator"))
+      (dict "label" "Eligibility &amp; costs" "slugs" (slice "foir-calculator" "home-loan-eligibility" "stamp-duty-calculator"))
     )
     "investment" (slice
       (dict "label" "Mutual funds" "slugs" (slice "sip-calculator" "lumpsum-calculator" "compound-interest-calculator"))
-      (dict "label" "Fixed income" "slugs" (slice "fd-calculator" "ppf-calculator"))
+      (dict "label" "Fixed income" "slugs" (slice "fd-calculator" "rd-calculator"))
+      (dict "label" "Retirement &amp; long-term" "slugs" (slice "ppf-calculator" "nps-calculator"))
     )
     "tax" (slice
-      (dict "label" "Income tax" "slugs" (slice "income-tax-calculator"))
+      (dict "label" "Income tax" "slugs" (slice "income-tax-calculator" "old-vs-new-tax-regime"))
+      (dict "label" "Capital gains &amp; TDS" "slugs" (slice "capital-gains-calculator" "tds-calculator"))
     )
     "salary" (slice
       (dict "label" "Salary &amp; payroll" "slugs" (slice "hra-calculator" "takehome-calculator"))
-      (dict "label" "Exit benefits" "slugs" (slice "gratuity-calculator"))
+      (dict "label" "Retirement benefits" "slugs" (slice "gratuity-calculator" "epf-calculator"))
     )
     "gst" (slice
       (dict "label" "GST" "slugs" (slice "gst-calculator"))
@@ -41,17 +44,27 @@
   {{/* Slug → SVG icon path-data mapping for the icon container next to each item */}}
   {{ $iconBySlug := dict
     "emi-calculator"               "M3 11.5L12 4l9 7.5|M5 10v10h14V10"
+    "car-loan-calculator"          "M5 17h14|M5 17a2 2 0 002 2|M19 17a2 2 0 01-2 2|M5 17v-5l2-5h10l2 5v5|M7 13h10|M8 17a1 1 0 100 2 1 1 0 000-2zM16 17a1 1 0 100 2 1 1 0 000-2z"
+    "education-loan-calculator"    "M2 7l10-4 10 4-10 4z|M6 9.5v4c0 1.5 3 3 6 3s6-1.5 6-3v-4|M22 7v6"
     "foir-calculator"              "M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z|M9 12l2 2 4-4"
+    "home-loan-eligibility"        "M3 11.5L12 4l9 7.5|M5 10v10h14V10|M9 14l2 2 4-4"
+    "stamp-duty-calculator"        "M5 3h14v18H5z|M9 7h6M9 11h6M9 15h4|M16 18l2 2 4-4"
     "sip-calculator"               "M3 17l6-6 4 4 8-8|M14 7h7v7"
     "lumpsum-calculator"           "M9 12m-6 0a6 6 0 1 0 12 0a6 6 0 1 0-12 0|M15 6a6 6 0 0 1 0 12"
     "compound-interest-calculator" "M3 8l9-4 9 4-9 4z|M3 12l9 4 9-4|M3 16l9 4 9-4"
     "fd-calculator"                "M3 4h18v16H3z|M12 12m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0-7 0|M12 8.5V12"
+    "rd-calculator"                "M3 6h18M3 12h18M3 18h18|M7 4v16M17 4v16"
     "ppf-calculator"               "M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z|M12 8v8|M8 12h8"
+    "nps-calculator"               "M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z|M9 12l2 2 4-4|M12 21v-3"
     "income-tax-calculator"        "M5 3h14v18l-3-2-3 2-3-2-2 2-3-2z|M9 8h6M9 12h6M9 16h4"
+    "old-vs-new-tax-regime"        "M12 3v18M5 7h14M5 17h14|M5 7l-2 6h6zM19 7l-2 6h6z"
+    "capital-gains-calculator"     "M3 17l6-6 4 4 8-8|M14 7h7v7|M5 21h14"
+    "tds-calculator"               "M5 3h14v18l-3-2-3 2-3-2-2 2-3-2z|M9 8h6M9 12h4|M14 16l3 3 4-4"
     "gst-calculator"               "M5 3h14v18H5z|M8 7h8M8 11h2M12 11h2M16 11h.01M8 15h2M12 15h2M16 15h.01M8 19h2M12 19h2M16 19h.01"
     "hra-calculator"               "M4 21V6l8-3 8 3v15|M9 9h.01M13 9h.01M9 13h.01M13 13h.01M9 17h.01M13 17h.01"
     "takehome-calculator"          "M3 7h17a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1h13|M17 13a1 1 0 100 0"
     "gratuity-calculator"          "M3 8h18v13H3z|M3 12h18M12 8v13|M7.5 8a2.5 2.5 0 010-5C9 3 12 6 12 8c0-2 3-5 4.5-5a2.5 2.5 0 010 5"
+    "epf-calculator"               "M4 7h16v13H4z|M9 7V5a3 3 0 016 0v2|M12 11v6M9 14h6"
     "currency-converter"           "M7 4l-4 4 4 4|M3 8h14|M17 20l4-4-4-4|M21 16H7"
   }}
 
