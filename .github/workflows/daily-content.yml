@@ -1,0 +1,60 @@
+name: Daily Content Generator
+
+on:
+  schedule:
+    # 3:00 AM UTC = 8:30 AM IST — runs every day
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    # Allow manual trigger from GitHub Actions UI
+    inputs:
+      posts_per_run:
+        description: 'Number of posts to generate (default: 2)'
+        required: false
+        default: '2'
+
+permissions:
+  contents: write   # needed to commit and push new blog files
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0   # full history needed for rebase
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install anthropic google-auth google-auth-httplib2 requests
+
+      - name: Configure git identity
+        run: |
+          git config user.email "calxo-bot@calxo.in"
+          git config user.name  "Calxo Content Bot"
+
+      - name: Write GSC service account credentials
+        run: |
+          echo '${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}' > /tmp/gsc-key.json
+
+      - name: Generate and publish content
+        env:
+          ANTHROPIC_API_KEY:    ${{ secrets.ANTHROPIC_API_KEY }}
+          GSC_CREDENTIALS_PATH: /tmp/gsc-key.json
+          POSTS_PER_RUN:        ${{ github.event.inputs.posts_per_run || '2' }}
+        run: |
+          python3 pythonfiles/calxo_daily_content.py
+
+      - name: Clean up credentials
+        if: always()
+        run: rm -f /tmp/gsc-key.json
