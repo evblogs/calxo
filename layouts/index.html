@@ -200,11 +200,22 @@
   font-size: .85rem;
   color: rgba(255,255,255,.75);
 }
-.cx-hero-tags span {
+.cx-hero-tags a {
   background: rgba(255,255,255,.1);
-  padding: .3rem .8rem;
+  padding: .35rem .9rem;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+}
+.cx-hero-tags a:hover {
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.4);
+  color: #fff;
+  transform: translateY(-1px);
+  text-decoration: none;
 }
 
 /* CATEGORY GRID */
@@ -456,12 +467,14 @@
       <div class="cx-suggest" id="cxHeroSuggest" role="listbox" aria-label="Search suggestions" hidden></div>
     </div>
     <div class="cx-hero-tags">
-      <span>EMI Calculator</span>
-      <span>SIP Calculator</span>
-      <span>Income Tax</span>
-      <span>GST</span>
-      <span>FD Maturity</span>
-      <span>HRA Exemption</span>
+      <a href="/loan/emi-calculator/">EMI Calculator</a>
+      <a href="/investment/sip-calculator/">SIP Calculator</a>
+      <a href="/tax/income-tax-calculator/">Income Tax</a>
+      <a href="/gst/gst-calculator/">GST</a>
+      <a href="/investment/fd-calculator/">FD Maturity</a>
+      <a href="/salary/hra-calculator/">HRA Exemption</a>
+      <a href="/loan/foir-calculator/">Loan Eligibility</a>
+      <a href="/salary/takehome-calculator/">Take-Home</a>
     </div>
   </div>
 </section>
