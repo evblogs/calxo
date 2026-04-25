@@ -35,6 +35,14 @@ ID = ''  # add Calxo GA4 ID here when ready
 ############################# Outputs ##############################
 [outputs]
 home = ["HTML", "RSS", "SITEMAP", "JSON"]
+page = ["HTML", "Embed"]
+
+[outputFormats.Embed]
+mediaType = "text/html"
+baseName = "embed"
+isHTML = true
+permalinkable = true
+notAlternative = true
 
 ############################# Imaging ##############################
 [imaging]

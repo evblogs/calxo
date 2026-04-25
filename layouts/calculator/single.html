@@ -254,6 +254,263 @@
     font-size: .92em;
     font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
+
+  /* ═══════════ Embed CTA + modal (drives natural backlinks) ═══════════ */
+  .cx-embed-cta {
+    margin: 2.5rem 0 1rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 1.5rem 1.65rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cx-embed-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .cx-embed-cta-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cx-embed-cta-eyebrow {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(96, 165, 250, .95);
+    font-weight: 700;
+    margin-bottom: .35rem;
+  }
+  .cx-embed-cta h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 .35rem;
+    letter-spacing: -.4px;
+  }
+  .cx-embed-cta p {
+    font-size: .92rem;
+    color: rgba(255,255,255,.78);
+    margin: 0;
+    max-width: 540px;
+    line-height: 1.55;
+  }
+  .cx-embed-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    background: #fff;
+    color: #1e3a8a;
+    border: 0;
+    padding: .8rem 1.25rem;
+    border-radius: 10px;
+    font-size: .92rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform .15s ease, box-shadow .15s ease;
+    flex-shrink: 0;
+  }
+  .cx-embed-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(0,0,0,.25);
+  }
+
+  /* Modal */
+  .cx-embed-modal { position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .cx-embed-modal[hidden] { display: none; }
+  .cx-embed-modal-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, .55); backdrop-filter: blur(4px); }
+  .cx-embed-modal-card {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    max-width: 640px;
+    width: 100%;
+    padding: 1.75rem;
+    box-shadow: 0 30px 80px rgba(15, 23, 42, .35);
+  }
+  .cx-embed-modal-close {
+    position: absolute;
+    top: .85rem;
+    right: 1rem;
+    background: transparent;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 1.45rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #64748b;
+    font-family: inherit;
+  }
+  .cx-embed-modal-close:hover { background: #f1f5f9; color: #0f172a; }
+  .cx-embed-modal-card h3 {
+    margin: 0 0 .5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -.3px;
+  }
+  .cx-embed-modal-sub {
+    color: #64748b;
+    font-size: .92rem;
+    line-height: 1.55;
+    margin: 0 0 1.2rem;
+  }
+  .cx-embed-snippet-label {
+    display: block;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    color: #94a3b8;
+    font-weight: 700;
+    margin-bottom: .4rem;
+  }
+  .cx-embed-snippet-wrap { position: relative; }
+  .cx-embed-snippet-wrap textarea {
+    width: 100%;
+    background: #0f172a;
+    color: #e2e8f0;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: .9rem 1rem;
+    padding-right: 6rem;
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .8rem;
+    line-height: 1.55;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+  }
+  .cx-embed-snippet-wrap textarea:focus { border-color: #2563eb; }
+  .cx-embed-copy {
+    position: absolute;
+    top: .65rem;
+    right: .65rem;
+    background: #2563eb;
+    color: #fff;
+    border: 0;
+    padding: .45rem .85rem;
+    border-radius: 7px;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s ease;
+  }
+  .cx-embed-copy:hover { background: #1d4ed8; }
+  .cx-embed-copy.cx-copied { background: #10b981; }
+  .cx-embed-modal-head { margin-bottom: 1.1rem; }
+  .cx-embed-modal-head h3 { margin: 0 0 .15rem; }
+  .cx-embed-modal-head p { font-size: .88rem; color: #64748b; margin: 0; line-height: 1.4; }
+
+  .cx-embed-tabs {
+    display: flex;
+    gap: .25rem;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 1.2rem;
+  }
+  .cx-embed-tab {
+    background: transparent;
+    border: 0;
+    padding: .8rem 1.1rem;
+    font-family: inherit;
+    font-size: .92rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .cx-embed-tab:hover { color: #0f172a; }
+  .cx-embed-tab-active {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+  }
+
+  .cx-embed-pane[hidden] { display: none; }
+  .cx-embed-pane-help, .cx-embed-pane-foot {
+    font-size: .85rem;
+    color: #64748b;
+    line-height: 1.55;
+    margin: 0 0 .85rem;
+  }
+  .cx-embed-pane-foot { margin: .9rem 0 0; padding-top: .85rem; border-top: 1px solid #f1f5f9; }
+  .cx-embed-pane-foot a { color: #2563eb; font-weight: 600; text-decoration: none; }
+  .cx-embed-pane-foot a:hover { text-decoration: underline; }
+
+  /* Share tab */
+  .cx-share-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .55rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 520px) { .cx-share-grid { grid-template-columns: repeat(2, 1fr); } }
+  .cx-share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .7rem .55rem;
+    border-radius: 9px;
+    font-size: .88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease;
+    color: #fff;
+    text-align: center;
+  }
+  .cx-share-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.12); text-decoration: none; }
+  .cx-share-tw { background: #0f172a; }
+  .cx-share-li { background: #0a66c2; }
+  .cx-share-fb { background: #1877f2; }
+  .cx-share-wa { background: #25d366; }
+  .cx-share-tg { background: #229ed9; }
+  .cx-share-em { background: #475569; }
+
+  /* Cite tab — format sub-tabs */
+  .cx-cite-format-tabs {
+    display: inline-flex;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 3px;
+    margin-bottom: .85rem;
+  }
+  .cx-cite-format-tab {
+    background: transparent;
+    border: 0;
+    padding: .45rem .9rem;
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all .15s ease;
+  }
+  .cx-cite-format-tab:hover { color: #0f172a; }
+  .cx-cite-format-active {
+    background: #fff;
+    color: #2563eb;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+  }
+
+  body.cx-modal-open { overflow: hidden; }
 </style>
 
 <div class="cx-page-wrap">
@@ -308,6 +565,103 @@
 
       <div class="cx-page-content" itemprop="articleBody">
         {{ .Content }}
+      </div>
+
+      {{/* Share / Embed / Cite block (drives natural backlinks) */}}
+      {{ $embedURL := printf "%sembed/" .Permalink | replaceRE "([^:])//+" "$1/" }}
+      {{ $pageURL := .Permalink }}
+      {{ $shareTitle := .Title }}
+      <div class="cx-embed-cta">
+        <div class="cx-embed-cta-head">
+          <div>
+            <div class="cx-embed-cta-eyebrow">Found this useful?</div>
+            <h3>Share, embed or cite this calculator</h3>
+            <p>Bloggers, finance creators and HR sites can embed this on their pages, free, with a "Powered by Calxo" link. Cite it on Quora answers, blog posts or research with our copy-paste citation.</p>
+          </div>
+          <button type="button" class="cx-embed-btn" id="cxEmbedBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Share, embed or cite
+          </button>
+        </div>
+      </div>
+
+      {{/* Tabbed modal: Share | Embed | Cite */}}
+      <div class="cx-embed-modal" id="cxEmbedModal" role="dialog" aria-labelledby="cxEmbedModalTitle" aria-modal="true" hidden>
+        <div class="cx-embed-modal-backdrop" data-close></div>
+        <div class="cx-embed-modal-card" role="document">
+          <button type="button" class="cx-embed-modal-close" data-close aria-label="Close">×</button>
+          <div class="cx-embed-modal-head">
+            <h3 id="cxEmbedModalTitle">Use this calculator</h3>
+            <p>{{ .Title }}</p>
+          </div>
+
+          <div class="cx-embed-tabs" role="tablist">
+            <button type="button" class="cx-embed-tab" role="tab" data-tab="share" aria-selected="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+              Share
+            </button>
+            <button type="button" class="cx-embed-tab cx-embed-tab-active" role="tab" data-tab="embed" aria-selected="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Embed
+            </button>
+            <button type="button" class="cx-embed-tab" role="tab" data-tab="cite" aria-selected="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h6v6c0 2-1.5 4-4 4M14 7h6v6c0 2-1.5 4-4 4"/></svg>
+              Cite
+            </button>
+          </div>
+
+          {{/* SHARE tab */}}
+          <div class="cx-embed-pane" data-pane="share" hidden>
+            <div class="cx-share-grid">
+              <a class="cx-share-btn cx-share-tw" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text={{ printf "%s — calculate at" $shareTitle | urlquery }}&url={{ $pageURL | urlquery }}">𝕏 / Twitter</a>
+              <a class="cx-share-btn cx-share-li" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $pageURL | urlquery }}">LinkedIn</a>
+              <a class="cx-share-btn cx-share-fb" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u={{ $pageURL | urlquery }}">Facebook</a>
+              <a class="cx-share-btn cx-share-wa" target="_blank" rel="noopener" href="https://wa.me/?text={{ printf "%s %s" $shareTitle $pageURL | urlquery }}">WhatsApp</a>
+              <a class="cx-share-btn cx-share-tg" target="_blank" rel="noopener" href="https://t.me/share/url?url={{ $pageURL | urlquery }}&text={{ $shareTitle | urlquery }}">Telegram</a>
+              <a class="cx-share-btn cx-share-em" href="mailto:?subject={{ $shareTitle | urlquery }}&body={{ printf "Useful Indian finance calculator: %s" $pageURL | urlquery }}">Email</a>
+            </div>
+            <label class="cx-embed-snippet-label">Page link</label>
+            <div class="cx-embed-snippet-wrap">
+              <textarea id="cxShareUrl" readonly rows="1">{{ $pageURL }}</textarea>
+              <button type="button" class="cx-embed-copy" data-copy="cxShareUrl">Copy</button>
+            </div>
+          </div>
+
+          {{/* EMBED tab */}}
+          <div class="cx-embed-pane" data-pane="embed">
+            <p class="cx-embed-pane-help">Paste anywhere HTML is allowed (WordPress, Webflow, Ghost, raw HTML). The iframe auto-resizes to fit content.</p>
+            <label class="cx-embed-snippet-label">Iframe snippet</label>
+            <div class="cx-embed-snippet-wrap">
+              <textarea id="cxEmbedSnippet" readonly rows="5">&lt;iframe src=&quot;{{ $embedURL }}&quot; style=&quot;width:100%;border:0;min-height:520px&quot; loading=&quot;lazy&quot; title=&quot;{{ $shareTitle }}&quot;&gt;&lt;/iframe&gt;
+&lt;script&gt;window.addEventListener(&quot;message&quot;,function(e){if(e.data&amp;&amp;e.data.cxEmbedHeight){var f=document.querySelectorAll(&apos;iframe[src*=&quot;calxo.in/embed/&quot;]&apos;);f.forEach(function(x){x.style.height=e.data.cxEmbedHeight+&quot;px&quot;})}});&lt;/script&gt;</textarea>
+              <button type="button" class="cx-embed-copy" data-copy="cxEmbedSnippet">Copy</button>
+            </div>
+            <p class="cx-embed-pane-foot">Embeds include a "Powered by Calxo" footer linking back to <a href="https://calxo.in/" target="_blank" rel="noopener">calxo.in</a>. That's our only ask.</p>
+          </div>
+
+          {{/* CITE tab */}}
+          <div class="cx-embed-pane cx-embed-pane-cite" data-pane="cite" hidden>
+            <div class="cx-cite-format-tabs" role="tablist">
+              <button type="button" class="cx-cite-format-tab cx-cite-format-active" data-fmt="text">Text</button>
+              <button type="button" class="cx-cite-format-tab" data-fmt="html">HTML</button>
+              <button type="button" class="cx-cite-format-tab" data-fmt="bibtex">BibTeX</button>
+            </div>
+            <div class="cx-embed-snippet-wrap">
+              <textarea id="cxCiteText" readonly rows="3" data-fmt="text">Vignesh. {{ $shareTitle }}. Calxo. Reviewed by Prem Anand. Available at: {{ $pageURL }}. Accessed: {{ now.Format "January 2, 2006" }}.</textarea>
+              <textarea id="cxCiteHtml" readonly rows="3" data-fmt="html" hidden>Vignesh. &lt;a href=&quot;{{ $pageURL }}&quot;&gt;{{ $shareTitle }}&lt;/a&gt;. Calxo. Reviewed by Prem Anand. Available at: {{ $pageURL }}. Accessed: {{ now.Format "January 2, 2006" }}.</textarea>
+              <textarea id="cxCiteBibtex" readonly rows="9" data-fmt="bibtex" hidden>@misc{calxo-{{ .File.BaseFileName }},
+  author       = {Vignesh and Anand, Prem},
+  title        = { {{- $shareTitle -}} },
+  howpublished = {Calxo},
+  year         = { {{- now.Format "2006" -}} },
+  url          = { {{- $pageURL -}} },
+  note         = {Accessed: {{ now.Format "2006-01-02" }}}
+}</textarea>
+              <button type="button" class="cx-embed-copy" id="cxCiteCopy" data-copy="cxCiteText">Copy</button>
+            </div>
+            <p class="cx-embed-pane-foot">Citing Calxo on a blog post, Quora answer or research note keeps independent finance content alive. Pick the HTML format if your platform renders links.</p>
+          </div>
+        </div>
       </div>
     </article>
 
@@ -379,5 +733,86 @@
 </script>
 
 {{ partial "faq-schema-auto.html" . }}
+
+{{/* Tabbed Share/Embed/Cite modal interactions */}}
+<script>
+(function () {
+  var btn = document.getElementById('cxEmbedBtn');
+  var modal = document.getElementById('cxEmbedModal');
+  if (!btn || !modal) return;
+
+  function open() {
+    modal.hidden = false;
+    document.body.classList.add('cx-modal-open');
+  }
+  function close() {
+    modal.hidden = true;
+    document.body.classList.remove('cx-modal-open');
+  }
+  btn.addEventListener('click', open);
+  modal.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+
+  // Tab switching
+  var tabs = modal.querySelectorAll('.cx-embed-tab');
+  var panes = modal.querySelectorAll('.cx-embed-pane');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var name = tab.getAttribute('data-tab');
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-tab') === name;
+        t.classList.toggle('cx-embed-tab-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panes.forEach(function (p) {
+        p.hidden = p.getAttribute('data-pane') !== name;
+      });
+    });
+  });
+
+  // Cite-format sub-tab swap
+  var citePane = modal.querySelector('[data-pane="cite"]');
+  if (citePane) {
+    var fmtTabs = citePane.querySelectorAll('.cx-cite-format-tab');
+    var fmtAreas = citePane.querySelectorAll('textarea[data-fmt]');
+    var citeCopyBtn = citePane.querySelector('#cxCiteCopy');
+    fmtTabs.forEach(function (ft) {
+      ft.addEventListener('click', function () {
+        var fmt = ft.getAttribute('data-fmt');
+        fmtTabs.forEach(function (x) { x.classList.toggle('cx-cite-format-active', x === ft); });
+        fmtAreas.forEach(function (a) {
+          a.hidden = a.getAttribute('data-fmt') !== fmt;
+        });
+        if (citeCopyBtn) {
+          var idMap = { text: 'cxCiteText', html: 'cxCiteHtml', bibtex: 'cxCiteBibtex' };
+          citeCopyBtn.setAttribute('data-copy', idMap[fmt] || 'cxCiteText');
+        }
+      });
+    });
+  }
+
+  // Generic copy-to-clipboard (uses data-copy="<textarea-id>")
+  modal.querySelectorAll('.cx-embed-copy').forEach(function (cb) {
+    cb.addEventListener('click', function () {
+      var targetId = cb.getAttribute('data-copy');
+      var ta = document.getElementById(targetId);
+      if (!ta) return;
+      ta.select();
+      var done = function () {
+        cb.classList.add('cx-copied');
+        cb.textContent = 'Copied!';
+        setTimeout(function () { cb.classList.remove('cx-copied'); cb.textContent = 'Copy'; }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ta.value).then(done).catch(function(){
+          try { document.execCommand('copy'); done(); } catch (e) {}
+        });
+      } else {
+        try { document.execCommand('copy'); done(); } catch (e) {}
+      }
+    });
+  });
+})();
+</script>
 
 {{ end }}
