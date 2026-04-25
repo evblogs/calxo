@@ -1,0 +1,169 @@
+<div class="cx-cur-widget" id="cx-cur">
+<style>
+  #cx-cur { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15, 23, 42, .04); }
+  @media (max-width: 760px) { #cx-cur { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; } }
+  #cx-cur label { display: block; margin-bottom: 1.15rem; }
+  #cx-cur label > span { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
+  #cx-cur input[type="number"], #cx-cur select { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1.05rem; color: #0f172a; font-weight: 600; box-sizing: border-box; background: #fff; }
+  #cx-cur input[type="number"]:focus, #cx-cur select:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15); }
+  #cx-cur .cx-pair { display: grid; grid-template-columns: 1fr auto 1fr; gap: .5rem; align-items: end; margin-bottom: 1rem; }
+  #cx-cur .cx-pair button.cx-swap { background: #2563eb; color: #fff; border: 0; width: 38px; height: 38px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; align-self: center; margin-bottom: 2px; transition: transform .2s; }
+  #cx-cur .cx-pair button.cx-swap:hover { transform: rotate(180deg); }
+  #cx-cur .cx-result { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%); color: #fff; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+  #cx-cur .cx-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  #cx-cur .cx-result > * { position: relative; }
+  #cx-cur .cx-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  #cx-cur .cx-result-value { font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1rem; word-break: break-all; }
+  #cx-cur .cx-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid rgba(255, 255, 255, .18); font-size: .9rem; }
+  #cx-cur .cx-row:last-of-type { border-bottom: none; }
+  #cx-cur .cx-row strong { font-weight: 700; }
+  #cx-cur .cx-status { font-size: .75rem; opacity: .85; margin-top: .25rem; }
+  #cx-cur .cx-status.cx-stale { color: #fde68a; }
+  #cx-cur .cx-status.cx-live { color: #6ee7b7; }
+</style>
+
+<div class="cx-cur-inputs">
+  <label>
+    <span>Amount</span>
+    <input type="number" id="cx-cur-amt" min="0" step="any" value="1" inputmode="decimal">
+  </label>
+
+  <div class="cx-pair">
+    <label style="margin-bottom:0">
+      <span>From</span>
+      <select id="cx-cur-from"></select>
+    </label>
+    <button type="button" class="cx-swap" id="cx-cur-swap" aria-label="Swap currencies" title="Swap">⇄</button>
+    <label style="margin-bottom:0">
+      <span>To</span>
+      <select id="cx-cur-to"></select>
+    </label>
+  </div>
+</div>
+
+<div class="cx-result">
+  <div class="cx-result-label" id="cx-cur-out-label">1 USD =</div>
+  <div class="cx-result-value" id="cx-cur-out">₹83.45</div>
+  <div class="cx-row"><span>Exchange rate</span> <strong id="cx-cur-rate">1 USD = 83.45 INR</strong></div>
+  <div class="cx-row"><span>Inverse rate</span> <strong id="cx-cur-inv">1 INR = 0.01198 USD</strong></div>
+  <div class="cx-row"><span>Last updated</span> <strong id="cx-cur-updated">—</strong></div>
+  <div class="cx-status" id="cx-cur-status">Loading live rates…</div>
+</div>
+</div>
+
+<script>
+(function () {
+  // Major currencies relevant to Indian users (NRIs, importers, travellers, freelancers)
+  var currencies = [
+    { code: 'INR', name: 'Indian Rupee', symbol: '₹' },
+    { code: 'USD', name: 'US Dollar', symbol: '$' },
+    { code: 'EUR', name: 'Euro', symbol: '€' },
+    { code: 'GBP', name: 'British Pound', symbol: '£' },
+    { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ' },
+    { code: 'SGD', name: 'Singapore Dollar', symbol: 'S$' },
+    { code: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
+    { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$' },
+    { code: 'JPY', name: 'Japanese Yen', symbol: '¥' },
+    { code: 'CHF', name: 'Swiss Franc', symbol: 'CHF' },
+    { code: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
+    { code: 'HKD', name: 'Hong Kong Dollar', symbol: 'HK$' },
+    { code: 'NZD', name: 'New Zealand Dollar', symbol: 'NZ$' },
+    { code: 'SAR', name: 'Saudi Riyal', symbol: '﷼' },
+    { code: 'QAR', name: 'Qatari Riyal', symbol: '﷼' },
+    { code: 'OMR', name: 'Omani Rial', symbol: '﷼' },
+    { code: 'KWD', name: 'Kuwaiti Dinar', symbol: 'د.ك' },
+    { code: 'MYR', name: 'Malaysian Ringgit', symbol: 'RM' },
+    { code: 'THB', name: 'Thai Baht', symbol: '฿' },
+    { code: 'ZAR', name: 'South African Rand', symbol: 'R' }
+  ];
+
+  // Fallback rates relative to USD (April 2026 indicative — used only if API fetch fails)
+  var fallbackUSD = {
+    INR: 83.45, USD: 1, EUR: 0.92, GBP: 0.79, AED: 3.6725, SGD: 1.35,
+    AUD: 1.52, CAD: 1.37, JPY: 152, CHF: 0.88, CNY: 7.18, HKD: 7.81,
+    NZD: 1.66, SAR: 3.75, QAR: 3.64, OMR: 0.385, KWD: 0.307, MYR: 4.72,
+    THB: 36.5, ZAR: 18.7
+  };
+  var fallbackDate = '2026-04-25 (indicative)';
+
+  var rates = null; // base USD
+  var ratesUpdated = null;
+  var amt = document.getElementById('cx-cur-amt');
+  var fromSel = document.getElementById('cx-cur-from');
+  var toSel = document.getElementById('cx-cur-to');
+  var swapBtn = document.getElementById('cx-cur-swap');
+  var statusEl = document.getElementById('cx-cur-status');
+
+  // Populate dropdowns
+  currencies.forEach(function (c) {
+    var optA = document.createElement('option');
+    optA.value = c.code; optA.textContent = c.code + ' — ' + c.name;
+    fromSel.appendChild(optA);
+    var optB = optA.cloneNode(true);
+    toSel.appendChild(optB);
+  });
+  fromSel.value = 'USD';
+  toSel.value = 'INR';
+
+  function getSymbol(code) {
+    var c = currencies.find(function (x) { return x.code === code; });
+    return c ? c.symbol : '';
+  }
+  function fmt(n, code) {
+    var d = (n >= 100) ? 2 : (n >= 1) ? 4 : 6;
+    return Number(n).toLocaleString('en-IN', { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+
+  function compute() {
+    if (!rates) return;
+    var A = parseFloat(amt.value) || 0;
+    var f = fromSel.value, t = toSel.value;
+    if (!rates[f] || !rates[t]) return;
+    // All rates are relative to USD; cross rate = A × (rates[t] / rates[f])
+    var rate = rates[t] / rates[f];
+    var converted = A * rate;
+    document.getElementById('cx-cur-out-label').textContent = A + ' ' + f + ' =';
+    document.getElementById('cx-cur-out').textContent = getSymbol(t) + ' ' + fmt(converted, t);
+    document.getElementById('cx-cur-rate').textContent = '1 ' + f + ' = ' + fmt(rate, t) + ' ' + t;
+    document.getElementById('cx-cur-inv').textContent = '1 ' + t + ' = ' + fmt(1 / rate, f) + ' ' + f;
+    document.getElementById('cx-cur-updated').textContent = ratesUpdated || fallbackDate;
+  }
+
+  function setRates(data, updated, isLive) {
+    rates = data;
+    ratesUpdated = updated;
+    statusEl.textContent = isLive ? '✓ Live rates (open.er-api.com)' : '⚠ Using indicative rates — live fetch failed';
+    statusEl.className = 'cx-status ' + (isLive ? 'cx-live' : 'cx-stale');
+    compute();
+  }
+
+  // Fetch live rates from open.er-api.com (free, no auth, CORS-enabled)
+  function fetchRates() {
+    fetch('https://open.er-api.com/v6/latest/USD')
+      .then(function (r) { return r.ok ? r.json() : Promise.reject('http_' + r.status); })
+      .then(function (j) {
+        if (j && j.result === 'success' && j.rates) {
+          var date = j.time_last_update_utc ? j.time_last_update_utc.slice(0, 25) : 'recent';
+          setRates(j.rates, date, true);
+        } else throw 'bad_response';
+      })
+      .catch(function () {
+        setRates(fallbackUSD, fallbackDate, false);
+      });
+  }
+
+  amt.addEventListener('input', compute);
+  fromSel.addEventListener('change', compute);
+  toSel.addEventListener('change', compute);
+  swapBtn.addEventListener('click', function () {
+    var f = fromSel.value;
+    fromSel.value = toSel.value;
+    toSel.value = f;
+    compute();
+  });
+
+  // Init with fallback so widget shows numbers immediately, then refresh with live
+  setRates(fallbackUSD, fallbackDate, false);
+  fetchRates();
+})();
+</script>

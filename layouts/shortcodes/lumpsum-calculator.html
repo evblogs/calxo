@@ -1,0 +1,109 @@
+<div class="cx-emi-widget" id="cx-lump">
+<style>
+  #cx-lump.cx-emi-widget {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) { #cx-lump.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; } }
+  #cx-lump label { display: block; margin-bottom: 1.15rem; }
+  #cx-lump label > span { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
+  #cx-lump label > span em { color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal; }
+  #cx-lump input[type="range"] { width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem; }
+  #cx-lump input[type="number"] { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600; box-sizing: border-box; background: #fff; }
+  #cx-lump input[type="number"]:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15); }
+  #cx-lump .cx-emi-result { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%); color: #fff; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+  #cx-lump .cx-emi-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  #cx-lump .cx-emi-result > * { position: relative; }
+  #cx-lump .cx-emi-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  #cx-lump .cx-emi-result-value { font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem; }
+  #cx-lump .cx-emi-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid rgba(255, 255, 255, .18); font-size: .9rem; }
+  #cx-lump .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-lump .cx-emi-row strong { font-weight: 700; }
+  #cx-lump .cx-emi-bar { display: flex; height: 9px; border-radius: 5px; overflow: hidden; margin: 1rem 0 .5rem; background: rgba(255, 255, 255, .12); }
+  #cx-lump .cx-emi-bar-p { background: #ffffff; transition: width .25s ease; }
+  #cx-lump .cx-emi-bar-i { background: rgba(255, 255, 255, .42); transition: width .25s ease; }
+  #cx-lump .cx-emi-legend { display: flex; gap: 1rem; font-size: .76rem; color: rgba(255, 255, 255, .9); }
+  #cx-lump .cx-emi-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; vertical-align: middle; margin-right: .35rem; }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Lumpsum amount (₹) <em data-out="amt">1,00,000</em></span>
+    <input type="number" id="cx-lump-amt" min="1000" max="100000000" step="1000" value="100000" inputmode="numeric">
+    <input type="range" id="cx-lump-amt-r" min="10000" max="10000000" step="10000" value="100000">
+  </label>
+  <label>
+    <span>Expected return rate p.a. (%) <em data-out="rate">12.00%</em></span>
+    <input type="number" id="cx-lump-rate" min="1" max="30" step="0.5" value="12" inputmode="decimal">
+    <input type="range" id="cx-lump-rate-r" min="1" max="20" step="0.5" value="12">
+  </label>
+  <label>
+    <span>Investment duration (years) <em data-out="years">10 yrs</em></span>
+    <input type="number" id="cx-lump-years" min="1" max="40" step="1" value="10" inputmode="numeric">
+    <input type="range" id="cx-lump-years-r" min="1" max="35" step="1" value="10">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Future Value</div>
+  <div class="cx-emi-result-value" id="cx-lump-fv">₹3,10,585</div>
+  <div class="cx-emi-row"><span>Invested amount</span> <strong id="cx-lump-invested">₹1,00,000</strong></div>
+  <div class="cx-emi-row"><span>Estimated returns</span> <strong id="cx-lump-returns">₹2,10,585</strong></div>
+  <div class="cx-emi-row"><span>Wealth gain ratio</span> <strong id="cx-lump-ratio">3.11×</strong></div>
+  <div class="cx-emi-bar">
+    <div class="cx-emi-bar-p" id="cx-lump-bar-p" style="width:32%"></div>
+    <div class="cx-emi-bar-i" id="cx-lump-bar-i" style="width:68%"></div>
+  </div>
+  <div class="cx-emi-legend">
+    <span><span class="cx-emi-dot" style="background:#fff"></span>Invested <span id="cx-lump-pct-p">32%</span></span>
+    <span><span class="cx-emi-dot" style="background:rgba(255,255,255,.4)"></span>Returns <span id="cx-lump-pct-i">68%</span></span>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+
+  var amt = document.getElementById('cx-lump-amt');
+  var amtR = document.getElementById('cx-lump-amt-r');
+  var rate = document.getElementById('cx-lump-rate');
+  var rateR = document.getElementById('cx-lump-rate-r');
+  var yrs = document.getElementById('cx-lump-years');
+  var yrsR = document.getElementById('cx-lump-years-r');
+
+  function compute() {
+    var P = parseFloat(amt.value) || 0;
+    var r = (parseFloat(rate.value) || 0) / 100;
+    var t = parseFloat(yrs.value) || 0;
+    var fv = P * Math.pow(1 + r, t);
+    var returns = fv - P;
+    var ratio = P > 0 ? fv / P : 0;
+    var pctP = fv > 0 ? Math.round((P / fv) * 100) : 0;
+    var pctI = 100 - pctP;
+
+    document.getElementById('cx-lump-fv').textContent = fmtINR(fv);
+    document.getElementById('cx-lump-invested').textContent = fmtINR(P);
+    document.getElementById('cx-lump-returns').textContent = fmtINR(returns);
+    document.getElementById('cx-lump-ratio').textContent = ratio.toFixed(2) + '×';
+    document.getElementById('cx-lump-bar-p').style.width = pctP + '%';
+    document.getElementById('cx-lump-bar-i').style.width = pctI + '%';
+    document.getElementById('cx-lump-pct-p').textContent = pctP + '%';
+    document.getElementById('cx-lump-pct-i').textContent = pctI + '%';
+
+    document.querySelector('#cx-lump [data-out="amt"]').textContent = fmtRaw(P);
+    document.querySelector('#cx-lump [data-out="rate"]').textContent = (parseFloat(rate.value) || 0).toFixed(2) + '%';
+    document.querySelector('#cx-lump [data-out="years"]').textContent = t + ' yr' + (t !== 1 ? 's' : '');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+  syncPair(amt, amtR); syncPair(rate, rateR); syncPair(yrs, yrsR);
+  compute();
+})();
+</script>
