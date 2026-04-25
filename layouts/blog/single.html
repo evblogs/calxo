@@ -52,8 +52,113 @@
   .cx-post-meta-cred { color: #94a3b8; font-size: .82rem; font-weight: 500; margin-left: .35rem; }
   .cx-post-meta a { color: inherit; text-decoration: none; }
   .cx-post-meta a:hover strong { text-decoration: underline; }
+
+  /* Post meta row: byline left, action buttons right */
+  .cx-post-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .cx-post-actions {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    position: relative;
+  }
+  .cx-post-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: .42rem .65rem;
+    font-family: inherit;
+    font-size: .82rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color .15s ease, background .15s ease, color .15s ease;
+  }
+  .cx-post-action-btn:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #f8fafc;
+    text-decoration: none;
+  }
+  .cx-post-action-btn[aria-expanded="true"] {
+    border-color: #2563eb;
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+
+  /* Share popover */
+  .cx-post-share-wrap { position: relative; }
+  .cx-post-share-pop {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 180px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, .15);
+    padding: .35rem;
+    z-index: 80;
+  }
+  .cx-post-share-pop[hidden] { display: none; }
+  .cx-post-share-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    padding: .55rem .8rem;
+    border-radius: 6px;
+    color: #1e293b;
+    font-family: inherit;
+    font-size: .88rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .12s ease, color .12s ease;
+    box-sizing: border-box;
+  }
+  .cx-post-share-item:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+    text-decoration: none;
+  }
+  .cx-post-share-item.cx-copied { color: #10b981; }
+
   @media (max-width: 600px) {
     .cx-post-meta-cred { display: block; margin-left: 0; margin-top: .15rem; }
+    .cx-post-action-btn span:not(:empty), .cx-post-action-btn { font-size: .8rem; }
+  }
+
+  /* Print: hide site chrome + actions, expand content */
+  @media print {
+    body { background: #fff; }
+    .cx-no-print, .cx-header, .cx-mega-nav, footer, .cx-post-aside,
+    .cx-toc, .cx-ai-summary > summary, .cx-post-breadcrumb { display: none !important; }
+    .cx-ai-summary[open] { border: 0; background: transparent; padding: 0; margin-bottom: 1rem; }
+    .cx-ai-summary[open] .cx-ai-body { padding-left: 0 !important; border: 0; }
+    .cx-post-wrap { padding: 0; max-width: 100%; }
+    .cx-post-layout { display: block; }
+    .cx-post-body { font-size: 11pt; line-height: 1.55; color: #000; }
+    .cx-post-body a { color: #000; text-decoration: underline; }
+    .cx-post-body a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 9pt;
+      color: #666;
+    }
+    .cx-post-hero h1 { font-size: 18pt; }
+    .cx-post-meta-row { border: 0; padding-bottom: 0; }
   }
 
   .cx-post-body {
@@ -344,20 +449,46 @@
       <header class="cx-post-hero">
         {{ with .Params.tags }}<span class="cx-post-tag">{{ index . 0 }}</span>{{ end }}
         <h1 itemprop="headline">{{ .Title }}</h1>
-        <div class="cx-post-meta">
-          <span>Written by <strong itemprop="author">Vignesh</strong></span>
-          <span class="cx-post-meta-sep">•</span>
-          <span>
-            Reviewed by
-            <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank">
-              <strong>Prem Anand</strong>
-            </a>
-            <span class="cx-post-meta-cred">10+ yrs BFSI content (Mint, Moneycontrol, Outlook)</span>
-          </span>
-          <span class="cx-post-meta-sep">•</span>
-          <span>Published <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>
-          <span class="cx-post-meta-sep">•</span>
-          <span>{{ .ReadingTime }} min read</span>
+        <div class="cx-post-meta-row">
+          <div class="cx-post-meta">
+            <span>Written by <strong itemprop="author">Vignesh</strong></span>
+            <span class="cx-post-meta-sep">•</span>
+            <span>
+              Reviewed by
+              <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank">
+                <strong>Prem Anand</strong>
+              </a>
+            </span>
+            <span class="cx-post-meta-sep">•</span>
+            <span>Published <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>
+            <span class="cx-post-meta-sep">•</span>
+            <span>{{ .ReadingTime }} min read</span>
+          </div>
+          <div class="cx-post-actions cx-no-print">
+            <div class="cx-post-share-wrap" id="cxPostShareWrap">
+              <button type="button" class="cx-post-action-btn" id="cxPostShareBtn" aria-haspopup="true" aria-expanded="false" title="Share">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+                Share
+              </button>
+              <div class="cx-post-share-pop" id="cxPostSharePop" role="menu" hidden>
+                <a class="cx-post-share-item" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text={{ printf "%s — Calxo" .Title | urlquery }}&url={{ .Permalink | urlquery }}">𝕏 / Twitter</a>
+                <a class="cx-post-share-item" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink | urlquery }}">LinkedIn</a>
+                <a class="cx-post-share-item" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink | urlquery }}">Facebook</a>
+                <a class="cx-post-share-item" target="_blank" rel="noopener" href="https://wa.me/?text={{ printf "%s %s" .Title .Permalink | urlquery }}">WhatsApp</a>
+                <a class="cx-post-share-item" target="_blank" rel="noopener" href="https://t.me/share/url?url={{ .Permalink | urlquery }}&text={{ .Title | urlquery }}">Telegram</a>
+                <a class="cx-post-share-item" href="mailto:?subject={{ .Title | urlquery }}&body={{ printf "Worth a read: %s" .Permalink | urlquery }}">Email</a>
+                <button type="button" class="cx-post-share-item" id="cxPostShareCopy" data-url="{{ .Permalink }}">Copy link</button>
+              </div>
+            </div>
+            <button type="button" class="cx-post-action-btn" id="cxPostDownloadBtn" title="Save as PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download
+            </button>
+            <button type="button" class="cx-post-action-btn" id="cxPostPrintBtn" title="Print">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              Print
+            </button>
+          </div>
         </div>
       </header>
 
@@ -438,6 +569,72 @@
   },
   "mainEntityOfPage": "{{ .Permalink }}"
 }
+</script>
+
+{{/* ═══════════════════════ Blog action bar: share dropdown + print + download ═══════════════════════ */}}
+<script>
+(function () {
+  var wrap = document.getElementById('cxPostShareWrap');
+  var btn = document.getElementById('cxPostShareBtn');
+  var pop = document.getElementById('cxPostSharePop');
+  if (wrap && btn && pop) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !pop.hidden;
+      pop.hidden = open;
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target) && !pop.hidden) {
+        pop.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !pop.hidden) {
+        pop.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  }
+
+  var copyBtn = document.getElementById('cxPostShareCopy');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = copyBtn.getAttribute('data-url') || window.location.href;
+      var done = function () {
+        copyBtn.classList.add('cx-copied');
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(function () {
+          copyBtn.classList.remove('cx-copied');
+          copyBtn.textContent = 'Copy link';
+        }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(function () {});
+      }
+    });
+  }
+
+  var printBtn = document.getElementById('cxPostPrintBtn');
+  if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+
+  var dlBtn = document.getElementById('cxPostDownloadBtn');
+  if (dlBtn) {
+    dlBtn.addEventListener('click', function () {
+      // Browsers offer 'Save as PDF' as a destination in the print dialog
+      try {
+        var note = document.createElement('div');
+        note.textContent = 'Tip: choose "Save as PDF" as the destination in the print dialog.';
+        note.style.cssText = 'position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:.7rem 1.1rem;border-radius:8px;font-size:.85rem;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(note);
+        setTimeout(function () { note.remove(); }, 4000);
+      } catch (e) {}
+      setTimeout(function () { window.print(); }, 350);
+    });
+  }
+})();
 </script>
 
 {{/* ═══════════════════════ TOC: toggle + active-section + scroll progress ═══════════════════════ */}}
