@@ -2,10 +2,9 @@ name: Daily Content Generator
 
 on:
   schedule:
-    # 3:00 AM UTC = 8:30 AM IST — runs every day
-    - cron: '0 3 * * *'
+    # 4:00 AM UTC = 9:30 AM IST — 1 hour after EVBlogs runs
+    - cron: '0 4 * * *'
   workflow_dispatch:
-    # Allow manual trigger from GitHub Actions UI
     inputs:
       posts_per_run:
         description: 'Number of posts to generate (default: 2)'
@@ -13,7 +12,7 @@ on:
         default: '2'
 
 permissions:
-  contents: write   # needed to commit and push new blog files
+  contents: write
 
 jobs:
   generate:
@@ -25,36 +24,36 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0   # full history needed for rebase
+          fetch-depth: 0
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
-          pip install anthropic google-auth google-auth-httplib2 requests
+          pip install openai google-auth google-auth-httplib2 requests
 
-      - name: Configure git identity
+      - name: Write GSC key file
+        run: echo '${{ secrets.GSC_KEY_JSON }}' > $GITHUB_WORKSPACE/pythonfiles/gsc-key.json
+
+      - name: Configure git
         run: |
-          git config user.email "calxo-bot@calxo.in"
           git config user.name  "Calxo Content Bot"
-
-      - name: Write GSC service account credentials
-        run: |
-          echo '${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}' > /tmp/gsc-key.json
+          git config user.email "avmedianews321@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/evblogs/calxo.git
 
       - name: Generate and publish content
         env:
-          ANTHROPIC_API_KEY:    ${{ secrets.ANTHROPIC_API_KEY }}
-          GSC_CREDENTIALS_PATH: /tmp/gsc-key.json
+          OPENAI_API_KEY:       ${{ secrets.OPENAI_API_KEY }}
+          GSC_CREDENTIALS_PATH: ${{ github.workspace }}/pythonfiles/gsc-key.json
           POSTS_PER_RUN:        ${{ github.event.inputs.posts_per_run || '2' }}
-        run: |
-          python3 pythonfiles/calxo_daily_content.py
+        run: python pythonfiles/calxo_daily_content.py
 
-      - name: Clean up credentials
-        if: always()
-        run: rm -f /tmp/gsc-key.json
+      - name: Commit queue tracking file
+        run: |
+          git add pythonfiles/calxo_content_queue.json || true
+          git diff --cached --quiet || git commit -m "chore: update content queue [skip ci]"
+          git pull --rebase origin master || true
+          git push origin master || true

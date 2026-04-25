@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
 Calxo.in — Daily Content Generator
-Generates 2 blog posts per run using Claude API, commits to master,
+Generates 2 blog posts per run using OpenAI API, commits to master,
 and submits new URLs to Google Search Console Indexing API.
 
-Run: python3 calxo_daily_content.py
-GitHub Actions: runs daily at 3:00 AM UTC (8:30 AM IST)
+Run: python pythonfiles/calxo_daily_content.py
+GitHub Actions: runs daily at 4:00 AM UTC (9:30 AM IST)
+Secrets used: OPENAI_API_KEY, GSC_KEY_JSON (same as EVBlogs)
 """
 
 import json, os, subprocess, time, sys
@@ -21,19 +22,19 @@ GSC_CREDS     = os.environ.get(
     "/Users/luckychamp/gojournal/pythonfiles/gsc-key.json"
 )
 
-# ── Writing rules injected into every generation call ──────────────────────
+# ── Writing rules — injected as system prompt for every post ────────────────
 SYSTEM_PROMPT = """You write blog posts for Calxo.in, a free Indian personal finance calculator site.
 Every post must pass AI content detectors — write exactly like a knowledgeable human who typed this.
 
 STRUCTURE RULES:
 - Subheadings = nouns or short phrases, NEVER questions
-  ✓ "The FOIR formula every bank uses"
-  ✗ "What is FOIR and how does it work?"
+  GOOD: "The FOIR formula every bank uses"
+  BAD:  "What is FOIR and how does it work?"
 - Numbered sections with full prose paragraphs underneath, not bullet lists
 - Vary paragraph length: some 1 sentence, some 5-6 sentences
 
 SENTENCE RHYTHM (most important):
-- Mix lengths aggressively in every paragraph
+- Mix lengths aggressively in every paragraph.
   Short. Like this. Then follow with a longer sentence that has sub-clauses,
   a specific rupee amount or percentage, and doesn't end where you expect it to.
 - Never write 4+ consecutive sentences of similar length
@@ -45,15 +46,15 @@ WORD CHOICES:
 - Mix formal financial terms with casual Indian-English
 - Include Hindi where natural: "SIP karo", "bhai", salary "hike"
 
-TRANSITIONS:
-- NEVER use: furthermore, moreover, additionally, it's worth noting, it is important to,
-  in conclusion, to summarize, when it comes to, plays a crucial role, ensure that,
-  it's crucial, it should be noted
-- Start new paragraphs directly — no connector filler
+TRANSITIONS — NEVER USE:
+furthermore, moreover, additionally, it's worth noting, it is important to,
+in conclusion, to summarize, when it comes to, plays a crucial role, ensure that,
+it's crucial, it should be noted, needless to say
+Start new paragraphs directly — no connector filler.
 
 HUMAN VOICE MARKERS:
-- Add one specific scenario with a name, salary, city e.g. "My colleague Priya in Pune..."
-  or "Someone earning ₹12 lakh in Bengaluru with a ₹25,000 monthly rent..."
+- Add one specific scenario with a name, salary, city
+  e.g. "My colleague Priya in Pune..." or "Someone earning ₹12 lakh in Bengaluru..."
 - State opinions directly: "Don't. Seriously." / "Most people get this wrong."
 - Occasionally repeat the same idea in slightly different words (humans do this naturally)
 - Assume reader knowledge — don't define every term introduced
@@ -67,10 +68,10 @@ NEVER DO:
 
 FORMAT:
 - Return complete Hugo markdown with YAML front matter — nothing else, no preamble
-- 900–1200 words
-- Use ₹ symbol with real Indian amounts
-- Include one markdown table with actual data/rates
-- Link to the provided calculator URL naturally mid-article (not just a forced CTA at the end)
+- 900-1200 words
+- Use the rupee symbol with real Indian amounts
+- Include one markdown table with actual data or rates
+- Link to the provided calculator URL naturally mid-article (not only as a CTA at the end)
 - End on a direct practical note, not a motivational summary"""
 
 
@@ -87,23 +88,21 @@ def get_pending(queue, n):
     return [item for item in queue if item["status"] == "pending"][:n]
 
 
-# ── Content generation ──────────────────────────────────────────────────────
+# ── Content generation via OpenAI ───────────────────────────────────────────
 def generate_post(item, client):
-    import anthropic
-    today = datetime.now().strftime("%Y-%m-%d")
-
+    today     = datetime.now().strftime("%Y-%m-%d")
     tags_yaml = "\n".join(f"- {t}" for t in item["tags"])
 
     user_prompt = f"""Write a blog post for Calxo.in:
 
 Topic: {item["title"]}
-Target keyword: "{item["target_keyword"]}" — use naturally 4–6 times
+Target keyword: "{item["target_keyword"]}" — use naturally 4-6 times
 Intent: informational — reader wants to understand how to calculate this
 Calculator link: [{item["calculator_label"]}]({item["calculator_url"]}) — link once mid-article
 Category: {item["category"]}
 Date: {today}
 
-Start with this exact front matter (fill in description yourself, ~150 chars, keyword-first):
+Use this exact front matter:
 ---
 title: "{item["title"]}"
 description: "{item["description"]}"
@@ -116,15 +115,17 @@ tags:
 {tags_yaml}
 ---
 
-Write the post now. No preamble — start the content immediately after the front matter closing ---"""
+Write the post now. No preamble — start immediately after the closing ---"""
 
-    msg = client.messages.create(
-        model="claude-opus-4-5",
+    response = client.chat.completions.create(
+        model="gpt-4o",
         max_tokens=2500,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": user_prompt}]
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user",   "content": user_prompt}
+        ]
     )
-    return msg.content[0].text.strip()
+    return response.choices[0].message.content.strip()
 
 
 # ── File writing ────────────────────────────────────────────────────────────
@@ -135,7 +136,7 @@ def write_post(item, content):
     return filepath
 
 
-# ── GSC indexing ────────────────────────────────────────────────────────────
+# ── GSC Indexing API ────────────────────────────────────────────────────────
 def submit_to_gsc(url):
     try:
         from google.oauth2 import service_account
@@ -162,12 +163,8 @@ def git_commit_push(filepaths, message):
     subprocess.run(["git", "add", str(QUEUE_FILE)], cwd=repo_root, check=True)
 
     subprocess.run(["git", "commit", "-m", message], cwd=repo_root, check=True)
-
-    # Pull before push to avoid conflicts with other commits
-    subprocess.run(
-        ["git", "pull", "--rebase", "origin", "master"],
-        cwd=repo_root, check=True
-    )
+    subprocess.run(["git", "pull", "--rebase", "origin", "master"],
+                   cwd=repo_root, check=True)
     subprocess.run(["git", "push", "origin", "master"], cwd=repo_root, check=True)
 
 
@@ -175,22 +172,22 @@ def git_commit_push(filepaths, message):
 def main():
     print("=" * 62)
     print("  Calxo Daily Content Generator")
-    print(f"  {datetime.now().strftime('%Y-%m-%d %H:%M:%S IST')}")
+    print(f"  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 62)
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
-        print("\n  ERROR: ANTHROPIC_API_KEY not set.")
+        print("\n  ERROR: OPENAI_API_KEY not set.")
         sys.exit(1)
 
-    import anthropic
-    client = anthropic.Anthropic(api_key=api_key)
+    from openai import OpenAI
+    client = OpenAI(api_key=api_key)
 
-    queue   = load_queue()
-    items   = get_pending(queue, POSTS_PER_RUN)
+    queue = load_queue()
+    items = get_pending(queue, POSTS_PER_RUN)
 
     if not items:
-        print("\n  Queue empty — no pending posts. Add more items to calxo_content_queue.json")
+        print("\n  Queue empty — add more items to calxo_content_queue.json")
         return
 
     print(f"\n  Generating {len(items)} post(s)...\n")
@@ -199,12 +196,11 @@ def main():
     new_urls = []
 
     for item in items:
-        print(f"  → {item['title']}")
+        print(f"  -> {item['title']}")
         try:
             content  = generate_post(item, client)
             filepath = write_post(item, content)
 
-            # Mark as done in queue
             for q in queue:
                 if q["id"] == item["id"]:
                     q["status"]         = "done"
@@ -212,22 +208,20 @@ def main():
 
             written.append(filepath)
             new_urls.append(f"{BASE_URL}/blog/{item['id']}/")
-            print(f"     ✓  {filepath.name}")
+            print(f"     OK  {filepath.name}")
 
         except Exception as e:
-            print(f"     ✗  Failed — {e}")
+            print(f"     FAIL  {e}")
 
-        time.sleep(2)  # avoid API rate limits
+        time.sleep(2)
 
     if not written:
         print("\n  Nothing written. Exiting.")
         return
 
-    # Save updated queue
     save_queue(queue)
 
-    # Commit and push
-    titles = " + ".join(
+    titles     = " + ".join(
         next(q["title"] for q in queue if q["id"] == fp.stem)
         for fp in written
     )
@@ -237,22 +231,21 @@ def main():
         f"Co-Authored-By: Claude <noreply@anthropic.com>"
     )
 
-    print(f"\n  Committing and pushing {len(written)} file(s)...")
+    print(f"\n  Committing {len(written)} file(s)...")
     try:
         git_commit_push(written, commit_msg)
-        print("  ✓  Pushed to master → Netlify deploying")
+        print("  OK  Pushed to master -> Netlify deploying")
     except subprocess.CalledProcessError as e:
-        print(f"  ✗  Git error: {e}")
+        print(f"  FAIL  Git error: {e}")
         return
 
-    # Submit new URLs to GSC
-    print(f"\n  Submitting {len(new_urls)} URL(s) to GSC Indexing API...")
+    print(f"\n  Submitting {len(new_urls)} URL(s) to GSC...")
     for url in new_urls:
         ok = submit_to_gsc(url)
-        print(f"  {'✓' if ok else '✗'}  {url}")
+        print(f"  {'OK' if ok else 'FAIL'}  {url}")
         time.sleep(0.5)
 
-    print(f"\n  Done — {len(written)} post(s) published and indexed.")
+    print(f"\n  Done — {len(written)} post(s) live and indexed.")
     print(f"  Queue remaining: {sum(1 for q in queue if q['status'] == 'pending')} pending")
 
 
