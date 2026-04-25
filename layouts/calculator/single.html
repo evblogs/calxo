@@ -271,11 +271,18 @@
 
       <div class="cx-byline">
         <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-          By <strong itemprop="name">Vignesh</strong>
-          <span class="cx-byline-credential">finance writer · 8+ yrs covering Indian personal finance</span>
+          Written by <strong itemprop="name">Vignesh</strong>
         </span>
         <span class="cx-byline-sep">•</span>
-        <span>Updated <time itemprop="dateModified" datetime="{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}">{{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "Jan 2, 2006" }}{{ end }}</time></span>
+        <span>
+          Reviewed by
+          <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank" itemprop="reviewedBy">
+            <strong>Prem Anand</strong>
+          </a>
+          <span class="cx-byline-credential">BFSI content specialist · 10+ yrs (Mint, Moneycontrol, Outlook)</span>
+        </span>
+        <span class="cx-byline-sep">•</span>
+        <span>Updated <time itemprop="dateModified" datetime="{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}">{{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}</time></span>
         <span class="cx-byline-sep">•</span>
         <span>{{ .ReadingTime }} min read</span>
       </div>
@@ -286,7 +293,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
           </span>
           <div>
-            <strong>Reviewed for FY 2025-26 (AY 2026-27).</strong>
+            <strong>Reviewed for FY 2025-26 (AY 2026-27)</strong> by <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank">Prem Anand</a>, BFSI content specialist with 10+ years across Mint, Moneycontrol, Outlook India and AP News.
             Formula sourced from RBI Master Directions, CBDT circulars and the underlying statute. Calculations run entirely in your browser — we don't store any input.
           </div>
         </div>
@@ -295,7 +302,7 @@
           <span aria-hidden="true">•</span>
           <a href="/about/methodology/">How we verify calculators</a>
           <span aria-hidden="true">•</span>
-          <a href="/about/">About Vignesh</a>
+          <a href="/about/">Editorial team</a>
         </div>
       </div>
 

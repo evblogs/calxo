@@ -43,9 +43,15 @@ These are the primary references behind Calxo calculators, with the relevant are
 
 When a specific calculator depends on additional sources (e.g., a Supreme Court ruling for HRA, an ITAT precedent for gratuity forfeiture), we add the citation in the "Sources" block at the bottom of that page.
 
-## Who reviews this
+## Who writes and reviews this
 
-**Vignesh** is the writer-editor for Calxo. He has been writing about Indian personal finance, tax, and consumer banking for 8+ years. Calxo is independent — no investor, AMC, or lender funds the editorial.
+Calxo follows a **writer + reviewer** model — the same pattern medical-content sites and reputable finance publications use to keep editorial independent of any single voice.
+
+**Author / writer**: **Vignesh** drafts the calculator pages, blog posts, and methodology updates. He has been writing about Indian personal finance, tax, and consumer banking for 8+ years.
+
+**Editorial reviewer**: **[Prem Anand](https://www.linkedin.com/in/prem-anand-a207771a5/)** reviews each calculator and blog post for accuracy, regulatory currency, and clarity before it goes live. Prem is a BFSI content specialist with 10+ years of experience covering banking, financial services, and insurance, with bylines across **Mint, Moneycontrol, Outlook India, AP News** and other major publications.
+
+Calxo is independent — no investor, AMC, lender or insurer funds the editorial. The "Last reviewed" date in each calculator's trust banner is the date Prem signed off on that page's current state.
 
 For corrections, methodology questions, or rate updates that lag the official notification, email us at the address on the [About page](/about/) — corrections are usually merged within 48 hours, with the `Last reviewed` date updated visibly.
 

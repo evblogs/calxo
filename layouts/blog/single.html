@@ -49,6 +49,12 @@
   }
   .cx-post-meta strong { color: #2563eb; font-weight: 600; }
   .cx-post-meta-sep { color: #cbd5e1; }
+  .cx-post-meta-cred { color: #94a3b8; font-size: .82rem; font-weight: 500; margin-left: .35rem; }
+  .cx-post-meta a { color: inherit; text-decoration: none; }
+  .cx-post-meta a:hover strong { text-decoration: underline; }
+  @media (max-width: 600px) {
+    .cx-post-meta-cred { display: block; margin-left: 0; margin-top: .15rem; }
+  }
 
   .cx-post-body {
     font-size: 1.08rem;
@@ -339,7 +345,15 @@
         {{ with .Params.tags }}<span class="cx-post-tag">{{ index . 0 }}</span>{{ end }}
         <h1 itemprop="headline">{{ .Title }}</h1>
         <div class="cx-post-meta">
-          <span>By <strong itemprop="author">Vignesh</strong></span>
+          <span>Written by <strong itemprop="author">Vignesh</strong></span>
+          <span class="cx-post-meta-sep">•</span>
+          <span>
+            Reviewed by
+            <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank">
+              <strong>Prem Anand</strong>
+            </a>
+            <span class="cx-post-meta-cred">10+ yrs BFSI content (Mint, Moneycontrol, Outlook)</span>
+          </span>
           <span class="cx-post-meta-sep">•</span>
           <span>Published <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>
           <span class="cx-post-meta-sep">•</span>
