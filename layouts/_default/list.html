@@ -1,46 +1,247 @@
 {{ define "main" }}
+{{ $section := .Section }}
+{{ $sectionTitle := .Title | default ($section | humanize | title) }}
 
-<section class="section-sm bg-light">
-  <div class="container-fluid text-center">
-    <h1>{{ .Title | title }}</h1>
-  </div>
-</section>
+{{/* Per-section gradient theme for cover backgrounds */}}
+{{ $theme := dict
+  "investment" (dict "g1" "#1e3a8a" "g2" "#2563eb" "g3" "#06b6d4" "label" "Investment")
+  "tax"        (dict "g1" "#5b21b6" "g2" "#7c3aed" "g3" "#a78bfa" "label" "Tax")
+  "salary"     (dict "g1" "#065f46" "g2" "#10b981" "g3" "#34d399" "label" "Salary & HR")
+  "gst"        (dict "g1" "#9a3412" "g2" "#ea580c" "g3" "#fb923c" "label" "GST")
+  "loan"       (dict "g1" "#1e3a8a" "g2" "#2563eb" "g3" "#0891b2" "label" "Loan")
+  "conversion" (dict "g1" "#831843" "g2" "#db2777" "g3" "#f472b6" "label" "Conversion")
+}}
+{{ $sectionTheme := index $theme $section | default (dict "g1" "#1e3a8a" "g2" "#2563eb" "g3" "#06b6d4" "label" ($section | humanize | title)) }}
 
-<div class="container py-4">
+<style>
+  .cx-list-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  .cx-list-hero {
+    margin-bottom: 2.5rem;
+  }
+  .cx-list-eyebrow {
+    display: inline-block;
+    background: linear-gradient(135deg, {{ $sectionTheme.g1 }}, {{ $sectionTheme.g2 }});
+    color: #fff;
+    padding: .35rem .85rem;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+  }
+  .cx-list-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.1rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin: 0 0 1rem;
+  }
+  .cx-list-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #475569;
+    max-width: 760px;
+  }
+  .cx-list-intro p { margin: 0 0 1rem; }
+  .cx-list-intro p:last-child { margin: 0; }
+  .cx-list-intro h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 1.75rem 0 .75rem;
+    letter-spacing: -.3px;
+  }
+  .cx-list-intro a { color: {{ $sectionTheme.g2 }}; text-decoration: none; font-weight: 600; }
+  .cx-list-intro a:hover { text-decoration: underline; }
 
-  <div class="row">
-    {{ range $i, $post := (.Pages.ByDate.Reverse) }}
-    <div class="col-md-3 mb-4">
-      <div class="card h-100 border-0 text-center">
-        {{ with $post.Params.Image }}
-        <div class="scroll-image" style="height: 300px; overflow: auto;">
-          <img src="{{ . | absURL }}" 
-               alt="{{ $post.Title }}"
-               style="width: 100%; height: auto; object-fit: contain;">
-        </div>
-        {{ end }}
-        <div class="card-body px-2">
-          <h6 class="card-title">
-            <a href="{{ $post.Permalink }}" class="text-dark text-decoration-none">
-              {{ $post.Title }}
-            </a>
-          </h6>
-          <div class="d-flex justify-content-between small text-muted">
-            <span>{{ $post.PublishDate.Format "Jan 02, 2006" }}</span>
-            {{ with $post.Params.author }}
-            <span>By {{ . }}</span>
-            {{ end }}
-          </div>
-        </div>
+  .cx-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .cx-list-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    height: 100%;
+  }
+  .cx-list-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(15, 23, 42, .10);
+    border-color: {{ $sectionTheme.g2 }};
+    text-decoration: none;
+  }
+  .cx-card-cover {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, {{ $sectionTheme.g1 }} 0%, {{ $sectionTheme.g2 }} 50%, {{ $sectionTheme.g3 }} 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .cx-card-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+  .cx-card-cover::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,.18) 0%, transparent 65%);
+    top: -50px; right: -50px;
+    pointer-events: none;
+  }
+  .cx-card-icon {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    width: 64px;
+    height: 64px;
+  }
+  .cx-card-cover-label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 2;
+    color: rgba(255,255,255,.92);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+  }
+  .cx-card-cover-abbr {
+    position: absolute;
+    right: 1rem;
+    bottom: .85rem;
+    z-index: 2;
+    color: rgba(255,255,255,.95);
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .cx-card-body {
+    padding: 1.25rem 1.25rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .cx-card-title {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.35;
+    letter-spacing: -.2px;
+    margin: 0 0 .55rem;
+  }
+  .cx-card-desc {
+    font-size: .87rem;
+    line-height: 1.55;
+    color: #64748b;
+    margin: 0 0 1rem;
+    flex: 1;
+  }
+  .cx-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .85rem;
+    font-weight: 700;
+    color: {{ $sectionTheme.g2 }};
+    margin-top: auto;
+  }
+  .cx-card-cta::after {
+    content: '→';
+    transition: transform .2s ease;
+  }
+  .cx-list-card:hover .cx-card-cta::after { transform: translateX(3px); }
+
+  @media (max-width: 600px) {
+    .cx-list-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cx-list-wrap { padding: 1.5rem 1rem 2.5rem; }
+  }
+  @media (max-width: 420px) {
+    .cx-list-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="cx-list-wrap">
+  <header class="cx-list-hero">
+    <span class="cx-list-eyebrow">{{ $sectionTheme.label }}</span>
+    <h1>{{ $sectionTitle }}</h1>
+    {{ with .Content }}<div class="cx-list-intro">{{ . }}</div>{{ end }}
+  </header>
+
+  <div class="cx-list-grid">
+    {{ range (.Pages.ByDate.Reverse) }}
+    {{ $slug := path.Base .Permalink }}
+    {{/* Calculator-specific icon and abbreviation */}}
+    {{ $iconKey := $slug }}
+    {{ $abbrev := "" }}
+    {{ if in $slug "emi" }}{{ $iconKey = "home" }}{{ $abbrev = "EMI" }}
+    {{ else if in $slug "sip" }}{{ $iconKey = "trending-up" }}{{ $abbrev = "SIP" }}
+    {{ else if in $slug "lumpsum" }}{{ $iconKey = "coins" }}{{ $abbrev = "LUMP" }}
+    {{ else if in $slug "ppf" }}{{ $iconKey = "shield" }}{{ $abbrev = "PPF" }}
+    {{ else if in $slug "fd-" }}{{ $iconKey = "vault" }}{{ $abbrev = "FD" }}
+    {{ else if in $slug "compound" }}{{ $iconKey = "stack" }}{{ $abbrev = "C·I" }}
+    {{ else if in $slug "income-tax" }}{{ $iconKey = "receipt" }}{{ $abbrev = "TAX" }}
+    {{ else if in $slug "gst" }}{{ $iconKey = "calculator" }}{{ $abbrev = "GST" }}
+    {{ else if in $slug "hra" }}{{ $iconKey = "building" }}{{ $abbrev = "HRA" }}
+    {{ else if in $slug "gratuity" }}{{ $iconKey = "gift" }}{{ $abbrev = "GRAT" }}
+    {{ else if in $slug "takehome" }}{{ $iconKey = "wallet" }}{{ $abbrev = "CTC" }}
+    {{ else if in $slug "currency" }}{{ $iconKey = "exchange" }}{{ $abbrev = "FX" }}
+    {{ else }}{{ $iconKey = "calculator" }}{{ $abbrev = upper (substr (replace .Title " " "") 0 3) }}
+    {{ end }}
+
+    <a href="{{ .Permalink }}" class="cx-list-card">
+      <div class="cx-card-cover">
+        <span class="cx-card-cover-label">{{ $sectionTheme.label }}</span>
+        <svg class="cx-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          {{ if eq $iconKey "home" }}<path d="M3 11.5L12 4l9 7.5"/><path d="M5 10v10h14V10"/>
+          {{ else if eq $iconKey "trending-up" }}<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>
+          {{ else if eq $iconKey "coins" }}<circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6" opacity=".55"/>
+          {{ else if eq $iconKey "shield" }}<path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>
+          {{ else if eq $iconKey "vault" }}<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M12 8.5V12"/>
+          {{ else if eq $iconKey "stack" }}<path d="M3 8l9-4 9 4-9 4z"/><path d="M3 12l9 4 9-4"/><path d="M3 16l9 4 9-4"/>
+          {{ else if eq $iconKey "receipt" }}<path d="M5 3h14v18l-3-2-3 2-3-2-2 2-3-2z"/><path d="M9 8h6M9 12h6M9 16h4"/>
+          {{ else if eq $iconKey "calculator" }}<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h.01M8 15h2M12 15h2M16 15h.01M8 19h2M12 19h2M16 19h.01"/>
+          {{ else if eq $iconKey "building" }}<path d="M4 21V6l8-3 8 3v15"/><path d="M9 9h.01M13 9h.01M9 13h.01M13 13h.01M9 17h.01M13 17h.01"/>
+          {{ else if eq $iconKey "gift" }}<rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13"/><path d="M7.5 8a2.5 2.5 0 010-5C9 3 12 6 12 8c0-2 3-5 4.5-5a2.5 2.5 0 010 5"/>
+          {{ else if eq $iconKey "wallet" }}<path d="M3 7h17a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1h13"/><circle cx="17" cy="13" r="1.2" fill="currentColor"/>
+          {{ else if eq $iconKey "exchange" }}<path d="M7 4l-4 4 4 4"/><path d="M3 8h14"/><path d="M17 20l4-4-4-4"/><path d="M21 16H7"/>
+          {{ else }}<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M9 12h6M9 16h6"/>
+          {{ end }}
+        </svg>
+        <span class="cx-card-cover-abbr">{{ $abbrev }}</span>
       </div>
-    </div>
+      <div class="cx-card-body">
+        <h3 class="cx-card-title">{{ .Title }}</h3>
+        <p class="cx-card-desc">{{ with .Params.description }}{{ . | truncate 110 }}{{ else }}{{ .Summary | truncate 110 }}{{ end }}</p>
+        <span class="cx-card-cta">Open calculator</span>
+      </div>
+    </a>
     {{ end }}
   </div>
-    <div>
-   {{ .Content }}
-   </div>
-
-
 </div>
 
 {{ end }}

@@ -1,0 +1,51 @@
+{{/* IBM-style hierarchical left navigation following the menu.main category order */}}
+{{ $currentURL := .RelPermalink }}
+{{ $currentSection := .Section }}
+{{ $site := .Site }}
+
+{{/* Build category list from menu.main, preserving the order set in hugo.toml */}}
+{{ $categories := slice }}
+{{ range $site.Menus.main }}
+  {{ $secName := trim .URL "/" }}
+  {{ if and $secName (ne $secName "blog") }}
+    {{ $sectionPages := where (where $site.RegularPages "Section" $secName) "Type" "calculator" }}
+    {{/* Fallback: just use Section filter when Type isn't set */}}
+    {{ if not $sectionPages }}
+      {{ $sectionPages = where $site.RegularPages "Section" $secName }}
+    {{ end }}
+    {{ if $sectionPages }}
+      {{ $categories = $categories | append (dict "name" .Name "url" .URL "section" $secName "pages" ($sectionPages.ByTitle)) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<aside class="cx-left-nav" aria-label="Calculator guide">
+  <div class="cx-nav-title">Calculator Guide</div>
+  <nav class="cx-nav-tree">
+    <a href="/" class="cx-nav-home {{ if eq $currentURL "/" }}cx-nav-active{{ end }}">Home</a>
+
+    {{ range $categories }}
+      {{ $isCurrentSection := eq $currentSection .section }}
+      <details class="cx-nav-group" {{ if $isCurrentSection }}open{{ end }}>
+        <summary class="cx-nav-summary">
+          <span class="cx-nav-arrow" aria-hidden="true"></span>
+          <span class="cx-nav-section-name">{{ .name }}</span>
+        </summary>
+        <ul class="cx-nav-children">
+          <li>
+            <a href="{{ .url }}" class="cx-nav-link cx-nav-overview {{ if eq $currentURL .url }}cx-nav-active{{ end }}">Overview</a>
+          </li>
+          {{ range .pages }}
+            <li>
+              <a href="{{ .RelPermalink }}" class="cx-nav-link {{ if eq $currentURL .RelPermalink }}cx-nav-active{{ end }}">
+                {{ $shortTitle := .Title }}
+                {{ if in .Title ":" }}{{ $shortTitle = index (split .Title ":") 0 }}{{ end }}
+                {{ $shortTitle | replaceRE "(?i) calculator$" "" | replaceRE "(?i) converter$" "" }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </details>
+    {{ end }}
+  </nav>
+</aside>
