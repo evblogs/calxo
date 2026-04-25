@@ -30,6 +30,8 @@ URLS = [
     "/loan/car-loan-calculator/",
     "/loan/education-loan-calculator/",
     "/loan/stamp-duty-calculator/",
+    "/loan/personal-loan-calculator/",
+    "/loan/bike-loan-calculator/",
 
     # Investment
     "/investment/",
@@ -55,6 +57,13 @@ URLS = [
     "/salary/takehome-calculator/",
     "/salary/gratuity-calculator/",
     "/salary/epf-calculator/",
+    "/salary/salary-hike-calculator/",
+
+    # Blog
+    "/blog/",
+    "/blog/sip-vs-lumpsum-india/",
+    "/blog/how-much-home-loan-on-salary/",
+    "/blog/old-vs-new-tax-regime-fy-2025-26/",
 
     # Conversion
     "/conversion/",

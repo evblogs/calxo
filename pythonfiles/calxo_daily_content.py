@@ -163,8 +163,12 @@ def git_commit_push(filepaths, message):
     subprocess.run(["git", "add", str(QUEUE_FILE)], cwd=repo_root, check=True)
 
     subprocess.run(["git", "commit", "-m", message], cwd=repo_root, check=True)
+
+    # Stash any other local changes before rebase to avoid conflicts
+    subprocess.run(["git", "stash"], cwd=repo_root)
     subprocess.run(["git", "pull", "--rebase", "origin", "master"],
                    cwd=repo_root, check=True)
+    subprocess.run(["git", "stash", "pop"], cwd=repo_root)
     subprocess.run(["git", "push", "origin", "master"], cwd=repo_root, check=True)
 
 
