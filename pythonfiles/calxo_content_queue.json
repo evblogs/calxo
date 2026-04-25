@@ -8,9 +8,14 @@
     "calculator_url": "/salary/hra-calculator/",
     "calculator_label": "HRA Exemption Calculator",
     "category": "Tax",
-    "tags": ["HRA", "salary", "income tax", "exemption"],
-    "status": "pending",
-    "published_date": null
+    "tags": [
+      "HRA",
+      "salary",
+      "income tax",
+      "exemption"
+    ],
+    "status": "done",
+    "published_date": "2026-04-25"
   },
   {
     "id": "gratuity-calculation-formula-india",
@@ -21,7 +26,12 @@
     "calculator_url": "/salary/gratuity-calculator/",
     "calculator_label": "Gratuity Calculator",
     "category": "Salary",
-    "tags": ["gratuity", "salary", "resignation", "retirement"],
+    "tags": [
+      "gratuity",
+      "salary",
+      "resignation",
+      "retirement"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -34,7 +44,12 @@
     "calculator_url": "/salary/epf-calculator/",
     "calculator_label": "EPF Calculator",
     "category": "Salary",
-    "tags": ["EPF", "PF", "provident fund", "salary"],
+    "tags": [
+      "EPF",
+      "PF",
+      "provident fund",
+      "salary"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -47,7 +62,13 @@
     "calculator_url": "/tax/capital-gains-calculator/",
     "calculator_label": "Capital Gains Calculator",
     "category": "Tax",
-    "tags": ["capital gains", "LTCG", "STCG", "income tax", "mutual funds"],
+    "tags": [
+      "capital gains",
+      "LTCG",
+      "STCG",
+      "income tax",
+      "mutual funds"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -60,7 +81,12 @@
     "calculator_url": "/salary/takehome-calculator/",
     "calculator_label": "CTC to In-Hand Calculator",
     "category": "Salary",
-    "tags": ["CTC", "in-hand salary", "take-home", "salary structure"],
+    "tags": [
+      "CTC",
+      "in-hand salary",
+      "take-home",
+      "salary structure"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -73,7 +99,12 @@
     "calculator_url": "/investment/rd-calculator/",
     "calculator_label": "RD Calculator",
     "category": "Investment",
-    "tags": ["RD", "recurring deposit", "interest calculation", "savings"],
+    "tags": [
+      "RD",
+      "recurring deposit",
+      "interest calculation",
+      "savings"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -86,7 +117,12 @@
     "calculator_url": "/investment/ppf-calculator/",
     "calculator_label": "PPF Calculator",
     "category": "Investment",
-    "tags": ["PPF", "public provident fund", "tax saving", "80C"],
+    "tags": [
+      "PPF",
+      "public provident fund",
+      "tax saving",
+      "80C"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -99,7 +135,12 @@
     "calculator_url": "/tax/tds-calculator/",
     "calculator_label": "TDS Calculator",
     "category": "Tax",
-    "tags": ["TDS", "salary", "income tax", "Form 16"],
+    "tags": [
+      "TDS",
+      "salary",
+      "income tax",
+      "Form 16"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -112,7 +153,12 @@
     "calculator_url": "/loan/emi-calculator/",
     "calculator_label": "EMI Calculator",
     "category": "Loans",
-    "tags": ["home loan", "prepayment", "EMI", "interest saving"],
+    "tags": [
+      "home loan",
+      "prepayment",
+      "EMI",
+      "interest saving"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -125,7 +171,12 @@
     "calculator_url": "/tax/gst-calculator/",
     "calculator_label": "GST Calculator",
     "category": "Tax",
-    "tags": ["GST", "reverse GST", "tax calculation", "invoice"],
+    "tags": [
+      "GST",
+      "reverse GST",
+      "tax calculation",
+      "invoice"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -138,7 +189,13 @@
     "calculator_url": "/investment/nps-calculator/",
     "calculator_label": "NPS Calculator",
     "category": "Investment",
-    "tags": ["NPS", "PPF", "retirement", "80C", "80CCD"],
+    "tags": [
+      "NPS",
+      "PPF",
+      "retirement",
+      "80C",
+      "80CCD"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -151,7 +208,12 @@
     "calculator_url": "/loan/stamp-duty-calculator/",
     "calculator_label": "Stamp Duty Calculator",
     "category": "Loans",
-    "tags": ["stamp duty", "registration charges", "property", "home buying"],
+    "tags": [
+      "stamp duty",
+      "registration charges",
+      "property",
+      "home buying"
+    ],
     "status": "pending",
     "published_date": null
   }
