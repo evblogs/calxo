@@ -1,6 +1,8 @@
 ---
 title: "About Calxo"
 description: "Calxo is a free online calculator hub built for Indian users. EMI, SIP, GST, income tax, salary and more, with formulas verified against RBI and Income Tax Department sources. Run by Vignesh Sampath Kumar."
+date: 2026-04-25
+lastmod: 2026-04-25
 image: ""
 ---
 

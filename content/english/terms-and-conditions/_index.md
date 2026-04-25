@@ -1,6 +1,8 @@
 ---
 title: "Terms & Conditions"
 description: "Terms of using Calxo's free online calculators."
+date: 2026-04-25
+lastmod: 2026-04-25
 image: ""
 ---
 

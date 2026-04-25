@@ -1,6 +1,8 @@
 ---
 title: "Privacy Policy"
 description: "How Calxo handles your data. Spoiler: we don't collect or store your calculator inputs."
+date: 2026-04-25
+lastmod: 2026-04-25
 image: ""
 ---
 
