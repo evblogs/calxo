@@ -141,7 +141,7 @@ logo = "images/logo.svg"
 description = "Free online calculators for Indian users: EMI, SIP, GST, income tax, FD, PPF, salary, conversions and more. Fast, accurate, no sign-up."
 author = "Calxo Team"
 contact_form_action = "#"
-google_analitycs_id = ""
+google_analitycs_id = "G-11QNFDC0CH"
 sidebar = "right"
 
 # Preloader
