@@ -83,33 +83,33 @@ link = "plugins/search/search.js"
 ############################## navigation ###############################
 
 [[menu.main]]
-name = "Loan Calculators"
-URL = "/categories/loan-calculators/"
+name = "Loan"
+URL = "/loan/"
 weight = 1
 
 [[menu.main]]
 name = "Investment"
-URL = "/categories/investment-calculators/"
+URL = "/investment/"
 weight = 2
 
 [[menu.main]]
 name = "Tax"
-URL = "/categories/tax-calculators/"
+URL = "/tax/"
 weight = 3
 
 [[menu.main]]
 name = "Salary & HR"
-URL = "/categories/salary-calculators/"
+URL = "/salary/"
 weight = 4
 
 [[menu.main]]
 name = "GST"
-URL = "/categories/gst-calculators/"
+URL = "/gst/"
 weight = 5
 
 [[menu.main]]
 name = "Conversion"
-URL = "/categories/conversion-calculators/"
+URL = "/conversion/"
 weight = 6
 
 [[menu.main]]

@@ -1,0 +1,129 @@
+{{ define "main" }}
+<style>
+  .cx-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.25rem 1.5rem 3rem;
+  }
+  .cx-breadcrumb {
+    font-size: .82rem;
+    color: #64748b;
+    margin-bottom: .85rem;
+  }
+  .cx-breadcrumb a { color: #2563eb; text-decoration: none; }
+  .cx-breadcrumb a:hover { text-decoration: underline; }
+  .cx-page h1 {
+    font-size: clamp(1.65rem, 3.6vw, 2.4rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0 0 .65rem;
+  }
+  .cx-page-meta {
+    display: flex;
+    gap: 1.1rem;
+    font-size: .82rem;
+    color: #64748b;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.85rem;
+  }
+  .cx-page-meta strong { color: #2563eb; font-weight: 700; }
+  .cx-page-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1e293b;
+  }
+  .cx-page-content h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 2.25rem 0 .85rem;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+  }
+  .cx-page-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 1.5rem 0 .55rem;
+  }
+  .cx-page-content p { margin: 0 0 1rem; }
+  .cx-page-content ul, .cx-page-content ol { margin: 0 0 1rem 1.4rem; padding: 0; }
+  .cx-page-content li { margin-bottom: .35rem; }
+  .cx-page-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: .92rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .cx-page-content thead {
+    background: #f0f9ff;
+  }
+  .cx-page-content th {
+    text-align: left;
+    font-weight: 700;
+    padding: .7rem .9rem;
+    border-bottom: 2px solid #2563eb;
+    font-size: .85rem;
+    color: #0f172a;
+  }
+  .cx-page-content td {
+    padding: .65rem .9rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .cx-page-content tr:last-child td { border-bottom: none; }
+  .cx-page-content strong { color: #0f172a; font-weight: 700; }
+  .cx-page-content a { color: #2563eb; }
+  .cx-page-content code {
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: .15rem .35rem;
+    border-radius: 4px;
+    font-size: .92em;
+  }
+  .cx-trust {
+    background: linear-gradient(135deg, #f0f9ff 0%, #ecfeff 100%);
+    border-left: 3px solid #2563eb;
+    padding: .85rem 1.1rem;
+    border-radius: 8px;
+    font-size: .87rem;
+    color: #0f172a;
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    gap: .65rem;
+    align-items: flex-start;
+  }
+  .cx-trust strong { color: #2563eb; }
+</style>
+
+<article class="cx-page">
+  <nav class="cx-breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    {{ with .Section }}<a href="/{{ . }}/">{{ . | humanize | title }}</a> &rsaquo;{{ end }}
+    <span>{{ .Title }}</span>
+  </nav>
+  <h1>{{ .Title }}</h1>
+  <div class="cx-page-meta">
+    <span>By <strong>Calxo Team</strong></span>
+    <span aria-hidden="true">&bull;</span>
+    <span>Updated {{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "Jan 2, 2006" }}{{ end }}</span>
+    <span aria-hidden="true">&bull;</span>
+    <span>{{ .ReadingTime }} min read</span>
+  </div>
+
+  <div class="cx-trust">
+    <span aria-hidden="true">🇮🇳</span>
+    <span>Built for Indian users. Formula sourced from RBI guidelines. Calculations run entirely in your browser &mdash; we don't store inputs.</span>
+  </div>
+
+  <div class="cx-page-content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}
