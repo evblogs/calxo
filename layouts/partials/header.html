@@ -1,6 +1,6 @@
-{{/* ═══════════════════════ Top brand bar (logo + search) ═══════════════════════ */}}
+{{/* ═══════════════════════ Header (logo + mega nav in single row) ═══════════════════════ */}}
 <header class="cx-header">
-  <div class="cx-header-top">
+  <div class="cx-header-row">
     <a href="{{ "/" | relLangURL }}" class="cx-brand">
       <img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" class="cx-brand-logo">
     </a>
@@ -8,7 +8,6 @@
     <button class="cx-mobile-toggle" id="cxMobileToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-  </div>
 
   {{/* ═══════════════════════ Mega-menu navigation ═══════════════════════ */}}
   {{ $site := .Site }}
@@ -132,6 +131,7 @@
       {{ end }}
     </ul>
   </nav>
+  </div>
 </header>
 
 <style>
@@ -143,16 +143,15 @@
     top: 0;
     z-index: 100;
   }
-  .cx-header-top {
+  .cx-header-row {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: .65rem 1.5rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
   }
-  .cx-brand { display: flex; align-items: center; }
+  .cx-brand { display: flex; align-items: center; flex-shrink: 0; }
   .cx-brand-logo { height: 38px; width: auto; display: block; }
 
 
@@ -183,24 +182,23 @@
 
   /* ═══════════════════════ Mega menu nav bar ═══════════════════════ */
   .cx-mega-nav {
-    background: #fff;
-    border-top: 1px solid #f1f5f9;
+    background: transparent;
+    flex: 1;
   }
   .cx-nav-list {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    margin: 0;
+    padding: 0;
     list-style: none;
     display: flex;
     align-items: stretch;
-    gap: .25rem;
+    gap: .15rem;
   }
   .cx-nav-li { position: static; display: flex; }
   .cx-nav-top {
     display: flex;
     align-items: center;
     gap: .35rem;
-    padding: .85rem 1.1rem;
+    padding: 1.1rem .95rem;
     color: #1e293b;
     text-decoration: none;
     font-size: .92rem;
@@ -325,7 +323,7 @@
 
   /* ═══════════════════════ Mobile responsive ═══════════════════════ */
   @media (max-width: 880px) {
-    .cx-header-top { gap: .5rem; padding: .85rem 1rem; }
+    .cx-header-row { gap: .5rem; padding: .65rem 1rem; justify-content: space-between; }
     .cx-mobile-toggle { display: flex; }
 
     .cx-mega-nav {

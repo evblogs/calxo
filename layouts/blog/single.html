@@ -96,7 +96,7 @@
   }
 
   /* Sidebar */
-  .cx-post-aside { position: sticky; top: 1rem; }
+  .cx-post-aside { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow-y: auto; }
   .cx-post-aside-card {
     background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
     border: 1px solid #e2e8f0;
@@ -125,6 +125,107 @@
     transition: background .15s ease, color .15s ease;
   }
   .cx-post-aside-card a:hover { background: #dbeafe; color: #1d4ed8; }
+
+  /* Table of Contents */
+  .cx-toc {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+  .cx-toc-toggle {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    color: #0f172a;
+    font-family: inherit;
+    transition: background .15s ease;
+  }
+  .cx-toc-toggle:hover { background: #f8fafc; }
+  .cx-toc-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #2563eb;
+    font-weight: 700;
+  }
+  .cx-toc-toggle-icon {
+    width: 16px; height: 16px;
+    transition: transform .2s ease;
+    color: #64748b;
+  }
+  .cx-toc[aria-expanded="false"] .cx-toc-toggle-icon { transform: rotate(-90deg); }
+
+  .cx-toc-body {
+    padding: 0 1.4rem 1.25rem;
+    max-height: 60vh;
+    overflow-y: auto;
+    transition: max-height .2s ease, padding .2s ease, opacity .15s ease;
+  }
+  .cx-toc[aria-expanded="false"] .cx-toc-body {
+    max-height: 0;
+    padding: 0 1.4rem;
+    opacity: 0;
+    overflow: hidden;
+  }
+  .cx-toc-body nav#TableOfContents > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 2px solid #e2e8f0;
+  }
+  .cx-toc-body nav#TableOfContents ul ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .cx-toc-body nav#TableOfContents li { margin: 0; }
+  .cx-toc-body nav#TableOfContents a {
+    display: block;
+    padding: .45rem .85rem;
+    color: #475569;
+    text-decoration: none;
+    font-size: .87rem;
+    line-height: 1.4;
+    border-left: 2px solid transparent;
+    margin-left: -2px;
+    transition: color .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .cx-toc-body nav#TableOfContents a:hover {
+    color: #2563eb;
+    background: #f8fafc;
+  }
+  .cx-toc-body nav#TableOfContents a.cx-toc-active {
+    color: #2563eb;
+    font-weight: 700;
+    border-left-color: #2563eb;
+    background: #eff6ff;
+  }
+  .cx-toc-body nav#TableOfContents ul ul a {
+    padding-left: 1.65rem;
+    font-size: .82rem;
+    color: #64748b;
+  }
+  .cx-toc-progress {
+    height: 3px;
+    background: #f1f5f9;
+    overflow: hidden;
+  }
+  .cx-toc-progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+    transition: width .12s ease;
+  }
 </style>
 
 <div class="cx-post-wrap">
@@ -154,6 +255,20 @@
     </article>
 
     <aside class="cx-post-aside">
+      {{ with .TableOfContents }}
+      <div class="cx-toc" id="cxToc" aria-expanded="true">
+        <button type="button" class="cx-toc-toggle" id="cxTocToggle" aria-controls="cxTocBody" aria-expanded="true">
+          <span class="cx-toc-toggle-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+            On this page
+          </span>
+          <svg class="cx-toc-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="cx-toc-progress"><div class="cx-toc-progress-bar" id="cxTocProgressBar"></div></div>
+        <div class="cx-toc-body" id="cxTocBody">{{ . }}</div>
+      </div>
+      {{ end }}
+
       {{ with .Params.related_calcs }}
       <div class="cx-post-aside-card">
         <h4>Run the numbers yourself</h4>
@@ -194,6 +309,76 @@
   },
   "mainEntityOfPage": "{{ .Permalink }}"
 }
+</script>
+
+{{/* ═══════════════════════ TOC: toggle + active-section + scroll progress ═══════════════════════ */}}
+<script>
+(function () {
+  var toc = document.getElementById('cxToc');
+  if (!toc) return;
+  var toggle = document.getElementById('cxTocToggle');
+  var body = document.getElementById('cxTocBody');
+  var bar = document.getElementById('cxTocProgressBar');
+  var article = document.querySelector('.cx-post-body');
+  if (!toggle || !body || !article) return;
+
+  // Toggle expand/collapse (persists per-session in localStorage)
+  function setExpanded(open) {
+    toc.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    try { localStorage.setItem('cx-toc-open', open ? '1' : '0'); } catch (e) {}
+  }
+  toggle.addEventListener('click', function () {
+    setExpanded(toc.getAttribute('aria-expanded') !== 'true');
+  });
+  // Restore previous state
+  try {
+    var saved = localStorage.getItem('cx-toc-open');
+    if (saved === '0') setExpanded(false);
+  } catch (e) {}
+
+  // Smooth scroll on TOC link click
+  var tocLinks = body.querySelectorAll('a[href^="#"]');
+  tocLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        var top = target.getBoundingClientRect().top + window.scrollY - 24;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + id);
+      }
+    });
+  });
+
+  // Active section + reading progress on scroll
+  var headings = Array.prototype.slice.call(article.querySelectorAll('h2[id], h3[id]'));
+  function updateActive() {
+    if (!headings.length) return;
+    var scrollY = window.scrollY + 80;
+    var current = headings[0];
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].offsetTop <= scrollY) current = headings[i];
+      else break;
+    }
+    tocLinks.forEach(function (link) {
+      link.classList.toggle('cx-toc-active', link.getAttribute('href') === '#' + current.id);
+    });
+    // Reading progress
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)) : 0;
+    if (bar) bar.style.width = pct + '%';
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(function () { updateActive(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+  updateActive();
+})();
 </script>
 
 {{ end }}
