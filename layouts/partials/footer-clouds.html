@@ -1,178 +1,119 @@
-<div class="ev-footer">
+<div class="cx-footer-cloud">
     <div class="container-fluid">
         <div class="footer-header" onclick="toggleFooterAccordion()">
-            <h4 class="footer-title">Explore Our Topics</h4>
+            <h4 class="footer-title">Explore Calculators</h4>
             <span id="footerToggleIcon" class="toggle-icon">+</span>
         </div>
 
         <div id="footerAccordionContent" class="footer-links-wrapper">
             <div id="footerLinks" class="footer-grid">
-                {{ $allPosts := sort (where .Site.RegularPages "Section" "post") "Title" }}
-                {{ range $index, $page := $allPosts }}
-                <a class="footer-link {{ if gt $index 8 }}hidden-link{{ end }}" data-index="{{ $index }}"
-                    href="{{ $page.RelPermalink }}">{{ $page.Title }}  🔗</a>
+                {{ $calcs := where .Site.RegularPages "Type" "calculator" }}
+                {{ if $calcs }}
+                {{ range $index, $page := sort $calcs "Title" }}
+                <a class="footer-link" data-index="{{ $index }}" href="{{ $page.RelPermalink }}">{{ $page.Title }} →</a>
                 {{ end }}
-            </div>
-
-            <div class="footer-actions">
-                <button id="toggleReadMore" onclick="toggleFooterLinks()">Read More</button>
+                {{ else }}
+                <a class="footer-link" href="/loan/emi-calculator/">EMI Calculator →</a>
+                <span class="footer-link" style="opacity:.55;cursor:default;">SIP Calculator (coming soon)</span>
+                <span class="footer-link" style="opacity:.55;cursor:default;">Income Tax Calculator (coming soon)</span>
+                <span class="footer-link" style="opacity:.55;cursor:default;">FD Calculator (coming soon)</span>
+                <span class="footer-link" style="opacity:.55;cursor:default;">PPF Calculator (coming soon)</span>
+                <span class="footer-link" style="opacity:.55;cursor:default;">GST Calculator (coming soon)</span>
+                <span class="footer-link" style="opacity:.55;cursor:default;">HRA Exemption Calculator (coming soon)</span>
+                <span class="footer-link" style="opacity:.55;cursor:default;">CTC to In-Hand Calculator (coming soon)</span>
+                <span class="footer-link" style="opacity:.55;cursor:default;">Capital Gains Calculator (coming soon)</span>
+                {{ end }}
             </div>
         </div>
     </div>
 
     <style>
-        .ev-footer {
-            background-color: #0f766e;
+        .cx-footer-cloud {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0891b2 100%);
             color: #fff;
-            
-           
+            position: relative;
+            overflow: hidden;
         }
-
-        .footer-title {
+        .cx-footer-cloud::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+        .cx-footer-cloud > * { position: relative; }
+        .cx-footer-cloud .footer-title {
             font-size: 17px !important;
-            font-weight: 500 !important;
-            padding-top: 10px;
+            font-weight: 600 !important;
+            padding-top: 12px;
+            color: #fff;
+            margin: 0;
         }
-
-        .footer-header {
+        .cx-footer-cloud .footer-header {
             display: flex;
             justify-content: center;
-            /* Horizontal center */
             align-items: center;
-            /* Vertical center */
-            gap: 10px;
-            /* Optional spacing between title and icon */
+            gap: 12px;
             cursor: pointer;
             text-align: center;
-            padding: 0 10px !important;
+            padding: 0 10px 0 !important;
         }
-
-        .toggle-icon {
-            font-size: 2rem;
-            color: #c8deff;
+        .cx-footer-cloud .toggle-icon {
+            font-size: 1.85rem;
+            color: #bfdbfe;
             user-select: none;
             transition: transform 0.3s ease;
             padding-bottom: 10px;
+            line-height: 1;
         }
-
-        .footer-links-wrapper {
+        .cx-footer-cloud .footer-links-wrapper {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease;
+            transition: max-height 0.4s ease;
         }
-
-        .footer-links-wrapper.expanded {
-            max-height: 500px;
+        .cx-footer-cloud .footer-links-wrapper.expanded {
+            max-height: 600px;
             overflow-y: auto;
-            padding-right: 10px;
-            /* Optional: to avoid scrollbar overlap */
+            padding: 1rem 1.5rem 1.5rem;
         }
-
-
-        .footer-grid {
+        .cx-footer-cloud .footer-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px 30px;
-            margin-top: 1rem;
+            gap: 8px 28px;
+            max-width: 1080px;
+            margin: 0 auto;
         }
-
-        .footer-link {
+        @media (max-width: 800px) { .cx-footer-cloud .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .cx-footer-cloud .footer-grid { grid-template-columns: 1fr; } }
+        .cx-footer-cloud .footer-link {
             color: #fff !important;
             text-decoration: none;
-            padding: 6px 0;
+            padding: 7px 0;
             display: block;
-            border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
-            transition: color 0.3s;
-            font-size: 13px;
+            border-bottom: 1px dotted rgba(255,255,255,.18);
+            transition: color .2s, padding-left .2s;
+            font-size: 13.5px;
+            font-weight: 500;
         }
-
-        .footer-link:hover {
-            color: #c8deff !important;
+        .cx-footer-cloud .footer-link:hover {
+            color: #bfdbfe !important;
+            padding-left: 4px;
+            text-decoration: none;
         }
-
-        .hidden-link {
-            display: none;
-        }
-
-        .footer-actions {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        #toggleReadMore {
-            background: none;
-            color: #c8deff;
-            border: 1px solid #c8deff;
-            padding: 5px 12px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            border-radius: 5px;
-            transition: background 0.3s;
-            margin-bottom: 10px;
-        }
-
-        #toggleReadMore:hover {
-            background: #ccfbf1;
-            color: #0f766e;
-        }
-
-        /* Scrollbar Styling */
-        .footer-links-wrapper.expanded::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .footer-links-wrapper.expanded::-webkit-scrollbar-track {
-            background: #2b2b2b;
-            border-radius: 3px;
-        }
-
-        .footer-links-wrapper.expanded::-webkit-scrollbar-thumb {
-            background-color: #c8deff;
-            border-radius: 3px;
-        }
-
-        .footer-links-wrapper.expanded::-webkit-scrollbar-thumb:hover {
-            background-color: #c8deff;
-        }
+        .cx-footer-cloud .footer-links-wrapper.expanded::-webkit-scrollbar { width: 6px; }
+        .cx-footer-cloud .footer-links-wrapper.expanded::-webkit-scrollbar-track { background: rgba(255,255,255,.08); border-radius: 3px; }
+        .cx-footer-cloud .footer-links-wrapper.expanded::-webkit-scrollbar-thumb { background-color: #bfdbfe; border-radius: 3px; }
     </style>
 
-
     <script>
-        let currentVisible = 15;
-        const step = 15;
-
         function toggleFooterAccordion() {
-            const content = document.getElementById("footerAccordionContent");
-            const icon = document.getElementById("footerToggleIcon");
-
+            var content = document.getElementById("footerAccordionContent");
+            var icon = document.getElementById("footerToggleIcon");
             content.classList.toggle("expanded");
-            icon.textContent = content.classList.contains("expanded") ? "–" : "+";
-        }
-
-        function toggleFooterLinks() {
-            const links = document.querySelectorAll(".footer-link");
-            const btn = document.getElementById("toggleReadMore");
-
-            if (btn.textContent === "Read Less") {
-                links.forEach((link, index) => {
-                    link.style.display = index < step ? "block" : "none";
-                });
-                currentVisible = step;
-                btn.textContent = "Read More";
-            } else {
-                links.forEach((link, index) => {
-                    if (index < currentVisible + step) {
-                        link.style.display = "block";
-                    }
-                });
-                currentVisible += step;
-
-                if (currentVisible >= links.length) {
-                    btn.textContent = "Read Less";
-                }
-            }
+            icon.textContent = content.classList.contains("expanded") ? "−" : "+";
         }
     </script>
-
-
 </div>

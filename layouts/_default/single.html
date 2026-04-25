@@ -87,9 +87,9 @@
                   <strong style="font-size:0.9rem;">Why Trust This Guide</strong>
                   <span class="text-muted" style="font-size:0.78rem;">Updated: {{ with .Params.lastmod }}{{ time . | time.Format "Jan 2006" }}{{ else }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
                 </div>
-                {{ $aMap := dict "calxo-team" (dict "name" "Calxo Team" "url" "/about/") }}
-                {{ $aKey := .Params.author | default "calxo-team" }}
-                {{ $aInfo := index $aMap $aKey | default (index $aMap "calxo-team") }}
+                {{ $aMap := dict "vignesh" (dict "name" "Vignesh" "url" "/about/") }}
+                {{ $aKey := .Params.author | default "vignesh" }}
+                {{ $aInfo := index $aMap $aKey | default (index $aMap "vignesh") }}
                 <p class="mb-2" style="margin:0 0 6px 0;">Researched by <a href="{{ $aInfo.url }}" style="color:#2563eb;font-weight:600;">{{ $aInfo.name }}</a> (Calxo.in). Formulas verified against RBI, Income Tax Department, and CBDT guidelines. We update calculators every time tax slabs or rules change.</p>
                 <div class="d-flex flex-wrap gap-3 mb-2" style="font-size:0.82rem;color:#555;">
                   <span>📑 Official RBI / IT Dept formulas</span><span>🇮🇳 Indian rules &amp; tax slabs</span><span>🔄 Updated when laws change</span><span>🧮 Worked examples in INR</span>

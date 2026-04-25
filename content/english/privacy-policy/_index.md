@@ -18,9 +18,9 @@ We use only essential cookies (session, theme preference) and the GA4 cookie. Yo
 
 ## Third-party services
 
-- **Google Analytics 4** — anonymised traffic stats
-- **Netlify** — site hosting; sees standard request logs (IP, user agent) for security
-- **Google Fonts** — loaded from fonts.googleapis.com
+- **Google Analytics 4**: anonymised traffic stats
+- **Netlify**: site hosting; sees standard request logs (IP, user agent) for security
+- **Google Fonts**: loaded from fonts.googleapis.com
 
 We do not use ad networks, retargeting pixels, or session-replay tools.
 

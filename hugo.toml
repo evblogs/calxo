@@ -58,11 +58,7 @@ unsafe = true
 
 ############################# Plugins ##############################
 
-# CSS Plugins
-[[params.plugins.css]]
-link = "plugins/bootstrap/bootstrap.min.css"
-[[params.plugins.css]]
-link = "plugins/slick/slick.css"
+# CSS Plugins. Bootstrap loaded via CDN in head.html (deferred); themify-icons kept for footer.
 [[params.plugins.css]]
 link = "plugins/themify-icons/themify-icons.css"
 
@@ -142,7 +138,7 @@ weight = 4
 #################### default parameters ################################
 [params]
 logo = "images/logo.svg"
-description = "Free online calculators for Indian users — EMI, SIP, GST, income tax, FD, PPF, salary, conversions and more. Fast, accurate, no sign-up."
+description = "Free online calculators for Indian users: EMI, SIP, GST, income tax, FD, PPF, salary, conversions and more. Fast, accurate, no sign-up."
 author = "Calxo Team"
 contact_form_action = "#"
 google_analitycs_id = ""

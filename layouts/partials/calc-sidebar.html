@@ -1,0 +1,167 @@
+<aside class="cx-sidebar">
+  <style>
+    .cx-sidebar { font-size: .9rem; }
+    .cx-sidebar-box {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .cx-sidebar-head {
+      background: linear-gradient(90deg, #1e3a8a, #2563eb);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: .65rem 1rem;
+    }
+    .cx-sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cx-sidebar-list li {
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .cx-sidebar-list li:last-child { border-bottom: none; }
+    .cx-sidebar-list a {
+      display: flex;
+      gap: .55rem;
+      padding: .65rem 1rem;
+      color: #1e293b;
+      text-decoration: none;
+      font-size: .87rem;
+      line-height: 1.4;
+      transition: background .15s;
+      align-items: flex-start;
+    }
+    .cx-sidebar-list a:hover {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+    .cx-sidebar-list .num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: #dbeafe;
+      color: #2563eb;
+      font-weight: 800;
+      font-size: .72rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .cx-sidebar-empty {
+      padding: 1rem;
+      color: #64748b;
+      font-size: .82rem;
+      font-style: italic;
+    }
+    .cx-sidebar-toc a {
+      padding: .5rem 1rem;
+      color: #475569;
+      text-decoration: none;
+      display: block;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: .84rem;
+      transition: color .15s, padding-left .15s;
+    }
+    .cx-sidebar-toc a:last-child { border-bottom: none; }
+    .cx-sidebar-toc a:hover {
+      color: #2563eb;
+      padding-left: 1.25rem;
+    }
+    .cx-sidebar-cta {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+      color: #fff;
+      padding: 1.25rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .cx-sidebar-cta h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 .35rem;
+    }
+    .cx-sidebar-cta p {
+      font-size: .8rem;
+      color: rgba(255,255,255,.85);
+      margin: 0 0 .85rem;
+      line-height: 1.45;
+    }
+    .cx-sidebar-cta a {
+      display: inline-block;
+      background: #fff;
+      color: #1e3a8a !important;
+      font-weight: 700;
+      font-size: .82rem;
+      padding: .5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none !important;
+    }
+    .cx-sidebar-cta a:hover { background: #dbeafe; }
+  </style>
+
+  {{/* Other calculators in the same section */}}
+  {{ $section := .Section }}
+  {{ $current := .RelPermalink }}
+  {{ $sectionPeers := where (where .Site.RegularPages "Section" $section) "Type" "calculator" }}
+  {{ $sectionPeers = where $sectionPeers "RelPermalink" "ne" $current }}
+
+  {{ if $sectionPeers }}
+  <div class="cx-sidebar-box">
+    <div class="cx-sidebar-head">More {{ $section | humanize | title }} Calculators</div>
+    <ul class="cx-sidebar-list">
+      {{ range first 6 $sectionPeers }}
+      <li><a href="{{ .RelPermalink }}"><span class="num">+</span><span>{{ .Title | truncate 60 }}</span></a></li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  {{/* Curated popular calculators (shown until enough live pages exist) */}}
+  {{ $popular := slice
+    (slice "EMI Calculator" "/loan/emi-calculator/")
+    (slice "SIP Calculator" "/investment/sip-calculator/")
+    (slice "Income Tax Calculator" "/tax/income-tax-calculator/")
+    (slice "GST Calculator" "/gst/gst-calculator/")
+    (slice "FD Calculator" "/investment/fd-calculator/")
+    (slice "HRA Exemption Calculator" "/tax/hra-calculator/")
+    (slice "CTC to In-Hand Calculator" "/salary/ctc-to-in-hand-calculator/")
+  }}
+
+  <div class="cx-sidebar-box">
+    <div class="cx-sidebar-head">Most Used Calculators</div>
+    <ul class="cx-sidebar-list">
+      {{ range $i, $p := $popular }}
+      {{ if ne (index $p 1) $current }}
+      <li>
+        <a href="{{ index $p 1 }}">
+          <span class="num">{{ add $i 1 }}</span>
+          <span>{{ index $p 0 }}</span>
+        </a>
+      </li>
+      {{ end }}
+      {{ end }}
+    </ul>
+  </div>
+
+  {{/* On-page navigation */}}
+  {{ if .TableOfContents }}
+  <div class="cx-sidebar-box cx-sidebar-toc">
+    <div class="cx-sidebar-head">On This Page</div>
+    {{ .TableOfContents }}
+  </div>
+  {{ end }}
+
+  {{/* Feedback CTA */}}
+  <div class="cx-sidebar-cta">
+    <h4>Spotted an error?</h4>
+    <p>Tell us. We update calculators within 48 hours.</p>
+    <a href="mailto:avmedianews321@gmail.com?subject=Calxo%20feedback">Email feedback</a>
+  </div>
+</aside>
