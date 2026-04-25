@@ -79,9 +79,21 @@
   <style>
     :root {
       --cx-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --cx-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
-    body, .post-title, .navbar, .btn, h1, h2, h3, h4, h5, h6, p, a, span, button, input, select, textarea, .card, .card-title, .card-body {
+    /* Apply Plus Jakarta Sans to every element by default */
+    html, body, body * {
       font-family: var(--cx-font) !important;
+    }
+    /* Then restore monospace for code-like elements and icon fonts */
+    code, kbd, pre, samp, var, tt,
+    .ti, [class^="ti-"], [class*=" ti-"],
+    .themify, [class*="themify"] {
+      font-family: var(--cx-mono), 'themify' !important;
+    }
+    /* Themify icon font wins for actual icons */
+    i.ti, i[class^="ti-"], i[class*=" ti-"] {
+      font-family: 'themify' !important;
     }
     body {
       font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
