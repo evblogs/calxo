@@ -1,0 +1,178 @@
+<div class="ev-footer">
+    <div class="container-fluid">
+        <div class="footer-header" onclick="toggleFooterAccordion()">
+            <h4 class="footer-title">Explore Our Topics</h4>
+            <span id="footerToggleIcon" class="toggle-icon">+</span>
+        </div>
+
+        <div id="footerAccordionContent" class="footer-links-wrapper">
+            <div id="footerLinks" class="footer-grid">
+                {{ $allPosts := sort (where .Site.RegularPages "Section" "post") "Title" }}
+                {{ range $index, $page := $allPosts }}
+                <a class="footer-link {{ if gt $index 8 }}hidden-link{{ end }}" data-index="{{ $index }}"
+                    href="{{ $page.RelPermalink }}">{{ $page.Title }}  🔗</a>
+                {{ end }}
+            </div>
+
+            <div class="footer-actions">
+                <button id="toggleReadMore" onclick="toggleFooterLinks()">Read More</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .ev-footer {
+            background-color: #0f766e;
+            color: #fff;
+            
+           
+        }
+
+        .footer-title {
+            font-size: 17px !important;
+            font-weight: 500 !important;
+            padding-top: 10px;
+        }
+
+        .footer-header {
+            display: flex;
+            justify-content: center;
+            /* Horizontal center */
+            align-items: center;
+            /* Vertical center */
+            gap: 10px;
+            /* Optional spacing between title and icon */
+            cursor: pointer;
+            text-align: center;
+            padding: 0 10px !important;
+        }
+
+        .toggle-icon {
+            font-size: 2rem;
+            color: #c8deff;
+            user-select: none;
+            transition: transform 0.3s ease;
+            padding-bottom: 10px;
+        }
+
+        .footer-links-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .footer-links-wrapper.expanded {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            /* Optional: to avoid scrollbar overlap */
+        }
+
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 30px;
+            margin-top: 1rem;
+        }
+
+        .footer-link {
+            color: #fff !important;
+            text-decoration: none;
+            padding: 6px 0;
+            display: block;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
+            transition: color 0.3s;
+            font-size: 13px;
+        }
+
+        .footer-link:hover {
+            color: #c8deff !important;
+        }
+
+        .hidden-link {
+            display: none;
+        }
+
+        .footer-actions {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #toggleReadMore {
+            background: none;
+            color: #c8deff;
+            border: 1px solid #c8deff;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-bottom: 10px;
+        }
+
+        #toggleReadMore:hover {
+            background: #ccfbf1;
+            color: #0f766e;
+        }
+
+        /* Scrollbar Styling */
+        .footer-links-wrapper.expanded::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .footer-links-wrapper.expanded::-webkit-scrollbar-track {
+            background: #2b2b2b;
+            border-radius: 3px;
+        }
+
+        .footer-links-wrapper.expanded::-webkit-scrollbar-thumb {
+            background-color: #c8deff;
+            border-radius: 3px;
+        }
+
+        .footer-links-wrapper.expanded::-webkit-scrollbar-thumb:hover {
+            background-color: #c8deff;
+        }
+    </style>
+
+
+    <script>
+        let currentVisible = 15;
+        const step = 15;
+
+        function toggleFooterAccordion() {
+            const content = document.getElementById("footerAccordionContent");
+            const icon = document.getElementById("footerToggleIcon");
+
+            content.classList.toggle("expanded");
+            icon.textContent = content.classList.contains("expanded") ? "–" : "+";
+        }
+
+        function toggleFooterLinks() {
+            const links = document.querySelectorAll(".footer-link");
+            const btn = document.getElementById("toggleReadMore");
+
+            if (btn.textContent === "Read Less") {
+                links.forEach((link, index) => {
+                    link.style.display = index < step ? "block" : "none";
+                });
+                currentVisible = step;
+                btn.textContent = "Read More";
+            } else {
+                links.forEach((link, index) => {
+                    if (index < currentVisible + step) {
+                        link.style.display = "block";
+                    }
+                });
+                currentVisible += step;
+
+                if (currentVisible >= links.length) {
+                    btn.textContent = "Read Less";
+                }
+            }
+        }
+    </script>
+
+
+</div>

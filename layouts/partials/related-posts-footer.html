@@ -1,0 +1,95 @@
+<div class="widget">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h4 class="widget-title">{{ i18n "related_post" }}</h4>
+    <div>
+      <button class="btn btn-sm btn-light me-1" id="scrollLeft">&#9664;</button>
+      <button class="btn btn-sm btn-light" id="scrollRight">&#9654;</button>
+    </div>
+  </div>
+
+  <div class="recent-posts-container">
+    <ul class="recent-posts-list">
+      {{ range first 20 ( where .Site.RegularPages "Section" "post" ) }}
+      <li class="recent-post-card">
+        <a href="{{ .Permalink }}">
+          {{ if .Params.Image }}
+          <img src="{{ .Params.Image | absURL }}" alt="{{ .Title }}" />
+          {{ else }}
+          <div class="recent-thumb-alt">{{ .Title | title }}</div>
+          {{ end }}
+        </a>
+        <h5 class="mt-2 h6">
+          <a class="post-title" href="{{ .Permalink }}">{{ .Title }}</a>
+        </h5>
+        <small class="post-date">{{ .PublishDate.Format "Jan 02, 2006" }}</small>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
+
+<style>
+.recent-posts-container {
+  position: relative;
+  overflow-x: hidden; /* Hide scrollbar */
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+  max-width: 100%;
+}
+
+.recent-posts-list {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recent-post-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 10px;
+  text-align: center;
+  flex: 0 0 calc((100% - 45px) / 4); /* Desktop: 4 cards */
+}
+
+.recent-post-card img {
+  width: 100%;
+  height: 220px; /* Desktop height */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.recent-thumb-alt {
+  background: #ccc;
+  color: #fff;
+  padding: 30px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Mobile: 2 cards + smaller image height */
+@media (max-width: 768px) {
+  .recent-post-card {
+    flex: 0 0 calc((100% - 15px) / 2);
+  }
+  .recent-post-card img {
+    height: 120px; /* Mobile height */
+  }
+}
+</style>
+
+<script>
+const container = document.querySelector(".recent-posts-container");
+const card = document.querySelector(".recent-post-card");
+
+document.getElementById("scrollLeft").addEventListener("click", function() {
+  container.scrollBy({ left: -card.offsetWidth * 2, behavior: 'smooth' });
+});
+
+document.getElementById("scrollRight").addEventListener("click", function() {
+  container.scrollBy({ left: card.offsetWidth * 2, behavior: 'smooth' });
+});
+</script>

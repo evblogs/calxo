@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+{{ $paginator := .Paginate (where .Site.RegularPages "Type" "regular") }}
+{{ $posts := $paginator.Pages }}
+
+{{ if $posts }}
+
+{{ if eq $paginator.PageNumber 1 }}
+<!-- Hero: Featured Post (page 1 only) -->
+{{ $hero := index $posts 0 }}
+{{ $heroImg := $hero.Params.Image | default "images/post/ev-placeholder.jpg" }}
+<section class="ev-hero">
+  <div class="ev-hero-inner" style="background-image:url('{{ $heroImg | absURL }}')">
+    <div class="ev-hero-overlay"></div>
+    <div class="container ev-hero-content">
+      <span class="ev-hero-cat">{{ delimit $hero.Params.categories " · " }}</span>
+      <h1 class="ev-hero-title"><a href="{{ $hero.Permalink }}">{{ $hero.Title }}</a></h1>
+      <p class="ev-hero-summary">{{ $hero.Summary | truncate 130 }}</p>
+      <a href="{{ $hero.Permalink }}" class="btn btn-primary">Read Article</a>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<!-- Post Grid -->
+<section class="ev-posts-section">
+  <div class="container-fluid">
+    {{ if eq $paginator.PageNumber 1 }}
+    <h2 class="ev-section-heading">Latest EV News &amp; Reviews</h2>
+    {{ end }}
+    <div class="ev-post-grid">
+      {{ range $i, $post := $posts }}
+      {{ if and (eq $paginator.PageNumber 1) (eq $i 0) }}{{ continue }}{{ end }}
+      {{ $img := $post.Params.Image | default "images/post/ev-placeholder.jpg" }}
+      <article class="ev-card">
+        <a href="{{ $post.Permalink }}" class="ev-card-img-wrap">
+          <img src="{{ $img | absURL }}" alt="{{ $post.Title }}" class="ev-card-img"
+            loading="lazy" decoding="async" width="400" height="220">
+        </a>
+        <div class="ev-card-body">
+          <span class="post-category">{{ delimit $post.Params.categories " · " }}</span>
+          <h3 class="ev-card-title"><a href="{{ $post.Permalink }}">{{ $post.Title }}</a></h3>
+          <small class="post-date">{{ $post.PublishDate.Format "Jan 02, 2006" }}</small>
+          <p class="ev-card-summary">{{ $post.Summary | truncate 100 }}</p>
+          <a href="{{ $post.Permalink }}" class="ev-read-more">Read More →</a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    <!-- Pagination -->
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="ev-pagination" aria-label="Posts navigation">
+      {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="ev-page-btn">&laquo; Prev</a>
+      {{ end }}
+      {{ range $paginator.Pagers }}
+      <a href="{{ .URL }}" class="ev-page-btn{{ if eq . $paginator }} active{{ end }}">{{ .PageNumber }}</a>
+      {{ end }}
+      {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="ev-page-btn">Next &raquo;</a>
+      {{ end }}
+    </nav>
+    {{ end }}
+
+  </div>
+</section>
+
+{{ end }}
+
+{{ end }}

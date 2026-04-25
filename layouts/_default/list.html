@@ -1,0 +1,46 @@
+{{ define "main" }}
+
+<section class="section-sm bg-light">
+  <div class="container-fluid text-center">
+    <h1>{{ .Title | title }}</h1>
+  </div>
+</section>
+
+<div class="container py-4">
+
+  <div class="row">
+    {{ range $i, $post := (.Pages.ByDate.Reverse) }}
+    <div class="col-md-3 mb-4">
+      <div class="card h-100 border-0 text-center">
+        {{ with $post.Params.Image }}
+        <div class="scroll-image" style="height: 300px; overflow: auto;">
+          <img src="{{ . | absURL }}" 
+               alt="{{ $post.Title }}"
+               style="width: 100%; height: auto; object-fit: contain;">
+        </div>
+        {{ end }}
+        <div class="card-body px-2">
+          <h6 class="card-title">
+            <a href="{{ $post.Permalink }}" class="text-dark text-decoration-none">
+              {{ $post.Title }}
+            </a>
+          </h6>
+          <div class="d-flex justify-content-between small text-muted">
+            <span>{{ $post.PublishDate.Format "Jan 02, 2006" }}</span>
+            {{ with $post.Params.author }}
+            <span>By {{ . }}</span>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+    <div>
+   {{ .Content }}
+   </div>
+
+
+</div>
+
+{{ end }}

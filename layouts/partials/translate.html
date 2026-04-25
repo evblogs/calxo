@@ -1,0 +1,159 @@
+<div class="gtranslate_wrapper"></div>
+
+<script>
+  window.gtranslateSettings = {
+    "default_language": "en",
+    "languages": [
+      "en",   // English
+      "zh-CN",// Chinese (Simplified)
+      "hi",   // Hindi
+      "es",   // Spanish
+      "fr",   // French
+      "ar",   // Arabic
+      "bn",   // Bengali
+      "pt",   // Portuguese
+      "ru",   // Russian
+      "ur",   // Urdu
+      "ja",   // Japanese
+      "de"    // German
+    ],
+    "wrapper_selector": ".gtranslate_wrapper",
+    "float_position": "top-right"
+  };
+</script>
+
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+<script>
+/* --- language maps you can customize --- */
+const LANG_META = {
+  "en": { ogLocale: "en_US", pathPrefix: "en", qs: "lang=en" },
+  "zh-CN": { ogLocale: "zh_CN", pathPrefix: "zh-cn", qs: "lang=zh-CN" },
+  "hi": { ogLocale: "hi_IN", pathPrefix: "hi", qs: "lang=hi" },
+  "es": { ogLocale: "es_ES", pathPrefix: "es", qs: "lang=es" },
+  "fr": { ogLocale: "fr_FR", pathPrefix: "fr", qs: "lang=fr" },
+  "ar": { ogLocale: "ar_SA", pathPrefix: "ar", qs: "lang=ar" },
+  "bn": { ogLocale: "bn_BD", pathPrefix: "bn", qs: "lang=bn" },
+  "pt": { ogLocale: "pt_BR", pathPrefix: "pt", qs: "lang=pt" },
+  "ru": { ogLocale: "ru_RU", pathPrefix: "ru", qs: "lang=ru" },
+  "ur": { ogLocale: "ur_PK", pathPrefix: "ur", qs: "lang=ur" },
+  "ja": { ogLocale: "ja_JP", pathPrefix: "ja", qs: "lang=ja" },
+  "de": { ogLocale: "de_DE", pathPrefix: "de", qs: "lang=de" }
+};
+
+/* --- helpers to read GTranslate cookie and update tags --- */
+function getCookie(name) {
+  const parts = document.cookie.split('; ');
+  for (let p of parts) {
+    if (p.indexOf(name + '=') === 0) {
+      return decodeURIComponent(p.substring(name.length + 1));
+    }
+  }
+  return '';
+}
+
+/* googtrans cookie format: /<src>/<dst> e.g. /en/es */
+function getSelectedLang() {
+  const raw = getCookie('googtrans') || '';
+  const m = raw.match(/^\/([a-z-]+)\/([a-z-]+)$/i);
+  return m ? m[2] : null;
+}
+
+function ensureTag(selector, create) {
+  let el = document.querySelector(selector);
+  if (!el) { el = create(); document.head.appendChild(el); }
+  return el;
+}
+
+function buildUrlForLang(langCode, mode = "query") {
+  const loc = new URL(window.location.href);
+  const map = LANG_META[langCode];
+  if (!map) return loc.toString();
+
+  if (mode === "query") {
+    loc.searchParams.set('lang', langCode);
+    return loc.toString();
+  }
+  if (mode === "path") {
+    const parts = loc.pathname.split('/').filter(Boolean);
+    const known = new Set(Object.values(LANG_META).map(v => v.pathPrefix));
+    if (parts.length && known.has(parts[0])) parts[0] = map.pathPrefix; else parts.unshift(map.pathPrefix);
+    loc.pathname = '/' + parts.join('/') + (loc.pathname.endsWith('/') ? '/' : '');
+    loc.searchParams.delete('lang');
+    return loc.toString();
+  }
+  return loc.toString();
+}
+
+function applyLanguageMeta(langCode) {
+  const map = LANG_META[langCode] || LANG_META["en"];
+
+  // <html lang="">
+  document.documentElement.setAttribute('lang', langCode);
+
+  // canonical
+  const canonical = ensureTag('link[rel="canonical"]', () => {
+    const l = document.createElement('link'); l.setAttribute('rel', 'canonical'); return l;
+  });
+  const canonicalUrl = buildUrlForLang(langCode, "query");
+  canonical.setAttribute('href', canonicalUrl);
+
+  // og:url
+  const ogUrl = ensureTag('meta[property="og:url"]', () => {
+    const m = document.createElement('meta'); m.setAttribute('property', 'og:url'); return m;
+  });
+  ogUrl.setAttribute('content', canonicalUrl);
+
+  // og:locale
+  const ogLocale = ensureTag('meta[property="og:locale"]', () => {
+    const m = document.createElement('meta'); m.setAttribute('property','og:locale'); return m;
+  });
+  ogLocale.setAttribute('content', map.ogLocale);
+
+  // twitter:url (optional)
+  const twUrl = ensureTag('meta[name="twitter:url"]', () => {
+    const m = document.createElement('meta'); m.setAttribute('name','twitter:url'); return m;
+  });
+  twUrl.setAttribute('content', canonicalUrl);
+
+  // hreflang alternates (self + others)
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(n => n.remove());
+  Object.keys(LANG_META).forEach(code => {
+    const a = document.createElement('link');
+    a.setAttribute('rel', 'alternate');
+    a.setAttribute('hreflang', code);
+    a.setAttribute('href', buildUrlForLang(code, "query"));
+    document.head.appendChild(a);
+  });
+  const xd = document.createElement('link');
+  xd.setAttribute('rel','alternate');
+  xd.setAttribute('hreflang','x-default');
+  xd.setAttribute('href', buildUrlForLang('en', "query"));
+  document.head.appendChild(xd);
+}
+
+/* --- wire up: run on load + whenever user picks a language --- */
+function onLangMaybeChanged() {
+  const lang = getSelectedLang();
+  if (lang) applyLanguageMeta(lang);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  onLangMaybeChanged();
+
+  document.addEventListener('click', function (e) {
+    const tgt = e.target;
+    if (tgt instanceof HTMLElement && tgt.closest('.gtranslate_wrapper')) {
+      // give GTranslate a tick to update cookie, then sync
+      setTimeout(onLangMaybeChanged, 200);
+    }
+  });
+
+  // also poll the cookie briefly after load (covers keyboard/hover selection)
+  let last = getCookie('googtrans');
+  setInterval(function () {
+    const now = getCookie('googtrans');
+    if (now !== last) { last = now; onLangMaybeChanged(); }
+  }, 500);
+});
+</script>

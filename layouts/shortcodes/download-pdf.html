@@ -1,0 +1,11 @@
+{{- $file := .Get "file" -}}
+{{- $title := .Get "title" | default "Download PDF Report" -}}
+{{- $size := .Get "size" | default "" -}}
+<div style="margin:1.5rem 0;padding:1.25rem 1.5rem;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4e8 100%);border:1px solid #c8dff0;border-left:4px solid #1a6bbf;border-radius:8px;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+  <div style="font-size:2rem;line-height:1;">📄</div>
+  <div style="flex:1;min-width:200px;">
+    <div style="font-weight:700;font-size:0.95rem;color:#1a1a2e;margin-bottom:0.2rem;">{{ $title }}</div>
+    {{ if $size }}<div style="font-size:0.8rem;color:#666;">Free download &middot; {{ $size }} &middot; No email required</div>{{ end }}
+  </div>
+  <a href="{{ $file }}" download style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1.2rem;background:#1a6bbf;color:#ffffff !important;font-weight:700;font-size:0.88rem;border-radius:6px;text-decoration:none !important;white-space:nowrap;" onmouseover="this.style.background='#145099'" onmouseout="this.style.background='#1a6bbf'"><span style="color:#ffffff !important;">&#11015; Download Free</span></a>
+</div>

@@ -1,0 +1,87 @@
+/*  typography */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Lora&family=Montserrat:wght@500&display=swap');
+
+body {
+  line-height: 1.2;
+  font-family: $primary-font;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  color: $text-color;
+}
+
+p, .paragraph {
+  font-weight: 400;
+  line-height: 1.9 !important;
+  color: $text-color;
+  font-size: 15px;
+  font-family: $primary-font;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: $text-color-dark;
+  font-family: $secondary-font;
+  font-weight: 600 !important;
+  line-height: 1.2;
+  padding-bottom: 10px;
+}
+
+h1, .h1{
+  font-size: 28px !important;
+}
+
+h2, .h2{
+  font-size: 23px !important;
+}
+
+.custom-h2 {
+  font-size: 25px !important;
+  font-weight: bold;
+}
+
+h3, .h3{
+  font-size: 21px !important;
+}
+
+h4, .h4{
+  font-size: 19px !important;
+}
+
+h5, .h5{
+  font-size: 17px !important;
+}
+
+h6, .h6{
+  font-size: 15px !important;
+}
+
+@media (max-width: 767px) {
+  h1, .h1 {
+    font-size: 22px !important;
+  }
+
+  h2, .h2,
+  .custom-h2 {
+    font-size: 20px !important;
+  }
+
+  h3, .h3 {
+    font-size: 18px !important;
+  }
+
+  h4, .h4 {
+    font-size: 17px !important;
+  }
+
+  h5, .h5 {
+    font-size: 16px !important;
+  }
+
+  h6, .h6 {
+    font-size: 15px !important;
+  }
+
+  p, .paragraph {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+}

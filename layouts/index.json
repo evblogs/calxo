@@ -1,0 +1,13 @@
+{{- $.Scratch.Set "index" slice -}}
+
+{{- range .Site.RegularPages -}}
+  {{- $filename := replace .File.BaseFileName "-" " " | title -}}
+  {{- $entry := dict
+      "title" $filename
+      "permalink" .Permalink
+      "content" .Plain
+  -}}
+  {{- $.Scratch.Add "index" $entry -}}
+{{- end -}}
+
+{{- $.Scratch.Get "index" | jsonify -}}

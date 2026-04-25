@@ -1,0 +1,208 @@
+######################## default configuration ####################
+baseURL = "https://www.calxo.in/"
+canonifyURLs = true
+relativeURLs = false
+
+title = "Calxo - Free Online Calculators for India"
+theme = "gojournal-hugo"
+timeZone = "Asia/Kolkata"
+pagination.pagerSize = 12
+summaryLength = 20
+disableLanguages = ["fr"]
+hasCJKLanguage = false
+
+############################# Build ##############################
+[build]
+noJSConfigInAssets = false
+useResourceCacheWhen = 'fallback'
+[build.buildStats]
+enable = true
+[[build.cachebusters]]
+source = 'assets/.*\.(js|ts|jsx|tsx)'
+target = '(js|scripts|javascript)'
+[[build.cachebusters]]
+source = 'assets/.*\.(css|sass|scss)$'
+target = '(css|styles|scss|sass)'
+[[build.cachebusters]]
+source = 'assets/.*\.(.*)$'
+target = '$1'
+
+########################### Services #############################
+[services]
+[services.googleAnalytics]
+ID = ''  # add Calxo GA4 ID here when ready
+
+############################# Outputs ##############################
+[outputs]
+home = ["HTML", "RSS", "SITEMAP", "JSON"]
+
+############################# Imaging ##############################
+[imaging]
+quality = 100
+resampleFilter = "lanczos"
+
+############################# Caches ###############################
+[caches]
+[caches.images]
+dir = ":resourceDir/_gen"
+maxAge = "720h"
+
+[caches.assets]
+dir = ":resourceDir/_gen"
+maxAge = "720h"
+
+############################# Markup ###############################
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+
+############################# Plugins ##############################
+
+# CSS Plugins
+[[params.plugins.css]]
+link = "plugins/bootstrap/bootstrap.min.css"
+[[params.plugins.css]]
+link = "plugins/slick/slick.css"
+[[params.plugins.css]]
+link = "plugins/themify-icons/themify-icons.css"
+
+# JS Plugins
+[[params.plugins.js]]
+link = "plugins/jQuery/jquery.min.js"
+[[params.plugins.js]]
+link = "plugins/bootstrap/bootstrap.min.js"
+[[params.plugins.js]]
+link = "plugins/slick/slick.min.js"
+[[params.plugins.js]]
+link = "plugins/search/fuse.min.js"
+[[params.plugins.js]]
+link = "plugins/search/mark.js"
+[[params.plugins.js]]
+link = "plugins/search/search.js"
+
+############################## navigation ###############################
+
+[[menu.main]]
+name = "Loan Calculators"
+URL = "/categories/loan-calculators/"
+weight = 1
+
+[[menu.main]]
+name = "Investment"
+URL = "/categories/investment-calculators/"
+weight = 2
+
+[[menu.main]]
+name = "Tax"
+URL = "/categories/tax-calculators/"
+weight = 3
+
+[[menu.main]]
+name = "Salary & HR"
+URL = "/categories/salary-calculators/"
+weight = 4
+
+[[menu.main]]
+name = "GST"
+URL = "/categories/gst-calculators/"
+weight = 5
+
+[[menu.main]]
+name = "Conversion"
+URL = "/categories/conversion-calculators/"
+weight = 6
+
+[[menu.main]]
+name = "Blog"
+URL = "/blog/"
+weight = 7
+
+#################### footer ################################
+
+[[menu.footer]]
+name = "Contact us"
+URL = "contact/"
+weight = 1
+
+[[menu.footer]]
+name = "About us"
+URL = "about/"
+weight = 2
+
+[[menu.footer]]
+name = "Privacy policy"
+URL = "privacy-policy/"
+weight = 3
+
+[[menu.footer]]
+name = "Terms & Conditions"
+URL = "terms-and-conditions/"
+weight = 4
+
+#################### default parameters ################################
+[params]
+logo = "images/logo.svg"
+description = "Free online calculators for Indian users — EMI, SIP, GST, income tax, FD, PPF, salary, conversions and more. Fast, accurate, no sign-up."
+author = "Calxo Team"
+contact_form_action = "#"
+google_analitycs_id = ""
+sidebar = "right"
+
+# Preloader
+[params.preloader]
+enable = false
+preloader = ""
+
+# Subscription
+[params.subscription]
+enable = false
+mailchimp_form_action = ""
+mailchimp_form_name = ""
+
+# Promotion
+[params.promotion]
+enable = false
+image = ""
+link = "#"
+
+# Instagram feed - disabled
+[params.instafeed]
+enable = false
+user_id = ""
+access_token = ""
+
+############################# social site ########################
+[[params.social]]
+title = "twitter"
+icon = "ti-twitter-alt"
+link = "#"
+
+[[params.social]]
+title = "linkedin"
+icon = "ti-linkedin"
+link = "#"
+
+################################### English language #####################################
+[Languages.en]
+languageName = "En"
+languageCode = "en-in"
+contentDir = "content/english"
+weight = 1
+
+[Languages.en.params]
+home = "Home"
+subscription_title = "Stay updated on new calculators"
+subscription_content = "We'll email you when we ship new tools."
+copyright = "Copyright &copy; 2026 | All rights reserved by [Calxo](https://www.calxo.in)"
+
+[taxonomies]
+   category = "categories"
+
+[mediaTypes."text/plain"]
+suffixes = ["txt"]
+
+[outputFormats.RobotsTXT]
+mediaType = "text/plain"
+baseName = "robots"
+isPlainText = true
+notAlternative = true

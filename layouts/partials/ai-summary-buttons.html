@@ -1,0 +1,215 @@
+<!-- layouts/partials/ai-summary-buttons.html -->
+{{/* Context */}}
+{{ $title := .Title | plainify | replaceRE "\n|\r" " " | htmlEscape }}
+{{ $desc := (or .Params.description .Summary .Plain) | plainify | replaceRE "\n|\r" " " | htmlEscape }}
+{{ $permalink := .Permalink }}
+
+<section class="ev-ai-summary" aria-labelledby="ev-ai-summary-heading">
+  <div class="ev-ai-card">
+    <div class="ev-ai-header">
+      <h4 id="ev-ai-summary-heading">Summarize &amp; analyze this article with</h4>
+      <p class="ev-ai-sub">Choose an AI assistant and open this article directly:</p>
+    </div>
+
+    <div class="ev-ai-buttons" role="group" aria-label="AI assistants">
+      <a class="ev-btn ev-chatgpt" data-service="chatgpt" href="#" rel="noopener noreferrer">ChatGPT</a>
+      <a class="ev-btn ev-perplexity" data-service="perplexity" href="#" rel="noopener noreferrer">Perplexity</a>
+      <a class="ev-btn ev-grok" data-service="grok" href="#" rel="noopener noreferrer">Grok</a>
+      <a class="ev-btn ev-googleai" data-service="googleai" href="#" rel="noopener noreferrer">Google AI</a>
+      <a class="ev-btn ev-claude" data-service="claude" href="#" rel="noopener noreferrer">Claude</a>
+    </div>
+
+    <p class="ev-ai-note">Tip: if the AI doesn’t fetch the page automatically, paste the article URL manually.</p>
+  </div>
+</section>
+
+<style>
+/* Card */
+.ev-ai-summary { margin: 28px 0; }
+.ev-ai-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 0 20px;
+    border: 1px solid rgba(10, 20, 30, 0.04);
+    max-width: 980px;
+    padding-top: 10px;
+}
+
+/* Header */
+.ev-ai-card h4 { margin: 0 0 6px 0; font-size: 1.0rem !important; color: #0b2340; }
+.ev-ai-sub { margin: 0 0 14px 0; color: #475569; font-size: 0.68rem; }
+
+/* Buttons container */
+.ev-ai-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  overflow-x: auto;                 /* horizontal scroll on mobile */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;    /* snap effect */
+  padding-bottom: 6px;
+}
+
+/* Buttons */
+.ev-btn {
+  flex: 0 0 auto;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  min-width: 120px;
+  text-align: center;
+  scroll-snap-align: start;
+  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow: 0 4px 12px rgba(11,22,30,0.08);
+}
+.ev-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(11,22,30,0.12); }
+
+/* Note */
+.ev-ai-note { margin-top: 10px; color: #65707a; font-size: 0.72rem; }
+
+/* --- Minimal extras: toast + modal (UI unchanged otherwise) --- */
+.ev-ai-toast {
+  position: fixed; left:50%; bottom:28px; transform:translateX(-50%);
+  background: rgba(6,32,42,0.95); color:#fff; padding:8px 12px; border-radius:10px;
+  font-size: 14px; z-index: 1200; display:none; box-shadow:0 8px 20px rgba(6,32,42,0.18);
+}
+.ev-ai-toast.show { display:block; animation: ai-toast-in .22s ease; }
+@keyframes ai-toast-in { from{opacity:0; transform:translateX(-50%) translateY(6px)} to{opacity:1; transform:translateX(-50%) translateY(0)} }
+
+.ev-ai-modal {
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background: rgba(2,6,23,0.5); z-index:2000; padding:20px;
+  visibility:hidden; opacity:0; transition:opacity .18s ease, visibility .18s;
+}
+.ev-ai-modal[aria-hidden="false"] { visibility:visible; opacity:1; }
+.ev-ai-modal-inner {
+  background:#fff; border-radius:12px; padding:18px; max-width:720px; width:100%;
+  box-shadow:0 12px 32px rgba(2,6,23,0.18);
+}
+.ev-ai-modal h3 { margin:0 0 10px 0; font-size:1rem; color:#0b2340; }
+#ev-ai-prompt-text {
+  width:100%; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size:0.92rem; padding:10px; border-radius:8px; border:1px solid #e6eef8; background:#f8fafc;
+}
+.ev-ai-modal-actions { margin-top:10px; display:flex; gap:10px; justify-content:flex-end; }
+.ev-ai-modal-actions button { padding:8px 12px; border-radius:8px; border:0; cursor:pointer; font-weight:700; }
+#ev-ai-copy-btn { background:#1366d6; color:#fff; }
+#ev-ai-close-btn { background:#f3f4f6; color:#0b2540; }
+</style>
+
+<!-- Toast + Modal (appended once per page) -->
+<div id="ev-ai-toast" class="ev-ai-toast" role="status" aria-live="polite"></div>
+<div id="ev-ai-modal" class="ev-ai-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="ev-ai-modal-title">
+  <div class="ev-ai-modal-inner" role="document">
+    <h3 id="ev-ai-modal-title">Prompt (paste into AI)</h3>
+    <textarea id="ev-ai-prompt-text" readonly rows="8"></textarea>
+    <div class="ev-ai-modal-actions">
+      <button id="ev-ai-copy-btn" type="button">Copy & Open</button>
+      <button id="ev-ai-close-btn" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Build a strict, human-readable prompt that tells the AI to use ONLY this page
+  var pageTitle = "{{ $title }}";
+  var pageDesc  = "{{ $desc }}";
+  var pageURL   = "{{ $permalink }}";
+
+  var prompt = [
+    "Use ONLY the content from this webpage. Do NOT use any other sources.",
+    "",
+    "URL: " + pageURL,
+    "",
+    "Task: Summarize and analyze the page.",
+    "- Give a concise 3-bullet summary.",
+    "- Two key takeaways (1–2 lines each).",
+    "- Important specs/figures quoted from the page (short quotes).",
+    "- Any corrections or missing info.",
+    "",
+    "If the assistant cannot fetch the page automatically, paste this prompt and the URL."
+  ].join("\\n");
+
+  var encodedPrompt = encodeURIComponent(prompt);
+
+  // Prefill URLs (where supported). Grok & Gemini generally ignore prefilled query -> use modal.
+  var urlFor = {
+    chatgpt:    "https://chat.openai.com/?q=" + encodedPrompt,
+    perplexity: "https://www.perplexity.ai/search?q=" + encodedPrompt,
+    claude:     "https://claude.ai/new?q=" + encodedPrompt
+  };
+  var homepage = {
+    grok: 'https://grok.x.ai/',
+    googleai: 'https://gemini.google.com/app',
+    chatgpt: 'https://chat.openai.com/',
+    perplexity: 'https://www.perplexity.ai/',
+    claude: 'https://claude.ai/'
+  };
+
+  // UI refs
+  var toast = document.getElementById('ev-ai-toast');
+  var modal = document.getElementById('ev-ai-modal');
+  var promptArea = document.getElementById('ev-ai-prompt-text');
+  var copyBtn = document.getElementById('ev-ai-copy-btn');
+  var closeBtn = document.getElementById('ev-ai-close-btn');
+
+  function showToast(msg, ms){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, ms || 2200);
+  }
+  function copyToClipboard(text){
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
+    return new Promise(function(resolve,reject){
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position='fixed'; ta.style.left='-9999px';
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        ok ? resolve() : reject(new Error('execCommand failed'));
+      } catch(e){ reject(e); }
+    });
+  }
+
+  function openModal(service){
+    promptArea.value = prompt;
+    modal.setAttribute('aria-hidden','false');
+    promptArea.focus(); promptArea.select();
+    copyBtn.onclick = function(){
+      copyToClipboard(prompt).finally(function(){
+        window.open(homepage[service] || homepage.chatgpt, '_blank', 'noopener');
+        modal.setAttribute('aria-hidden','true');
+      });
+    };
+  }
+  closeBtn.addEventListener('click', function(){ modal.setAttribute('aria-hidden','true'); });
+
+  function handleClick(e){
+    e.preventDefault();
+    var service = this.getAttribute('data-service');
+
+    // Always copy prompt so user can paste if needed
+    copyToClipboard(prompt).then(function(){
+      showToast('Prompt copied — paste into the assistant if needed.');
+    }).catch(function(){
+      showToast('Could not auto-copy — prompt shown in modal.');
+    });
+
+    // If service supports URL prefill, open with encoded prompt. Else show modal.
+    if (urlFor[service]){
+      window.open(urlFor[service], '_blank', 'noopener');
+    } else {
+      openModal(service);
+    }
+  }
+
+  document.querySelectorAll('.ev-ai-buttons .ev-btn').forEach(function(btn){
+    btn.addEventListener('click', handleClick, false);
+  });
+})();
+</script>

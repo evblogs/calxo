@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVBlogs Guest Post Submission Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.css" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 48rem;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+        }
+
+        /* Guidelines Card */
+        .guidelines-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-header i {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #10b981;
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .guidelines-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .guideline-item i {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+
+        .guideline-item i[data-lucide="check-circle"],
+        .guideline-item i[data-lucide="users"],
+        .guideline-item i[data-lucide="clock"],
+        .guideline-item i[data-lucide="target"] {
+            color: #10b981;
+        }
+
+        .guideline-item i[data-lucide="alert-circle"] {
+            color: #f59e0b;
+        }
+
+        .guideline-item h3 {
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+
+        .guideline-item p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .guideline-item ul {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            padding-left: 1rem;
+        }
+
+        .guideline-item li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Submission Form */
+        .submission-form-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+        }
+
+        .form-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-section:not(:last-child) {
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .section-title i {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #6b7280;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            resize: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: transparent;
+            box-shadow: 0 0 0 2px #10b981;
+        }
+
+        .word-count {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .editor-container {
+            margin-top: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .editor-container:focus-within {
+            border-color: transparent;
+            box-shadow: 0 0 0 2px #10b981;
+        }
+
+        .editor-toolbar {
+            background: #f3f4f6;
+            padding: 0.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .editor-btn {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .editor-btn:hover {
+            background: #f9fafb;
+        }
+
+        .editor-btn.active {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        .editor-btn i {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .editor-content {
+            min-height: 300px;
+            padding: 0.75rem;
+            font-family: inherit;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        .editor-preview {
+            padding: 0.75rem;
+            min-height: 300px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            display: none;
+        }
+
+        .editor-tabs {
+            display: flex;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .editor-tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .editor-tab.active {
+            border-bottom-color: #10b981;
+            color: #10b981;
+            font-weight: 500;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .required-note {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: #10b981;
+            color: white;
+            font-weight: 500;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: #059669;
+        }
+
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .submit-btn i {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .loading-spinner {
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .success-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .success-icon i {
+            width: 2rem;
+            height: 2rem;
+            color: #10b981;
+        }
+
+        .success-message h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .success-note {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0 !important;
+        }
+
+        /* File Output Section */
+        .file-output-section {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .file-output-section.show {
+            display: block;
+        }
+
+        .file-output-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .file-output-header i {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #10b981;
+        }
+
+        .file-output-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .file-path {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+
+        .markdown-preview {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn.primary {
+            background: #10b981;
+            color: white;
+            border: none;
+        }
+
+        .action-btn.primary:hover {
+            background: #059669;
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .action-btn.secondary:hover {
+            background: #f3f4f6;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification i {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .guidelines-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+
+            .hero-section h1 {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h1>Share Your EV Expertise</h1>
+                <p>Join the EVBlogs.in community by sharing your insights about electric vehicles, 
+                   sustainable transportation, and the future of mobility. Help drive the conversation 
+                   towards a cleaner, greener future.</p>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Monthly Readers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Published Articles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3-5</div>
+                    <div class="stat-label">Days Review Time</div>
+                </div>
+            </div>
+
+            <!-- Guidelines Card -->
+            <div class="guidelines-card">
+                <div class="card-header">
+                    <i data-lucide="file-text"></i>
+                    <h2>Submission Guidelines</h2>
+                </div>
+                
+                <div class="guidelines-grid">
+                    <div class="guidelines-column">
+                        <div class="guideline-item">
+                            <i data-lucide="check-circle"></i>
+                            <div>
+                                <h3>Content Requirements</h3>
+                                <p>Original, well-researched articles about electric vehicles, sustainability, or clean energy</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guideline-item">
+                            <i data-lucide="users"></i>
+                            <div>
+                                <h3>Target Audience</h3>
+                                <p>EV enthusiasts, potential buyers, and sustainability advocates</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guideline-item">
+                            <i data-lucide="clock"></i>
+                            <div>
+                                <h3>Word Count</h3>
+                                <p>Minimum 800 words, optimally 1200-1500 words</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="guidelines-column">
+                        <div class="guideline-item">
+                            <i data-lucide="target"></i>
+                            <div>
+                                <h3>Topics We Love</h3>
+                                <ul>
+                                    <li>EV reviews and comparisons</li>
+                                    <li>Charging infrastructure updates</li>
+                                    <li>Battery technology advances</li>
+                                    <li>Government policies & incentives</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="guideline-item">
+                            <i data-lucide="alert-circle"></i>
+                            <div>
+                                <h3>Review Process</h3>
+                                <p>We typically review submissions within 3-5 business days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission Form -->
+            <div class="submission-form-card" id="submissionForm">
+                <div class="card-header">
+                    <i data-lucide="file-text"></i>
+                    <h2>Submit Your Guest Post</h2>
+                </div>
+
+                <form id="guestPostForm">
+                    <!-- Article Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i data-lucide="file-text"></i>
+                            <span>Article Information</span>
+                        </h3>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="title">Article Title *</label>
+                                <input type="text" id="title" name="title" required placeholder="Enter your article title">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Category *</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="ev-reviews">EV Reviews</option>
+                                    <option value="charging-infrastructure">Charging Infrastructure</option>
+                                    <option value="battery-technology">Battery Technology</option>
+                                    <option value="policy-news">Policy & News</option>
+                                    <option value="sustainability">Sustainability</option>
+                                    <option value="future-mobility">Future of Mobility</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="excerpt">Article Excerpt *</label>
+                            <textarea id="excerpt" name="excerpt" rows="3" required placeholder="Brief summary of your article (150-200 characters)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Article Content *</label>
+                            <div class="editor-container">
+                                <div class="editor-toolbar">
+                                    <button type="button" class="editor-btn" data-command="bold" title="Bold">
+                                        <i data-lucide="bold"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="italic" title="Italic">
+                                        <i data-lucide="italic"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="underline" title="Underline">
+                                        <i data-lucide="underline"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="heading" title="Heading">
+                                        <i data-lucide="heading"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="link" title="Insert Link">
+                                        <i data-lucide="link"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="image" title="Insert Image">
+                                        <i data-lucide="image"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="quote" title="Blockquote">
+                                        <i data-lucide="quote"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="code" title="Code">
+                                        <i data-lucide="code"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="ul" title="Unordered List">
+                                        <i data-lucide="list"></i>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-command="ol" title="Ordered List">
+                                        <i data-lucide="list-ordered"></i>
+                                    </button>
+                                </div>
+                                <div class="editor-tabs">
+                                    <div class="editor-tab active" data-tab="write">Write</div>
+                                    <div class="editor-tab" data-tab="preview">Preview</div>
+                                </div>
+                                <div class="editor-content" id="editorContent" contenteditable="true" placeholder="Write your full article content here (minimum 800 words)"></div>
+                                <div class="editor-preview" id="editorPreview"></div>
+                            </div>
+                            <p class="word-count">Current word count: <span id="wordCount">0</span> words</p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="tags">Tags</label>
+                                <input type="text" id="tags" name="tags" placeholder="ev, electric cars, tesla (comma-separated)">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="featuredImage">Featured Image URL</label>
+                                <input type="url" id="featuredImage" name="featuredImage" placeholder="https://example.com/image.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Author Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i data-lucide="user"></i>
+                            <span>Author Information</span>
+                        </h3>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="authorName">Full Name *</label>
+                                <input type="text" id="authorName" name="authorName" required placeholder="Enter your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="authorEmail">Email Address *</label>
+                                <input type="email" id="authorEmail" name="authorEmail" required placeholder="your@email.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="authorBio">Author Bio *</label>
+                            <textarea id="authorBio" name="authorBio" rows="3" required placeholder="Brief bio about yourself (50-150 words)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="authorWebsite">Website/LinkedIn Profile</label>
+                            <input type="url" id="authorWebsite" name="authorWebsite" placeholder="https://yourwebsite.com or LinkedIn profile">
+                        </div>
+                    </div>
+
+                    <!-- SEO Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i data-lucide="tag"></i>
+                            <span>SEO Information (Optional)</span>
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label for="seoTitle">SEO Title</label>
+                            <input type="text" id="seoTitle" name="seoTitle" maxlength="60" placeholder="SEO optimized title (60 characters max)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="metaDescription">Meta Description</label>
+                            <textarea id="metaDescription" name="metaDescription" rows="2" maxlength="160" placeholder="Meta description for search engines (160 characters max)"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <p class="required-note">* Required fields</p>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i data-lucide="send"></i>
+                            <span>Submit Guest Post</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage" style="display: none;">
+                <div class="success-icon">
+                    <i data-lucide="send"></i>
+                </div>
+                <h3>Submission Successful!</h3>
+                <p>Thank you for your guest post submission. We'll review it within 3-5 business days and get back to you.</p>
+                <p class="success-note">Your article has been saved to the submissions folder.</p>
+            </div>
+
+            <!-- File Output Section -->
+            <div class="file-output-section" id="fileOutputSection">
+                <div class="file-output-header">
+                    <i data-lucide="file-text"></i>
+                    <h3>Generated Markdown File</h3>
+                </div>
+                
+                <div class="file-path" id="filePath"></div>
+                
+                <div class="markdown-preview" id="markdownPreview"></div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn primary" id="downloadBtn">
+                        <i data-lucide="download"></i>
+                        <span>Download Markdown File</span>
+                    </button>
+                    <button class="action-btn secondary" id="copyBtn">
+                        <i data-lucide="copy"></i>
+                        <span>Copy to Clipboard</span>
+                    </button>
+                    <button class="action-btn secondary" id="newSubmissionBtn">
+                        <i data-lucide="plus"></i>
+                        <span>Create New Submission</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i data-lucide="check-circle"></i>
+        <span id="notificationText">File saved successfully!</span>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Rich text editor functionality
+        const editorContent = document.getElementById('editorContent');
+        const editorPreview = document.getElementById('editorPreview');
+        const editorTabs = document.querySelectorAll('.editor-tab');
+        const editorBtns = document.querySelectorAll('.editor-btn');
+        const wordCountSpan = document.getElementById('wordCount');
+
+        // Editor tabs functionality
+        editorTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                editorTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show/hide appropriate content
+                if (tabName === 'write') {
+                    editorContent.style.display = 'block';
+                    editorPreview.style.display = 'none';
+                } else {
+                    editorContent.style.display = 'none';
+                    editorPreview.style.display = 'block';
+                    
+                    // Convert markdown to HTML for preview
+                    const markdownText = editorContent.innerText;
+                    editorPreview.innerHTML = marked.parse(markdownText);
+                }
+            });
+        });
+
+        // Editor toolbar buttons
+        editorBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const command = btn.getAttribute('data-command');
+                
+                switch (command) {
+                    case 'bold':
+                        document.execCommand('bold', false, null);
+                        break;
+                    case 'italic':
+                        document.execCommand('italic', false, null);
+                        break;
+                    case 'underline':
+                        document.execCommand('underline', false, null);
+                        break;
+                    case 'heading':
+                        const selection = window.getSelection();
+                        const range = selection.getRangeAt(0);
+                        const selectedText = range.toString();
+                        
+                        if (selectedText) {
+                            const headingText = `## ${selectedText}`;
+                            document.execCommand('insertText', false, headingText);
+                        } else {
+                            document.execCommand('formatBlock', false, 'h2');
+                        }
+                        break;
+                    case 'link':
+                        const url = prompt('Enter URL:');
+                        if (url) {
+                            document.execCommand('createLink', false, url);
+                        }
+                        break;
+                    case 'image':
+                        const imageUrl = prompt('Enter image URL:');
+                        if (imageUrl) {
+                            const altText = prompt('Enter alt text:') || '';
+                            const imageMarkdown = `![${altText}](${imageUrl})`;
+                            document.execCommand('insertText', false, imageMarkdown);
+                        }
+                        break;
+                    case 'quote':
+                        document.execCommand('formatBlock', false, 'blockquote');
+                        break;
+                    case 'code':
+                        document.execCommand('formatBlock', false, 'pre');
+                        break;
+                    case 'ul':
+                        document.execCommand('insertUnorderedList', false, null);
+                        break;
+                    case 'ol':
+                        document.execCommand('insertOrderedList', false, null);
+                        break;
+                }
+                
+                // Update active state for buttons
+                updateToolbarState();
+                editorContent.focus();
+            });
+        });
+
+        // Update toolbar button states based on current selection
+        function updateToolbarState() {
+            editorBtns.forEach(btn => {
+                const command = btn.getAttribute('data-command');
+                if (document.queryCommandState(command)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Update word count
+        function updateWordCount() {
+            const text = editorContent.innerText.trim();
+            const words = text === '' ? 0 : text.split(/\s+/).length;
+            wordCountSpan.textContent = words;
+        }
+
+        editorContent.addEventListener('input', updateWordCount);
+        editorContent.addEventListener('keyup', updateToolbarState);
+        editorContent.addEventListener('mouseup', updateToolbarState);
+
+        // Form submission functionality
+        const form = document.getElementById('guestPostForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submissionForm = document.getElementById('submissionForm');
+        const successMessage = document.getElementById('successMessage');
+        const fileOutputSection = document.getElementById('fileOutputSection');
+        const filePath = document.getElementById('filePath');
+        const markdownPreview = document.getElementById('markdownPreview');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const newSubmissionBtn = document.getElementById('newSubmissionBtn');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+
+        let currentMarkdownContent = '';
+        let currentFileName = '';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <div class="loading-spinner"></div>
+                <span>Submitting...</span>
+            `;
+            
+            // Get form data
+            const formData = {
+                title: document.getElementById('title').value,
+                category: document.getElementById('category').value,
+                excerpt: document.getElementById('excerpt').value,
+                content: editorContent.innerText,
+                tags: document.getElementById('tags').value,
+                featuredImage: document.getElementById('featuredImage').value,
+                authorName: document.getElementById('authorName').value,
+                authorEmail: document.getElementById('authorEmail').value,
+                authorBio: document.getElementById('authorBio').value,
+                authorWebsite: document.getElementById('authorWebsite').value,
+                seoTitle: document.getElementById('seoTitle').value,
+                metaDescription: document.getElementById('metaDescription').value,
+                submissionDate: new Date().toISOString()
+            };
+            
+            // Create markdown content
+            currentMarkdownContent = createMarkdownContent(formData);
+            
+            // Generate filename
+            currentFileName = generateFileName(formData.title);
+            const fullFilePath = `C:\\Hugo\\gojournal\\submissions\\${currentFileName}`;
+            
+            // Simulate saving to file system
+            setTimeout(() => {
+                // Show file info
+                filePath.textContent = fullFilePath;
+                markdownPreview.textContent = currentMarkdownContent;
+                fileOutputSection.classList.add('show');
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Reset submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `
+                    <i data-lucide="send"></i>
+                    <span>Submit Guest Post</span>
+                `;
+                
+                // Re-initialize icons for the reset button
+                lucide.createIcons();
+                
+                // Show notification
+                showNotification('File saved successfully!');
+            }, 1500);
+        });
+
+        // Download markdown file
+        downloadBtn.addEventListener('click', () => {
+            const blob = new Blob([currentMarkdownContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentFileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('File downloaded successfully!');
+        });
+
+        // Copy to clipboard
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(currentMarkdownContent).then(() => {
+                showNotification('Copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                showNotification('Failed to copy to clipboard', true);
+            });
+        });
+
+        // Create new submission
+        newSubmissionBtn.addEventListener('click', () => {
+            // Reset form
+            form.reset();
+            editorContent.innerText = '';
+            updateWordCount();
+            
+            // Hide output sections
+            fileOutputSection.classList.remove('show');
+            successMessage.style.display = 'none';
+            
+            // Scroll to form
+            submissionForm.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Show notification
+        function showNotification(message, isError = false) {
+            notificationText.textContent = message;
+            
+            if (isError) {
+                notification.style.background = '#ef4444';
+            } else {
+                notification.style.background = '#10b981';
+            }
+            
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Create markdown content from form data
+        function createMarkdownContent(data) {
+            let md = `---
+title: "${data.title}"
+author: "${data.authorName}"
+author_email: "${data.authorEmail}"
+author_bio: "${data.authorBio}"
+author_website: "${data.authorWebsite}"
+date: ${new Date().toISOString().split('T')[0]}
+category: "${data.category}"
+tags: [${data.tags.split(',').map(tag => `"${tag.trim()}"`).join(', ')}]
+featured_image: "${data.featuredImage}"
+excerpt: "${data.excerpt}"
+seo_title: "${data.seoTitle || data.title}"
+meta_description: "${data.metaDescription || data.excerpt}"
+---
+
+${data.content}
+`;
+            return md;
+        }
+
+        // Generate filename from title
+        function generateFileName(title) {
+            // Convert to lowercase, replace spaces with hyphens, remove special chars
+            const sanitized = title
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .trim();
+            
+            // Add date prefix and .md extension
+            const datePrefix = new Date().toISOString().split('T')[0];
+            return `${datePrefix}-${sanitized}.md`;
+        }
+
+        // Form validation enhancements
+        const requiredFields = form.querySelectorAll('[required]');
+
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', () => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#ef4444';
+                } else {
+                    field.style.borderColor = '#d1d5db';
+                }
+            });
+            
+            field.addEventListener('input', () => {
+                if (field.value.trim()) {
+                    field.style.borderColor = '#d1d5db';
+                }
+            });
+        });
+
+        // Character count for limited fields
+        const seoTitle = document.getElementById('seoTitle');
+        const metaDescription = document.getElementById('metaDescription');
+
+        function addCharacterCount(element, maxLength) {
+            const parent = element.parentNode;
+            const counter = document.createElement('p');
+            counter.className = 'word-count';
+            counter.style.textAlign = 'right';
+            parent.appendChild(counter);
+            
+            function updateCount() {
+                const remaining = maxLength - element.value.length;
+                counter.textContent = `${element.value.length}/${maxLength} characters`;
+                counter.style.color = remaining < 10 ? '#ef4444' : '#6b7280';
+            }
+            
+            element.addEventListener('input', updateCount);
+            updateCount();
+        }
+
+        addCharacterCount(seoTitle, 60);
+        addCharacterCount(metaDescription, 160);
+
+        // Auto-resize textareas
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+        });
+
+        // Form data persistence (localStorage)
+        const formFields = form.querySelectorAll('input, textarea, select');
+
+        // Load saved data on page load
+        window.addEventListener('load', () => {
+            formFields.forEach(field => {
+                const savedValue = localStorage.getItem(`evblogs_${field.name}`);
+                if (savedValue && field.type !== 'submit') {
+                    field.value = savedValue;
+                }
+            });
+            
+            // Load editor content
+            const savedContent = localStorage.getItem('evblogs_content');
+            if (savedContent) {
+                editorContent.innerText = savedContent;
+            }
+            
+            updateWordCount();
+        });
+
+        // Save data as user types
+        formFields.forEach(field => {
+            if (field.type !== 'submit') {
+                field.addEventListener('input', () => {
+                    localStorage.setItem(`evblogs_${field.name}`, field.value);
+                });
+            }
+        });
+
+        // Save editor content
+        editorContent.addEventListener('input', () => {
+            localStorage.setItem('evblogs_content', editorContent.innerText);
+        });
+
+        // Clear saved data on successful submission
+        form.addEventListener('submit', () => {
+            setTimeout(() => {
+                formFields.forEach(field => {
+                    if (field.type !== 'submit') {
+                        localStorage.removeItem(`evblogs_${field.name}`);
+                    }
+                });
+                localStorage.removeItem('evblogs_content');
+            }, 2000);
+        });
+
+        // Add loading animation to page
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        console.log('EVBlogs Guest Submission Dashboard loaded successfully!');
+    </script>
+</body>
+</html>

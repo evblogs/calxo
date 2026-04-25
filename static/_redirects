@@ -1,0 +1,25 @@
+
+# Moved posts — 301 redirects
+/post/state-of-ev-india-2026/   /electric-vehicle/state-of-ev-india-2026/   301
+
+# EV Charging Cost Calculator — SPA fallback (200 = serve index.html for all sub-routes)
+/electric-vehicle/ev-charging-cost-calculator/*  /electric-vehicle/ev-charging-cost-calculator/index.html  200
+
+# EV Charging Time Calculator — SPA fallback
+/electric-vehicle/ev-charging-time-calculator/*   /electric-vehicle/ev-charging-time-calculator/index.html   200
+
+# EV Subsidy Eligibility Calculator — SPA fallback
+/electric-vehicle/ev-subsidy-eligibility-calculator/*   /electric-vehicle/ev-subsidy-eligibility-calculator/   200
+
+# EV Subsidy by Model Calculator — SPA fallback
+/electric-vehicle/ev-subsidy-calculator-by-model/*  /electric-vehicle/ev-subsidy-calculator-by-model/   200
+
+# EV Charging Stations India — SPA fallback (200 = no redirect, JS reads pretty URL directly)
+# Removed 301 redirects to ?search= — these were causing canonical confusion in GSC
+/electric-vehicle/ev-charging-stations/*              /electric-vehicle/ev-charging-stations                        200
+
+# EV Charging Stations World — permanently removed, return 404 (NOT 301)
+# 301s waste crawl budget by making Googlebot follow the redirect AND count 2 requests per URL
+# 404 tells Google: this page is gone, stop crawling it, de-index it
+/electric-vehicle/ev-charging-stations-world/*  /404  404
+/electric-vehicle/ev-charging-stations-world    /404  404

@@ -1,0 +1,7 @@
+<!-- promotion -->
+{{ if .Site.Params.promotion.enable }}
+{{ with .Params.image }}
+<img src="{{ . | relURL }}" alt="{{ $.Title }}"
+  style="width:100%; height:auto; border-radius:8px; margin-bottom:1rem;" />
+{{ end }}
+{{ end }}

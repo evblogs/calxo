@@ -1,0 +1,16 @@
+<!-- promotion -->
+{{ if .Site.Params.promotion.enable }}
+{{ with .Params.image }}
+  {{- $path := . | relURL -}}
+  {{- $enc := $path | urlquery -}}
+  {{- $cdn := "/.netlify/images?url=" -}}
+<img
+  src="{{ $path }}"
+  srcset="{{ $cdn }}{{ $enc }}&w=480 480w, {{ $cdn }}{{ $enc }}&w=800 800w, {{ $cdn }}{{ $enc }}&w=1200 1200w"
+  sizes="(max-width: 576px) 480px, (max-width: 992px) 800px, 1200px"
+  alt="{{ $.Title }}"
+  width="1200" height="630"
+  fetchpriority="high"
+  style="width:100%; height:auto; border-radius:8px; margin-bottom:1rem;" />
+{{ end }}
+{{ end }}

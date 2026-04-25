@@ -1,0 +1,173 @@
+<!-- critical styles FIRST to avoid flash -->
+<style>
+  html { overflow-y: scroll; }
+  .preload * { transition: none !important; }
+
+  .widget {
+    background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+    color: #fff;
+    padding: 20px;
+  }
+
+  .header-row{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:16px; padding:6px 0; margin-bottom:12px;
+  }
+
+  .brand-strip{
+    display:flex; gap:30px; flex-wrap:nowrap; overflow-x:auto; scroll-behavior:smooth; flex:1 1 auto;
+    scrollbar-gutter:stable both-edges;
+  }
+  .brand-strip::-webkit-scrollbar{ display:none }
+  .brand-strip{ scrollbar-width:none; -ms-overflow-style:none }
+
+  .tab-btn{
+    background:transparent; border:0; padding:6px 0;
+    font:600 16px/1.2;
+    color:#99f6e4; cursor:pointer; white-space:nowrap;
+    border-bottom:3px solid transparent;
+  }
+  .tab-btn:hover{ color:#fff }
+  .tab-btn.active{ border-bottom-color:#5eead4; color:#fff }
+
+  .arrow-box{ display:flex; align-items:center; gap:8px; margin-bottom: 5px; }
+  .btn-sm{
+    border-radius:50%; width:34px; height:34px; display:inline-flex; justify-content:center; align-items:center;
+    padding:0; font-weight:700; color:#fff; background:#0d9488; border:none;
+  }
+  .btn-sm:hover{ background:#0f766e; color:#fff }
+
+  .recent-posts-wrapper{ position:relative; overflow:hidden; min-height:200px; content-visibility:auto; contain-intrinsic-size:200px;margin-bottom: 20px;}
+  .recent-posts-list{ display:flex; gap:20px; list-style:none; margin:0; padding:0; overflow-x:auto; scroll-behavior:smooth; scrollbar-gutter:stable both-edges; overflow-anchor:none }
+  .recent-posts-list::-webkit-scrollbar{ display:none }
+
+  .recent-post-card{
+    flex:0 0 20%; max-width:25%;
+    background:#fff; border-radius:12px; box-shadow:0 4px 10px rgba(13,148,136,.2);
+    padding:15px; text-align:center; color:#134e4a; box-sizing:border-box; contain:layout paint;
+  }
+  .recent-post-card:hover{ transform:translateY(-5px); box-shadow:0 10px 20px rgba(13,148,136,.4) }
+
+  .recent-post-card img{ display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:10px; border:1px solid #99f6e4 }
+  .recent-thumb-alt{
+    width:100%; aspect-ratio:16/9; background:#ccfbf1; color:#0f766e; border-radius:10px; border:1px solid #99f6e4;
+    display:flex; align-items:center; justify-content:center; font-size:14px; padding:0 10px
+  }
+
+  .post-title{ display:block; color:#134e4a; text-decoration:none; line-height:1.3; min-height:calc(1.3em * 2); overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical }
+  .post-title:hover{ color:#0d9488 }
+  .post-date{ display:inline-block; color:#6b7280; font-size:13px; line-height:1.2; min-height:1.2em }
+  .empty-state{ color:#99f6e4; font-size:14px; padding:10px 0 }
+
+  @media (max-width:992px){ .recent-post-card{ flex:0 0 33.333%; max-width:33.333% } }
+  @media (max-width:768px){ .recent-post-card{ flex:0 0 50%; max-width:50% } .tab-btn{ font-size:15px } }
+  @media (max-width:420px){ .recent-post-card{ flex:0 0 80%; max-width:80% } }
+
+  @font-face { font-display: swap; }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; scroll-behavior:auto !important } }
+</style>
+
+<!-- ===== BRANDS WIDGET ===== -->
+<div class="widget preload" id="brands-widget">
+  <div class="header-row">
+    <div class="brand-strip" aria-label="Filter by brand" role="tablist">
+      <button class="tab-btn active" data-brand="tata" role="tab" aria-selected="true">Tata</button>
+      <button class="tab-btn" data-brand="ather" role="tab" aria-selected="false">Ather</button>
+      <button class="tab-btn" data-brand="audi" role="tab" aria-selected="false">Audi</button>
+      <button class="tab-btn" data-brand="bmw" role="tab" aria-selected="false">BMW</button>
+      <button class="tab-btn" data-brand="byd" role="tab" aria-selected="false">BYD</button>
+      <button class="tab-btn" data-brand="hyundai" role="tab" aria-selected="false">Hyundai</button>
+      <button class="tab-btn" data-brand="kia" role="tab" aria-selected="false">Kia</button>
+      <button class="tab-btn" data-brand="mahindra" role="tab" aria-selected="false">Mahindra</button>
+      <button class="tab-btn" data-brand="benz" role="tab" aria-selected="false">Benz</button>
+      <button class="tab-btn" data-brand="mg" role="tab" aria-selected="false">MG</button>
+      <button class="tab-btn" data-brand="mini" role="tab" aria-selected="false">MINI</button>
+      <button class="tab-btn" data-brand="porsche" role="tab" aria-selected="false">Porsche</button>
+      <button class="tab-btn" data-brand="rolls-royce" role="tab" aria-selected="false">Rolls-Royce</button>
+      <button class="tab-btn" data-brand="volvo" role="tab" aria-selected="false">Volvo</button>
+    </div>
+  </div>
+
+  <div class="recent-posts-wrapper" aria-busy="true">
+    <ul class="recent-posts-list" hidden>
+      {{ range where .Site.RegularPages "Section" "post" }}
+      <li class="recent-post-card" data-title="{{ .Title | lower }}" {{ with .Params.brand }}data-brand="{{ . | lower }}"{{ end }}>
+        <a href="{{ .Permalink }}">
+          {{ if .Params.image }}
+          <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" width="800" height="450" loading="lazy" decoding="async">
+          {{ else }}
+          <div class="recent-thumb-alt" role="img" aria-label="{{ .Title | title }}"></div>
+          {{ end }}
+        </a>
+        <h5 class="mt-2 h6"><a class="post-title" href="{{ .Permalink }}">{{ .Title }}</a></h5>
+        <small class="post-date">{{ .Lastmod.Format "Jan 02, 2006" }}</small>
+      </li>
+      {{ end }}
+    </ul>
+    <div class="empty-state" hidden>No posts found for this brand.</div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const widget     = document.getElementById("brands-widget");
+    const tabs       = Array.from(widget.querySelectorAll(".tab-btn"));
+    const cards      = Array.from(widget.querySelectorAll(".recent-post-card"));
+    const postsWrap  = widget.querySelector(".recent-posts-wrapper");
+    const postsList  = widget.querySelector(".recent-posts-list");
+    const brandStrip = widget.querySelector(".brand-strip");
+    const emptyState = widget.querySelector(".empty-state");
+    if (!tabs.length || !cards.length || !postsList) return;
+
+    postsWrap.style.minHeight = postsWrap.style.minHeight || "200px";
+
+    function filterPosts(brand) {
+      const b = (brand || "").toLowerCase();
+      let shown = 0;
+      requestAnimationFrame(() => {
+        for (const card of cards) {
+          const tag = (card.getAttribute("data-brand") || card.dataset.title || "").toLowerCase();
+          const match = b ? tag.includes(b) : true;
+          const want  = match ? "" : "none";
+          if (card.style.display !== want) card.style.display = want;
+          if (match) shown++;
+        }
+        emptyState.hidden = shown !== 0;
+        if (postsList.scrollLeft) postsList.scrollLeft = 0;
+      });
+    }
+
+    const initialBrand = tabs.find(t => t.classList.contains("active"))?.getAttribute("data-brand") || "";
+    filterPosts(initialBrand);
+
+    postsList.hidden = false;
+    postsWrap.setAttribute("aria-busy", "false");
+    widget.classList.remove("preload");
+
+    for (const tab of tabs) {
+      tab.addEventListener("click", function () {
+        for (const t of tabs) { t.classList.remove("active"); t.setAttribute("aria-selected","false"); }
+        this.classList.add("active");
+        this.setAttribute("aria-selected","true");
+        filterPosts(this.getAttribute("data-brand"));
+      });
+
+      tab.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          const i = tabs.indexOf(this);
+          const next = e.key === "ArrowRight" ? i + 1 : i - 1;
+          const target = tabs[(next + tabs.length) % tabs.length];
+          target.focus();
+          brandStrip.scrollBy({ left: target.offsetLeft - brandStrip.scrollLeft - 40, behavior: "smooth" });
+        }
+      });
+    }
+
+    const imgs = postsList.querySelectorAll("img");
+    for (let i = 0; i < imgs.length && i < 4; i++) {
+      imgs[i].setAttribute("loading", "eager");
+      imgs[i].setAttribute("fetchpriority", "high");
+    }
+  });
+</script>

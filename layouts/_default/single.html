@@ -1,0 +1,174 @@
+{{ define "main" }}
+<section class="pt-3 pb-4 border-bottom bg-white">
+
+  <div class="container text-center">
+    <!-- Trending Topics (Categories from front matter) -->
+    {{ with .Params.categories }}
+    {{ $categories := slice }}
+    {{ range . }}
+    {{ if reflect.IsSlice . }}
+    {{ $categories = $categories | append (index . 0) }}
+    {{ else }}
+    {{ $categories = $categories | append . }}
+    {{ end }}
+    {{ end }}
+    {{ range $categories }}
+    <a href="/categories/{{ . | urlize }}" class="badge border rounded mb-3">{{ . }}</a>
+    {{ end }}
+    {{ end }}
+
+    <!-- Title from front matter -->
+    <h1 class="fw-bold mb-3">{{ .Params.title }}</h1>
+    <!-- AI Summary from front matter -->
+    {{ with .Params.ai_overview }}
+    {{ partial "ai-summary.html" . }}
+     {{ partial "google-reader-revenue.html" . }}
+    {{ end }}
+
+  </div>
+
+  </div>
+</section>
+<!-- Main Content Section -->
+<section class="py-2">
+  <div class="container">
+
+
+    <div class="row">
+      {{ $sidebar := .Site.Params.sidebar }}
+
+      <!-- Left Sidebar (if enabled) -->
+      {{ if or (eq $sidebar "left") (eq $sidebar "both") }}
+      <aside class="col-lg-3 order-1 order-lg-1">
+
+        {{ partial "toc.html" . }}
+      </aside>
+      {{ end }}
+
+      <!-- Main Content -->
+      <div class="
+        {{ if eq $sidebar `both` }}col-lg-6
+        {{ else if or (eq $sidebar `left`) (eq $sidebar `right`) }}col-lg-8
+        {{ else }}col-lg-6 mx-auto
+        {{ end }}
+        order-1 mb-5 mb-lg-0">
+        <div class="content">
+
+          <!-- Centered Wrapper -->
+          <div class="d-flex justify-content-center">
+            <div class="d-flex align-items-center flex-wrap gap-2 text-muted small my-2">
+              <!-- Author Partial -->
+              {{ partial "author.html" . }}
+
+
+              <!-- Last Updated -->
+              <span class="d-flex align-items-center" style="font-size: 11px !important;">
+                <i class="bi bi-clock me-1"></i>
+                • Last Updated:
+                <span class="ms-1" style="font-size: 11px !important;">
+                  {{ with .Params.lastmod }}
+                  {{ time . | time.Format "Jan 02, 2006, 03:04:05 PM IST" }}
+                  {{ else }}
+                  {{ .Date.Format "Jan 02, 2006, 03:04:05 PM IST" }}
+                  {{ end }}
+                </span>
+              </span>
+
+            </div>
+          </div>
+          {{ partial "ai-summary-buttons.html" . }}
+
+          {{ if .Params.is_listicle }}
+          <div class="review-methodology-box my-3 p-3 rounded" style="background:#f0f7f0;border:1px solid #a5d6a7;font-size:0.88rem;">
+            <div class="d-flex align-items-start gap-2">
+              <span style="font-size:1.1rem;flex-shrink:0;margin-top:2px;">✅</span>
+              <div style="flex:1;">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-1 mb-1">
+                  <strong style="font-size:0.9rem;">Why Trust This Guide</strong>
+                  <span class="text-muted" style="font-size:0.78rem;">Updated: {{ with .Params.lastmod }}{{ time . | time.Format "Jan 2006" }}{{ else }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
+                </div>
+                {{ $aMap := dict "calxo-team" (dict "name" "Calxo Team" "url" "/about/") }}
+                {{ $aKey := .Params.author | default "calxo-team" }}
+                {{ $aInfo := index $aMap $aKey | default (index $aMap "calxo-team") }}
+                <p class="mb-2" style="margin:0 0 6px 0;">Researched by <a href="{{ $aInfo.url }}" style="color:#2563eb;font-weight:600;">{{ $aInfo.name }}</a> (Calxo.in). Formulas verified against RBI, Income Tax Department, and CBDT guidelines. We update calculators every time tax slabs or rules change.</p>
+                <div class="d-flex flex-wrap gap-3 mb-2" style="font-size:0.82rem;color:#555;">
+                  <span>📑 Official RBI / IT Dept formulas</span><span>🇮🇳 Indian rules &amp; tax slabs</span><span>🔄 Updated when laws change</span><span>🧮 Worked examples in INR</span>
+                </div>
+                <div style="font-size:0.78rem;color:#666;">No paid placements. Calculators are free, ad-light, and fully client-side. <a href="/about/" style="color:#2563eb;">About Calxo →</a></div>
+              </div>
+            </div>
+          </div>
+          {{ end }}
+
+          {{ partial "featured-image.html" . }}
+
+          {{ .Content }}
+
+        </div>
+      </div>
+
+      <!-- Related Posts (before sidebar on mobile, before nothing on desktop) -->
+      <div class="col-12 order-2 order-lg-3 mt-2">
+        {{ partial "related-posts-footer.html" . }}
+      </div>
+
+      <!-- Right Sidebar (if enabled) -->
+      {{ if or (eq $sidebar "right") (eq $sidebar "both") }}
+      <aside class="col-lg-3 order-3 order-lg-2 mb-4 mb-lg-0">
+        {{ partial "sidebar-right.html" . }}
+      </aside>
+      {{ end }}
+
+    </div>
+  </div>
+</section>
+
+
+{{ partial "disclaimer.html" . }}
+
+<!-- BreadcrumbList Schema -->
+{{ $firstCat := "" }}
+{{ with .Params.categories }}
+  {{ $raw := index . 0 }}
+  {{ if reflect.IsSlice $raw }}
+    {{ $firstCat = index $raw 0 }}
+  {{ else }}
+    {{ $firstCat = $raw }}
+  {{ end }}
+{{ end }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ .Site.BaseURL }}"
+    }{{ if $firstCat }},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ $firstCat | jsonify }},
+      "item": "{{ .Site.BaseURL }}categories/{{ $firstCat | urlize }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ .Title | jsonify }},
+      "item": "{{ .Permalink }}"
+    }
+    {{ else }},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ .Title | jsonify }},
+      "item": "{{ .Permalink }}"
+    }
+    {{ end }}
+  ]
+}
+</script>
+
+{{ end }}

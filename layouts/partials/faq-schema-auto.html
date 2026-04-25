@@ -1,0 +1,178 @@
+<script>
+/**
+ * faq-schema-only.js
+ * - Auto-extracts question-like H2/H3 headings + their following content,
+ *   and injects FAQPage JSON-LD into <head>.
+ * - Does NOT create any visible FAQ elements.
+ *
+ * Usage:
+ *  - Paste before </body> (for Hugo: layouts/partials/footer.html).
+ *  - Optionally call window.faqSchema.init({...}) to override defaults.
+ *
+ * Notes:
+ *  - Uses same include/exclude rules as your previous script:
+ *      - skip invisible headings (offsetParent === null)
+ *      - skip headings with data-no-faq="true"
+ *      - force include with class "faq-include"
+ */
+(function () {
+  const DEFAULTS = {
+    headingSelector: 'h2, h3',
+    maxItems: 12,
+    minHeadingLength: 8,
+    questionRegex: /(\?$)|^\s*(who|what|when|where|why|how|is|are|do|does|can|should|will)\b/i,
+    maxAnswerChars: 2500,
+    maxAnswerParagraphs: 3,
+    injectScriptDataAttr: 'data-generated-faq-schema'
+  };
+
+  function textFromElement(el) {
+    if (!el) return '';
+    const tag = el.tagName ? el.tagName.toLowerCase() : '';
+    if (tag === 'ul' || tag === 'ol') {
+      return Array.from(el.querySelectorAll('li')).map(li => li.innerText.trim()).filter(Boolean).join('\n');
+    }
+    if (tag === 'table') {
+      const rows = Array.from(el.rows || []).map(r => Array.from(r.cells || []).map(c => c.innerText.trim()).filter(Boolean).join(' | '));
+      return rows.join('\n');
+    }
+    return el.innerText ? el.innerText.trim() : '';
+  }
+
+  function collectAnswerForHeading(h, cfg) {
+    const answerParts = [];
+    let node = h.nextSibling;
+    while (node && answerParts.length < (cfg.maxAnswerParagraphs * 4)) {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const nodeTag = node.tagName.toLowerCase();
+        if (/^h[1-6]$/.test(nodeTag)) break;
+        if (node.matches && node.matches(cfg.headingSelector)) break;
+
+        if (['p', 'blockquote', 'figure', 'pre', 'ul', 'ol', 'table', 'div'].includes(nodeTag)) {
+          if (nodeTag === 'div') {
+            const found = node.querySelectorAll('p, ul, ol, table, blockquote');
+            if (found && found.length) {
+              found.forEach(el => {
+                const t = textFromElement(el);
+                if (t) answerParts.push(t);
+              });
+            } else {
+              const t = textFromElement(node);
+              if (t) answerParts.push(t);
+            }
+          } else {
+            const t = textFromElement(node);
+            if (t) answerParts.push(t);
+          }
+        } else {
+          const found = node.querySelectorAll && node.querySelectorAll('p, ul, ol, table, blockquote');
+          if (found && found.length) {
+            found.forEach(el => {
+              const t = textFromElement(el);
+              if (t) answerParts.push(t);
+            });
+          }
+        }
+      } else if (node.nodeType === Node.TEXT_NODE) {
+        const txt = node.textContent.trim();
+        if (txt) answerParts.push(txt);
+      }
+      node = node.nextSibling;
+    }
+
+    const joined = answerParts.join('\n\n').replace(/\s+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+    if (!joined) return '';
+    const paras = joined.split(/\n{2,}/).filter(Boolean).slice(0, cfg.maxAnswerParagraphs);
+    let answer = paras.join('\n\n').trim();
+    if (cfg.maxAnswerChars && answer.length > cfg.maxAnswerChars) {
+      answer = answer.slice(0, cfg.maxAnswerChars - 1).trim() + '…';
+    }
+    // For JSON-LD it's better to collapse newlines to single spaces so search engines read it smoothly
+    return answer.replace(/\n+/g, ' ');
+  }
+
+  function looksLikeQuestion(text, cfg) {
+    if (!text) return false;
+    text = text.trim();
+    if (text.length < cfg.minHeadingLength) return false;
+    if (text.toLowerCase().includes('faq')) return false;
+    if (text.includes('?')) return true;
+    return cfg.questionRegex.test(text);
+  }
+
+  function extractQuestions(cfg) {
+    const headings = Array.from(document.querySelectorAll(cfg.headingSelector));
+    const items = [];
+    for (let i = 0; i < headings.length && items.length < cfg.maxItems; i++) {
+      const h = headings[i];
+      if (h.offsetParent === null) continue;
+      if (h.getAttribute && h.getAttribute('aria-hidden') === 'true') continue;
+      if (h.dataset && h.dataset.noFaq === 'true') continue;
+      const explicitInclude = h.classList && h.classList.contains('faq-include');
+      const questionText = (h.innerText || '').trim();
+      if (!questionText) continue;
+      if (!explicitInclude && !looksLikeQuestion(questionText, cfg)) continue;
+      const answer = collectAnswerForHeading(h, cfg);
+      if (!answer) continue;
+      items.push({ q: questionText, a: answer });
+    }
+    return items;
+  }
+
+  function injectJSONLD(items, cfg) {
+    if (!items || !items.length) return;
+    // remove previous injected script if any
+    const existing = document.querySelector('script[' + cfg.injectScriptDataAttr + ']');
+    if (existing) existing.remove();
+    const mainEntity = items.map(it => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: it.a
+      }
+    }));
+    const obj = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: mainEntity
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute(cfg.injectScriptDataAttr, 'true');
+    script.text = JSON.stringify(obj, null, 2);
+    (document.head || document.documentElement).appendChild(script);
+  }
+
+  function init(options) {
+    const cfg = Object.assign({}, DEFAULTS, options || {});
+    function runOnce() {
+      try {
+        const items = extractQuestions(cfg);
+        if (!items.length) {
+          // nothing to inject
+          return;
+        }
+        injectJSONLD(items, cfg);
+      } catch (err) {
+        console.error('faq-schema-only error:', err);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runOnce);
+    } else {
+      runOnce();
+    }
+  }
+
+  // expose for runtime override
+  window.faqSchema = {
+    init: init,
+    defaults: DEFAULTS
+  };
+
+  // Auto-init
+  init();
+})();
+</script>

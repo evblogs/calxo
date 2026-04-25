@@ -1,0 +1,41 @@
+{{ $type := .Get "type" | default "scooter" }}
+{{ $updated := .Get "updated" | default "April 2026" }}
+
+<div class="review-methodology-box my-3 p-3 rounded" style="background:#f0f7f0;border:1px solid #a5d6a7;font-size:0.88rem;">
+  <div class="d-flex align-items-start gap-2">
+    <span style="font-size:1.1rem;flex-shrink:0;margin-top:2px;">✅</span>
+    <div style="flex:1;">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-1 mb-1">
+        <strong style="font-size:0.9rem;">Why Trust This Guide</strong>
+        <span class="text-muted" style="font-size:0.78rem;">Updated: {{ $updated }}</span>
+      </div>
+      <p class="mb-2">Researched by <a href="/author/vignesh/" style="color:#2e7d32;font-weight:600;">Vignesh</a> (EVBlogs.in). Specs verified from ARAI data. Prices are on-road, not ex-showroom. Range figures adjusted for Indian city driving — not ideal test conditions.</p>
+      <div class="d-flex flex-wrap gap-3 mb-2" style="font-size:0.82rem;color:#555;">
+        {{ if eq $type "scooter" }}
+        <span>🔋 Real-world city range</span>
+        <span>💰 On-road price + subsidies</span>
+        <span>⚡ Charging time (home socket)</span>
+        <span>🔧 Service centre availability</span>
+        <span>⭐ Owner satisfaction</span>
+        {{ else if eq $type "car" }}
+        <span>🔋 ARAI range (city-adjusted)</span>
+        <span>💰 Total cost of ownership</span>
+        <span>⚡ Fast charging support</span>
+        <span>🚗 Boot space &amp; features</span>
+        <span>🔧 Warranty &amp; service</span>
+        {{ else if eq $type "subsidy" }}
+        <span>📋 Official govt. notification verified</span>
+        <span>💰 Subsidy amount confirmed</span>
+        <span>✅ Eligibility criteria checked</span>
+        <span>🗓️ Policy status as of {{ $updated }}</span>
+        {{ else }}
+        <span>🔋 Real-world performance</span>
+        <span>💰 Price &amp; total cost</span>
+        <span>✅ Verified from official sources</span>
+        <span>⭐ Owner feedback reviewed</span>
+        {{ end }}
+      </div>
+      <div style="font-size:0.78rem;color:#666;">No paid placements. Rankings based on data, not brand relationships. <a href="/review-methodology/" style="color:#2e7d32;">Full methodology →</a></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "name": "gojournal",
+  "version": "1.0.0",
+  "description": "\"# Evblogs\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evblogs/gojournal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evblogs/gojournal/issues"
+  },
+  "homepage": "https://github.com/evblogs/gojournal#readme"
+}

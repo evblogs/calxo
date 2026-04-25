@@ -1,0 +1,53 @@
+<div class="related-links-box">
+  <ul class="related-links-list">
+    {{ .Inner | markdownify }}
+  </ul>
+</div>
+
+<style>
+.related-links-box {
+  background: #f8f9fa;
+  border-left: 5px solid #586e8f;
+  padding: 10px 20px;
+  margin-top: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.05);
+}
+
+.related-links-box h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #586e8f;
+}
+
+.related-links-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.related-links-list li {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.related-links-list li::before {
+  content: "🔗";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.related-links-list a {
+  text-decoration: none;
+  color: #212529;
+  font-weight: 500;
+  border-bottom: 1px dashed #586e8f;
+  transition: color 0.3s ease;
+}
+
+.related-links-list a:hover {
+  color: #586e8f;
+}
+</style>

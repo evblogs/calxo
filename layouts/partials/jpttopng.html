@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compress images to specific file sizes - 10KB, 20KB, 30KB, 40KB, 50KB. Free online image compression tool.">
+    <meta name="keywords" content="image compressor, compress to specific size, 10kb compressor, 20kb compressor, image size reducer">
+    <title>Image Size Compressor - Compress to 10KB, 20KB, 30KB, 40KB, 50KB</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4a6cf7">
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiSW1hZ2UgU2l6ZSBDb21wcmVzc29yIiwic2hvcnRfbmFtZSI6IlttYWdlIENvbXByZXNzb3IiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2ZmZmZmZiIsInRoZW1lX2NvbG9yIjoiIzRhNmNmNyJ9">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:title" content="Image Size Compressor - Compress to 10KB, 20KB, 30KB, 40KB, 50KB">
+    <meta property="og:description" content="Compress images to specific file sizes - 10KB, 20KB, 30KB, 40KB, 50KB. Free online image compression tool.">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://example.com/">
+    <meta property="twitter:title" content="Image Size Compressor - Compress to 10KB, 20KB, 30KB, 40KB, 50KB">
+    <meta property="twitter:description" content="Compress images to specific file sizes - 10KB, 20KB, 30KB, 40KB, 50KB. Free online image compression tool.">
+    <meta property="twitter:image" content="https://example.com/og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://example.com/">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" integrity="sha384-rY1jB15tL1w0/3pA3UJtZs6K6y9gP3WQb9wJ5eLj0tL1wL3wL3wL3wL3wL3wL3wL3wL3w" crossorigin="anonymous"></script>
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #4a6cf7;
+            --primary-hover: #3a5ce5;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Upload Area */
+        .upload-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .upload-area.dragover {
+            background-color: #f0f4ff;
+            border: 2px dashed var(--primary-color);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .upload-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Size Cards */
+        .size-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .size-card {
+            background-color: white;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .size-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--box-shadow);
+            transform: translateY(-2px);
+        }
+
+        .size-card.active {
+            border-color: var(--primary-color);
+            background-color: #f0f4ff;
+        }
+
+        .size-card-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .size-card-label {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* Preview Area */
+        .preview-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .preview-item {
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .preview-item:hover {
+            box-shadow: var(--box-shadow);
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #f5f5f5;
+        }
+
+        .preview-info {
+            padding: 1rem;
+        }
+
+        .preview-name {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .preview-details {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        /* Results Area */
+        .results-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background-color: var(--success-color);
+        }
+
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+
+        .notification.warning {
+            background-color: var(--warning-color);
+            color: var(--dark-color);
+        }
+
+        .notification.info {
+            background-color: var(--primary-color);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .size-cards {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .preview-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Focus styles */
+        button:focus, input:focus, select:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .why-choose h2 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .why-choose p {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .why-choose ul {
+            margin-left: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .why-choose li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Image Size Compressor</div>
+                <nav>
+                    <ul>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1 id="page-title">Compress Images to Specific Sizes</h1>
+                <p id="page-description">Reduce your image file size to exactly 10KB, 20KB, 30KB, 40KB, or 50KB. Perfect for web optimization and size restrictions.</p>
+            </section>
+
+            <section id="tools">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📁</div>
+                    <p class="upload-text">Drag & drop images here</p>
+                    <button class="upload-btn" onclick="document.getElementById('file-input').click()">Choose Files</button>
+                    <input type="file" id="file-input" class="file-input" accept="image/jpeg,image/png,image/webp" multiple>
+                </div>
+
+                <div class="size-cards">
+                    <div class="size-card" data-size="10">
+                        <div class="size-card-value">10KB</div>
+                        <div class="size-card-label">Ultra Small</div>
+                    </div>
+                    <div class="size-card" data-size="20">
+                        <div class="size-card-value">20KB</div>
+                        <div class="size-card-label">Very Small</div>
+                    </div>
+                    <div class="size-card" data-size="30">
+                        <div class="size-card-value">30KB</div>
+                        <div class="size-card-label">Small</div>
+                    </div>
+                    <div class="size-card" data-size="40">
+                        <div class="size-card-value">40KB</div>
+                        <div class="size-card-label">Medium</div>
+                    </div>
+                    <div class="size-card" data-size="50">
+                        <div class="size-card-value">50KB</div>
+                        <div class="size-card-label">Large</div>
+                    </div>
+                </div>
+
+                <div class="preview-area">
+                    <div class="preview-grid" id="preview-grid">
+                        <!-- Preview items will be added here -->
+                    </div>
+                </div>
+
+                <div class="results-area">
+                    <div class="results-header">
+                        <h3 class="results-title">Compression Results</h3>
+                        <button class="btn btn-primary" id="download-all" style="display: none;">Download All as ZIP</button>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div id="results">
+                        <!-- Results will be added here -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="why-choose">
+                <h2 id="about-title">Why Compress to Specific Sizes?</h2>
+                <p id="about-description">Our size-specific compression tool is designed for scenarios where file size restrictions are critical:</p>
+                <ul id="about-list">
+                    <li><strong>Email Attachments:</strong> Many email services have strict size limits for attachments.</li>
+                    <li><strong>Web Forms:</strong> Upload forms often limit file sizes to 50KB or less.</li>
+                    <li><strong>Profile Pictures:</strong> Social media and forums often require small profile images.</li>
+                    <li><strong>Mobile Optimization:</strong> Smaller images load faster on mobile networks.</li>
+                    <li><strong>Storage Constraints:</strong> When you need to save space without sacrificing too much quality.</li>
+                </ul>
+                <p id="about-footer">Our tool uses advanced compression algorithms to get as close as possible to your target size while maintaining acceptable image quality.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p style="text-align: center; padding: 1.5rem 0; color: var(--secondary-color);">
+                &copy; 2023 Image Size Compressor. All processing happens in your browser for maximum privacy.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        /*
+        * README: Image Size Compressor - Single File HTML Application
+        * 
+        * OVERVIEW:
+        * This is a single-file HTML application that compresses images to specific file sizes (10KB, 20KB, 30KB, 40KB, 50KB).
+        * All processing happens client-side using the Canvas API, ensuring user privacy.
+        * 
+        * DYNAMIC SEO:
+        * The app implements dynamic SEO by changing URL and meta tags based on selected size:
+        * - URL changes to /compress-to-{size}kb (e.g., /compress-to-10kb)
+        * - Meta tags (title, description, keywords) update for each size
+        * - Open Graph and Twitter cards update
+        * - Canonical URL updates
+        * - Page content updates to match selected size
+        * 
+        * HOW TO RUN:
+        * Simply open the file in a modern web browser (Chrome, Firefox, Edge, Safari).
+        * No server or installation required.
+        * 
+        * FEATURES:
+        * - Compress images to exact file sizes (10KB, 20KB, 30KB, 40KB, 50KB)
+        * - Visual card-based interface for selecting target size
+        * - Batch processing with ZIP download
+        * - Progress tracking and file size comparison
+        * - Dynamic SEO for each size selection
+        * 
+        * ALGORITHM:
+        * The compression uses a binary search approach to find the optimal quality setting:
+        * 1. Start with quality settings between 0 and 100
+        * 2. Compress the image at the midpoint quality
+        * 3. Compare resulting file size with target
+        * 4. Adjust quality range based on comparison
+        * 5. Repeat until close to target size or max iterations reached
+        * 
+        * CONFIGURATION:
+        * - MAX_FILE_SIZE: Maximum file size for client-side processing (default: 50MB)
+        * - MAX_CANVAS_SIZE: Maximum canvas dimension to prevent memory issues (default: 8192px)
+        * - MAX_ITERATIONS: Maximum iterations for binary search (default: 10)
+        * - SIZE_TOLERANCE: Acceptable deviation from target size (default: 2KB)
+        */
+
+        // Configuration
+        const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+        const MAX_CANVAS_SIZE = 8192; // Maximum canvas dimension
+        const MAX_ITERATIONS = 10; // Maximum iterations for binary search
+        const SIZE_TOLERANCE = 2 * 1024; // 2KB tolerance
+
+        // SEO Data for each size
+        const SEO_DATA = {
+            10: {
+                title: "Compress Images to 10KB - Free Online Image Compressor",
+                description: "Reduce image file size to exactly 10KB. Perfect for email attachments and web forms with strict size limits.",
+                keywords: "compress image to 10kb, 10kb image compressor, reduce image size to 10kb, 10kb file size, small image compressor",
+                h1: "Compress Images to 10KB",
+                heroDescription: "Reduce your image file size to exactly 10KB. Perfect for email attachments and strict size requirements.",
+                aboutTitle: "Why Compress to 10KB?",
+                aboutDescription: "Our 10KB compression tool is designed for scenarios with extremely strict file size limits:",
+                aboutList: [
+                    "<strong>Email Attachments:</strong> Many email services limit attachments to 10KB or less.",
+                    "<strong>Legacy Systems:</strong> Older web forms and systems often have 10KB file size limits.",
+                    "<strong>Ultra-Fast Loading:</strong> 10KB images load almost instantly even on slow connections.",
+                    "<strong>Minimal Storage:</strong> When storage space is extremely limited.",
+                    "<strong>Icon Optimization:</strong> Perfect for small icons and thumbnails."
+                ],
+                aboutFooter: "Our algorithm prioritizes size reduction while maintaining as much quality as possible for the 10KB target."
+            },
+            20: {
+                title: "Compress Images to 20KB - Free Online Image Compressor",
+                description: "Reduce image file size to exactly 20KB. Ideal for profile pictures and small web images.",
+                keywords: "compress image to 20kb, 20kb image compressor, reduce image size to 20kb, 20kb file size, small image compressor",
+                h1: "Compress Images to 20KB",
+                heroDescription: "Reduce your image file size to exactly 20KB. Ideal for profile pictures and small web images.",
+                aboutTitle: "Why Compress to 20KB?",
+                aboutDescription: "Our 20KB compression tool is perfect for scenarios requiring small but recognizable images:",
+                aboutList: [
+                    "<strong>Profile Pictures:</strong> Many forums and social platforms recommend 20KB profile images.",
+                    "<strong>Small Thumbnails:</strong> Perfect for gallery thumbnails and preview images.",
+                    "<strong>Mobile Banners:</strong> Small banner images for mobile websites.",
+                    "<strong>Email Signatures:</strong> Keep email signature images under 20KB.",
+                    "<strong>Form Avatars:</strong> User avatar images in forms and applications."
+                ],
+                aboutFooter: "The 20KB size offers a good balance between small file size and acceptable image quality."
+            },
+            30: {
+                title: "Compress Images to 30KB - Free Online Image Compressor",
+                description: "Reduce image file size to exactly 30KB. Great for web images and mobile optimization.",
+                keywords: "compress image to 30kb, 30kb image compressor, reduce image size to 30kb, 30kb file size, medium image compressor",
+                h1: "Compress Images to 30KB",
+                heroDescription: "Reduce your image file size to exactly 30KB. Great for web images and mobile optimization.",
+                aboutTitle: "Why Compress to 30KB?",
+                aboutDescription: "Our 30KB compression tool is ideal for web images that need to be small but maintain good quality:",
+                aboutList: [
+                    "<strong>Product Images:</strong> Small product thumbnails for e-commerce sites.",
+                    "<strong>Blog Images:</strong> Supporting images in blog posts and articles.",
+                    "<strong>Mobile Content:</strong> Images optimized for mobile web browsing.",
+                    "<strong>Chat Applications:</strong> Images shared in chat and messaging apps.",
+                    "<strong>Web Banners:</strong> Small promotional banners and ads."
+                ],
+                aboutFooter: "At 30KB, images maintain good quality while still loading quickly on most connections."
+            },
+            40: {
+                title: "Compress Images to 40KB - Free Online Image Compressor",
+                description: "Reduce image file size to exactly 40KB. Perfect for web content and social media images.",
+                keywords: "compress image to 40kb, 40kb image compressor, reduce image size to 40kb, 40kb file size, medium image compressor",
+                h1: "Compress Images to 40KB",
+                heroDescription: "Reduce your image file size to exactly 40KB. Perfect for web content and social media images.",
+                aboutTitle: "Why Compress to 40KB?",
+                aboutDescription: "Our 40KB compression tool is great for web content that needs to balance quality and file size:",
+                aboutList: [
+                    "<strong>Social Media:</strong> Images shared on social platforms with size restrictions.",
+                    "<strong>Web Content:</strong> Images in articles and web pages.",
+                    "<strong>Email Marketing:</strong> Images in email newsletters and campaigns.",
+                    "<strong>Portfolio Images:</strong> Small portfolio pieces and samples.",
+                    "<strong>Documentation:</strong> Images in help documentation and guides."
+                ],
+                aboutFooter: "The 40KB size provides a good compromise between image quality and file size for most web uses."
+            },
+            50: {
+                title: "Compress Images to 50KB - Free Online Image Compressor",
+                description: "Reduce image file size to exactly 50KB. Ideal for high-quality web images and photos.",
+                keywords: "compress image to 50kb, 50kb image compressor, reduce image size to 50kb, 50kb file size, large image compressor",
+                h1: "Compress Images to 50KB",
+                heroDescription: "Reduce your image file size to exactly 50KB. Ideal for high-quality web images and photos.",
+                aboutTitle: "Why Compress to 50KB?",
+                aboutDescription: "Our 50KB compression tool is perfect for when you need good quality with reasonable file size:",
+                aboutList: [
+                    "<strong>Web Photos:</strong> High-quality photos for websites and blogs.",
+                    "<strong>Featured Images:</strong> Featured images in articles and posts.",
+                    "<strong>Product Galleries:</strong> Product images in online stores.",
+                    "<strong>Header Images:</strong> Small header and banner images.",
+                    "<strong>Presentations:</strong> Images optimized for online presentations."
+                ],
+                aboutFooter: "At 50KB, images maintain excellent quality while still being web-optimized and fast-loading."
+            }
+        };
+
+        // Global state
+        const state = {
+            files: [],
+            results: [],
+            selectedSize: null,
+            progress: 0
+        };
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeUploadArea();
+            initializeSizeCards();
+            initializeDownloadButton();
+            checkURLForSize();
+        });
+
+        // Check URL for size parameter
+        function checkURLForSize() {
+            const path = window.location.pathname;
+            const match = path.match(/\/compress-to-(\d+)kb/);
+            
+            if (match && match[1]) {
+                const size = parseInt(match[1]);
+                if ([10, 20, 30, 40, 50].includes(size)) {
+                    selectSize(size);
+                }
+            }
+        }
+
+        // Select a size and update SEO
+        function selectSize(size) {
+            state.selectedSize = size;
+            
+            // Update URL
+            const newURL = `/compress-to-${size}kb`;
+            window.history.pushState({ size }, '', newURL);
+            
+            // Update SEO
+            updateSEO(size);
+            
+            // Update UI
+            updateSizeCardsUI();
+            updateCompressButtons();
+            
+            // Show notification
+            showNotification(`Selected target size: ${size}KB`, 'info');
+        }
+
+        // Update SEO tags
+        function updateSEO(size) {
+            const data = SEO_DATA[size];
+            if (!data) return;
+            
+            // Update title
+            document.title = data.title;
+            
+            // Update meta description
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute('content', data.description);
+            }
+            
+            // Update meta keywords
+            let metaKeywords = document.querySelector('meta[name="keywords"]');
+            if (metaKeywords) {
+                metaKeywords.setAttribute('content', data.keywords);
+            }
+            
+            // Update canonical URL
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (canonical) {
+                canonical.setAttribute('href', `https://example.com/compress-to-${size}kb`);
+            }
+            
+            // Update Open Graph tags
+            let ogTitle = document.querySelector('meta[property="og:title"]');
+            if (ogTitle) {
+                ogTitle.setAttribute('content', data.title);
+            }
+            
+            let ogDesc = document.querySelector('meta[property="og:description"]');
+            if (ogDesc) {
+                ogDesc.setAttribute('content', data.description);
+            }
+            
+            let ogURL = document.querySelector('meta[property="og:url"]');
+            if (ogURL) {
+                ogURL.setAttribute('content', `https://example.com/compress-to-${size}kb`);
+            }
+            
+            // Update Twitter tags
+            let twitterTitle = document.querySelector('meta[property="twitter:title"]');
+            if (twitterTitle) {
+                twitterTitle.setAttribute('content', data.title);
+            }
+            
+            let twitterDesc = document.querySelector('meta[property="twitter:description"]');
+            if (twitterDesc) {
+                twitterDesc.setAttribute('content', data.description);
+            }
+            
+            let twitterURL = document.querySelector('meta[property="twitter:url"]');
+            if (twitterURL) {
+                twitterURL.setAttribute('content', `https://example.com/compress-to-${size}kb`);
+            }
+            
+            // Update page content
+            document.getElementById('page-title').textContent = data.h1;
+            document.getElementById('page-description').textContent = data.heroDescription;
+            document.getElementById('about-title').textContent = data.aboutTitle;
+            document.getElementById('about-description').textContent = data.aboutDescription;
+            document.getElementById('about-footer').textContent = data.aboutFooter;
+            
+            // Update about list
+            const aboutList = document.getElementById('about-list');
+            aboutList.innerHTML = data.aboutList.map(item => `<li>${item}</li>`).join('');
+        }
+
+        // Update size cards UI
+        function updateSizeCardsUI() {
+            const sizeCards = document.querySelectorAll('.size-card');
+            
+            sizeCards.forEach(card => {
+                const cardSize = parseInt(card.getAttribute('data-size'));
+                if (cardSize === state.selectedSize) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
+
+        // Upload area functionality
+        function initializeUploadArea() {
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('file-input');
+            
+            // Drag and drop events
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                
+                const files = e.dataTransfer.files;
+                handleFiles(files);
+            });
+            
+            // File input change event
+            fileInput.addEventListener('change', (e) => {
+                const files = e.target.files;
+                handleFiles(files);
+            });
+        }
+
+        // Handle uploaded files
+        function handleFiles(files) {
+            // Clear previous files
+            state.files = [];
+            state.results = [];
+            state.progress = 0;
+            
+            // Validate files
+            const validFiles = [];
+            const invalidFiles = [];
+            
+            Array.from(files).forEach(file => {
+                if (file.size > MAX_FILE_SIZE) {
+                    invalidFiles.push({
+                        name: file.name,
+                        reason: `File size exceeds ${MAX_FILE_SIZE / (1024 * 1024)}MB limit`
+                    });
+                } else if (!file.type.startsWith('image/')) {
+                    invalidFiles.push({
+                        name: file.name,
+                        reason: 'Not a valid image file'
+                    });
+                } else {
+                    validFiles.push(file);
+                }
+            });
+            
+            // Show notifications for invalid files
+            if (invalidFiles.length > 0) {
+                showNotification(
+                    `${invalidFiles.length} file(s) could not be processed`,
+                    'warning'
+                );
+                
+                invalidFiles.forEach(file => {
+                    console.warn(`Invalid file: ${file.name} - ${file.reason}`);
+                });
+            }
+            
+            // Process valid files
+            if (validFiles.length > 0) {
+                state.files = validFiles;
+                displayPreviews(validFiles);
+                
+                // Show notification
+                if (state.selectedSize) {
+                    showNotification(
+                        `${validFiles.length} file(s) uploaded. Ready to compress to ${state.selectedSize}KB.`,
+                        'info'
+                    );
+                } else {
+                    showNotification(
+                        `${validFiles.length} file(s) uploaded. Select a target size to compress.`,
+                        'info'
+                    );
+                }
+            }
+        }
+
+        // Display file previews
+        function displayPreviews(files) {
+            const previewGrid = document.getElementById('preview-grid');
+            previewGrid.innerHTML = '';
+            
+            files.forEach((file, index) => {
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'preview-item';
+                    previewItem.innerHTML = `
+                        <img src="${e.target.result}" alt="${file.name}" class="preview-image">
+                        <div class="preview-info">
+                            <div class="preview-name">${file.name}</div>
+                            <div class="preview-details">
+                                ${formatFileSize(file.size)} • ${file.type}
+                            </div>
+                            <div class="preview-actions">
+                                <button class="btn btn-primary" onclick="compressFile(${index})" ${!state.selectedSize ? 'disabled' : ''}>
+                                    Compress to ${state.selectedSize || '?'}KB
+                                </button>
+                                <button class="btn btn-secondary" onclick="removeFile(${index})">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    previewGrid.appendChild(previewItem);
+                };
+                
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Initialize size cards
+        function initializeSizeCards() {
+            const sizeCards = document.querySelectorAll('.size-card');
+            
+            sizeCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const size = parseInt(card.getAttribute('data-size'));
+                    selectSize(size);
+                });
+            });
+        }
+
+        // Update compress buttons
+        function updateCompressButtons() {
+            const compressButtons = document.querySelectorAll('.preview-actions .btn-primary');
+            
+            compressButtons.forEach(button => {
+                if (state.selectedSize) {
+                    button.disabled = false;
+                    button.textContent = `Compress to ${state.selectedSize}KB`;
+                } else {
+                    button.disabled = true;
+                    button.textContent = 'Select size first';
+                }
+            });
+        }
+
+        // Compress a single file
+        async function compressFile(index) {
+            const file = state.files[index];
+            if (!file || !state.selectedSize) return;
+            
+            const targetSize = state.selectedSize * 1024; // Convert KB to bytes
+            
+            // Show loading state
+            const previewItem = document.querySelectorAll('.preview-item')[index];
+            if (previewItem) {
+                const actions = previewItem.querySelector('.preview-actions');
+                actions.innerHTML = '<div class="spinner"></div> Compressing...';
+            }
+            
+            try {
+                // Create image
+                const img = await createImageFromFile(file);
+                
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Set canvas dimensions
+                canvas.width = img.width;
+                canvas.height = img.height;
+                
+                // Binary search for optimal quality
+                let minQuality = 0;
+                let maxQuality = 1;
+                let bestQuality = 0.5;
+                let bestBlob = null;
+                let bestSize = Infinity;
+                
+                for (let i = 0; i < MAX_ITERATIONS; i++) {
+                    const midQuality = (minQuality + maxQuality) / 2;
+                    
+                    // Clear canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Draw image
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // Get blob
+                    const blob = await new Promise(resolve => {
+                        canvas.toBlob(resolve, 'image/jpeg', midQuality);
+                    });
+                    
+                    // Check size
+                    const size = blob.size;
+                    
+                    // Update best result if closer to target
+                    if (Math.abs(size - targetSize) < Math.abs(bestSize - targetSize)) {
+                        bestQuality = midQuality;
+                        bestBlob = blob;
+                        bestSize = size;
+                    }
+                    
+                    // Adjust quality range
+                    if (size < targetSize) {
+                        minQuality = midQuality;
+                    } else {
+                        maxQuality = midQuality;
+                    }
+                    
+                    // Check if we're close enough
+                    if (Math.abs(size - targetSize) < SIZE_TOLERANCE) {
+                        break;
+                    }
+                }
+                
+                // Create result
+                const result = {
+                    originalFile: file,
+                    convertedBlob: bestBlob,
+                    targetSize,
+                    actualSize: bestSize,
+                    quality: bestQuality,
+                    outputFilename: getOutputFilename(file.name, `${state.selectedSize}kb`)
+                };
+                
+                // Add to results
+                state.results[index] = result;
+                
+                // Display result
+                displayResult(result, index);
+                
+                // Update progress
+                updateProgress();
+                
+                // Show notification
+                const sizeDiff = Math.abs(bestSize - targetSize);
+                if (sizeDiff < SIZE_TOLERANCE) {
+                    showNotification(`Compressed to ${formatFileSize(bestSize)} (target: ${formatFileSize(targetSize)})`, 'success');
+                } else {
+                    showNotification(`Compressed to ${formatFileSize(bestSize)} (target: ${formatFileSize(targetSize)}) - closest possible`, 'warning');
+                }
+                
+                // Show download all button if there are results
+                if (state.results.filter(r => r).length > 0) {
+                    document.getElementById('download-all').style.display = 'block';
+                }
+            } catch (error) {
+                console.error(`Error compressing file ${file.name}:`, error);
+                showNotification(`Error compressing ${file.name}: ${error.message}`, 'error');
+                
+                // Restore actions in preview
+                if (previewItem) {
+                    const actions = previewItem.querySelector('.preview-actions');
+                    actions.innerHTML = `
+                        <button class="btn btn-primary" onclick="compressFile(${index})">
+                            Retry
+                        </button>
+                        <button class="btn btn-secondary" onclick="removeFile(${index})">
+                            Remove
+                        </button>
+                    `;
+                }
+            }
+        }
+
+        // Display result
+        function displayResult(result, index) {
+            const resultsContainer = document.getElementById('results');
+            
+            // Check if result item already exists
+            let resultItem = document.getElementById(`result-${index}`);
+            
+            if (!resultItem) {
+                resultItem = document.createElement('div');
+                resultItem.id = `result-${index}`;
+                resultItem.className = 'preview-item';
+                resultsContainer.appendChild(resultItem);
+            }
+            
+            // Create URL for the converted blob
+            const url = URL.createObjectURL(result.convertedBlob);
+            
+            // Calculate size difference
+            const originalSize = result.originalFile.size;
+            const newSize = result.actualSize;
+            const reductionPercent = originalSize > 0 ? Math.round((1 - newSize / originalSize) * 100) : 0;
+            
+            // Build result details
+            let details = `${formatFileSize(newSize)} • Target: ${formatFileSize(result.targetSize)}`;
+            
+            if (reductionPercent !== 0) {
+                details += ` • Reduced by ${reductionPercent}%`;
+            }
+            
+            details += ` • Quality: ${Math.round(result.quality * 100)}%`;
+            
+            resultItem.innerHTML = `
+                <img src="${url}" alt="${result.outputFilename}" class="preview-image">
+                <div class="preview-info">
+                    <div class="preview-name">${result.outputFilename}</div>
+                    <div class="preview-details">${details}</div>
+                    <div class="preview-actions">
+                        <button class="btn btn-success" onclick="downloadResult(${index})">
+                            Download
+                        </button>
+                        <button class="btn btn-secondary" onclick="copyToClipboard('${url}')">
+                            Copy URL
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Update progress
+        function updateProgress() {
+            const totalFiles = state.files.length;
+            const processedFiles = state.results.filter(r => r).length;
+            state.progress = totalFiles > 0 ? (processedFiles / totalFiles) * 100 : 0;
+            
+            const progressBar = document.getElementById('progress');
+            if (progressBar) {
+                progressBar.style.width = `${state.progress}%`;
+            }
+        }
+
+        // Download a single result
+        function downloadResult(index) {
+            const result = state.results[index];
+            if (!result) return;
+            
+            // Create download link
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(result.convertedBlob);
+            a.download = result.outputFilename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Show notification
+            showNotification(`Downloaded ${result.outputFilename}`, 'success');
+        }
+
+        // Download all results as ZIP
+        async function downloadAllResults() {
+            const results = state.results.filter(r => r);
+            if (results.length === 0) return;
+            
+            try {
+                // Create new ZIP file
+                const zip = new JSZip();
+                
+                // Add each file to the ZIP
+                results.forEach(result => {
+                    zip.file(result.outputFilename, result.convertedBlob);
+                });
+                
+                // Generate ZIP file
+                showNotification('Creating ZIP file...', 'info');
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                
+                // Download ZIP file
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(zipBlob);
+                a.download = `compressed-images-${state.selectedSize}kb-${Date.now()}.zip`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                // Show notification
+                showNotification(`Downloaded ZIP with ${results.length} files`, 'success');
+            } catch (error) {
+                console.error('Error creating ZIP file:', error);
+                showNotification(`Error creating ZIP file: ${error.message}`, 'error');
+            }
+        }
+
+        // Remove a file
+        function removeFile(index) {
+            state.files.splice(index, 1);
+            state.results.splice(index, 1);
+            
+            displayPreviews(state.files);
+            updateProgress();
+            
+            // Clear results if no files left
+            if (state.files.length === 0) {
+                document.getElementById('results').innerHTML = '';
+                document.getElementById('download-all').style.display = 'none';
+            }
+        }
+
+        // Copy URL to clipboard
+        async function copyToClipboard(url) {
+            try {
+                await navigator.clipboard.writeText(url);
+                showNotification('URL copied to clipboard', 'success');
+            } catch (error) {
+                console.error('Error copying to clipboard:', error);
+                showNotification('Error copying to clipboard', 'error');
+            }
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize download button
+        function initializeDownloadButton() {
+            const downloadButton = document.getElementById('download-all');
+            if (downloadButton) {
+                downloadButton.addEventListener('click', downloadAllResults);
+            }
+        }
+
+        // Helper functions
+        function createImageFromFile(file) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    img.onload = () => resolve(img);
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function getOutputFilename(originalName, suffix) {
+            const nameWithoutExtension = originalName.substring(0, originalName.lastIndexOf('.')) || originalName;
+            const extension = originalName.substring(originalName.lastIndexOf('.') + 1) || 'jpg';
+            return `${nameWithoutExtension}-${suffix}.${extension}`;
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.size) {
+                selectSize(event.state.size);
+            } else {
+                // Reset to default state
+                state.selectedSize = null;
+                updateSizeCardsUI();
+                updateCompressButtons();
+                
+                // Reset SEO to default
+                document.title = "Image Size Compressor - Compress to 10KB, 20KB, 30KB, 40KB, 50KB";
+                // You can reset other meta tags here if needed
+            }
+        });
+    </script>
+</body>
+</html>

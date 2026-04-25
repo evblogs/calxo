@@ -1,0 +1,25 @@
+{{/* Author map — add new authors here */}}
+{{ $authorMap := dict
+  "calxo-team" (dict "name" "Calxo Team" "url" "/about/")
+}}
+
+{{ $key    := .Params.author | default "calxo-team" }}
+{{ $author := index $authorMap $key | default (index $authorMap "calxo-team") }}
+
+<!-- Author byline -->
+<span class="d-flex align-items-center">
+  <strong style="color:#5b5d5f;font-weight:400;font-size:11px;">• Written by — </strong>
+  <a href="{{ $author.url }}" class="ms-1 text-decoration-none" style="font-size:12px;color:#2563eb;font-weight:600;">
+    {{ $author.name }}
+  </a>
+</span>
+
+<!-- Hidden semantic markup for Google E-E-A-T -->
+<section class="visually-hidden" itemscope itemtype="https://schema.org/Person">
+  <span itemprop="name">{{ $author.name }}</span>
+  <link itemprop="url" href="https://www.calxo.in{{ $author.url }}" />
+  <span itemprop="jobTitle">Personal finance writer, Calxo.in</span>
+  <span itemprop="knowsAbout">Personal finance India</span>
+  <span itemprop="knowsAbout">Income tax India</span>
+  <span itemprop="knowsAbout">Loans and EMI calculations</span>
+</section>

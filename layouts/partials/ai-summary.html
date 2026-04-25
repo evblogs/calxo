@@ -1,0 +1,54 @@
+{{- $content := . -}}
+{{- if $content }}
+<div class="bg-light p-3 rounded ai-summary-box" style="font-size: 14px; position: relative; cursor: pointer;">
+  <em class="ai-summary-text"></em>
+  <button class="btn btn-link p-0 ai-summary-toggle" style="font-size: 13px; position: absolute; bottom: 5px; right: 8px; pointer-events: none;">
+    <span class="chevron">&#9660;</span>
+  </button>
+</div>
+{{- end }}
+
+<style>
+.ai-summary-text {
+  display: block;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.ai-summary-toggle {
+  text-decoration: none;
+  color: inherit;
+}
+.ai-summary-toggle .chevron {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.ai-summary-toggle.expanded .chevron {
+  transform: rotate(180deg);
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".ai-summary-box").forEach(function (box) {
+    const summary = box.querySelector(".ai-summary-text");
+    const toggleBtn = box.querySelector(".ai-summary-toggle");
+    const fullText = `{{ $content | safeJS }}`.trim();
+    const words = fullText.split(/\s+/);
+    const shortText = words.slice(0, 50).join(" ") + (words.length > 20 ? "..." : "");
+
+    let expanded = false;
+    summary.textContent = shortText;
+
+    box.addEventListener("click", function () {
+      expanded = !expanded;
+      if (expanded) {
+        summary.textContent = fullText;
+        toggleBtn.classList.add("expanded");
+      } else {
+        summary.textContent = shortText;
+        toggleBtn.classList.remove("expanded");
+      }
+    });
+  });
+});
+</script>

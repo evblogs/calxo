@@ -1,0 +1,290 @@
+{{ $content := .Content }}
+{{ $headings := findRE "<h[2][^>]*>(.*?)</h[2]>" $content }}
+
+{{ if gt (len $headings) 0 }}
+<!-- Sticky Button (mobile only) -->
+<button id="toc-toggle" aria-label="Open Table of Contents">☰</button>
+
+<nav class="toc-wrapper" aria-label="Table of contents">
+  <div class="toc-header" onclick="toggleSimpleToc()">
+    <span class="toc-title">On this page</span>
+    <span id="toc-arrow" class="arrow">▼</span>
+  </div>
+
+  <div id="simple-toc" class="toc-list">
+    <ul id="toc-list">
+      {{ range $i, $heading := $headings }}
+        {{ $text := $heading | plainify }}
+        {{ $clean := replaceRE "[^a-zA-Z0-9\\s-]" "" $text }} <!-- remove symbols -->
+        {{ $anchor := $clean | urlize }}
+        <li><a href="#{{ $anchor }}" onclick="closeTocOnMobile()">{{ $text }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</nav>
+{{ end }}
+
+
+<style>
+/* Base styles */
+.toc-wrapper {
+  margin: 1rem 0;
+}
+
+.toc-header {
+  cursor: pointer;
+  padding: 0 0.8rem;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.toc-title {
+  font-size: 1rem;
+}
+
+.arrow {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.toc-list {
+  display: none;
+  padding: 0.5rem 0;
+}
+.toc-list.show {
+  display: block;
+}
+
+.toc-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.toc-list li {
+  margin: 0.4rem 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.toc-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: #485767; /* dot color */
+  border-radius: 50%;
+}
+.toc-list a {
+  text-decoration: none;
+  color: #282a2c;
+}
+.toc-list a:hover {
+  text-decoration: underline;
+}
+
+/* Thin scrollbar (applies to both mobile and desktop) */
+.toc-wrapper,
+.toc-list {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #bbb transparent;
+}
+.toc-wrapper::-webkit-scrollbar,
+.toc-list::-webkit-scrollbar {
+  width: 4px;
+}
+.toc-wrapper::-webkit-scrollbar-track,
+.toc-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.toc-wrapper::-webkit-scrollbar-thumb,
+.toc-list::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 2px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  #toc-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    width: 48px;
+    height: 48px;
+    background: #007bff;
+    color: white;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 3000;
+  }
+
+  .toc-header {
+    display: none;
+  }
+
+  .toc-list {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    padding: 1rem;
+    overflow-y: auto;
+    z-index: 2000;
+    transition: left 0.3s ease;
+  }
+  .toc-list.show {
+    left: 0;
+  }
+}
+
+/* Desktop: default open + sticky */
+@media (min-width: 769px) {
+  #toc-toggle {
+    display: none;
+  }
+
+  .toc-wrapper {
+    position: sticky;
+    top: 90px; /* adjust for header height */
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    background: #fff;
+  }
+
+  .toc-list {
+    display: block; /* always show */
+    padding: 0 30px;
+  }
+}
+</style>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const content = document.querySelector('.content') || document.querySelector('article') || document.body;
+  const headings = Array.from(content.querySelectorAll('h2'));
+  const toc = document.getElementById('simple-toc');
+  const tocList = document.getElementById('toc-list');
+  const arrow = document.getElementById('toc-arrow');
+  const tocToggleBtn = document.getElementById('toc-toggle');
+
+  if (!toc || !tocList) return; // nothing to do if TOC container missing
+
+  // clear any server-rendered list so we rebuild from actual headings
+  tocList.innerHTML = '';
+
+  // slugify: remove & and symbols, keep letters/numbers/spaces/hyphens, then hyphenate
+  function slugify(s) {
+    return String(s).toLowerCase()
+      .replace(/&/g, '')               // remove ampersands
+      .replace(/[^\w\s-]/g, '')        // remove other non-word chars
+      .trim()
+      .replace(/\s+/g, '-');           // replace spaces with hyphens
+  }
+
+  // If no headings found, hide mobile toggle and nothing else
+  if (headings.length === 0) {
+    tocToggleBtn?.remove();
+    return;
+  }
+
+  // Ensure unique IDs and build TOC items
+  const used = new Set();
+  headings.forEach((h) => {
+    const text = h.textContent.trim();
+    // prefer existing id if it's valid; otherwise generate from text
+    let base = h.id ? slugify(h.id) : slugify(text || 'section');
+    let id = base;
+    let idx = 1;
+    // avoid collisions with other elements on the page
+    while ((document.getElementById(id) && document.getElementById(id) !== h) || used.has(id)) {
+      id = `${base}-${idx++}`;
+    }
+    used.add(id);
+    h.id = id;
+
+    // create TOC list item
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = `#${id}`;
+    a.textContent = text;
+    a.addEventListener('click', function () {
+      // close mobile panel after navigation
+      if (window.innerWidth <= 768) {
+        toc.classList.remove('show');
+        arrow?.classList.remove('open');
+      }
+    });
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Make headings offset correctly when you have sticky header (adjust px to your header height)
+  const stickyHeaderHeight = 90; // tweak this number to match your sticky header
+  headings.forEach(h => {
+    h.style.scrollMarginTop = stickyHeaderHeight + 'px';
+  });
+
+  // Toggle functions (exposed globally because HTML uses onclick attributes)
+  function toggleSimpleTocDesktop() {
+    if (window.innerWidth > 768) {
+      toc.classList.toggle('show');
+      arrow?.classList.toggle('open');
+    }
+  }
+  function closeTocOnMobileLocal() {
+    if (window.innerWidth <= 768) {
+      toc.classList.remove('show');
+      arrow?.classList.remove('open');
+    }
+  }
+  window.toggleSimpleToc = toggleSimpleTocDesktop;
+  window.closeTocOnMobile = closeTocOnMobileLocal;
+
+  // Mobile toggle button behaviour
+  tocToggleBtn?.addEventListener('click', (ev) => {
+    ev.stopPropagation();
+    toc.classList.toggle('show');
+    // keep arrow open state consistent
+    if (toc.classList.contains('show')) arrow?.classList.add('open'); else arrow?.classList.remove('open');
+  });
+
+  // Close mobile TOC when clicking outside
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth <= 768 && toc.classList.contains('show')) {
+      const isInside = toc.contains(e.target) || e.target === tocToggleBtn || e.target.closest('.toc-header');
+      if (!isInside) closeTocOnMobileLocal();
+    }
+  });
+
+  // If user resizes viewport, ensure state stays sane
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      // ensure side panel closed on desktop/mobile switch
+      toc.classList.remove('show');
+      arrow?.classList.remove('open');
+    }
+  });
+});
+</script>
+
+
