@@ -23,6 +23,6 @@
   <!-- Wordmark "calxo" with x accent -->
   <text x="62" y="42" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.8"><tspan fill="#0f172a">cal</tspan><tspan fill="#2563eb">x</tspan><tspan fill="#0f172a">o</tspan></text>
 
-  <!-- Tiny "+" dot above the o (math touch) -->
-  <circle cx="150" cy="18" r="2.2" fill="#06b6d4"/>
+  <!-- Tiny accent dot on the tile (top-right corner) -->
+  <circle cx="46" cy="11" r="2.2" fill="rgba(255,255,255,0.7)"/>
 </svg>
