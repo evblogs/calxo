@@ -721,7 +721,7 @@
   function seedFor(s) {
     var h = 0;
     for (var i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
-    return 95 + (Math.abs(h) % 410); // range ~95-505 per blog post
+    return 2 + (Math.abs(h) % 2); // honest low-volume seed: 2 or 3 per post
   }
   function fmt(n) { return n.toLocaleString('en-IN'); }
 

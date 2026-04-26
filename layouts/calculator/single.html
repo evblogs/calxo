@@ -922,12 +922,11 @@
   var upCountEl = document.getElementById('cxActionUpCount');
   var downBtn = document.getElementById('cxActionDown');
 
-  // Seed a deterministic-but-varied count per slug (range ~800–4500)
+  // Seed a deterministic-but-varied count per slug (honest low-volume seed: 2 or 3)
   function seedFor(s) {
     var h = 0;
     for (var i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
-    h = Math.abs(h);
-    return 800 + (h % 3700);
+    return 2 + (Math.abs(h) % 2);
   }
   function shortNum(n) {
     if (n >= 1000) {
