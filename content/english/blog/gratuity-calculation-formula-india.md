@@ -1,10 +1,23 @@
 ---
+title: "Gratuity Calculation Formula in India: What You'll Actually Receive"
+description: "Gratuity uses a simple formula but most employees don't know what counts as 'last drawn salary' or how the 5-year eligibility rule really works. Here's the exact calculation with worked examples."
+date: 2026-04-26
+lastmod: 2026-04-26
+author: vignesh
+categories:
+- Salary
+tags:
+- gratuity
+- salary
+- resignation
+- retirement
+---
 
 Gratuity is one of those [employee benefits](https://en.wikipedia.org/wiki/Employee_benefit) that can feel both straightforward and puzzling at the same time. Everyone knows that it’s something you receive after leaving a job, but when it comes to actually calculating it, opinions diverge. A formula for gratuity in India exists, but deciphering each element properly is crucial. Spoiler: it’s not just about working for 5 years or more.
 
 ### Eligibility Criteria
 
-Understanding if you even qualify for gratuity is the first step. Indian law states that you must have completed at least five years of continuous service with your employer to be eligible. However, there are exceptions. If an employee dies or is incapacitated due to illness or accident, gratuity is still paid without waiting for the full five-year term. Now, my colleague Sandeep in Delhi was curious about this rule because his three-year stint at a company ended with a serious illness — and indeed, he was eligible for gratuity payout upon his forced retirement.
+Understanding if you even qualify for gratuity is the first step. Indian law states that you must have completed at least five years of continuous service with your employer to be eligible. However, there are exceptions. If an employee dies or is incapacitated due to illness or accident, gratuity is still paid without waiting for the full five-year term. Now, my colleague Sandeep in Delhi was curious about this rule because his three-year stint at a company ended with a serious illness, and indeed, he was eligible for gratuity payout upon his forced retirement.
 
 ### The 15-Day Rule
 
@@ -12,7 +25,7 @@ The crux of the formula for gratuity in India lies in the "15-day salary" concep
 
 ### Calculating the 'Last Drawn Salary'
 
-Ah, the infamous "last drawn salary"! This is the monthly salary to consider — but not the entire take-home or CTC. It includes basic salary plus dearness allowance but omits bonuses and overtime. Honestly, most people get this wrong. My friend Kavita in Mumbai, earning a neat ₹10 lakh, was shocked her "last drawn salary" considered for gratuity wasn't what she took home monthly. Don't make the same mistake. Calculate carefully.
+Ah, the infamous "last drawn salary"! This is the monthly salary to consider, but not the entire take-home or CTC. It includes basic salary plus dearness allowance but omits bonuses and overtime. Honestly, most people get this wrong. My friend Kavita in Mumbai, earning a neat ₹10 lakh, was shocked her "last drawn salary" considered for gratuity wasn't what she took home monthly. Don't make the same mistake. Calculate carefully.
 
 ### Detailed Calculation Example
 

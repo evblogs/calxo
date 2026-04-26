@@ -1,6 +1,19 @@
 ---
+title: "CTC to In-Hand Salary: Why Your Take-Home is Much Less Than CTC"
+description: "A ₹12 lakh CTC offer doesn't mean ₹1 lakh monthly take-home. After PF deductions, income tax, professional tax and gratuity provisions, the gap is usually 20-30%. Here's the exact breakdown."
+date: 2026-04-26
+lastmod: 2026-04-26
+author: vignesh
+categories:
+- Salary
+tags:
+- CTC
+- in-hand salary
+- take-home
+- salary structure
+---
 
-Imagine you're living in Delhi and your company just offered you a ₹12 lakh CTC. Exciting, right? Yet your monthly bank message showing your salary isn't making you feel as excited. The reality is often a shocker — the in-hand salary is much less than the CTC you agreed upon. Most people get this wrong. They think ₹12 lakh means ₹1 lakh monthly take-home. Nope. Here's why.
+Imagine you're living in Delhi and your company just offered you a ₹12 lakh CTC. Exciting, right? Yet your monthly bank message showing your salary isn't making you feel as excited. The reality is often a shocker, the in-hand salary is much less than the CTC you agreed upon. Most people get this wrong. They think ₹12 lakh means ₹1 lakh monthly take-home. Nope. Here's why.
 
 ### Breaking Down CTC Components
 
@@ -41,6 +54,6 @@ See, that table explains itself. Numbers speak.
 
 ### Lifestyle Adjustments
 
-Before dreaming of that shiny new car or buying presents for daadi, it's crucial to grasp the in-hand salary figures. It's the realistic depiction of the lifestyle you can afford. Bank-wise on EMI decisions — anticipation isn't pleasant when monthly cash flow falls short. Every ₹100 saved matters more than imagined.
+Before dreaming of that shiny new car or buying presents for daadi, it's crucial to grasp the in-hand salary figures. It's the realistic depiction of the lifestyle you can afford. Bank-wise on EMI decisions, anticipation isn't pleasant when monthly cash flow falls short. Every ₹100 saved matters more than imagined.
 
 My suggestion: Run your numbers through the CTC to In-Hand Salary calculator. Understand the tax slab you're in and pay careful attention to any potential salary hike promises. It's your pocket and your zest for life at the stake. So get savvy, tabulating these details is a grown-up decision.
