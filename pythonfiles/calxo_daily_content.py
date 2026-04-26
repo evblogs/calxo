@@ -9,7 +9,7 @@ GitHub Actions: runs daily at 4:00 AM UTC (9:30 AM IST)
 Secrets used: OPENAI_API_KEY, GSC_KEY_JSON (same as EVBlogs)
 """
 
-import json, os, subprocess, time, sys
+import json, os, re, subprocess, time, sys
 from datetime import datetime
 from pathlib import Path
 
@@ -67,12 +67,14 @@ NEVER DO:
 - Clean 3-part or 5-part structures where every section is the same length
 
 FORMAT:
-- Return complete Hugo markdown with YAML front matter — nothing else, no preamble
+- Return ONLY the body markdown. NEVER include YAML front matter (no --- lines). The wrapping front matter is added separately in Python.
 - 900-1200 words
 - Use the rupee symbol with real Indian amounts
 - Include one markdown table with actual data or rates
 - Link to the provided calculator URL naturally mid-article (not only as a CTA at the end)
-- End on a direct practical note, not a motivational summary"""
+- End on a direct practical note, not a motivational summary
+- ZERO em-dashes (the long dash). Use a comma, period, or new sentence instead. Em-dashes are auto-stripped post-generation but try not to use them in the first place.
+- NO LaTeX math syntax (\\[ \\] or $...$). Use plain text formulas: "(15/26) × salary × years"."""
 
 
 # ── Queue helpers ───────────────────────────────────────────────────────────
@@ -88,34 +90,57 @@ def get_pending(queue, n):
     return [item for item in queue if item["status"] == "pending"][:n]
 
 
+# ── Content cleaner — strip dashes and stray YAML fences from AI output ────
+def clean_content(text):
+    text = re.sub(r"^\s*```(?:markdown)?\s*\n?", "", text)
+    text = re.sub(r"\n?```\s*$", "", text)
+    text = text.strip()
+    if text.startswith("---"):
+        end = text.find("\n---", 3)
+        if end != -1:
+            text = text[end + 4 :].lstrip("\n")
+        else:
+            text = text.lstrip("-").lstrip("\n")
+    text = re.sub(r"\s*—\s*", ", ", text)
+    text = re.sub(r"\s*–\s*", ", ", text)
+    text = re.sub(r",\s*,", ",", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+# ── Front matter — built in Python (deterministic, never trust AI) ─────────
+def build_front_matter(item, today):
+    tags_yaml = "\n".join(f"- {t}" for t in item["tags"])
+    title_safe = item["title"].replace('"', "'")
+    desc_safe  = item["description"].replace('"', "'")
+    return (
+        f"---\n"
+        f'title: "{title_safe}"\n'
+        f'description: "{desc_safe}"\n'
+        f"date: {today}\n"
+        f"lastmod: {today}\n"
+        f"author: vignesh\n"
+        f"categories:\n"
+        f"- {item['category']}\n"
+        f"tags:\n"
+        f"{tags_yaml}\n"
+        f"---\n\n"
+    )
+
+
 # ── Content generation via OpenAI ───────────────────────────────────────────
 def generate_post(item, client):
-    today     = datetime.now().strftime("%Y-%m-%d")
-    tags_yaml = "\n".join(f"- {t}" for t in item["tags"])
+    today = datetime.now().strftime("%Y-%m-%d")
 
-    user_prompt = f"""Write a blog post for Calxo.in:
+    user_prompt = f"""Write the BODY of a blog post for Calxo.in. Do NOT include any YAML front matter (the wrapping --- block). I will add the front matter myself in Python.
 
 Topic: {item["title"]}
-Target keyword: "{item["target_keyword"]}" — use naturally 4-6 times
-Intent: informational — reader wants to understand how to calculate this
-Calculator link: [{item["calculator_label"]}]({item["calculator_url"]}) — link once mid-article
+Target keyword: "{item["target_keyword"]}" - use naturally 4-6 times
+Intent: informational - reader wants to understand how to calculate this
+Calculator link: [{item["calculator_label"]}]({item["calculator_url"]}) - link once in the prose body
 Category: {item["category"]}
-Date: {today}
 
-Use this exact front matter:
----
-title: "{item["title"]}"
-description: "{item["description"]}"
-date: {today}
-lastmod: {today}
-author: vignesh
-categories:
-- {item["category"]}
-tags:
-{tags_yaml}
----
-
-Write the post now. No preamble — start immediately after the closing ---"""
+Start the response directly with the first prose paragraph (or an H2 heading). No preamble. No "---" lines. No metadata. Just the body markdown."""
 
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -125,7 +150,8 @@ Write the post now. No preamble — start immediately after the closing ---"""
             {"role": "user",   "content": user_prompt}
         ]
     )
-    return response.choices[0].message.content.strip()
+    body = clean_content(response.choices[0].message.content)
+    return build_front_matter(item, today) + body + "\n"
 
 
 # ── File writing ────────────────────────────────────────────────────────────
