@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="Plus Jakarta Sans, sans-serif">
+  <defs>
+    <linearGradient id="ctcBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="ctcBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/><stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="grossBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="thBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#065f46"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="460" fill="url(#ctcBg)" rx="12"/>
+  <text x="400" y="44" font-size="22" font-weight="800" fill="#0f172a" text-anchor="middle">From ₹15 lakh CTC to your bank account</text>
+  <text x="400" y="66" font-size="13" fill="#64748b" text-anchor="middle">New regime, salaried, Bengaluru. Five layers strip ₹4.7 lakh before take-home.</text>
+
+  <!-- CTC bar -->
+  <g transform="translate(70,110)">
+    <rect x="0" y="0" width="240" height="280" rx="10" fill="url(#ctcBar)"/>
+    <text x="120" y="40" font-size="12" font-weight="700" fill="#fff" text-anchor="middle" opacity=".75" text-transform="uppercase" letter-spacing="1.5">CTC (offer letter)</text>
+    <text x="120" y="160" font-size="38" font-weight="800" fill="#fff" text-anchor="middle">₹15.00L</text>
+    <text x="120" y="184" font-size="13" fill="#fff" text-anchor="middle" opacity=".85">per year</text>
+    <text x="120" y="240" font-size="11" fill="#fff" text-anchor="middle" opacity=".7">100% — what HR shows you</text>
+  </g>
+
+  <!-- Subtraction labels in middle -->
+  <g transform="translate(330,140)">
+    <text x="0" y="0" font-size="11" fill="#475569">− ₹72,000</text>
+    <text x="80" y="0" font-size="11" fill="#94a3b8">Employer PF (12% of basic)</text>
+    <text x="0" y="22" font-size="11" fill="#475569">− ₹28,860</text>
+    <text x="80" y="22" font-size="11" fill="#94a3b8">Gratuity provision (4.81%)</text>
+    <text x="0" y="44" font-size="11" fill="#475569">= ₹10,99,140</text>
+    <text x="80" y="44" font-size="11" fill="#0f172a" font-weight="600">Annual gross</text>
+    <line x1="0" y1="58" x2="170" y2="58" stroke="#cbd5e1"/>
+    <text x="0" y="80" font-size="11" fill="#475569">− ₹72,000</text>
+    <text x="80" y="80" font-size="11" fill="#94a3b8">Employee PF (12% of basic)</text>
+    <text x="0" y="102" font-size="11" fill="#475569">− ₹2,400</text>
+    <text x="80" y="102" font-size="11" fill="#94a3b8">Professional tax</text>
+    <text x="0" y="124" font-size="11" fill="#475569">− ₹0</text>
+    <text x="80" y="124" font-size="11" fill="#94a3b8">Income tax (87A rebate)</text>
+  </g>
+
+  <!-- Gross intermediate (smaller) -->
+  <g transform="translate(530,148)">
+    <rect x="0" y="0" width="100" height="220" rx="8" fill="url(#grossBar)" opacity=".75"/>
+    <text x="50" y="106" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">₹10.99L</text>
+    <text x="50" y="128" font-size="10" fill="#fff" text-anchor="middle" opacity=".85">annual gross</text>
+  </g>
+
+  <!-- Take-home -->
+  <g transform="translate(660,168)">
+    <rect x="0" y="0" width="110" height="200" rx="10" fill="url(#thBar)"/>
+    <text x="55" y="34" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" opacity=".85" text-transform="uppercase" letter-spacing="1.5">TAKE-HOME</text>
+    <text x="55" y="100" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">₹10.24L</text>
+    <text x="55" y="126" font-size="11" fill="#fff" text-anchor="middle" opacity=".85">per year</text>
+    <text x="55" y="148" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">₹85,395</text>
+    <text x="55" y="166" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">per month</text>
+    <text x="55" y="188" font-size="10" fill="#fff" text-anchor="middle" opacity=".7">68% of CTC</text>
+  </g>
+
+  <!-- Arrows -->
+  <path d="M 320 250 L 320 280 L 540 280" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 540 280 L 660 280" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <text x="400" y="440" font-size="11" fill="#94a3b8" text-anchor="middle">FY 2025-26 · 50% basic CTC structure · Karnataka professional tax · Calxo take-home calculator</text>
+</svg>
