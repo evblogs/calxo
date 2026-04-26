@@ -663,6 +663,9 @@
         </div>
       </div>
 
+      {{/* Feedback modal partial — opened by thumbs-down in action bar */}}
+      {{ partial "feedback-modal.html" . }}
+
       {{/* Tabbed modal: Share | Embed | Cite */}}
       <div class="cx-embed-modal" id="cxEmbedModal" role="dialog" aria-labelledby="cxEmbedModalTitle" aria-modal="true" hidden>
         <div class="cx-embed-modal-backdrop" data-close></div>
@@ -965,7 +968,13 @@
   }
 
   if (upBtn) upBtn.addEventListener('click', function () { vote('up'); });
-  if (downBtn) downBtn.addEventListener('click', function () { vote('down'); });
+  if (downBtn) downBtn.addEventListener('click', function () {
+    vote('down');
+    // Only open the feedback modal when user is voting down (not when un-voting)
+    if (stored === 'down' && window.cxOpenFeedbackModal) {
+      window.cxOpenFeedbackModal('calculator');
+    }
+  });
 
   // Wire share/embed/cite icons to open modal on the right tab
   document.querySelectorAll('[data-action-tab]').forEach(function (b) {

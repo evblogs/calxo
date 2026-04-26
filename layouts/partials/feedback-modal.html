@@ -1,0 +1,307 @@
+{{/* Reusable "What went wrong?" feedback modal — included on calculator and blog single pages */}}
+<div class="cx-feedback-modal" id="cxFeedbackModal" role="dialog" aria-labelledby="cxFeedbackTitle" aria-modal="true" hidden>
+  <div class="cx-feedback-backdrop" data-fb-close></div>
+  <div class="cx-feedback-card" role="document">
+    <button type="button" class="cx-feedback-close" data-fb-close aria-label="Close">×</button>
+    <h3 id="cxFeedbackTitle">Sorry to hear! What went wrong?</h3>
+    <div class="cx-feedback-progress"><div class="cx-feedback-progress-bar" id="cxFeedbackProgress"></div></div>
+
+    <form id="cxFeedbackForm" class="cx-feedback-options">
+      <label class="cx-feedback-option">
+        <input type="radio" name="reason" value="not-relevant">
+        <span>Not relevant, didn't meet my needs</span>
+      </label>
+      <label class="cx-feedback-option">
+        <input type="radio" name="reason" value="confusing">
+        <span>Hard to use / Confusing interface</span>
+      </label>
+      <label class="cx-feedback-option">
+        <input type="radio" name="reason" value="buggy">
+        <span>Buggy / laggy</span>
+      </label>
+      <label class="cx-feedback-option" data-context="calculator">
+        <input type="radio" name="reason" value="incorrect-calc">
+        <span>Incorrect calculations</span>
+      </label>
+      <label class="cx-feedback-option" data-context="blog">
+        <input type="radio" name="reason" value="outdated">
+        <span>Inaccurate or outdated information</span>
+      </label>
+      <label class="cx-feedback-option" data-context="blog">
+        <input type="radio" name="reason" value="too-long">
+        <span>Too long or hard to follow</span>
+      </label>
+      <label class="cx-feedback-option">
+        <input type="radio" name="reason" value="other">
+        <span>Other</span>
+      </label>
+
+      <div class="cx-feedback-other-wrap" id="cxFeedbackOtherWrap" hidden>
+        <textarea id="cxFeedbackOther" name="other" rows="3" maxlength="500" placeholder="Tell us a bit more (optional, max 500 chars)"></textarea>
+      </div>
+
+      <div class="cx-feedback-actions">
+        <button type="button" class="cx-feedback-btn cx-feedback-btn-ghost" data-fb-close>Skip</button>
+        <button type="submit" class="cx-feedback-btn cx-feedback-btn-primary" id="cxFeedbackSubmit" disabled>Submit feedback</button>
+      </div>
+    </form>
+
+    <div class="cx-feedback-thanks" id="cxFeedbackThanks" hidden>
+      <strong>Got it. Thanks for taking the time.</strong>
+      <p>This goes straight to the editorial team. We review every piece of negative feedback and update the page if we can.</p>
+      <button type="button" class="cx-feedback-btn cx-feedback-btn-primary" data-fb-close>Close</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cx-feedback-modal { position: fixed; inset: 0; z-index: 600; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .cx-feedback-modal[hidden] { display: none; }
+  .cx-feedback-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, .55); backdrop-filter: blur(4px); }
+  .cx-feedback-card {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    max-width: 540px;
+    width: 100%;
+    padding: 1.85rem 1.85rem 1.5rem;
+    box-shadow: 0 30px 80px rgba(15, 23, 42, .35);
+  }
+  .cx-feedback-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.15rem;
+    background: transparent;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #64748b;
+    font-family: inherit;
+  }
+  .cx-feedback-close:hover { background: #f1f5f9; color: #0f172a; }
+  .cx-feedback-card h3 {
+    margin: 0 0 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -.3px;
+    padding-right: 2rem;
+  }
+
+  .cx-feedback-progress {
+    height: 4px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+  }
+  .cx-feedback-progress-bar {
+    height: 100%;
+    width: 12%;
+    background: linear-gradient(90deg, #2563eb, #06b6d4);
+    transition: width .3s ease;
+  }
+
+  .cx-feedback-options { display: flex; flex-direction: column; gap: .25rem; }
+  .cx-feedback-option {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    padding: .75rem .85rem;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    cursor: pointer;
+    color: #1e293b;
+    font-size: .95rem;
+    transition: background .12s ease, border-color .12s ease;
+  }
+  .cx-feedback-option:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+  .cx-feedback-option input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px; height: 18px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 50%;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    background: #fff;
+    transition: border-color .15s ease;
+    position: relative;
+  }
+  .cx-feedback-option input:checked {
+    border-color: #2563eb;
+    border-width: 5px;
+  }
+  .cx-feedback-option input:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+  .cx-feedback-option:has(input:checked) {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+
+  .cx-feedback-other-wrap { margin: .75rem 0 0; }
+  .cx-feedback-other-wrap[hidden] { display: none; }
+  .cx-feedback-other-wrap textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    padding: .7rem .85rem;
+    font-family: inherit;
+    font-size: .9rem;
+    color: #0f172a;
+    background: #fff;
+    resize: vertical;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color .15s ease;
+  }
+  .cx-feedback-other-wrap textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .12); }
+
+  .cx-feedback-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: .55rem;
+  }
+  .cx-feedback-btn {
+    padding: .65rem 1.25rem;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 0;
+    transition: background .15s ease, color .15s ease;
+  }
+  .cx-feedback-btn-ghost {
+    background: #f1f5f9;
+    color: #475569;
+  }
+  .cx-feedback-btn-ghost:hover { background: #e2e8f0; color: #0f172a; }
+  .cx-feedback-btn-primary {
+    background: #2563eb;
+    color: #fff;
+  }
+  .cx-feedback-btn-primary:hover { background: #1d4ed8; }
+  .cx-feedback-btn-primary:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+  .cx-feedback-thanks { padding: 1rem 0 0; }
+  .cx-feedback-thanks strong { color: #059669; font-size: 1.05rem; font-weight: 700; }
+  .cx-feedback-thanks p { color: #64748b; font-size: .92rem; line-height: 1.55; margin: .5rem 0 1.2rem; }
+  .cx-feedback-thanks .cx-feedback-btn { margin-left: auto; display: block; }
+
+  body.cx-modal-open { overflow: hidden; }
+</style>
+
+<script>
+(function () {
+  var modal = document.getElementById('cxFeedbackModal');
+  if (!modal) return;
+  var form = document.getElementById('cxFeedbackForm');
+  var thanksBlock = document.getElementById('cxFeedbackThanks');
+  var progress = document.getElementById('cxFeedbackProgress');
+  var submitBtn = document.getElementById('cxFeedbackSubmit');
+  var otherWrap = document.getElementById('cxFeedbackOtherWrap');
+  var otherInput = document.getElementById('cxFeedbackOther');
+
+  function open(context) {
+    // Hide context-specific options not matching current context
+    modal.querySelectorAll('[data-context]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-context') !== context;
+    });
+    modal.hidden = false;
+    document.body.classList.add('cx-modal-open');
+    form.hidden = false;
+    thanksBlock.hidden = true;
+    form.reset();
+    otherWrap.hidden = true;
+    submitBtn.disabled = true;
+    progress.style.width = '12%';
+  }
+  function close() {
+    modal.hidden = true;
+    document.body.classList.remove('cx-modal-open');
+  }
+  window.cxOpenFeedbackModal = open;
+
+  modal.querySelectorAll('[data-fb-close]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+
+  // Enable submit when a reason is selected; show "Other" textarea when relevant
+  form.addEventListener('change', function () {
+    var checked = form.querySelector('input[name="reason"]:checked');
+    submitBtn.disabled = !checked;
+    if (checked) {
+      progress.style.width = '60%';
+      otherWrap.hidden = checked.value !== 'other';
+      if (checked.value === 'other') setTimeout(function(){ otherInput.focus(); }, 50);
+    }
+  });
+
+  // Endpoint configured in hugo.toml: params.feedbackEndpoint = "https://script.google.com/..."
+  var FEEDBACK_ENDPOINT = {{ .Site.Params.feedbackEndpoint | default "" | jsonify }};
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var checked = form.querySelector('input[name="reason"]:checked');
+    if (!checked) return;
+    progress.style.width = '100%';
+
+    var slug = (document.getElementById('cxActions') && document.getElementById('cxActions').getAttribute('data-slug')) ||
+               (document.getElementById('cxHelpful') && document.getElementById('cxHelpful').getAttribute('data-slug')) ||
+               location.pathname;
+
+    var payload = {
+      slug: slug,
+      reason: checked.value,
+      other: otherInput.value || '',
+      url: location.pathname,
+      title: document.title,
+      userAgent: navigator.userAgent,
+      ts: new Date().toISOString()
+    };
+
+    // Always log locally as a backup
+    try {
+      var key = 'cx-feedback-log';
+      var log = JSON.parse(localStorage.getItem(key) || '[]');
+      log.push(payload);
+      if (log.length > 50) log = log.slice(-50);
+      localStorage.setItem(key, JSON.stringify(log));
+    } catch (e) {}
+
+    // POST to Google Apps Script if configured. Use text/plain to avoid the
+    // CORS preflight (GAS doesn't return CORS headers); GAS still parses
+    // e.postData.contents as JSON server-side.
+    if (FEEDBACK_ENDPOINT) {
+      try {
+        fetch(FEEDBACK_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        }).catch(function () {});
+      } catch (e) {}
+    }
+
+    setTimeout(function () {
+      form.hidden = true;
+      thanksBlock.hidden = false;
+    }, 300);
+  });
+})();
+</script>

@@ -152,6 +152,11 @@ contact_form_action = "#"
 google_analitycs_id = "G-11QNFDC0CH"
 sidebar = "right"
 
+# Feedback endpoint (Google Apps Script web app URL).
+# Setup: see content/english/about/methodology/_index.md → "Setting up feedback collection"
+# Paste your /macros/s/.../exec URL here. Empty = local-only logging.
+feedbackEndpoint = ""
+
 # Preloader
 [params.preloader]
 enable = false

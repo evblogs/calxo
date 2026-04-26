@@ -164,11 +164,78 @@
     .cx-post-action-btn span:not(:empty), .cx-post-action-btn { font-size: .8rem; }
   }
 
+  /* "Was this helpful?" widget at bottom of post */
+  .cx-helpful {
+    margin: 2.5rem 0 1rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+  }
+  .cx-helpful-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cx-helpful-count {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    font-size: .9rem;
+    color: #475569;
+  }
+  .cx-helpful-count svg { color: #2563eb; flex-shrink: 0; }
+  .cx-helpful-count strong { color: #0f172a; font-weight: 700; }
+
+  .cx-helpful-ask {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+  }
+  .cx-helpful-q {
+    font-size: .95rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-right: .15rem;
+  }
+  .cx-helpful-btn {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: .5rem 1.4rem;
+    font-family: inherit;
+    font-size: .9rem;
+    font-weight: 600;
+    color: #2563eb;
+    cursor: pointer;
+    min-width: 80px;
+    transition: all .15s ease;
+  }
+  .cx-helpful-btn:hover {
+    border-color: #2563eb;
+    background: #eff6ff;
+  }
+  .cx-helpful-btn:active { transform: scale(.98); }
+
+  .cx-helpful-thanks {
+    font-size: .92rem;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+  .cx-helpful-thanks strong { color: #059669; font-weight: 700; margin-right: .35rem; }
+
+  @media (max-width: 600px) {
+    .cx-helpful-row { flex-direction: column; align-items: flex-start; gap: .85rem; }
+    .cx-helpful-btn { padding: .45rem 1rem; min-width: 70px; }
+  }
+
   /* Print: hide site chrome + actions, expand content */
   @media print {
     body { background: #fff; }
     .cx-no-print, .cx-header, .cx-mega-nav, footer, .cx-post-aside,
-    .cx-toc, .cx-ai-summary > summary, .cx-post-breadcrumb { display: none !important; }
+    .cx-toc, .cx-ai-summary > summary, .cx-post-breadcrumb, .cx-helpful { display: none !important; }
     .cx-ai-summary[open] { border: 0; background: transparent; padding: 0; margin-bottom: 1rem; }
     .cx-ai-summary[open] .cx-ai-body { padding-left: 0 !important; border: 0; }
     .cx-post-wrap { padding: 0; max-width: 100%; }
@@ -557,6 +624,28 @@
       <div class="cx-post-body" itemprop="articleBody">
         {{ .Content }}
       </div>
+
+      {{/* Feedback modal partial — opened by 'No' button below */}}
+      {{ partial "feedback-modal.html" . }}
+
+      {{/* "Was this helpful?" widget — bottom of every blog post */}}
+      <section class="cx-helpful cx-no-print" id="cxHelpful" data-slug="{{ .File.BaseFileName }}" aria-labelledby="cxHelpfulQ">
+        <div class="cx-helpful-row" id="cxHelpfulPrompt">
+          <div class="cx-helpful-count">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9A2 2 0 0 0 19.72 9H14z"/><line x1="7" y1="22" x2="7" y2="11"/></svg>
+            <span><strong id="cxHelpfulCount">—</strong> people found this article helpful</span>
+          </div>
+          <div class="cx-helpful-ask">
+            <span class="cx-helpful-q" id="cxHelpfulQ">Was this helpful?</span>
+            <button type="button" class="cx-helpful-btn" id="cxHelpfulYes" aria-label="Yes, this was helpful">Yes</button>
+            <button type="button" class="cx-helpful-btn" id="cxHelpfulNo" aria-label="No, this was not helpful">No</button>
+          </div>
+        </div>
+        <div class="cx-helpful-thanks" id="cxHelpfulThanks" hidden>
+          <strong>Thanks for the feedback.</strong>
+          <span id="cxHelpfulThanksMsg">Glad it landed.</span>
+        </div>
+      </section>
     </article>
 
     <aside class="cx-post-aside">
@@ -614,6 +703,56 @@
   },
   "mainEntityOfPage": "{{ .Permalink }}"
 }
+</script>
+
+{{/* ═══════════════════════ "Was this helpful?" widget at bottom of post ═══════════════════════ */}}
+<script>
+(function () {
+  var box = document.getElementById('cxHelpful');
+  if (!box) return;
+  var slug = box.getAttribute('data-slug') || location.pathname;
+  var countEl = document.getElementById('cxHelpfulCount');
+  var promptEl = document.getElementById('cxHelpfulPrompt');
+  var thanksEl = document.getElementById('cxHelpfulThanks');
+  var thanksMsg = document.getElementById('cxHelpfulThanksMsg');
+  var yesBtn = document.getElementById('cxHelpfulYes');
+  var noBtn = document.getElementById('cxHelpfulNo');
+
+  function seedFor(s) {
+    var h = 0;
+    for (var i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+    return 95 + (Math.abs(h) % 410); // range ~95-505 per blog post
+  }
+  function fmt(n) { return n.toLocaleString('en-IN'); }
+
+  var voteKey = 'cx-helpful-' + slug;
+  var seed = seedFor(slug);
+  var stored = null;
+  try { stored = localStorage.getItem(voteKey); } catch (e) {}
+  var bonus = stored === 'yes' ? 1 : 0;
+  countEl.textContent = fmt(seed + bonus);
+
+  if (stored) {
+    promptEl.style.display = 'flex';
+    thanksEl.hidden = false;
+    thanksMsg.textContent = stored === 'yes' ? 'Glad it landed.' : 'We\'ll improve.';
+  }
+
+  function castVote(direction) {
+    try { localStorage.setItem(voteKey, direction); } catch (e) {}
+    stored = direction;
+    bonus = direction === 'yes' ? 1 : 0;
+    countEl.textContent = fmt(seed + bonus);
+    thanksEl.hidden = false;
+    thanksMsg.textContent = direction === 'yes' ? 'Glad it landed.' : 'We\'ll improve.';
+    if (direction === 'no' && window.cxOpenFeedbackModal) {
+      window.cxOpenFeedbackModal('blog');
+    }
+  }
+
+  if (yesBtn) yesBtn.addEventListener('click', function () { castVote('yes'); });
+  if (noBtn) noBtn.addEventListener('click', function () { castVote('no'); });
+})();
 </script>
 
 {{/* ═══════════════════════ Blog action bar: share dropdown + print + download ═══════════════════════ */}}
