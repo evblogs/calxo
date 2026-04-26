@@ -30,6 +30,8 @@ Eligible home loan EMI = Max total EMI − existing EMIs
 
 From that eligible EMI, the bank reverse-calculates the loan amount you qualify for at your chosen rate and tenure.
 
+{{< infographic-stat number="50%" label="Share of net monthly income most banks allow as total EMI burden" sub="SBI, HDFC, ICICI, Axis, Kotak. FOIR cap" >}}
+
 **At 8.75% rate, 20-year tenure, no existing loans:**
 
 | Net monthly income | Home loan you qualify for |
@@ -63,6 +65,13 @@ Banks don't finance 100% of a property's value. LTV (Loan-to-Value) limits mean:
 - Above ₹75 lakh: up to 75% (you bring 25%)
 
 And that's separate from stamp duty and registration, which typically runs 5–10% of property value, paid entirely from your pocket, not financed. On a ₹60 lakh flat in Bengaluru, budget ₹12 lakh for down payment plus ₹5–6 lakh for registration. You need roughly ₹17–18 lakh in cash before signing anything.
+
+{{< infographic-flow
+  title="Three practical ways to increase eligibility"
+  step1="Add a co-applicant|Spouse's salary pools into FOIR. Pushes eligible EMI up by 50-70%."
+  step2="Stretch tenure to 25 or 30 years|Lower EMI raises eligibility. Costs more interest, unblocks approval today."
+  step3="Close one existing loan first|Closing a ₹5K personal loan EMI frees ~₹16 lakh of home loan capacity."
+>}}
 
 ## Three practical ways to increase what you qualify for
 
