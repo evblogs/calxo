@@ -1,0 +1,142 @@
+{{/* Horizontal step row with circular icon + label + short description.
+Up to 5 steps, mobile-responsive (stacks below 600px).
+
+Usage (each step is "icon|label|description"):
+{{< infographic-steps
+  step1="search|Income|Net take-home + existing EMIs"
+  step2="calc|Cap|Bank applies 50% FOIR rule"
+  step3="check|Eligible EMI|Cap minus existing EMIs"
+  step4="loan|Loan amount|Reverse-calc at rate + tenure"
+>}}
+
+Available icons:
+  search, calc, check, loan, money, growth, doc, alert, lock, percent,
+  chart, building, shield, arrow, gear, user, clock
+*/}}
+{{ $count := 0 }}
+{{ range $i := seq 1 5 }}
+  {{ $key := printf "step%d" $i }}
+  {{ if $.Get $key }}{{ $count = add $count 1 }}{{ end }}
+{{ end }}
+
+<div class="cx-info-steps cx-info-steps-{{ $count }}">
+  {{ range $i := seq 1 5 }}
+    {{ $key := printf "step%d" $i }}
+    {{ with $.Get $key }}
+      {{ $parts := split . "|" }}
+      {{ $icon := index $parts 0 }}
+      {{ $label := index $parts 1 }}
+      {{ $desc := "" }}
+      {{ if gt (len $parts) 2 }}{{ $desc = index $parts 2 }}{{ end }}
+      <div class="cx-info-step">
+        <div class="cx-info-step-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            {{ if eq $icon "search" }}<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
+            {{ else if eq $icon "calc" }}<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M9 11h2M13 11h2M17 11h.01M9 15h2M13 15h2M17 15h.01M9 19h2M13 19h2M17 19h.01"/>
+            {{ else if eq $icon "check" }}<circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/>
+            {{ else if eq $icon "loan" }}<path d="M3 11.5L12 4l9 7.5"/><path d="M5 10v10h14V10"/>
+            {{ else if eq $icon "money" }}<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 6v12M18 6v12"/>
+            {{ else if eq $icon "growth" }}<polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/>
+            {{ else if eq $icon "doc" }}<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/>
+            {{ else if eq $icon "alert" }}<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+            {{ else if eq $icon "lock" }}<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>
+            {{ else if eq $icon "percent" }}<line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>
+            {{ else if eq $icon "chart" }}<line x1="3" y1="3" x2="3" y2="21"/><line x1="3" y1="21" x2="21" y2="21"/><rect x="7" y="13" width="3" height="6"/><rect x="13" y="9" width="3" height="10"/><rect x="19" y="5" width="0" height="14"/>
+            {{ else if eq $icon "building" }}<path d="M4 21V6l8-3 8 3v15"/><path d="M9 9h.01M13 9h.01M9 13h.01M13 13h.01M9 17h.01M13 17h.01"/>
+            {{ else if eq $icon "shield" }}<path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/>
+            {{ else if eq $icon "arrow" }}<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            {{ else if eq $icon "gear" }}<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            {{ else if eq $icon "user" }}<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            {{ else if eq $icon "clock" }}<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            {{ else }}<circle cx="12" cy="12" r="9"/>
+            {{ end }}
+          </svg>
+        </div>
+        <div class="cx-info-step-label">{{ $label }}</div>
+        {{ with $desc }}<div class="cx-info-step-desc">{{ . }}</div>{{ end }}
+      </div>
+    {{ end }}
+  {{ end }}
+</div>
+
+<style>
+  .cx-info-steps {
+    display: grid;
+    gap: 1.25rem 1rem;
+    margin: 2rem 0 2.25rem;
+    padding: 1.5rem 1.25rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    position: relative;
+  }
+  .cx-info-steps-2 { grid-template-columns: 1fr 1fr; }
+  .cx-info-steps-3 { grid-template-columns: repeat(3, 1fr); }
+  .cx-info-steps-4 { grid-template-columns: repeat(4, 1fr); }
+  .cx-info-steps-5 { grid-template-columns: repeat(5, 1fr); }
+  @media (max-width: 720px) {
+    .cx-info-steps-3, .cx-info-steps-4, .cx-info-steps-5 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 460px) {
+    .cx-info-steps-2, .cx-info-steps-3, .cx-info-steps-4, .cx-info-steps-5 { grid-template-columns: 1fr; }
+  }
+
+  .cx-info-step {
+    text-align: center;
+    position: relative;
+    padding: 0 .25rem;
+  }
+  /* Connector arrow between adjacent steps (desktop only) */
+  .cx-info-step + .cx-info-step::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 28px;
+    width: 1.85rem;
+    height: 2px;
+    background: #cbd5e1;
+    transform: translateX(-50%);
+  }
+  .cx-info-step + .cx-info-step::after {
+    content: '';
+    position: absolute;
+    left: calc(-1rem + .85rem);
+    top: 24px;
+    width: 0; height: 0;
+    border-left: 6px solid #cbd5e1;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transform: translateX(-50%);
+  }
+  @media (max-width: 720px) {
+    .cx-info-step + .cx-info-step::before, .cx-info-step + .cx-info-step::after { display: none; }
+  }
+  .cx-info-step-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto .75rem;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, .22);
+  }
+  .cx-info-step-circle svg { width: 26px; height: 26px; }
+  .cx-info-step-label {
+    font-size: .92rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: .35rem;
+  }
+  .cx-info-step-desc {
+    font-size: .85rem;
+    color: #64748b;
+    line-height: 1.45;
+    max-width: 180px;
+    margin: 0 auto;
+  }
+</style>

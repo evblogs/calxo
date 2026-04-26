@@ -68,9 +68,22 @@ The goal is to write like a knowledgeable human who typed this in one sitting.
 - En-dashes (–) for ranges like "10–15%" are fine to keep
 - The em-dash character is U+2014, en-dash is U+2013, hyphen is `-`. Different.
 
-### Required: at least one infographic per blog post
-Make every post feel "created with effort" by including 1–2 inline infographic
-shortcodes. Available shortcodes (auto-styled, no extra CSS):
+### Required: at least one infographic per blog post (image preferred)
+Use a real image file. Save at `/static/images/blog/<descriptive-slug>.svg`
+or `.png`/`.webp`. Filename and alt text MUST describe the content
+specifically — not `image1.png`, `infographic.png`, `chart.png`.
+
+```markdown
+![Section 10(13A) HRA exemption formula: minimum of three components](/images/blog/hra-formula-three-components.svg)
+```
+
+Good filenames: `foir-cap-by-bank-2026.svg`, `sip-vs-lumpsum-10yr-corpus.png`.
+Bad filenames: `infographic.png`, `image1.svg`, `Untitled.png`.
+
+Good alt text: full sentence describing what the image shows + the post's
+main keyword. Bad alt text: "infographic", "chart", "image".
+
+Optional: text-based shortcodes for fast in-line callouts (no image hosting):
 
 ```
 {{< infographic-stat
