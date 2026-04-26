@@ -116,7 +116,14 @@ Use for decision rules / step-by-step guidance. Up to 8 steps supported.
 Before marking a post as `status: done` in calxo_content_queue.json, the post
 must have:
 - [ ] Zero em-dashes (—). Run `grep -c "—" <file>` and confirm 0.
-- [ ] At least 1 infographic shortcode (stat / compare / flow).
+- [ ] At least 1 infographic shortcode (stat / compare / flow) AND/OR ≥1
+      real SVG image at `/static/images/blog/<descriptive-slug>.svg` with
+      full alt text.
+- [ ] **Math verified against the corresponding calculator widget.** If the
+      post computes a take-home, EMI, tax, or any other widget output,
+      run that scenario through the actual JavaScript in `layouts/shortcodes/`
+      and confirm the rupee figures in the post match exactly. Do NOT copy
+      numbers from a different scenario in another post.
 - [ ] At least 3 specific numbers grounded in real Indian context (₹ amounts,
       CAGR percentages, current 2026 rates from RBI/CBDT/AMFI).
 - [ ] Original Indian-context scenario (not generic "investor" or "user")

@@ -12,31 +12,30 @@
   <g transform="translate(60,110)">
     <!-- Whole bar -->
     <rect x="0" y="0" width="680" height="60" rx="8" fill="#e2e8f0"/>
-    <!-- Basic 50% -->
+    <!-- Basic 50% — ₹7.5L = 340px -->
     <rect x="0" y="0" width="340" height="60" rx="8" fill="#1e3a8a"/>
     <text x="170" y="36" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Basic (₹7.5L)</text>
     <text x="170" y="52" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">50% of CTC</text>
-    <!-- HRA -->
+    <!-- HRA — ₹3L = 20% of CTC = 136px -->
     <rect x="340" y="0" width="136" height="60" fill="#2563eb"/>
     <text x="408" y="36" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">HRA (₹3.0L)</text>
     <text x="408" y="52" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">40% of basic</text>
-    <!-- Special allowance -->
-    <rect x="476" y="0" width="105" height="60" fill="#06b6d4"/>
-    <text x="528" y="36" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Special</text>
-    <text x="528" y="52" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">balancer</text>
-    <!-- PF + gratuity -->
-    <rect x="581" y="0" width="65" height="60" fill="#94a3b8"/>
-    <text x="613" y="36" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">PF</text>
-    <text x="613" y="52" font-size="9" fill="#fff" text-anchor="middle" opacity=".8">employer</text>
-    <rect x="646" y="0" width="34" height="60" rx="0" fill="#475569"/>
-    <text x="663" y="36" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">Grat</text>
-    <text x="663" y="50" font-size="8" fill="#fff" text-anchor="middle" opacity=".8">4.81%</text>
+    <!-- Special allowance — ₹3.24L = 21.6% of CTC = 147px -->
+    <rect x="476" y="0" width="147" height="60" fill="#06b6d4"/>
+    <text x="549" y="36" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">Special (₹3.24L)</text>
+    <text x="549" y="52" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">balancer</text>
+    <!-- Employer PF — ₹90K = 6% = 41px -->
+    <rect x="623" y="0" width="41" height="60" fill="#94a3b8"/>
+    <text x="643" y="36" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">PF</text>
+    <text x="643" y="50" font-size="9" fill="#fff" text-anchor="middle" opacity=".8">90K</text>
+    <!-- Gratuity — ₹36K = 2.4% = 16px -->
+    <rect x="664" y="0" width="16" height="60" rx="0" fill="#475569"/>
 
-    <!-- Annotations -->
-    <line x1="0" y1="80" x2="476" y2="80" stroke="#2563eb" stroke-width="1.5"/>
-    <text x="238" y="100" font-size="11" font-weight="700" fill="#2563eb" text-anchor="middle">YOU SEE THIS ON YOUR PAYSLIP</text>
-    <line x1="476" y1="80" x2="680" y2="80" stroke="#94a3b8" stroke-width="1.5"/>
-    <text x="578" y="100" font-size="11" font-weight="700" fill="#475569" text-anchor="middle">YOU NEVER SEE THIS</text>
+    <!-- Annotations: divider at x=623 splits visible (basic+HRA+special) from invisible (employer PF+gratuity) -->
+    <line x1="0" y1="80" x2="623" y2="80" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="311" y="100" font-size="11" font-weight="700" fill="#2563eb" text-anchor="middle">VISIBLE ON YOUR PAYSLIP</text>
+    <line x1="623" y1="80" x2="680" y2="80" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="651" y="100" font-size="9" font-weight="700" fill="#475569" text-anchor="middle">INVISIBLE</text>
   </g>
 
   <!-- Detail cards below -->
