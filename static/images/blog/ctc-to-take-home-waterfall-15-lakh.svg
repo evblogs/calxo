@@ -15,7 +15,7 @@
   </defs>
   <rect width="800" height="460" fill="url(#ctcBg)" rx="12"/>
   <text x="400" y="44" font-size="22" font-weight="800" fill="#0f172a" text-anchor="middle">From ₹15 lakh CTC to your bank account</text>
-  <text x="400" y="66" font-size="13" fill="#64748b" text-anchor="middle">New regime, salaried, Bengaluru. Five layers strip ₹4.7 lakh before take-home.</text>
+  <text x="400" y="66" font-size="13" fill="#64748b" text-anchor="middle">New regime, salaried, Bengaluru. Five layers strip ₹2.96 lakh before take-home.</text>
 
   <!-- CTC bar -->
   <g transform="translate(70,110)">
@@ -28,25 +28,25 @@
 
   <!-- Subtraction labels in middle -->
   <g transform="translate(330,140)">
-    <text x="0" y="0" font-size="11" fill="#475569">− ₹72,000</text>
+    <text x="0" y="0" font-size="11" fill="#475569">− ₹90,000</text>
     <text x="80" y="0" font-size="11" fill="#94a3b8">Employer PF (12% of basic)</text>
-    <text x="0" y="22" font-size="11" fill="#475569">− ₹28,860</text>
+    <text x="0" y="22" font-size="11" fill="#475569">− ₹36,075</text>
     <text x="80" y="22" font-size="11" fill="#94a3b8">Gratuity provision (4.81%)</text>
-    <text x="0" y="44" font-size="11" fill="#475569">= ₹10,99,140</text>
+    <text x="0" y="44" font-size="11" fill="#475569">= ₹13,73,925</text>
     <text x="80" y="44" font-size="11" fill="#0f172a" font-weight="600">Annual gross</text>
     <line x1="0" y1="58" x2="170" y2="58" stroke="#cbd5e1"/>
-    <text x="0" y="80" font-size="11" fill="#475569">− ₹72,000</text>
+    <text x="0" y="80" font-size="11" fill="#475569">− ₹90,000</text>
     <text x="80" y="80" font-size="11" fill="#94a3b8">Employee PF (12% of basic)</text>
     <text x="0" y="102" font-size="11" fill="#475569">− ₹2,400</text>
-    <text x="80" y="102" font-size="11" fill="#94a3b8">Professional tax</text>
-    <text x="0" y="124" font-size="11" fill="#475569">− ₹0</text>
-    <text x="80" y="124" font-size="11" fill="#94a3b8">Income tax (87A rebate)</text>
+    <text x="80" y="102" font-size="11" fill="#94a3b8">Professional tax (Karnataka)</text>
+    <text x="0" y="124" font-size="11" fill="#475569">− ₹77,833</text>
+    <text x="80" y="124" font-size="11" fill="#94a3b8">Income tax (no 87A rebate)</text>
   </g>
 
-  <!-- Gross intermediate (smaller) -->
+  <!-- Gross intermediate -->
   <g transform="translate(530,148)">
     <rect x="0" y="0" width="100" height="220" rx="8" fill="url(#grossBar)" opacity=".75"/>
-    <text x="50" y="106" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">₹10.99L</text>
+    <text x="50" y="106" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">₹13.74L</text>
     <text x="50" y="128" font-size="10" fill="#fff" text-anchor="middle" opacity=".85">annual gross</text>
   </g>
 
@@ -54,16 +54,16 @@
   <g transform="translate(660,168)">
     <rect x="0" y="0" width="110" height="200" rx="10" fill="url(#thBar)"/>
     <text x="55" y="34" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" opacity=".85" text-transform="uppercase" letter-spacing="1.5">TAKE-HOME</text>
-    <text x="55" y="100" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">₹10.24L</text>
+    <text x="55" y="100" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">₹12.04L</text>
     <text x="55" y="126" font-size="11" fill="#fff" text-anchor="middle" opacity=".85">per year</text>
-    <text x="55" y="148" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">₹85,395</text>
+    <text x="55" y="148" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">₹1,00,308</text>
     <text x="55" y="166" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">per month</text>
-    <text x="55" y="188" font-size="10" fill="#fff" text-anchor="middle" opacity=".7">68% of CTC</text>
+    <text x="55" y="188" font-size="10" fill="#fff" text-anchor="middle" opacity=".7">80% of CTC</text>
   </g>
 
   <!-- Arrows -->
   <path d="M 320 250 L 320 280 L 540 280" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
   <path d="M 540 280 L 660 280" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
 
-  <text x="400" y="440" font-size="11" fill="#94a3b8" text-anchor="middle">FY 2025-26 · 50% basic CTC structure · Karnataka professional tax · Calxo take-home calculator</text>
+  <text x="400" y="440" font-size="11" fill="#94a3b8" text-anchor="middle">FY 2025-26 · 50% basic CTC structure (₹7.5L) · Karnataka professional tax · Calxo take-home calculator</text>
 </svg>

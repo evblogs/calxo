@@ -14,11 +14,11 @@
     <rect x="0" y="0" width="680" height="60" rx="8" fill="#e2e8f0"/>
     <!-- Basic 50% -->
     <rect x="0" y="0" width="340" height="60" rx="8" fill="#1e3a8a"/>
-    <text x="170" y="36" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Basic (₹6L)</text>
+    <text x="170" y="36" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Basic (₹7.5L)</text>
     <text x="170" y="52" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">50% of CTC</text>
     <!-- HRA -->
     <rect x="340" y="0" width="136" height="60" fill="#2563eb"/>
-    <text x="408" y="36" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">HRA (₹2.4L)</text>
+    <text x="408" y="36" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">HRA (₹3.0L)</text>
     <text x="408" y="52" font-size="10" fill="#fff" text-anchor="middle" opacity=".75">40% of basic</text>
     <!-- Special allowance -->
     <rect x="476" y="0" width="105" height="60" fill="#06b6d4"/>
@@ -44,8 +44,8 @@
     <rect x="0" y="0" width="218" height="155" rx="10" fill="#fff" stroke="#e2e8f0"/>
     <text x="20" y="28" font-size="12" font-weight="700" fill="#1e3a8a" text-transform="uppercase" letter-spacing="1.5">Cash that hits</text>
     <text x="20" y="56" font-size="13" fill="#0f172a">Basic + HRA + Special</text>
-    <text x="20" y="78" font-size="22" font-weight="800" fill="#0f172a">₹11.4L</text>
-    <text x="20" y="104" font-size="11" fill="#64748b">76% of CTC. This is the</text>
+    <text x="20" y="78" font-size="22" font-weight="800" fill="#0f172a">₹13.74L</text>
+    <text x="20" y="104" font-size="11" fill="#64748b">92% of CTC. This is the</text>
     <text x="20" y="120" font-size="11" fill="#64748b">number to negotiate against,</text>
     <text x="20" y="136" font-size="11" fill="#64748b">not the headline ₹15L.</text>
   </g>
@@ -54,8 +54,8 @@
     <rect x="0" y="0" width="218" height="155" rx="10" fill="#fff" stroke="#e2e8f0"/>
     <text x="20" y="28" font-size="12" font-weight="700" fill="#475569" text-transform="uppercase" letter-spacing="1.5">Goes to your EPF</text>
     <text x="20" y="56" font-size="13" fill="#0f172a">12% employer + 12% you</text>
-    <text x="20" y="78" font-size="22" font-weight="800" fill="#0f172a">₹1.44L</text>
-    <text x="20" y="104" font-size="11" fill="#64748b">9.6% of CTC. Locked in EPF</text>
+    <text x="20" y="78" font-size="22" font-weight="800" fill="#0f172a">₹1.80L</text>
+    <text x="20" y="104" font-size="11" fill="#64748b">12% of CTC. Locked in EPF</text>
     <text x="20" y="120" font-size="11" fill="#64748b">till retirement (mostly).</text>
     <text x="20" y="136" font-size="11" fill="#64748b">Earns 8.25% in FY 2025-26.</text>
   </g>
@@ -64,7 +64,7 @@
     <rect x="0" y="0" width="218" height="155" rx="10" fill="#fff" stroke="#e2e8f0"/>
     <text x="20" y="28" font-size="12" font-weight="700" fill="#475569" text-transform="uppercase" letter-spacing="1.5">Set aside (paper)</text>
     <text x="20" y="56" font-size="13" fill="#0f172a">Gratuity provision @ 4.81%</text>
-    <text x="20" y="78" font-size="22" font-weight="800" fill="#0f172a">₹28,860</text>
+    <text x="20" y="78" font-size="22" font-weight="800" fill="#0f172a">₹36,075</text>
     <text x="20" y="104" font-size="11" fill="#64748b">Counted in CTC. You only</text>
     <text x="20" y="120" font-size="11" fill="#64748b">receive it after 5 full years</text>
     <text x="20" y="136" font-size="11" fill="#64748b">of service. Else, it's gone.</text>
