@@ -60,6 +60,64 @@ The goal is to write like a knowledgeable human who typed this in one sitting.
 - No clean 3-part or 5-part structures where every section is same length
 - No "plays a key role", "leverage", "delve", "tapestry", "in today's world"
 
+### Punctuation: NO em-dashes (—)
+- AI detectors flag em-dashes heavily because models overuse them
+- Replace ALL em-dashes with: comma, period, parentheses, or just remove
+  ✗ "Banks rarely show that split — and honestly it's the most useful number"
+  ✓ "Banks rarely show that split, and honestly it's the most useful number"
+- En-dashes (–) for ranges like "10–15%" are fine to keep
+- The em-dash character is U+2014, en-dash is U+2013, hyphen is `-`. Different.
+
+### Required: at least one infographic per blog post
+Make every post feel "created with effort" by including 1–2 inline infographic
+shortcodes. Available shortcodes (auto-styled, no extra CSS):
+
+```
+{{< infographic-stat
+  number="₹12.75L"
+  label="Salaried gross income that pays zero tax under new regime"
+  sub="FY 2025-26 onwards" >}}
+```
+Use after the strongest claim in the intro to anchor the article visually.
+
+```
+{{< infographic-compare
+  left-tag="Sovereign safe" left-title="PPF" left-num="7.1%" left-label="…"
+  right-tag="Equity, market-linked" right-title="ELSS" right-num="12-14%" right-label="…"
+  winner="right" winner-text="ELSS wins by ~₹17 lakh post-tax over 15 years" >}}
+```
+Use whenever the post compares two options side-by-side.
+
+```
+{{< infographic-flow
+  title="The 30-second decision tree"
+  step1="Got a lumpsum sitting in your account?|If no, SIP from monthly salary."
+  step2="Is your horizon 7+ years?|If no, debt fund or FD."
+  step3="Would a 40% drawdown make you panic-sell?|If yes, STP over 6-12 months."
+  step4="Long horizon, won't panic, money ready?|Lumpsum into index or flexi-cap."
+>}}
+```
+Use for decision rules / step-by-step guidance. Up to 8 steps supported.
+
+### Daily-publishing checklist (auto-content generator must satisfy ALL)
+Before marking a post as `status: done` in calxo_content_queue.json, the post
+must have:
+- [ ] Zero em-dashes (—). Run `grep -c "—" <file>` and confirm 0.
+- [ ] At least 1 infographic shortcode (stat / compare / flow).
+- [ ] At least 3 specific numbers grounded in real Indian context (₹ amounts,
+      CAGR percentages, current 2026 rates from RBI/CBDT/AMFI).
+- [ ] Original Indian-context scenario (not generic "investor" or "user")
+      — name a city, salary band, age, or relatable situation.
+- [ ] No banned words (delve, leverage, tapestry, navigate-as-verb, robust,
+      seamless, comprehensive, in today's, whether you're, dive into, it's
+      important to note).
+- [ ] An ai_summary field with 4-5 bullets (rendered as the toggle at top
+      of the article).
+- [ ] At least 2 outbound internal links to relevant calculators in
+      related_calcs and at least 1 link inside the prose body.
+- [ ] First paragraph hooks with a real situation, contrarian fact, or
+      specific number — not "In this article, we'll cover…"
+
 ---
 
 ## Calculator development rules

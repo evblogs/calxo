@@ -1,6 +1,6 @@
 ---
 title: "How HRA Exemption is Calculated: The Actual Formula"
-description: "HRA exemption is the minimum of three values — most salaried employees claim less than they're entitled to. Here's the exact formula, worked examples for metro and non-metro cities, and when HRA beats home loan interest."
+description: "HRA exemption is the minimum of three values, most salaried employees claim less than they're entitled to. Here's the exact formula, worked examples for metro and non-metro cities, and when HRA beats home loan interest."
 date: 2026-04-25
 lastmod: 2026-04-25
 author: vignesh
@@ -13,7 +13,7 @@ tags:
 - exemption
 ---
 
-Rent and salary. Two sides of the same coin, at least when you calculate HRA deduction. House Rent Allowance (HRA) is a key component that salaried employees need to understand well. How much you can claim as exempt is determined by a formula — it's not random, though it may seem so. Let's dive right in.
+Rent and salary. Two sides of the same coin, at least when you calculate HRA deduction. House Rent Allowance (HRA) is a key component that salaried employees need to understand well. How much you can claim as exempt is determined by a formula, it's not random, though it may seem so. Let's dive right in.
 
 ### Basic Components of HRA Exemption Calculation
 
@@ -36,7 +36,7 @@ The exempt portion is ₹94,000 as it's the minimum. In contrast, someone in a n
 
 ### Common Mistakes and Misunderstandings
 
-Many people wrongly assume the whole HRA is tax-free. Don’t make this mistake — seriously. Remember, only the minimum of those three values is exempt. Be careful with your salary structure, as it affects the rent minus 10% calculation directly. Same goes for the basic salary percentage based on city type. These are often overlooked.
+Many people wrongly assume the whole HRA is tax-free. Don’t make this mistake, seriously. Remember, only the minimum of those three values is exempt. Be careful with your salary structure, as it affects the rent minus 10% calculation directly. Same goes for the basic salary percentage based on city type. These are often overlooked.
 
 In addition, extra perks like rent from parents for those living at home can complicate matters. For example, if you pay rent to parents whose house you live in, it still counts as rent paid. However, they need to declare this as income, so keep that in mind.
 
@@ -56,6 +56,6 @@ Want to simplify this for your own salary? Just use our [HRA Exemption Calculato
 
 HRA has a unique advantage over home loan interest deduction for those renting yet also owning a home. With a home loan, the interest deduction is capped at ₹2 lakh under Section 24(b). Real story time: Ashish took a ₹40 lakh home loan for his Pune apartment but lives in leased accommodation. His HRA calculations let him claim ₹1.2 lakh as exempt on annual HRA receipt of ₹1.5 lakh. That extra cash is handy.
 
-Use the correct figures — a potentially larger exemption can be unlocked. Prioritizing HRA can sometimes yield better benefits when balanced with home loan interest.
+Use the correct figures, a potentially larger exemption can be unlocked. Prioritizing HRA can sometimes yield better benefits when balanced with home loan interest.
 
 So, go ahead, parse your pay slip, re-evaluate your rent receipts, and make wiser decisions. Calculate that deduction smartly. Trust me, your Form 16 will thank you.

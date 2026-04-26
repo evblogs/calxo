@@ -1,0 +1,92 @@
+{{/* Step-flow infographic. Usage with positional args (each step is "title|description"):
+{{< infographic-flow
+  title="The 30-second decision tree"
+  step1="Got a lumpsum?|If no, SIP from salary is the only option"
+  step2="Horizon over 7 years?|If no, debt fund or FD instead of equity"
+  step3="Worried about timing?|Yes, STP. No, full lumpsum."
+>}}
+*/}}
+<div class="cx-info-flow">
+  {{ with .Get "title" }}<div class="cx-info-flow-title">{{ . }}</div>{{ end }}
+  <div class="cx-info-flow-steps">
+    {{ range $i := seq 1 8 }}
+      {{ $key := printf "step%d" $i }}
+      {{ with $.Get $key }}
+        {{ $parts := split . "|" }}
+        <div class="cx-info-flow-step">
+          <div class="cx-info-flow-num">{{ $i }}</div>
+          <div class="cx-info-flow-body">
+            <div class="cx-info-flow-step-title">{{ index $parts 0 }}</div>
+            {{ if gt (len $parts) 1 }}<div class="cx-info-flow-step-desc">{{ index $parts 1 }}</div>{{ end }}
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+<style>
+  .cx-info-flow {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin: 1.5rem 0 1.75rem;
+  }
+  .cx-info-flow-title {
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 1rem;
+  }
+  .cx-info-flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    position: relative;
+  }
+  .cx-info-flow-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    position: relative;
+  }
+  .cx-info-flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 38px;
+    width: 2px;
+    height: calc(100% + .25rem);
+    background: linear-gradient(to bottom, #bfdbfe, transparent);
+  }
+  .cx-info-flow-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, .25);
+    z-index: 1;
+  }
+  .cx-info-flow-body { padding-top: .25rem; }
+  .cx-info-flow-step-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.35;
+  }
+  .cx-info-flow-step-desc {
+    font-size: .88rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-top: .25rem;
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 title: "Old vs New Tax Regime FY 2025-26: Which Saves More on ₹15 Lakh CTC"
-description: "The new tax regime now lets ₹12.75 lakh salaried income pay zero tax thanks to the ₹60,000 87A rebate. Old regime still wins above that — but only if your deductions cross ₹4.75 lakh. Here's how to actually decide for your salary."
+description: "The new tax regime now lets ₹12.75 lakh salaried income pay zero tax thanks to the ₹60,000 87A rebate. Old regime still wins above that, but only if your deductions cross ₹4.75 lakh. Here's how to actually decide for your salary."
 date: 2026-04-25
 lastmod: 2026-04-25
 author: vignesh
@@ -11,15 +11,17 @@ related_calcs:
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
 ai_summary: |
   - **Budget 2025 raised the new-regime ₹87A rebate to ₹60,000**, so salaried income up to **₹12.75 lakh now pays zero tax** (₹12L taxable after the ₹75K standard deduction).
-  - For most salaried Indians, **the new regime now wins**. Old regime only beats new if your **deductions exceed ~₹4.75 lakh** — typically requires HRA (metro), home loan interest, 80C maxed, 80D maxed, NPS 80CCD(1B) all stacked.
+  - For most salaried Indians, **the new regime now wins**. Old regime only beats new if your **deductions exceed ~₹4.75 lakh**, typically requires HRA (metro), home loan interest, 80C maxed, 80D maxed, NPS 80CCD(1B) all stacked.
   - The new regime **removes 80C, 80D, HRA, self-occupied home loan interest, LTA** and most other deductions. Standard deduction (₹75K) and employer NPS 80CCD(2) still allowed.
   - At ₹15L CTC: new regime tax is ₹97,500 vs old regime ~₹2.55L (no deductions) or ~₹86K (full deduction stack). Cross-over moves with CTC.
   - **Bottom line**: default to new regime. Only switch to old if you have a metro rental + home loan + maxed 80C/80D *and* CTC ≥ ₹15L. Run both regimes through the [income tax calculator](/tax/income-tax-calculator/) before declaring to payroll.
 ---
 
-The Union Budget 2025 effectively killed the old tax regime for most salaried people. Not by removing it — but by raising the new regime's section 87A rebate to ₹60,000, which means anyone earning up to **₹12.75 lakh in gross salary pays zero income tax** under the new regime.
+The Union Budget 2025 effectively killed the old tax regime for most salaried people. Not by removing it, but by raising the new regime's section 87A rebate to ₹60,000, which means anyone earning up to **₹12.75 lakh in gross salary pays zero income tax** under the new regime.
 
-That single change shifted the cross-over point. Before Budget 2025, the old regime won for a lot of middle-income earners with even moderate deductions. From FY 2025-26, the cross-over has moved much higher — typically only beating new regime if total deductions cross ₹4.75 lakh, which usually requires a stack of HRA + 80C + 80D + home loan interest + NPS, all maxed.
+{{< infographic-stat number="₹12.75L" label="Salaried gross income that now pays zero tax under the new regime" sub="FY 2025-26 onwards" >}}
+
+That single change shifted the cross-over point. Before Budget 2025, the old regime won for a lot of middle-income earners with even moderate deductions. From FY 2025-26, the cross-over has moved much higher, typically only beating new regime if total deductions cross ₹4.75 lakh, which usually requires a stack of HRA + 80C + 80D + home loan interest + NPS, all maxed.
 
 This article runs the numbers across CTC bands so you can decide for your own situation, with the [income tax calculator](/tax/income-tax-calculator/) handling the maths.
 
@@ -43,7 +45,7 @@ Under the new regime for FY 2025-26:
 - **Salaried + new regime gets a ₹75,000 standard deduction** (raised from ₹50K)
 - The slab tax kicks in only above ₹4 lakh of taxable income
 - The 87A rebate covers any tax liability up to ₹12 lakh of taxable income
-- Marginal relief at ₹12 lakh prevents a tax cliff: if you're at ₹12,01,000 taxable, you don't pay full slab tax — you pay only the excess
+- Marginal relief at ₹12 lakh prevents a tax cliff: if you're at ₹12,01,000 taxable, you don't pay full slab tax, you pay only the excess
 
 So for a salaried person with no deductions other than standard:
 
@@ -79,7 +81,7 @@ Same exercise at ₹25 lakh CTC:
 | ₹6,00,000 | ₹3,42,200 | ₹3,30,200 | **New** (just) |
 | ₹7,50,000 | ₹2,83,200 | ₹3,30,200 | **Old** |
 
-Cross-over moves up to ~₹6.5 lakh of deductions at ₹25L CTC. Beyond that, very few people stack — you'd need the maximum HRA in a metro plus a substantial home loan plus NPS plus 80C + 80D to get there.
+Cross-over moves up to ~₹6.5 lakh of deductions at ₹25L CTC. Beyond that, very few people stack, you'd need the maximum HRA in a metro plus a substantial home loan plus NPS plus 80C + 80D to get there.
 
 ## What deductions actually disappear under the new regime?
 
@@ -92,15 +94,15 @@ This is the gotcha most people miss. The new regime lower slabs come at the cost
 - Agniveer Corpus Fund 80CCH
 
 **Removed under new regime:**
-- 80C (₹1.5 lakh) — PPF, ELSS, life insurance premium, principal repayment
-- 80D (₹25-50K) — health insurance premium
-- 80CCD(1B) (₹50K) — own NPS contribution
-- Section 24(b) — home loan interest (self-occupied)
-- 10(13A) — HRA exemption
+- 80C (₹1.5 lakh), PPF, ELSS, life insurance premium, principal repayment
+- 80D (₹25-50K), health insurance premium
+- 80CCD(1B) (₹50K), own NPS contribution
+- Section 24(b), home loan interest (self-occupied)
+- 10(13A), HRA exemption
 - LTA, leave encashment, professional development allowance
 - 80E (education loan interest), 80G (donations), 80GGA, 80TTA/80TTB
 
-Self-occupied home loan interest deduction is the biggest single absence — losing ₹2 lakh of deduction at the 30% slab is ₹62,400 of extra tax under new regime versus old.
+Self-occupied home loan interest deduction is the biggest single absence, losing ₹2 lakh of deduction at the 30% slab is ₹62,400 of extra tax under new regime versus old.
 
 ## When old regime is the right call
 
@@ -108,7 +110,7 @@ Stay on the old regime if **all four** of the following are true:
 
 1. You pay rent in a metro and your HRA exemption exceeds ₹2 lakh per year
 2. You have a self-occupied home loan with full ₹2 lakh interest claim under section 24(b)
-3. You max out 80C (₹1.5L) consistently — PPF, ELSS, EPF combined
+3. You max out 80C (₹1.5L) consistently, PPF, ELSS, EPF combined
 4. Your CTC is above ₹15 lakh
 
 A common stack that justifies old regime in 2026:
@@ -123,7 +125,7 @@ A common stack that justifies old regime in 2026:
 | Standard deduction | ₹50,000 |
 | **Total** | **₹7,16,000** |
 
-That stacks to ₹7.16 lakh of deductions. At ₹25L CTC, old regime wins by roughly ₹1.5 lakh per year. At ₹15L CTC, old regime wins by ~₹35K — small but real.
+That stacks to ₹7.16 lakh of deductions. At ₹25L CTC, old regime wins by roughly ₹1.5 lakh per year. At ₹15L CTC, old regime wins by ~₹35K, small but real.
 
 The 24(b) home loan interest deduction has a niche: while you can't claim it for self-occupied property under new regime, you **can** claim it for let-out property even under new regime against rental income. So landlords with rental income still get to use this lever.
 
@@ -131,7 +133,7 @@ The 24(b) home loan interest deduction has a niche: while you can't claim it for
 
 The clean three-step decision:
 
-1. **List your old-regime deductions honestly** — only what you'll actually claim, not aspirational
+1. **List your old-regime deductions honestly**, only what you'll actually claim, not aspirational
 2. **Run both regimes through the [income tax calculator](/tax/income-tax-calculator/)** with your CTC and deduction stack
 3. **Pick the lower number, give your employer one declaration**
 
@@ -142,14 +144,14 @@ If the gap is less than ₹10,000 per year, default to **new regime** anyway. Th
 - Less chance of scrutiny, less paperwork
 - Cleaner ITR filing
 
-For most salaried Indians earning under ₹15 lakh in 2026, that ₹12.75 lakh threshold means the choice is settled — new regime wins by default. The decision matters mainly for the ₹15-30 lakh CTC band where deduction stacks can swing it.
+For most salaried Indians earning under ₹15 lakh in 2026, that ₹12.75 lakh threshold means the choice is settled, new regime wins by default. The decision matters mainly for the ₹15-30 lakh CTC band where deduction stacks can swing it.
 
 ## What about freelancers and self-employed?
 
 Different rules. The Section 87A rebate works the same way, so income up to ₹12L taxable is still tax-free under the new regime. But:
 
 - 80C/80D/etc deductions are still excluded under new regime
-- 44ADA presumptive (50% of gross) and 44AD (6%/8%) are independent of the regime choice — you compute deemed profit first, then choose regime
+- 44ADA presumptive (50% of gross) and 44AD (6%/8%) are independent of the regime choice, you compute deemed profit first, then choose regime
 - Freelancers tend to have fewer 80C-style deductions, so new regime is even more dominant for them
 
 Self-employed with business income face the **one-way switch** rule: you can opt out of new regime once, then return only once and stay there. Easier to commit early.
@@ -158,11 +160,11 @@ Self-employed with business income face the **one-way switch** rule: you can opt
 
 ### Can I switch regimes every year?
 
-Salaried: yes, every year. Just declare to payroll at start of FY and again at filing time. Self-employed: not freely — see above.
+Salaried: yes, every year. Just declare to payroll at start of FY and again at filing time. Self-employed: not freely, see above.
 
 ### Does HRA exemption still work under new regime?
 
-No. HRA under section 10(13A) is allowed only under the old regime. If you pay rent and the exemption is large, run both regimes carefully — you might be giving up real money by defaulting to new.
+No. HRA under section 10(13A) is allowed only under the old regime. If you pay rent and the exemption is large, run both regimes carefully, you might be giving up real money by defaulting to new.
 
 ### What if my CTC is exactly ₹12.75 lakh?
 
@@ -178,11 +180,11 @@ Two relevant sections:
 - 80CCD(1B): self-contribution up to ₹50K, **old regime only**
 - 80CCD(2): employer contribution up to 10% of (basic + DA), **allowed in both regimes**
 
-Salaried employees can effectively use 80CCD(2) regardless of regime — this is why structuring CTC with employer NPS contribution is increasingly popular under new regime.
+Salaried employees can effectively use 80CCD(2) regardless of regime, this is why structuring CTC with employer NPS contribution is increasingly popular under new regime.
 
 ## Run your numbers
 
-The [Income Tax Calculator](/tax/income-tax-calculator/) lets you switch between regimes instantly with all FY 2025-26 slabs, the ₹60K rebate, marginal relief, surcharge slabs and 4% cess applied correctly. Take 30 seconds to compare both for your own salary — much more useful than internet rules of thumb.
+The [Income Tax Calculator](/tax/income-tax-calculator/) lets you switch between regimes instantly with all FY 2025-26 slabs, the ₹60K rebate, marginal relief, surcharge slabs and 4% cess applied correctly. Take 30 seconds to compare both for your own salary, much more useful than internet rules of thumb.
 
 For salaried structure questions, the [Take-Home Salary Calculator](/salary/takehome-calculator/) walks the full chain from CTC to bank deposit, showing employer PF, gratuity provision, employee PF, professional tax and TDS in your chosen regime.
 
