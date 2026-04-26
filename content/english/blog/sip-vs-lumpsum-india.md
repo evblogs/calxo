@@ -28,6 +28,8 @@ Same ₹6 lakh. Same 12% CAGR assumption. 10 years.
 
 That's a ₹7 lakh gap. On the same money. Same return rate. Same time period.
 
+![Bar chart comparing the same ₹6 lakh capital invested as lumpsum on day one (₹18.6 lakh future value) versus SIP of ₹5,000 per month over 120 months (₹11.6 lakh future value) at 12% CAGR over 10 years](/images/blog/sip-vs-lumpsum-corpus-10-years.svg)
+
 {{< infographic-compare
   left-tag="Day-1 deploy" left-title="Lumpsum" left-num="₹18.6L" left-label="Same ₹6L invested, full 10 years compounding"
   right-tag="Monthly drip" right-title="SIP" right-num="₹11.6L" right-label="₹5,000/month × 120 months at 12% CAGR"
@@ -88,6 +90,8 @@ If he'd said "yes I'd lose sleep over that", then STP over 9 months. Same expect
   step3="Would a 40% drawdown make you panic-sell?|If yes, STP over 6 to 12 months. Park in liquid fund, transfer monthly."
   step4="Long horizon, won't panic, money ready?|Lumpsum into index or flexi-cap. The maths is clearest here."
 >}}
+
+![Decision tree flowchart for SIP versus lumpsum — start with whether you have a lumpsum, then whether your horizon exceeds 7 years, then whether you'd panic-sell during a 40 percent drawdown, leading to either SIP, STP over 6-12 months, or lumpsum into equity](/images/blog/sip-lumpsum-decision-tree.svg)
 
 ## The actual decision rule (not the generic one)
 

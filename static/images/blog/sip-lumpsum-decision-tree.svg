@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="Plus Jakarta Sans, sans-serif">
+  <defs>
+    <linearGradient id="dtBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="primG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="460" fill="url(#dtBg)" rx="12"/>
+  <text x="400" y="44" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle">SIP or Lumpsum — the 30-second decision</text>
+
+  <!-- Step 1 (top) -->
+  <g transform="translate(300,80)">
+    <rect x="0" y="0" width="200" height="60" rx="10" fill="#fff" stroke="#e2e8f0"/>
+    <text x="100" y="28" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Got a lumpsum sitting</text>
+    <text x="100" y="44" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">in your account?</text>
+  </g>
+
+  <!-- branch arrows -->
+  <path d="M 350 144 Q 200 170 130 200" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="220" y="168" font-size="11" font-weight="700" fill="#475569">No →</text>
+  <path d="M 450 144 Q 600 170 670 200" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="585" y="168" font-size="11" font-weight="700" fill="#2563eb">← Yes</text>
+
+  <!-- Left branch: No lumpsum → SIP -->
+  <g transform="translate(40,200)">
+    <rect x="0" y="0" width="200" height="80" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="100" y="28" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">SIP from monthly salary</text>
+    <text x="100" y="50" font-size="11" fill="#64748b" text-anchor="middle">Only viable option when</text>
+    <text x="100" y="65" font-size="11" fill="#64748b" text-anchor="middle">money comes in monthly</text>
+  </g>
+
+  <!-- Right branch: Has lumpsum → 2nd question -->
+  <g transform="translate(560,200)">
+    <rect x="0" y="0" width="200" height="60" rx="10" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="100" y="28" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Horizon over 7 years?</text>
+    <text x="100" y="46" font-size="11" fill="#64748b" text-anchor="middle">Equity needs that long</text>
+  </g>
+
+  <!-- 3rd question -->
+  <path d="M 660 264 L 660 300" stroke="#2563eb" stroke-width="1.5"/>
+  <g transform="translate(560,300)">
+    <rect x="0" y="0" width="200" height="60" rx="10" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="100" y="28" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Will panic-sell at -40%?</text>
+    <text x="100" y="46" font-size="11" fill="#64748b" text-anchor="middle">Be honest with yourself</text>
+  </g>
+
+  <!-- Final outcomes -->
+  <path d="M 580 364 Q 460 380 380 400" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="430" y="378" font-size="11" font-weight="700" fill="#475569">Yes →</text>
+  <path d="M 740 364 L 740 400" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="708" y="384" font-size="11" font-weight="700" fill="#2563eb">No</text>
+
+  <g transform="translate(280,400)">
+    <rect x="0" y="0" width="200" height="44" rx="10" fill="url(#primG)" opacity=".88"/>
+    <text x="100" y="28" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">STP over 6–12 months</text>
+  </g>
+  <g transform="translate(640,400)">
+    <rect x="0" y="0" width="200" height="44" rx="10" fill="url(#primG)"/>
+    <text x="100" y="28" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Lumpsum into equity</text>
+  </g>
+</svg>

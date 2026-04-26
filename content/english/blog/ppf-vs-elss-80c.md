@@ -40,6 +40,8 @@ This article breaks down the math, the tax treatment, and the situations where e
   winner="right" winner-text="ELSS wins by ~₹17 lakh post-tax over 15 years on ₹1.5L/year"
 >}}
 
+![Bar chart comparing 15-year corpus on ₹1.5 lakh annual investment — PPF reaches ₹40.7 lakh tax-free at 7.1 percent versus ELSS reaching ₹62.7 lakh pre-tax or ₹58 lakh post-tax at 12 percent CAGR after 12.5 percent LTCG above the ₹1.25 lakh exemption](/images/blog/ppf-vs-elss-15-year-corpus.svg)
+
 ## What ₹1.5 lakh becomes in each
 
 Run ₹1.5 lakh per year for 15 years (the PPF lock-in period) through both:
@@ -91,6 +93,8 @@ So if both were guaranteed to deliver their advertised returns, ELSS would win c
 **You want some 80C savings to remain liquid after 3 years.** ELSS is the only 80C option with 3-year lock-in. PPF is 15. Tax-saver FD is 5. NSC is 5. NPS is until 60. ELSS gives you the most flexibility post-lock.
 
 **You're under the new tax regime and don't need 80C.** Then you don't need ELSS for the deduction either. But the structural advantage of ELSS as a disciplined equity vehicle (3-year lock-in forces holding through volatility) still applies. Many investors continue ELSS even without claiming 80C.
+
+![Stacked horizontal bars showing recommended PPF versus ELSS allocation by age band — 75 percent ELSS / 25 percent PPF for ages 25-35, 50/50 split for 35-50, flipping to 75 percent PPF / 25 percent ELSS for age 50 and above](/images/blog/ppf-elss-allocation-by-age.svg)
 
 ## The realistic answer: do both
 

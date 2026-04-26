@@ -30,6 +30,8 @@ Eligible home loan EMI = Max total EMI − existing EMIs
 
 From that eligible EMI, the bank reverse-calculates the loan amount you qualify for at your chosen rate and tenure.
 
+![FOIR formula explained step by step — net monthly income of ₹75,000 multiplied by the 50 percent FOIR cap that SBI, HDFC and ICICI use, equals ₹37,500 as the total monthly EMI cap across all loans](/images/blog/foir-formula-explained.svg)
+
 {{< infographic-stat number="50%" label="Share of net monthly income most banks allow as total EMI burden" sub="SBI, HDFC, ICICI, Axis, Kotak. FOIR cap" >}}
 
 **At 8.75% rate, 20-year tenure, no existing loans:**
@@ -43,6 +45,8 @@ From that eligible EMI, the bank reverse-calculates the loan amount you qualify 
 | ₹1,50,000 | ~₹73.5 lakh |
 
 Already carrying a car loan or personal loan? Subtract those EMIs first. A ₹8,000/month two-wheeler EMI on a ₹75,000 income knocks your eligible home loan down by roughly ₹16 lakh.
+
+![Horizontal bar chart of home loan eligibility by net monthly income at 8.75 percent rate over 20 years — from ₹14.7 lakh on ₹30,000 income up to ₹98 lakh on ₹2 lakh monthly income, assuming no existing EMIs](/images/blog/home-loan-eligibility-by-income-2026.svg)
 
 ## The CIBIL score piece
 

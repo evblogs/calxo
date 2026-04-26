@@ -25,6 +25,8 @@ That single change shifted the cross-over point. Before Budget 2025, the old reg
 
 This article runs the numbers across CTC bands so you can decide for your own situation, with the [income tax calculator](/tax/income-tax-calculator/) handling the maths.
 
+![Side-by-side income tax slabs for FY 2025-26 — old regime four slabs versus new regime seven slabs with the ₹60,000 87A rebate making ₹12 lakh taxable income tax-free](/images/blog/tax-regime-slabs-fy-2025-26.svg)
+
 ## What changed in Budget 2025
 
 The new regime had been the default since FY 2023-24, but the slabs and rebate were modest. Budget 2025 made three meaningful changes:
@@ -70,6 +72,8 @@ Take a salaried person at ₹15 lakh CTC and run both regimes for varying deduct
 | ₹5,50,000 (full deduction stack maxed) | ₹86,320 | ₹97,500 | **Old** |
 
 For ₹15L CTC, the cross-over is around **₹4.75 lakh** of total deductions. Anything below that, new regime wins. Anything above, old regime wins by 5-15K.
+
+![Bar chart showing old regime vs new regime tax at ₹15 lakh CTC across deduction stacks from zero to ₹5.5 lakh, with the cross-over point marked at ₹4.75 lakh of deductions where old regime starts winning](/images/blog/tax-regime-crossover-15-lakh-ctc.svg)
 
 Same exercise at ₹25 lakh CTC:
 

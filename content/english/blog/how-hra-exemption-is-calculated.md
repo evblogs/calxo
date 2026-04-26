@@ -29,6 +29,8 @@ This is not a complicated rule. Section 10(13A) read with Rule 2A spells out a c
 
 {{< infographic-stat number="3" label="Components compared. The smallest is your HRA exemption." sub="Section 10(13A), Income Tax Rules" >}}
 
+![HRA exemption formula visualised as three component cards — actual HRA received, 50 or 40 percent of basic salary, and rent paid minus 10 percent of basic — with the smallest of the three being the tax-exempt amount under section 10(13A)](/images/blog/hra-three-component-formula.svg)
+
 ## The three components, in plain English
 
 Pull these three numbers and pick the smallest. That's your exempt HRA for the year.
@@ -47,6 +49,8 @@ Only **Delhi, Mumbai, Chennai, and Kolkata** are metros for HRA purposes. The In
 - Delhi, Mumbai, Chennai, Kolkata: metro. 50%.
 
 A software engineer paying ₹40,000 rent in Bengaluru gets the 40% slab. The same engineer paying ₹40,000 rent in Mumbai gets 50%. Same income, same job, ₹50,000 difference in annual exemption ceiling. Worth knowing if you're choosing between cities.
+
+![Metro versus non-metro comparison for HRA — only Delhi, Mumbai, Chennai and Kolkata get the 50 percent of basic salary exemption ceiling, while Bengaluru, Hyderabad, Pune, Gurgaon and tier-2 cities use the 40 percent rule under Income Tax Rule 2A](/images/blog/hra-metro-vs-non-metro-cities.svg)
 
 ## Worked example: Bengaluru engineer, ₹50K rent, ₹50K basic
 

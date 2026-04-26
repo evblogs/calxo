@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="Plus Jakarta Sans, sans-serif">
+  <defs>
+    <linearGradient id="hlBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="hlBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="440" fill="url(#hlBg)" rx="12"/>
+  <text x="400" y="44" font-size="22" font-weight="800" fill="#0f172a" text-anchor="middle">Home loan eligibility by net monthly income</text>
+  <text x="400" y="66" font-size="13" fill="#64748b" text-anchor="middle">At 8.75% interest, 20-year tenure, 50% FOIR, no existing EMIs (April 2026 rates)</text>
+
+  <!-- Bars -->
+  <g transform="translate(120,100)">
+    <!-- Row 1: 30K -->
+    <text x="-10" y="22" font-size="13" fill="#0f172a" text-anchor="end" font-weight="600">₹30K/month</text>
+    <rect x="0" y="6" width="105" height="22" rx="4" fill="url(#hlBar)" opacity=".6"/>
+    <text x="115" y="22" font-size="12" fill="#0f172a" font-weight="700">~₹14.7 lakh</text>
+
+    <!-- Row 2: 50K -->
+    <text x="-10" y="62" font-size="13" fill="#0f172a" text-anchor="end" font-weight="600">₹50K/month</text>
+    <rect x="0" y="46" width="175" height="22" rx="4" fill="url(#hlBar)" opacity=".7"/>
+    <text x="185" y="62" font-size="12" fill="#0f172a" font-weight="700">~₹24.5 lakh</text>
+
+    <!-- Row 3: 75K -->
+    <text x="-10" y="102" font-size="13" fill="#0f172a" text-anchor="end" font-weight="600">₹75K/month</text>
+    <rect x="0" y="86" width="263" height="22" rx="4" fill="url(#hlBar)" opacity=".8"/>
+    <text x="273" y="102" font-size="12" fill="#0f172a" font-weight="700">~₹36.8 lakh</text>
+
+    <!-- Row 4: 1L -->
+    <text x="-10" y="142" font-size="13" fill="#0f172a" text-anchor="end" font-weight="600">₹1L/month</text>
+    <rect x="0" y="126" width="350" height="22" rx="4" fill="url(#hlBar)" opacity=".9"/>
+    <text x="360" y="142" font-size="12" fill="#0f172a" font-weight="700">~₹49 lakh</text>
+
+    <!-- Row 5: 1.5L -->
+    <text x="-10" y="182" font-size="13" fill="#0f172a" text-anchor="end" font-weight="600">₹1.5L/month</text>
+    <rect x="0" y="166" width="525" height="22" rx="4" fill="url(#hlBar)"/>
+    <text x="535" y="182" font-size="12" fill="#0f172a" font-weight="700">~₹73.5 lakh</text>
+
+    <!-- Row 6: 2L -->
+    <text x="-10" y="222" font-size="13" fill="#0f172a" text-anchor="end" font-weight="600">₹2L/month</text>
+    <rect x="0" y="206" width="600" height="22" rx="4" fill="url(#hlBar)"/>
+    <text x="610" y="222" font-size="12" fill="#0f172a" font-weight="700">~₹98 lakh</text>
+  </g>
+
+  <!-- Bottom callout -->
+  <g transform="translate(60,360)">
+    <rect x="0" y="0" width="680" height="60" rx="10" fill="#fff" stroke="#bfdbfe"/>
+    <text x="20" y="22" font-size="12" fill="#1e293b">Already paying a ₹5K car loan EMI? Subtract that from your eligible EMI first.</text>
+    <text x="20" y="42" font-size="11" font-weight="700" fill="#1d4ed8">A ₹5K existing EMI on ₹75K income drops your home loan eligibility by ~₹16 lakh.</text>
+  </g>
+</svg>
