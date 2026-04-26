@@ -32,8 +32,8 @@
       "resignation",
       "retirement"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-04-26"
   },
   {
     "id": "epf-interest-calculation-india",
@@ -50,8 +50,8 @@
       "provident fund",
       "salary"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-04-26"
   },
   {
     "id": "capital-gains-tax-india-2025-26",
