@@ -1,0 +1,124 @@
+{{ $data := site.Data.petrol_prices }}
+<div class="cx-pet-widget" id="cx-pet">
+<style>
+  #cx-pet { background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15,23,42,.04); }
+  #cx-pet h3 { margin: 0 0 1.25rem; font-size: 1rem; font-weight: 700; color: #0f172a; }
+  #cx-pet .cx-pet-top { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 760px) { #cx-pet .cx-pet-top { grid-template-columns: 1fr; } }
+  #cx-pet label > span { display: block; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
+  #cx-pet select { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1.05rem; color: #0f172a; font-weight: 600; background: #fff; box-sizing: border-box; }
+  #cx-pet select:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  #cx-pet .cx-pet-toggle { display: flex; gap: .5rem; margin-top: 1rem; }
+  #cx-pet .cx-pet-toggle button { flex: 1; padding: .55rem; border: 2px solid #e2e8f0; border-radius: 8px; background: #fff; font-size: .9rem; font-weight: 600; color: #64748b; cursor: pointer; transition: all .15s; }
+  #cx-pet .cx-pet-toggle button.active { border-color: #2563eb; background: #2563eb; color: #fff; }
+  #cx-pet .cx-result { background: linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%); color: #fff; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+  #cx-pet .cx-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  #cx-pet .cx-result > * { position: relative; }
+  #cx-pet .cx-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  #cx-pet .cx-result-value { font-size: clamp(2rem,6vw,2.8rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .2rem 0 .8rem; }
+  #cx-pet .cx-row { display: flex; justify-content: space-between; padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .88rem; }
+  #cx-pet .cx-row:last-of-type { border-bottom: none; }
+  #cx-pet .cx-row strong { font-weight: 700; }
+  #cx-pet .cx-updated { font-size: .72rem; opacity: .75; margin-top: .5rem; }
+  #cx-pet .cx-pet-table { margin-top: 1.5rem; }
+  #cx-pet .cx-pet-table h4 { font-size: .88rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 .75rem; }
+  #cx-pet .cx-pet-table table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  #cx-pet .cx-pet-table th { text-align: left; padding: .4rem .6rem; font-size: .78rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
+  #cx-pet .cx-pet-table td { padding: .45rem .6rem; border-bottom: 1px solid #f1f5f9; color: #0f172a; }
+  #cx-pet .cx-pet-table tr:last-child td { border-bottom: none; }
+  #cx-pet .cx-pet-table td.price { font-weight: 700; color: #1e3a8a; }
+  #cx-pet .cx-pet-table tr.highlight td { background: #eff6ff; }
+</style>
+
+{{ $citiesJson := slice }}
+{{ range $data.cities }}
+  {{ $citiesJson = $citiesJson | append (dict "city" .city "state" .state "petrol" .petrol "diesel" .diesel) }}
+{{ end }}
+
+<script>
+var CX_PETROL = {{ $citiesJson | jsonify }};
+var CX_UPDATED = "{{ $data.updated }}";
+</script>
+
+<div class="cx-pet-top">
+  <div>
+    <label>
+      <span>Select your city</span>
+      <select id="cx-pet-city">
+        {{ range $data.cities }}
+        <option value="{{ .city }}">{{ .city }} ({{ .state }})</option>
+        {{ end }}
+      </select>
+    </label>
+    <div class="cx-pet-toggle">
+      <button id="cx-pet-p" class="active" onclick="cxPetSwitch('petrol')">Petrol</button>
+      <button id="cx-pet-d" onclick="cxPetSwitch('diesel')">Diesel</button>
+    </div>
+  </div>
+
+  <div class="cx-result">
+    <div class="cx-result-label" id="cx-pet-label">Petrol price in Delhi</div>
+    <div class="cx-result-value" id="cx-pet-price">₹94.77</div>
+    <div class="cx-row"><span>Fuel type</span><strong id="cx-pet-type">Petrol</strong></div>
+    <div class="cx-row"><span>State</span><strong id="cx-pet-state">Delhi</strong></div>
+    <div class="cx-row"><span>Effective from</span><strong>6:00 AM daily</strong></div>
+    <div class="cx-updated" id="cx-pet-updated">Prices as of {{ $data.updated }}</div>
+  </div>
+</div>
+
+<div class="cx-pet-table">
+  <h4>All cities at a glance</h4>
+  <table id="cx-pet-tbl">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>State</th>
+        <th>Petrol (₹/L)</th>
+        <th>Diesel (₹/L)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $data.cities }}
+      <tr data-city="{{ .city }}">
+        <td>{{ .city }}</td>
+        <td>{{ .state }}</td>
+        <td class="price">{{ printf "%.2f" .petrol }}</td>
+        <td class="price">{{ printf "%.2f" .diesel }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var fuelType = 'petrol';
+  var citySelect = document.getElementById('cx-pet-city');
+
+  function cxPetRender() {
+    var cityName = citySelect.value;
+    var found = CX_PETROL.filter(function(c){ return c.city === cityName; })[0];
+    if (!found) return;
+    var price = fuelType === 'petrol' ? found.petrol : found.diesel;
+    document.getElementById('cx-pet-label').textContent = (fuelType === 'petrol' ? 'Petrol' : 'Diesel') + ' price in ' + cityName;
+    document.getElementById('cx-pet-price').textContent = '₹' + price.toFixed(2);
+    document.getElementById('cx-pet-type').textContent = fuelType === 'petrol' ? 'Petrol' : 'Diesel';
+    document.getElementById('cx-pet-state').textContent = found.state;
+    // highlight row
+    var rows = document.querySelectorAll('#cx-pet-tbl tbody tr');
+    rows.forEach(function(r){ r.classList.remove('highlight'); if(r.dataset.city === cityName) r.classList.add('highlight'); });
+  }
+
+  window.cxPetSwitch = function(type) {
+    fuelType = type;
+    document.getElementById('cx-pet-p').classList.toggle('active', type === 'petrol');
+    document.getElementById('cx-pet-d').classList.toggle('active', type === 'diesel');
+    cxPetRender();
+  };
+
+  citySelect.addEventListener('change', cxPetRender);
+  cxPetRender();
+})();
+</script>

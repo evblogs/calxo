@@ -68,6 +68,7 @@ URLS = [
     # Conversion
     "/conversion/",
     "/conversion/currency-converter/",
+    "/conversion/petrol-price-today/",
 
     # Static
     "/about/",
