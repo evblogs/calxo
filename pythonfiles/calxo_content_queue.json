@@ -8,12 +8,7 @@
     "calculator_url": "/salary/hra-calculator/",
     "calculator_label": "HRA Exemption Calculator",
     "category": "Tax",
-    "tags": [
-      "HRA",
-      "salary",
-      "income tax",
-      "exemption"
-    ],
+    "tags": ["HRA", "salary", "income tax", "exemption"],
     "status": "done",
     "published_date": "2026-04-25"
   },
@@ -26,14 +21,9 @@
     "calculator_url": "/salary/gratuity-calculator/",
     "calculator_label": "Gratuity Calculator",
     "category": "Salary",
-    "tags": [
-      "gratuity",
-      "salary",
-      "resignation",
-      "retirement"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["gratuity", "salary", "resignation", "retirement"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "epf-interest-calculation-india",
@@ -44,14 +34,9 @@
     "calculator_url": "/salary/epf-calculator/",
     "calculator_label": "EPF Calculator",
     "category": "Salary",
-    "tags": [
-      "EPF",
-      "PF",
-      "provident fund",
-      "salary"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["EPF", "PF", "provident fund", "salary"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "capital-gains-tax-india-2025-26",
@@ -62,15 +47,9 @@
     "calculator_url": "/tax/capital-gains-calculator/",
     "calculator_label": "Capital Gains Calculator",
     "category": "Tax",
-    "tags": [
-      "capital gains",
-      "LTCG",
-      "STCG",
-      "income tax",
-      "mutual funds"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["capital gains", "LTCG", "STCG", "income tax", "mutual funds"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "ctc-to-inhand-salary-calculation",
@@ -81,14 +60,9 @@
     "calculator_url": "/salary/takehome-calculator/",
     "calculator_label": "CTC to In-Hand Calculator",
     "category": "Salary",
-    "tags": [
-      "CTC",
-      "in-hand salary",
-      "take-home",
-      "salary structure"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["CTC", "in-hand salary", "take-home", "salary structure"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "rd-interest-calculation-formula",
@@ -99,14 +73,9 @@
     "calculator_url": "/investment/rd-calculator/",
     "calculator_label": "RD Calculator",
     "category": "Investment",
-    "tags": [
-      "RD",
-      "recurring deposit",
-      "interest calculation",
-      "savings"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["RD", "recurring deposit", "interest calculation", "savings"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "ppf-maturity-amount-calculation",
@@ -117,14 +86,9 @@
     "calculator_url": "/investment/ppf-calculator/",
     "calculator_label": "PPF Calculator",
     "category": "Investment",
-    "tags": [
-      "PPF",
-      "public provident fund",
-      "tax saving",
-      "80C"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["PPF", "public provident fund", "tax saving", "80C"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "tds-on-salary-how-it-works",
@@ -135,14 +99,9 @@
     "calculator_url": "/tax/tds-calculator/",
     "calculator_label": "TDS Calculator",
     "category": "Tax",
-    "tags": [
-      "TDS",
-      "salary",
-      "income tax",
-      "Form 16"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["TDS", "salary", "income tax", "Form 16"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "home-loan-prepayment-saves-money",
@@ -153,14 +112,9 @@
     "calculator_url": "/loan/emi-calculator/",
     "calculator_label": "EMI Calculator",
     "category": "Loans",
-    "tags": [
-      "home loan",
-      "prepayment",
-      "EMI",
-      "interest saving"
-    ],
-    "status": "done",
-    "published_date": "2026-04-26"
+    "tags": ["home loan", "prepayment", "EMI", "interest saving"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "reverse-gst-calculation-india",
@@ -171,14 +125,9 @@
     "calculator_url": "/tax/gst-calculator/",
     "calculator_label": "GST Calculator",
     "category": "Tax",
-    "tags": [
-      "GST",
-      "reverse GST",
-      "tax calculation",
-      "invoice"
-    ],
-    "status": "done",
-    "published_date": "2026-04-27"
+    "tags": ["GST", "reverse GST", "tax calculation", "invoice"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "nps-vs-ppf-which-is-better",
@@ -189,15 +138,9 @@
     "calculator_url": "/investment/nps-calculator/",
     "calculator_label": "NPS Calculator",
     "category": "Investment",
-    "tags": [
-      "NPS",
-      "PPF",
-      "retirement",
-      "80C",
-      "80CCD"
-    ],
-    "status": "done",
-    "published_date": "2026-04-27"
+    "tags": ["NPS", "PPF", "retirement", "80C", "80CCD"],
+    "status": "pending",
+    "published_date": null
   },
   {
     "id": "stamp-duty-registration-charges-india",
@@ -208,12 +151,294 @@
     "calculator_url": "/loan/stamp-duty-calculator/",
     "calculator_label": "Stamp Duty Calculator",
     "category": "Loans",
-    "tags": [
-      "stamp duty",
-      "registration charges",
-      "property",
-      "home buying"
-    ],
+    "tags": ["stamp duty", "registration charges", "property", "home buying"],
+    "status": "pending",
+    "published_date": null
+  },
+
+  {
+    "id": "rule-of-72-doubling-money-india",
+    "title": "Rule of 72: How Long Does It Take to Double Your Money in India",
+    "description": "Divide 72 by your expected return rate and you get the years to double your money. PPF at 7.1% takes 10 years. Equity at 12% takes 6. It's not precise but it's the fastest mental math in personal finance.",
+    "target_keyword": "rule of 72 calculator",
+    "volume": 1600,
+    "calculator_url": "/investment/compound-interest-calculator/",
+    "calculator_label": "Compound Interest Calculator",
+    "category": "Investment",
+    "tags": ["rule of 72", "doubling time", "compound interest", "investment"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "cagr-calculation-mutual-funds-india",
+    "title": "CAGR Calculation: What It Actually Means for Mutual Fund Returns",
+    "description": "CAGR is the single most important number when comparing mutual funds — but most investors read it wrong. Here's the exact formula, why absolute returns mislead on long-term investments, and how to calculate CAGR from NAV history.",
+    "target_keyword": "cagr calculator india",
+    "volume": 2900,
+    "calculator_url": "/investment/lumpsum-calculator/",
+    "calculator_label": "Lumpsum Calculator",
+    "category": "Investment",
+    "tags": ["CAGR", "mutual funds", "returns", "NAV"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "compound-interest-calculation-india",
+    "title": "Compound Interest Calculation: The Formula and Why It Matters More Than You Think",
+    "description": "Compound interest is calculated on principal plus accumulated interest — not just the original amount. The difference between simple and compound interest on a ₹5 lakh FD over 10 years is over ₹3 lakh.",
+    "target_keyword": "compound interest calculator india",
+    "volume": 2900,
+    "calculator_url": "/investment/compound-interest-calculator/",
+    "calculator_label": "Compound Interest Calculator",
+    "category": "Investment",
+    "tags": ["compound interest", "FD", "savings", "interest calculation"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "fd-vs-rd-which-is-better",
+    "title": "FD vs RD: Which Gives Better Returns for the Same Amount",
+    "description": "FD and RD both offer fixed returns but compound differently. On ₹6 lakh invested over a year, an FD beats an RD on returns — but RD wins for people without a lumpsum. Here's the exact comparison.",
+    "target_keyword": "fd vs rd which is better",
+    "volume": 1900,
+    "calculator_url": "/investment/fd-calculator/",
+    "calculator_label": "FD Calculator",
+    "category": "Investment",
+    "tags": ["FD", "RD", "fixed deposit", "recurring deposit", "savings"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "emergency-fund-how-much-india",
+    "title": "Emergency Fund: How Much You Actually Need and Where to Keep It",
+    "description": "The standard advice is 6 months of expenses. But 6 months of what — income or spending? And where: savings account, liquid fund, or FD? Here's a practical emergency fund calculation for Indian salaried employees.",
+    "target_keyword": "emergency fund calculator india",
+    "volume": 1300,
+    "calculator_url": "/investment/fd-calculator/",
+    "calculator_label": "FD Calculator",
+    "category": "Investment",
+    "tags": ["emergency fund", "liquid fund", "savings", "financial planning"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "net-worth-calculation-india",
+    "title": "Net Worth Calculation: How to Calculate Your Net Worth in India",
+    "description": "Net worth = assets minus liabilities. Simple formula, but most Indians undercount assets (EPF, PPF, gratuity) and undercount liabilities (outstanding credit card, home loan principal). Here's a proper Indian net worth template.",
+    "target_keyword": "net worth calculator india",
+    "volume": 1600,
+    "calculator_url": "/investment/compound-interest-calculator/",
+    "calculator_label": "Compound Interest Calculator",
+    "category": "Investment",
+    "tags": ["net worth", "financial planning", "assets", "liabilities"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "50-30-20-budget-rule-india",
+    "title": "50/30/20 Rule for Indian Salaries: Does It Actually Work?",
+    "description": "The 50/30/20 rule says 50% needs, 30% wants, 20% savings. On a ₹60,000 take-home in Mumbai that means ₹30,000 for rent and essentials — nearly impossible. Here's how to adapt the rule for Indian city costs.",
+    "target_keyword": "50 30 20 rule calculator",
+    "volume": 1300,
+    "calculator_url": "/salary/takehome-calculator/",
+    "calculator_label": "CTC to In-Hand Calculator",
+    "category": "Salary",
+    "tags": ["budgeting", "50/30/20 rule", "savings", "salary"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "inflation-impact-on-savings-india",
+    "title": "Inflation and Your Savings: What a 6% Inflation Rate Does to ₹10 Lakh",
+    "description": "At 6% inflation, ₹10 lakh today is worth ₹5.58 lakh in real terms after 10 years. An FD at 7% barely keeps up. Here's how to calculate the real return on your savings after inflation.",
+    "target_keyword": "inflation calculator india",
+    "volume": 1900,
+    "calculator_url": "/investment/compound-interest-calculator/",
+    "calculator_label": "Compound Interest Calculator",
+    "category": "Investment",
+    "tags": ["inflation", "real returns", "FD", "savings", "purchasing power"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "debt-to-income-ratio-india",
+    "title": "Debt-to-Income Ratio: Why Banks Reject Loan Applications in India",
+    "description": "Your debt-to-income ratio — total EMIs divided by net monthly income — is the number banks look at first. Above 50% (FOIR) and most lenders reject you. Here's how to calculate it and what to do if it's too high.",
+    "target_keyword": "debt to income ratio calculator india",
+    "volume": 1300,
+    "calculator_url": "/loan/foir-calculator/",
+    "calculator_label": "FOIR Calculator",
+    "category": "Loans",
+    "tags": ["debt to income", "FOIR", "loan eligibility", "EMI"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "gold-investment-india-returns",
+    "title": "Gold Investment in India: Returns, Forms, and the Real Tax Picture",
+    "description": "Gold has returned about 13% CAGR in INR over the last 20 years — better than most people think. But the form of gold (physical, SGBs, Gold ETFs) changes both returns and tax treatment significantly.",
+    "target_keyword": "gold investment returns india",
+    "volume": 2900,
+    "calculator_url": "/investment/lumpsum-calculator/",
+    "calculator_label": "Lumpsum Calculator",
+    "category": "Investment",
+    "tags": ["gold", "SGB", "gold ETF", "investment", "returns"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "section-80c-deductions-complete-guide",
+    "title": "Section 80C Deductions: The Complete List and Which Ones to Actually Use",
+    "description": "Section 80C allows up to ₹1.5 lakh deduction but has 15 eligible instruments. ELSS, PPF, EPF, LIC, NSC, home loan principal — each has different liquidity, returns, and lock-in. Here's how to pick.",
+    "target_keyword": "section 80c deductions list",
+    "volume": 2900,
+    "calculator_url": "/tax/income-tax-calculator/",
+    "calculator_label": "Income Tax Calculator",
+    "category": "Tax",
+    "tags": ["80C", "tax deduction", "PPF", "ELSS", "LIC", "income tax"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "car-depreciation-india",
+    "title": "Car Depreciation in India: How Much Your Car Loses Every Year",
+    "description": "A new car loses 15-20% of its value in the first year and 10-15% each year after that. On a ₹10 lakh car, you've lost ₹3.5 lakh by year 3. Here's the depreciation schedule and how it affects insurance and resale value.",
+    "target_keyword": "car depreciation calculator india",
+    "volume": 1600,
+    "calculator_url": "/loan/car-loan-calculator/",
+    "calculator_label": "Car Loan Calculator",
+    "category": "Loans",
+    "tags": ["car depreciation", "car loan", "resale value", "insurance"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "sukanya-samriddhi-yojana-calculator",
+    "title": "Sukanya Samriddhi Yojana: Returns, Rules, and the Actual Maturity Amount",
+    "description": "SSY offers 8.2% interest, full tax exemption, and matures when the girl turns 21. On ₹1.5 lakh/year for 15 years starting from birth, the maturity value at age 21 is approximately ₹69 lakh. Here's the full calculation.",
+    "target_keyword": "sukanya samriddhi yojana calculator",
+    "volume": 2900,
+    "calculator_url": "/investment/ppf-calculator/",
+    "calculator_label": "PPF Calculator",
+    "category": "Investment",
+    "tags": ["SSY", "Sukanya Samriddhi", "girl child", "tax saving", "80C"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "sovereign-gold-bond-vs-gold-etf",
+    "title": "Sovereign Gold Bond vs Gold ETF: Which is Better for Indian Investors",
+    "description": "SGBs pay 2.5% interest on top of gold price appreciation and are tax-free on maturity. Gold ETFs are liquid but taxed as debt funds since April 2023. The 8-year lock-in of SGBs is the real trade-off to understand.",
+    "target_keyword": "sovereign gold bond vs gold etf",
+    "volume": 1900,
+    "calculator_url": "/investment/lumpsum-calculator/",
+    "calculator_label": "Lumpsum Calculator",
+    "category": "Investment",
+    "tags": ["SGB", "gold ETF", "gold investment", "RBI bonds"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "how-to-read-form-16",
+    "title": "How to Read Form 16: Part A and Part B Explained Simply",
+    "description": "Form 16 is issued by your employer every year by June 15. Most employees can't read it correctly — especially Part B where deductions and taxable income are calculated. Here's what every section means.",
+    "target_keyword": "how to read form 16",
+    "volume": 2900,
+    "calculator_url": "/tax/income-tax-calculator/",
+    "calculator_label": "Income Tax Calculator",
+    "category": "Tax",
+    "tags": ["Form 16", "TDS", "income tax", "salary", "ITR"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "credit-card-interest-calculation-india",
+    "title": "Credit Card Interest Calculation: Why the 3.5% Monthly Rate is Devastating",
+    "description": "3.5% per month sounds small. It's 42% per year. On a ₹50,000 unpaid balance, you owe ₹21,000 in interest over a year — more than most personal loans. Here's exactly how credit card interest is calculated.",
+    "target_keyword": "credit card interest calculator india",
+    "volume": 1900,
+    "calculator_url": "/loan/emi-calculator/",
+    "calculator_label": "EMI Calculator",
+    "category": "Loans",
+    "tags": ["credit card", "interest", "minimum payment", "debt"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "pay-raise-vs-job-switch-india",
+    "title": "Pay Raise vs Job Switch: The Real Numbers Behind the Decision",
+    "description": "The average internal increment in India is 10%. The average hike from switching jobs is 25-40%. Over 5 years the gap compounds. Here's how to calculate the lifetime earnings difference between staying and switching.",
+    "target_keyword": "salary hike after job change india",
+    "volume": 1600,
+    "calculator_url": "/salary/salary-hike-calculator/",
+    "calculator_label": "Salary Hike Calculator",
+    "category": "Salary",
+    "tags": ["salary hike", "job switch", "increment", "career"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "elss-vs-ppf-tax-saving",
+    "title": "ELSS vs PPF for 80C: Which Tax-Saving Investment is Actually Better",
+    "description": "ELSS has a 3-year lock-in and targets 12-14% returns. PPF has a 15-year lock-in at guaranteed 7.1%. On a 10-year horizon with reinvestment, ELSS typically wins — but only if you stay invested through the dips.",
+    "target_keyword": "elss vs ppf which is better",
+    "volume": 2900,
+    "calculator_url": "/investment/sip-calculator/",
+    "calculator_label": "SIP Calculator",
+    "category": "Investment",
+    "tags": ["ELSS", "PPF", "80C", "tax saving", "mutual funds"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "home-loan-vs-rent-india",
+    "title": "Home Loan vs Renting: The Honest Financial Comparison for Indian Cities",
+    "description": "In Mumbai, a ₹1.5 crore flat on a 20-year home loan costs ₹1.3 lakh EMI. The same flat rents for ₹40,000-50,000/month. The EMI argument assumes the flat appreciates 7%+ annually. Here's when buying actually makes financial sense.",
+    "target_keyword": "buy vs rent calculator india",
+    "volume": 2900,
+    "calculator_url": "/loan/home-loan-eligibility/",
+    "calculator_label": "Home Loan Eligibility Calculator",
+    "category": "Loans",
+    "tags": ["home loan", "rent vs buy", "property", "EMI", "real estate"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "mutual-fund-expense-ratio-impact",
+    "title": "Mutual Fund Expense Ratio: How 1% More in Fees Costs You ₹15 Lakh",
+    "description": "On a ₹50 lakh portfolio over 20 years at 12% returns, the difference between 0.1% (index fund) and 1.5% (active fund) expense ratio is roughly ₹32 lakh. Expense ratio is the most underrated factor in mutual fund selection.",
+    "target_keyword": "mutual fund expense ratio india",
+    "volume": 1300,
+    "calculator_url": "/investment/sip-calculator/",
+    "calculator_label": "SIP Calculator",
+    "category": "Investment",
+    "tags": ["expense ratio", "mutual funds", "index fund", "direct plan"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "loan-amortization-india",
+    "title": "Loan Amortization: Why You Pay Mostly Interest in the First Few Years",
+    "description": "On a ₹40 lakh home loan at 8.75% for 20 years, your first EMI of ₹35,392 includes ₹29,167 in interest and only ₹6,225 in principal. It takes 8 years before your EMI is split 50/50. Here's the full amortization explained.",
+    "target_keyword": "loan amortization calculator india",
+    "volume": 1600,
+    "calculator_url": "/loan/emi-calculator/",
+    "calculator_label": "EMI Calculator",
+    "category": "Loans",
+    "tags": ["amortization", "home loan", "EMI", "interest", "principal"],
+    "status": "pending",
+    "published_date": null
+  },
+  {
+    "id": "retirement-corpus-calculation-india",
+    "title": "Retirement Corpus Calculation: How Much Do You Actually Need to Retire",
+    "description": "The 25x rule says you need 25 times your annual expenses to retire. At ₹5 lakh/year expenses today, inflated at 6% for 25 years, you need a corpus of ₹5.4 crore. Here's the full calculation for Indian retirement planning.",
+    "target_keyword": "retirement corpus calculator india",
+    "volume": 2900,
+    "calculator_url": "/investment/nps-calculator/",
+    "calculator_label": "NPS Calculator",
+    "category": "Investment",
+    "tags": ["retirement", "corpus", "financial planning", "FIRE", "NPS"],
     "status": "pending",
     "published_date": null
   }
