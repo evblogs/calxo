@@ -115,6 +115,19 @@ weight = 5
 name = "Conversion"
 URL = "/conversion/"
 weight = 6
+identifier = "conversion"
+
+[[menu.main]]
+name = "Currency Converter"
+URL = "/conversion/currency-converter/"
+weight = 1
+parent = "conversion"
+
+[[menu.main]]
+name = "Petrol Price Today"
+URL = "/conversion/petrol-price-today/"
+weight = 2
+parent = "conversion"
 
 [[menu.main]]
 name = "Blog"
