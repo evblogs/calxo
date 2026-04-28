@@ -181,5 +181,21 @@
       color: inherit;
       text-decoration: none;
     }
+
+    /* ── Site-wide responsive tables ── */
+    .content table,
+    .cx-list-intro table,
+    article table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-collapse: collapse;
+    }
+    .content table th,
+    .cx-list-intro table th,
+    article table th {
+      white-space: nowrap;
+    }
   </style>
 </head>
