@@ -8,7 +8,12 @@
     "calculator_url": "/salary/hra-calculator/",
     "calculator_label": "HRA Exemption Calculator",
     "category": "Tax",
-    "tags": ["HRA", "salary", "income tax", "exemption"],
+    "tags": [
+      "HRA",
+      "salary",
+      "income tax",
+      "exemption"
+    ],
     "status": "done",
     "published_date": "2026-04-25"
   },
@@ -21,9 +26,14 @@
     "calculator_url": "/salary/gratuity-calculator/",
     "calculator_label": "Gratuity Calculator",
     "category": "Salary",
-    "tags": ["gratuity", "salary", "resignation", "retirement"],
-    "status": "pending",
-    "published_date": null
+    "tags": [
+      "gratuity",
+      "salary",
+      "resignation",
+      "retirement"
+    ],
+    "status": "done",
+    "published_date": "2026-04-28"
   },
   {
     "id": "epf-interest-calculation-india",
@@ -34,9 +44,14 @@
     "calculator_url": "/salary/epf-calculator/",
     "calculator_label": "EPF Calculator",
     "category": "Salary",
-    "tags": ["EPF", "PF", "provident fund", "salary"],
-    "status": "pending",
-    "published_date": null
+    "tags": [
+      "EPF",
+      "PF",
+      "provident fund",
+      "salary"
+    ],
+    "status": "done",
+    "published_date": "2026-04-28"
   },
   {
     "id": "capital-gains-tax-india-2025-26",
@@ -47,7 +62,13 @@
     "calculator_url": "/tax/capital-gains-calculator/",
     "calculator_label": "Capital Gains Calculator",
     "category": "Tax",
-    "tags": ["capital gains", "LTCG", "STCG", "income tax", "mutual funds"],
+    "tags": [
+      "capital gains",
+      "LTCG",
+      "STCG",
+      "income tax",
+      "mutual funds"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -60,7 +81,12 @@
     "calculator_url": "/salary/takehome-calculator/",
     "calculator_label": "CTC to In-Hand Calculator",
     "category": "Salary",
-    "tags": ["CTC", "in-hand salary", "take-home", "salary structure"],
+    "tags": [
+      "CTC",
+      "in-hand salary",
+      "take-home",
+      "salary structure"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -73,7 +99,12 @@
     "calculator_url": "/investment/rd-calculator/",
     "calculator_label": "RD Calculator",
     "category": "Investment",
-    "tags": ["RD", "recurring deposit", "interest calculation", "savings"],
+    "tags": [
+      "RD",
+      "recurring deposit",
+      "interest calculation",
+      "savings"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -86,7 +117,12 @@
     "calculator_url": "/investment/ppf-calculator/",
     "calculator_label": "PPF Calculator",
     "category": "Investment",
-    "tags": ["PPF", "public provident fund", "tax saving", "80C"],
+    "tags": [
+      "PPF",
+      "public provident fund",
+      "tax saving",
+      "80C"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -99,7 +135,12 @@
     "calculator_url": "/tax/tds-calculator/",
     "calculator_label": "TDS Calculator",
     "category": "Tax",
-    "tags": ["TDS", "salary", "income tax", "Form 16"],
+    "tags": [
+      "TDS",
+      "salary",
+      "income tax",
+      "Form 16"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -112,7 +153,12 @@
     "calculator_url": "/loan/emi-calculator/",
     "calculator_label": "EMI Calculator",
     "category": "Loans",
-    "tags": ["home loan", "prepayment", "EMI", "interest saving"],
+    "tags": [
+      "home loan",
+      "prepayment",
+      "EMI",
+      "interest saving"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -125,7 +171,12 @@
     "calculator_url": "/tax/gst-calculator/",
     "calculator_label": "GST Calculator",
     "category": "Tax",
-    "tags": ["GST", "reverse GST", "tax calculation", "invoice"],
+    "tags": [
+      "GST",
+      "reverse GST",
+      "tax calculation",
+      "invoice"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -138,7 +189,13 @@
     "calculator_url": "/investment/nps-calculator/",
     "calculator_label": "NPS Calculator",
     "category": "Investment",
-    "tags": ["NPS", "PPF", "retirement", "80C", "80CCD"],
+    "tags": [
+      "NPS",
+      "PPF",
+      "retirement",
+      "80C",
+      "80CCD"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -151,11 +208,15 @@
     "calculator_url": "/loan/stamp-duty-calculator/",
     "calculator_label": "Stamp Duty Calculator",
     "category": "Loans",
-    "tags": ["stamp duty", "registration charges", "property", "home buying"],
+    "tags": [
+      "stamp duty",
+      "registration charges",
+      "property",
+      "home buying"
+    ],
     "status": "pending",
     "published_date": null
   },
-
   {
     "id": "rule-of-72-doubling-money-india",
     "title": "Rule of 72: How Long Does It Take to Double Your Money in India",
@@ -165,7 +226,12 @@
     "calculator_url": "/investment/compound-interest-calculator/",
     "calculator_label": "Compound Interest Calculator",
     "category": "Investment",
-    "tags": ["rule of 72", "doubling time", "compound interest", "investment"],
+    "tags": [
+      "rule of 72",
+      "doubling time",
+      "compound interest",
+      "investment"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -178,7 +244,12 @@
     "calculator_url": "/investment/lumpsum-calculator/",
     "calculator_label": "Lumpsum Calculator",
     "category": "Investment",
-    "tags": ["CAGR", "mutual funds", "returns", "NAV"],
+    "tags": [
+      "CAGR",
+      "mutual funds",
+      "returns",
+      "NAV"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -191,7 +262,12 @@
     "calculator_url": "/investment/compound-interest-calculator/",
     "calculator_label": "Compound Interest Calculator",
     "category": "Investment",
-    "tags": ["compound interest", "FD", "savings", "interest calculation"],
+    "tags": [
+      "compound interest",
+      "FD",
+      "savings",
+      "interest calculation"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -204,7 +280,13 @@
     "calculator_url": "/investment/fd-calculator/",
     "calculator_label": "FD Calculator",
     "category": "Investment",
-    "tags": ["FD", "RD", "fixed deposit", "recurring deposit", "savings"],
+    "tags": [
+      "FD",
+      "RD",
+      "fixed deposit",
+      "recurring deposit",
+      "savings"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -217,7 +299,12 @@
     "calculator_url": "/investment/fd-calculator/",
     "calculator_label": "FD Calculator",
     "category": "Investment",
-    "tags": ["emergency fund", "liquid fund", "savings", "financial planning"],
+    "tags": [
+      "emergency fund",
+      "liquid fund",
+      "savings",
+      "financial planning"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -230,7 +317,12 @@
     "calculator_url": "/investment/compound-interest-calculator/",
     "calculator_label": "Compound Interest Calculator",
     "category": "Investment",
-    "tags": ["net worth", "financial planning", "assets", "liabilities"],
+    "tags": [
+      "net worth",
+      "financial planning",
+      "assets",
+      "liabilities"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -243,7 +335,12 @@
     "calculator_url": "/salary/takehome-calculator/",
     "calculator_label": "CTC to In-Hand Calculator",
     "category": "Salary",
-    "tags": ["budgeting", "50/30/20 rule", "savings", "salary"],
+    "tags": [
+      "budgeting",
+      "50/30/20 rule",
+      "savings",
+      "salary"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -256,7 +353,13 @@
     "calculator_url": "/investment/compound-interest-calculator/",
     "calculator_label": "Compound Interest Calculator",
     "category": "Investment",
-    "tags": ["inflation", "real returns", "FD", "savings", "purchasing power"],
+    "tags": [
+      "inflation",
+      "real returns",
+      "FD",
+      "savings",
+      "purchasing power"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -269,7 +372,12 @@
     "calculator_url": "/loan/foir-calculator/",
     "calculator_label": "FOIR Calculator",
     "category": "Loans",
-    "tags": ["debt to income", "FOIR", "loan eligibility", "EMI"],
+    "tags": [
+      "debt to income",
+      "FOIR",
+      "loan eligibility",
+      "EMI"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -282,7 +390,13 @@
     "calculator_url": "/investment/lumpsum-calculator/",
     "calculator_label": "Lumpsum Calculator",
     "category": "Investment",
-    "tags": ["gold", "SGB", "gold ETF", "investment", "returns"],
+    "tags": [
+      "gold",
+      "SGB",
+      "gold ETF",
+      "investment",
+      "returns"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -295,7 +409,14 @@
     "calculator_url": "/tax/income-tax-calculator/",
     "calculator_label": "Income Tax Calculator",
     "category": "Tax",
-    "tags": ["80C", "tax deduction", "PPF", "ELSS", "LIC", "income tax"],
+    "tags": [
+      "80C",
+      "tax deduction",
+      "PPF",
+      "ELSS",
+      "LIC",
+      "income tax"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -308,7 +429,12 @@
     "calculator_url": "/loan/car-loan-calculator/",
     "calculator_label": "Car Loan Calculator",
     "category": "Loans",
-    "tags": ["car depreciation", "car loan", "resale value", "insurance"],
+    "tags": [
+      "car depreciation",
+      "car loan",
+      "resale value",
+      "insurance"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -321,7 +447,13 @@
     "calculator_url": "/investment/ppf-calculator/",
     "calculator_label": "PPF Calculator",
     "category": "Investment",
-    "tags": ["SSY", "Sukanya Samriddhi", "girl child", "tax saving", "80C"],
+    "tags": [
+      "SSY",
+      "Sukanya Samriddhi",
+      "girl child",
+      "tax saving",
+      "80C"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -334,7 +466,12 @@
     "calculator_url": "/investment/lumpsum-calculator/",
     "calculator_label": "Lumpsum Calculator",
     "category": "Investment",
-    "tags": ["SGB", "gold ETF", "gold investment", "RBI bonds"],
+    "tags": [
+      "SGB",
+      "gold ETF",
+      "gold investment",
+      "RBI bonds"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -347,7 +484,13 @@
     "calculator_url": "/tax/income-tax-calculator/",
     "calculator_label": "Income Tax Calculator",
     "category": "Tax",
-    "tags": ["Form 16", "TDS", "income tax", "salary", "ITR"],
+    "tags": [
+      "Form 16",
+      "TDS",
+      "income tax",
+      "salary",
+      "ITR"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -360,7 +503,12 @@
     "calculator_url": "/loan/emi-calculator/",
     "calculator_label": "EMI Calculator",
     "category": "Loans",
-    "tags": ["credit card", "interest", "minimum payment", "debt"],
+    "tags": [
+      "credit card",
+      "interest",
+      "minimum payment",
+      "debt"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -373,7 +521,12 @@
     "calculator_url": "/salary/salary-hike-calculator/",
     "calculator_label": "Salary Hike Calculator",
     "category": "Salary",
-    "tags": ["salary hike", "job switch", "increment", "career"],
+    "tags": [
+      "salary hike",
+      "job switch",
+      "increment",
+      "career"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -386,7 +539,13 @@
     "calculator_url": "/investment/sip-calculator/",
     "calculator_label": "SIP Calculator",
     "category": "Investment",
-    "tags": ["ELSS", "PPF", "80C", "tax saving", "mutual funds"],
+    "tags": [
+      "ELSS",
+      "PPF",
+      "80C",
+      "tax saving",
+      "mutual funds"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -399,7 +558,13 @@
     "calculator_url": "/loan/home-loan-eligibility/",
     "calculator_label": "Home Loan Eligibility Calculator",
     "category": "Loans",
-    "tags": ["home loan", "rent vs buy", "property", "EMI", "real estate"],
+    "tags": [
+      "home loan",
+      "rent vs buy",
+      "property",
+      "EMI",
+      "real estate"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -412,7 +577,12 @@
     "calculator_url": "/investment/sip-calculator/",
     "calculator_label": "SIP Calculator",
     "category": "Investment",
-    "tags": ["expense ratio", "mutual funds", "index fund", "direct plan"],
+    "tags": [
+      "expense ratio",
+      "mutual funds",
+      "index fund",
+      "direct plan"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -425,7 +595,13 @@
     "calculator_url": "/loan/emi-calculator/",
     "calculator_label": "EMI Calculator",
     "category": "Loans",
-    "tags": ["amortization", "home loan", "EMI", "interest", "principal"],
+    "tags": [
+      "amortization",
+      "home loan",
+      "EMI",
+      "interest",
+      "principal"
+    ],
     "status": "pending",
     "published_date": null
   },
@@ -438,7 +614,13 @@
     "calculator_url": "/investment/nps-calculator/",
     "calculator_label": "NPS Calculator",
     "category": "Investment",
-    "tags": ["retirement", "corpus", "financial planning", "FIRE", "NPS"],
+    "tags": [
+      "retirement",
+      "corpus",
+      "financial planning",
+      "FIRE",
+      "NPS"
+    ],
     "status": "pending",
     "published_date": null
   }
