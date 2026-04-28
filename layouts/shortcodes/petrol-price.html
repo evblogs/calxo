@@ -20,12 +20,18 @@
   #cx-pet .cx-updated { font-size: .72rem; opacity: .75; margin-top: .5rem; }
   #cx-pet .cx-pet-table { margin-top: 1.5rem; }
   #cx-pet .cx-pet-table h4 { font-size: .88rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 .75rem; }
-  #cx-pet .cx-pet-table table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-  #cx-pet .cx-pet-table th { text-align: left; padding: .4rem .6rem; font-size: .78rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
-  #cx-pet .cx-pet-table td { padding: .45rem .6rem; border-bottom: 1px solid #f1f5f9; color: #0f172a; }
+  #cx-pet .cx-pet-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid #e2e8f0; }
+  #cx-pet .cx-pet-table-wrap table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 340px; }
+  #cx-pet .cx-pet-table th { text-align: left; padding: .5rem .75rem; font-size: .78rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; white-space: nowrap; background: #f8fafc; }
+  #cx-pet .cx-pet-table td { padding: .5rem .75rem; border-bottom: 1px solid #f1f5f9; color: #0f172a; white-space: nowrap; }
   #cx-pet .cx-pet-table tr:last-child td { border-bottom: none; }
   #cx-pet .cx-pet-table td.price { font-weight: 700; color: #1e3a8a; }
   #cx-pet .cx-pet-table tr.hl td { background: #eff6ff; }
+  @media (max-width: 760px) {
+    #cx-pet { padding: 1.1rem; }
+    #cx-pet .cx-pet-table td.state-col { display: none; }
+    #cx-pet .cx-pet-table th.state-col { display: none; }
+  }
 </style>
 
 <script>
@@ -90,17 +96,19 @@ var CX_UPDATED = "2026-04-28";
 
 <div class="cx-pet-table">
   <h4>All cities at a glance</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>City</th>
-        <th>State</th>
-        <th>Petrol (₹/L)</th>
-        <th>Diesel (₹/L)</th>
-      </tr>
-    </thead>
-    <tbody id="cx-pet-tbody"></tbody>
-  </table>
+  <div class="cx-pet-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>City</th>
+          <th class="state-col">State</th>
+          <th>Petrol (₹/L)</th>
+          <th>Diesel (₹/L)</th>
+        </tr>
+      </thead>
+      <tbody id="cx-pet-tbody"></tbody>
+    </table>
+  </div>
 </div>
 
 </div>
@@ -120,7 +128,7 @@ var CX_UPDATED = "2026-04-28";
 
     var tr = document.createElement('tr');
     tr.dataset.city = c.city;
-    tr.innerHTML = '<td>' + c.city + '</td><td>' + c.state + '</td>' +
+    tr.innerHTML = '<td>' + c.city + '</td><td class="state-col">' + c.state + '</td>' +
       '<td class="price">₹' + c.petrol.toFixed(2) + '</td>' +
       '<td class="price">₹' + c.diesel.toFixed(2) + '</td>';
     tbody.appendChild(tr);
