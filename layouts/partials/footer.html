@@ -198,5 +198,21 @@
 
 <!-- GA4 is loaded in head.html via gtag.js. Old UA removed. -->
 
+<!-- Site-wide responsive table wrapping -->
+<script>
+(function(){
+  var scopes = document.querySelectorAll('.content, article, .cx-list-intro');
+  scopes.forEach(function(scope){
+    scope.querySelectorAll('table').forEach(function(tbl){
+      if (tbl.closest('.cx-tbl-wrap')) return; // already wrapped
+      var wrap = document.createElement('div');
+      wrap.className = 'cx-tbl-wrap';
+      tbl.parentNode.insertBefore(wrap, tbl);
+      wrap.appendChild(tbl);
+    });
+  });
+})();
+</script>
+
  {{ partial "faq-schema-auto.html" . }}
  {{ partial "translate.html" . }}

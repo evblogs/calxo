@@ -183,19 +183,16 @@
     }
 
     /* ── Site-wide responsive tables ── */
-    .content table,
-    .cx-list-intro table,
-    article table {
-      display: block;
+    .cx-tbl-wrap {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      border-collapse: collapse;
+      margin: 1rem 0;
+      border-radius: 8px;
     }
-    .content table th,
-    .cx-list-intro table th,
-    article table th {
-      white-space: nowrap;
+    .cx-tbl-wrap table {
+      margin: 0;
+      min-width: 480px;
     }
   </style>
 </head>
