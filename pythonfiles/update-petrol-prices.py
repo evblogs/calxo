@@ -13,8 +13,24 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
-DATA_FILE = Path(__file__).parent.parent / "data" / "petrol-prices.json"
-REPO_DIR  = Path(__file__).parent.parent
+DATA_FILE   = Path(__file__).parent.parent / "data" / "petrol-prices.json"
+REPO_DIR    = Path(__file__).parent.parent
+CONTENT_DIR = REPO_DIR / "content" / "english" / "conversion"
+
+# All petrol-related content pages whose lastmod should stay current
+PETROL_PAGES = [
+    CONTENT_DIR / "petrol-price-today.md",
+    CONTENT_DIR / "petrol-price-delhi.md",
+    CONTENT_DIR / "petrol-price-bangalore.md",
+    CONTENT_DIR / "petrol-price-chennai.md",
+]
+
+# City-specific price patterns for updating page titles and descriptions
+CITY_PAGE_MAP = {
+    "petrol-price-delhi.md":     "Delhi",
+    "petrol-price-bangalore.md": "Bengaluru",
+    "petrol-price-chennai.md":   "Chennai",
+}
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -113,10 +129,55 @@ def save(data):
     print(f"  Saved {DATA_FILE}")
 
 
-def git_commit_push():
-    today = date.today().isoformat()
+def update_page_lastmod(page_path, today, city_prices=None):
+    """Update lastmod in a petrol page's front matter. Optionally update title/description price."""
+    if not page_path.exists():
+        print(f"  SKIP {page_path.name} — file not found")
+        return False
+    text = page_path.read_text()
+
+    # Update lastmod
+    text = re.sub(r'lastmod:\s*\S+', f'lastmod: {today}', text)
+
+    # For city pages, update the price in title and description if prices changed
+    if city_prices:
+        city = city_prices["city"]
+        petrol = city_prices["petrol"]
+        diesel = city_prices["diesel"]
+        # Update title price (e.g. "₹94.77/Litre")
+        text = re.sub(
+            r'(title:.*?₹)[\d.]+(/Litre)',
+            lambda m: f'{m.group(1)}{petrol:.2f}{m.group(2)}',
+            text
+        )
+        # Update description petrol price
+        text = re.sub(
+            r'(petrol price in .+? is \*\*₹)[\d.]+( per litre)',
+            lambda m: f'{m.group(1)}{petrol:.2f}{m.group(2)}',
+            text, flags=re.IGNORECASE
+        )
+        # Update description diesel price
+        text = re.sub(
+            r'(diesel is \*\*₹)[\d.]+( per litre)',
+            lambda m: f'{m.group(1)}{diesel:.2f}{m.group(2)}',
+            text, flags=re.IGNORECASE
+        )
+        # Update the date in title parenthesis e.g. "(29 April 2026)"
+        from datetime import datetime
+        date_str = datetime.strptime(today, "%Y-%m-%d").strftime("%-d %B %Y")
+        text = re.sub(r'\(\d+ \w+ 20\d\d\)', f'({date_str})', text)
+
+    page_path.write_text(text)
+    print(f"  ✓ Updated lastmod in {page_path.name}")
+    return True
+
+
+def git_commit_push(today):
+    add_paths = ["data/petrol-prices.json"] + [
+        str(p.relative_to(REPO_DIR)) for p in PETROL_PAGES if p.exists()
+    ]
     cmds = [
-        ["git", "-C", str(REPO_DIR), "add", "data/petrol-prices.json"],
+        ["git", "-C", str(REPO_DIR), "add"] + add_paths,
         ["git", "-C", str(REPO_DIR), "commit", "-m", f"[auto] Update petrol prices — {today}"],
         ["git", "-C", str(REPO_DIR), "push", "origin", "master"],
     ]
@@ -165,8 +226,16 @@ def main():
     if failed:
         print(f"  Failed cities: {', '.join(failed)}")
 
+    # Update lastmod + prices in all petrol content pages
+    print("\n  Updating page front matter...")
+    city_lookup_final = {c["city"]: c for c in existing["cities"]}
+    for page in PETROL_PAGES:
+        city_name = CITY_PAGE_MAP.get(page.name)
+        city_prices = city_lookup_final.get(city_name) if city_name else None
+        update_page_lastmod(page, today, city_prices)
+
     print("\n  Pushing to git...")
-    git_commit_push()
+    git_commit_push(today)
     print("\n  Done. Netlify will rebuild in ~1 minute.")
 
 

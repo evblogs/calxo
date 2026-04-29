@@ -1,3 +1,5 @@
+{{ $data := index $.Site.Data "petrol-prices" }}
+{{ $updated := $data.updated }}
 <div class="cx-pet-widget" id="cx-pet">
 <style>
   #cx-pet { background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15,23,42,.04); }
@@ -27,6 +29,13 @@
   #cx-pet .cx-pet-table tr:last-child td { border-bottom: none; }
   #cx-pet .cx-pet-table td.price { font-weight: 700; color: #1e3a8a; }
   #cx-pet .cx-pet-table tr.hl td { background: #eff6ff; }
+  #cx-pet .cx-last-updated {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: #f0fdf4; border: 1px solid #86efac; border-radius: 20px;
+    padding: .3rem .75rem; font-size: .78rem; font-weight: 600; color: #166534;
+    margin-bottom: 1.25rem;
+  }
+  #cx-pet .cx-last-updated::before { content: '●'; color: #22c55e; font-size: .6rem; }
   @media (max-width: 760px) {
     #cx-pet { padding: 1.1rem; }
     #cx-pet .cx-pet-table td.state-col { display: none; }
@@ -34,42 +43,15 @@
   }
 </style>
 
+<div class="cx-last-updated">Prices updated: {{ $updated }}</div>
+
 <script>
-/* PETROL_DATA_START — updated daily by pythonfiles/update-petrol-prices.py */
 var CX_PETROL = [
-  {"city":"Delhi","state":"Delhi","petrol":94.77,"diesel":87.67},
-  {"city":"Mumbai","state":"Maharashtra","petrol":103.44,"diesel":89.97},
-  {"city":"Chennai","state":"Tamil Nadu","petrol":100.76,"diesel":92.34},
-  {"city":"Kolkata","state":"West Bengal","petrol":104.95,"diesel":91.82},
-  {"city":"Bengaluru","state":"Karnataka","petrol":102.92,"diesel":88.60},
-  {"city":"Hyderabad","state":"Telangana","petrol":107.41,"diesel":95.65},
-  {"city":"Pune","state":"Maharashtra","petrol":103.57,"diesel":90.40},
-  {"city":"Ahmedabad","state":"Gujarat","petrol":93.08,"diesel":88.58},
-  {"city":"Jaipur","state":"Rajasthan","petrol":104.55,"diesel":89.96},
-  {"city":"Lucknow","state":"Uttar Pradesh","petrol":94.69,"diesel":87.88},
-  {"city":"Noida","state":"Uttar Pradesh","petrol":94.71,"diesel":87.72},
-  {"city":"Chandigarh","state":"Chandigarh","petrol":94.24,"diesel":83.02},
-  {"city":"Bhopal","state":"Madhya Pradesh","petrol":107.63,"diesel":93.54},
-  {"city":"Indore","state":"Madhya Pradesh","petrol":107.10,"diesel":93.50},
-  {"city":"Patna","state":"Bihar","petrol":105.48,"diesel":92.35},
-  {"city":"Ranchi","state":"Jharkhand","petrol":97.49,"diesel":90.44},
-  {"city":"Raipur","state":"Chhattisgarh","petrol":102.51,"diesel":93.54},
-  {"city":"Bhubaneswar","state":"Odisha","petrol":101.66,"diesel":93.34},
-  {"city":"Guwahati","state":"Assam","petrol":94.53,"diesel":87.77},
-  {"city":"Thiruvananthapuram","state":"Kerala","petrol":107.62,"diesel":96.02},
-  {"city":"Kochi","state":"Kerala","petrol":107.14,"diesel":95.01},
-  {"city":"Coimbatore","state":"Tamil Nadu","petrol":100.72,"diesel":92.30},
-  {"city":"Visakhapatnam","state":"Andhra Pradesh","petrol":109.47,"diesel":95.62},
-  {"city":"Nagpur","state":"Maharashtra","petrol":103.88,"diesel":91.00},
-  {"city":"Surat","state":"Gujarat","petrol":93.48,"diesel":88.07},
-  {"city":"Vadodara","state":"Gujarat","petrol":93.30,"diesel":88.12},
-  {"city":"Ludhiana","state":"Punjab","petrol":97.11,"diesel":84.31},
-  {"city":"Agra","state":"Uttar Pradesh","petrol":94.82,"diesel":87.92},
-  {"city":"Varanasi","state":"Uttar Pradesh","petrol":95.15,"diesel":88.10},
-  {"city":"Dehradun","state":"Uttarakhand","petrol":93.63,"diesel":86.93}
+  {{ range $data.cities -}}
+  {"city":{{ .city | jsonify }},"state":{{ .state | jsonify }},"petrol":{{ .petrol }},"diesel":{{ .diesel }}},
+  {{ end }}
 ];
-var CX_UPDATED = "2026-04-28";
-/* PETROL_DATA_END */
+var CX_UPDATED = {{ $updated | jsonify }};
 </script>
 
 <div class="cx-pet-top">
@@ -90,7 +72,7 @@ var CX_UPDATED = "2026-04-28";
     <div class="cx-row"><span>Fuel type</span><strong id="cx-pet-type">Petrol</strong></div>
     <div class="cx-row"><span>State</span><strong id="cx-pet-state">Delhi</strong></div>
     <div class="cx-row"><span>Effective from</span><strong>6:00 AM daily</strong></div>
-    <div class="cx-updated" id="cx-pet-updated">Prices as of 2026-04-28</div>
+    <div class="cx-updated" id="cx-pet-updated">Prices as of {{ $updated }}</div>
   </div>
 </div>
 
@@ -119,7 +101,6 @@ var CX_UPDATED = "2026-04-28";
   var citySelect = document.getElementById('cx-pet-city');
   var tbody = document.getElementById('cx-pet-tbody');
 
-  // Populate dropdown and table
   CX_PETROL.forEach(function(c) {
     var opt = document.createElement('option');
     opt.value = c.city;
