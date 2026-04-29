@@ -69,8 +69,8 @@
       "income tax",
       "mutual funds"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-04-29"
   },
   {
     "id": "ctc-to-inhand-salary-calculation",
@@ -87,8 +87,8 @@
       "take-home",
       "salary structure"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-04-29"
   },
   {
     "id": "rd-interest-calculation-formula",
