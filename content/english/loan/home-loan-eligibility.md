@@ -1,6 +1,6 @@
 ---
-title: "Home Loan Eligibility Calculator: Check How Much Loan You Can Get"
-description: "Free home loan eligibility calculator for India. Find out how much home loan amount you qualify for based on your net income, existing EMIs, interest rate, and tenure. Uses the 50% FOIR method all banks apply."
+title: "Home Loan Eligibility Calculator 2026 — How Much Loan on Your Salary?"
+description: "Instant home loan eligibility check. ₹50K salary → up to ₹25L loan. SBI, HDFC, ICICI all use 50% FOIR rule. Enter salary + existing EMIs to get your number."
 date: 2026-04-25
 lastmod: 2026-04-25
 type: "calculator"

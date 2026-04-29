@@ -1,6 +1,6 @@
 ---
-title: "Lumpsum Calculator: Calculate One-Time Mutual Fund Investment Returns"
-description: "Free lumpsum investment calculator for Indian mutual funds, ETFs, and equity. Compute future value of a one-time investment using the standard compound-interest formula with realistic 2026 CAGR ranges for Indian funds."
+title: "Lumpsum Calculator — One-Time Investment Return Calculator India 2026"
+description: "See how ₹1 lakh grows to ₹3.1 lakh at 12% over 10 years. Free lumpsum calculator for mutual funds, ELSS & index funds. Instant compound return projection."
 date: 2026-04-25
 lastmod: 2026-04-25
 type: "calculator"

@@ -1,0 +1,210 @@
+<div class="cx-emi-widget" id="cx-swp">
+<style>
+  #cx-swp.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-swp.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-swp label { display: block; margin-bottom: 1.15rem; }
+  #cx-swp label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-swp label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-swp input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-swp input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-swp input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-swp .cx-emi-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-swp .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-swp .cx-emi-result > * { position: relative; }
+  #cx-swp .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-swp .cx-emi-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-swp .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-swp .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-swp .cx-emi-row strong { font-weight: 700; }
+  #cx-swp .cx-emi-bar {
+    display: flex; height: 9px; border-radius: 5px; overflow: hidden;
+    margin: 1rem 0 .5rem; background: rgba(255,255,255,.12);
+  }
+  #cx-swp .cx-emi-bar-p { background: #ffffff; transition: width .25s ease; }
+  #cx-swp .cx-emi-bar-i { background: rgba(255,255,255,.42); transition: width .25s ease; }
+  #cx-swp .cx-emi-legend {
+    display: flex; gap: 1rem; font-size: .76rem; color: rgba(255,255,255,.9);
+  }
+  #cx-swp .cx-emi-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block; vertical-align: middle; margin-right: .35rem;
+  }
+  #cx-swp .cx-swp-warn {
+    background: rgba(239,68,68,.18); border: 1px solid rgba(239,68,68,.4);
+    border-radius: 8px; padding: .6rem .8rem; font-size: .82rem;
+    margin-top: .75rem; display: none;
+  }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Starting corpus (₹) <em data-out="corpus">10,00,000</em></span>
+    <input type="number" id="cx-swp-corpus" min="10000" max="100000000" step="10000" value="1000000" inputmode="numeric">
+    <input type="range" id="cx-swp-corpus-r" min="100000" max="10000000" step="50000" value="1000000">
+  </label>
+  <label>
+    <span>Monthly withdrawal (₹) <em data-out="wd">10,000</em></span>
+    <input type="number" id="cx-swp-wd" min="500" max="1000000" step="500" value="10000" inputmode="numeric">
+    <input type="range" id="cx-swp-wd-r" min="1000" max="100000" step="1000" value="10000">
+  </label>
+  <label>
+    <span>Expected return rate p.a. (%) <em data-out="rate">8.00%</em></span>
+    <input type="number" id="cx-swp-rate" min="1" max="30" step="0.5" value="8" inputmode="decimal">
+    <input type="range" id="cx-swp-rate-r" min="1" max="20" step="0.5" value="8">
+  </label>
+  <label>
+    <span>Withdrawal period (years) <em data-out="years">10 yrs</em></span>
+    <input type="number" id="cx-swp-years" min="1" max="40" step="1" value="10" inputmode="numeric">
+    <input type="range" id="cx-swp-years-r" min="1" max="30" step="1" value="10">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Remaining Corpus</div>
+  <div class="cx-emi-result-value" id="cx-swp-remaining">₹5,44,479</div>
+  <div class="cx-emi-row"><span>Total withdrawn</span> <strong id="cx-swp-total-wd">₹12,00,000</strong></div>
+  <div class="cx-emi-row"><span>Returns earned</span> <strong id="cx-swp-earnings">₹7,44,479</strong></div>
+  <div class="cx-emi-row"><span>Corpus lasts</span> <strong id="cx-swp-status">✓ Full period</strong></div>
+  <div class="cx-emi-bar">
+    <div class="cx-emi-bar-p" id="cx-swp-bar-p" style="width:62%"></div>
+    <div class="cx-emi-bar-i" id="cx-swp-bar-i" style="width:38%"></div>
+  </div>
+  <div class="cx-emi-legend">
+    <span><span class="cx-emi-dot" style="background:#fff"></span>Remaining <span id="cx-swp-pct-r">62%</span></span>
+    <span><span class="cx-emi-dot" style="background:rgba(255,255,255,.4)"></span>Withdrawn <span id="cx-swp-pct-w">38%</span></span>
+  </div>
+  <div class="cx-swp-warn" id="cx-swp-warn">⚠ Corpus depletes before the period ends. Reduce monthly withdrawal or increase starting corpus.</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+
+  var corpus = document.getElementById('cx-swp-corpus');
+  var corpusR = document.getElementById('cx-swp-corpus-r');
+  var wd = document.getElementById('cx-swp-wd');
+  var wdR = document.getElementById('cx-swp-wd-r');
+  var rate = document.getElementById('cx-swp-rate');
+  var rateR = document.getElementById('cx-swp-rate-r');
+  var yrs = document.getElementById('cx-swp-years');
+  var yrsR = document.getElementById('cx-swp-years-r');
+
+  function compute() {
+    var C = parseFloat(corpus.value) || 0;
+    var W = parseFloat(wd.value) || 0;
+    var aRate = parseFloat(rate.value) || 0;
+    var years = parseFloat(yrs.value) || 0;
+    var n = years * 12;
+    var r = aRate / 12 / 100;
+
+    var remaining = 0;
+    var depleted = false;
+    var depletedAt = 0;
+
+    if (r === 0) {
+      remaining = C - W * n;
+    } else {
+      remaining = C * Math.pow(1 + r, n) - W * (Math.pow(1 + r, n) - 1) / r;
+    }
+
+    if (remaining < 0) {
+      depleted = true;
+      // find month corpus hits 0
+      var bal = C;
+      for (var m = 1; m <= n; m++) {
+        bal = bal * (1 + r) - W;
+        if (bal <= 0) { depletedAt = m; break; }
+      }
+      remaining = 0;
+    }
+
+    var totalWd = depleted ? (depletedAt * W) : (W * n);
+    var earnings = remaining + totalWd - C;
+
+    var warn = document.getElementById('cx-swp-warn');
+    var status = document.getElementById('cx-swp-status');
+    if (depleted) {
+      warn.style.display = 'block';
+      var depYrs = Math.floor(depletedAt / 12);
+      var depMos = depletedAt % 12;
+      status.textContent = '✗ Depletes in ' + (depYrs > 0 ? depYrs + 'y ' : '') + depMos + 'm';
+    } else {
+      warn.style.display = 'none';
+      status.textContent = '✓ Full period';
+    }
+
+    var pctR = (C + Math.max(earnings, 0)) > 0 ? Math.round((remaining / (remaining + totalWd)) * 100) : 0;
+    var pctW = 100 - pctR;
+
+    document.getElementById('cx-swp-remaining').textContent = fmtINR(remaining);
+    document.getElementById('cx-swp-total-wd').textContent = fmtINR(totalWd);
+    document.getElementById('cx-swp-earnings').textContent = fmtINR(Math.max(earnings, 0));
+    document.getElementById('cx-swp-bar-p').style.width = pctR + '%';
+    document.getElementById('cx-swp-bar-i').style.width = pctW + '%';
+    document.getElementById('cx-swp-pct-r').textContent = pctR + '%';
+    document.getElementById('cx-swp-pct-w').textContent = pctW + '%';
+
+    document.querySelector('#cx-swp [data-out="corpus"]').textContent = fmtRaw(C);
+    document.querySelector('#cx-swp [data-out="wd"]').textContent = fmtRaw(W);
+    document.querySelector('#cx-swp [data-out="rate"]').textContent = aRate.toFixed(2) + '%';
+    document.querySelector('#cx-swp [data-out="years"]').textContent = years + ' yr' + (years !== 1 ? 's' : '');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(corpus, corpusR);
+  syncPair(wd, wdR);
+  syncPair(rate, rateR);
+  syncPair(yrs, yrsR);
+  compute();
+})();
+</script>

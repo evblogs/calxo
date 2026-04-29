@@ -1,6 +1,6 @@
 ---
-title: "What ₹15 Lakh CTC Actually Means in Your Bank Account (FY 2025-26)"
-description: "An offer letter says ₹15 lakh CTC. Your bank gets ₹1 lakh a month. Here's exactly where the rest goes, line by line, across employer PF, gratuity provision, employee PF, professional tax, and TDS, with the actual rupee math for FY 2025-26."
+title: "15 Lakh CTC Take-Home Salary 2025-26: ₹1,00,308/Month In-Hand Breakdown"
+description: "₹15L CTC = ₹1,00,308/month in-hand under new tax regime. Line-by-line breakdown: employer PF ₹90K, TDS ₹77,833, professional tax. Old vs new regime compared."
 date: 2026-04-26
 lastmod: 2026-04-26
 author: vignesh

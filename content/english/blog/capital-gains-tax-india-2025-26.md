@@ -1,6 +1,6 @@
 ---
-title: "Capital Gains Tax in India FY 2025-26: Rates, Exemptions, Examples"
-description: "Budget 2024 changed STCG to 20% and LTCG to 12.5% with ₹1.25 lakh exemption. Here's how capital gains tax applies to equity, mutual funds, property and gold in FY 2025-26."
+title: "LTCG & STCG Tax Rates in India 2025-26: Equity, Mutual Funds, Property"
+description: "LTCG on equity is 12.5% (above ₹1.25 lakh exemption). STCG is 20%. Exact tax calculation with examples for stocks, mutual funds, property, and gold in FY 2025-26."
 date: 2026-04-29
 lastmod: 2026-04-29
 author: vignesh
