@@ -105,8 +105,8 @@
       "interest calculation",
       "savings"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-04-30"
   },
   {
     "id": "ppf-maturity-amount-calculation",
@@ -123,8 +123,8 @@
       "tax saving",
       "80C"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-04-30"
   },
   {
     "id": "tds-on-salary-how-it-works",
