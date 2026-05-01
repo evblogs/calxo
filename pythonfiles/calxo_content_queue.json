@@ -141,8 +141,8 @@
       "income tax",
       "Form 16"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-01"
   },
   {
     "id": "home-loan-prepayment-saves-money",
@@ -159,8 +159,8 @@
       "EMI",
       "interest saving"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-01"
   },
   {
     "id": "reverse-gst-calculation-india",
