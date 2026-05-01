@@ -42,6 +42,7 @@ URLS = [
     "/investment/ppf-calculator/",
     "/investment/compound-interest-calculator/",
     "/investment/nps-calculator/",
+    "/investment/ups-pension-calculator/",
 
     # Tax
     "/tax/",
