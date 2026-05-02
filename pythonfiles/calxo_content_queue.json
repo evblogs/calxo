@@ -177,8 +177,8 @@
       "tax calculation",
       "invoice"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-02"
   },
   {
     "id": "nps-vs-ppf-which-is-better",
@@ -196,8 +196,8 @@
       "80C",
       "80CCD"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-02"
   },
   {
     "id": "stamp-duty-registration-charges-india",
