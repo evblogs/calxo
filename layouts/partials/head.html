@@ -112,6 +112,36 @@
   <link rel="preload" as="image" href="{{ . | absURL }}" fetchpriority="high">
   {{ end }}
 
+  <!-- Person entity — Vignesh (author, sitewide) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://www.calxo.in/#person",
+    "name": "Vignesh Sampath Kumar",
+    "alternateName": "Vignesh",
+    "url": "https://www.calxo.in/",
+    "jobTitle": "Founder, Calxo | SEO Lead, PipeRocket Digital",
+    "worksFor": {
+      "@id": "https://www.calxo.in/#organization"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/vignesh-s-ev-blogs/",
+      "https://www.evblogs.in/"
+    ],
+    "knowsAbout": [
+      "Indian personal finance",
+      "Income tax India",
+      "EMI calculation",
+      "Salary structure India",
+      "GST India",
+      "Mutual fund SIP",
+      "Fixed deposit",
+      "EPF calculation"
+    ]
+  }
+  </script>
+
   <!-- Homepage-only schemas (WebSite + SitelinksSearchbox + Organization) -->
   {{ if .IsHome }}
   <script type="application/ld+json">
@@ -152,8 +182,29 @@
       },
       "description": "Calxo is India's free calculator hub. EMI, SIP, GST, income tax, salary and conversion calculators built for Indian rules.",
       "foundingDate": "2026",
+      "founder": {
+        "@id": "https://www.calxo.in/#person"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "knowsAbout": [
+        "EMI calculator",
+        "Income tax India",
+        "SIP calculator",
+        "GST calculator",
+        "Salary calculator India",
+        "FD calculator",
+        "PPF calculator"
+      ],
+      "sameAs": [
+        "https://www.calxo.in/"
+      ],
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
         "addressCountry": "IN"
       }
     }
