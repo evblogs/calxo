@@ -171,4 +171,25 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "{{ .Permalink }}#webpage",
+  "name": {{ .Title | jsonify }},
+  "url": "{{ .Permalink }}",
+  "description": {{ .Params.description | jsonify }},
+  "inLanguage": "en-IN",
+  "isPartOf": {
+    "@id": "https://www.calxo.in/#website"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://www.calxo.in/#organization"
+  },
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}"
+}
+</script>
+
 {{ end }}
