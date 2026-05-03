@@ -80,11 +80,11 @@ The range depends on:
 | ₹8 LPA | ₹56,000–₹60,000/month |
 | ₹10 LPA | ₹68,000–₹72,000/month |
 | ₹12 LPA | ₹80,000–₹85,000/month |
-| ₹15 LPA | ₹98,000–₹1,04,000/month |
+| [₹15 LPA](/blog/what-15-lakh-ctc-actually-means/) | ₹98,000–₹1,04,000/month |
 | ₹20 LPA | ₹1,28,000–₹1,36,000/month |
 | ₹25 LPA | ₹1,57,000–₹1,68,000/month |
 
-These are estimates. Your actual number depends on your specific salary structure. For the exact figure, use the [take-home calculator](/salary/takehome-calculator/).
+These are estimates. Your actual number depends on your specific salary structure. For the exact figure, use the [take-home calculator](/salary/takehome-calculator/). If you're at ₹15L CTC specifically, there's a full line-by-line breakdown in [what ₹15 lakh CTC actually means](/blog/what-15-lakh-ctc-actually-means/) — including why tax jumps at that level and how to legally reduce it.
 
 ## How to read your offer letter
 
