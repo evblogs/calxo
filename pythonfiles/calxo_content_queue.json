@@ -214,8 +214,8 @@
       "property",
       "home buying"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-03"
   },
   {
     "id": "rule-of-72-doubling-money-india",
@@ -232,8 +232,8 @@
       "compound interest",
       "investment"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-03"
   },
   {
     "id": "cagr-calculation-mutual-funds-india",
