@@ -250,8 +250,8 @@
       "returns",
       "NAV"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-04"
   },
   {
     "id": "compound-interest-calculation-india",
@@ -268,8 +268,8 @@
       "savings",
       "interest calculation"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-04"
   },
   {
     "id": "fd-vs-rd-which-is-better",
