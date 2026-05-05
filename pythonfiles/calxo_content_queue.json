@@ -287,8 +287,8 @@
       "recurring deposit",
       "savings"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-05"
   },
   {
     "id": "emergency-fund-how-much-india",
@@ -305,8 +305,8 @@
       "savings",
       "financial planning"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-05"
   },
   {
     "id": "net-worth-calculation-india",
