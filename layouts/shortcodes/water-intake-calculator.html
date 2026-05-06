@@ -1,0 +1,146 @@
+<div class="cx-water-widget" id="cx-water">
+<style>
+  #cx-water {
+    background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px;
+    padding: 1.85rem; margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-water .cx-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) { #cx-water .cx-row { grid-template-columns: 1fr; } }
+  #cx-water label > span {
+    display: flex; justify-content: space-between;
+    font-size: .85rem; font-weight: 600; color: #0f172a; margin-bottom: .35rem;
+  }
+  #cx-water label > span em { color: #2563eb; font-style: normal; font-weight: 700; }
+  #cx-water input[type="range"] { width: 100%; accent-color: #2563eb; margin: .2rem 0; }
+  #cx-water input[type="number"], #cx-water select {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .95rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-water input:focus, #cx-water select:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+  }
+  #cx-water .cx-result {
+    background: linear-gradient(135deg,#0369a1 0%,#0ea5e9 50%,#38bdf8 100%);
+    color: #fff; border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem;
+  }
+  #cx-water .cx-result-label { font-size: .8rem; opacity: .8; font-weight: 500; }
+  #cx-water .cx-result-value { font-size: 2.2rem; font-weight: 800; letter-spacing: -.02em; margin: .1rem 0; }
+  #cx-water .cx-grid4 {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: .5rem; margin-top: .85rem;
+  }
+  @media (max-width: 520px) { #cx-water .cx-grid4 { grid-template-columns: repeat(2,1fr); } }
+  #cx-water .cx-mini {
+    background: rgba(255,255,255,.15); border-radius: 8px;
+    padding: .6rem .4rem; text-align: center;
+  }
+  #cx-water .cx-mini-val { font-size: .95rem; font-weight: 800; }
+  #cx-water .cx-mini-lbl { font-size: .68rem; opacity: .8; margin-top: .1rem; }
+  #cx-water .cx-result-sub { font-size: .8rem; opacity: .75; margin-top: .6rem; }
+  #cx-water .cx-water-visual {
+    display: flex; gap: .35rem; margin-top: .85rem; flex-wrap: wrap;
+  }
+  #cx-water .cx-glass {
+    width: 28px; height: 36px; border: 2px solid rgba(255,255,255,.6);
+    border-radius: 0 0 6px 6px; border-top: none;
+    background: rgba(255,255,255,.25);
+    position: relative; overflow: hidden;
+  }
+  #cx-water .cx-glass.filled { background: rgba(255,255,255,.7); }
+</style>
+
+<div class="cx-row">
+  <label><span>Weight (kg) <em id="cx-wt-wv">70</em></span>
+    <input type="range" id="cx-wt-ws" min="30" max="150" value="70" oninput="syncWater('wt-w')">
+    <input type="number" id="cx-wt-wn" value="70" min="30" max="150" oninput="syncWater('wt-w',true)">
+  </label>
+  <label><span>Activity Level</span>
+    <select id="cx-wt-act" onchange="cxWaterCalc()">
+      <option value="0">Sedentary (mostly sitting)</option>
+      <option value="350" selected>Light (30 min exercise)</option>
+      <option value="700">Moderate (60 min exercise)</option>
+      <option value="1050">Active (90+ min exercise)</option>
+    </select>
+  </label>
+</div>
+<div class="cx-row">
+  <label><span>Climate</span>
+    <select id="cx-wt-climate" onchange="cxWaterCalc()">
+      <option value="0">Cool / AC environment</option>
+      <option value="250" selected>Normal Indian weather</option>
+      <option value="500">Hot / humid (summer)</option>
+      <option value="750">Very hot (outdoor work, 40°C+)</option>
+    </select>
+  </label>
+  <label><span>Glasses per day (250ml)</span>
+    <select id="cx-wt-glass" onchange="cxWaterCalc()">
+      <option value="250">250 ml glass</option>
+      <option value="300">300 ml glass</option>
+      <option value="500" selected>500 ml bottle</option>
+      <option value="1000">1 litre bottle</option>
+    </select>
+  </label>
+</div>
+
+<div class="cx-result">
+  <div class="cx-result-label">Daily Water Intake</div>
+  <div class="cx-result-value"><span id="cx-water-val">—</span> litres</div>
+  <div class="cx-grid4">
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-water-ml">—</div><div class="cx-mini-lbl">ml per day</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-water-glasses">—</div><div class="cx-mini-lbl">Glasses / bottles</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-water-per-hr">—</div><div class="cx-mini-lbl">ml per hour</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-water-min">—</div><div class="cx-mini-lbl">Minimum (ml)</div></div>
+  </div>
+  <div class="cx-water-visual" id="cx-water-vis"></div>
+  <div class="cx-result-sub" id="cx-water-sub"></div>
+</div>
+
+<script>
+function syncWater(id,fromNum){
+  var s=document.getElementById('cx-'+id+'s');
+  var n=document.getElementById('cx-'+id+'n');
+  var v=document.getElementById('cx-'+id+'v');
+  if(s&&n){if(fromNum)s.value=n.value;else n.value=s.value;}
+  if(v&&s)v.textContent=s.value;
+  cxWaterCalc();
+}
+function cxWaterCalc(){
+  var w=parseFloat(document.getElementById('cx-wt-wn').value)||70;
+  var act=parseFloat(document.getElementById('cx-wt-act').value)||0;
+  var climate=parseFloat(document.getElementById('cx-wt-climate').value)||0;
+  var glassSize=parseFloat(document.getElementById('cx-wt-glass').value)||250;
+  // Base: 35 ml per kg body weight
+  var base=w*35;
+  var total=base+act+climate;
+  var min=Math.round(w*30);
+  var glasses=Math.ceil(total/glassSize);
+  var perHr=Math.round(total/16); // 16 waking hours
+  document.getElementById('cx-water-val').textContent=(total/1000).toFixed(1);
+  document.getElementById('cx-water-ml').textContent=Math.round(total).toLocaleString('en-IN');
+  document.getElementById('cx-water-glasses').textContent=glasses+' × '+glassSize+'ml';
+  document.getElementById('cx-water-per-hr').textContent=perHr;
+  document.getElementById('cx-water-min').textContent=min.toLocaleString('en-IN');
+  document.getElementById('cx-water-sub').textContent='Base ('+w+'kg × 35ml): '+Math.round(base)+'ml + activity: '+act+'ml + climate: '+climate+'ml';
+  // Visual glasses
+  var vis=document.getElementById('cx-water-vis');
+  vis.innerHTML='';
+  for(var i=0;i<Math.min(glasses,16);i++){
+    var g=document.createElement('div');
+    g.className='cx-glass filled';
+    vis.appendChild(g);
+  }
+  if(glasses>16){
+    var more=document.createElement('span');
+    more.style.cssText='color:rgba(255,255,255,.8);font-size:.8rem;align-self:center;margin-left:.25rem';
+    more.textContent='+'.concat(glasses-16,' more');
+    vis.appendChild(more);
+  }
+}
+document.getElementById('cx-wt-wv').textContent=document.getElementById('cx-wt-wn').value;
+cxWaterCalc();
+</script>
+</div>

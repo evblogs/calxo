@@ -71,6 +71,13 @@ URLS = [
     "/conversion/currency-converter/",
     "/conversion/petrol-price-today/",
 
+    # Health
+    "/health/",
+    "/health/bmi-calculator/",
+    "/health/tdee-calculator/",
+    "/health/body-fat-calculator/",
+    "/health/water-intake-calculator/",
+
     # Math
     "/math/",
     "/math/percentage-calculator/",

@@ -1,0 +1,215 @@
+<div class="cx-bf-widget" id="cx-bf">
+<style>
+  #cx-bf {
+    background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px;
+    padding: 1.85rem; margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-bf .cx-tabs {
+    display: flex; background: #f1f5f9; border-radius: 10px;
+    padding: 3px; gap: 3px; margin-bottom: 1.25rem;
+  }
+  #cx-bf .cx-tabs button {
+    flex: 1; padding: .5rem; border: 0; background: transparent;
+    font-size: .83rem; font-weight: 600; color: #475569; border-radius: 7px;
+    cursor: pointer; transition: all .15s;
+  }
+  #cx-bf .cx-tabs button.active {
+    background: #fff; color: #2563eb; box-shadow: 0 1px 3px rgba(15,23,42,.1);
+  }
+  #cx-bf .cx-panel { display: none; }
+  #cx-bf .cx-panel.active { display: block; }
+  #cx-bf .cx-gender {
+    display: flex; background: #f1f5f9; border-radius: 8px; padding: 3px; margin-bottom: 1rem;
+  }
+  #cx-bf .cx-gender button {
+    flex: 1; padding: .5rem; border: 0; background: transparent;
+    font-size: .88rem; font-weight: 600; color: #475569; border-radius: 6px;
+    cursor: pointer; transition: all .15s;
+  }
+  #cx-bf .cx-gender button.active {
+    background: #fff; color: #2563eb; box-shadow: 0 1px 3px rgba(15,23,42,.1);
+  }
+  #cx-bf .cx-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) { #cx-bf .cx-row { grid-template-columns: 1fr; } }
+  #cx-bf .cx-row3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 600px) { #cx-bf .cx-row3 { grid-template-columns: 1fr; } }
+  #cx-bf label > span {
+    display: flex; justify-content: space-between;
+    font-size: .85rem; font-weight: 600; color: #0f172a; margin-bottom: .35rem;
+  }
+  #cx-bf label > span em { color: #2563eb; font-style: normal; font-weight: 700; }
+  #cx-bf input[type="range"] { width: 100%; accent-color: #2563eb; margin: .2rem 0; }
+  #cx-bf input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .95rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-bf input:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  #cx-bf .cx-result {
+    color: #fff; border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem;
+  }
+  #cx-bf .cx-result-label { font-size: .8rem; opacity: .8; font-weight: 500; }
+  #cx-bf .cx-result-value { font-size: 2.2rem; font-weight: 800; letter-spacing: -.02em; margin: .1rem 0; }
+  #cx-bf .cx-result-cat { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+  #cx-bf .cx-grid3 {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; margin-top: .75rem;
+  }
+  @media (max-width: 480px) { #cx-bf .cx-grid3 { grid-template-columns: repeat(2,1fr); } }
+  #cx-bf .cx-mini {
+    background: rgba(255,255,255,.15); border-radius: 8px;
+    padding: .6rem .5rem; text-align: center;
+  }
+  #cx-bf .cx-mini-val { font-size: 1rem; font-weight: 800; }
+  #cx-bf .cx-mini-lbl { font-size: .68rem; opacity: .8; margin-top: .1rem; }
+  #cx-bf .cx-result-sub { font-size: .8rem; opacity: .75; margin-top: .6rem; }
+  #cx-bf .cx-note {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+    padding: .7rem 1rem; font-size: .82rem; color: #475569; margin-top: .75rem;
+  }
+</style>
+
+<div class="cx-tabs">
+  <button class="active" onclick="cxBfTab(0,this)">Navy Method</button>
+  <button onclick="cxBfTab(1,this)">BMI Method</button>
+</div>
+
+<div class="cx-gender" id="cx-bf-gender">
+  <button class="active" onclick="cxBfGender('male',this)">Male</button>
+  <button onclick="cxBfGender('female',this)">Female</button>
+</div>
+
+<!-- Panel 0: Navy -->
+<div class="cx-panel active" id="cx-bf-p0">
+  <div class="cx-row" id="cx-bf-navy-m">
+    <label><span>Height (cm) <em id="cx-bn-hv">175</em></span>
+      <input type="range" id="cx-bn-hs" min="140" max="220" value="175" oninput="syncBf('bn-h')">
+      <input type="number" id="cx-bn-hn" value="175" oninput="syncBf('bn-h',true)">
+    </label>
+    <label><span>Neck (cm) <em id="cx-bn-nv">38</em></span>
+      <input type="range" id="cx-bn-ns" min="25" max="60" value="38" oninput="syncBf('bn-n')">
+      <input type="number" id="cx-bn-nn" value="38" oninput="syncBf('bn-n',true)">
+    </label>
+  </div>
+  <div class="cx-row" id="cx-bf-navy-waist">
+    <label><span>Waist (cm) <em id="cx-bn-wv">85</em></span>
+      <input type="range" id="cx-bn-ws" min="50" max="150" value="85" oninput="syncBf('bn-w')">
+      <input type="number" id="cx-bn-wn" value="85" oninput="syncBf('bn-w',true)">
+    </label>
+    <label id="cx-bf-hip-row" style="display:none"><span>Hip (cm) <em id="cx-bn-hpv">95</em></span>
+      <input type="range" id="cx-bn-hps" min="60" max="160" value="95" oninput="syncBf('bn-hp')">
+      <input type="number" id="cx-bn-hpn" value="95" oninput="syncBf('bn-hp',true)">
+    </label>
+  </div>
+</div>
+
+<!-- Panel 1: BMI Method -->
+<div class="cx-panel" id="cx-bf-p1">
+  <div class="cx-row">
+    <label><span>Age <em id="cx-bb-agev">28</em></span>
+      <input type="range" id="cx-bb-ages" min="15" max="80" value="28" oninput="syncBf('bb-age')">
+      <input type="number" id="cx-bb-agen" value="28" oninput="syncBf('bb-age',true)">
+    </label>
+    <label><span>BMI <em id="cx-bb-bmiv">22</em></span>
+      <input type="range" id="cx-bb-bmis" min="10" max="50" value="22" step=".1" oninput="syncBf('bb-bmi')">
+      <input type="number" id="cx-bb-bmin" value="22" step=".1" oninput="syncBf('bb-bmi',true)">
+    </label>
+  </div>
+</div>
+
+<div class="cx-result" id="cx-bf-result" style="background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%)">
+  <div class="cx-result-label">Body Fat</div>
+  <div class="cx-result-value" id="cx-bf-val">—</div>
+  <div class="cx-result-cat" id="cx-bf-cat">—</div>
+  <div class="cx-grid3">
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-bf-fm">—</div><div class="cx-mini-lbl">Fat Mass</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-bf-lm">—</div><div class="cx-mini-lbl">Lean Mass</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-bf-ideal">—</div><div class="cx-mini-lbl">Ideal Range</div></div>
+  </div>
+  <div class="cx-result-sub" id="cx-bf-sub"></div>
+</div>
+<div class="cx-note" id="cx-bf-note">Measure waist at navel level, neck just below larynx. Use a soft tape measure.</div>
+
+<script>
+var cxBfG='male', cxBfPanel=0;
+function cxBfTab(i,btn){
+  cxBfPanel=i;
+  document.querySelectorAll('#cx-bf .cx-panel').forEach((p,j)=>p.classList.toggle('active',i===j));
+  document.querySelectorAll('#cx-bf .cx-tabs button').forEach((b,j)=>b.classList.toggle('active',b===btn));
+  cxBfCalc();
+}
+function cxBfGender(g,btn){
+  cxBfG=g;
+  document.querySelectorAll('#cx-bf .cx-gender button').forEach(b=>b.classList.toggle('active',b===btn));
+  document.getElementById('cx-bf-hip-row').style.display=g==='female'?'':'none';
+  cxBfCalc();
+}
+function syncBf(id,fromNum){
+  var s=document.getElementById('cx-'+id+'s');
+  var n=document.getElementById('cx-'+id+'n');
+  var v=document.getElementById('cx-'+id+'v');
+  if(s&&n){if(fromNum)s.value=n.value;else n.value=s.value;}
+  if(v&&s)v.textContent=parseFloat(s.value).toFixed(id.includes('bmi')?1:0);
+  cxBfCalc();
+}
+function cxBfCat(bf,g){
+  if(g==='male'){
+    if(bf<6)return{cat:'Essential Fat',color:'linear-gradient(135deg,#1d4ed8,#3b82f6)',ideal:'10–20%'};
+    if(bf<14)return{cat:'Athletic',color:'linear-gradient(135deg,#065f46,#10b981)',ideal:'10–20%'};
+    if(bf<18)return{cat:'Fitness',color:'linear-gradient(135deg,#065f46,#10b981)',ideal:'10–20%'};
+    if(bf<25)return{cat:'Average',color:'linear-gradient(135deg,#92400e,#f59e0b)',ideal:'10–20%'};
+    return{cat:'Obese',color:'linear-gradient(135deg,#7f1d1d,#ef4444)',ideal:'10–20%'};
+  } else {
+    if(bf<14)return{cat:'Essential Fat',color:'linear-gradient(135deg,#1d4ed8,#3b82f6)',ideal:'18–28%'};
+    if(bf<21)return{cat:'Athletic',color:'linear-gradient(135deg,#065f46,#10b981)',ideal:'18–28%'};
+    if(bf<25)return{cat:'Fitness',color:'linear-gradient(135deg,#065f46,#10b981)',ideal:'18–28%'};
+    if(bf<32)return{cat:'Average',color:'linear-gradient(135deg,#92400e,#f59e0b)',ideal:'18–28%'};
+    return{cat:'Obese',color:'linear-gradient(135deg,#7f1d1d,#ef4444)',ideal:'18–28%'};
+  }
+}
+function cxBfCalc(){
+  var bf;
+  if(cxBfPanel===0){
+    var h=parseFloat(document.getElementById('cx-bn-hn').value)||0;
+    var neck=parseFloat(document.getElementById('cx-bn-nn').value)||0;
+    var waist=parseFloat(document.getElementById('cx-bn-wn').value)||0;
+    if(!h||!neck||!waist)return;
+    if(cxBfG==='male'){
+      bf=495/(1.0324-0.19077*Math.log10(waist-neck)+0.15456*Math.log10(h))-450;
+    } else {
+      var hip=parseFloat(document.getElementById('cx-bn-hpn').value)||95;
+      bf=495/(1.29579-0.35004*Math.log10(waist+hip-neck)+0.22100*Math.log10(h))-450;
+    }
+  } else {
+    var bmi=parseFloat(document.getElementById('cx-bb-bmin').value)||0;
+    var age=parseFloat(document.getElementById('cx-bb-agen').value)||0;
+    if(!bmi||!age)return;
+    var s=cxBfG==='male'?1:0;
+    bf=(1.20*bmi)+(0.23*age)-(10.8*s)-5.4;
+  }
+  if(isNaN(bf)||bf<0)return;
+  var info=cxBfCat(bf,cxBfG);
+  document.getElementById('cx-bf-val').textContent=bf.toFixed(1)+'%';
+  document.getElementById('cx-bf-cat').textContent=info.cat;
+  document.getElementById('cx-bf-result').style.background=info.color;
+  document.getElementById('cx-bf-ideal').textContent=info.ideal;
+
+  // Fat/lean mass needs weight — try to get from BMI panel or Navy
+  var weightEl=document.getElementById('cx-td-wn');
+  var w=weightEl?parseFloat(weightEl.value):70;
+  var fm=(bf/100*w).toFixed(1), lm=(w-bf/100*w).toFixed(1);
+  document.getElementById('cx-bf-fm').textContent=fm+'kg';
+  document.getElementById('cx-bf-lm').textContent=lm+'kg';
+  document.getElementById('cx-bf-sub').textContent='Body fat: '+bf.toFixed(2)+'% · '+info.cat+' range';
+}
+['bn-h','bn-n','bn-w','bn-hp','bb-age','bb-bmi'].forEach(id=>{
+  var v=document.getElementById('cx-'+id+'v');
+  var n=document.getElementById('cx-'+id+'n');
+  if(v&&n)v.textContent=parseFloat(n.value).toFixed(id.includes('bmi')?1:0);
+});
+cxBfCalc();
+</script>
+</div>
