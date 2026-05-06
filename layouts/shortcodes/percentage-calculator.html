@@ -1,0 +1,191 @@
+<div class="cx-pct-widget" id="cx-pct">
+<style>
+  #cx-pct {
+    background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px;
+    padding: 1.85rem; margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-pct .cx-pct-tabs {
+    display: flex; background: #f1f5f9; border-radius: 10px;
+    padding: 3px; gap: 3px; margin-bottom: 1.5rem; flex-wrap: wrap;
+  }
+  #cx-pct .cx-pct-tabs button {
+    flex: 1; min-width: 120px; padding: .55rem .5rem; border: 0;
+    background: transparent; font-size: .82rem; font-weight: 600;
+    color: #475569; border-radius: 7px; cursor: pointer; transition: all .15s;
+    white-space: nowrap;
+  }
+  #cx-pct .cx-pct-tabs button.active {
+    background: #fff; color: #2563eb;
+    box-shadow: 0 1px 3px rgba(15,23,42,.1);
+  }
+  #cx-pct .cx-pct-panel { display: none; }
+  #cx-pct .cx-pct-panel.active { display: block; }
+  #cx-pct .cx-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) { #cx-pct .cx-row { grid-template-columns: 1fr; } }
+  #cx-pct label > span {
+    display: block; font-size: .85rem; font-weight: 600;
+    color: #0f172a; margin-bottom: .35rem;
+  }
+  #cx-pct input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-pct input[type="number"]:focus {
+    outline: none; border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+  }
+  #cx-pct .cx-pct-result {
+    background: linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.25rem 1.5rem;
+    margin-top: 1rem; display: flex; align-items: center; gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  #cx-pct .cx-pct-result .cx-main { flex: 1; }
+  #cx-pct .cx-pct-result .cx-label {
+    font-size: .8rem; opacity: .8; font-weight: 500; margin-bottom: .2rem;
+  }
+  #cx-pct .cx-pct-result .cx-value {
+    font-size: 2rem; font-weight: 800; letter-spacing: -.02em;
+  }
+  #cx-pct .cx-pct-result .cx-sub {
+    font-size: .82rem; opacity: .75; margin-top: .2rem;
+  }
+</style>
+
+<div class="cx-pct-tabs">
+  <button class="active" onclick="cxPctTab(0,this)">What is X% of Y?</button>
+  <button onclick="cxPctTab(1,this)">X is what % of Y?</button>
+  <button onclick="cxPctTab(2,this)">% Change</button>
+  <button onclick="cxPctTab(3,this)">% Increase / Decrease</button>
+</div>
+
+<!-- Panel 0: What is X% of Y -->
+<div class="cx-pct-panel active" id="cx-pct-p0">
+  <div class="cx-row">
+    <label><span>Percentage (%)</span>
+      <input type="number" id="cx-p0-pct" value="15" min="0" oninput="cxP0()">
+    </label>
+    <label><span>of Number</span>
+      <input type="number" id="cx-p0-num" value="2500" oninput="cxP0()">
+    </label>
+  </div>
+  <div class="cx-pct-result">
+    <div class="cx-main">
+      <div class="cx-label">Result</div>
+      <div class="cx-value" id="cx-p0-res">375</div>
+      <div class="cx-sub" id="cx-p0-sub">15% of 2,500 = 375</div>
+    </div>
+  </div>
+</div>
+
+<!-- Panel 1: X is what % of Y -->
+<div class="cx-pct-panel" id="cx-pct-p1">
+  <div class="cx-row">
+    <label><span>Number (X)</span>
+      <input type="number" id="cx-p1-x" value="375" oninput="cxP1()">
+    </label>
+    <label><span>of Total (Y)</span>
+      <input type="number" id="cx-p1-y" value="2500" oninput="cxP1()">
+    </label>
+  </div>
+  <div class="cx-pct-result">
+    <div class="cx-main">
+      <div class="cx-label">Percentage</div>
+      <div class="cx-value" id="cx-p1-res">15%</div>
+      <div class="cx-sub" id="cx-p1-sub">375 is 15% of 2,500</div>
+    </div>
+  </div>
+</div>
+
+<!-- Panel 2: % Change -->
+<div class="cx-pct-panel" id="cx-pct-p2">
+  <div class="cx-row">
+    <label><span>Original Value</span>
+      <input type="number" id="cx-p2-old" value="800" oninput="cxP2()">
+    </label>
+    <label><span>New Value</span>
+      <input type="number" id="cx-p2-new" value="950" oninput="cxP2()">
+    </label>
+  </div>
+  <div class="cx-pct-result">
+    <div class="cx-main">
+      <div class="cx-label">Percentage Change</div>
+      <div class="cx-value" id="cx-p2-res">+18.75%</div>
+      <div class="cx-sub" id="cx-p2-sub">Increase of 150 from 800 to 950</div>
+    </div>
+  </div>
+</div>
+
+<!-- Panel 3: % Increase / Decrease -->
+<div class="cx-pct-panel" id="cx-pct-p3">
+  <div class="cx-row">
+    <label><span>Original Value</span>
+      <input type="number" id="cx-p3-base" value="5000" oninput="cxP3()">
+    </label>
+    <label><span>Percentage (%)</span>
+      <input type="number" id="cx-p3-pct" value="20" oninput="cxP3()">
+    </label>
+  </div>
+  <div class="cx-pct-result" style="flex-direction:column;gap:.75rem;">
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;width:100%;">
+      <div class="cx-main">
+        <div class="cx-label">After Increase</div>
+        <div class="cx-value" id="cx-p3-inc">6,000</div>
+        <div class="cx-sub" id="cx-p3-inc-sub">+1,000 added</div>
+      </div>
+      <div class="cx-main">
+        <div class="cx-label">After Decrease</div>
+        <div class="cx-value" id="cx-p3-dec">4,000</div>
+        <div class="cx-sub" id="cx-p3-dec-sub">-1,000 removed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function fmt(n){return Number(n.toFixed(4)).toLocaleString('en-IN',{maximumFractionDigits:4});}
+function cxPctTab(i,btn){
+  document.querySelectorAll('#cx-pct .cx-pct-panel').forEach((p,j)=>p.classList.toggle('active',i===j));
+  document.querySelectorAll('#cx-pct .cx-pct-tabs button').forEach((b,j)=>b.classList.toggle('active',i===j));
+}
+function cxP0(){
+  var p=parseFloat(document.getElementById('cx-p0-pct').value)||0;
+  var n=parseFloat(document.getElementById('cx-p0-num').value)||0;
+  var r=p/100*n;
+  document.getElementById('cx-p0-res').textContent=fmt(r);
+  document.getElementById('cx-p0-sub').textContent=p+'% of '+fmt(n)+' = '+fmt(r);
+}
+function cxP1(){
+  var x=parseFloat(document.getElementById('cx-p1-x').value)||0;
+  var y=parseFloat(document.getElementById('cx-p1-y').value)||0;
+  var r=y?x/y*100:0;
+  document.getElementById('cx-p1-res').textContent=fmt(r)+'%';
+  document.getElementById('cx-p1-sub').textContent=fmt(x)+' is '+fmt(r)+'% of '+fmt(y);
+}
+function cxP2(){
+  var o=parseFloat(document.getElementById('cx-p2-old').value)||0;
+  var n=parseFloat(document.getElementById('cx-p2-new').value)||0;
+  var diff=n-o;
+  var r=o?(diff/o*100):0;
+  var sign=r>=0?'+':'';
+  document.getElementById('cx-p2-res').textContent=sign+fmt(r)+'%';
+  var dir=diff>=0?'Increase':'Decrease';
+  document.getElementById('cx-p2-sub').textContent=dir+' of '+fmt(Math.abs(diff))+' from '+fmt(o)+' to '+fmt(n);
+}
+function cxP3(){
+  var b=parseFloat(document.getElementById('cx-p3-base').value)||0;
+  var p=parseFloat(document.getElementById('cx-p3-pct').value)||0;
+  var amt=b*p/100;
+  var inc=b+amt; var dec=b-amt;
+  document.getElementById('cx-p3-inc').textContent=fmt(inc);
+  document.getElementById('cx-p3-inc-sub').textContent='+'+fmt(amt)+' added';
+  document.getElementById('cx-p3-dec').textContent=fmt(dec);
+  document.getElementById('cx-p3-dec-sub').textContent='-'+fmt(amt)+' removed';
+}
+</script>
+</div>

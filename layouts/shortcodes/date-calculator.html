@@ -1,0 +1,191 @@
+<div class="cx-date-widget" id="cx-date">
+<style>
+  #cx-date {
+    background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px;
+    padding: 1.85rem; margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-date .cx-tabs {
+    display: flex; background: #f1f5f9; border-radius: 10px;
+    padding: 3px; gap: 3px; margin-bottom: 1.5rem;
+  }
+  #cx-date .cx-tabs button {
+    flex: 1; padding: .55rem .5rem; border: 0; background: transparent;
+    font-size: .84rem; font-weight: 600; color: #475569; border-radius: 7px;
+    cursor: pointer; transition: all .15s;
+  }
+  #cx-date .cx-tabs button.active {
+    background: #fff; color: #2563eb; box-shadow: 0 1px 3px rgba(15,23,42,.1);
+  }
+  #cx-date .cx-panel { display: none; }
+  #cx-date .cx-panel.active { display: block; }
+  #cx-date .cx-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) { #cx-date .cx-row { grid-template-columns: 1fr; } }
+  #cx-date label > span {
+    display: block; font-size: .85rem; font-weight: 600;
+    color: #0f172a; margin-bottom: .35rem;
+  }
+  #cx-date input[type="date"], #cx-date input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-date input:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+  }
+  #cx-date .cx-result {
+    background: linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem;
+  }
+  #cx-date .cx-result-label { font-size: .8rem; opacity: .8; font-weight: 500; margin-bottom: .2rem; }
+  #cx-date .cx-result-value { font-size: 2rem; font-weight: 800; letter-spacing: -.02em; }
+  #cx-date .cx-result-sub { font-size: .82rem; opacity: .75; margin-top: .35rem; }
+  #cx-date .cx-grid3 {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-top: .75rem;
+  }
+  @media (max-width: 500px) { #cx-date .cx-grid3 { grid-template-columns: 1fr 1fr; } }
+  #cx-date .cx-mini {
+    background: rgba(255,255,255,.15); border-radius: 8px;
+    padding: .6rem .75rem; text-align: center;
+  }
+  #cx-date .cx-mini-val { font-size: 1.3rem; font-weight: 800; }
+  #cx-date .cx-mini-lbl { font-size: .72rem; opacity: .8; }
+</style>
+
+<div class="cx-tabs">
+  <button class="active" onclick="cxDateTab(0,this)">Days Between Dates</button>
+  <button onclick="cxDateTab(1,this)">Add / Subtract Days</button>
+  <button onclick="cxDateTab(2,this)">Deadline Countdown</button>
+</div>
+
+<!-- Panel 0: Days between dates -->
+<div class="cx-panel active" id="cx-date-p0">
+  <div class="cx-row">
+    <label><span>Start Date</span>
+      <input type="date" id="cx-d0-start" oninput="cxD0()">
+    </label>
+    <label><span>End Date</span>
+      <input type="date" id="cx-d0-end" oninput="cxD0()">
+    </label>
+  </div>
+  <div class="cx-result">
+    <div class="cx-result-label">Total Days Apart</div>
+    <div class="cx-result-value" id="cx-d0-days">—</div>
+    <div class="cx-grid3">
+      <div class="cx-mini"><div class="cx-mini-val" id="cx-d0-weeks">—</div><div class="cx-mini-lbl">Weeks</div></div>
+      <div class="cx-mini"><div class="cx-mini-val" id="cx-d0-months">—</div><div class="cx-mini-lbl">Months</div></div>
+      <div class="cx-mini"><div class="cx-mini-val" id="cx-d0-biz">—</div><div class="cx-mini-lbl">Working Days</div></div>
+    </div>
+    <div class="cx-result-sub" id="cx-d0-sub"></div>
+  </div>
+</div>
+
+<!-- Panel 1: Add/subtract days -->
+<div class="cx-panel" id="cx-date-p1">
+  <div class="cx-row">
+    <label><span>Start Date</span>
+      <input type="date" id="cx-d1-start" oninput="cxD1()">
+    </label>
+    <label><span>Number of Days</span>
+      <input type="number" id="cx-d1-days" value="30" oninput="cxD1()">
+    </label>
+  </div>
+  <div class="cx-result">
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+      <div>
+        <div class="cx-result-label">After Adding</div>
+        <div class="cx-result-value" id="cx-d1-add">—</div>
+      </div>
+      <div>
+        <div class="cx-result-label">After Subtracting</div>
+        <div class="cx-result-value" id="cx-d1-sub-val">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Panel 2: Countdown -->
+<div class="cx-panel" id="cx-date-p2">
+  <div class="cx-row" style="grid-template-columns:1fr;">
+    <label><span>Target Date</span>
+      <input type="date" id="cx-d2-target" oninput="cxD2()">
+    </label>
+  </div>
+  <div class="cx-result">
+    <div class="cx-result-label" id="cx-d2-label">Days Remaining</div>
+    <div class="cx-result-value" id="cx-d2-days">—</div>
+    <div class="cx-grid3">
+      <div class="cx-mini"><div class="cx-mini-val" id="cx-d2-weeks">—</div><div class="cx-mini-lbl">Weeks</div></div>
+      <div class="cx-mini"><div class="cx-mini-val" id="cx-d2-months">—</div><div class="cx-mini-lbl">Months</div></div>
+      <div class="cx-mini"><div class="cx-mini-val" id="cx-d2-biz">—</div><div class="cx-mini-lbl">Working Days</div></div>
+    </div>
+    <div class="cx-result-sub" id="cx-d2-sub"></div>
+  </div>
+</div>
+
+<script>
+function cxDateTab(i,btn){
+  document.querySelectorAll('#cx-date .cx-panel').forEach((p,j)=>p.classList.toggle('active',i===j));
+  document.querySelectorAll('#cx-date .cx-tabs button').forEach((b,j)=>b.classList.toggle('active',i===j));
+}
+function cxFmtDate(d){return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});}
+function cxBizDays(d1,d2){
+  var s=new Date(Math.min(d1,d2)),e=new Date(Math.max(d1,d2)),n=0;
+  while(s<e){s.setDate(s.getDate()+1);var day=s.getDay();if(day!==0&&day!==6)n++;}
+  return n;
+}
+function cxD0(){
+  var s=document.getElementById('cx-d0-start').value;
+  var e=document.getElementById('cx-d0-end').value;
+  if(!s||!e)return;
+  var d1=new Date(s),d2=new Date(e);
+  var diff=Math.round((d2-d1)/(1000*60*60*24));
+  var abs=Math.abs(diff);
+  document.getElementById('cx-d0-days').textContent=(diff<0?'-':'')+abs.toLocaleString('en-IN')+' days';
+  document.getElementById('cx-d0-weeks').textContent=Math.floor(abs/7);
+  document.getElementById('cx-d0-months').textContent=(abs/30.44).toFixed(1);
+  document.getElementById('cx-d0-biz').textContent=cxBizDays(d1,d2).toLocaleString('en-IN');
+  document.getElementById('cx-d0-sub').textContent=(diff<0?'End date is before start date. ':'')+'From '+cxFmtDate(d1)+' to '+cxFmtDate(d2);
+}
+function cxD1(){
+  var s=document.getElementById('cx-d1-start').value;
+  var n=parseInt(document.getElementById('cx-d1-days').value)||0;
+  if(!s)return;
+  var d=new Date(s);
+  var add=new Date(d); add.setDate(add.getDate()+n);
+  var sub=new Date(d); sub.setDate(sub.getDate()-n);
+  document.getElementById('cx-d1-add').textContent=cxFmtDate(add);
+  document.getElementById('cx-d1-sub-val').textContent=cxFmtDate(sub);
+}
+function cxD2(){
+  var t=document.getElementById('cx-d2-target').value;
+  if(!t)return;
+  var today=new Date(); today.setHours(0,0,0,0);
+  var target=new Date(t);
+  var diff=Math.round((target-today)/(1000*60*60*24));
+  var abs=Math.abs(diff);
+  var past=diff<0;
+  document.getElementById('cx-d2-label').textContent=past?'Days Since':'Days Remaining';
+  document.getElementById('cx-d2-days').textContent=abs.toLocaleString('en-IN')+' days';
+  document.getElementById('cx-d2-weeks').textContent=Math.floor(abs/7);
+  document.getElementById('cx-d2-months').textContent=(abs/30.44).toFixed(1);
+  document.getElementById('cx-d2-biz').textContent=cxBizDays(today,target).toLocaleString('en-IN');
+  document.getElementById('cx-d2-sub').textContent=(past?'Past date — ':'')+'Target: '+cxFmtDate(target);
+}
+// Set default dates
+(function(){
+  var today=new Date();
+  var fmt=d=>d.toISOString().split('T')[0];
+  var past=new Date(today); past.setDate(past.getDate()-30);
+  document.getElementById('cx-d0-start').value=fmt(past);
+  document.getElementById('cx-d0-end').value=fmt(today);
+  document.getElementById('cx-d1-start').value=fmt(today);
+  var future=new Date(today); future.setDate(future.getDate()+90);
+  document.getElementById('cx-d2-target').value=fmt(future);
+  cxD0(); cxD1(); cxD2();
+})();
+</script>
+</div>

@@ -1,0 +1,127 @@
+<div class="cx-age-widget" id="cx-age">
+<style>
+  #cx-age {
+    background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px;
+    padding: 1.85rem; margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-age .cx-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) { #cx-age .cx-row { grid-template-columns: 1fr; } }
+  #cx-age label > span {
+    display: block; font-size: .85rem; font-weight: 600;
+    color: #0f172a; margin-bottom: .35rem;
+  }
+  #cx-age input[type="date"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-age input[type="date"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+  }
+  #cx-age .cx-result {
+    background: linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1rem;
+  }
+  #cx-age .cx-result-label { font-size: .8rem; opacity: .8; font-weight: 500; margin-bottom: .2rem; }
+  #cx-age .cx-result-value { font-size: 2rem; font-weight: 800; letter-spacing: -.02em; }
+  #cx-age .cx-grid4 {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: .6rem; margin-top: .85rem;
+  }
+  @media (max-width: 500px) { #cx-age .cx-grid4 { grid-template-columns: repeat(2,1fr); } }
+  #cx-age .cx-mini {
+    background: rgba(255,255,255,.15); border-radius: 8px;
+    padding: .6rem .5rem; text-align: center;
+  }
+  #cx-age .cx-mini-val { font-size: 1.25rem; font-weight: 800; }
+  #cx-age .cx-mini-lbl { font-size: .7rem; opacity: .8; margin-top: .1rem; }
+  #cx-age .cx-result-sub { font-size: .82rem; opacity: .75; margin-top: .75rem; }
+  #cx-age .cx-next-bday {
+    background: rgba(255,255,255,.12); border-radius: 8px;
+    padding: .65rem 1rem; margin-top: .75rem; font-size: .85rem;
+  }
+</style>
+
+<div class="cx-row">
+  <label><span>Date of Birth</span>
+    <input type="date" id="cx-age-dob" oninput="cxAgeCalc()">
+  </label>
+  <label><span>Age As Of</span>
+    <input type="date" id="cx-age-asof" oninput="cxAgeCalc()">
+  </label>
+</div>
+
+<div class="cx-result">
+  <div class="cx-result-label">Your Age</div>
+  <div class="cx-result-value" id="cx-age-main">—</div>
+  <div class="cx-grid4">
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-age-months">—</div><div class="cx-mini-lbl">Total Months</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-age-weeks">—</div><div class="cx-mini-lbl">Total Weeks</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-age-days">—</div><div class="cx-mini-lbl">Total Days</div></div>
+    <div class="cx-mini"><div class="cx-mini-val" id="cx-age-hrs">—</div><div class="cx-mini-lbl">Total Hours</div></div>
+  </div>
+  <div class="cx-next-bday" id="cx-age-bday"></div>
+  <div class="cx-result-sub" id="cx-age-sub"></div>
+</div>
+
+<script>
+function cxAgeCalc(){
+  var dob=document.getElementById('cx-age-dob').value;
+  var asof=document.getElementById('cx-age-asof').value;
+  if(!dob||!asof)return;
+  var d=new Date(dob), a=new Date(asof);
+  if(d>a){document.getElementById('cx-age-main').textContent='Invalid';return;}
+
+  var years=a.getFullYear()-d.getFullYear();
+  var months=a.getMonth()-d.getMonth();
+  var days=a.getDate()-d.getDate();
+
+  if(days<0){
+    months--;
+    var prevMonth=new Date(a.getFullYear(),a.getMonth(),0);
+    days+=prevMonth.getDate();
+  }
+  if(months<0){years--;months+=12;}
+
+  var totalDays=Math.floor((a-d)/(1000*60*60*24));
+  var totalMonths=years*12+months;
+  var totalWeeks=Math.floor(totalDays/7);
+  var totalHours=totalDays*24;
+
+  var parts=[];
+  if(years>0)parts.push(years+' year'+(years!==1?'s':''));
+  if(months>0)parts.push(months+' month'+(months!==1?'s':''));
+  if(days>0)parts.push(days+' day'+(days!==1?'s':''));
+  document.getElementById('cx-age-main').textContent=parts.join(', ')||'0 days';
+
+  document.getElementById('cx-age-months').textContent=totalMonths.toLocaleString('en-IN');
+  document.getElementById('cx-age-weeks').textContent=totalWeeks.toLocaleString('en-IN');
+  document.getElementById('cx-age-days').textContent=totalDays.toLocaleString('en-IN');
+  document.getElementById('cx-age-hrs').textContent=(totalHours).toLocaleString('en-IN');
+
+  // Next birthday
+  var nextBday=new Date(a.getFullYear(),d.getMonth(),d.getDate());
+  if(nextBday<=a)nextBday.setFullYear(nextBday.getFullYear()+1);
+  var daysToNext=Math.round((nextBday-a)/(1000*60*60*24));
+  var bdayStr=nextBday.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('cx-age-bday').textContent=
+    daysToNext===0?'🎂 Happy Birthday!'
+    :'🎂 Next birthday: '+bdayStr+' ('+daysToNext+' days away)';
+
+  var dobStr=d.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  var asofStr=a.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('cx-age-sub').textContent='Born: '+dobStr+' · As of: '+asofStr;
+}
+(function(){
+  var today=new Date();
+  var fmt=d=>d.toISOString().split('T')[0];
+  var dob=new Date(today.getFullYear()-25,today.getMonth(),today.getDate());
+  document.getElementById('cx-age-dob').value=fmt(dob);
+  document.getElementById('cx-age-asof').value=fmt(today);
+  cxAgeCalc();
+})();
+</script>
+</div>

@@ -71,6 +71,12 @@ URLS = [
     "/conversion/currency-converter/",
     "/conversion/petrol-price-today/",
 
+    # Math
+    "/math/",
+    "/math/percentage-calculator/",
+    "/math/date-calculator/",
+    "/math/age-calculator/",
+
     # Static
     "/about/",
     "/privacy-policy/",
