@@ -323,8 +323,8 @@
       "assets",
       "liabilities"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-06"
   },
   {
     "id": "50-30-20-budget-rule-india",
@@ -341,8 +341,8 @@
       "savings",
       "salary"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-06"
   },
   {
     "id": "inflation-impact-on-savings-india",
