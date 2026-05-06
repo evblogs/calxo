@@ -18,7 +18,7 @@ tags:
 
 The National Pension System (NPS) offers a structured retirement plan for salaried employees. NPS is regulated by PFRDA and allows flexibility in investment choices. But before you invest, it's important to understand how contributions are made. For a ₹50,000 salary, depositing up to 10% of your basic salary into NPS is beneficial, given tax exemptions under Section 80CCD(1B). In Budget 2025, the tax benefits on this were further enhanced, making it more attractive. However, there's a twist. Withdrawals at retirement are only partially tax-free.
 
-Ravi, working in Mumbai with an annual salary of ₹10 lakh, uses an [NPS Calculator](https://calxo.in/investment/nps-calculator/) from HDFC to plan his future. It helps him understand exactly how much he should contribute monthly to meet his goals. His account grows by combining his contributions with government matching, which depends on his employment type. The prospect of secured returns, post-retirement, makes NPS a favorite for many.
+Ravi, working in Mumbai with an annual salary of ₹10 lakh, uses an [NPS Calculator](https://www.calxo.in/investment/nps-calculator/) from HDFC to plan his future. It helps him understand exactly how much he should contribute monthly to meet his goals. His account grows by combining his contributions with government matching, which depends on his employment type. The prospect of secured returns, post-retirement, makes NPS a favorite for many.
 
 ## Public Provident Fund (PPF)
 

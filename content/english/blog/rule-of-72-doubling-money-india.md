@@ -58,6 +58,6 @@ Raj holds a ₹10 lakh bond with a fixed 6% rate and deliberates switching to a 
 
 Ultimately, doubling isn't everything. Broader strategies include diversifying, monitoring, and, dare I say, intuition. Like gut instinct when a stock booms. But the Rule of 72 will always be your trusted ally.
 
-Before decisions, use our free tools like the [rule of 72 calculator](https://calxo.in/investment/rule-of-72-calculator) for nuanced insights beyond quick math. Every rupee counts, especially when doubling.
+Before decisions, use our free tools like the [rule of 72 calculator](https://www.calxo.in/investment/rule-of-72-calculator) for nuanced insights beyond quick math. Every rupee counts, especially when doubling.
 
 Keep it real, keep calculating. Or as the old adage goes, "Invest smart, banta hai."
