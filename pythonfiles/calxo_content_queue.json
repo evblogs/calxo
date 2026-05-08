@@ -397,8 +397,8 @@
       "investment",
       "returns"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-08"
   },
   {
     "id": "section-80c-deductions-complete-guide",
@@ -417,8 +417,8 @@
       "LIC",
       "income tax"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-08"
   },
   {
     "id": "car-depreciation-india",
