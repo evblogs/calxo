@@ -435,8 +435,8 @@
       "resale value",
       "insurance"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-09"
   },
   {
     "id": "sukanya-samriddhi-yojana-calculator",
@@ -454,8 +454,8 @@
       "tax saving",
       "80C"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-09"
   },
   {
     "id": "sovereign-gold-bond-vs-gold-etf",
