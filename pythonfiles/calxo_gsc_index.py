@@ -43,6 +43,8 @@ URLS = [
     "/investment/compound-interest-calculator/",
     "/investment/nps-calculator/",
     "/investment/ups-pension-calculator/",
+    "/investment/nps-vatsalya-calculator/",
+    "/investment/crorepati-clock/",
 
     # Tax
     "/tax/",
@@ -52,6 +54,11 @@ URLS = [
     "/tax/old-vs-new-tax-regime/",
     "/tax/capital-gains-calculator/",
     "/tax/freelancer-tax-44ada-calculator/",
+
+    # GST
+    "/gst/",
+    "/gst/gst-calculator/",
+    "/gst/lifetime-bill/",
 
     # Salary
     "/salary/",
