@@ -51,6 +51,7 @@ URLS = [
     "/tax/tds-calculator/",
     "/tax/old-vs-new-tax-regime/",
     "/tax/capital-gains-calculator/",
+    "/tax/freelancer-tax-44ada-calculator/",
 
     # Salary
     "/salary/",
