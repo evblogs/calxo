@@ -1,0 +1,289 @@
+<div class="cx-gst-bill" id="cx-gstbill">
+<style>
+  #cx-gstbill.cx-gst-bill {
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 760px) {
+    #cx-gstbill.cx-gst-bill { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+
+  #cx-gstbill .cx-tier-row {
+    display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.1rem;
+  }
+  #cx-gstbill .cx-chip {
+    padding: .42rem .75rem; font-size: .8rem; font-weight: 600;
+    border: 1px solid #cbd5e1; border-radius: 999px; background: #fff;
+    color: #475569; cursor: pointer; transition: all .15s ease;
+  }
+  #cx-gstbill .cx-chip:hover { border-color: #b91c1c; color: #b91c1c; }
+  #cx-gstbill .cx-chip.is-active { background: #b91c1c; color: #fff; border-color: #b91c1c; }
+
+  #cx-gstbill label { display: block; margin-bottom: 1.1rem; }
+  #cx-gstbill label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-gstbill label > span em {
+    color: #b91c1c; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-gstbill input[type="range"] {
+    width: 100%; height: 6px; accent-color: #b91c1c; margin: .35rem 0 .25rem;
+  }
+  #cx-gstbill input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-gstbill input[type="number"]:focus {
+    outline: none; border-color: #b91c1c; box-shadow: 0 0 0 3px rgba(185, 28, 28, .15);
+  }
+  #cx-gstbill .cx-blurb {
+    font-size: .78rem; color: #64748b; margin-top: -.4rem; margin-bottom: 1.2rem;
+    line-height: 1.45;
+  }
+
+  #cx-gstbill .cx-result {
+    background: linear-gradient(135deg, #450a0a 0%, #b91c1c 50%, #f97316 100%);
+    color: #fff; border-radius: 14px; padding: 1.7rem 1.5rem;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  #cx-gstbill .cx-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-gstbill .cx-result > * { position: relative; z-index: 1; }
+
+  #cx-gstbill .cx-eyebrow {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.6px;
+    opacity: .82; margin-bottom: .35rem;
+  }
+  #cx-gstbill .cx-bignum {
+    font-size: clamp(2.1rem, 7vw, 3rem);
+    font-weight: 800; letter-spacing: -1.2px; line-height: 1.05;
+    margin-bottom: .35rem;
+  }
+  #cx-gstbill .cx-sub {
+    font-size: .92rem; opacity: .9; margin-bottom: 1.1rem;
+  }
+
+  #cx-gstbill .cx-equiv-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .55rem;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 10px; padding: .85rem; margin-bottom: 1.05rem;
+  }
+  #cx-gstbill .cx-equiv-cell {
+    background: rgba(255,255,255,.06); padding: .55rem .65rem; border-radius: 8px;
+  }
+  #cx-gstbill .cx-equiv-num {
+    font-size: 1.05rem; font-weight: 800; line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  #cx-gstbill .cx-equiv-lbl {
+    font-size: .72rem; opacity: .85; line-height: 1.25; margin-top: .15rem;
+  }
+
+  #cx-gstbill .cx-row {
+    display: flex; justify-content: space-between;
+    padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.16);
+    font-size: .87rem;
+  }
+  #cx-gstbill .cx-row:last-of-type { border-bottom: none; }
+  #cx-gstbill .cx-row strong { font-weight: 700; }
+
+  #cx-gstbill .cx-share {
+    display: flex; gap: .55rem; margin-top: 1rem; flex-wrap: wrap;
+  }
+  #cx-gstbill .cx-share-btn {
+    flex: 1; min-width: 110px; padding: .55rem .7rem;
+    border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08);
+    color: #fff; border-radius: 8px; font-size: .82rem; font-weight: 600;
+    cursor: pointer; transition: all .15s ease;
+  }
+  #cx-gstbill .cx-share-btn:hover {
+    background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.4);
+  }
+</style>
+
+<div class="cx-gst-inputs">
+  <div class="cx-tier-row" id="cx-gst-tiers">
+    <button type="button" class="cx-chip" data-spend="15000">Tier-3 / Student</button>
+    <button type="button" class="cx-chip is-active" data-spend="35000">Middle class</button>
+    <button type="button" class="cx-chip" data-spend="75000">Upper-middle</button>
+    <button type="button" class="cx-chip" data-spend="150000">High earner</button>
+    <button type="button" class="cx-chip" data-spend="300000">Premium</button>
+  </div>
+
+  <label>
+    <span>Your age <em data-out="age">30 yrs</em></span>
+    <input type="number" id="cx-gst-age" min="18" max="80" step="1" value="30" inputmode="numeric">
+    <input type="range" id="cx-gst-age-r" min="18" max="75" step="1" value="30">
+  </label>
+
+  <label>
+    <span>Monthly spending (₹) <em data-out="spend">35,000</em></span>
+    <input type="number" id="cx-gst-spend" min="3000" max="1000000" step="1000" value="35000" inputmode="numeric">
+    <input type="range" id="cx-gst-spend-r" min="5000" max="500000" step="1000" value="35000">
+  </label>
+
+  <label>
+    <span>Effective GST rate (%) <em data-out="rate">12.0%</em></span>
+    <input type="number" id="cx-gst-rate" min="3" max="22" step="0.5" value="12" inputmode="decimal">
+    <input type="range" id="cx-gst-rate-r" min="6" max="18" step="0.5" value="12">
+  </label>
+
+  <div class="cx-blurb">
+    The default 12% is a blended rate. Real Indian household consumption mixes 0% on grains and milk, 5% on restaurants and unbranded staples, 18% on most goods and services, and 28% on cars, tobacco, and luxury items. CMIE's CPHS shows urban middle-class blended GST sits between 11% and 14%.
+  </div>
+</div>
+
+<div class="cx-result">
+  <div class="cx-eyebrow">You've paid in GST since turning 18</div>
+  <div class="cx-bignum" id="cx-gst-total">₹6,04,800</div>
+  <div class="cx-sub" id="cx-gst-sub">Across 12 years of adult spending</div>
+
+  <div class="cx-equiv-grid" id="cx-gst-equiv">
+    <div class="cx-equiv-cell">
+      <div class="cx-equiv-num" id="cx-gst-eq-iphone">7.5</div>
+      <div class="cx-equiv-lbl">iPhone 16 (₹80,000)</div>
+    </div>
+    <div class="cx-equiv-cell">
+      <div class="cx-equiv-num" id="cx-gst-eq-goa">40</div>
+      <div class="cx-equiv-lbl">Goa trips (₹15,000 ea.)</div>
+    </div>
+    <div class="cx-equiv-cell">
+      <div class="cx-equiv-num" id="cx-gst-eq-rent">17</div>
+      <div class="cx-equiv-lbl">months Bangalore 2BHK rent</div>
+    </div>
+    <div class="cx-equiv-cell">
+      <div class="cx-equiv-num" id="cx-gst-eq-bike">3</div>
+      <div class="cx-equiv-lbl">Royal Enfield Classic 350</div>
+    </div>
+  </div>
+
+  <div class="cx-row"><span>Years as a taxpayer</span> <strong id="cx-gst-years">12 yrs</strong></div>
+  <div class="cx-row"><span>Average per year</span> <strong id="cx-gst-yearly">₹50,400</strong></div>
+  <div class="cx-row"><span>Average per month</span> <strong id="cx-gst-monthly">₹4,200</strong></div>
+  <div class="cx-row"><span>By age 60, you'll have paid</span> <strong id="cx-gst-byret">₹21,16,800</strong></div>
+
+  <div class="cx-share">
+    <button type="button" class="cx-share-btn" id="cx-gst-share-wa">Share on WhatsApp</button>
+    <button type="button" class="cx-share-btn" id="cx-gst-share-tw">Share on X</button>
+    <button type="button" class="cx-share-btn" id="cx-gst-share-cp">Copy result</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) {
+    if (!isFinite(n) || n < 0) n = 0;
+    if (n >= 10000000) return '₹' + (n / 10000000).toFixed(2) + ' Cr';
+    if (n >= 100000)   return '₹' + (n / 100000).toFixed(2)  + ' L';
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+
+  var ageEl   = document.getElementById('cx-gst-age');
+  var ageR    = document.getElementById('cx-gst-age-r');
+  var spendEl = document.getElementById('cx-gst-spend');
+  var spendR  = document.getElementById('cx-gst-spend-r');
+  var rateEl  = document.getElementById('cx-gst-rate');
+  var rateR   = document.getElementById('cx-gst-rate-r');
+  var chips   = document.querySelectorAll('#cx-gst-tiers .cx-chip');
+
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (x) { x.classList.remove('is-active'); });
+      c.classList.add('is-active');
+      var v = parseFloat(c.getAttribute('data-spend'));
+      spendEl.value = v; spendR.value = Math.min(v, parseFloat(spendR.max));
+      compute();
+    });
+  });
+
+  function compute() {
+    var age   = parseFloat(ageEl.value)   || 18;
+    var spend = parseFloat(spendEl.value) || 0;
+    var rate  = parseFloat(rateEl.value)  || 0;
+    var years = Math.max(0, age - 18);
+
+    document.querySelector('#cx-gstbill [data-out="age"]').textContent   = age + ' yrs';
+    document.querySelector('#cx-gstbill [data-out="spend"]').textContent = fmtRaw(spend);
+    document.querySelector('#cx-gstbill [data-out="rate"]').textContent  = rate.toFixed(1) + '%';
+
+    var monthlyGst = spend * (rate / 100);
+    var yearlyGst  = monthlyGst * 12;
+    var totalGst   = yearlyGst * years;
+
+    var yearsTo60  = Math.max(0, 60 - age);
+    var byRetire   = totalGst + yearlyGst * yearsTo60;
+
+    document.getElementById('cx-gst-total').textContent   = fmtINR(totalGst);
+    document.getElementById('cx-gst-sub').textContent     =
+      years === 0 ? "You just turned 18 — the meter starts now."
+                  : "Across " + years + " year" + (years === 1 ? '' : 's') + " of adult spending";
+    document.getElementById('cx-gst-years').textContent   = years + ' yrs';
+    document.getElementById('cx-gst-yearly').textContent  = fmtINR(yearlyGst);
+    document.getElementById('cx-gst-monthly').textContent = fmtINR(monthlyGst);
+    document.getElementById('cx-gst-byret').textContent   = fmtINR(byRetire);
+
+    document.getElementById('cx-gst-eq-iphone').textContent = (totalGst / 80000).toFixed(1);
+    document.getElementById('cx-gst-eq-goa').textContent    = Math.round(totalGst / 15000);
+    document.getElementById('cx-gst-eq-rent').textContent   = Math.round(totalGst / 35000);
+    document.getElementById('cx-gst-eq-bike').textContent   = (totalGst / 200000).toFixed(1);
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () {
+      var v = parseFloat(numEl.value);
+      if (v <= parseFloat(rangeEl.max) && v >= parseFloat(rangeEl.min)) rangeEl.value = numEl.value;
+      compute();
+    });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+  syncPair(ageEl,   ageR);
+  syncPair(spendEl, spendR);
+  syncPair(rateEl,  rateR);
+
+  function shareText() {
+    var total = document.getElementById('cx-gst-total').textContent;
+    var years = document.getElementById('cx-gst-years').textContent;
+    return "I've paid " + total + " in GST in " + years +
+           " of adult spending. Find your number at https://www.calxo.in/gst/lifetime-bill/";
+  }
+  document.getElementById('cx-gst-share-wa').addEventListener('click', function () {
+    window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank');
+  });
+  document.getElementById('cx-gst-share-tw').addEventListener('click', function () {
+    var total = document.getElementById('cx-gst-total').textContent;
+    var years = document.getElementById('cx-gst-years').textContent;
+    var msg = "I've paid " + total + " in GST in " + years + " of adult spending. What's your number?";
+    var url = "https://www.calxo.in/gst/lifetime-bill/";
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(msg) +
+                '&url=' + encodeURIComponent(url), '_blank');
+  });
+  document.getElementById('cx-gst-share-cp').addEventListener('click', function () {
+    var btn = document.getElementById('cx-gst-share-cp');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareText()).then(function () {
+        var orig = btn.textContent; btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = orig; }, 1400);
+      });
+    }
+  });
+
+  compute();
+})();
+</script>
+</div>

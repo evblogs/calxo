@@ -1,0 +1,361 @@
+<div class="cx-clock-widget" id="cx-clock">
+<style>
+  #cx-clock.cx-clock-widget {
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 760px) {
+    #cx-clock.cx-clock-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+
+  #cx-clock .cx-clock-targets {
+    display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.1rem;
+  }
+  #cx-clock .cx-chip {
+    padding: .42rem .85rem; font-size: .82rem; font-weight: 600;
+    border: 1px solid #cbd5e1; border-radius: 999px; background: #fff;
+    color: #475569; cursor: pointer; transition: all .15s ease;
+  }
+  #cx-clock .cx-chip:hover { border-color: #2563eb; color: #2563eb; }
+  #cx-clock .cx-chip.is-active {
+    background: #2563eb; color: #fff; border-color: #2563eb;
+  }
+
+  #cx-clock label { display: block; margin-bottom: 1.1rem; }
+  #cx-clock label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-clock label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-clock input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-clock input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-clock input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+
+  #cx-clock .cx-clock-result {
+    background: linear-gradient(135deg, #0b1220 0%, #1e3a8a 50%, #06b6d4 100%);
+    color: #fff; border-radius: 14px; padding: 1.7rem 1.5rem;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  #cx-clock .cx-clock-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-clock .cx-clock-result > * { position: relative; z-index: 1; }
+
+  #cx-clock .cx-clock-eyebrow {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.6px;
+    opacity: .82; margin-bottom: .4rem;
+  }
+  #cx-clock .cx-clock-date {
+    font-size: clamp(2rem, 6vw, 2.85rem);
+    font-weight: 800; letter-spacing: -1px; line-height: 1.05;
+    margin-bottom: .35rem;
+  }
+  #cx-clock .cx-clock-age {
+    font-size: 1rem; opacity: .9; margin-bottom: 1.1rem;
+  }
+  #cx-clock .cx-clock-countdown {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem;
+    background: rgba(255,255,255,.08); border-radius: 10px;
+    padding: .8rem .5rem; margin-bottom: 1.1rem;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  #cx-clock .cx-clock-cd-cell { text-align: center; }
+  #cx-clock .cx-clock-cd-num {
+    font-size: 1.4rem; font-weight: 800; letter-spacing: -.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  #cx-clock .cx-clock-cd-lbl {
+    font-size: .65rem; text-transform: uppercase; letter-spacing: 1px;
+    opacity: .75;
+  }
+  #cx-clock .cx-clock-row {
+    display: flex; justify-content: space-between;
+    padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.16);
+    font-size: .88rem;
+  }
+  #cx-clock .cx-clock-row:last-of-type { border-bottom: none; }
+  #cx-clock .cx-clock-row strong { font-weight: 700; }
+
+  #cx-clock .cx-clock-share {
+    display: flex; gap: .55rem; margin-top: 1rem; flex-wrap: wrap;
+  }
+  #cx-clock .cx-share-btn {
+    flex: 1; min-width: 110px; padding: .55rem .7rem;
+    border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08);
+    color: #fff; border-radius: 8px; font-size: .82rem; font-weight: 600;
+    cursor: pointer; transition: all .15s ease;
+  }
+  #cx-clock .cx-share-btn:hover {
+    background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.4);
+  }
+
+  #cx-clock .cx-clock-warn {
+    background: rgba(239, 68, 68, .15); border: 1px solid rgba(239, 68, 68, .35);
+    color: #fecaca; padding: .7rem .85rem; border-radius: 8px;
+    font-size: .85rem; line-height: 1.4; margin-top: .8rem;
+    display: none;
+  }
+  #cx-clock .cx-clock-warn.is-on { display: block; }
+</style>
+
+<div class="cx-clock-inputs">
+  <div class="cx-clock-targets" id="cx-clock-chips">
+    <button type="button" class="cx-chip" data-target="2500000">₹25 Lakh</button>
+    <button type="button" class="cx-chip" data-target="5000000">₹50 Lakh</button>
+    <button type="button" class="cx-chip is-active" data-target="10000000">₹1 Crore</button>
+    <button type="button" class="cx-chip" data-target="50000000">₹5 Crore</button>
+    <button type="button" class="cx-chip" data-target="100000000">₹10 Crore</button>
+  </div>
+
+  <label>
+    <span>Monthly SIP (₹) <em data-out="sip">10,000</em></span>
+    <input type="number" id="cx-clock-sip" min="500" max="500000" step="500" value="10000" inputmode="numeric">
+    <input type="range" id="cx-clock-sip-r" min="500" max="200000" step="500" value="10000">
+  </label>
+
+  <label>
+    <span>Your age today <em data-out="age">28 yrs</em></span>
+    <input type="number" id="cx-clock-age" min="15" max="70" step="1" value="28" inputmode="numeric">
+    <input type="range" id="cx-clock-age-r" min="18" max="65" step="1" value="28">
+  </label>
+
+  <label>
+    <span>Expected return rate p.a. (%) <em data-out="rate">12.00%</em></span>
+    <input type="number" id="cx-clock-rate" min="4" max="25" step="0.5" value="12" inputmode="decimal">
+    <input type="range" id="cx-clock-rate-r" min="6" max="18" step="0.5" value="12">
+  </label>
+</div>
+
+<div class="cx-clock-result">
+  <div class="cx-clock-eyebrow">You become a Crorepati on</div>
+  <div class="cx-clock-date" id="cx-clock-date">14 March 2046</div>
+  <div class="cx-clock-age" id="cx-clock-age-out">at age 48</div>
+
+  <div class="cx-clock-countdown" id="cx-clock-cd">
+    <div class="cx-clock-cd-cell"><div class="cx-clock-cd-num" id="cx-clock-cd-y">19</div><div class="cx-clock-cd-lbl">Years</div></div>
+    <div class="cx-clock-cd-cell"><div class="cx-clock-cd-num" id="cx-clock-cd-m">10</div><div class="cx-clock-cd-lbl">Months</div></div>
+    <div class="cx-clock-cd-cell"><div class="cx-clock-cd-num" id="cx-clock-cd-d">5</div><div class="cx-clock-cd-lbl">Days</div></div>
+    <div class="cx-clock-cd-cell"><div class="cx-clock-cd-num" id="cx-clock-cd-h">12</div><div class="cx-clock-cd-lbl">Hours</div></div>
+  </div>
+
+  <div class="cx-clock-row"><span>You'll invest</span> <strong id="cx-clock-invested">₹23,80,000</strong></div>
+  <div class="cx-clock-row"><span>Compounding adds</span> <strong id="cx-clock-returns">₹76,20,000</strong></div>
+  <div class="cx-clock-row"><span>Wealth multiplier</span> <strong id="cx-clock-mult">4.20×</strong></div>
+
+  <div class="cx-clock-warn" id="cx-clock-warn"></div>
+
+  <div class="cx-clock-share">
+    <button type="button" class="cx-share-btn" id="cx-clock-share-wa">Share on WhatsApp</button>
+    <button type="button" class="cx-share-btn" id="cx-clock-share-tw">Share on X</button>
+    <button type="button" class="cx-share-btn" id="cx-clock-share-cp">Copy result</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) {
+    if (!isFinite(n) || n <= 0) return '₹0';
+    if (n >= 10000000) return '₹' + (n / 10000000).toFixed(2) + ' Cr';
+    if (n >= 100000)  return '₹' + (n / 100000).toFixed(2) + ' L';
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  var sip   = document.getElementById('cx-clock-sip');
+  var sipR  = document.getElementById('cx-clock-sip-r');
+  var ageEl = document.getElementById('cx-clock-age');
+  var ageR  = document.getElementById('cx-clock-age-r');
+  var rate  = document.getElementById('cx-clock-rate');
+  var rateR = document.getElementById('cx-clock-rate-r');
+  var chips = document.querySelectorAll('#cx-clock-chips .cx-chip');
+  var warn  = document.getElementById('cx-clock-warn');
+
+  var TARGET = 10000000;     // default ₹1 Cr
+  var TARGET_LBL = 'Crorepati';
+  var nextHitDate = null;    // updated on every compute
+
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (x) { x.classList.remove('is-active'); });
+      c.classList.add('is-active');
+      TARGET = parseFloat(c.getAttribute('data-target'));
+      var amt = TARGET;
+      if (amt >= 10000000) TARGET_LBL = (amt / 10000000) + ' Crore';
+      else                 TARGET_LBL = (amt / 100000) + ' Lakh';
+      document.querySelector('#cx-clock .cx-clock-eyebrow').textContent =
+        'You hit ₹' + TARGET_LBL + ' on';
+      compute();
+    });
+  });
+
+  function monthsToTarget(P, i, target) {
+    if (P <= 0) return Infinity;
+    if (i === 0) return target / P;
+    var inside = 1 + (target * i) / (P * (1 + i));
+    if (inside <= 0) return Infinity;
+    return Math.log(inside) / Math.log(1 + i);
+  }
+
+  function addMonthsAndDays(start, totalMonths) {
+    var whole = Math.floor(totalMonths);
+    var frac  = totalMonths - whole;
+    var d = new Date(start.getTime());
+    d.setMonth(d.getMonth() + whole);
+    var thisM = d.getMonth();
+    var nextM = new Date(d.getTime());
+    nextM.setMonth(thisM + 1);
+    var msInMonth = nextM.getTime() - d.getTime();
+    d = new Date(d.getTime() + frac * msInMonth);
+    return d;
+  }
+
+  function tickCountdown() {
+    if (!nextHitDate) return;
+    var now = new Date();
+    var diff = nextHitDate.getTime() - now.getTime();
+    if (diff <= 0) {
+      document.getElementById('cx-clock-cd-y').textContent = '0';
+      document.getElementById('cx-clock-cd-m').textContent = '0';
+      document.getElementById('cx-clock-cd-d').textContent = '0';
+      document.getElementById('cx-clock-cd-h').textContent = '0';
+      return;
+    }
+    var totalSec = Math.floor(diff / 1000);
+    var years  = Math.floor(totalSec / (365.25 * 86400));
+    var rem    = totalSec - years * 365.25 * 86400;
+    var months = Math.floor(rem / (30.4375 * 86400));
+    rem        = rem - months * 30.4375 * 86400;
+    var days   = Math.floor(rem / 86400);
+    rem        = rem - days * 86400;
+    var hours  = Math.floor(rem / 3600);
+
+    document.getElementById('cx-clock-cd-y').textContent = years;
+    document.getElementById('cx-clock-cd-m').textContent = months;
+    document.getElementById('cx-clock-cd-d').textContent = days;
+    document.getElementById('cx-clock-cd-h').textContent = hours;
+  }
+
+  function compute() {
+    var P     = parseFloat(sip.value)  || 0;
+    var age   = parseFloat(ageEl.value)|| 0;
+    var aRate = parseFloat(rate.value) || 0;
+    var i     = aRate / 12 / 100;
+
+    document.querySelector('#cx-clock [data-out="sip"]').textContent  = fmtRaw(P);
+    document.querySelector('#cx-clock [data-out="age"]').textContent  = age + ' yrs';
+    document.querySelector('#cx-clock [data-out="rate"]').textContent = aRate.toFixed(2) + '%';
+
+    var n = monthsToTarget(P, i, TARGET);
+
+    warn.classList.remove('is-on');
+
+    if (!isFinite(n) || n > 720) {
+      warn.classList.add('is-on');
+      warn.textContent = 'At ₹' + fmtRaw(P) + '/month and ' + aRate.toFixed(1) + '% returns, ₹' +
+        TARGET_LBL + ' takes more than 60 years. Increase the SIP or expected return.';
+      document.getElementById('cx-clock-date').textContent = 'Out of reach';
+      document.getElementById('cx-clock-age-out').textContent = 'try a higher SIP';
+      document.getElementById('cx-clock-invested').textContent = '—';
+      document.getElementById('cx-clock-returns').textContent = '—';
+      document.getElementById('cx-clock-mult').textContent = '—';
+      nextHitDate = null;
+      tickCountdown();
+      return;
+    }
+
+    var today = new Date();
+    var target = addMonthsAndDays(today, n);
+    nextHitDate = target;
+
+    var yearsLeft = n / 12;
+    var ageAtHit  = age + yearsLeft;
+    var dateStr   = target.getDate() + ' ' + MONTHS[target.getMonth()] + ' ' + target.getFullYear();
+
+    document.getElementById('cx-clock-date').textContent = dateStr;
+    document.getElementById('cx-clock-age-out').textContent =
+      'at age ' + ageAtHit.toFixed(1).replace(/\.0$/, '');
+
+    var invested = P * Math.ceil(n);
+    var returns  = TARGET - invested;
+    if (returns < 0) returns = 0;
+    var mult = invested > 0 ? (TARGET / invested) : 0;
+
+    document.getElementById('cx-clock-invested').textContent = fmtINR(invested);
+    document.getElementById('cx-clock-returns').textContent  = fmtINR(returns);
+    document.getElementById('cx-clock-mult').textContent     = mult.toFixed(2) + '×';
+
+    tickCountdown();
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () {
+      if (parseFloat(numEl.value) <= parseFloat(rangeEl.max) &&
+          parseFloat(numEl.value) >= parseFloat(rangeEl.min)) {
+        rangeEl.value = numEl.value;
+      }
+      compute();
+    });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+  syncPair(sip,   sipR);
+  syncPair(ageEl, ageR);
+  syncPair(rate,  rateR);
+
+  document.getElementById('cx-clock-share-wa').addEventListener('click', function () {
+    var dateStr = document.getElementById('cx-clock-date').textContent;
+    var ageStr  = document.getElementById('cx-clock-age-out').textContent;
+    var text = "I'll hit ₹" + TARGET_LBL + " on " + dateStr + " " + ageStr +
+               ". Find your date at https://www.calxo.in/investment/crorepati-clock/";
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+  });
+  document.getElementById('cx-clock-share-tw').addEventListener('click', function () {
+    var dateStr = document.getElementById('cx-clock-date').textContent;
+    var ageStr  = document.getElementById('cx-clock-age-out').textContent;
+    var text = "I'll hit ₹" + TARGET_LBL + " on " + dateStr + " " + ageStr +
+               ". What's your date? ";
+    var url = "https://www.calxo.in/investment/crorepati-clock/";
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) +
+                '&url=' + encodeURIComponent(url), '_blank');
+  });
+  document.getElementById('cx-clock-share-cp').addEventListener('click', function () {
+    var btn = document.getElementById('cx-clock-share-cp');
+    var dateStr = document.getElementById('cx-clock-date').textContent;
+    var ageStr  = document.getElementById('cx-clock-age-out').textContent;
+    var text = "I hit ₹" + TARGET_LBL + " on " + dateStr + " " + ageStr +
+               " — calxo.in/investment/crorepati-clock/";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        var orig = btn.textContent; btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = orig; }, 1400);
+      });
+    }
+  });
+
+  compute();
+  setInterval(tickCountdown, 1000);
+})();
+</script>
+</div>
