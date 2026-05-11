@@ -510,8 +510,8 @@
       "salary",
       "ITR"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-11"
   },
   {
     "id": "credit-card-interest-calculation-india",
@@ -528,8 +528,8 @@
       "minimum payment",
       "debt"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-11"
   },
   {
     "id": "pay-raise-vs-job-switch-india",
