@@ -1,0 +1,486 @@
+<div class="cx-sbe-widget" id="cx-sbe">
+<style>
+  #cx-sbe.cx-sbe-widget {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem;
+    margin: 1.5rem 0 2rem; box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 880px) {
+    #cx-sbe.cx-sbe-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+
+  #cx-sbe .cx-toggle {
+    display: flex; background: #f1f5f9; border-radius: 8px; padding: 3px; margin-bottom: 1.1rem;
+  }
+  #cx-sbe .cx-toggle button {
+    flex: 1; padding: .6rem .8rem; border: 0; background: transparent;
+    font-size: .85rem; font-weight: 700; color: #475569; border-radius: 6px;
+    cursor: pointer; font-family: inherit;
+  }
+  #cx-sbe .cx-toggle button.active {
+    background: #fff; color: #0f9d58; box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+  }
+
+  #cx-sbe label { display: block; margin-bottom: .95rem; }
+  #cx-sbe label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .84rem; font-weight: 600; color: #0f172a; margin-bottom: .3rem;
+  }
+  #cx-sbe label > span em {
+    color: #0f9d58; font-weight: 700; font-size: .92rem; font-style: normal;
+  }
+  #cx-sbe input[type="range"] {
+    width: 100%; height: 6px; accent-color: #0f9d58; margin: .2rem 0 .1rem;
+  }
+  #cx-sbe input[type="number"], #cx-sbe select {
+    width: 100%; padding: .52rem .72rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .92rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff; font-family: inherit;
+  }
+  #cx-sbe input[type="number"]:focus, #cx-sbe select:focus {
+    outline: none; border-color: #0f9d58; box-shadow: 0 0 0 3px rgba(15, 157, 88, .15);
+  }
+  #cx-sbe .cx-warn {
+    background: #fef3c7; border: 1px solid #fcd34d; color: #78350f;
+    padding: .5rem .7rem; border-radius: 8px; font-size: .78rem;
+    line-height: 1.4; margin-bottom: .8rem; display: none;
+  }
+  #cx-sbe .cx-warn.is-on { display: block; }
+
+  /* Output table styling */
+  #cx-sbe .cx-output {
+    background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  #cx-sbe .cx-output-head {
+    background: linear-gradient(135deg, #064e3b 0%, #0f9d58 50%, #34d399 100%);
+    color: #fff; padding: 1rem 1.2rem;
+    display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .5rem;
+  }
+  #cx-sbe .cx-output-head .cx-out-title {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.4px; opacity: .88; font-weight: 700;
+  }
+  #cx-sbe .cx-output-head .cx-out-take {
+    font-size: clamp(1.45rem, 4vw, 1.95rem); font-weight: 800; letter-spacing: -.5px;
+    margin-top: .15rem; line-height: 1.1;
+  }
+  #cx-sbe .cx-output-head .cx-out-sub {
+    font-size: .82rem; opacity: .92; margin-top: .25rem;
+  }
+  #cx-sbe .cx-download-btn {
+    background: #fff; color: #064e3b; border: 0; padding: .6rem 1rem;
+    border-radius: 8px; font-size: .82rem; font-weight: 800;
+    cursor: pointer; font-family: inherit; align-self: center;
+    display: inline-flex; align-items: center; gap: .4rem;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  #cx-sbe .cx-download-btn:hover {
+    transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.18);
+  }
+  #cx-sbe .cx-download-btn svg { flex-shrink: 0; }
+
+  #cx-sbe table.cx-breakup {
+    width: 100%; border-collapse: collapse; font-size: .88rem;
+  }
+  #cx-sbe table.cx-breakup th {
+    background: #f8fafc; text-align: left; font-weight: 700; color: #0f172a;
+    padding: .6rem .85rem; border-bottom: 2px solid #e2e8f0;
+    font-size: .72rem; text-transform: uppercase; letter-spacing: .8px;
+  }
+  #cx-sbe table.cx-breakup th.num { text-align: right; }
+  #cx-sbe table.cx-breakup td {
+    padding: .52rem .85rem; border-bottom: 1px solid #f1f5f9;
+    color: #1e293b; font-variant-numeric: tabular-nums;
+  }
+  #cx-sbe table.cx-breakup td.num { text-align: right; font-weight: 600; }
+  #cx-sbe table.cx-breakup tr.cx-band-head td {
+    background: #f1f5f9; font-size: .68rem; text-transform: uppercase;
+    letter-spacing: 1.1px; color: #64748b; font-weight: 700; padding: .4rem .85rem;
+  }
+  #cx-sbe table.cx-breakup tr.cx-row-bold td {
+    background: #ecfdf5; font-weight: 800; color: #064e3b;
+    border-top: 1px solid #a7f3d0; border-bottom: 1px solid #a7f3d0;
+  }
+  #cx-sbe table.cx-breakup tr.cx-row-final td {
+    background: #064e3b; color: #fff; font-weight: 800; font-size: .92rem;
+    border-bottom: 0;
+  }
+  #cx-sbe .cx-output-foot {
+    padding: .7rem .85rem; background: #f8fafc; font-size: .72rem;
+    color: #64748b; border-top: 1px solid #f1f5f9; text-align: center; line-height: 1.5;
+  }
+
+  /* Hidden export table (for Excel download) */
+  #cx-sbe-export { display: none; }
+</style>
+
+<div class="cx-sbe-inputs">
+  <div class="cx-toggle" id="cx-sbe-regime">
+    <button type="button" class="active" data-regime="new">New regime</button>
+    <button type="button" data-regime="old">Old regime</button>
+  </div>
+
+  <label>
+    <span>Annual CTC (₹) <em data-out="ctc">12,00,000</em></span>
+    <input type="number" id="cx-sbe-ctc" min="180000" max="500000000" step="50000" value="1200000" inputmode="numeric">
+    <input type="range" id="cx-sbe-ctc-r" min="200000" max="10000000" step="50000" value="1200000">
+  </label>
+
+  <label>
+    <span>Basic as % of CTC <em data-out="bp">50%</em></span>
+    <input type="number" id="cx-sbe-bp" min="40" max="60" step="1" value="50" inputmode="numeric">
+    <input type="range" id="cx-sbe-bp-r" min="40" max="60" step="1" value="50">
+  </label>
+
+  <label>
+    <span>HRA as % of Basic <em data-out="hra">50%</em></span>
+    <input type="number" id="cx-sbe-hra" min="30" max="60" step="1" value="50" inputmode="numeric">
+    <input type="range" id="cx-sbe-hra-r" min="30" max="60" step="1" value="50">
+  </label>
+
+  <label>
+    <span>LTA annual (₹) <em data-out="lta">0</em></span>
+    <input type="number" id="cx-sbe-lta" min="0" max="500000" step="5000" value="0" inputmode="numeric">
+    <input type="range" id="cx-sbe-lta-r" min="0" max="200000" step="5000" value="0">
+  </label>
+
+  <label>
+    <span>City</span>
+    <select id="cx-sbe-city">
+      <option value="metro">Metro (Delhi / Mumbai / Chennai / Kolkata)</option>
+      <option value="non">Non-metro</option>
+    </select>
+  </label>
+
+  <label>
+    <span>EPF contribution</span>
+    <select id="cx-sbe-epf">
+      <option value="statutory">Statutory: 12% of Basic</option>
+      <option value="capped">Capped at ₹1,800 / month</option>
+      <option value="none">Not applicable</option>
+    </select>
+  </label>
+
+  <label>
+    <span>Professional tax state</span>
+    <select id="cx-sbe-pt">
+      <option value="KA">Karnataka (₹2,400/yr)</option>
+      <option value="MH">Maharashtra (₹2,500/yr)</option>
+      <option value="WB">West Bengal (₹2,400/yr)</option>
+      <option value="TN">Tamil Nadu (₹2,496/yr)</option>
+      <option value="TG">Telangana (₹2,400/yr)</option>
+      <option value="KL">Kerala (₹2,496/yr)</option>
+      <option value="GJ">Gujarat (₹2,400/yr)</option>
+      <option value="AP">Andhra Pradesh (₹2,400/yr)</option>
+      <option value="NONE">Other / Not applicable</option>
+    </select>
+  </label>
+
+  <div class="cx-warn" id="cx-sbe-warn"></div>
+</div>
+
+<div class="cx-output">
+  <div class="cx-output-head">
+    <div>
+      <div class="cx-out-title">Monthly take-home</div>
+      <div class="cx-out-take" id="cx-sbe-monthly">₹85,395</div>
+      <div class="cx-out-sub">Annual: <strong id="cx-sbe-annual">₹10,24,740</strong></div>
+    </div>
+    <button type="button" class="cx-download-btn" id="cx-sbe-download" aria-label="Download breakup as Excel">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Download Excel
+    </button>
+  </div>
+
+  <table class="cx-breakup" id="cx-sbe-table">
+    <thead>
+      <tr><th>Component</th><th class="num">Annual ₹</th><th class="num">Monthly ₹</th></tr>
+    </thead>
+    <tbody>
+      <tr class="cx-band-head"><td colspan="3">Earnings</td></tr>
+      <tr><td>Basic Pay</td><td class="num" data-row="basic-y">₹6,00,000</td><td class="num" data-row="basic-m">₹50,000</td></tr>
+      <tr><td>HRA</td><td class="num" data-row="hra-y">₹3,00,000</td><td class="num" data-row="hra-m">₹25,000</td></tr>
+      <tr><td>LTA</td><td class="num" data-row="lta-y">₹0</td><td class="num" data-row="lta-m">₹0</td></tr>
+      <tr><td>Special Allowance</td><td class="num" data-row="special-y">₹1,99,140</td><td class="num" data-row="special-m">₹16,595</td></tr>
+      <tr class="cx-row-bold"><td>Gross Salary</td><td class="num" data-row="gross-y">₹10,99,140</td><td class="num" data-row="gross-m">₹91,595</td></tr>
+
+      <tr class="cx-band-head"><td colspan="3">Deductions</td></tr>
+      <tr><td>EPF (employee)</td><td class="num" data-row="epf-y">₹72,000</td><td class="num" data-row="epf-m">₹6,000</td></tr>
+      <tr><td>Professional Tax</td><td class="num" data-row="pt-y">₹2,400</td><td class="num" data-row="pt-m">₹200</td></tr>
+      <tr><td>Income Tax + Cess</td><td class="num" data-row="tax-y">₹0</td><td class="num" data-row="tax-m">₹0</td></tr>
+      <tr class="cx-row-bold"><td>Total Deductions</td><td class="num" data-row="totald-y">₹74,400</td><td class="num" data-row="totald-m">₹6,200</td></tr>
+
+      <tr class="cx-row-final"><td>Net In-Hand</td><td class="num" data-row="take-y">₹9,24,740</td><td class="num" data-row="take-m">₹77,062</td></tr>
+
+      <tr class="cx-band-head"><td colspan="3">CTC reconciliation</td></tr>
+      <tr><td>Annual CTC</td><td class="num" data-row="ctc-y">₹12,00,000</td><td class="num" data-row="ctc-m">₹1,00,000</td></tr>
+      <tr><td>(−) Employer PF (12% of Basic)</td><td class="num" data-row="erpf-y">₹72,000</td><td class="num" data-row="erpf-m">₹6,000</td></tr>
+      <tr><td>(−) Gratuity provision (4.81% of Basic)</td><td class="num" data-row="grat-y">₹28,860</td><td class="num" data-row="grat-m">₹2,405</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cx-output-foot">
+    Built for FY 2025-26 Indian payroll rules. All calculations run in your browser. No data stored.
+  </div>
+</div>
+
+<!-- Hidden Excel-export template (rebuilt on each compute) -->
+<div id="cx-sbe-export" aria-hidden="true"></div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) {
+    if (!isFinite(n) || n < 0) n = 0;
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  };
+  var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
+  var $ = function (id) { return document.getElementById(id); };
+
+  var slabsNew = [[400000,0],[800000,0.05],[1200000,0.10],[1600000,0.15],[2000000,0.20],[2400000,0.25],[Infinity,0.30]];
+  var slabsOld = [[250000,0],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
+  var PT_RATES = { KA:2400, MH:2500, WB:2400, TN:2496, TG:2400, KL:2496, GJ:2400, AP:2400, NONE:0 };
+
+  var ctc  = $('cx-sbe-ctc'),  ctcR = $('cx-sbe-ctc-r');
+  var bp   = $('cx-sbe-bp'),   bpR  = $('cx-sbe-bp-r');
+  var hra  = $('cx-sbe-hra'),  hraR = $('cx-sbe-hra-r');
+  var lta  = $('cx-sbe-lta'),  ltaR = $('cx-sbe-lta-r');
+  var city = $('cx-sbe-city');
+  var epf  = $('cx-sbe-epf');
+  var pt   = $('cx-sbe-pt');
+  var warnEl = $('cx-sbe-warn');
+  var regimeBtns = document.querySelectorAll('#cx-sbe-regime button');
+  var regime = 'new';
+
+  function calcSlabTax(taxable, slabs) {
+    var tax = 0, prev = 0;
+    for (var k = 0; k < slabs.length; k++) {
+      var top = slabs[k][0], rate = slabs[k][1];
+      if (taxable <= prev) break;
+      var slabAmt = (taxable <= top ? taxable : top) - prev;
+      tax += slabAmt * rate;
+      prev = top;
+      if (taxable <= top) break;
+    }
+    return Math.max(0, tax);
+  }
+
+  function calcSurcharge(taxable, taxBefore, isNew) {
+    var rate = 0;
+    if (taxable > 50000000)      rate = isNew ? 0.25 : 0.37;
+    else if (taxable > 20000000) rate = 0.25;
+    else if (taxable > 10000000) rate = 0.15;
+    else if (taxable > 5000000)  rate = 0.10;
+    return taxBefore * rate;
+  }
+
+  function compute() {
+    var CTC = parseFloat(ctc.value) || 0;
+    var basicPct = (parseFloat(bp.value) || 50) / 100;
+    var hraPct   = (parseFloat(hra.value) || 50) / 100;
+    var LTA = parseFloat(lta.value) || 0;
+
+    var Basic = CTC * basicPct;
+    var HRAcomp = Basic * hraPct;
+    var epfMode = epf.value;
+    var employerPF;
+    if (epfMode === 'none')        employerPF = 0;
+    else if (epfMode === 'capped') employerPF = Math.min(Basic * 0.12, 21600);
+    else                           employerPF = Basic * 0.12;
+    var employeePF = employerPF;
+    var gratuity = Basic * 0.0481;
+
+    var Special = CTC - Basic - HRAcomp - LTA - employerPF - gratuity;
+    var warn = '';
+    if (Special < 0) {
+      warn = 'Salary structure exceeds CTC. Reduce Basic / HRA / LTA — Special Allowance went negative.';
+      Special = 0;
+    }
+    warnEl.classList.toggle('is-on', !!warn);
+    if (warn) warnEl.textContent = warn;
+
+    var annualGross = Basic + HRAcomp + LTA + Special;
+    var stdDed = (regime === 'new') ? 75000 : 50000;
+    var taxable = Math.max(0, annualGross - stdDed);
+    var slabs = (regime === 'new') ? slabsNew : slabsOld;
+    var taxBefore = calcSlabTax(taxable, slabs);
+    var rebate = 0;
+    if (regime === 'new' && taxable <= 1200000) rebate = Math.min(taxBefore, 60000);
+    if (regime === 'old' && taxable <= 500000)  rebate = Math.min(taxBefore, 12500);
+    var taxAfter = taxBefore - rebate;
+    if (regime === 'new' && taxable > 1200000 && rebate === 0) {
+      var excess = taxable - 1200000;
+      if (taxAfter > excess) taxAfter = excess;
+    }
+    var surcharge = calcSurcharge(taxable, taxAfter, regime === 'new');
+    var cess = (taxAfter + surcharge) * 0.04;
+    var incomeTax = taxAfter + surcharge + cess;
+
+    var ptAmt = PT_RATES[pt.value] || 0;
+    var totalDed = employeePF + ptAmt + incomeTax;
+    var annualTake = annualGross - totalDed;
+    var monthlyTake = annualTake / 12;
+
+    // ── Render headline ──
+    $('cx-sbe-monthly').textContent = fmtINR(monthlyTake);
+    $('cx-sbe-annual').textContent  = fmtINR(annualTake);
+
+    // ── Render input badges ──
+    document.querySelector('#cx-sbe [data-out="ctc"]').textContent = fmtRaw(CTC);
+    document.querySelector('#cx-sbe [data-out="bp"]').textContent  = (parseFloat(bp.value) || 50) + '%';
+    document.querySelector('#cx-sbe [data-out="hra"]').textContent = (parseFloat(hra.value) || 50) + '%';
+    document.querySelector('#cx-sbe [data-out="lta"]').textContent = fmtRaw(LTA);
+
+    // ── Render table rows ──
+    var rows = {
+      'basic':   Basic,
+      'hra':     HRAcomp,
+      'lta':     LTA,
+      'special': Special,
+      'gross':   annualGross,
+      'epf':     employeePF,
+      'pt':      ptAmt,
+      'tax':     incomeTax,
+      'totald':  totalDed,
+      'take':    annualTake,
+      'ctc':     CTC,
+      'erpf':    employerPF,
+      'grat':    gratuity
+    };
+    Object.keys(rows).forEach(function (k) {
+      var y = document.querySelector('[data-row="' + k + '-y"]');
+      var m = document.querySelector('[data-row="' + k + '-m"]');
+      if (y) y.textContent = fmtINR(rows[k]);
+      if (m) m.textContent = fmtINR(rows[k] / 12);
+    });
+
+    // ── Build hidden Excel-export table ──
+    var exportRows = [
+      { type:'head', cells:['Component','Annual (₹)','Monthly (₹)'] },
+      { type:'band', cells:['Earnings'] },
+      { type:'data', cells:['Basic Pay',  Basic,    Basic/12]   },
+      { type:'data', cells:['HRA',        HRAcomp,  HRAcomp/12] },
+      { type:'data', cells:['LTA',        LTA,      LTA/12]     },
+      { type:'data', cells:['Special Allowance', Special, Special/12] },
+      { type:'bold', cells:['Gross Salary',  annualGross, annualGross/12] },
+      { type:'band', cells:['Deductions'] },
+      { type:'data', cells:['EPF (employee)',   employeePF, employeePF/12] },
+      { type:'data', cells:['Professional Tax', ptAmt,      ptAmt/12]      },
+      { type:'data', cells:['Income Tax + Cess',incomeTax,  incomeTax/12]  },
+      { type:'bold', cells:['Total Deductions', totalDed,   totalDed/12]   },
+      { type:'final',cells:['Net In-Hand',      annualTake, annualTake/12] },
+      { type:'band', cells:['CTC reconciliation'] },
+      { type:'data', cells:['Annual CTC',                       CTC,       CTC/12]        },
+      { type:'data', cells:['(−) Employer PF (12% of Basic)',   employerPF, employerPF/12]},
+      { type:'data', cells:['(−) Gratuity provision (4.81%)',   gratuity,  gratuity/12]   },
+      { type:'band', cells:['Inputs used'] },
+      { type:'data', cells:['Tax regime', (regime === 'new' ? 'New (FY 2025-26)' : 'Old'), ''] },
+      { type:'data', cells:['City',       (city.value === 'metro' ? 'Metro' : 'Non-metro'), ''] },
+      { type:'data', cells:['Basic %',    (parseFloat(bp.value) || 50) + '%', ''] },
+      { type:'data', cells:['HRA % of Basic', (parseFloat(hra.value) || 50) + '%', ''] },
+      { type:'data', cells:['EPF mode',   epf.options[epf.selectedIndex].text, ''] },
+      { type:'data', cells:['PT state',   pt.options[pt.selectedIndex].text, ''] }
+    ];
+
+    var html = '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:Calibri,Arial,sans-serif;font-size:11pt">';
+    exportRows.forEach(function (r) {
+      if (r.type === 'head') {
+        html += '<tr style="background:#0f9d58;color:#fff;font-weight:bold">';
+        r.cells.forEach(function (c, i) {
+          html += '<th style="text-align:' + (i === 0 ? 'left' : 'right') + ';padding:8px">' + escapeHtml(c) + '</th>';
+        });
+        html += '</tr>';
+      } else if (r.type === 'band') {
+        html += '<tr style="background:#e8f5e9;font-weight:bold;text-transform:uppercase;font-size:10pt"><td colspan="3" style="padding:6px 8px">' + escapeHtml(r.cells[0]) + '</td></tr>';
+      } else if (r.type === 'bold') {
+        html += '<tr style="background:#ecfdf5;font-weight:bold;color:#064e3b">';
+        r.cells.forEach(function (c, i) {
+          html += '<td style="text-align:' + (i === 0 ? 'left' : 'right') + ';padding:6px 8px">' + escapeHtml(numCell(c)) + '</td>';
+        });
+        html += '</tr>';
+      } else if (r.type === 'final') {
+        html += '<tr style="background:#064e3b;color:#fff;font-weight:bold">';
+        r.cells.forEach(function (c, i) {
+          html += '<td style="text-align:' + (i === 0 ? 'left' : 'right') + ';padding:8px">' + escapeHtml(numCell(c)) + '</td>';
+        });
+        html += '</tr>';
+      } else {
+        html += '<tr>';
+        r.cells.forEach(function (c, i) {
+          html += '<td style="text-align:' + (i === 0 ? 'left' : 'right') + ';padding:6px 8px">' + escapeHtml(numCell(c)) + '</td>';
+        });
+        html += '</tr>';
+      }
+    });
+    html += '</table>';
+    $('cx-sbe-export').innerHTML = html;
+  }
+
+  function escapeHtml(s) {
+    s = (s == null ? '' : String(s));
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function numCell(c) {
+    if (typeof c === 'number') return Math.round(c).toLocaleString('en-IN');
+    return c;
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () {
+      var v = parseFloat(numEl.value);
+      if (isFinite(v) && v <= parseFloat(rangeEl.max) && v >= parseFloat(rangeEl.min)) rangeEl.value = numEl.value;
+      compute();
+    });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+  syncPair(ctc, ctcR);
+  syncPair(bp,  bpR);
+  syncPair(hra, hraR);
+  syncPair(lta, ltaR);
+  city.addEventListener('change', compute);
+  epf.addEventListener('change', compute);
+  pt.addEventListener('change', compute);
+
+  regimeBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      regimeBtns.forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      regime = b.getAttribute('data-regime');
+      compute();
+    });
+  });
+
+  // ─── Excel download (HTML→.xls trick, no library) ───
+  $('cx-sbe-download').addEventListener('click', function () {
+    var tableHtml = $('cx-sbe-export').innerHTML;
+    if (!tableHtml) return;
+    var ctcVal = parseFloat(ctc.value) || 0;
+    var ctcLabel = ctcVal >= 100000 ? (ctcVal / 100000).toFixed(1).replace(/\.0$/, '') + 'L' : ctcVal;
+    var filename = 'salary-breakup-' + ctcLabel + '-' + (regime === 'new' ? 'new' : 'old') + '-regime.xls';
+
+    var doc = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">' +
+              '<head><meta charset="UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>' +
+              '<x:Name>Salary Breakup</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet>' +
+              '</x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body>' +
+              tableHtml + '</body></html>';
+
+    var blob = new Blob(['﻿' + doc], { type: 'application/vnd.ms-excel' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 100);
+  });
+
+  compute();
+})();
+</script>
+</div>

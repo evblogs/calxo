@@ -67,6 +67,7 @@ URLS = [
     "/salary/gratuity-calculator/",
     "/salary/epf-calculator/",
     "/salary/salary-hike-calculator/",
+    "/salary/salary-breakup-excel/",
 
     # Blog
     "/blog/",
