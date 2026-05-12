@@ -324,6 +324,25 @@
     font-size: .92em;
     font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
+  /* Prevent wide formula / code blocks from pushing the article wider than its grid column.
+     Without this, long unbroken tokens like (Taxable-2400000)*30% force the article to grow
+     and drop the right sidebar below the content. */
+  .cx-page-content pre {
+    overflow-x: auto;
+    max-width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: .9rem 1rem;
+  }
+  .cx-page-content pre code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: .85em;
+    line-height: 1.55;
+    white-space: pre;
+  }
 
   /* ═══════════ Embed CTA + modal (drives natural backlinks) ═══════════ */
   .cx-embed-cta {
