@@ -213,6 +213,10 @@ Three usual reasons. One, your company has variable pay or performance bonus tha
 
 No data leaves your browser. The calculation runs locally, the Excel file is generated locally, and the download happens directly from your browser. Calxo doesn't have an account system, an analytics-tracker on inputs, or any server that processes salary numbers. Open developer tools and check network tab if you want to verify.
 
+**Is this a salary calculation excel sheet I can save and reuse?**
+
+Yes. Click "Download Excel" to save your salary calculation excel sheet locally. Reopen it any time, copy it into your team's payroll workbook, or send it to HR. The file is a plain .xls with no macros, no external links, and no Calxo branding stripped from the worksheet itself (only the file footer mentions the source). If you want to convert it to .xlsx, open in Excel and use Save As.
+
 **Can I use this for senior citizen tax calculation?**
 
 The Old Regime slabs change for people aged 60+ (exempt up to ₹3L) and 80+ (exempt up to ₹5L). This page uses the under-60 slabs by default. For more accurate senior-citizen Old Regime math, use the [Take-Home Salary Calculator](/salary/takehome-calculator/) which has age band selection.
