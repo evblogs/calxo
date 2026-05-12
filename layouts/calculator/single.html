@@ -110,7 +110,22 @@
   .cx-nav-overview.cx-nav-active { font-style: normal; }
 
   /* ═══════════ Main content ═══════════ */
-  .cx-page { min-width: 0; padding-top: .5rem; }
+  .cx-page {
+    min-width: 0;
+    padding-top: .5rem;
+    /* Defensive: prevent any descendant (long URL, unbroken token, wide table cell)
+       from forcing the article wider than its grid cell, which would push the
+       right sidebar below the content. */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  .cx-page-content table {
+    table-layout: auto;
+    word-break: break-word;
+  }
+  /* Sidebar TOC and any sidebar text too — long H2/H3 names must wrap inside the 300px column */
+  .cx-sidebar { min-width: 0; overflow-wrap: break-word; word-wrap: break-word; }
+  .cx-sidebar a { overflow-wrap: break-word; word-wrap: break-word; }
   .cx-breadcrumb {
     font-size: .8rem;
     color: #64748b;
