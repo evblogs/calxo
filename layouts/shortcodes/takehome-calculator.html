@@ -1,61 +1,287 @@
 <div class="cx-th-widget" id="cx-th">
 <style>
-  #cx-th { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15, 23, 42, .04); }
-  @media (max-width: 760px) { #cx-th { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; } }
-  #cx-th label { display: block; margin-bottom: 1.15rem; }
-  #cx-th label > span { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
-  #cx-th label > span em { color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal; }
-  #cx-th input[type="range"] { width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem; }
-  #cx-th input[type="number"], #cx-th select { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600; box-sizing: border-box; background: #fff; }
-  #cx-th input[type="number"]:focus, #cx-th select:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15); }
-  #cx-th .cx-toggle { display: flex; background: #f1f5f9; border-radius: 8px; padding: 3px; margin-bottom: 1rem; }
-  #cx-th .cx-toggle button { flex: 1; padding: .55rem .8rem; border: 0; background: transparent; font-size: .82rem; font-weight: 600; color: #475569; border-radius: 6px; cursor: pointer; transition: all .15s ease; }
-  #cx-th .cx-toggle button.active { background: #fff; color: #2563eb; box-shadow: 0 1px 3px rgba(15, 23, 42, .08); }
-  #cx-th .cx-result { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%); color: #fff; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-  #cx-th .cx-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
-  #cx-th .cx-result > * { position: relative; }
-  #cx-th .cx-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
-  #cx-th .cx-result-value { font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 .25rem; }
-  #cx-th .cx-result-sub { font-size: .82rem; opacity: .9; margin-bottom: 1rem; }
-  #cx-th .cx-row { display: flex; justify-content: space-between; padding: .48rem 0; border-bottom: 1px solid rgba(255, 255, 255, .15); font-size: .85rem; }
+  #cx-th.cx-th-widget {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 880px) {
+    #cx-th.cx-th-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+
+  #cx-th .cx-toggle {
+    display: flex; background: #f1f5f9; border-radius: 8px; padding: 3px; margin-bottom: 1.1rem;
+  }
+  #cx-th .cx-toggle button {
+    flex: 1; padding: .6rem .8rem; border: 0; background: transparent;
+    font-size: .85rem; font-weight: 700; color: #475569; border-radius: 6px;
+    cursor: pointer; transition: all .15s ease; font-family: inherit;
+  }
+  #cx-th .cx-toggle button.active {
+    background: #fff; color: #2563eb; box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+  }
+
+  #cx-th label { display: block; margin-bottom: 1rem; }
+  #cx-th label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .85rem; font-weight: 600; color: #0f172a; margin-bottom: .35rem;
+  }
+  #cx-th label > span em {
+    color: #2563eb; font-weight: 700; font-size: .92rem; font-style: normal;
+  }
+  #cx-th input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .25rem 0 .15rem;
+  }
+  #cx-th input[type="number"], #cx-th select {
+    width: 100%; padding: .55rem .75rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .94rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff; font-family: inherit;
+  }
+  #cx-th input[type="number"]:focus, #cx-th select:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+
+  #cx-th details {
+    margin: .25rem 0 1rem; border: 1px solid #e2e8f0; border-radius: 10px;
+    background: #fff;
+  }
+  #cx-th summary {
+    cursor: pointer; padding: .65rem .85rem; font-size: .82rem;
+    font-weight: 700; color: #1e293b; list-style: none;
+    display: flex; align-items: center; gap: .45rem;
+  }
+  #cx-th summary::-webkit-details-marker { display: none; }
+  #cx-th summary::before {
+    content: ''; width: 0; height: 0;
+    border-left: 5px solid #64748b;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: transform .15s ease;
+  }
+  #cx-th details[open] > summary::before { transform: rotate(90deg); }
+  #cx-th details > div.cx-details-body { padding: .25rem .9rem .9rem; }
+
+  #cx-th .cx-radio-row {
+    display: flex; gap: .4rem; flex-wrap: wrap;
+  }
+  #cx-th .cx-radio-row label {
+    flex: 1; min-width: 0; margin: 0; cursor: pointer;
+  }
+  #cx-th .cx-radio-row label input { display: none; }
+  #cx-th .cx-radio-row label span.cx-radio-pill {
+    display: block; text-align: center; padding: .5rem .55rem;
+    background: #fff; border: 1px solid #cbd5e1; border-radius: 8px;
+    font-size: .8rem; font-weight: 600; color: #475569;
+    transition: all .15s ease;
+  }
+  #cx-th .cx-radio-row label input:checked + span.cx-radio-pill {
+    background: #2563eb; color: #fff; border-color: #2563eb;
+  }
+
+  #cx-th .cx-warn {
+    background: #fef3c7; border: 1px solid #fcd34d; color: #78350f;
+    padding: .55rem .75rem; border-radius: 8px; font-size: .8rem;
+    line-height: 1.45; margin: -.25rem 0 .8rem; display: none;
+  }
+  #cx-th .cx-warn.is-on { display: block; }
+
+  /* ═══════ Result panel ═══════ */
+  #cx-th .cx-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 14px; padding: 1.5rem 1.4rem;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  #cx-th .cx-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-th .cx-result > * { position: relative; z-index: 1; }
+
+  #cx-th .cx-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-th .cx-result-value {
+    font-size: clamp(1.85rem, 5.5vw, 2.5rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .2rem 0 .3rem;
+  }
+  #cx-th .cx-result-sub {
+    font-size: .85rem; opacity: .9; margin-bottom: 1rem;
+  }
+
+  #cx-th .cx-regime-banner {
+    background: rgba(255, 255, 255, .14); border: 1px solid rgba(255,255,255,.22);
+    border-radius: 10px; padding: .65rem .85rem; margin-bottom: 1rem;
+    font-size: .82rem; line-height: 1.45;
+  }
+  #cx-th .cx-regime-banner strong { font-weight: 800; }
+  #cx-th .cx-regime-banner em { font-style: normal; color: #d1fae5; font-weight: 800; }
+
+  #cx-th .cx-breakdown-tabs {
+    display: flex; gap: .25rem; background: rgba(255,255,255,.08);
+    border-radius: 8px; padding: 3px; margin-bottom: .65rem;
+  }
+  #cx-th .cx-breakdown-tabs button {
+    flex: 1; padding: .42rem .55rem; border: 0; background: transparent;
+    color: rgba(255,255,255,.75); font-size: .76rem; font-weight: 700;
+    border-radius: 5px; cursor: pointer; font-family: inherit;
+    transition: all .15s ease;
+  }
+  #cx-th .cx-breakdown-tabs button.is-active {
+    background: rgba(255,255,255,.18); color: #fff;
+  }
+
+  #cx-th .cx-section-label {
+    font-size: .65rem; text-transform: uppercase; letter-spacing: 1.3px;
+    opacity: .78; margin: .55rem 0 .15rem; font-weight: 700;
+  }
+  #cx-th .cx-row {
+    display: flex; justify-content: space-between;
+    padding: .42rem 0; border-bottom: 1px solid rgba(255, 255, 255, .14);
+    font-size: .85rem;
+  }
   #cx-th .cx-row:last-of-type { border-bottom: none; }
   #cx-th .cx-row strong { font-weight: 700; }
-  #cx-th .cx-row.cx-section { font-size: .73rem; text-transform: uppercase; letter-spacing: 1px; opacity: .8; padding-top: .85rem; border-bottom: none; }
-  #cx-th .cx-row.cx-total { padding-top: .65rem; font-size: .98rem; border-top: 2px solid rgba(255,255,255,.3); margin-top: .25rem; }
+  #cx-th .cx-row.cx-row-total {
+    font-size: .92rem; font-weight: 700; border-top: 2px solid rgba(255,255,255,.3);
+    margin-top: .15rem; padding-top: .55rem; border-bottom: none;
+  }
+  #cx-th .cx-takehome-card {
+    margin-top: .85rem; background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22); border-radius: 10px;
+    padding: .85rem 1rem; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  #cx-th .cx-takehome-card .lbl {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.4px; opacity: .85;
+  }
+  #cx-th .cx-takehome-card .val {
+    font-size: 1.4rem; font-weight: 800; letter-spacing: -.5px;
+  }
+
+  #cx-th .cx-tax-detail {
+    margin-top: 1rem; background: rgba(0,0,0,.12); border-radius: 8px;
+    padding: .55rem .85rem;
+  }
+  #cx-th .cx-tax-detail summary {
+    color: #fff; font-size: .8rem; opacity: .9; padding: .25rem 0;
+  }
+  #cx-th .cx-tax-detail summary::before { border-left-color: rgba(255,255,255,.7); }
+  #cx-th .cx-slab-row {
+    display: flex; justify-content: space-between; font-size: .78rem;
+    padding: .25rem 0; opacity: .92;
+  }
+  #cx-th .cx-slab-row.cx-slab-head { opacity: .7; font-size: .68rem; text-transform: uppercase; letter-spacing: 1px; }
 </style>
 
 <div class="cx-th-inputs">
-  <div class="cx-toggle">
+  <div class="cx-toggle" id="cx-th-regime">
     <button type="button" class="active" data-regime="new">New regime</button>
     <button type="button" data-regime="old">Old regime</button>
   </div>
 
   <label>
     <span>Annual CTC (₹) <em data-out="ctc">12,00,000</em></span>
-    <input type="number" id="cx-th-ctc" min="100000" max="100000000" step="50000" value="1200000" inputmode="numeric">
+    <input type="number" id="cx-th-ctc" min="180000" max="500000000" step="50000" value="1200000" inputmode="numeric">
     <input type="range" id="cx-th-ctc-r" min="200000" max="10000000" step="50000" value="1200000">
   </label>
-  <label>
-    <span>Basic as % of CTC <em data-out="bp">50%</em></span>
-    <input type="number" id="cx-th-bp" min="30" max="60" step="1" value="50" inputmode="numeric">
-    <input type="range" id="cx-th-bp-r" min="30" max="60" step="1" value="50">
-  </label>
+
   <label>
     <span>City</span>
     <select id="cx-th-city">
-      <option value="metro">Metro (Delhi/Mumbai/Chennai/Kolkata)</option>
+      <option value="metro">Metro (Delhi / Mumbai / Chennai / Kolkata)</option>
       <option value="non">Non-metro</option>
     </select>
   </label>
-  <label id="cx-th-ded-wrap" style="display:none">
-    <span>80C + 80D + other deductions (₹) <em data-out="ded">1,50,000</em></span>
-    <input type="number" id="cx-th-ded" min="0" max="500000" step="5000" value="150000" inputmode="numeric">
-    <input type="range" id="cx-th-ded-r" min="0" max="350000" step="5000" value="150000">
+
+  <label>
+    <span>Age band</span>
+    <div class="cx-radio-row">
+      <label><input type="radio" name="cx-th-age" value="below60" checked><span class="cx-radio-pill">Below 60</span></label>
+      <label><input type="radio" name="cx-th-age" value="60to80"><span class="cx-radio-pill">60–80</span></label>
+      <label><input type="radio" name="cx-th-age" value="above80"><span class="cx-radio-pill">80+</span></label>
+    </div>
   </label>
-  <label class="cx-checkbox" style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#0f172a;">
-    <input type="checkbox" id="cx-th-rent" style="width:18px;height:18px;accent-color:#2563eb;">
-    <span>I pay rent (apply HRA exemption — old regime only)</span>
+
+  <label>
+    <span>Professional tax state</span>
+    <select id="cx-th-ptstate">
+      <option value="KA">Karnataka (₹200/mo)</option>
+      <option value="MH">Maharashtra (₹2,500/yr)</option>
+      <option value="WB">West Bengal (₹200/mo)</option>
+      <option value="TN">Tamil Nadu (₹208/mo)</option>
+      <option value="TG">Telangana (₹200/mo)</option>
+      <option value="KL">Kerala (₹208/mo)</option>
+      <option value="GJ">Gujarat (₹200/mo)</option>
+      <option value="AP">Andhra Pradesh (₹200/mo)</option>
+      <option value="NONE">Other / Not applicable</option>
+    </select>
   </label>
+
+  <label>
+    <span>EPF contribution</span>
+    <select id="cx-th-epfmode">
+      <option value="statutory">Statutory: 12% of Basic</option>
+      <option value="capped">Capped at ₹1,800 / month</option>
+      <option value="none">Not applicable</option>
+    </select>
+  </label>
+
+  <details>
+    <summary>Salary structure (advanced)</summary>
+    <div class="cx-details-body">
+      <label>
+        <span>Basic as % of CTC <em data-out="bp">50%</em></span>
+        <input type="number" id="cx-th-bp" min="40" max="60" step="1" value="50" inputmode="numeric">
+        <input type="range" id="cx-th-bp-r" min="40" max="60" step="1" value="50">
+      </label>
+      <label>
+        <span>HRA as % of Basic <em data-out="hrapct">50%</em></span>
+        <input type="number" id="cx-th-hrapct" min="30" max="60" step="1" value="50" inputmode="numeric">
+        <input type="range" id="cx-th-hrapct-r" min="30" max="60" step="1" value="50">
+      </label>
+      <label>
+        <span>LTA (annual ₹) <em data-out="lta">0</em></span>
+        <input type="number" id="cx-th-lta" min="0" max="500000" step="5000" value="0" inputmode="numeric">
+        <input type="range" id="cx-th-lta-r" min="0" max="200000" step="5000" value="0">
+      </label>
+      <div class="cx-warn" id="cx-th-warn"></div>
+    </div>
+  </details>
+
+  <details id="cx-th-old-block">
+    <summary>Old-regime deductions</summary>
+    <div class="cx-details-body">
+      <label>
+        <span>80C investments (₹) <em data-out="d80c">0</em></span>
+        <input type="number" id="cx-th-80c" min="0" max="150000" step="5000" value="0" inputmode="numeric">
+        <input type="range" id="cx-th-80c-r" min="0" max="150000" step="5000" value="0">
+      </label>
+      <label>
+        <span>80D health insurance (₹) <em data-out="d80d">0</em></span>
+        <input type="number" id="cx-th-80d" min="0" max="100000" step="2500" value="0" inputmode="numeric">
+        <input type="range" id="cx-th-80d-r" min="0" max="50000" step="2500" value="0">
+      </label>
+      <label>
+        <span>NPS 80CCD(1B) (₹) <em data-out="d80nps">0</em></span>
+        <input type="number" id="cx-th-80nps" min="0" max="50000" step="5000" value="0" inputmode="numeric">
+        <input type="range" id="cx-th-80nps-r" min="0" max="50000" step="5000" value="0">
+      </label>
+      <label>
+        <span>Home loan interest 24(b) (₹) <em data-out="d24b">0</em></span>
+        <input type="number" id="cx-th-24b" min="0" max="200000" step="10000" value="0" inputmode="numeric">
+        <input type="range" id="cx-th-24b-r" min="0" max="200000" step="10000" value="0">
+      </label>
+      <label>
+        <span>Actual rent paid (annual ₹) <em data-out="rent">0</em></span>
+        <input type="number" id="cx-th-rent" min="0" max="2000000" step="10000" value="0" inputmode="numeric">
+        <input type="range" id="cx-th-rent-r" min="0" max="600000" step="10000" value="0">
+      </label>
+    </div>
+  </details>
 </div>
 
 <div class="cx-result">
@@ -63,140 +289,409 @@
   <div class="cx-result-value" id="cx-th-monthly">₹85,395</div>
   <div class="cx-result-sub">Annual take-home: <strong id="cx-th-annual">₹10,24,740</strong></div>
 
-  <div class="cx-row cx-section">CTC breakdown (annual)</div>
-  <div class="cx-row"><span>Annual CTC</span> <strong id="cx-th-c-ctc">₹12,00,000</strong></div>
-  <div class="cx-row"><span>(−) Employer PF (12% of basic)</span> <strong id="cx-th-c-epf">₹72,000</strong></div>
-  <div class="cx-row"><span>(−) Gratuity provision (4.81% of basic)</span> <strong id="cx-th-c-grat">₹28,860</strong></div>
-  <div class="cx-row"><span>= Annual gross</span> <strong id="cx-th-c-gross">₹10,99,140</strong></div>
+  <div class="cx-regime-banner" id="cx-th-regime-banner">
+    <strong>New Regime</strong> saves you <em id="cx-th-regime-savings">₹0</em> vs Old Regime.
+  </div>
 
-  <div class="cx-row cx-section">Deductions from gross</div>
-  <div class="cx-row"><span>(−) Employee PF (12% of basic)</span> <strong id="cx-th-d-epf">₹72,000</strong></div>
-  <div class="cx-row"><span>(−) Professional tax</span> <strong id="cx-th-d-pt">₹2,400</strong></div>
-  <div class="cx-row"><span>(−) Income tax (TDS)</span> <strong id="cx-th-d-tax">₹0</strong></div>
-  <div class="cx-row cx-total"><span>Take-home (annual)</span> <strong id="cx-th-c-take">₹10,24,740</strong></div>
+  <div class="cx-breakdown-tabs" id="cx-th-tabs">
+    <button type="button" class="is-active" data-tab="annual">Annual</button>
+    <button type="button" data-tab="monthly">Monthly</button>
+  </div>
+
+  <div class="cx-section-label">Earnings</div>
+  <div class="cx-row"><span>Basic Pay</span> <strong id="cx-th-e-basic">₹6,00,000</strong></div>
+  <div class="cx-row"><span>HRA</span> <strong id="cx-th-e-hra">₹3,00,000</strong></div>
+  <div class="cx-row"><span>LTA</span> <strong id="cx-th-e-lta">₹0</strong></div>
+  <div class="cx-row"><span>Special Allowance</span> <strong id="cx-th-e-special">₹0</strong></div>
+  <div class="cx-row cx-row-total"><span>Gross Salary</span> <strong id="cx-th-e-gross">₹10,99,140</strong></div>
+
+  <div class="cx-section-label">Deductions</div>
+  <div class="cx-row"><span>EPF (employee)</span> <strong id="cx-th-d-epf">₹72,000</strong></div>
+  <div class="cx-row"><span>Professional Tax</span> <strong id="cx-th-d-pt">₹2,400</strong></div>
+  <div class="cx-row"><span>Income Tax + Cess</span> <strong id="cx-th-d-tax">₹0</strong></div>
+  <div class="cx-row cx-row-total"><span>Total Deductions</span> <strong id="cx-th-d-total">₹74,400</strong></div>
+
+  <div class="cx-takehome-card">
+    <span class="lbl">Net in-hand</span>
+    <span class="val" id="cx-th-th-val">₹85,395 / mo</span>
+  </div>
+
+  <details class="cx-tax-detail" id="cx-th-taxdetail">
+    <summary>Tax breakdown</summary>
+    <div>
+      <div class="cx-slab-row"><span>Annual Gross</span><span id="cx-th-tx-gross">₹0</span></div>
+      <div class="cx-slab-row"><span>(−) Standard deduction</span><span id="cx-th-tx-std">₹75,000</span></div>
+      <div class="cx-slab-row"><span>(−) HRA exemption</span><span id="cx-th-tx-hra">₹0</span></div>
+      <div class="cx-slab-row"><span>(−) Other deductions</span><span id="cx-th-tx-other">₹0</span></div>
+      <div class="cx-slab-row" style="font-weight:800;opacity:1"><span>= Taxable income</span><span id="cx-th-tx-taxable">₹0</span></div>
+      <div class="cx-slab-row cx-slab-head" style="margin-top:.4rem"><span>Slab-by-slab</span><span>Tax</span></div>
+      <div id="cx-th-tx-slabs"></div>
+      <div class="cx-slab-row"><span>Tax before rebate</span><span id="cx-th-tx-before">₹0</span></div>
+      <div class="cx-slab-row"><span>(−) 87A rebate</span><span id="cx-th-tx-rebate">₹0</span></div>
+      <div class="cx-slab-row"><span>(+) Surcharge</span><span id="cx-th-tx-surch">₹0</span></div>
+      <div class="cx-slab-row"><span>(+) Cess (4%)</span><span id="cx-th-tx-cess">₹0</span></div>
+      <div class="cx-slab-row" style="font-weight:800;opacity:1"><span>Total income tax</span><span id="cx-th-tx-final">₹0</span></div>
+    </div>
+  </details>
 </div>
 </div>
 
 <script>
 (function () {
-  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtINR = function (n) {
+    if (!isFinite(n) || n < 0) n = 0;
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  };
   var fmtRaw = function (n) { return Math.round(n).toLocaleString('en-IN'); };
 
-  var regime = 'new';
-  var ctc = document.getElementById('cx-th-ctc');
-  var ctcR = document.getElementById('cx-th-ctc-r');
-  var bp = document.getElementById('cx-th-bp');
-  var bpR = document.getElementById('cx-th-bp-r');
-  var ded = document.getElementById('cx-th-ded');
-  var dedR = document.getElementById('cx-th-ded-r');
-  var rent = document.getElementById('cx-th-rent');
-  var citySel = document.getElementById('cx-th-city');
-  var dedWrap = document.getElementById('cx-th-ded-wrap');
-  var btns = document.querySelectorAll('#cx-th .cx-toggle button');
+  // ─── FY 2025-26 slabs ───
+  var slabsNew = [
+    [400000,  0.00],
+    [800000,  0.05],
+    [1200000, 0.10],
+    [1600000, 0.15],
+    [2000000, 0.20],
+    [2400000, 0.25],
+    [Infinity,0.30]
+  ];
+  function slabsOldByAge(age) {
+    if (age === 'above80') return [[500000,0.00],[1000000,0.20],[Infinity,0.30]];
+    if (age === '60to80')  return [[300000,0.00],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
+    return [[250000,0.00],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
+  }
 
-  var slabsNew = [[400000,0],[800000,0.05],[1200000,0.10],[1600000,0.15],[2000000,0.20],[2400000,0.25],[Infinity,0.30]];
-  var slabsOld = [[250000,0],[500000,0.05],[1000000,0.20],[Infinity,0.30]];
+  var PT_RATES = {
+    KA: 2400, MH: 2500, WB: 2400, TN: 2496, TG: 2400,
+    KL: 2496, GJ: 2400, AP: 2400, NONE: 0
+  };
+
+  // ─── DOM refs ───
+  var ctc = byId('cx-th-ctc'), ctcR = byId('cx-th-ctc-r');
+  var bp = byId('cx-th-bp'),   bpR  = byId('cx-th-bp-r');
+  var hra = byId('cx-th-hrapct'), hraR = byId('cx-th-hrapct-r');
+  var lta = byId('cx-th-lta'), ltaR = byId('cx-th-lta-r');
+  var d80c = byId('cx-th-80c'), d80cR = byId('cx-th-80c-r');
+  var d80d = byId('cx-th-80d'), d80dR = byId('cx-th-80d-r');
+  var d80nps = byId('cx-th-80nps'), d80npsR = byId('cx-th-80nps-r');
+  var d24b = byId('cx-th-24b'), d24bR = byId('cx-th-24b-r');
+  var rentEl = byId('cx-th-rent'), rentR = byId('cx-th-rent-r');
+  var citySel = byId('cx-th-city');
+  var ptSel = byId('cx-th-ptstate');
+  var epfSel = byId('cx-th-epfmode');
+  var ageRadios = document.querySelectorAll('input[name="cx-th-age"]');
+  var regimeBtns = document.querySelectorAll('#cx-th-regime button');
+  var oldBlock = byId('cx-th-old-block');
+  var warnEl = byId('cx-th-warn');
+  var tabs = document.querySelectorAll('#cx-th-tabs button');
+  var view = 'annual';
+  var regime = 'new';
+
+  function byId(x) { return document.getElementById(x); }
+
+  function getAge() {
+    for (var i = 0; i < ageRadios.length; i++) if (ageRadios[i].checked) return ageRadios[i].value;
+    return 'below60';
+  }
 
   function calcSlabTax(taxable, slabs) {
-    var tax = 0, prev = 0;
+    var tax = 0, prev = 0, breakup = [];
     for (var k = 0; k < slabs.length; k++) {
       var top = slabs[k][0], rate = slabs[k][1];
-      if (taxable <= top) { tax += (taxable - prev) * rate; break; }
-      tax += (top - prev) * rate;
+      if (taxable <= prev) break;
+      var slabAmt = (taxable <= top ? taxable : top) - prev;
+      var slabTax = slabAmt * rate;
+      if (slabAmt > 0 && rate > 0) {
+        breakup.push({
+          range: fmtINR(prev) + ' – ' + (top === Infinity ? '∞' : fmtINR(top)),
+          rate: (rate * 100).toFixed(0) + '%',
+          tax: slabTax
+        });
+      }
+      tax += slabTax;
       prev = top;
+      if (taxable <= top) break;
     }
-    return Math.max(0, tax);
+    return { tax: Math.max(0, tax), breakup: breakup };
   }
 
-  function calcSurcharge(income, taxBeforeSurcharge, isNew) {
+  function calcSurcharge(taxable, taxBefore, isNew) {
     var rate = 0;
-    if (income > 50000000) rate = isNew ? 0.25 : 0.37;
-    else if (income > 20000000) rate = 0.25;
-    else if (income > 10000000) rate = 0.15;
-    else if (income > 5000000) rate = 0.10;
-    return taxBeforeSurcharge * rate;
+    if (taxable > 50000000)      rate = isNew ? 0.25 : 0.37;
+    else if (taxable > 20000000) rate = 0.25;
+    else if (taxable > 10000000) rate = 0.15;
+    else if (taxable > 5000000)  rate = 0.10;
+    return taxBefore * rate;
   }
 
-  function compute() {
+  // ─── Pure compute for a given regime ───
+  // Returns { take, tax, gross, basic, hraComp, ltaAmt, special, employeePF, pt, hraExempt, stdDed, otherDed, taxable, breakup, taxBefore, rebate, surcharge, cess, warn }
+  function computeFor(reg) {
     var CTC = parseFloat(ctc.value) || 0;
     var basicPct = (parseFloat(bp.value) || 50) / 100;
-    var Basic = CTC * basicPct;
-    var employerPF = Basic * 0.12;
-    var gratuity = Basic * 0.0481;
-    var annualGross = CTC - employerPF - gratuity;
-    var monthlyBasic = Basic / 12;
-    var employeePF = Basic * 0.12;
-    var professionalTax = 2400; // average across states
+    var hraPctOfBasic = (parseFloat(hra.value) || 50) / 100;
+    var LTA = parseFloat(lta.value) || 0;
 
-    // HRA-related (only matters in old regime if user pays rent)
+    var Basic = CTC * basicPct;
+    var HRAcomp = Basic * hraPctOfBasic;
+
+    var epfMode = epfSel.value;
+    var employerPF;
+    if (epfMode === 'none')        employerPF = 0;
+    else if (epfMode === 'capped') employerPF = Math.min(Basic * 0.12, 21600);
+    else                           employerPF = Basic * 0.12;
+
+    var employeePF = employerPF;     // mirrors employer contribution
+    var gratuity = Basic * 0.0481;   // CTC component, not paid in cash
+
+    var Special = CTC - Basic - HRAcomp - LTA - employerPF - gratuity;
+    var warn = '';
+    if (Special < 0) {
+      warn = 'Your salary structure exceeds CTC. Reduce Basic/HRA/LTA — Special Allowance went negative.';
+      Special = 0;
+    }
+    var annualGross = Basic + HRAcomp + LTA + Special;
+
+    // HRA exemption (Old regime only)
     var hraExempt = 0;
-    if (regime === 'old' && rent.checked) {
-      var hraReceived = Basic * 0.40; // typical 40% of basic as HRA, simplified
-      var hraPctSalary = (citySel.value === 'metro') ? 0.50 : 0.40;
-      var assumedRent = Basic * 0.40; // assume rent equal to HRA for the simplified case
-      var c1 = hraReceived;
-      var c2 = Basic * hraPctSalary;
-      var c3 = Math.max(0, assumedRent - 0.10 * Basic);
-      hraExempt = Math.min(c1, c2, c3);
+    if (reg === 'old') {
+      var rentPaid = parseFloat(rentEl.value) || 0;
+      if (rentPaid > 0) {
+        var hraCapPct = (citySel.value === 'metro') ? 0.50 : 0.40;
+        var c1 = HRAcomp;
+        var c2 = Basic * hraCapPct;
+        var c3 = Math.max(0, rentPaid - 0.10 * Basic);
+        hraExempt = Math.min(c1, c2, c3);
+      }
     }
 
-    var stdDed = (regime === 'new') ? 75000 : 50000;
-    var otherDed = (regime === 'old') ? (parseFloat(ded.value) || 0) : 0;
-    var taxable = Math.max(0, annualGross - stdDed - hraExempt - otherDed);
+    var stdDed = (reg === 'new') ? 75000 : 50000;
+    var otherDed = 0;
+    if (reg === 'old') {
+      var d80c_v   = Math.min(parseFloat(d80c.value)   || 0, 150000);
+      var age = getAge();
+      var d80dCap  = (age === 'below60') ? 25000 : 50000;
+      var d80d_v   = Math.min(parseFloat(d80d.value)   || 0, d80dCap);
+      var d80nps_v = Math.min(parseFloat(d80nps.value) || 0, 50000);
+      var d24b_v   = Math.min(parseFloat(d24b.value)   || 0, 200000);
+      otherDed = d80c_v + d80d_v + d80nps_v + d24b_v;
+    }
 
-    var slabs = (regime === 'new') ? slabsNew : slabsOld;
-    var taxBefore = calcSlabTax(taxable, slabs);
+    var taxable = Math.max(0, annualGross - stdDed - hraExempt - otherDed);
+    var slabs = (reg === 'new') ? slabsNew : slabsOldByAge(getAge());
+    var slabResult = calcSlabTax(taxable, slabs);
+    var taxBefore = slabResult.tax;
+    var breakup = slabResult.breakup;
+
+    // 87A rebate
     var rebate = 0;
-    if (regime === 'new' && taxable <= 1200000) rebate = Math.min(taxBefore, 60000);
-    if (regime === 'old' && taxable <= 500000) rebate = Math.min(taxBefore, 12500);
+    if (reg === 'new' && taxable <= 1200000) rebate = Math.min(taxBefore, 60000);
+    if (reg === 'old' && taxable <= 500000)  rebate = Math.min(taxBefore, 12500);
     var taxAfter = taxBefore - rebate;
-    if (regime === 'new' && taxable > 1200000) {
+    // New-regime marginal relief above ₹12L
+    if (reg === 'new' && taxable > 1200000 && rebate === 0) {
       var excess = taxable - 1200000;
       if (taxAfter > excess) taxAfter = excess;
     }
-    var surcharge = calcSurcharge(taxable, taxAfter, regime === 'new');
+    var surcharge = calcSurcharge(taxable, taxAfter, reg === 'new');
     var cess = (taxAfter + surcharge) * 0.04;
     var incomeTax = taxAfter + surcharge + cess;
 
-    var annualTake = annualGross - employeePF - professionalTax - incomeTax;
-    var monthlyTake = annualTake / 12;
+    var pt = PT_RATES[ptSel.value] || 0;
+    var annualTake = annualGross - employeePF - pt - incomeTax;
 
-    document.getElementById('cx-th-monthly').textContent = fmtINR(monthlyTake);
-    document.getElementById('cx-th-annual').textContent = fmtINR(annualTake);
-    document.getElementById('cx-th-c-ctc').textContent = fmtINR(CTC);
-    document.getElementById('cx-th-c-epf').textContent = fmtINR(employerPF);
-    document.getElementById('cx-th-c-grat').textContent = fmtINR(gratuity);
-    document.getElementById('cx-th-c-gross').textContent = fmtINR(annualGross);
-    document.getElementById('cx-th-d-epf').textContent = fmtINR(employeePF);
-    document.getElementById('cx-th-d-pt').textContent = fmtINR(professionalTax);
-    document.getElementById('cx-th-d-tax').textContent = fmtINR(incomeTax);
-    document.getElementById('cx-th-c-take').textContent = fmtINR(annualTake);
-
-    document.querySelector('#cx-th [data-out="ctc"]').textContent = fmtRaw(CTC);
-    document.querySelector('#cx-th [data-out="bp"]').textContent = (parseFloat(bp.value) || 50) + '%';
-    var dedOut = document.querySelector('#cx-th [data-out="ded"]');
-    if (dedOut) dedOut.textContent = fmtRaw(otherDed);
+    return {
+      take: annualTake, tax: incomeTax, gross: annualGross,
+      basic: Basic, hraComp: HRAcomp, ltaAmt: LTA, special: Special,
+      employeePF: employeePF, pt: pt,
+      hraExempt: hraExempt, stdDed: stdDed, otherDed: otherDed,
+      taxable: taxable, breakup: breakup, taxBefore: taxBefore,
+      rebate: rebate, surcharge: surcharge, cess: cess, warn: warn
+    };
   }
 
+  function render() {
+    var r = computeFor(regime);
+    var rOther = computeFor(regime === 'new' ? 'old' : 'new');
+
+    // Warning
+    warnEl.classList.toggle('is-on', !!r.warn);
+    if (r.warn) warnEl.textContent = r.warn;
+
+    // Show/hide old-regime deductions
+    oldBlock.style.display = (regime === 'old') ? 'block' : 'none';
+
+    // Headline
+    var monthly = r.take / 12;
+    byId('cx-th-monthly').textContent = fmtINR(monthly);
+    byId('cx-th-annual').textContent  = fmtINR(r.take);
+
+    // Regime banner
+    var banner = byId('cx-th-regime-banner');
+    var savingsEl = byId('cx-th-regime-savings');
+    var diff = r.take - rOther.take;
+    if (Math.abs(diff) < 100) {
+      banner.innerHTML = 'Both regimes give roughly the same take-home for this scenario.';
+    } else if (diff > 0) {
+      banner.innerHTML = '<strong>' + (regime === 'new' ? 'New Regime' : 'Old Regime') +
+        '</strong> saves you <em>' + fmtINR(diff) + '</em>/yr vs ' +
+        (regime === 'new' ? 'Old' : 'New') + ' Regime.';
+    } else {
+      banner.innerHTML = 'Switch to <strong>' + (regime === 'new' ? 'Old Regime' : 'New Regime') +
+        '</strong> — it saves <em>' + fmtINR(-diff) + '</em>/yr in this scenario.';
+    }
+
+    // Earnings / deductions rows
+    var div = (view === 'monthly') ? 12 : 1;
+    function set(id, val) { byId(id).textContent = fmtINR(val / div); }
+    set('cx-th-e-basic',   r.basic);
+    set('cx-th-e-hra',     r.hraComp);
+    set('cx-th-e-lta',     r.ltaAmt);
+    set('cx-th-e-special', r.special);
+    set('cx-th-e-gross',   r.gross);
+    set('cx-th-d-epf',     r.employeePF);
+    set('cx-th-d-pt',      r.pt);
+    set('cx-th-d-tax',     r.tax);
+    set('cx-th-d-total',   r.employeePF + r.pt + r.tax);
+
+    var thLbl = (view === 'monthly') ? ' / mo' : ' / yr';
+    byId('cx-th-th-val').textContent = fmtINR(r.take / div) + thLbl;
+
+    // Tax breakdown
+    byId('cx-th-tx-gross').textContent   = fmtINR(r.gross);
+    byId('cx-th-tx-std').textContent     = fmtINR(r.stdDed);
+    byId('cx-th-tx-hra').textContent     = fmtINR(r.hraExempt);
+    byId('cx-th-tx-other').textContent   = fmtINR(r.otherDed);
+    byId('cx-th-tx-taxable').textContent = fmtINR(r.taxable);
+    byId('cx-th-tx-before').textContent  = fmtINR(r.taxBefore);
+    byId('cx-th-tx-rebate').textContent  = fmtINR(r.rebate);
+    byId('cx-th-tx-surch').textContent   = fmtINR(r.surcharge);
+    byId('cx-th-tx-cess').textContent    = fmtINR(r.cess);
+    byId('cx-th-tx-final').textContent   = fmtINR(r.tax);
+
+    var slabHtml = '';
+    if (r.breakup.length === 0) {
+      slabHtml = '<div class="cx-slab-row"><span style="opacity:.75">No tax in any slab (income within exempt range)</span><span>₹0</span></div>';
+    } else {
+      for (var i = 0; i < r.breakup.length; i++) {
+        var b = r.breakup[i];
+        slabHtml += '<div class="cx-slab-row"><span>' + b.range + ' @ ' + b.rate + '</span><span>' + fmtINR(b.tax) + '</span></div>';
+      }
+    }
+    byId('cx-th-tx-slabs').innerHTML = slabHtml;
+
+    // Echo input badges
+    document.querySelector('#cx-th [data-out="ctc"]').textContent     = fmtRaw(parseFloat(ctc.value) || 0);
+    document.querySelector('#cx-th [data-out="bp"]').textContent      = (parseFloat(bp.value) || 50) + '%';
+    document.querySelector('#cx-th [data-out="hrapct"]').textContent  = (parseFloat(hra.value) || 50) + '%';
+    document.querySelector('#cx-th [data-out="lta"]').textContent     = fmtRaw(parseFloat(lta.value) || 0);
+    document.querySelector('#cx-th [data-out="d80c"]').textContent    = fmtRaw(parseFloat(d80c.value) || 0);
+    document.querySelector('#cx-th [data-out="d80d"]').textContent    = fmtRaw(parseFloat(d80d.value) || 0);
+    document.querySelector('#cx-th [data-out="d80nps"]').textContent  = fmtRaw(parseFloat(d80nps.value) || 0);
+    document.querySelector('#cx-th [data-out="d24b"]').textContent    = fmtRaw(parseFloat(d24b.value) || 0);
+    document.querySelector('#cx-th [data-out="rent"]').textContent    = fmtRaw(parseFloat(rentEl.value) || 0);
+
+    persist();
+  }
+
+  // ─── localStorage persistence ───
+  var STORAGE_KEY = 'cxth-v2';
+  function persist() {
+    try {
+      var snap = {
+        regime: regime, view: view,
+        ctc: ctc.value, bp: bp.value, hra: hra.value, lta: lta.value,
+        d80c: d80c.value, d80d: d80d.value, d80nps: d80nps.value, d24b: d24b.value,
+        rent: rentEl.value,
+        city: citySel.value, pt: ptSel.value, epf: epfSel.value, age: getAge()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(snap));
+    } catch (e) {}
+  }
+  function restore() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      var s = JSON.parse(raw);
+      if (s.ctc) { ctc.value = s.ctc; ctcR.value = clamp(s.ctc, ctcR); }
+      if (s.bp)  { bp.value = s.bp;   bpR.value = s.bp; }
+      if (s.hra) { hra.value = s.hra; hraR.value = s.hra; }
+      if (s.lta) { lta.value = s.lta; ltaR.value = clamp(s.lta, ltaR); }
+      if (s.d80c)   { d80c.value = s.d80c;   d80cR.value = clamp(s.d80c, d80cR); }
+      if (s.d80d)   { d80d.value = s.d80d;   d80dR.value = clamp(s.d80d, d80dR); }
+      if (s.d80nps) { d80nps.value = s.d80nps; d80npsR.value = clamp(s.d80nps, d80npsR); }
+      if (s.d24b)   { d24b.value = s.d24b;   d24bR.value = clamp(s.d24b, d24bR); }
+      if (s.rent)   { rentEl.value = s.rent; rentR.value = clamp(s.rent, rentR); }
+      if (s.city)   citySel.value = s.city;
+      if (s.pt)     ptSel.value = s.pt;
+      if (s.epf)    epfSel.value = s.epf;
+      if (s.age)    {
+        for (var i = 0; i < ageRadios.length; i++) ageRadios[i].checked = (ageRadios[i].value === s.age);
+      }
+      if (s.regime) {
+        regime = s.regime;
+        regimeBtns.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-regime') === regime); });
+      }
+      if (s.view) {
+        view = s.view;
+        tabs.forEach(function (t) { t.classList.toggle('is-active', t.getAttribute('data-tab') === view); });
+      }
+    } catch (e) {}
+  }
+  function clamp(v, rangeEl) {
+    var n = parseFloat(v);
+    var mx = parseFloat(rangeEl.max), mn = parseFloat(rangeEl.min);
+    if (!isFinite(n)) return rangeEl.value;
+    if (n > mx) return mx;
+    if (n < mn) return mn;
+    return n;
+  }
+
+  // ─── Event wiring ───
   function syncPair(numEl, rangeEl) {
     if (!numEl || !rangeEl) return;
-    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
-    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+    numEl.addEventListener('input', function () {
+      var v = parseFloat(numEl.value);
+      if (isFinite(v) && v <= parseFloat(rangeEl.max) && v >= parseFloat(rangeEl.min)) rangeEl.value = numEl.value;
+      render();
+    });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; render(); });
   }
-  syncPair(ctc, ctcR); syncPair(bp, bpR); syncPair(ded, dedR);
-  rent.addEventListener('change', compute);
-  citySel.addEventListener('change', compute);
+  syncPair(ctc, ctcR);
+  syncPair(bp, bpR);
+  syncPair(hra, hraR);
+  syncPair(lta, ltaR);
+  syncPair(d80c, d80cR);
+  syncPair(d80d, d80dR);
+  syncPair(d80nps, d80npsR);
+  syncPair(d24b, d24bR);
+  syncPair(rentEl, rentR);
 
-  btns.forEach(function (b) {
+  citySel.addEventListener('change', render);
+  ptSel.addEventListener('change', render);
+  epfSel.addEventListener('change', render);
+  ageRadios.forEach(function (r) { r.addEventListener('change', render); });
+
+  regimeBtns.forEach(function (b) {
     b.addEventListener('click', function () {
-      btns.forEach(function (x) { x.classList.remove('active'); });
+      regimeBtns.forEach(function (x) { x.classList.remove('active'); });
       b.classList.add('active');
       regime = b.getAttribute('data-regime');
-      dedWrap.style.display = (regime === 'old') ? 'block' : 'none';
-      compute();
+      render();
     });
   });
 
-  compute();
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.classList.remove('is-active'); });
+      t.classList.add('is-active');
+      view = t.getAttribute('data-tab');
+      render();
+    });
+  });
+
+  restore();
+  // Auto-set HRA default when city changes from metro to non on first load (only if user hasn't touched it)
+  render();
 })();
 </script>
+</div>
