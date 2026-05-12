@@ -546,8 +546,8 @@
       "increment",
       "career"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-12"
   },
   {
     "id": "elss-vs-ppf-tax-saving",
@@ -565,8 +565,8 @@
       "tax saving",
       "mutual funds"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-12"
   },
   {
     "id": "home-loan-vs-rent-india",
