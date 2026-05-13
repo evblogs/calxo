@@ -2,12 +2,6 @@
   publish = "public"
   command = "hugo --gc --minify --cleanDestinationDir --baseURL https://www.calxo.in/"
 
-[[redirects]]
-  from   = "https://calxo.in/*"
-  to     = "https://www.calxo.in/:splat"
-  status = 301
-  force  = true
-
 [context.production.environment]
   HUGO_VERSION = "0.158.0"
   HUGO_ENV = "production"
