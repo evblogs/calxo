@@ -584,8 +584,8 @@
       "EMI",
       "real estate"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-13"
   },
   {
     "id": "mutual-fund-expense-ratio-impact",
@@ -602,8 +602,8 @@
       "index fund",
       "direct plan"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-13"
   },
   {
     "id": "loan-amortization-india",
