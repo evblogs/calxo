@@ -621,8 +621,8 @@
       "interest",
       "principal"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-14"
   },
   {
     "id": "retirement-corpus-calculation-india",
@@ -640,8 +640,8 @@
       "FIRE",
       "NPS"
     ],
-    "status": "pending",
-    "published_date": null
+    "status": "done",
+    "published_date": "2026-05-14"
   },
   {
     "id": "6-lakh-ctc-take-home-salary",
