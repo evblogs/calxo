@@ -13,7 +13,7 @@ ai_summary:
 - Enter original price + discount % to get final price and savings
 - Comparison table shows savings at 5%, 10%, 15%... 70% all at once
 - GST is usually calculated after discount on the net price
-- "Additional 10% off" on an already-discounted price is not additive
+- Additional 10% off on an already-discounted price is not additive — stacks multiply, not add
 - A 50% + 50% discount is not 100% off, it's 75% off
 ---
 
