@@ -1,0 +1,129 @@
+<div class="cx-s2h-widget" id="cx-s2h">
+<style>
+  #cx-s2h.cx-s2h-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-s2h.cx-s2h-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-s2h label { display:block; margin-bottom:1.1rem; }
+  #cx-s2h label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-s2h label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-s2h input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-s2h input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-s2h input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-s2h .cx-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-s2h .cx-result::before {
+    content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-s2h .cx-result > * { position:relative; }
+  #cx-s2h .cx-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-s2h .cx-result-value { font-size:clamp(1.85rem,5vw,2.6rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.2rem 0 1rem; }
+  #cx-s2h .cx-row { display:flex; justify-content:space-between; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-s2h .cx-row:last-of-type { border-bottom:none; }
+  #cx-s2h .cx-row strong { font-weight:700; }
+  #cx-s2h .cx-rate-grid {
+    grid-column:1/-1; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem;
+  }
+  @media(max-width:760px){ #cx-s2h .cx-rate-grid { grid-template-columns:repeat(2,1fr); } }
+  #cx-s2h .cx-rate-card {
+    background:#fff; border:1px solid #e2e8f0; border-radius:12px;
+    padding:1rem; text-align:center;
+  }
+  #cx-s2h .cx-rate-card .lbl { font-size:.75rem; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:.8px; }
+  #cx-s2h .cx-rate-card .val { font-size:1.25rem; font-weight:800; color:#1e3a8a; margin-top:.3rem; }
+</style>
+
+<div class="cx-s2h-inputs">
+  <label>
+    <span>Annual CTC (₹) <em data-out="ctc">12,00,000</em></span>
+    <input type="number" id="cx-s2h-ctc" min="100000" max="100000000" step="50000" value="1200000" inputmode="numeric">
+    <input type="range" id="cx-s2h-ctc-r" min="100000" max="10000000" step="50000" value="1200000">
+  </label>
+  <label>
+    <span>Working days/month <em data-out="days">22</em></span>
+    <input type="number" id="cx-s2h-days" min="1" max="31" step="1" value="22" inputmode="numeric">
+    <input type="range" id="cx-s2h-days-r" min="1" max="31" step="1" value="22">
+  </label>
+  <label>
+    <span>Hours per day <em data-out="hours">8</em></span>
+    <input type="number" id="cx-s2h-hours" min="1" max="24" step="0.5" value="8" inputmode="decimal">
+    <input type="range" id="cx-s2h-hours-r" min="1" max="24" step="0.5" value="8">
+  </label>
+</div>
+
+<div class="cx-result">
+  <div class="cx-result-label">Hourly Rate</div>
+  <div class="cx-result-value" id="cx-s2h-hourly">₹568</div>
+  <div class="cx-row"><span>Monthly CTC</span><strong id="cx-s2h-monthly">₹1,00,000</strong></div>
+  <div class="cx-row"><span>Daily rate</span><strong id="cx-s2h-daily">₹4,545</strong></div>
+  <div class="cx-row"><span>Working hrs/year</span><strong id="cx-s2h-hrs-yr">2,112 hrs</strong></div>
+</div>
+
+<div class="cx-rate-grid">
+  <div class="cx-rate-card"><div class="lbl">Per Minute</div><div class="val" id="cx-s2h-min">₹9.5</div></div>
+  <div class="cx-rate-card"><div class="lbl">Per Hour</div><div class="val" id="cx-s2h-hr2">₹568</div></div>
+  <div class="cx-rate-card"><div class="lbl">Per Day</div><div class="val" id="cx-s2h-day2">₹4,545</div></div>
+  <div class="cx-rate-card"><div class="lbl">Per Week</div><div class="val" id="cx-s2h-week">₹22,727</div></div>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmt = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtD = function(n){ return '₹' + n.toFixed(1); };
+
+  function compute(){
+    var ctc   = parseFloat(document.getElementById('cx-s2h-ctc').value)   || 0;
+    var days  = parseFloat(document.getElementById('cx-s2h-days').value)  || 22;
+    var hours = parseFloat(document.getElementById('cx-s2h-hours').value) || 8;
+
+    var monthly  = ctc / 12;
+    var daily    = monthly / days;
+    var hourly   = daily / hours;
+    var weekly   = daily * 5;
+    var hrsYear  = days * 12 * hours;
+    var perMin   = hourly / 60;
+
+    document.getElementById('cx-s2h-hourly').textContent  = fmt(hourly);
+    document.getElementById('cx-s2h-monthly').textContent = fmt(monthly);
+    document.getElementById('cx-s2h-daily').textContent   = fmt(daily);
+    document.getElementById('cx-s2h-hrs-yr').textContent  = Math.round(hrsYear).toLocaleString('en-IN') + ' hrs';
+
+    document.getElementById('cx-s2h-min').textContent  = fmtD(perMin);
+    document.getElementById('cx-s2h-hr2').textContent  = fmt(hourly);
+    document.getElementById('cx-s2h-day2').textContent = fmt(daily);
+    document.getElementById('cx-s2h-week').textContent = fmt(weekly);
+
+    document.querySelector('#cx-s2h [data-out="ctc"]').textContent   = Math.round(ctc).toLocaleString('en-IN');
+    document.querySelector('#cx-s2h [data-out="days"]').textContent  = days;
+    document.querySelector('#cx-s2h [data-out="hours"]').textContent = hours;
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-s2h-ctc','cx-s2h-ctc-r');
+  syncPair('cx-s2h-days','cx-s2h-days-r');
+  syncPair('cx-s2h-hours','cx-s2h-hours-r');
+  compute();
+})();
+</script>

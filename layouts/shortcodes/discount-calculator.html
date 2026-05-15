@@ -1,0 +1,116 @@
+<div class="cx-disc-widget" id="cx-disc">
+<style>
+  #cx-disc.cx-disc-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-disc.cx-disc-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-disc label { display:block; margin-bottom:1.1rem; }
+  #cx-disc label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-disc label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-disc input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-disc input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-disc input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-disc .cx-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-disc .cx-result::before {
+    content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-disc .cx-result > * { position:relative; }
+  #cx-disc .cx-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-disc .cx-result-value { font-size:clamp(2rem,5vw,2.8rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.2rem 0 1rem; }
+  #cx-disc .cx-row { display:flex; justify-content:space-between; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-disc .cx-row:last-of-type { border-bottom:none; }
+  #cx-disc .cx-row strong { font-weight:700; }
+  #cx-disc .cx-multi { grid-column:1/-1; background:#fff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; }
+  #cx-disc .cx-multi table { width:100%; border-collapse:collapse; font-size:.86rem; }
+  #cx-disc .cx-multi th { background:#f1f5f9; color:#334155; font-weight:700; text-align:left; padding:.55rem .9rem; font-size:.78rem; text-transform:uppercase; letter-spacing:.8px; }
+  #cx-disc .cx-multi td { padding:.55rem .9rem; border-top:1px solid #f1f5f9; color:#0f172a; }
+  #cx-disc .cx-multi tr:nth-child(even) td { background:#f8fafc; }
+  #cx-disc .cx-multi .hi { color:#2563eb; font-weight:700; }
+</style>
+
+<div class="cx-disc-inputs">
+  <label>
+    <span>Original price (₹) <em data-out="price">2,000</em></span>
+    <input type="number" id="cx-disc-price" min="1" max="10000000" step="1" value="2000" inputmode="numeric">
+    <input type="range" id="cx-disc-price-r" min="1" max="50000" step="1" value="2000">
+  </label>
+  <label>
+    <span>Discount <em data-out="disc">20%</em></span>
+    <input type="number" id="cx-disc-pct" min="1" max="99" step="1" value="20" inputmode="numeric">
+    <input type="range" id="cx-disc-pct-r" min="1" max="99" step="1" value="20">
+  </label>
+</div>
+
+<div class="cx-result">
+  <div class="cx-result-label">You Pay</div>
+  <div class="cx-result-value" id="cx-disc-final">₹1,600</div>
+  <div class="cx-row"><span>You save</span><strong id="cx-disc-save">₹400</strong></div>
+  <div class="cx-row"><span>Original price</span><strong id="cx-disc-orig">₹2,000</strong></div>
+  <div class="cx-row"><span>Discount amount</span><strong id="cx-disc-amt">₹400</strong></div>
+</div>
+
+<div class="cx-multi">
+  <table>
+    <thead>
+      <tr><th>Discount %</th><th>You pay</th><th>You save</th></tr>
+    </thead>
+    <tbody id="cx-disc-table"></tbody>
+  </table>
+</div>
+</div>
+
+<script>
+(function(){
+  var fmt = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  function compute(){
+    var price = parseFloat(document.getElementById('cx-disc-price').value) || 0;
+    var pct   = parseFloat(document.getElementById('cx-disc-pct').value)   || 0;
+    var save  = price * pct / 100;
+    var final = price - save;
+
+    document.getElementById('cx-disc-final').textContent = fmt(final);
+    document.getElementById('cx-disc-save').textContent  = fmt(save);
+    document.getElementById('cx-disc-orig').textContent  = fmt(price);
+    document.getElementById('cx-disc-amt').textContent   = fmt(save);
+    document.querySelector('#cx-disc [data-out="price"]').textContent = Math.round(price).toLocaleString('en-IN');
+    document.querySelector('#cx-disc [data-out="disc"]').textContent  = pct.toFixed(0) + '%';
+
+    var rows = '';
+    [5,10,15,20,25,30,40,50,60,70].forEach(function(d){
+      var s = price * d / 100;
+      var f = price - s;
+      var hi = d === Math.round(pct) ? ' class="hi"' : '';
+      rows += '<tr><td' + hi + '>' + d + '%</td><td' + hi + '>' + fmt(f) + '</td><td' + hi + '>' + fmt(s) + '</td></tr>';
+    });
+    document.getElementById('cx-disc-table').innerHTML = rows;
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-disc-price','cx-disc-price-r');
+  syncPair('cx-disc-pct','cx-disc-pct-r');
+  compute();
+})();
+</script>

@@ -1,0 +1,150 @@
+<div class="cx-margin-widget" id="cx-margin">
+<style>
+  #cx-margin.cx-margin-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-margin.cx-margin-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-margin .cx-tabs { grid-column:1/-1; display:flex; gap:.5rem; margin-bottom:.5rem; }
+  #cx-margin .cx-tab {
+    padding:.45rem 1rem; border-radius:8px; border:1px solid #e2e8f0;
+    font-size:.85rem; font-weight:600; cursor:pointer; background:#fff; color:#64748b;
+  }
+  #cx-margin .cx-tab.active { background:#2563eb; color:#fff; border-color:#2563eb; }
+  #cx-margin label { display:block; margin-bottom:1.1rem; }
+  #cx-margin label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-margin label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-margin input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-margin input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-margin input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-margin .cx-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-margin .cx-result::before {
+    content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-margin .cx-result > * { position:relative; }
+  #cx-margin .cx-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-margin .cx-result-value { font-size:clamp(2rem,5vw,2.8rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.2rem 0 1rem; }
+  #cx-margin .cx-row { display:flex; justify-content:space-between; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-margin .cx-row:last-of-type { border-bottom:none; }
+  #cx-margin .cx-row strong { font-weight:700; }
+</style>
+
+<div class="cx-tabs" id="cx-margin-tabs">
+  <button class="cx-tab active" data-mode="margin">Profit Margin</button>
+  <button class="cx-tab" data-mode="markup">Markup</button>
+  <button class="cx-tab" data-mode="reverse">Find Selling Price</button>
+</div>
+
+<div id="cx-margin-inputs" class="cx-margin-inputs">
+  <label id="cx-margin-cost-wrap">
+    <span>Cost price (₹) <em data-out="cost">500</em></span>
+    <input type="number" id="cx-margin-cost" min="1" max="10000000" step="1" value="500" inputmode="numeric">
+    <input type="range" id="cx-margin-cost-r" min="1" max="100000" step="1" value="500">
+  </label>
+  <label id="cx-margin-sell-wrap">
+    <span>Selling price (₹) <em data-out="sell">750</em></span>
+    <input type="number" id="cx-margin-sell" min="1" max="10000000" step="1" value="750" inputmode="numeric">
+    <input type="range" id="cx-margin-sell-r" min="1" max="100000" step="1" value="750">
+  </label>
+  <label id="cx-margin-pct-wrap" style="display:none">
+    <span>Target margin % <em data-out="pct">33%</em></span>
+    <input type="number" id="cx-margin-pct" min="1" max="99" step="0.1" value="33" inputmode="decimal">
+    <input type="range" id="cx-margin-pct-r" min="1" max="99" step="0.1" value="33">
+  </label>
+</div>
+
+<div class="cx-result">
+  <div class="cx-result-label" id="cx-margin-res-label">Profit Margin</div>
+  <div class="cx-result-value" id="cx-margin-res-main">33.3%</div>
+  <div class="cx-row"><span>Profit / Loss</span><strong id="cx-margin-profit">₹250</strong></div>
+  <div class="cx-row"><span>Markup</span><strong id="cx-margin-markup">50.0%</strong></div>
+  <div class="cx-row" id="cx-margin-sell-row"><span>Selling price</span><strong id="cx-margin-sell-out">₹750</strong></div>
+</div>
+</div>
+
+<script>
+(function(){
+  var mode = 'margin';
+  var fmt = function(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var fmtD = function(n){ return n.toFixed(1) + '%'; };
+
+  function compute(){
+    var cost = parseFloat(document.getElementById('cx-margin-cost').value) || 0;
+    var sell = parseFloat(document.getElementById('cx-margin-sell').value) || 0;
+    var pct  = parseFloat(document.getElementById('cx-margin-pct').value)  || 0;
+
+    if(mode === 'margin' || mode === 'markup'){
+      var profit = sell - cost;
+      var margin = sell > 0 ? (profit / sell) * 100 : 0;
+      var markup = cost > 0 ? (profit / cost) * 100 : 0;
+      document.getElementById('cx-margin-res-main').textContent = fmtD(mode === 'margin' ? margin : markup);
+      document.getElementById('cx-margin-res-label').textContent = mode === 'margin' ? 'Profit Margin' : 'Markup';
+      document.getElementById('cx-margin-profit').textContent = (profit >= 0 ? '+' : '') + fmt(profit);
+      document.getElementById('cx-margin-markup').textContent = fmtD(markup);
+      document.getElementById('cx-margin-sell-out').textContent = fmt(sell);
+      document.querySelector('#cx-margin [data-out="cost"]').textContent = Math.round(cost).toLocaleString('en-IN');
+      document.querySelector('#cx-margin [data-out="sell"]').textContent = Math.round(sell).toLocaleString('en-IN');
+    } else {
+      var sellPrice = pct < 100 ? cost / (1 - pct / 100) : 0;
+      var profitAmt = sellPrice - cost;
+      var markupPct = cost > 0 ? (profitAmt / cost) * 100 : 0;
+      document.getElementById('cx-margin-res-main').textContent = fmt(sellPrice);
+      document.getElementById('cx-margin-res-label').textContent = 'Selling Price';
+      document.getElementById('cx-margin-profit').textContent = '+' + fmt(profitAmt);
+      document.getElementById('cx-margin-markup').textContent = fmtD(markupPct);
+      document.getElementById('cx-margin-sell-out').textContent = fmt(sellPrice);
+      document.querySelector('#cx-margin [data-out="cost"]').textContent = Math.round(cost).toLocaleString('en-IN');
+      document.querySelector('#cx-margin [data-out="pct"]').textContent = pct.toFixed(1) + '%';
+    }
+  }
+
+  function syncPair(nId, rId){
+    var n = document.getElementById(nId), r = document.getElementById(rId);
+    n.addEventListener('input', function(){ r.value = n.value; compute(); });
+    r.addEventListener('input', function(){ n.value = r.value; compute(); });
+  }
+  syncPair('cx-margin-cost','cx-margin-cost-r');
+  syncPair('cx-margin-sell','cx-margin-sell-r');
+  syncPair('cx-margin-pct','cx-margin-pct-r');
+
+  document.getElementById('cx-margin-tabs').addEventListener('click', function(e){
+    var btn = e.target.closest('.cx-tab');
+    if(!btn) return;
+    mode = btn.dataset.mode;
+    document.querySelectorAll('#cx-margin .cx-tab').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var sellWrap = document.getElementById('cx-margin-sell-wrap');
+    var pctWrap  = document.getElementById('cx-margin-pct-wrap');
+    var sellRow  = document.getElementById('cx-margin-sell-row');
+    if(mode === 'reverse'){
+      sellWrap.style.display = 'none';
+      pctWrap.style.display  = 'block';
+      sellRow.style.display  = 'flex';
+    } else {
+      sellWrap.style.display = 'block';
+      pctWrap.style.display  = 'none';
+      sellRow.style.display  = 'flex';
+    }
+    compute();
+  });
+
+  compute();
+})();
+</script>
