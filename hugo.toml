@@ -112,9 +112,19 @@ URL = "/gst/"
 weight = 5
 
 [[menu.main]]
+name = "Health"
+URL = "/health/"
+weight = 6
+
+[[menu.main]]
+name = "Math"
+URL = "/math/"
+weight = 7
+
+[[menu.main]]
 name = "Conversion"
 URL = "/conversion/"
-weight = 6
+weight = 8
 identifier = "conversion"
 
 [[menu.main]]
@@ -132,7 +142,7 @@ parent = "conversion"
 [[menu.main]]
 name = "Blog"
 URL = "/blog/"
-weight = 7
+weight = 9
 
 #################### footer ################################
 
