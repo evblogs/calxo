@@ -1,190 +1,169 @@
-<div class="cx-pct-widget" id="cx-pct">
+<div id="cx-pct">
 <style>
   #cx-pct {
     margin: 1.5rem 0 2.5rem;
-    display: flex; flex-direction: column; gap: .75rem;
+    display: flex; flex-direction: column; gap: .65rem;
+    font-family: inherit;
   }
-  #cx-pct .cx-pct-row {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
+  #cx-pct .cx-row {
+    background: #f4f5f7;
+    border-radius: 10px;
     padding: 1.1rem 1.4rem;
-    display: flex; align-items: center; gap: .75rem;
+    display: flex; align-items: center; gap: .65rem;
     flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(15,23,42,.04);
   }
-  #cx-pct .cx-pct-sentence {
-    display: flex; align-items: center; gap: .5rem;
+  #cx-pct .cx-sentence {
+    display: flex; align-items: center; gap: .45rem;
     flex-wrap: wrap; flex: 1; min-width: 0;
-    font-size: 1rem; color: #334155; font-weight: 500;
+    font-size: .98rem; color: #1e293b; font-weight: 400;
   }
-  #cx-pct .cx-pct-sentence input[type="number"] {
-    width: 90px; padding: .45rem .65rem;
-    background: #fff; border: 1.5px solid #cbd5e1; border-radius: 7px;
-    font-size: .98rem; font-weight: 700; color: #0f172a;
-    text-align: center; outline: none;
-    box-sizing: border-box;
+  #cx-pct .cx-sentence input {
+    width: 80px; padding: .42rem .6rem;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: .95rem; font-weight: 500; color: #111827;
+    text-align: left; outline: none; box-sizing: border-box;
   }
-  #cx-pct .cx-pct-sentence input[type="number"]:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+  #cx-pct .cx-sentence input:focus {
+    border-color: #3b5998;
+    box-shadow: 0 0 0 2px rgba(59,89,152,.15);
   }
-  #cx-pct .cx-pct-sentence .cx-pct-unit {
-    color: #64748b; font-size: .92rem;
+  #cx-pct .cx-btn {
+    background: #3d5a8a; color: #fff;
+    border: none; border-radius: 6px;
+    padding: .52rem 1.2rem;
+    font-size: .82rem; font-weight: 700; letter-spacing: .6px;
+    text-transform: uppercase; cursor: pointer;
+    white-space: nowrap; transition: background .15s;
+    flex-shrink: 0;
   }
-  #cx-pct .cx-pct-btn {
-    background: #2563eb; color: #fff;
-    border: none; border-radius: 8px;
-    padding: .5rem 1.1rem; font-size: .88rem; font-weight: 700;
-    cursor: pointer; white-space: nowrap; letter-spacing: .3px;
-    transition: background .15s;
+  #cx-pct .cx-btn:hover { background: #2e4470; }
+  #cx-pct .cx-result-wrap {
+    display: flex; align-items: center; gap: .4rem; flex-shrink: 0;
   }
-  #cx-pct .cx-pct-btn:hover { background: #1d4ed8; }
-  #cx-pct .cx-pct-result-wrap {
-    display: flex; align-items: center; gap: .5rem;
+  #cx-pct .cx-res {
+    width: 120px; padding: .42rem .6rem;
+    background: #fff; border: 1px solid #d1d5db; border-radius: 5px;
+    font-size: .95rem; font-weight: 500; color: #111827;
+    text-align: left; box-sizing: border-box; pointer-events: none;
   }
-  #cx-pct .cx-pct-res-input {
-    width: 110px; padding: .45rem .65rem;
-    background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 7px;
-    font-size: .98rem; font-weight: 700; color: #1e3a8a;
-    text-align: center; box-sizing: border-box;
-    pointer-events: none;
+  #cx-pct .cx-unit {
+    font-size: .9rem; color: #6b7280; font-weight: 500;
   }
-  #cx-pct .cx-pct-res-unit {
-    color: #64748b; font-size: .92rem; font-weight: 600;
+  #cx-pct .cx-copy {
+    width: 32px; height: 32px;
+    background: #fff; border: 1px solid #d1d5db; border-radius: 5px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-size: .85rem; transition: border-color .15s, color .15s;
+    flex-shrink: 0;
   }
-  #cx-pct .cx-pct-copy {
-    background: #e2e8f0; border: none; border-radius: 7px;
-    color: #64748b; cursor: pointer; padding: .45rem .55rem;
-    font-size: .85rem; transition: background .15s, color .15s;
-    display: flex; align-items: center;
+  #cx-pct .cx-copy:hover { border-color: #3d5a8a; color: #3d5a8a; }
+  #cx-pct .cx-copy.copied { border-color: #16a34a; color: #16a34a; }
+  #cx-pct .cx-tips {
+    background: #fff; border: 1px solid #e5e7eb; border-radius: 8px;
+    padding: .7rem 1.2rem; font-size: .82rem; color: #6b7280;
+    margin-top: .25rem;
   }
-  #cx-pct .cx-pct-copy:hover { background: #cbd5e1; color: #1e293b; }
-  #cx-pct .cx-pct-copy.copied { background: #16a34a; color: #fff; }
+  #cx-pct .cx-tips b { color: #374151; }
   @media(max-width:640px){
-    #cx-pct .cx-pct-row { padding: .9rem 1rem; gap: .6rem; }
-    #cx-pct .cx-pct-sentence input[type="number"] { width: 75px; }
-    #cx-pct .cx-pct-res-input { width: 90px; }
-    #cx-pct .cx-pct-btn { padding: .45rem .8rem; }
+    #cx-pct .cx-row { padding: .9rem 1rem; }
+    #cx-pct .cx-sentence input { width: 68px; }
+    #cx-pct .cx-res { width: 90px; }
+    #cx-pct .cx-btn { padding: .5rem .9rem; }
   }
 </style>
 
 <!-- Row 1: What is X% of Y -->
-<div class="cx-pct-row">
-  <div class="cx-pct-sentence">
+<div class="cx-row">
+  <div class="cx-sentence">
     <span>What is</span>
     <input type="number" id="cx-p0-pct" value="15" min="0" oninput="cxP0()">
-    <span class="cx-pct-unit">%</span>
-    <span>of</span>
+    <span>% of</span>
     <input type="number" id="cx-p0-num" value="2500" oninput="cxP0()">
     <span>?</span>
   </div>
-  <button class="cx-pct-btn" onclick="cxP0()">Calculate</button>
-  <div class="cx-pct-result-wrap">
-    <input class="cx-pct-res-input" id="cx-p0-res" value="375" readonly>
-    <button class="cx-pct-copy" onclick="cxCopy('cx-p0-res',this)" title="Copy">&#9113;</button>
+  <button class="cx-btn" onclick="cxP0()">Calculate</button>
+  <div class="cx-result-wrap">
+    <input class="cx-res" id="cx-p0-res" value="375" readonly>
+    <button class="cx-copy" onclick="cxCopy('cx-p0-res',this)" title="Copy">&#9113;</button>
   </div>
 </div>
 
 <!-- Row 2: X is what % of Y -->
-<div class="cx-pct-row">
-  <div class="cx-pct-sentence">
+<div class="cx-row">
+  <div class="cx-sentence">
     <input type="number" id="cx-p1-x" value="375" min="0" oninput="cxP1()">
-    <span>is what</span>
-    <span class="cx-pct-unit">%</span>
-    <span>of</span>
+    <span>is what percent of</span>
     <input type="number" id="cx-p1-y" value="2500" oninput="cxP1()">
     <span>?</span>
   </div>
-  <button class="cx-pct-btn" onclick="cxP1()">Calculate</button>
-  <div class="cx-pct-result-wrap">
-    <input class="cx-pct-res-input" id="cx-p1-res" value="15" readonly>
-    <span class="cx-pct-res-unit">%</span>
-    <button class="cx-pct-copy" onclick="cxCopy('cx-p1-res',this)" title="Copy">&#9113;</button>
+  <button class="cx-btn" onclick="cxP1()">Calculate</button>
+  <div class="cx-result-wrap">
+    <input class="cx-res" id="cx-p1-res" value="15" readonly>
+    <span class="cx-unit">%</span>
+    <button class="cx-copy" onclick="cxCopy('cx-p1-res',this)" title="Copy">&#9113;</button>
   </div>
 </div>
 
-<!-- Row 3: % Change from A to B -->
-<div class="cx-pct-row">
-  <div class="cx-pct-sentence">
-    <span>What is the</span>
-    <span class="cx-pct-unit">%</span>
-    <span>change from</span>
+<!-- Row 3: % Change -->
+<div class="cx-row">
+  <div class="cx-sentence">
+    <span>What is the percentage increase / decrease</span>
+    <span>from</span>
     <input type="number" id="cx-p2-old" value="800" oninput="cxP2()">
     <span>to</span>
     <input type="number" id="cx-p2-new" value="950" oninput="cxP2()">
     <span>?</span>
   </div>
-  <button class="cx-pct-btn" onclick="cxP2()">Calculate</button>
-  <div class="cx-pct-result-wrap">
-    <input class="cx-pct-res-input" id="cx-p2-res" value="+18.75" readonly>
-    <span class="cx-pct-res-unit">%</span>
-    <button class="cx-pct-copy" onclick="cxCopy('cx-p2-res',this)" title="Copy">&#9113;</button>
+  <button class="cx-btn" onclick="cxP2()">Calculate</button>
+  <div class="cx-result-wrap">
+    <input class="cx-res" id="cx-p2-res" value="+18.75" readonly>
+    <span class="cx-unit">%</span>
+    <button class="cx-copy" onclick="cxCopy('cx-p2-res',this)" title="Copy">&#9113;</button>
   </div>
 </div>
 
-<!-- Row 4: Increase / Decrease by % -->
-<div class="cx-pct-row">
-  <div class="cx-pct-sentence">
-    <span>What is the</span>
-    <span class="cx-pct-unit">%</span>
-    <span>increase / decrease of</span>
+<!-- Row 4: Increase / Decrease amount -->
+<div class="cx-row">
+  <div class="cx-sentence">
+    <span>What is</span>
+    <input type="number" id="cx-p3-pct" value="20" min="0" oninput="cxP3()">
+    <span>% of</span>
     <input type="number" id="cx-p3-base" value="5000" oninput="cxP3()">
-    <span>by</span>
-    <input type="number" id="cx-p3-pct" value="20" oninput="cxP3()">
-    <span class="cx-pct-unit">%</span>
-    <span>?</span>
+    <span>increase / decrease?</span>
   </div>
-  <button class="cx-pct-btn" onclick="cxP3()">Calculate</button>
-  <div class="cx-pct-result-wrap" style="flex-direction:column;align-items:flex-start;gap:.3rem;">
+  <button class="cx-btn" onclick="cxP3()">Calculate</button>
+  <div class="cx-result-wrap" style="flex-direction:column;gap:.35rem;align-items:flex-start;">
     <div style="display:flex;align-items:center;gap:.4rem;">
-      <span style="color:#4ade80;font-size:.78rem;font-weight:700;">▲</span>
-      <input class="cx-pct-res-input" id="cx-p3-inc" value="6,000" readonly style="width:100px;">
-      <button class="cx-pct-copy" onclick="cxCopy('cx-p3-inc',this)" title="Copy">&#9113;</button>
+      <span style="font-size:.75rem;color:#16a34a;font-weight:700;">▲</span>
+      <input class="cx-res" id="cx-p3-inc" value="6,000" readonly style="width:100px;">
+      <button class="cx-copy" onclick="cxCopy('cx-p3-inc',this)" title="Copy">&#9113;</button>
     </div>
     <div style="display:flex;align-items:center;gap:.4rem;">
-      <span style="color:#f87171;font-size:.78rem;font-weight:700;">▼</span>
-      <input class="cx-pct-res-input" id="cx-p3-dec" value="4,000" readonly style="width:100px;">
-      <button class="cx-pct-copy" onclick="cxCopy('cx-p3-dec',this)" title="Copy">&#9113;</button>
+      <span style="font-size:.75rem;color:#dc2626;font-weight:700;">▼</span>
+      <input class="cx-res" id="cx-p3-dec" value="4,000" readonly style="width:100px;">
+      <button class="cx-copy" onclick="cxCopy('cx-p3-dec',this)" title="Copy">&#9113;</button>
     </div>
   </div>
+</div>
+
+<!-- Tips bar -->
+<div class="cx-tips">
+  <b>Tips:</b> Edit any field to recalculate instantly. Use Tab to move between fields. Press Enter to calculate.
 </div>
 
 <script>
 (function(){
-  function fmt(n){return Number(n.toFixed(4)).toLocaleString('en-IN',{maximumFractionDigits:4});}
+  function fmt(n){ return Number(n.toFixed(4)).toLocaleString('en-IN',{maximumFractionDigits:4}); }
+  window.cxP0=function(){ var p=parseFloat(document.getElementById('cx-p0-pct').value)||0,n=parseFloat(document.getElementById('cx-p0-num').value)||0; document.getElementById('cx-p0-res').value=fmt(p/100*n); };
+  window.cxP1=function(){ var x=parseFloat(document.getElementById('cx-p1-x').value)||0,y=parseFloat(document.getElementById('cx-p1-y').value)||0; document.getElementById('cx-p1-res').value=y?fmt(x/y*100):'0'; };
+  window.cxP2=function(){ var o=parseFloat(document.getElementById('cx-p2-old').value)||0,n=parseFloat(document.getElementById('cx-p2-new').value)||0,r=o?(n-o)/o*100:0; document.getElementById('cx-p2-res').value=(r>=0?'+':'')+fmt(r); };
+  window.cxP3=function(){ var b=parseFloat(document.getElementById('cx-p3-base').value)||0,p=parseFloat(document.getElementById('cx-p3-pct').value)||0,a=b*p/100; document.getElementById('cx-p3-inc').value=fmt(b+a); document.getElementById('cx-p3-dec').value=fmt(b-a); };
+  window.cxCopy=function(id,btn){ var v=document.getElementById(id).value; navigator.clipboard.writeText(v).then(function(){ btn.classList.add('copied'); btn.textContent='✓'; setTimeout(function(){ btn.classList.remove('copied'); btn.innerHTML='&#9113;'; },1500); }); };
 
-  window.cxP0 = function(){
-    var p=parseFloat(document.getElementById('cx-p0-pct').value)||0;
-    var n=parseFloat(document.getElementById('cx-p0-num').value)||0;
-    document.getElementById('cx-p0-res').value=fmt(p/100*n);
-  };
-  window.cxP1 = function(){
-    var x=parseFloat(document.getElementById('cx-p1-x').value)||0;
-    var y=parseFloat(document.getElementById('cx-p1-y').value)||0;
-    document.getElementById('cx-p1-res').value=y?fmt(x/y*100):'0';
-  };
-  window.cxP2 = function(){
-    var o=parseFloat(document.getElementById('cx-p2-old').value)||0;
-    var n=parseFloat(document.getElementById('cx-p2-new').value)||0;
-    var r=o?(n-o)/o*100:0;
-    document.getElementById('cx-p2-res').value=(r>=0?'+':'')+fmt(r);
-  };
-  window.cxP3 = function(){
-    var b=parseFloat(document.getElementById('cx-p3-base').value)||0;
-    var p=parseFloat(document.getElementById('cx-p3-pct').value)||0;
-    var amt=b*p/100;
-    document.getElementById('cx-p3-inc').value=fmt(b+amt);
-    document.getElementById('cx-p3-dec').value=fmt(b-amt);
-  };
-  window.cxCopy = function(id,btn){
-    var val=document.getElementById(id).value;
-    navigator.clipboard.writeText(val).then(function(){
-      btn.classList.add('copied');
-      btn.textContent='✓';
-      setTimeout(function(){ btn.classList.remove('copied'); btn.innerHTML='&#9113;'; },1500);
-    });
-  };
+  // Enter key triggers calculate on the row
+  document.getElementById('cx-pct') && document.getElementById('cx-pct').addEventListener('keydown',function(e){ if(e.key==='Enter'){ var row=e.target.closest('.cx-row'); if(row){ var btn=row.querySelector('.cx-btn'); if(btn) btn.click(); } } });
 })();
 </script>
 </div>
