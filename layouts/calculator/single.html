@@ -628,7 +628,7 @@
         <span itemprop="name">{{ .Title }}</span>
       </nav>
 
-      <h1 itemprop="headline">{{ .Title }}</h1>
+      <h1 itemprop="headline">{{ with .Params.h1 }}{{ . }}{{ else }}{{ .Title }}{{ end }}</h1>
 
       <div class="cx-meta-row">
         <div class="cx-meta-left">
