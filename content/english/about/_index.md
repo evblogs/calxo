@@ -2,7 +2,7 @@
 title: "About Calxo"
 description: "Calxo is a free online calculator hub built for Indian users. EMI, SIP, GST, income tax, salary and more, with formulas verified against RBI and Income Tax Department sources. Run by Vignesh Sampath Kumar."
 date: 2026-04-25
-lastmod: 2026-04-25
+lastmod: 2026-05-16
 image: ""
 ---
 
@@ -14,12 +14,14 @@ Calxo is a free, ad-light calculator hub for Indian users. Every tool uses India
 
 ## What we cover
 
-- **Loan calculators**: EMI, home loan, personal loan, car loan, education loan
-- **Investment calculators**: SIP, lumpsum, FD, RD, PPF, NPS, mutual fund SWP
-- **Tax calculators**: Income tax (old and new regime), capital gains, advance tax
-- **Salary and HR**: CTC to in-hand, gratuity, HRA exemption, leave encashment
-- **GST**: Inclusive, exclusive, reverse calculation, slab-wise
-- **Conversions**: Unit, length, area, currency, time
+- **Loan calculators**: EMI, home loan, personal loan, car loan, education loan, bike loan, stamp duty, FOIR
+- **Investment calculators**: SIP, lumpsum, FD, RD, PPF, NPS, compound interest, NPS Vatsalya
+- **Tax calculators**: Income tax (old and new regime), capital gains, TDS, freelancer tax under 44ADA
+- **Salary and HR**: CTC to in-hand, HRA exemption, gratuity, EPF, salary hike, salary to hourly rate
+- **GST**: Inclusive and exclusive GST, reverse calculation, lifetime vehicle tax
+- **Health**: BMI, TDEE, body fat percentage, water intake, calorie deficit
+- **Math**: Percentage, margin, discount, age, date calculators
+- **Conversions**: Live currency converter, petrol price by city
 
 ## Who runs this
 

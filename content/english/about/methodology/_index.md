@@ -2,7 +2,7 @@
 title: "Methodology: How Calxo Builds and Verifies Each Calculator"
 description: "How Calxo verifies the formula, sources the rates, and reviews each calculator for accuracy. Editorial standards, formula verification process, and the public list of statutes and circulars we cite."
 url: /about/methodology/
-lastmod: 2026-04-25
+lastmod: 2026-05-16
 ---
 
 Every calculator on Calxo follows the same five-step build-and-review process. Here's the full methodology, the sources we cite, and the editorial standards we hold the content to.
@@ -54,43 +54,6 @@ Calxo follows a **writer + reviewer** model — the same pattern medical-content
 Calxo is independent — no investor, AMC, lender or insurer funds the editorial. The "Last reviewed" date in each calculator's trust banner is the date Prem signed off on that page's current state.
 
 For corrections, methodology questions, or rate updates that lag the official notification, email us at the address on the [About page](/about/) — corrections are usually merged within 48 hours, with the `Last reviewed` date updated visibly.
-
-## Setting up feedback collection (internal note)
-
-Negative feedback from the "Was this helpful?" widget and calculator thumbs-down is sent to a Google Sheet via a Google Apps Script web app. Setup steps:
-
-1. **Create a sheet** named `Calxo Feedback` with headers in row 1: `Timestamp | Slug | Reason | Other | URL | Title | User Agent`
-2. **Open Apps Script** (Extensions → Apps Script in the sheet)
-3. Paste this code and save:
-   ```javascript
-   function doPost(e) {
-     try {
-       var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-       var data = JSON.parse(e.postData.contents);
-       sheet.appendRow([
-         new Date(),
-         data.slug || '',
-         data.reason || '',
-         data.other || '',
-         data.url || '',
-         data.title || '',
-         data.userAgent || ''
-       ]);
-       return ContentService.createTextOutput(JSON.stringify({ ok: true }))
-         .setMimeType(ContentService.MimeType.JSON);
-     } catch (err) {
-       return ContentService.createTextOutput(JSON.stringify({ ok: false, err: String(err) }))
-         .setMimeType(ContentService.MimeType.JSON);
-     }
-   }
-   ```
-4. **Deploy → New deployment → Web app**
-   - Execute as: **Me**
-   - Who has access: **Anyone**
-5. Copy the deployment URL (`https://script.google.com/macros/s/.../exec`)
-6. Paste into `hugo.toml` → `[params]` → `feedbackEndpoint = "..."`
-
-Until the endpoint is configured, feedback is logged to `localStorage` only (key `cx-feedback-log`, capped at 50 entries) and not transmitted off the device.
 
 ## Quarterly review schedule
 
