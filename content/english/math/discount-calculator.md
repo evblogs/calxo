@@ -76,3 +76,9 @@ Cross-check against [price trackers](https://www.smartprix.com/) before trusting
 - [Margin Calculator](/math/margin-calculator/) - if you're the seller calculating your profit
 - [GST Calculator](/gst/gst-calculator/) - add or remove GST from any price
 - [Percentage Calculator](/math/percentage-calculator/) - general percentage math
+
+## Sources
+
+- Consumer Protection Act, 2019 — Legal Metrology (Packaged Commodities) Rules: MRP is the maximum price; discount is applied on MRP
+- Bureau of Indian Standards — IS 15690: guidelines on pricing and labelling for consumer goods
+- GST Council: GST on discounted price = tax on post-discount transaction value (CGST Act 2017, Section 15(3))

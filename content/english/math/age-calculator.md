@@ -32,3 +32,9 @@ The calculator shows how many days until your next birthday. Useful for planning
 
 ---
 *Related: [Date Calculator](/math/date-calculator/) · [Income Tax Calculator](/tax/income-tax-calculator/)*
+
+## Sources
+
+- Date arithmetic based on Gregorian calendar — ISO 8601 standard
+- EPFO retirement age: 58 years (Employees' Provident Fund Scheme, 1952, para 69)
+- Income Tax Act, 1961 — Section 80D, 80TTB: senior citizen classification at age 60, super senior at 80

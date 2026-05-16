@@ -86,3 +86,9 @@ Platforms like Toptal, Upwork, and Contra typically pay 2–3x Indian domestic r
 - [CTC to In-Hand Calculator](/salary/takehome-calculator/) - your actual monthly take-home
 - [Salary Hike Calculator](/salary/salary-hike-calculator/) - see new hourly rate after increment
 - [Freelancer Tax Calculator](/tax/freelancer-tax-44ada-calculator/) - tax on freelance income under 44ADA
+
+## Sources
+
+- Factories Act, 1948 — Section 54: maximum 9 hours per day, Section 51: maximum 48 hours per week (basis for 8-hour default)
+- Ministry of Labour and Employment — Shops and Establishments Acts (state-specific): 22–26 working days/month conventions
+- Employees' Provident Fund and Miscellaneous Provisions Act, 1952 — employer PF contribution computed on basic salary, not CTC

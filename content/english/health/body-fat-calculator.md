@@ -42,3 +42,9 @@ The calculator shows how much of your weight is fat and how much is lean mass (m
 
 ---
 *Related: [BMI Calculator](/health/bmi-calculator/) · [TDEE Calculator](/health/tdee-calculator/) · [Water Intake Calculator](/health/water-intake-calculator/)*
+
+## Sources
+
+- American College of Sports Medicine (ACSM) — body fat percentage categories by sex and age
+- Gallagher D et al. — "Healthy percentage body fat ranges: an approach for developing guidelines based on body mass index" (American Journal of Clinical Nutrition, 2000)
+- Indian Council of Medical Research (ICMR) — data on visceral fat risk thresholds in South Asian populations

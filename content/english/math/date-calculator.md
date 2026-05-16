@@ -34,3 +34,9 @@ Visa validity: know exactly how many days remain before your visa expires.
 
 ---
 *Related: [Age Calculator](/math/age-calculator/) · [EMI Calculator](/loan/emi-calculator/)*
+
+## Sources
+
+- Date arithmetic based on Gregorian calendar — ISO 8601 standard
+- Factories Act, 1948 — Section 51 (weekly hours) and Section 54 (daily hours): basis for working-day calculations
+- Companies Act, 2013 — Notice period and tenure calculations follow standard calendar-day conventions

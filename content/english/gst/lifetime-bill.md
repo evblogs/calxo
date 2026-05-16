@@ -131,3 +131,10 @@ Only for businesses (Input Tax Credit). For individual consumers, no. Once you'v
 - [Old vs New Tax Regime](/tax/old-vs-new-tax-regime/): see which one saves you more
 - [TDS Calculator](/tax/tds-calculator/): tax already deducted from your salary, FD, rent
 - [Crorepati Clock](/investment/crorepati-clock/): the inverse, how long until your investments outgrow what you've paid in tax
+
+## Sources
+
+- Central Motor Vehicles Rules, 1989 — Rule 81 on lifetime tax applicability
+- Ministry of Road Transport and Highways — state-wise RTO tax rate notifications
+- GST Council rate schedules — applicable GST slab on vehicle purchases (notification list, updated April 2026)
+- State Finance Acts — Karnataka, Tamil Nadu, Maharashtra, Delhi RTO lifetime tax schedules (publicly available on respective state transport department portals)

@@ -38,3 +38,9 @@ A 1–2% drop in body water reduces cognitive performance measurably. In Indian 
 
 ---
 *Related: [BMI Calculator](/health/bmi-calculator/) · [TDEE Calculator](/health/tdee-calculator/) · [Body Fat Calculator](/health/body-fat-calculator/)*
+
+## Sources
+
+- Indian Council of Medical Research (ICMR) — Nutrient Requirements for Indians (2020): daily water intake recommendations by age, sex, and activity level
+- World Health Organization — Guidelines for drinking-water quality (4th edition, 2011): minimum intake thresholds
+- Popkin BM et al. — "Water, hydration and health" (Nutrition Reviews, 2010): body weight-based hydration formula (35ml/kg body weight)

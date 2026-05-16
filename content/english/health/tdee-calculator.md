@@ -44,3 +44,9 @@ Moving from sedentary (1.2) to moderate (1.55) multiplier on a 2000 kcal BMR cha
 
 ---
 *Related: [BMI Calculator](/health/bmi-calculator/) · [Body Fat Calculator](/health/body-fat-calculator/) · [Water Intake Calculator](/health/water-intake-calculator/)*
+
+## Sources
+
+- Mifflin MD, St Jeor ST et al. — "A new predictive equation for resting energy expenditure in healthy individuals" (Journal of the American Dietetic Association, 1990) — primary BMR formula used
+- Harris JA, Benedict FG — "A biometric study of human basal metabolism" (PNAS, 1919) — original Harris-Benedict equation (legacy reference)
+- Institute of Medicine — Physical Activity Level multipliers used in TDEE calculation (Dietary Reference Intakes, 2005)

@@ -82,3 +82,9 @@ Check your BMI with the [BMI Calculator](/health/bmi-calculator/) for your curre
 - [TDEE Calculator](/health/tdee-calculator/) - get your maintenance calories first
 - [BMI Calculator](/health/bmi-calculator/) - check your current BMI
 - [Body Fat Calculator](/health/body-fat-calculator/) - track body composition, not just weight
+
+## Sources
+
+- Mifflin MD, St Jeor ST et al. — "A new predictive equation for resting energy expenditure in healthy individuals" (JADA, 1990) — TDEE formula underlying this calculator
+- Hall KD et al. — "Quantification of the effect of energy imbalance on bodyweight" (The Lancet, 2011): ~7,700 kcal deficit = 1 kg fat loss estimate
+- Indian Council of Medical Research (ICMR) — Dietary Guidelines for Indians (2024): safe deficit ranges and protein recommendations

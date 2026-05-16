@@ -229,3 +229,10 @@ The Old Regime slabs change for people aged 60+ (exempt up to ₹3L) and 80+ (ex
 - [Gratuity Calculator](/salary/gratuity-calculator/): how much gratuity you'll get on exit
 - [EPF Calculator](/salary/epf-calculator/): corpus projection at retirement
 - [Salary Hike Calculator](/salary/salary-hike-calculator/): see the in-hand impact of a raise
+
+## Sources
+
+- Income Tax Act, 1961 — Section 10(13A): HRA exemption rules; Section 16: standard deduction ₹75,000 (FY 2025-26)
+- Employees' Provident Fund and Miscellaneous Provisions Act, 1952 — 12% employee contribution on basic salary
+- Employees' State Insurance Act, 1948 — ESI applicability threshold: gross salary up to ₹21,000/month
+- State-specific Professional Tax schedules — Maharashtra, Karnataka, Tamil Nadu, Andhra Pradesh, West Bengal

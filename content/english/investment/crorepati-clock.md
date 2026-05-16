@@ -118,3 +118,9 @@ If the clock tells you the date is too far out, these are the next places to loo
 - [Compound Interest Calculator](/investment/compound-interest-calculator/): pure compounding, any frequency
 - [PPF Calculator](/investment/ppf-calculator/): the safer, sovereign-backed cousin of equity SIPs
 - [NPS Calculator](/investment/nps-calculator/): retirement-specific corpus + pension projection
+
+## Sources
+
+- Compound interest formula: A = P(1 + r/n)^(nt) — standard time-value-of-money formula
+- AMFI (Association of Mutual Funds in India) — long-term Nifty 50 rolling-return data used for default CAGR assumption (12%)
+- Reserve Bank of India — current repo rate and FD benchmark rates used in comparison scenarios

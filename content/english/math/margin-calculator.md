@@ -95,3 +95,9 @@ The margin calculator handles per-unit math. For EMI on business loans or capita
 - [GST Calculator](/gst/gst-calculator/) - add or remove GST from your selling price
 - [Discount Calculator](/math/discount-calculator/) - calculate sale price after discount
 - [Percentage Calculator](/math/percentage-calculator/) - general % calculations
+
+## Sources
+
+- Gross margin formula: (Revenue − COGS) / Revenue × 100 — standard accounting definition per ICAI (Institute of Chartered Accountants of India) financial reporting conventions
+- Markup formula: (Selling Price − Cost) / Cost × 100 — standard business math
+- GST Council notifications — GST is applied on transaction value (selling price), not cost price, per CGST Act 2017, Section 15

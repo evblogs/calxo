@@ -45,3 +45,9 @@ GST calculation: price before GST ₹1,000, GST at 18% = ₹180, total ₹1,180.
 Use the [GST Calculator](/tax/gst-calculator/) for a full GST breakdown including CGST and SGST split.
 ---
 *Related: [Percentage Increase Calculator](/math/percentage-calculator/) · [GST Calculator](/tax/gst-calculator/) · [Discount Calculator](/math/percentage-calculator/)*
+
+## Sources
+
+- Standard arithmetic: percentage = (part / whole) × 100 — universally defined
+- Percentage change formula: ((new − old) / old) × 100 — standard mathematical definition
+- No regulatory body governs percentage arithmetic; the formula is consistent across all major finance and tax references (CBDT, RBI, SEBI publications)

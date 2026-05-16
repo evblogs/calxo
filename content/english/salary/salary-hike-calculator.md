@@ -97,3 +97,9 @@ Switching typically yields 25–40% hike vs an average 10–15% internal increme
 - [CTC to In-Hand Calculator](/salary/takehome-calculator/) — see your monthly take-home after the hike
 - [HRA Exemption Calculator](/salary/hra-calculator/) — check if your HRA exemption changes with the new salary
 - [Income Tax Calculator](/tax/income-tax-calculator/) — compare old vs new regime after increment
+
+## Sources
+
+- Hike percentage formula: (New CTC − Old CTC) / Old CTC × 100 — standard arithmetic
+- NAUKRI/TeamLease India Salary Benchmark Report 2025–26: average increment data for Indian corporate sector (10–12% median)
+- Income Tax Act, 1961 — new salary determines TDS liability for the remainder of the financial year

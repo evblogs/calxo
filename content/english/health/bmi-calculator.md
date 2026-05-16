@@ -36,3 +36,9 @@ The calculator shows the weight range that corresponds to BMI 18.5–25 at your 
 
 ---
 *Related: [Body Fat Calculator](/health/body-fat-calculator/) · [TDEE & Calorie Calculator](/health/tdee-calculator/) · [Water Intake Calculator](/health/water-intake-calculator/)*
+
+## Sources
+
+- World Health Organization — BMI classification for adults (WHO Global Database on Body Mass Index)
+- Indian Council of Medical Research (ICMR) — Nutrient Requirements for Indians (2020): revised BMI cut-offs for Asian populations (overweight threshold 23.0, obese threshold 27.5)
+- Misra A et al. — "Revised guidelines for diagnosis of obesity and overweight for Asian Indians" (Nutrition, 2009)
