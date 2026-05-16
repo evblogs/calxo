@@ -5,29 +5,32 @@
     display: flex; flex-direction: column; gap: .75rem;
   }
   #cx-pct .cx-pct-row {
-    background: #1e293b;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 1.1rem 1.4rem;
     display: flex; align-items: center; gap: .75rem;
     flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(15,23,42,.04);
   }
   #cx-pct .cx-pct-sentence {
     display: flex; align-items: center; gap: .5rem;
     flex-wrap: wrap; flex: 1; min-width: 0;
-    font-size: 1rem; color: #cbd5e1; font-weight: 500;
+    font-size: 1rem; color: #334155; font-weight: 500;
   }
   #cx-pct .cx-pct-sentence input[type="number"] {
     width: 90px; padding: .45rem .65rem;
-    background: #fff; border: none; border-radius: 7px;
+    background: #fff; border: 1.5px solid #cbd5e1; border-radius: 7px;
     font-size: .98rem; font-weight: 700; color: #0f172a;
     text-align: center; outline: none;
     box-sizing: border-box;
   }
   #cx-pct .cx-pct-sentence input[type="number"]:focus {
-    box-shadow: 0 0 0 3px rgba(96,165,250,.4);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.15);
   }
   #cx-pct .cx-pct-sentence .cx-pct-unit {
-    color: #94a3b8; font-size: .92rem;
+    color: #64748b; font-size: .92rem;
   }
   #cx-pct .cx-pct-btn {
     background: #2563eb; color: #fff;
@@ -42,21 +45,21 @@
   }
   #cx-pct .cx-pct-res-input {
     width: 110px; padding: .45rem .65rem;
-    background: #fff; border: none; border-radius: 7px;
+    background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 7px;
     font-size: .98rem; font-weight: 700; color: #1e3a8a;
     text-align: center; box-sizing: border-box;
     pointer-events: none;
   }
   #cx-pct .cx-pct-res-unit {
-    color: #94a3b8; font-size: .92rem; font-weight: 600;
+    color: #64748b; font-size: .92rem; font-weight: 600;
   }
   #cx-pct .cx-pct-copy {
-    background: #334155; border: none; border-radius: 7px;
-    color: #94a3b8; cursor: pointer; padding: .45rem .55rem;
+    background: #e2e8f0; border: none; border-radius: 7px;
+    color: #64748b; cursor: pointer; padding: .45rem .55rem;
     font-size: .85rem; transition: background .15s, color .15s;
     display: flex; align-items: center;
   }
-  #cx-pct .cx-pct-copy:hover { background: #475569; color: #fff; }
+  #cx-pct .cx-pct-copy:hover { background: #cbd5e1; color: #1e293b; }
   #cx-pct .cx-pct-copy.copied { background: #16a34a; color: #fff; }
   @media(max-width:640px){
     #cx-pct .cx-pct-row { padding: .9rem 1rem; gap: .6rem; }
