@@ -87,7 +87,7 @@
                   <strong style="font-size:0.9rem;">Why Trust This Guide</strong>
                   <span class="text-muted" style="font-size:0.78rem;">Updated: {{ with .Params.lastmod }}{{ time . | time.Format "Jan 2006" }}{{ else }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
                 </div>
-                {{ $aMap := dict "vignesh" (dict "name" "Vignesh" "url" "/about/") }}
+                {{ $aMap := dict "vignesh" (dict "name" "Vignesh" "url" "/about/vignesh/") }}
                 {{ $aKey := .Params.author | default "vignesh" }}
                 {{ $aInfo := index $aMap $aKey | default (index $aMap "vignesh") }}
                 <p class="mb-2" style="margin:0 0 6px 0;">Researched by <a href="{{ $aInfo.url }}" style="color:#2563eb;font-weight:600;">{{ $aInfo.name }}</a> (Calxo.in). Formulas verified against RBI, Income Tax Department, and CBDT guidelines. We update calculators every time tax slabs or rules change.</p>
