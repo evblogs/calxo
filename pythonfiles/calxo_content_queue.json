@@ -691,7 +691,8 @@
       "salary",
       "take-home"
     ],
-    "status": "pending"
+    "status": "done",
+    "published_date": "2026-05-16"
   },
   {
     "id": "25-lakh-ctc-take-home-salary",
@@ -707,7 +708,8 @@
       "salary",
       "take-home"
     ],
-    "status": "pending"
+    "status": "done",
+    "published_date": "2026-05-16"
   },
   {
     "id": "30-lakh-ctc-take-home-salary",
