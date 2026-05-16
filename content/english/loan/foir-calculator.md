@@ -1,6 +1,6 @@
 ---
-title: "FOIR Calculator: Check Loan Eligibility from Income & EMIs (2026)"
-description: "Free FOIR (Fixed Obligations to Income Ratio) calculator for home loan, personal loan, car loan eligibility in India. Computes your current FOIR, the bank's max EMI, and tells you whether your application is likely to be approved."
+title: "FOIR Calculator: Check Your Loan Eligibility Instantly"
+description: "Free FOIR calculator for India. Enter your income and existing EMIs to see your FOIR percentage, whether the bank will approve your loan, and the maximum EMI you can take on."
 date: 2026-04-25
 lastmod: 2026-04-25
 type: "calculator"
