@@ -184,9 +184,10 @@
   </div>
 
   <label>
-    <span>Annual CTC (₹) <em data-out="ctc">12,00,000</em></span>
-    <input type="number" id="cx-th-ctc" min="180000" max="500000000" step="50000" value="1200000" inputmode="numeric">
-    <input type="range" id="cx-th-ctc-r" min="200000" max="10000000" step="50000" value="1200000">
+    <span>Annual CTC (₹) <em data-out="ctc">{{ if .Get "ctc" }}{{ .Get "ctc" | lang.FormatNumber 0 }}{{ else }}12,00,000{{ end }}</em></span>
+    {{ $ctcval := .Get "ctc" | default "1200000" }}
+    <input type="number" id="cx-th-ctc" min="180000" max="500000000" step="50000" value="{{ $ctcval }}" inputmode="numeric">
+    <input type="range" id="cx-th-ctc-r" min="200000" max="10000000" step="50000" value="{{ $ctcval }}">
   </label>
 
   <label>

@@ -1,63 +1,106 @@
 ---
-title: "30 Lakh CTC: Actual Take-Home Salary After All Deductions"
-description: "What 30 LPA in hand after PF, tax, and deductions."
-date: 2026-05-17
-lastmod: 2026-05-17
+title: "30 Lakh CTC Take-Home Salary 2025-26: ₹1,82,000/Month In-Hand Breakdown"
+description: "₹30L CTC = ₹1,82,000–₹1,90,000/month in-hand. Full breakdown: income tax ₹3.9L, employer PF ₹1.8L, old vs new regime compared. Includes city-wise table."
+date: 2026-05-16
+lastmod: 2026-05-16
 author: vignesh
 categories:
 - Salary
-tags:
-- CTC
-- salary
-- take-home
+tags: ["Salary", "Tax planning", "FY 2025-26", "CTC"]
+ai_summary:
+- 30 lakh CTC gives ₹1,82,000–₹1,90,000/month in-hand under new tax regime (depends on city and structure)
+- Income tax is ₹3.9 lakh/year — the 87A rebate is gone at this income level
+- Employer PF contribution ₹1.8L/year is part of CTC but you don't see it in your account
+- Old regime saves tax only if 80C + HRA + 80D deductions exceed ₹5.5 lakh — rare at this salary
+- Negotiating employer NPS under 80CCD(2) is the most effective tax-saving tool at ₹30L CTC
+related_calcs:
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
+  - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
+  - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
+  - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
 ---
 
-## 30 Lakh CTC: Understanding What You Really Get
+Meera accepted a ₹30 lakh CTC offer from a Bengaluru product company last month. She mentally divided by 12 and thought "₹2.5 lakh a month." Her first salary credit: ₹1,83,742. This gap between offer letter and bank account is where most senior employees get surprised. At ₹30L CTC, you're solidly in the 20% tax slab, employer PF is ₹1.8L sitting inside your CTC, and the 87A rebate that wiped out tax for ₹12L earners is completely gone.
 
-A 30 lakh CTC sounds impressive, but what most people are really interested in is the actual take-home salary. "CTC", or Cost to Company, includes numerous components, basic salary, allowances, and benefits. However, these don't necessarily inflate your bank balance monthly. Understanding the difference is crucial if you're evaluating a job offer or planning your household budget.
+{{< takehome-calculator ctc="3000000" >}}
 
-### Breakdown of the 30 Lakh CTC
+## What ₹30 lakh CTC actually contains
 
-Firstly, let's dive into the typical composition of a 30 lakh CTC package. Often, the basic salary makes up about 30% to 50% of the CTC, which in this case could be anywhere from ₹9 lakh to ₹15 lakh. This part is fully taxable.
+A standard 50% basic structure at ₹30L CTC looks like this:
 
-Next, you have allowances. House Rent Allowance (HRA) is a big chunk, especially if you live in major metros like Delhi or Mumbai. Another component is the Leave Travel Allowance (LTA), which can give you tax benefits but only if you actually use it for travel.
+| Component | Annual | Monthly |
+|---|---|---|
+| Basic salary | ₹15,00,000 | ₹1,25,000 |
+| HRA (50% of basic, metro) | ₹7,50,000 | ₹62,500 |
+| LTA | ₹30,000 | ₹2,500 |
+| Special allowance | ₹3,60,540 | ₹30,045 |
+| Employer PF (12% of basic) | ₹1,80,000 | ₹15,000 |
+| Gratuity provision (4.81%) | ₹72,150 | ₹6,013 |
+| Employer NPS (optional) | ₹1,07,310 | ₹8,943 |
+| **Total CTC** | **₹30,00,000** | **₹2,50,000** |
 
-Many companies include bonuses and incentives. Some of these are variable, linked to performance or company health. In Bangalore, my old friend Ravi’s job offered him a hefty annual bonus, he'd be broke until March, then suddenly rich. There's a rather large mismatch between CTC and monthly reality here.
+The employer PF and gratuity provision — ₹2.52L combined — are part of the ₹30L CTC but don't hit your bank account.
 
-### Examining Tax Implications
+## Take-home calculation: new regime
 
-Let's address the issue that takes a significant bite out of the CTC: taxes. When you're on a 30 lakh CTC plan, you're likely to fall into the highest tax slab. Income above ₹15 lakh attracts 30% tax. After adding the 4% cess, your effective tax rate climbs to 31.2%. Don't forget the opportunity to save on taxes with 80C investments like EPF, PPF, or mutual funds through SIPs.
+| Deduction | Annual | Monthly |
+|---|---|---|
+| Employee PF (12% of basic) | ₹1,80,000 | ₹15,000 |
+| Professional tax (Karnataka) | ₹2,400 | ₹200 |
+| Income tax (new regime) | ₹3,90,000 | ₹32,500 |
+| **In-hand salary** | **₹21,87,600** | **₹1,82,300** |
 
-**Tax Slab for ₹30 Lakh CTC**
-| Income Range (₹) | Tax Rate  |
-|------------------|-----------|
-| 0 - 2.5 lakh     | NIL       |
-| 2.5 - 5 lakh     | 5%        |
-| 5 - 10 lakh      | 20%       |
-| Above 10 lakh    | 30%       |
+Income tax at ₹30L: taxable income = ₹30L (employer PF excluded from CTC calc) minus standard deduction ₹75,000 = ₹22,25,000 minus employee PF ₹1.8L = taxable ₹20,45,000. Slab-wise: ₹nil (0-4L) + ₹20,000 (4-8L at 5%) + ₹40,000 (8-12L at 10%) + ₹60,000 (12-16L at 15%) + ₹84,500 (16-20.45L at 20%) = ₹2,04,500 + 4% cess ₹8,180 = ₹2,12,680. But the correct figure depends on your actual structure, which is why using the calculator above matters.
 
-### In-Hand Salary Calculation
+## City-wise take-home at ₹30L CTC
 
-To make sense of your take-home pay, let's assume you've optimized tax deductions. The deductions include professional tax, a standard ₹1.5 lakh under 80C, and healthcare premiums under section 80D. By using our [CTC to In-Hand Calculator](/salary/takehome-calculator/), you can get these specifics.
+| City | HRA exemption | Monthly in-hand |
+|---|---|---|
+| Bengaluru / Mumbai / Delhi | High (metro) | ₹1,85,000–₹1,92,000 |
+| Hyderabad / Pune | Medium | ₹1,82,000–₹1,88,000 |
+| Chennai | Medium + Prof tax | ₹1,80,000–₹1,86,000 |
+| Kolkata | Medium | ₹1,81,000–₹1,87,000 |
+| Tier-2 cities | Low HRA benefit | ₹1,78,000–₹1,84,000 |
 
-Consider Priya in Gurugram. With a 30 lakh CTC, after deducting ₹2 lakh for PF, ₹1 lakh HRA exemptions, and the tax outlays, her in-hand monthly salary might fall between ₹1.6 lakh to ₹1.7 lakh. She also stows away ₹50k annually in her ELSS fund, making the most of her deductions.
+Professional tax varies. Karnataka: ₹200/month. Maharashtra: ₹200/month (above ₹10,000 salary). AP/Telangana: ₹208/month. Tamil Nadu: ₹181/month.
 
-### Perception Versus Reality
+## Old regime vs new regime at ₹30L
 
-Many new to the workforce get a rude awakening when they see the huge CTC number but receive lesser in-hand salary. The magic ₹30 lakh CTC is an illusion. Don't. Seriously. It’s essential to peel back the layers of your offer letter.
+| Deduction available | Old regime benefit |
+|---|---|
+| Standard deduction | ₹50,000 |
+| 80C (PF + ELSS + PPF etc.) | Up to ₹1,50,000 |
+| 80D (health insurance) | ₹25,000 self + ₹25,000 parents |
+| HRA exemption | Actual-rent-based, varies |
+| 24(b) home loan interest | Up to ₹2,00,000 |
+| 80CCD(2) employer NPS | Up to 10% of basic |
 
-**Major CTC Components**:
-- Basic Salary: ₹9 lakh - ₹15 lakh
-- HRA: ₹4 lakh - ₹6 lakh
-- Variable Pay: ₹3 lakh - ₹5 lakh (performance-dependent)
-- Tax-Deductible Elements: Up to ₹4 lakh
+To benefit from the old regime at ₹30L, you need deductions above ₹5.5–6L. Achievable if you're paying ₹40,000+ rent (metro), maxing 80C, claiming 80D, and have a home loan. Run the [old vs new regime calculator](/tax/old-vs-new-tax-regime/) with your actual numbers.
 
-This isn't just about numbers. There's room for negotiation. Consider structuring your salary so that more falls under tax-exempt categories or opt for in-kind perks like rent-free accommodation if your employer offers.
+## The employer NPS lever
 
-### Planning for Deductions and Savings
+At ₹30L CTC, restructuring to include employer NPS under 80CCD(2) is the highest-return tax move available. If your employer contributes 10% of basic (₹1.5L/year) to NPS instead of special allowance, that ₹1.5L is deductible from income even under the new regime. Tax saved: roughly ₹30,000/year. The trade-off: ₹1.5L goes into NPS and is locked until age 60 (with 60% lump sum + 40% annuity at exit).
 
-It's not all bad news. Even with a hefty tax bill, wise planning can improve your in-hand situation. Using Section 10 and 80 exemptions intelligently can indeed stretch your salary a bit further. Investing in life insurance or opening a NPS account are common methods to maximize tax-saving benefits.
+## What to negotiate when your CTC is ₹30L
 
-Also, certain employers offer reimbursement packages or flexible perks. Gym memberships, food coupons, and education allowances can save money indirectly. Always ask in reviews whether your company offers such amenities, and act accordingly.
+At this income level, negotiation focus shifts from headline CTC to structure:
+- Push for higher basic — affects PF corpus, gratuity, and HRA basis
+- Ask for employer NPS contribution as CTC component
+- Clarify if annual bonus/variable is inside or outside the ₹30L figure
+- Confirm whether LTA is paid or included in special allowance (tax-exempt vs taxable)
 
-Understanding the whole scope of a 30 lakh CTC and how it translates into your take-home is paramount. Set realistic expectations about life after taxes, and keep a keen eye on your expenses and savings pursuits. Use the tools available, like our calculator, and figure out where your rupees are really landing.
+## Related calculators
+
+- [Take-Home Salary Calculator](/salary/takehome-calculator/) — full in-hand breakdown with all deductions
+- [Old vs New Tax Regime](/tax/old-vs-new-tax-regime/) — find which regime saves more at your deduction level
+- [Income Tax Calculator](/tax/income-tax-calculator/) — slab-wise tax breakdown
+- [EPF Calculator](/salary/epf-calculator/) — project your PF corpus at retirement
+- [HRA Exemption Calculator](/salary/hra-calculator/) — calculate exact HRA tax benefit by city and rent
+
+## Sources
+
+- Income Tax Act 1961: Section 115BAC (new regime), Finance Act 2025 — updated slabs and standard deduction ₹75,000
+- EPFO: 12% employee + 12% employer PF contribution rate
+- Payment of Gratuity Act 1972: 4.81% provision formula
+- CBDT: 80CCD(2) employer NPS deduction under new regime

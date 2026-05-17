@@ -12,6 +12,8 @@ tags:
 - take-home
 ---
 
+{{< takehome-calculator ctc="800000" >}}
+
 ## Components of CTC for ₹8 Lakh Salary
 
 Your Cost to Company (CTC) package can be quite misleading. Bhai, it feels like a lot when you say "8 lakh CTC," doesn't it? However, this figure doesn't tell the complete story. In Indian salary structures, the CTC includes your basic salary, house rent allowance (HRA), transport allowance, and a few less obvious components like provident fund (PF) contributions and gratuity. Not to forget bonuses and performance pay if you are eligible for them. The in-hand salary you actually get each month is significantly less, thanks to various deductions. 

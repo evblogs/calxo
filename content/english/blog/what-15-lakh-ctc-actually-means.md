@@ -29,6 +29,8 @@ The math comes from the [take-home salary calculator](/salary/takehome-calculato
 
 ![Waterfall chart showing how ₹15 lakh CTC reduces to ₹1,00,308 per month take-home through five deduction layers, employer PF, gratuity provision, employee PF, professional tax, income tax](/images/blog/ctc-to-take-home-waterfall-15-lakh.svg)
 
+{{< takehome-calculator ctc="1500000" >}}
+
 ## The five layers between offer letter and bank account
 
 CTC stands for Cost To Company. It's literally what the employer spends on you, not what they pay you. Two of those costs never show up on your payslip. Three more get deducted before the bank credit. The result is take-home.

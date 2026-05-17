@@ -17,6 +17,8 @@ related_calcs:
 
 Rahul, a software engineer in Bengaluru, just landed a job offer with a CTC of Rs. 12,00,000. His family is thrilled, and his friends are already joking about his “1 lakh per month” salary. But when his first payslip lands, the number is much lower — closer to Rs. 85,000 per month. This is the classic Indian salary reality check. If you or someone you know is staring at that Rs. 12 lakh CTC offer letter, read on for a full, real-world breakdown of how much you actually get in hand, why the tax is zero, and how city, PF, and salary structure change your take-home.
 
+{{< takehome-calculator ctc=”1200000” >}}
+
 ## The zero-tax boundary
 
 Let’s start with a myth-buster. Nearly every CTC calculator gets this wrong: Rs. 12 lakh CTC is not a taxable salary under the new regime for FY 2025-26. That’s right — your income tax is zero. Here’s why.

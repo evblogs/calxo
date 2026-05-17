@@ -12,6 +12,8 @@ tags:
 - take-home
 ---
 
+{{< takehome-calculator ctc="2000000" >}}
+
 ## Understanding the 20 Lakh CTC
 
 Receiving a 20 lakh CTC offer might feel like hitting the jackpot. But don't celebrate just yet. The journey from the Cost to Company (CTC) figure to the actual in-hand salary is like peeling layers of an onion. You might not like what you find inside. Various deductions shrink that impressive number down to a less flashy, more modest sum that actually lands in your bank account each month.

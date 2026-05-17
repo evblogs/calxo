@@ -12,6 +12,8 @@ tags:
 - take-home
 ---
 
+{{< takehome-calculator ctc="2500000" >}}
+
 ## 25 Lakh CTC Breakdown
 
 Understanding what you're actually taking home each month is important. Seriously. Salary discussions often revolve around the CTC number, but the true picture is only clear once deductions are considered. A 25 lakh CTC sounds enticing. But how much is really hitting your bank account every month? Let's break it down.

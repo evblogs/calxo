@@ -12,6 +12,8 @@ tags:
 - take-home
 ---
 
+{{< takehome-calculator ctc="600000" >}}
+
 ## Understanding 6 Lakh CTC in Hand Salary
 
 6 lakh CTC (Cost to Company) is a common salary package in India. But what does it mean for your actual take-home pay? Many people assume that 6 lakh CTC equals ₹50,000 per month, but that’s not how it actually splits. Your in-hand salary, the money that lands in your account every month, depends on a mix of statutory deductions, taxes, and your company's salary structure. Let's break it down.

@@ -17,6 +17,8 @@ related_calcs:
 
 Ankit from Bengaluru had been dreaming about his first salary ever since he got the Rs. 10 lakh CTC offer letter from that big IT MNC. But his excitement crashed when he saw the first payslip: take-home was just Rs. 72,000, not the “83,333 per month” he’d calculated by simply dividing CTC by 12. “Arre bhai, where did my money go? My parents thought I’d be getting 80k plus!” he messaged me in a panic. And Ankit is not alone. Every fresher, every campus hire, every friend’s cousin who lands a 10 lakh CTC, gets the same shock. Let’s break down exactly why this happens, why you pay zero income tax, and how your city, company, and even your rent choices change your take-home salary.
 
+{{< takehome-calculator ctc="1000000" >}}
+
 ## The zero-tax reality for Rs. 10L earners
 
 Let’s get one thing clear right at the start: if your total CTC is Rs. 10 lakh, **you will pay zero income tax under the new tax regime** for FY 2025-26. This is not a loophole, or some CA hack. It’s the law, thanks to Section 87A rebate.
