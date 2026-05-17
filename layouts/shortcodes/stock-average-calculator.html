@@ -1,0 +1,132 @@
+<div class="cx-stockavg-widget" id="cx-stockavg">
+<style>
+  #cx-stockavg.cx-stockavg-widget {
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  #cx-stockavg .cx-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  @media(max-width:760px){ #cx-stockavg .cx-grid { grid-template-columns:1fr; gap:1.25rem; } }
+  #cx-stockavg .cx-buys { margin-bottom:1.25rem; }
+  #cx-stockavg .cx-buy-row { display:flex; gap:.75rem; align-items:center; margin-bottom:.65rem; }
+  #cx-stockavg .cx-buy-row input {
+    flex:1; padding:.55rem .7rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.95rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-stockavg .cx-buy-row input:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-stockavg .cx-buy-row label { font-size:.78rem; color:#64748b; font-weight:600; width:60px; text-align:right; flex-shrink:0; }
+  #cx-stockavg .cx-del-btn { background:none; border:none; cursor:pointer; color:#94a3b8; font-size:1.1rem; padding:0 .25rem; flex-shrink:0; }
+  #cx-stockavg .cx-del-btn:hover { color:#ef4444; }
+  #cx-stockavg .cx-add-btn {
+    background:#f1f5f9; border:1px dashed #cbd5e1; border-radius:8px;
+    padding:.55rem 1rem; font-size:.88rem; font-weight:600; color:#64748b;
+    cursor:pointer; width:100%; margin-bottom:1rem;
+  }
+  #cx-stockavg .cx-add-btn:hover { background:#e2e8f0; }
+  #cx-stockavg .cx-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-stockavg .cx-result::before {
+    content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-stockavg .cx-result > * { position:relative; }
+  #cx-stockavg .cx-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-stockavg .cx-result-value { font-size:clamp(2rem,5vw,2.8rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.2rem 0 1rem; }
+  #cx-stockavg .cx-row { display:flex; justify-content:space-between; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-stockavg .cx-row:last-of-type { border-bottom:none; }
+  #cx-stockavg .cx-row strong { font-weight:700; }
+  #cx-stockavg .cx-col-heads { display:flex; gap:.75rem; margin-bottom:.3rem; }
+  #cx-stockavg .cx-col-heads span { flex:1; font-size:.75rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:.5px; }
+  #cx-stockavg .cx-col-heads span:last-child { width:60px; text-align:right; flex:none; }
+  #cx-stockavg .cx-cmp-wrap { margin-top:1rem; }
+  #cx-stockavg .cx-cmp-row { display:flex; gap:.75rem; align-items:center; }
+  #cx-stockavg .cx-cmp-row input { flex:1; padding:.55rem .7rem; border:1px solid #cbd5e1; border-radius:8px; font-size:.95rem; font-weight:600; color:#0f172a; box-sizing:border-box; }
+  #cx-stockavg .cx-cmp-row input:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-stockavg .cx-cmp-label { font-size:.82rem; color:#64748b; font-weight:600; margin-bottom:.4rem; }
+</style>
+
+<div class="cx-grid">
+  <div>
+    <div class="cx-col-heads"><span>Price per share (₹)</span><span>Qty</span><span style="width:28px"></span></div>
+    <div class="cx-buys" id="cx-stockavg-buys"></div>
+    <button class="cx-add-btn" id="cx-stockavg-add">+ Add purchase</button>
+    <div class="cx-cmp-wrap">
+      <div class="cx-cmp-label">Current market price (₹) — to see P&amp;L</div>
+      <div class="cx-cmp-row">
+        <input type="number" id="cx-stockavg-cmp" min="0.01" step="0.01" value="" placeholder="Optional">
+      </div>
+    </div>
+  </div>
+
+  <div class="cx-result">
+    <div class="cx-result-label">Average Cost Price</div>
+    <div class="cx-result-value" id="cx-stockavg-avg">₹0</div>
+    <div class="cx-row"><span>Total shares</span><strong id="cx-stockavg-shares">0</strong></div>
+    <div class="cx-row"><span>Total invested</span><strong id="cx-stockavg-invested">₹0</strong></div>
+    <div class="cx-row" id="cx-stockavg-pl-row" style="display:none"><span>Unrealised P&amp;L</span><strong id="cx-stockavg-pl">₹0</strong></div>
+    <div class="cx-row" id="cx-stockavg-plpct-row" style="display:none"><span>Return %</span><strong id="cx-stockavg-plpct">0%</strong></div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var buysEl=document.getElementById('cx-stockavg-buys');
+  var rows=[];
+
+  function addRow(price,qty){
+    var id=Date.now()+Math.random();
+    var div=document.createElement('div');
+    div.className='cx-buy-row';
+    div.innerHTML='<input type="number" class="cx-price" min="0.01" step="0.01" placeholder="Price" value="'+(price||'')+'">'
+      +'<input type="number" class="cx-qty" min="1" step="1" placeholder="Qty" value="'+(qty||'')+'" style="max-width:80px">'
+      +'<button class="cx-del-btn" title="Remove">✕</button>';
+    div.querySelector('.cx-del-btn').addEventListener('click',function(){ buysEl.removeChild(div); calc(); });
+    div.querySelector('.cx-price').addEventListener('input',calc);
+    div.querySelector('.cx-qty').addEventListener('input',calc);
+    buysEl.appendChild(div);
+  }
+
+  // Default 3 rows
+  addRow(150,100); addRow(120,200); addRow(180,50);
+
+  document.getElementById('cx-stockavg-add').addEventListener('click',function(){ addRow('',''); });
+  document.getElementById('cx-stockavg-cmp').addEventListener('input',calc);
+
+  function fmtInr(v){ return '₹'+(Math.abs(v)>=10000000?(v/10000000).toFixed(2)+' Cr':Math.abs(v)>=100000?(v/100000).toFixed(2)+' L':Math.round(v).toLocaleString('en-IN')); }
+
+  function calc(){
+    var totalCost=0, totalQty=0;
+    buysEl.querySelectorAll('.cx-buy-row').forEach(function(row){
+      var p=+row.querySelector('.cx-price').value;
+      var q=+row.querySelector('.cx-qty').value;
+      if(p>0&&q>0){ totalCost+=p*q; totalQty+=q; }
+    });
+    var avg=totalQty>0?totalCost/totalQty:0;
+    document.getElementById('cx-stockavg-avg').textContent=avg>0?'₹'+avg.toFixed(2):'₹0';
+    document.getElementById('cx-stockavg-shares').textContent=totalQty.toLocaleString('en-IN');
+    document.getElementById('cx-stockavg-invested').textContent=fmtInr(totalCost);
+
+    var cmp=+document.getElementById('cx-stockavg-cmp').value;
+    var plRow=document.getElementById('cx-stockavg-pl-row');
+    var plPctRow=document.getElementById('cx-stockavg-plpct-row');
+    if(cmp>0&&totalQty>0){
+      var pl=(cmp-avg)*totalQty;
+      var plPct=((cmp-avg)/avg)*100;
+      document.getElementById('cx-stockavg-pl').textContent=(pl>=0?'+':'')+fmtInr(pl);
+      document.getElementById('cx-stockavg-pl').style.color=pl>=0?'#86efac':'#fca5a5';
+      document.getElementById('cx-stockavg-plpct').textContent=(plPct>=0?'+':'')+plPct.toFixed(2)+'%';
+      document.getElementById('cx-stockavg-plpct').style.color=pl>=0?'#86efac':'#fca5a5';
+      plRow.style.display='flex'; plPctRow.style.display='flex';
+    } else { plRow.style.display='none'; plPctRow.style.display='none'; }
+  }
+  calc();
+})();
+</script>

@@ -1,23 +1,21 @@
 """
 Calxo.in — Google Search Console Indexing API
-Submits all calxo.in pages to the Indexing API for faster crawling.
-
-SETUP (one-time):
-  1. Go to GSC → Settings → Users & permissions → Add user
-  2. Add: evblog-in@evblogs-url-indexing.iam.gserviceaccount.com
-  3. Set role: Owner (required for Indexing API)
-  4. Enable "Indexing API" at console.cloud.google.com for the project
+Only submits URLs that haven't been submitted before.
+Tracks submissions in calxo_gsc_submitted.json.
 
 Run: python3 calxo_gsc_index.py
+Add new pages to URLS list — already-submitted ones are skipped automatically.
 """
 
 import json, time
 from pathlib import Path
+from datetime import datetime
 
 CREDENTIALS_FILE = "/Users/luckychamp/gojournal/pythonfiles/gsc-key.json"
 BASE_URL         = "https://www.calxo.in"
+TRACKER_FILE     = Path(__file__).parent / "calxo_gsc_submitted.json"
 
-# All pages — update this list as new pages are added
+# All pages — add new ones here. Already-submitted URLs are skipped.
 URLS = [
     # Home
     "/",
@@ -49,7 +47,6 @@ URLS = [
     # Tax
     "/tax/",
     "/tax/income-tax-calculator/",
-    "/tax/gst-calculator/",
     "/tax/tds-calculator/",
     "/tax/old-vs-new-tax-regime/",
     "/tax/capital-gains-calculator/",
@@ -68,17 +65,76 @@ URLS = [
     "/salary/epf-calculator/",
     "/salary/salary-hike-calculator/",
     "/salary/salary-breakup-excel/",
+    "/salary/salary-to-hourly-calculator/",
 
     # Blog
     "/blog/",
     "/blog/sip-vs-lumpsum-india/",
     "/blog/how-much-home-loan-on-salary/",
     "/blog/old-vs-new-tax-regime-fy-2025-26/",
+    "/blog/50-30-20-budget-rule-india/",
+    "/blog/car-depreciation-india/",
+    "/blog/credit-card-interest-calculation-india/",
+    "/blog/ctc-full-form-in-salary/",
+    "/blog/debt-to-income-ratio-india/",
+    "/blog/emergency-fund-how-much-india/",
+    "/blog/epf-interest-calculation-india/",
+    "/blog/fd-vs-rd-which-is-better/",
+    "/blog/gold-investment-india-returns/",
+    "/blog/gratuity-calculation-formula-india/",
+    "/blog/home-loan-prepayment-saves-money/",
+    "/blog/how-hra-exemption-is-calculated/",
+    "/blog/inflation-impact-on-savings-india/",
+    "/blog/net-worth-calculation-india/",
+    "/blog/ppf-maturity-amount-calculation/",
+    "/blog/ppf-vs-elss-80c/",
+    "/blog/rd-interest-calculation-formula/",
+    "/blog/reverse-gst-calculation-india/",
+    "/blog/section-80c-deductions-complete-guide/",
+    "/blog/sovereign-gold-bond-vs-gold-etf/",
+    "/blog/stamp-duty-registration-charges-india/",
+    "/blog/sukanya-samriddhi-yojana-calculator/",
+    "/blog/tds-on-salary-how-it-works/",
+    "/blog/ups-vs-nps-which-is-better-2026/",
+    "/blog/30-lakh-ctc-take-home-salary/",
+    "/blog/35-lakh-ctc-take-home-salary/",
+    "/blog/6-lakh-ctc-take-home-salary/",
+    "/blog/8-lakh-ctc-take-home-salary/",
+    "/blog/home-loan-vs-renting-india/",
+    "/blog/loan-amortization-interest-heavy-start/",
+
+    # Investment — new calcs
+    "/investment/cagr-calculator/",
+    "/investment/simple-interest-calculator/",
+    "/investment/stock-average-calculator/",
+
+    # Health — new calcs
+    "/health/bmr-calculator/",
+
+    # Author
+    "/about/vignesh/",
+
+    # Categories
+    "/categories/",
+    "/categories/conversion-calculators/",
+    "/categories/gst-calculators/",
+    "/categories/health-calculators/",
+    "/categories/investment-calculators/",
+    "/categories/investment/",
+    "/categories/loan-calculators/",
+    "/categories/loans/",
+    "/categories/math-calculators/",
+    "/categories/salary--hr-calculators/",
+    "/categories/salary/",
+    "/categories/tax-calculators/",
 
     # Conversion
     "/conversion/",
     "/conversion/currency-converter/",
     "/conversion/petrol-price-today/",
+    "/conversion/petrol-price-bangalore/",
+    "/conversion/petrol-price-chennai/",
+    "/conversion/petrol-price-delhi/",
 
     # Health
     "/health/",
@@ -86,91 +142,146 @@ URLS = [
     "/health/tdee-calculator/",
     "/health/body-fat-calculator/",
     "/health/water-intake-calculator/",
+    "/health/calorie-deficit-calculator/",
 
     # Math
     "/math/",
     "/math/percentage-calculator/",
     "/math/date-calculator/",
     "/math/age-calculator/",
+    "/math/margin-calculator/",
+    "/math/discount-calculator/",
 
     # Static
     "/about/",
     "/privacy-policy/",
     "/terms-and-conditions/",
+    "/embed/",
+    "/search/",
 ]
 
+
+def load_tracker():
+    if TRACKER_FILE.exists():
+        return json.loads(TRACKER_FILE.read_text())
+    return {}
+
+def save_tracker(tracker):
+    TRACKER_FILE.write_text(json.dumps(tracker, indent=2))
 
 def get_credentials():
     from google.oauth2 import service_account
     scopes = ["https://www.googleapis.com/auth/indexing"]
-    creds  = service_account.Credentials.from_service_account_file(
+    return service_account.Credentials.from_service_account_file(
         CREDENTIALS_FILE, scopes=scopes
     )
-    return creds
 
-
-def submit_url(session, url, notification_type="URL_UPDATED"):
-    """Submit a URL to the Indexing API."""
+def submit_url(session, url):
     endpoint = "https://indexing.googleapis.com/v3/urlNotifications:publish"
-    payload  = {"url": url, "type": notification_type}
-    resp     = session.post(endpoint, json=payload)
+    resp = session.post(endpoint, json={"url": url, "type": "URL_UPDATED"})
     return resp.status_code, resp.json()
 
 
-def main():
-    import google.auth.transport.requests as google_requests
-
-    print("=" * 65)
-    print("  Calxo.in — GSC Indexing API Submission")
-    print("=" * 65)
-
+def post_slack(submitted, total, errors):
+    """Post a summary to #evblogs-dailypost via Slack webhook."""
+    import urllib.request, ssl
+    env_file = "/Users/luckychamp/gojournal/pythonfiles/.env"
+    webhook = None
     try:
-        creds   = get_credentials()
-        authed  = google_requests.AuthorizedSession(creds)
-    except Exception as e:
-        print(f"\n  ERROR loading credentials: {e}")
-        print("  Make sure the service account JSON is at:")
-        print(f"  {CREDENTIALS_FILE}")
+        for line in open(env_file).read().splitlines():
+            if line.startswith("SLACK_WEBHOOK_URL="):
+                webhook = line.split("=", 1)[1].strip().strip('"').strip("'")
+                break
+    except Exception:
+        pass
+    if not webhook:
+        print("  Slack: webhook not found, skipping.")
         return
 
+    today   = datetime.now().strftime("%d %b %Y")
+    done    = len([u for u in load_tracker()])
+    remaining = total - done
+    lines   = "\n".join(f"  • {u.replace(BASE_URL,'')}" for u in submitted) or "  • (none)"
+    msg = (
+        f"*calxo.in — GSC Indexing API — {today}*\n\n"
+        f"• Submitted today  : {len(submitted)} URLs\n"
+        f"• Total done       : {done} / {total} URLs\n"
+        f"• Remaining        : {remaining} URLs\n\n"
+        f"*Today's batch:*\n{lines}"
+        + (f"\n\n⚠️ {len(errors)} failed: " + ", ".join(u for u,_ in errors) if errors else "")
+    )
+    try:
+        payload = json.dumps({"text": msg}).encode()
+        req = urllib.request.Request(webhook, data=payload, headers={"Content-Type": "application/json"})
+        ctx = ssl.create_default_context()
+        urllib.request.urlopen(req, timeout=10, context=ctx)
+        print("  Slack notification sent.")
+    except Exception as e:
+        print(f"  Slack failed: {e}")
+
+
+def main():
+    import sys
+    import google.auth.transport.requests as google_requests
+
+    force = "--force" in sys.argv   # re-submit all URLs regardless of tracker
+
+    print("=" * 65)
+    print("  Calxo.in — GSC Indexing API")
+    print("=" * 65)
+
+    tracker   = load_tracker()
     full_urls = [BASE_URL + path for path in URLS]
-    print(f"\n  Submitting {len(full_urls)} URLs...\n")
+    new_urls  = full_urls if force else [u for u in full_urls if u not in tracker]
 
-    results   = {"success": [], "error": []}
+    print(f"\n  Total URLs       : {len(full_urls)}")
+    print(f"  Already submitted: {len(full_urls) - len(new_urls)}")
+    print(f"  To submit now    : {len(new_urls)}")
+    if force:
+        print("  (--force: re-submitting all)")
 
-    for url in full_urls:
+    if not new_urls:
+        print("\n  Nothing new to submit. Add URLs to URLS list or use --force.")
+        return
+
+    try:
+        creds  = get_credentials()
+        authed = google_requests.AuthorizedSession(creds)
+    except Exception as e:
+        print(f"\n  ERROR loading credentials: {e}")
+        return
+
+    print()
+    results = {"success": [], "error": []}
+
+    for url in new_urls:
         status, body = submit_url(authed, url)
         if status == 200:
             results["success"].append(url)
+            tracker[url] = datetime.now().strftime("%Y-%m-%d")
             print(f"  ✓  {url}")
         else:
             err = body.get("error", {}).get("message", str(body))
             results["error"].append((url, err))
             print(f"  ✗  {url}  →  {err}")
-        time.sleep(0.5)   # stay under quota (600 req/day)
+        time.sleep(0.5)
+
+    save_tracker(tracker)
 
     print(f"\n{'='*65}")
     print(f"  Done. {len(results['success'])} submitted, {len(results['error'])} failed.")
+    print(f"  Tracker saved → {TRACKER_FILE}")
 
     if results["error"]:
         print("\n  Failed URLs:")
         for url, err in results["error"]:
-            print(f"    {url}")
-            print(f"      → {err}")
+            print(f"    {url}  →  {err}")
 
-    # Common error messages and fixes
-    if results["error"]:
-        msgs = " ".join(e for _, e in results["error"]).lower()
-        if "permission" in msgs or "403" in msgs:
-            print("\n  FIX: Service account not added as Owner in GSC.")
-            print("  → GSC → calxo.in → Settings → Users & permissions")
-            print("  → Add: evblog-in@evblogs-url-indexing.iam.gserviceaccount.com (Owner)")
-        if "not enabled" in msgs or "api" in msgs:
-            print("\n  FIX: Indexing API not enabled.")
-            print("  → console.cloud.google.com → APIs & Services → Enable 'Indexing API'")
+    print(f"\n  Check GSC → Indexing → Pages in 24–48 hours.")
 
-    print(f"\n  Note: Google processes indexing requests within minutes to hours.")
-    print(f"  Check coverage in GSC → Indexing → Pages in 24–48 hours.")
+    # Post to Slack
+    if results["success"] or results["error"]:
+        post_slack(results["success"], len(full_urls), results["error"])
 
 
 if __name__ == "__main__":

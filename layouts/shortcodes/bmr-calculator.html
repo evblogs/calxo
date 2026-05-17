@@ -1,0 +1,129 @@
+<div class="cx-bmr-widget" id="cx-bmr">
+<style>
+  #cx-bmr.cx-bmr-widget {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+    background:linear-gradient(150deg,#fff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0; border-radius:16px;
+    padding:1.85rem; margin:1.5rem 0 2.5rem;
+    box-shadow:0 4px 20px rgba(15,23,42,.04);
+  }
+  @media(max-width:760px){ #cx-bmr.cx-bmr-widget { grid-template-columns:1fr; gap:1.25rem; padding:1.25rem; } }
+  #cx-bmr .cx-tabs { grid-column:1/-1; display:flex; gap:.5rem; margin-bottom:.5rem; }
+  #cx-bmr .cx-tab {
+    padding:.45rem 1rem; border-radius:8px; border:1px solid #e2e8f0;
+    font-size:.85rem; font-weight:600; cursor:pointer; background:#fff; color:#64748b;
+  }
+  #cx-bmr .cx-tab.active { background:#2563eb; color:#fff; border-color:#2563eb; }
+  #cx-bmr label { display:block; margin-bottom:1.1rem; }
+  #cx-bmr label > span {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.88rem; font-weight:600; color:#0f172a; margin-bottom:.4rem;
+  }
+  #cx-bmr label > span em { color:#2563eb; font-weight:700; font-size:.98rem; font-style:normal; }
+  #cx-bmr input[type="range"]  { width:100%; height:6px; accent-color:#2563eb; margin:.35rem 0 .25rem; }
+  #cx-bmr input[type="number"] {
+    width:100%; padding:.6rem .8rem; border:1px solid #cbd5e1; border-radius:8px;
+    font-size:.98rem; color:#0f172a; font-weight:600; box-sizing:border-box; background:#fff;
+  }
+  #cx-bmr input[type="number"]:focus { outline:none; border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  #cx-bmr .cx-result {
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%);
+    color:#fff; border-radius:12px; padding:1.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  #cx-bmr .cx-result::before {
+    content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:24px 24px; pointer-events:none;
+  }
+  #cx-bmr .cx-result > * { position:relative; }
+  #cx-bmr .cx-result-label { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; opacity:.85; }
+  #cx-bmr .cx-result-value { font-size:clamp(2rem,5vw,2.8rem); font-weight:800; letter-spacing:-1px; line-height:1.05; margin:.2rem 0 1rem; }
+  #cx-bmr .cx-row { display:flex; justify-content:space-between; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:.9rem; }
+  #cx-bmr .cx-row:last-of-type { border-bottom:none; }
+  #cx-bmr .cx-row strong { font-weight:700; }
+  #cx-bmr .cx-gender-wrap { grid-column:1/-1; display:flex; gap:.75rem; margin-bottom:.5rem; }
+  #cx-bmr .cx-gender-btn {
+    flex:1; padding:.6rem; border-radius:8px; border:1px solid #e2e8f0;
+    font-size:.9rem; font-weight:600; cursor:pointer; background:#fff; color:#64748b; text-align:center;
+  }
+  #cx-bmr .cx-gender-btn.active { background:#2563eb; color:#fff; border-color:#2563eb; }
+</style>
+
+<div class="cx-gender-wrap">
+  <button class="cx-gender-btn active" id="cx-bmr-male">Male</button>
+  <button class="cx-gender-btn" id="cx-bmr-female">Female</button>
+</div>
+
+<div id="cx-bmr-inputs">
+  <label>
+    <span>Age <em id="cx-bmr-age-out">30 years</em></span>
+    <input type="number" id="cx-bmr-age" min="15" max="80" step="1" value="30" inputmode="numeric">
+    <input type="range" id="cx-bmr-age-r" min="15" max="80" step="1" value="30">
+  </label>
+  <label>
+    <span>Weight (kg) <em id="cx-bmr-wt-out">70 kg</em></span>
+    <input type="number" id="cx-bmr-wt" min="30" max="200" step="0.5" value="70" inputmode="decimal">
+    <input type="range" id="cx-bmr-wt-r" min="30" max="200" step="0.5" value="70">
+  </label>
+  <label>
+    <span>Height (cm) <em id="cx-bmr-ht-out">170 cm</em></span>
+    <input type="number" id="cx-bmr-ht" min="100" max="250" step="1" value="170" inputmode="numeric">
+    <input type="range" id="cx-bmr-ht-r" min="100" max="250" step="1" value="170">
+  </label>
+  <div style="font-size:.8rem;color:#64748b;margin-bottom:.5rem;">
+    Activity level
+    <select id="cx-bmr-act" style="width:100%;padding:.6rem .8rem;border:1px solid #cbd5e1;border-radius:8px;font-size:.95rem;margin-top:.4rem;">
+      <option value="1.2">Sedentary (desk job, no exercise)</option>
+      <option value="1.375">Light (1-3 days/week)</option>
+      <option value="1.55" selected>Moderate (3-5 days/week)</option>
+      <option value="1.725">Active (6-7 days/week)</option>
+      <option value="1.9">Very active (hard exercise + physical job)</option>
+    </select>
+  </div>
+</div>
+
+<div class="cx-result">
+  <div class="cx-result-label">BMR (calories/day)</div>
+  <div class="cx-result-value" id="cx-bmr-main">1,695</div>
+  <div class="cx-row"><span>TDEE (maintenance)</span><strong id="cx-bmr-tdee">2,627</strong></div>
+  <div class="cx-row"><span>To lose 0.5 kg/week</span><strong id="cx-bmr-lose">2,127</strong></div>
+  <div class="cx-row"><span>To gain 0.5 kg/week</span><strong id="cx-bmr-gain">3,127</strong></div>
+</div>
+</div>
+
+<script>
+(function(){
+  var gender='male';
+  document.getElementById('cx-bmr-male').addEventListener('click',function(){ gender='male'; this.classList.add('active'); document.getElementById('cx-bmr-female').classList.remove('active'); calc(); });
+  document.getElementById('cx-bmr-female').addEventListener('click',function(){ gender='female'; this.classList.add('active'); document.getElementById('cx-bmr-male').classList.remove('active'); calc(); });
+
+  function syncPair(num,rng,outId,fmtFn){
+    num.addEventListener('input',function(){ rng.value=num.value; document.getElementById(outId).textContent=fmtFn(+num.value); calc(); });
+    rng.addEventListener('input',function(){ num.value=rng.value; document.getElementById(outId).textContent=fmtFn(+rng.value); calc(); });
+  }
+  syncPair(document.getElementById('cx-bmr-age'),document.getElementById('cx-bmr-age-r'),'cx-bmr-age-out',function(v){ return v+' years'; });
+  syncPair(document.getElementById('cx-bmr-wt'),document.getElementById('cx-bmr-wt-r'),'cx-bmr-wt-out',function(v){ return v+' kg'; });
+  syncPair(document.getElementById('cx-bmr-ht'),document.getElementById('cx-bmr-ht-r'),'cx-bmr-ht-out',function(v){ return v+' cm'; });
+  document.getElementById('cx-bmr-act').addEventListener('change', calc);
+
+  function calc(){
+    var age=+document.getElementById('cx-bmr-age').value;
+    var wt=+document.getElementById('cx-bmr-wt').value;
+    var ht=+document.getElementById('cx-bmr-ht').value;
+    var act=+document.getElementById('cx-bmr-act').value;
+    // Mifflin-St Jeor
+    var bmr = gender==='male'
+      ? (10*wt)+(6.25*ht)-(5*age)+5
+      : (10*wt)+(6.25*ht)-(5*age)-161;
+    var tdee=bmr*act;
+    document.getElementById('cx-bmr-main').textContent=Math.round(bmr).toLocaleString('en-IN');
+    document.getElementById('cx-bmr-tdee').textContent=Math.round(tdee).toLocaleString('en-IN')+' kcal';
+    document.getElementById('cx-bmr-lose').textContent=Math.round(tdee-500).toLocaleString('en-IN')+' kcal';
+    document.getElementById('cx-bmr-gain').textContent=Math.round(tdee+500).toLocaleString('en-IN')+' kcal';
+  }
+  calc();
+})();
+</script>
