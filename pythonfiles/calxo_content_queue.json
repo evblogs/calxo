@@ -725,6 +725,7 @@
       "salary",
       "take-home"
     ],
-    "status": "pending"
+    "status": "done",
+    "published_date": "2026-05-17"
   }
 ]
