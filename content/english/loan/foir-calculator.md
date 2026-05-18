@@ -1,9 +1,9 @@
 ---
-title: "FOIR Calculator: Check Your Loan Eligibility Instantly"
+title: "FOIR Calculator (Fixed Obligations to Income Ratio) : Check Loan Eligibility"
 h1: "FOIR Calculator"
 description: "Free FOIR calculator for India. Enter your income and existing EMIs to see your FOIR percentage, whether the bank will approve your loan, and the maximum EMI you can take on."
 date: 2026-04-25
-lastmod: 2026-05-16
+lastmod: 2026-05-18
 type: "calculator"
 url: /loan/foir-calculator/
 keywords: "foir calculator, fixed obligation to income ratio, home loan eligibility, foir formula, loan eligibility india, calxo"
