@@ -615,7 +615,13 @@
           <svg class="cx-ai-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </summary>
         <div class="cx-ai-body">
-          {{ . | markdownify }}
+          {{ if reflect.IsSlice . }}
+            <ul>
+              {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+            </ul>
+          {{ else }}
+            {{ . | markdownify }}
+          {{ end }}
           <div class="cx-ai-disclaimer">AI-assisted summary, manually reviewed and locked. Not regenerated on each visit. Read the full article for the actual analysis and tables.</div>
         </div>
       </details>
