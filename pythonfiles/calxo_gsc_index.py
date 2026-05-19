@@ -143,6 +143,10 @@ URLS = [
     "/health/body-fat-calculator/",
     "/health/water-intake-calculator/",
     "/health/calorie-deficit-calculator/",
+    "/health/ideal-weight-calculator/",
+    "/health/ovulation-calculator/",
+    "/health/period-calculator/",
+    "/health/bmi-calculator-men/",
 
     # Math
     "/math/",

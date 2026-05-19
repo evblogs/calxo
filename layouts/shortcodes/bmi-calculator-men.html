@@ -1,0 +1,189 @@
+<div id="cx-bm" style="font-family:inherit">
+<style>
+#cx-bm *{box-sizing:border-box}
+#cx-bm .cx-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px}
+#cx-bm .cx-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px}
+#cx-bm label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;margin-top:16px}
+#cx-bm label:first-child{margin-top:0}
+#cx-bm .num-input{width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:15px;font-weight:600;color:#111827;background:#fff;outline:none}
+#cx-bm .num-input:focus{border-color:#0891b2}
+#cx-bm input[type=range]{width:100%;accent-color:#0891b2;margin:6px 0 2px}
+#cx-bm .unit-row{display:flex;gap:8px;margin-bottom:8px}
+#cx-bm .unit-btn{padding:6px 14px;border:1.5px solid #d1d5db;border-radius:6px;background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:#6b7280;transition:all .2s}
+#cx-bm .unit-btn.active{border-color:#0891b2;background:#ecfeff;color:#0e7490}
+#cx-bm .result-panel{background:linear-gradient(135deg,#0c4a6e 0%,#0891b2 100%);border-radius:12px;padding:28px;color:#fff;position:relative;overflow:hidden}
+#cx-bm .result-panel::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px);pointer-events:none}
+#cx-bm .res-bmi{font-size:64px;font-weight:900;color:#fff;line-height:1;margin:8px 0 4px}
+#cx-bm .res-status{font-size:20px;font-weight:700;margin-bottom:4px}
+#cx-bm .res-range{font-size:13px;color:#bae6fd;margin-bottom:20px}
+#cx-bm .bmi-bar{height:16px;border-radius:8px;background:linear-gradient(90deg,#3b82f6 0%,#22c55e 22%,#eab308 60%,#ef4444 85%,#7f1d1d 100%);position:relative;margin:10px 0 4px}
+#cx-bm .bmi-needle{position:absolute;top:-5px;width:26px;height:26px;background:#fff;border:3px solid #0c4a6e;border-radius:50%;transform:translateX(-50%);transition:left .4s;display:flex;align-items:center;justify-content:center}
+#cx-bm .bmi-needle-dot{width:8px;height:8px;background:#0891b2;border-radius:50%}
+#cx-bm .bmi-labels{display:flex;justify-content:space-between;font-size:10px;color:#bae6fd}
+#cx-bm .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+#cx-bm .res-box{background:rgba(255,255,255,.12);border-radius:8px;padding:12px}
+#cx-bm .res-box-label{font-size:11px;color:#bae6fd;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+#cx-bm .res-box-val{font-size:17px;font-weight:700;color:#fff;margin-top:3px}
+#cx-bm .men-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:12px}
+#cx-bm .men-table th{color:#7dd3fc;font-weight:700;padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.2);text-align:left}
+#cx-bm .men-table td{padding:5px 8px;border-bottom:1px solid rgba(255,255,255,.08);color:#e0f2fe}
+#cx-bm .men-table tr.highlight td{background:rgba(255,255,255,.15);color:#fff;font-weight:700}
+@media(max-width:760px){#cx-bm .cx-wrap{grid-template-columns:1fr}#cx-bm .res-grid{grid-template-columns:1fr 1fr}}
+</style>
+
+<div class="cx-wrap">
+  <div class="cx-card">
+    <label>Height</label>
+    <div class="unit-row">
+      <button class="unit-btn active" id="bm-ucm" onclick="bmSetUnit('cm')">cm</button>
+      <button class="unit-btn" id="bm-uft" onclick="bmSetUnit('ft')">ft/in</button>
+    </div>
+    <div id="bm-cm-block">
+      <input type="range" id="bm-ht-s" min="140" max="220" value="175" oninput="bmSync('h','s')">
+      <input type="number" class="num-input" id="bm-ht-n" min="140" max="220" value="175" oninput="bmSync('h','n')" placeholder="cm">
+    </div>
+    <div id="bm-ft-block" style="display:none">
+      <div style="display:flex;gap:8px">
+        <div style="flex:1"><input type="number" class="num-input" id="bm-ft" value="5" min="4" max="7" oninput="bmCalc()" placeholder="ft"><span style="font-size:12px;color:#6b7280"> ft</span></div>
+        <div style="flex:1"><input type="number" class="num-input" id="bm-in" value="9" min="0" max="11" oninput="bmCalc()" placeholder="in"><span style="font-size:12px;color:#6b7280"> in</span></div>
+      </div>
+    </div>
+
+    <label>Weight</label>
+    <div class="unit-row">
+      <button class="unit-btn active" id="bm-ukg" onclick="bmSetWtUnit('kg')">kg</button>
+      <button class="unit-btn" id="bm-ulb" onclick="bmSetWtUnit('lb')">lb</button>
+    </div>
+    <input type="range" id="bm-wt-s" min="40" max="180" value="75" oninput="bmSync('w','s')">
+    <input type="number" class="num-input" id="bm-wt-n" min="40" max="180" value="75" oninput="bmSync('w','n')" placeholder="kg">
+
+    <label>Age (years)</label>
+    <input type="range" id="bm-age-s" min="18" max="80" value="30" oninput="bmSync('a','s')">
+    <input type="number" class="num-input" id="bm-age-n" min="18" max="80" value="30" oninput="bmSync('a','n')" placeholder="years">
+  </div>
+
+  <div class="result-panel">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.08em;color:#7dd3fc;text-transform:uppercase">BMI for Men</div>
+    <div class="res-bmi" id="bm-bmi">—</div>
+    <div class="res-status" id="bm-status">—</div>
+    <div class="res-range" id="bm-range-txt">Enter height and weight</div>
+
+    <div class="bmi-bar">
+      <div class="bmi-needle" id="bm-needle" style="left:30%"><div class="bmi-needle-dot"></div></div>
+    </div>
+    <div class="bmi-labels">
+      <span>15</span><span>18.5</span><span>25</span><span>30</span><span>40</span>
+    </div>
+
+    <div class="res-grid">
+      <div class="res-box">
+        <div class="res-box-label">Ideal Weight</div>
+        <div class="res-box-val" id="bm-ideal">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Weight to Lose/Gain</div>
+        <div class="res-box-val" id="bm-delta">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Healthy Weight Range</div>
+        <div class="res-box-val" id="bm-healthy">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Body Fat Est. (Men)</div>
+        <div class="res-box-val" id="bm-bf">—</div>
+      </div>
+    </div>
+
+    <table class="men-table" id="bm-table">
+      <tr><th>BMI Range</th><th>Category</th><th>Men Body Fat</th></tr>
+      <tr id="bm-r1"><td>&lt; 18.5</td><td>Underweight</td><td>&lt; 8%</td></tr>
+      <tr id="bm-r2"><td>18.5 – 24.9</td><td>Normal weight</td><td>8 – 19%</td></tr>
+      <tr id="bm-r3"><td>25 – 29.9</td><td>Overweight</td><td>19 – 25%</td></tr>
+      <tr id="bm-r4"><td>30 – 34.9</td><td>Obese Class I</td><td>25 – 30%</td></tr>
+      <tr id="bm-r5"><td>≥ 35</td><td>Obese Class II+</td><td>&gt; 30%</td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+var bmWtUnit='kg', bmHtUnit='cm';
+
+function bmSetUnit(u){
+  bmHtUnit=u;
+  document.getElementById('bm-ucm').classList.toggle('active',u==='cm');
+  document.getElementById('bm-uft').classList.toggle('active',u==='ft');
+  document.getElementById('bm-cm-block').style.display=u==='cm'?'':'none';
+  document.getElementById('bm-ft-block').style.display=u==='ft'?'':'none';
+  bmCalc();
+}
+function bmSetWtUnit(u){
+  bmWtUnit=u;
+  document.getElementById('bm-ukg').classList.toggle('active',u==='kg');
+  document.getElementById('bm-ulb').classList.toggle('active',u==='lb');
+  bmCalc();
+}
+function bmSync(f,src){
+  var map={h:['bm-ht-s','bm-ht-n'],w:['bm-wt-s','bm-wt-n'],a:['bm-age-s','bm-age-n']};
+  var ids=map[f];
+  var s=document.getElementById(ids[0]),n=document.getElementById(ids[1]);
+  if(src==='s') n.value=s.value; else s.value=n.value;
+  bmCalc();
+}
+
+function bmGetHeight(){
+  if(bmHtUnit==='cm') return parseFloat(document.getElementById('bm-ht-n').value)||175;
+  var ft=parseFloat(document.getElementById('bm-ft').value)||5;
+  var inch=parseFloat(document.getElementById('bm-in').value)||9;
+  return(ft*12+inch)*2.54;
+}
+
+function bmCalc(){
+  var h=bmGetHeight(), hm=h/100;
+  var wRaw=parseFloat(document.getElementById('bm-wt-n').value)||75;
+  var wKg=bmWtUnit==='lb'?wRaw*0.4536:wRaw;
+  var age=parseFloat(document.getElementById('bm-age-n').value)||30;
+  if(!h||!wKg) return;
+
+  var bmi=wKg/(hm*hm);
+  var hIn=h/2.54;
+  // Devine ideal weight for men
+  var devineIdeal=50+2.3*(hIn-60);
+  var idealMin=devineIdeal-2.5, idealMax=devineIdeal+2.5;
+  // Healthy weight range: BMI 18.5-24.9
+  var wMin=18.5*hm*hm, wMax=24.9*hm*hm;
+
+  // Body fat estimate (Deurenberg formula for men): BF% = 1.2*BMI + 0.23*age - 16.2
+  var bf=1.2*bmi+0.23*age-16.2;
+
+  var delta=wKg-devineIdeal;
+  var status,color;
+  if(bmi<18.5){status='Underweight';color='#60a5fa';}
+  else if(bmi<25){status='Normal Weight';color='#4ade80';}
+  else if(bmi<30){status='Overweight';color='#fbbf24';}
+  else if(bmi<35){status='Obese Class I';color='#f97316';}
+  else{status='Obese Class II+';color='#f87171';}
+
+  document.getElementById('bm-bmi').textContent=bmi.toFixed(1);
+  document.getElementById('bm-status').textContent=status;
+  document.getElementById('bm-status').style.color=color;
+  document.getElementById('bm-range-txt').textContent='Healthy range for men: 18.5 – 24.9';
+  document.getElementById('bm-ideal').textContent=devineIdeal.toFixed(1)+' kg';
+  document.getElementById('bm-delta').textContent=(delta>0?'+':'')+delta.toFixed(1)+' kg';
+  document.getElementById('bm-healthy').textContent=wMin.toFixed(0)+'–'+wMax.toFixed(0)+' kg';
+  document.getElementById('bm-bf').textContent=Math.max(bf,3).toFixed(1)+'%';
+
+  // Needle
+  var pct=Math.min(Math.max((bmi-15)/25*100,0),100);
+  document.getElementById('bm-needle').style.left=pct+'%';
+
+  // Highlight table row
+  ['bm-r1','bm-r2','bm-r3','bm-r4','bm-r5'].forEach(function(id){document.getElementById(id).classList.remove('highlight');});
+  if(bmi<18.5) document.getElementById('bm-r1').classList.add('highlight');
+  else if(bmi<25) document.getElementById('bm-r2').classList.add('highlight');
+  else if(bmi<30) document.getElementById('bm-r3').classList.add('highlight');
+  else if(bmi<35) document.getElementById('bm-r4').classList.add('highlight');
+  else document.getElementById('bm-r5').classList.add('highlight');
+}
+bmCalc();
+</script>
+</div>

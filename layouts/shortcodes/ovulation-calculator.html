@@ -1,0 +1,158 @@
+<div id="cx-ov" style="font-family:inherit">
+<style>
+#cx-ov *{box-sizing:border-box}
+#cx-ov .cx-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px}
+#cx-ov .cx-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px}
+#cx-ov label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;margin-top:16px}
+#cx-ov label:first-child{margin-top:0}
+#cx-ov .num-input{width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:15px;font-weight:600;color:#111827;background:#fff;outline:none}
+#cx-ov .num-input:focus{border-color:#ec4899}
+#cx-ov input[type=range]{width:100%;accent-color:#ec4899;margin:6px 0 2px}
+#cx-ov .result-panel{background:linear-gradient(135deg,#831843 0%,#be185d 100%);border-radius:12px;padding:28px;color:#fff;position:relative;overflow:hidden}
+#cx-ov .result-panel::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px);pointer-events:none}
+#cx-ov .res-label{font-size:12px;font-weight:600;letter-spacing:.08em;color:#fbcfe8;text-transform:uppercase;margin-bottom:4px}
+#cx-ov .res-main{font-size:30px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:2px}
+#cx-ov .res-sub{font-size:13px;color:#fce7f3;margin-bottom:16px}
+#cx-ov .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+#cx-ov .res-box{background:rgba(255,255,255,.12);border-radius:8px;padding:12px}
+#cx-ov .res-box-label{font-size:11px;color:#fbcfe8;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+#cx-ov .res-box-val{font-size:16px;font-weight:700;color:#fff;margin-top:3px}
+#cx-ov .fertile-bar{margin-top:16px}
+#cx-ov .timeline{display:flex;align-items:center;gap:0;margin-top:8px;font-size:11px}
+#cx-ov .tl-seg{flex:1;text-align:center;padding:6px 2px;font-weight:600;border-radius:0}
+#cx-ov .tl-seg:first-child{border-radius:6px 0 0 6px}
+#cx-ov .tl-seg:last-child{border-radius:0 6px 6px 0}
+#cx-ov .tl-period{background:#f9a8d4;color:#831843}
+#cx-ov .tl-normal{background:rgba(255,255,255,.15);color:#fce7f3}
+#cx-ov .tl-fertile{background:#fbbf24;color:#78350f}
+#cx-ov .tl-ovulation{background:#22c55e;color:#14532d}
+#cx-ov .next-cycles{margin-top:16px}
+#cx-ov .cycle-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px}
+@media(max-width:760px){#cx-ov .cx-wrap{grid-template-columns:1fr}#cx-ov .res-grid{grid-template-columns:1fr 1fr}}
+</style>
+
+<div class="cx-wrap">
+  <div class="cx-card">
+    <label>First day of last period</label>
+    <input type="date" class="num-input" id="ov-lmp" oninput="ovCalc()">
+
+    <label>Average cycle length: <span id="ov-cycle-val">28</span> days</label>
+    <input type="range" min="21" max="35" value="28" id="ov-cycle-slider" oninput="ovSyncCycle('s')">
+    <input type="number" class="num-input" id="ov-cycle-num" min="21" max="35" value="28" oninput="ovSyncCycle('n')">
+
+    <label>Period duration: <span id="ov-dur-val">5</span> days</label>
+    <input type="range" min="2" max="8" value="5" id="ov-dur-slider" oninput="ovSyncDur('s')">
+    <input type="number" class="num-input" id="ov-dur-num" min="2" max="8" value="5" oninput="ovSyncDur('n')">
+  </div>
+
+  <div class="result-panel">
+    <div class="res-label">Next Ovulation</div>
+    <div class="res-main" id="ov-date">—</div>
+    <div class="res-sub" id="ov-days-away">Enter your last period date</div>
+
+    <div class="res-grid">
+      <div class="res-box">
+        <div class="res-box-label">Fertile Window</div>
+        <div class="res-box-val" id="ov-fertile">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Next Period</div>
+        <div class="res-box-val" id="ov-next-period">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Peak Fertile Day</div>
+        <div class="res-box-val" id="ov-peak">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Days Until Fertile</div>
+        <div class="res-box-val" id="ov-days-fertile">—</div>
+      </div>
+    </div>
+
+    <div class="fertile-bar">
+      <div style="font-size:11px;color:#fbcfe8;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Cycle Timeline</div>
+      <div class="timeline" id="ov-timeline"></div>
+    </div>
+
+    <div class="next-cycles">
+      <div style="font-size:11px;color:#fbcfe8;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin:12px 0 4px">Next 3 Cycles</div>
+      <div id="ov-next-cycles"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function ovFmt(d){
+  var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
+}
+function ovAddDays(d,n){var r=new Date(d);r.setDate(r.getDate()+n);return r;}
+function ovDiffDays(a,b){return Math.round((a-b)/(1000*60*60*24));}
+
+function ovSyncCycle(src){
+  var s=document.getElementById('ov-cycle-slider'),n=document.getElementById('ov-cycle-num');
+  if(src==='s') n.value=s.value; else s.value=n.value;
+  document.getElementById('ov-cycle-val').textContent=s.value;
+  ovCalc();
+}
+function ovSyncDur(src){
+  var s=document.getElementById('ov-dur-slider'),n=document.getElementById('ov-dur-num');
+  if(src==='s') n.value=s.value; else s.value=n.value;
+  document.getElementById('ov-dur-val').textContent=s.value;
+  ovCalc();
+}
+
+function ovCalc(){
+  var lmpVal=document.getElementById('ov-lmp').value;
+  if(!lmpVal) return;
+  var lmp=new Date(lmpVal);
+  var cycle=parseInt(document.getElementById('ov-cycle-num').value)||28;
+  var dur=parseInt(document.getElementById('ov-dur-num').value)||5;
+
+  var today=new Date(); today.setHours(0,0,0,0);
+
+  // Find next ovulation (14 days before next period)
+  var nextPeriod=ovAddDays(lmp, cycle);
+  // Advance if next period already passed
+  while(nextPeriod <= today) nextPeriod=ovAddDays(nextPeriod, cycle);
+
+  var ovDay=ovAddDays(nextPeriod, -14);
+  var fertileStart=ovAddDays(ovDay,-5);
+  var fertileEnd=ovAddDays(ovDay,1);
+
+  var daysAway=ovDiffDays(ovDay,today);
+  var daysFertile=ovDiffDays(fertileStart,today);
+
+  document.getElementById('ov-date').textContent=ovFmt(ovDay);
+  document.getElementById('ov-days-away').textContent=daysAway>0?'in '+daysAway+' days':(daysAway===0?'Today':'was '+Math.abs(daysAway)+' days ago');
+  document.getElementById('ov-fertile').textContent=ovFmt(fertileStart)+' – '+ovFmt(fertileEnd);
+  document.getElementById('ov-next-period').textContent=ovFmt(nextPeriod);
+  document.getElementById('ov-peak').textContent=ovFmt(ovDay);
+  document.getElementById('ov-days-fertile').textContent=daysFertile>0?daysFertile+' days':(daysFertile>=−6?'In window now':'Passed');
+
+  // Timeline
+  var tl=document.getElementById('ov-timeline');
+  tl.innerHTML='<div class="tl-seg tl-period">Period<br>'+dur+' d</div>'
+    +'<div class="tl-seg tl-normal">Low<br>fertility</div>'
+    +'<div class="tl-seg tl-fertile">Fertile<br>window</div>'
+    +'<div class="tl-seg tl-ovulation">Ovulation<br>Day</div>'
+    +'<div class="tl-seg tl-normal">Post<br>Ov</div>'
+    +'<div class="tl-seg tl-period">Next<br>period</div>';
+
+  // Next 3 cycles
+  var nc=document.getElementById('ov-next-cycles');
+  nc.innerHTML='';
+  for(var i=0;i<3;i++){
+    var p=ovAddDays(nextPeriod,cycle*i);
+    var o=ovAddDays(p,-14);
+    var fw=ovAddDays(o,-5);
+    nc.innerHTML+='<div class="cycle-row"><span>Cycle '+(i+1)+'</span><span>Ov: '+ovFmt(o)+'</span><span>Period: '+ovFmt(p)+'</span></div>';
+  }
+}
+
+// Set default date to today minus 14 days
+var d=new Date(); d.setDate(d.getDate()-14);
+document.getElementById('ov-lmp').value=d.toISOString().split('T')[0];
+ovCalc();
+</script>
+</div>

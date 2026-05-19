@@ -1,0 +1,147 @@
+<div id="cx-pc" style="font-family:inherit">
+<style>
+#cx-pc *{box-sizing:border-box}
+#cx-pc .cx-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px}
+#cx-pc .cx-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px}
+#cx-pc label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;margin-top:16px}
+#cx-pc label:first-child{margin-top:0}
+#cx-pc .num-input{width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:15px;font-weight:600;color:#111827;background:#fff;outline:none}
+#cx-pc .num-input:focus{border-color:#8b5cf6}
+#cx-pc input[type=range]{width:100%;accent-color:#8b5cf6;margin:6px 0 2px}
+#cx-pc .result-panel{background:linear-gradient(135deg,#3b0764 0%,#6d28d9 100%);border-radius:12px;padding:28px;color:#fff;position:relative;overflow:hidden}
+#cx-pc .result-panel::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px);pointer-events:none}
+#cx-pc .res-label{font-size:12px;font-weight:600;letter-spacing:.08em;color:#c4b5fd;text-transform:uppercase;margin-bottom:4px}
+#cx-pc .res-main{font-size:30px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:2px}
+#cx-pc .res-sub{font-size:13px;color:#ede9fe;margin-bottom:16px}
+#cx-pc .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+#cx-pc .res-box{background:rgba(255,255,255,.12);border-radius:8px;padding:12px}
+#cx-pc .res-box-label{font-size:11px;color:#c4b5fd;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+#cx-pc .res-box-val{font-size:16px;font-weight:700;color:#fff;margin-top:3px}
+#cx-pc .period-list{margin-top:14px}
+#cx-pc .period-row{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:6px;margin-bottom:6px;font-size:13px}
+#cx-pc .p-upcoming{background:rgba(255,255,255,.15);color:#fff}
+#cx-pc .p-fertile{background:rgba(251,191,36,.2);color:#fef3c7}
+#cx-pc .p-badge{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;text-transform:uppercase}
+#cx-pc .badge-period{background:#f9a8d4;color:#831843}
+#cx-pc .badge-fertile{background:#fbbf24;color:#78350f}
+#cx-pc .badge-ov{background:#22c55e;color:#14532d}
+@media(max-width:760px){#cx-pc .cx-wrap{grid-template-columns:1fr}#cx-pc .res-grid{grid-template-columns:1fr 1fr}}
+</style>
+
+<div class="cx-wrap">
+  <div class="cx-card">
+    <label>First day of last period</label>
+    <input type="date" class="num-input" id="pc-lmp" oninput="pcCalc()">
+
+    <label>Cycle length: <span id="pc-cycle-val">28</span> days</label>
+    <input type="range" min="21" max="45" value="28" id="pc-cycle-s" oninput="pcSync('c','s')">
+    <input type="number" class="num-input" id="pc-cycle-n" min="21" max="45" value="28" oninput="pcSync('c','n')">
+
+    <label>Period duration: <span id="pc-dur-val">5</span> days</label>
+    <input type="range" min="2" max="10" value="5" id="pc-dur-s" oninput="pcSync('d','s')">
+    <input type="number" class="num-input" id="pc-dur-n" min="2" max="10" value="5" oninput="pcSync('d','n')">
+
+    <label>Predict next (months)</label>
+    <input type="range" min="1" max="6" value="3" id="pc-months-s" oninput="pcSync('m','s')">
+    <input type="number" class="num-input" id="pc-months-n" min="1" max="6" value="3" oninput="pcSync('m','n')">
+    <div style="font-size:12px;color:#6b7280;margin-top:4px">Showing <span id="pc-months-val">3</span> months ahead</div>
+  </div>
+
+  <div class="result-panel">
+    <div class="res-label">Next Period</div>
+    <div class="res-main" id="pc-next">—</div>
+    <div class="res-sub" id="pc-next-sub">Enter your last period date</div>
+
+    <div class="res-grid">
+      <div class="res-box">
+        <div class="res-box-label">Period Ends</div>
+        <div class="res-box-val" id="pc-ends">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Next Ovulation</div>
+        <div class="res-box-val" id="pc-ov">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Fertile Window</div>
+        <div class="res-box-val" id="pc-fertile">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Days Until Period</div>
+        <div class="res-box-val" id="pc-days">—</div>
+      </div>
+    </div>
+
+    <div class="period-list" id="pc-schedule"></div>
+  </div>
+</div>
+
+<script>
+var pcMonths=3;
+function pcFmt(d){var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return d.getDate()+' '+m[d.getMonth()];}
+function pcAdd(d,n){var r=new Date(d);r.setDate(r.getDate()+n);return r;}
+function pcDiff(a,b){return Math.round((a-b)/(864e5));}
+
+function pcSync(field,src){
+  var sMap={c:['pc-cycle-s','pc-cycle-n','pc-cycle-val'],d:['pc-dur-s','pc-dur-n','pc-dur-val'],m:['pc-months-s','pc-months-n','pc-months-val']};
+  var ids=sMap[field];
+  var s=document.getElementById(ids[0]),n=document.getElementById(ids[1]),v=document.getElementById(ids[2]);
+  if(src==='s') n.value=s.value; else s.value=n.value;
+  v.textContent=s.value;
+  if(field==='m') pcMonths=parseInt(s.value);
+  pcCalc();
+}
+
+function pcCalc(){
+  var lmpVal=document.getElementById('pc-lmp').value;
+  if(!lmpVal) return;
+  var lmp=new Date(lmpVal);
+  var cycle=parseInt(document.getElementById('pc-cycle-n').value)||28;
+  var dur=parseInt(document.getElementById('pc-dur-n').value)||5;
+  var today=new Date(); today.setHours(0,0,0,0);
+
+  // Find next period
+  var nextP=new Date(lmp);
+  while(nextP<=today) nextP=pcAdd(nextP,cycle);
+
+  var nextEnd=pcAdd(nextP,dur-1);
+  var nextOv=pcAdd(nextP,-14);
+  var fertileStart=pcAdd(nextOv,-5);
+
+  var daysUntil=pcDiff(nextP,today);
+
+  document.getElementById('pc-next').textContent=pcFmt(nextP)+' '+nextP.getFullYear();
+  document.getElementById('pc-next-sub').textContent=daysUntil>0?'in '+daysUntil+' days':(daysUntil===0?'Today':'Period may have started');
+  document.getElementById('pc-ends').textContent=pcFmt(nextEnd);
+  document.getElementById('pc-ov').textContent=pcFmt(nextOv);
+  document.getElementById('pc-fertile').textContent=pcFmt(fertileStart)+' – '+pcFmt(nextOv);
+  document.getElementById('pc-days').textContent=daysUntil>0?daysUntil+' days':'Now';
+
+  // Schedule
+  var maxDays=pcMonths*32;
+  var sched=document.getElementById('pc-schedule');
+  sched.innerHTML='<div style="font-size:11px;color:#c4b5fd;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Upcoming Schedule</div>';
+
+  var p=new Date(nextP);
+  var endDate=pcAdd(today,maxDays);
+  var count=0;
+  while(p<=endDate && count<20){
+    var pEnd=pcAdd(p,dur-1);
+    var ov=pcAdd(p,-14);
+    var fw=pcAdd(ov,-5);
+    var isNext=count===0;
+    sched.innerHTML+='<div class="period-row p-upcoming">'
+      +'<span><span class="p-badge badge-period">Period</span> '+pcFmt(p)+' – '+pcFmt(pEnd)+'</span>'
+      +'<span style="font-size:11px;color:#c4b5fd">'+p.getFullYear()+'</span></div>';
+    sched.innerHTML+='<div class="period-row p-fertile">'
+      +'<span><span class="p-badge badge-fertile">Fertile</span> '+pcFmt(fw)+' – '+pcFmt(ov)+'</span>'
+      +'<span><span class="p-badge badge-ov">Ov</span> '+pcFmt(ov)+'</span></div>';
+    p=pcAdd(p,cycle);
+    count++;
+  }
+}
+
+var d=new Date(); d.setDate(d.getDate()-10);
+document.getElementById('pc-lmp').value=d.toISOString().split('T')[0];
+pcCalc();
+</script>
+</div>

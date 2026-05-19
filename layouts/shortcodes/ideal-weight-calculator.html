@@ -1,0 +1,183 @@
+<div id="cx-iw" style="font-family:inherit">
+<style>
+#cx-iw *{box-sizing:border-box}
+#cx-iw .cx-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px}
+#cx-iw .cx-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px}
+#cx-iw label{display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;margin-top:16px}
+#cx-iw label:first-child{margin-top:0}
+#cx-iw .gender-row{display:flex;gap:10px;margin-bottom:4px}
+#cx-iw .gender-btn{flex:1;padding:10px;border:2px solid #e2e8f0;border-radius:8px;background:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;color:#374151}
+#cx-iw .gender-btn.active{border-color:#3b82f6;background:#eff6ff;color:#1d4ed8}
+#cx-iw input[type=range]{width:100%;accent-color:#3b82f6;margin:6px 0 2px}
+#cx-iw .num-input{width:100%;padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:15px;font-weight:600;color:#111827;background:#fff;outline:none}
+#cx-iw .num-input:focus{border-color:#3b82f6}
+#cx-iw .unit-row{display:flex;gap:8px;margin-bottom:4px}
+#cx-iw .unit-btn{padding:6px 14px;border:1.5px solid #d1d5db;border-radius:6px;background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:#6b7280;transition:all .2s}
+#cx-iw .unit-btn.active{border-color:#3b82f6;background:#eff6ff;color:#1d4ed8}
+#cx-iw .result-panel{background:linear-gradient(135deg,#1e3a5f 0%,#1e40af 100%);border-radius:12px;padding:28px;color:#fff;position:relative;overflow:hidden}
+#cx-iw .result-panel::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px);pointer-events:none}
+#cx-iw .res-label{font-size:12px;font-weight:600;letter-spacing:.08em;color:#93c5fd;text-transform:uppercase;margin-bottom:4px}
+#cx-iw .res-main{font-size:36px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:2px}
+#cx-iw .res-sub{font-size:13px;color:#bfdbfe;margin-bottom:20px}
+#cx-iw .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+#cx-iw .res-box{background:rgba(255,255,255,.1);border-radius:8px;padding:12px}
+#cx-iw .res-box-label{font-size:11px;color:#93c5fd;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+#cx-iw .res-box-val{font-size:18px;font-weight:700;color:#fff;margin-top:2px}
+#cx-iw .formula-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}
+#cx-iw .formula-table th{text-align:left;color:#93c5fd;font-weight:600;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.15)}
+#cx-iw .formula-table td{padding:6px 8px;color:#e0f2fe;border-bottom:1px solid rgba(255,255,255,.08)}
+#cx-iw .bmi-bar-wrap{margin-top:16px}
+#cx-iw .bmi-bar{height:12px;border-radius:6px;background:linear-gradient(90deg,#3b82f6 0%,#22c55e 30%,#eab308 65%,#ef4444 100%);position:relative;margin:8px 0}
+#cx-iw .bmi-marker{position:absolute;top:-4px;width:20px;height:20px;background:#fff;border:3px solid #1e40af;border-radius:50%;transform:translateX(-50%);transition:left .4s}
+@media(max-width:760px){#cx-iw .cx-wrap{grid-template-columns:1fr}#cx-iw .res-grid{grid-template-columns:1fr 1fr}}
+</style>
+
+<div class="cx-wrap">
+  <!-- Inputs -->
+  <div class="cx-card">
+    <label>Gender</label>
+    <div class="gender-row">
+      <button class="gender-btn active" id="iw-male" onclick="iwSetGender('male')">♂ Male</button>
+      <button class="gender-btn" id="iw-female" onclick="iwSetGender('female')">♀ Female</button>
+    </div>
+
+    <label>Height</label>
+    <div class="unit-row" style="margin-bottom:8px">
+      <button class="unit-btn active" id="iw-ucm" onclick="iwSetUnit('cm')">cm</button>
+      <button class="unit-btn" id="iw-uft" onclick="iwSetUnit('ft')">ft / in</button>
+    </div>
+    <div id="iw-cm-block">
+      <input type="range" id="iw-ht-slider" min="140" max="220" value="170" oninput="iwSync('slider')">
+      <input type="number" class="num-input" id="iw-ht-num" min="140" max="220" value="170" oninput="iwSync('num')" placeholder="cm">
+    </div>
+    <div id="iw-ft-block" style="display:none;display:none">
+      <div style="display:flex;gap:8px">
+        <div style="flex:1"><input type="number" class="num-input" id="iw-ft" value="5" min="4" max="7" oninput="iwCalc()" placeholder="ft"> <span style="font-size:12px;color:#6b7280">ft</span></div>
+        <div style="flex:1"><input type="number" class="num-input" id="iw-in" value="7" min="0" max="11" oninput="iwCalc()" placeholder="in"> <span style="font-size:12px;color:#6b7280">in</span></div>
+      </div>
+    </div>
+
+    <label>Current Weight (optional)</label>
+    <input type="number" class="num-input" id="iw-wt" min="30" max="200" placeholder="kg — for BMI comparison" oninput="iwCalc()">
+  </div>
+
+  <!-- Results -->
+  <div class="result-panel" id="iw-result">
+    <div class="res-label">Ideal Weight Range</div>
+    <div class="res-main" id="iw-range">—</div>
+    <div class="res-sub" id="iw-range-sub">kg</div>
+
+    <div class="res-grid">
+      <div class="res-box">
+        <div class="res-box-label">Devine Formula</div>
+        <div class="res-box-val" id="iw-devine">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Robinson Formula</div>
+        <div class="res-box-val" id="iw-robinson">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Miller Formula</div>
+        <div class="res-box-val" id="iw-miller">—</div>
+      </div>
+      <div class="res-box">
+        <div class="res-box-label">Hamwi Formula</div>
+        <div class="res-box-val" id="iw-hamwi">—</div>
+      </div>
+    </div>
+
+    <div id="iw-bmi-section" style="display:none">
+      <div style="margin-top:16px;font-size:12px;font-weight:600;color:#93c5fd;text-transform:uppercase;letter-spacing:.08em">Your BMI vs Ideal BMI</div>
+      <div class="bmi-bar-wrap">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:#93c5fd;margin-bottom:2px">
+          <span>Underweight</span><span>Normal</span><span>Overweight</span><span>Obese</span>
+        </div>
+        <div class="bmi-bar"><div class="bmi-marker" id="iw-bmi-marker" style="left:40%"></div></div>
+      </div>
+      <div style="font-size:13px;color:#bfdbfe;margin-top:4px">Your BMI: <strong style="color:#fff" id="iw-your-bmi">—</strong> &nbsp;|&nbsp; Ideal range BMI: <strong style="color:#fff">18.5–24.9</strong></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var iwGender = 'male', iwUnit = 'cm';
+
+function iwSetGender(g) {
+  iwGender = g;
+  document.getElementById('iw-male').classList.toggle('active', g==='male');
+  document.getElementById('iw-female').classList.toggle('active', g==='female');
+  iwCalc();
+}
+
+function iwSetUnit(u) {
+  iwUnit = u;
+  document.getElementById('iw-ucm').classList.toggle('active', u==='cm');
+  document.getElementById('iw-uft').classList.toggle('active', u==='ft');
+  document.getElementById('iw-cm-block').style.display = u==='cm' ? '' : 'none';
+  document.getElementById('iw-ft-block').style.display = u==='ft' ? '' : 'none';
+  iwCalc();
+}
+
+function iwSync(src) {
+  var s = document.getElementById('iw-ht-slider'), n = document.getElementById('iw-ht-num');
+  if (src==='slider') n.value = s.value; else s.value = n.value;
+  iwCalc();
+}
+
+function iwGetHeightCm() {
+  if (iwUnit === 'cm') return parseFloat(document.getElementById('iw-ht-num').value) || 170;
+  var ft = parseFloat(document.getElementById('iw-ft').value) || 5;
+  var inch = parseFloat(document.getElementById('iw-in').value) || 7;
+  return (ft * 12 + inch) * 2.54;
+}
+
+function iwCalc() {
+  var h = iwGetHeightCm();
+  var hIn = h / 2.54 - 60; // height in inches above 5ft
+
+  var devine, robinson, miller, hamwi;
+  if (iwGender === 'male') {
+    devine   = 50   + 2.3  * hIn;
+    robinson = 52   + 1.9  * hIn;
+    miller   = 56.2 + 1.41 * hIn;
+    hamwi    = 48   + 2.7  * hIn;
+  } else {
+    devine   = 45.5 + 2.3  * hIn;
+    robinson = 49   + 1.7  * hIn;
+    miller   = 53.1 + 1.36 * hIn;
+    hamwi    = 45.5 + 2.2  * hIn;
+  }
+
+  // Clamp negatives (for short heights)
+  devine = Math.max(devine, 30); robinson = Math.max(robinson, 30);
+  miller = Math.max(miller, 30); hamwi   = Math.max(hamwi, 30);
+
+  var vals = [devine, robinson, miller, hamwi];
+  var mn = Math.min(...vals), mx = Math.max(...vals);
+
+  document.getElementById('iw-devine').textContent   = devine.toFixed(1)   + ' kg';
+  document.getElementById('iw-robinson').textContent = robinson.toFixed(1) + ' kg';
+  document.getElementById('iw-miller').textContent   = miller.toFixed(1)   + ' kg';
+  document.getElementById('iw-hamwi').textContent    = hamwi.toFixed(1)    + ' kg';
+  document.getElementById('iw-range').textContent    = mn.toFixed(1) + ' – ' + mx.toFixed(1);
+  document.getElementById('iw-range-sub').textContent = 'kg  (' + (mn*2.205).toFixed(0) + '–' + (mx*2.205).toFixed(0) + ' lbs)';
+
+  // Optional BMI
+  var wt = parseFloat(document.getElementById('iw-wt').value);
+  var hm = h / 100;
+  var bmiSec = document.getElementById('iw-bmi-section');
+  if (wt && h) {
+    var bmi = wt / (hm * hm);
+    document.getElementById('iw-your-bmi').textContent = bmi.toFixed(1);
+    // Position marker: 15=0%, 40=100% (BMI scale)
+    var pct = Math.min(Math.max((bmi - 15) / 25 * 100, 0), 100);
+    document.getElementById('iw-bmi-marker').style.left = pct + '%';
+    bmiSec.style.display = '';
+  } else {
+    bmiSec.style.display = 'none';
+  }
+}
+
+iwCalc();
+</script>
+</div>
