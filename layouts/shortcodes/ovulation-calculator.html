@@ -128,7 +128,7 @@ function ovCalc(){
   document.getElementById('ov-fertile').textContent=ovFmt(fertileStart)+' – '+ovFmt(fertileEnd);
   document.getElementById('ov-next-period').textContent=ovFmt(nextPeriod);
   document.getElementById('ov-peak').textContent=ovFmt(ovDay);
-  document.getElementById('ov-days-fertile').textContent=daysFertile>0?daysFertile+' days':(daysFertile>=−6?'In window now':'Passed');
+  document.getElementById('ov-days-fertile').textContent=daysFertile>0?daysFertile+' days':(daysFertile>=-6?'In window now':'Passed');
 
   // Timeline
   var tl=document.getElementById('ov-timeline');
