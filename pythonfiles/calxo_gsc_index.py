@@ -168,6 +168,17 @@ URLS = [
     "/math/margin-calculator/",
     "/math/discount-calculator/",
 
+    # Business / SaaS
+    "/business/",
+    "/business/cac-calculator/",
+    "/business/ltv-calculator/",
+    "/business/ltv-cac-calculator/",
+    "/business/mrr-calculator/",
+    "/business/churn-rate-calculator/",
+    "/business/break-even-calculator/",
+    "/business/gross-margin-calculator/",
+    "/business/roi-calculator/",
+
     # Static
     "/about/",
     "/privacy-policy/",

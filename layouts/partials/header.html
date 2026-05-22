@@ -49,6 +49,10 @@
       (dict "label" "Percentage &amp; math" "slugs" (slice "percentage-calculator" "margin-calculator" "discount-calculator"))
       (dict "label" "Date &amp; age" "slugs" (slice "age-calculator" "date-calculator"))
     )
+    "business" (slice
+      (dict "label" "SaaS &amp; growth" "slugs" (slice "cac-calculator" "ltv-calculator" "ltv-cac-calculator" "mrr-calculator" "churn-rate-calculator"))
+      (dict "label" "Profitability" "slugs" (slice "break-even-calculator" "gross-margin-calculator" "roi-calculator"))
+    )
   }}
 
   {{/* Slug → SVG icon path-data mapping for the icon container next to each item */}}
@@ -107,6 +111,14 @@
     "swp-calculator"               "M3 7l6 6 4-4 8 8|M14 17h7v-7"
     "cagr-calculator"              "M3 17l4-4 4 4 4-8 4-4|M14 7h7v7"
     "freelancer-tax-44ada-calculator" "M4 4h16v16H4z|M8 8h8M8 12h8M8 16h4|M16 2l2 2-2 2"
+    "cac-calculator"                "M12 3a5 5 0 100 10A5 5 0 0012 3|M4 20c0-4 3.6-7 8-7s8 3 8 7|M20 8l-2 2 2 2"
+    "ltv-calculator"                "M3 17l6-6 4 4 8-8|M14 7h7v7|M5 21h5"
+    "ltv-cac-calculator"            "M3 6h18|M6 3v3M18 3v3|M8 12h8|M12 9v6|M3 18l4 4 4-4"
+    "mrr-calculator"                "M3 7h5l2 10 3-14 3 10 2-6h4"
+    "churn-rate-calculator"         "M3 12a9 9 0 1018 0|M17 12l-5-5-5 5|M12 7v10"
+    "break-even-calculator"         "M3 18L9 6l4 8 3-4 5 8|M3 18h18"
+    "gross-margin-calculator"       "M3 3h18v18H3z|M3 9h18|M9 9v12"
+    "roi-calculator"                "M12 2a10 10 0 100 20A10 10 0 0012 2|M9 12l2 2 4-4|M15 8l3 4-3 4"
   }}
 
   {{/* Build sections list from menu.main, attaching $columnsBySection groupings */}}
