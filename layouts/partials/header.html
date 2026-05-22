@@ -17,20 +17,20 @@
        Each column has a header label and an ordered list of calculator slugs. */}}
   {{ $columnsBySection := dict
     "loan" (slice
-      (dict "label" "EMI calculators" "slugs" (slice "emi-calculator" "car-loan-calculator" "education-loan-calculator"))
-      (dict "label" "Eligibility &amp; costs" "slugs" (slice "foir-calculator" "home-loan-eligibility" "stamp-duty-calculator"))
+      (dict "label" "EMI calculators" "slugs" (slice "emi-calculator" "personal-loan-calculator" "car-loan-calculator" "bike-loan-calculator" "education-loan-calculator"))
+      (dict "label" "Eligibility &amp; debt" "slugs" (slice "foir-calculator" "home-loan-eligibility" "stamp-duty-calculator" "loan-prepayment-calculator" "credit-card-payoff-calculator"))
     )
     "investment" (slice
-      (dict "label" "Mutual funds" "slugs" (slice "sip-calculator" "lumpsum-calculator" "compound-interest-calculator"))
-      (dict "label" "Fixed income" "slugs" (slice "fd-calculator" "rd-calculator"))
-      (dict "label" "Retirement &amp; long-term" "slugs" (slice "ppf-calculator" "nps-calculator"))
+      (dict "label" "Mutual funds" "slugs" (slice "sip-calculator" "step-up-sip-calculator" "lumpsum-calculator" "swp-calculator"))
+      (dict "label" "Fixed income &amp; savings" "slugs" (slice "fd-calculator" "rd-calculator" "ppf-calculator" "ssy-calculator" "gold-calculator"))
+      (dict "label" "Retirement &amp; planning" "slugs" (slice "nps-calculator" "retirement-calculator" "inflation-calculator" "cagr-calculator"))
     )
     "tax" (slice
-      (dict "label" "Income tax" "slugs" (slice "income-tax-calculator" "old-vs-new-tax-regime"))
+      (dict "label" "Income tax" "slugs" (slice "income-tax-calculator" "old-vs-new-tax-regime" "nps-tax-benefit-calculator" "freelancer-tax-44ada-calculator"))
       (dict "label" "Capital gains &amp; TDS" "slugs" (slice "capital-gains-calculator" "tds-calculator"))
     )
     "salary" (slice
-      (dict "label" "Salary &amp; payroll" "slugs" (slice "hra-calculator" "takehome-calculator"))
+      (dict "label" "Salary &amp; payroll" "slugs" (slice "hra-calculator" "takehome-calculator" "salary-hike-calculator" "salary-to-hourly-calculator"))
       (dict "label" "Retirement benefits" "slugs" (slice "gratuity-calculator" "epf-calculator"))
     )
     "gst" (slice
@@ -41,8 +41,9 @@
       (dict "label" "Fuel prices" "slugs" (slice "petrol-price-today"))
     )
     "health" (slice
-      (dict "label" "Body metrics" "slugs" (slice "bmi-calculator" "body-fat-calculator" "water-intake-calculator"))
-      (dict "label" "Nutrition &amp; fitness" "slugs" (slice "tdee-calculator" "calorie-deficit-calculator"))
+      (dict "label" "Body metrics" "slugs" (slice "bmi-calculator" "bmi-calculator-men" "body-fat-calculator" "ideal-weight-calculator"))
+      (dict "label" "Nutrition &amp; fitness" "slugs" (slice "tdee-calculator" "bmr-calculator" "calorie-deficit-calculator" "water-intake-calculator"))
+      (dict "label" "Women&apos;s health" "slugs" (slice "ovulation-calculator" "period-calculator"))
     )
     "math" (slice
       (dict "label" "Percentage &amp; math" "slugs" (slice "percentage-calculator" "margin-calculator" "discount-calculator"))
@@ -86,6 +87,26 @@
     "discount-calculator"          "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2|M9 14l2 2 4-4"
     "age-calculator"               "M3 4h18v18H3z|M16 2v4M8 2v4M3 10h18"
     "date-calculator"              "M3 4h18v18H3z|M16 2v4M8 2v4M3 10h18|M8 14h.01M12 14h.01M16 14h.01"
+    "step-up-sip-calculator"       "M3 19l5-7 4 3 4-6 5-5|M14 7h6v6"
+    "inflation-calculator"         "M5 19L19 5|M7 7a1 1 0 11-2 0 1 1 0 012 0zM17 17a1 1 0 11-2 0 1 1 0 012 0z|M16 8l4 4-4 4"
+    "retirement-calculator"        "M12 2a10 10 0 100 20A10 10 0 0012 2|M12 7v5l3 3"
+    "gold-calculator"              "M12 3a9 9 0 100 18A9 9 0 0012 3|M8 12h8|M12 8v8"
+    "ssy-calculator"               "M12 3a5 5 0 100 10A5 5 0 0012 3|M5 22v-1a7 7 0 0114 0v1|M9 14l2 2 4-4"
+    "loan-prepayment-calculator"   "M3 11.5L12 4l9 7.5|M5 10v10h14V10|M9 15h6"
+    "credit-card-payoff-calculator" "M2 6h20v14H2z|M2 10h20|M6 15h4"
+    "nps-tax-benefit-calculator"   "M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6z|M8 12l3 3 5-6"
+    "personal-loan-calculator"     "M12 3a5 5 0 100 10A5 5 0 0012 3|M4 20c0-4 3.6-7 8-7s8 3 8 7"
+    "bike-loan-calculator"         "M5.5 17.5a3 3 0 100-6 3 3 0 000 6|M18.5 17.5a3 3 0 100-6 3 3 0 000 6|M14 7h-4L8 14.5M10 7l-2 7.5"
+    "salary-hike-calculator"       "M3 17l6-6 4 4 8-8|M19 8v6h-6"
+    "salary-to-hourly-calculator"  "M12 2a10 10 0 100 20A10 10 0 0012 2|M12 6v6l4 2"
+    "bmr-calculator"               "M12 2a5 5 0 100 10A5 5 0 0012 2z|M4 20c0-4 3.6-7 8-7s8 3 8 7|M17 8h4M17 12h3"
+    "ideal-weight-calculator"      "M12 2a5 5 0 100 10A5 5 0 0012 2z|M4 20c0-4 3.6-7 8-7s8 3 8 7|M9 14l2 2 4-4"
+    "bmi-calculator-men"           "M12 2a5 5 0 100 10A5 5 0 0012 2z|M4 20c0-4 3.6-7 8-7s8 3 8 7|M17 4l3 3-3 3"
+    "ovulation-calculator"         "M3 4h18v16H3z|M16 2v4M8 2v4M3 10h18|M12 14a2 2 0 100-4 2 2 0 000 4"
+    "period-calculator"            "M3 4h18v16H3z|M16 2v4M8 2v4M3 10h18|M9 16h6"
+    "swp-calculator"               "M3 7l6 6 4-4 8 8|M14 17h7v-7"
+    "cagr-calculator"              "M3 17l4-4 4 4 4-8 4-4|M14 7h7v7"
+    "freelancer-tax-44ada-calculator" "M4 4h16v16H4z|M8 8h8M8 12h8M8 16h4|M16 2l2 2-2 2"
   }}
 
   {{/* Build sections list from menu.main, attaching $columnsBySection groupings */}}
