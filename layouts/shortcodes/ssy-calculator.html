@@ -1,0 +1,170 @@
+<div class="cx-emi-widget" id="cx-ssy">
+<style>
+  #cx-ssy.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-ssy.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-ssy label { display: block; margin-bottom: 1.15rem; }
+  #cx-ssy label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-ssy label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-ssy input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-ssy input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-ssy input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-ssy .cx-emi-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-ssy .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-ssy .cx-emi-result > * { position: relative; }
+  #cx-ssy .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-ssy .cx-emi-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-ssy .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-ssy .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-ssy .cx-emi-row strong { font-weight: 700; }
+  #cx-ssy .cx-emi-bar {
+    display: flex; height: 9px; border-radius: 5px; overflow: hidden;
+    margin: 1rem 0 .5rem; background: rgba(255,255,255,.12);
+  }
+  #cx-ssy .cx-emi-bar-p { background: #ffffff; transition: width .25s ease; }
+  #cx-ssy .cx-emi-bar-i { background: rgba(255,255,255,.42); transition: width .25s ease; }
+  #cx-ssy .cx-emi-legend {
+    display: flex; gap: 1rem; font-size: .76rem; color: rgba(255,255,255,.9);
+  }
+  #cx-ssy .cx-emi-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block; vertical-align: middle; margin-right: .35rem;
+  }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Annual deposit (₹) <em data-out="deposit">₹50,000</em></span>
+    <input type="number" id="cx-ssy-dep" min="250" max="150000" step="250" value="50000" inputmode="numeric">
+    <input type="range" id="cx-ssy-dep-r" min="250" max="150000" step="250" value="50000">
+  </label>
+  <label>
+    <span>Girl's current age (years) <em data-out="age">3</em></span>
+    <input type="number" id="cx-ssy-age" min="0" max="10" step="1" value="3" inputmode="numeric">
+    <input type="range" id="cx-ssy-age-r" min="0" max="10" step="1" value="3">
+  </label>
+  <label>
+    <span>Interest rate (%) <em data-out="rate">8.20%</em></span>
+    <input type="number" id="cx-ssy-rate" min="1" max="12" step="0.1" value="8.2" inputmode="decimal">
+    <input type="range" id="cx-ssy-rate-r" min="5" max="12" step="0.1" value="8.2">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Maturity amount (tax-free)</div>
+  <div class="cx-emi-result-value" id="cx-ssy-maturity">₹0</div>
+  <div class="cx-emi-row"><span>Total deposited (15 yrs)</span> <strong id="cx-ssy-invested">₹0</strong></div>
+  <div class="cx-emi-row"><span>Interest earned</span> <strong id="cx-ssy-interest">₹0</strong></div>
+  <div class="cx-emi-row"><span>Matures in year</span> <strong id="cx-ssy-year">—</strong></div>
+  <div class="cx-emi-bar">
+    <div class="cx-emi-bar-p" id="cx-ssy-bar-p" style="width:40%"></div>
+    <div class="cx-emi-bar-i" id="cx-ssy-bar-i" style="width:60%"></div>
+  </div>
+  <div class="cx-emi-legend">
+    <span><span class="cx-emi-dot" style="background:#fff"></span>Deposited <span id="cx-ssy-pct-p">40%</span></span>
+    <span><span class="cx-emi-dot" style="background:rgba(255,255,255,.4)"></span>Interest <span id="cx-ssy-pct-i">60%</span></span>
+  </div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  var dep   = document.getElementById('cx-ssy-dep');
+  var depR  = document.getElementById('cx-ssy-dep-r');
+  var age   = document.getElementById('cx-ssy-age');
+  var ageR  = document.getElementById('cx-ssy-age-r');
+  var rate  = document.getElementById('cx-ssy-rate');
+  var rateR = document.getElementById('cx-ssy-rate-r');
+
+  function compute() {
+    var D = parseFloat(dep.value) || 0;
+    var a = parseInt(age.value) || 0;
+    var r = (parseFloat(rate.value) || 0) / 100;
+
+    // SSY: deposit annually for 15 years, then 6 more years of interest only
+    // FV of 15-year annuity (end-of-year deposits)
+    var fv15 = 0;
+    if (r === 0) {
+      fv15 = D * 15;
+    } else {
+      fv15 = D * ((Math.pow(1 + r, 15) - 1) / r) * (1 + r);
+    }
+    // Compound for 6 more years (no deposits)
+    var maturity   = fv15 * Math.pow(1 + r, 6);
+    var invested   = D * 15;
+    var interest   = maturity - invested;
+    var yearNow    = new Date().getFullYear();
+    var matureYear = yearNow + 21;
+    var pctP = maturity > 0 ? Math.round((invested / maturity) * 100) : 0;
+    var pctI = 100 - pctP;
+
+    document.getElementById('cx-ssy-maturity').textContent  = fmtINR(maturity);
+    document.getElementById('cx-ssy-invested').textContent  = fmtINR(invested);
+    document.getElementById('cx-ssy-interest').textContent  = fmtINR(interest);
+    document.getElementById('cx-ssy-year').textContent      = matureYear;
+    document.getElementById('cx-ssy-bar-p').style.width    = pctP + '%';
+    document.getElementById('cx-ssy-bar-i').style.width    = pctI + '%';
+    document.getElementById('cx-ssy-pct-p').textContent    = pctP + '%';
+    document.getElementById('cx-ssy-pct-i').textContent    = pctI + '%';
+
+    document.querySelector('#cx-ssy [data-out="deposit"]').textContent = fmtINR(D);
+    document.querySelector('#cx-ssy [data-out="age"]').textContent     = a;
+    document.querySelector('#cx-ssy [data-out="rate"]').textContent    = (r * 100).toFixed(2) + '%';
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(dep, depR);
+  syncPair(age, ageR);
+  syncPair(rate, rateR);
+  compute();
+})();
+</script>

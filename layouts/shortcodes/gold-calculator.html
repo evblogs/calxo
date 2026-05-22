@@ -1,0 +1,157 @@
+<div class="cx-emi-widget" id="cx-gold">
+<style>
+  #cx-gold.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-gold.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-gold label { display: block; margin-bottom: 1.15rem; }
+  #cx-gold label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-gold label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-gold input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-gold input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-gold input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-gold select {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff; cursor: pointer;
+  }
+  #cx-gold select:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-gold .cx-emi-result {
+    background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-gold .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-gold .cx-emi-result > * { position: relative; }
+  #cx-gold .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-gold .cx-emi-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-gold .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-gold .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-gold .cx-emi-row strong { font-weight: 700; }
+  #cx-gold .cx-rate-note {
+    font-size: .75rem; opacity: .8; margin-top: .6rem; line-height: 1.4;
+  }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Gold weight <em data-out="weight">10</em></span>
+    <input type="number" id="cx-gd-weight" min="0.1" max="10000" step="0.1" value="10" inputmode="decimal">
+    <input type="range" id="cx-gd-weight-r" min="1" max="500" step="1" value="10">
+  </label>
+  <label>
+    <span>Unit</span>
+    <select id="cx-gd-unit">
+      <option value="1">Grams</option>
+      <option value="11.6638">Tola (11.66 g)</option>
+      <option value="8">Sovereign (8 g)</option>
+    </select>
+  </label>
+  <label>
+    <span>Purity</span>
+    <select id="cx-gd-purity">
+      <option value="1">24 Karat (99.9% pure)</option>
+      <option value="0.9167" selected>22 Karat (91.67% pure)</option>
+      <option value="0.75">18 Karat (75% pure)</option>
+      <option value="0.5833">14 Karat (58.33% pure)</option>
+    </select>
+  </label>
+  <label>
+    <span>Gold rate per gram (₹, 24K) <em data-out="rate">9,500</em></span>
+    <input type="number" id="cx-gd-rate" min="100" max="200000" step="100" value="9500" inputmode="numeric">
+    <input type="range" id="cx-gd-rate-r" min="5000" max="15000" step="100" value="9500">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Market value of your gold</div>
+  <div class="cx-emi-result-value" id="cx-gd-value">₹0</div>
+  <div class="cx-emi-row"><span>Pure gold weight</span> <strong id="cx-gd-pure">0 g</strong></div>
+  <div class="cx-emi-row"><span>Total weight entered</span> <strong id="cx-gd-total">0 g</strong></div>
+  <div class="cx-emi-row"><span>Rate used (24K/g)</span> <strong id="cx-gd-rate-used">₹0</strong></div>
+  <div class="cx-rate-note">Update the rate to today's 24K gold price from MCX or your jeweller. Making charges and GST are not included in this value.</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  var weight  = document.getElementById('cx-gd-weight');
+  var weightR = document.getElementById('cx-gd-weight-r');
+  var unit    = document.getElementById('cx-gd-unit');
+  var purity  = document.getElementById('cx-gd-purity');
+  var rate    = document.getElementById('cx-gd-rate');
+  var rateR   = document.getElementById('cx-gd-rate-r');
+
+  function compute() {
+    var w = parseFloat(weight.value) || 0;
+    var u = parseFloat(unit.value) || 1;
+    var p = parseFloat(purity.value) || 1;
+    var r = parseFloat(rate.value) || 0;
+
+    var totalGrams = w * u;
+    var pureGrams  = totalGrams * p;
+    var value      = pureGrams * r;
+
+    document.getElementById('cx-gd-value').textContent    = fmtINR(value);
+    document.getElementById('cx-gd-pure').textContent     = pureGrams.toFixed(3) + ' g';
+    document.getElementById('cx-gd-total').textContent    = totalGrams.toFixed(3) + ' g';
+    document.getElementById('cx-gd-rate-used').textContent = fmtINR(r) + '/g';
+
+    document.querySelector('#cx-gold [data-out="weight"]').textContent = w;
+    document.querySelector('#cx-gold [data-out="rate"]').textContent   = Math.round(r).toLocaleString('en-IN');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(weight, weightR);
+  syncPair(rate, rateR);
+  unit.addEventListener('change', compute);
+  purity.addEventListener('change', compute);
+  compute();
+})();
+</script>

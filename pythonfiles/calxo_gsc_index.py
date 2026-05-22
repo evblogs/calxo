@@ -110,9 +110,15 @@ URLS = [
     "/investment/step-up-sip-calculator/",
     "/investment/inflation-calculator/",
     "/investment/retirement-calculator/",
+    "/investment/gold-calculator/",
+    "/investment/ssy-calculator/",
 
     # Loan — new calcs
     "/loan/loan-prepayment-calculator/",
+    "/loan/credit-card-payoff-calculator/",
+
+    # Tax — new calcs
+    "/tax/nps-tax-benefit-calculator/",
 
     # Health — new calcs
     "/health/bmr-calculator/",
