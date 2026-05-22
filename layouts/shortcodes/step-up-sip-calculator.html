@@ -1,0 +1,200 @@
+<div class="cx-emi-widget" id="cx-step-sip">
+<style>
+  #cx-step-sip.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-step-sip.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-step-sip label { display: block; margin-bottom: 1.15rem; }
+  #cx-step-sip label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-step-sip label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-step-sip input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-step-sip input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-step-sip input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-step-sip .cx-emi-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-step-sip .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-step-sip .cx-emi-result > * { position: relative; }
+  #cx-step-sip .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-step-sip .cx-emi-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-step-sip .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-step-sip .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-step-sip .cx-emi-row strong { font-weight: 700; }
+  #cx-step-sip .cx-emi-bar {
+    display: flex; height: 9px; border-radius: 5px; overflow: hidden;
+    margin: 1rem 0 .5rem; background: rgba(255,255,255,.12);
+  }
+  #cx-step-sip .cx-emi-bar-p { background: #ffffff; transition: width .25s ease; }
+  #cx-step-sip .cx-emi-bar-i { background: rgba(255,255,255,.42); transition: width .25s ease; }
+  #cx-step-sip .cx-emi-legend {
+    display: flex; gap: 1rem; font-size: .76rem; color: rgba(255,255,255,.9);
+  }
+  #cx-step-sip .cx-emi-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block; vertical-align: middle; margin-right: .35rem;
+  }
+  #cx-step-sip .cx-compare-row {
+    margin-top: .75rem; padding: .5rem .75rem;
+    background: rgba(255,255,255,.1); border-radius: 8px;
+    font-size: .82rem; color: rgba(255,255,255,.95);
+  }
+  #cx-step-sip .cx-compare-row span { font-weight: 700; color: #fff; }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Starting monthly SIP (₹) <em data-out="amt">5,000</em></span>
+    <input type="number" id="cx-ss-amt" min="100" max="10000000" step="500" value="5000" inputmode="numeric">
+    <input type="range" id="cx-ss-amt-r" min="500" max="100000" step="500" value="5000">
+  </label>
+  <label>
+    <span>Annual step-up (%) <em data-out="stepup">10%</em></span>
+    <input type="number" id="cx-ss-stepup" min="0" max="50" step="1" value="10" inputmode="numeric">
+    <input type="range" id="cx-ss-stepup-r" min="0" max="30" step="1" value="10">
+  </label>
+  <label>
+    <span>Expected return p.a. (%) <em data-out="rate">12.00%</em></span>
+    <input type="number" id="cx-ss-rate" min="1" max="30" step="0.5" value="12" inputmode="decimal">
+    <input type="range" id="cx-ss-rate-r" min="1" max="20" step="0.5" value="12">
+  </label>
+  <label>
+    <span>Investment duration (years) <em data-out="years">15 yrs</em></span>
+    <input type="number" id="cx-ss-years" min="1" max="40" step="1" value="15" inputmode="numeric">
+    <input type="range" id="cx-ss-years-r" min="1" max="35" step="1" value="15">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Step-up SIP Corpus</div>
+  <div class="cx-emi-result-value" id="cx-ss-fv">₹0</div>
+  <div class="cx-emi-row"><span>Total invested</span> <strong id="cx-ss-invested">₹0</strong></div>
+  <div class="cx-emi-row"><span>Estimated returns</span> <strong id="cx-ss-returns">₹0</strong></div>
+  <div class="cx-emi-row"><span>Wealth gain ratio</span> <strong id="cx-ss-ratio">0×</strong></div>
+  <div class="cx-emi-bar">
+    <div class="cx-emi-bar-p" id="cx-ss-bar-p" style="width:40%"></div>
+    <div class="cx-emi-bar-i" id="cx-ss-bar-i" style="width:60%"></div>
+  </div>
+  <div class="cx-emi-legend">
+    <span><span class="cx-emi-dot" style="background:#fff"></span>Invested <span id="cx-ss-pct-p">40%</span></span>
+    <span><span class="cx-emi-dot" style="background:rgba(255,255,255,.4)"></span>Returns <span id="cx-ss-pct-i">60%</span></span>
+  </div>
+  <div class="cx-compare-row">vs flat SIP: <span id="cx-ss-extra">+₹0 extra</span> corpus</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  var amt    = document.getElementById('cx-ss-amt');
+  var amtR   = document.getElementById('cx-ss-amt-r');
+  var stepup = document.getElementById('cx-ss-stepup');
+  var stepupR= document.getElementById('cx-ss-stepup-r');
+  var rate   = document.getElementById('cx-ss-rate');
+  var rateR  = document.getElementById('cx-ss-rate-r');
+  var yrs    = document.getElementById('cx-ss-years');
+  var yrsR   = document.getElementById('cx-ss-years-r');
+
+  function compute() {
+    var P = parseFloat(amt.value) || 0;
+    var g = (parseFloat(stepup.value) || 0) / 100;
+    var r = (parseFloat(rate.value) || 0) / 100;
+    var n = parseInt(yrs.value) || 0;
+    var i = r / 12;
+
+    var fv = 0, totalInvested = 0;
+    if (P > 0 && n > 0) {
+      if (i === 0) {
+        for (var k = 0; k < n; k++) {
+          var sipK = P * Math.pow(1 + g, k);
+          totalInvested += sipK * 12;
+          fv += sipK * 12;
+        }
+      } else {
+        var fvUnit12 = ((Math.pow(1 + i, 12) - 1) / i) * (1 + i);
+        for (var k = 0; k < n; k++) {
+          var sipK = P * Math.pow(1 + g, k);
+          totalInvested += sipK * 12;
+          fv += sipK * fvUnit12 * Math.pow(1 + i, (n - k - 1) * 12);
+        }
+      }
+    }
+
+    var fvFlat = (P > 0 && n > 0 && i > 0)
+      ? P * ((Math.pow(1 + i, n * 12) - 1) / i) * (1 + i)
+      : P * n * 12;
+
+    var returns = fv - totalInvested;
+    var ratio   = totalInvested > 0 ? (fv / totalInvested) : 0;
+    var pctP    = fv > 0 ? Math.round((totalInvested / fv) * 100) : 0;
+    var pctI    = 100 - pctP;
+    var extra   = fv - fvFlat;
+
+    document.getElementById('cx-ss-fv').textContent      = fmtINR(fv);
+    document.getElementById('cx-ss-invested').textContent = fmtINR(totalInvested);
+    document.getElementById('cx-ss-returns').textContent  = fmtINR(returns);
+    document.getElementById('cx-ss-ratio').textContent    = ratio.toFixed(2) + '×';
+    document.getElementById('cx-ss-bar-p').style.width   = pctP + '%';
+    document.getElementById('cx-ss-bar-i').style.width   = pctI + '%';
+    document.getElementById('cx-ss-pct-p').textContent   = pctP + '%';
+    document.getElementById('cx-ss-pct-i').textContent   = pctI + '%';
+    document.getElementById('cx-ss-extra').textContent   = (extra >= 0 ? '+' : '') + fmtINR(extra) + ' extra';
+
+    document.querySelector('#cx-step-sip [data-out="amt"]').textContent    = Math.round(P).toLocaleString('en-IN');
+    document.querySelector('#cx-step-sip [data-out="stepup"]').textContent = (parseFloat(stepup.value) || 0) + '%';
+    document.querySelector('#cx-step-sip [data-out="rate"]').textContent   = (parseFloat(rate.value) || 0).toFixed(2) + '%';
+    document.querySelector('#cx-step-sip [data-out="years"]').textContent  = n + ' yr' + (n !== 1 ? 's' : '');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(amt, amtR);
+  syncPair(stepup, stepupR);
+  syncPair(rate, rateR);
+  syncPair(yrs, yrsR);
+  compute();
+})();
+</script>

@@ -1,0 +1,206 @@
+<div class="cx-emi-widget" id="cx-retire">
+<style>
+  #cx-retire.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-retire.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-retire label { display: block; margin-bottom: 1.15rem; }
+  #cx-retire label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-retire label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-retire input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-retire input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-retire input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-retire .cx-emi-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-retire .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-retire .cx-emi-result > * { position: relative; }
+  #cx-retire .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-retire .cx-emi-result-value {
+    font-size: clamp(1.65rem, 4.5vw, 2.2rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-retire .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-retire .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-retire .cx-emi-row strong { font-weight: 700; }
+  #cx-retire .cx-highlight {
+    background: rgba(255,255,255,.15); border-radius: 8px;
+    padding: .5rem .75rem; margin-top: .6rem;
+    font-size: .83rem; opacity: .95; line-height: 1.4;
+  }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Current age (years) <em data-out="cage">30</em></span>
+    <input type="number" id="cx-rt-cage" min="18" max="60" step="1" value="30" inputmode="numeric">
+    <input type="range" id="cx-rt-cage-r" min="18" max="60" step="1" value="30">
+  </label>
+  <label>
+    <span>Retirement age (years) <em data-out="rage">60</em></span>
+    <input type="number" id="cx-rt-rage" min="40" max="75" step="1" value="60" inputmode="numeric">
+    <input type="range" id="cx-rt-rage-r" min="40" max="75" step="1" value="60">
+  </label>
+  <label>
+    <span>Monthly expenses today (₹) <em data-out="exp">₹50,000</em></span>
+    <input type="number" id="cx-rt-exp" min="5000" max="1000000" step="5000" value="50000" inputmode="numeric">
+    <input type="range" id="cx-rt-exp-r" min="5000" max="200000" step="5000" value="50000">
+  </label>
+  <label>
+    <span>Inflation rate (%) <em data-out="infl">6.00%</em></span>
+    <input type="number" id="cx-rt-infl" min="1" max="12" step="0.5" value="6" inputmode="decimal">
+    <input type="range" id="cx-rt-infl-r" min="2" max="10" step="0.5" value="6">
+  </label>
+  <label>
+    <span>Pre-retirement return (%) <em data-out="pre">12.00%</em></span>
+    <input type="number" id="cx-rt-pre" min="4" max="20" step="0.5" value="12" inputmode="decimal">
+    <input type="range" id="cx-rt-pre-r" min="4" max="18" step="0.5" value="12">
+  </label>
+  <label>
+    <span>Post-retirement return (%) <em data-out="post">7.00%</em></span>
+    <input type="number" id="cx-rt-post" min="2" max="14" step="0.5" value="7" inputmode="decimal">
+    <input type="range" id="cx-rt-post-r" min="2" max="12" step="0.5" value="7">
+  </label>
+  <label>
+    <span>Years in retirement <em data-out="life">25 yrs</em></span>
+    <input type="number" id="cx-rt-life" min="5" max="50" step="1" value="25" inputmode="numeric">
+    <input type="range" id="cx-rt-life-r" min="5" max="40" step="1" value="25">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Corpus needed at retirement</div>
+  <div class="cx-emi-result-value" id="cx-rt-corpus">₹0</div>
+  <div class="cx-emi-row"><span>Monthly expenses at retirement</span> <strong id="cx-rt-exp-ret">₹0</strong></div>
+  <div class="cx-emi-row"><span>Years to retirement</span> <strong id="cx-rt-ytr">0 yrs</strong></div>
+  <div class="cx-emi-row"><span>Monthly SIP needed now</span> <strong id="cx-rt-sip">₹0</strong></div>
+  <div class="cx-highlight" id="cx-rt-note">—</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  var cage  = document.getElementById('cx-rt-cage');
+  var cageR = document.getElementById('cx-rt-cage-r');
+  var rage  = document.getElementById('cx-rt-rage');
+  var rageR = document.getElementById('cx-rt-rage-r');
+  var exp   = document.getElementById('cx-rt-exp');
+  var expR  = document.getElementById('cx-rt-exp-r');
+  var infl  = document.getElementById('cx-rt-infl');
+  var inflR = document.getElementById('cx-rt-infl-r');
+  var pre   = document.getElementById('cx-rt-pre');
+  var preR  = document.getElementById('cx-rt-pre-r');
+  var post  = document.getElementById('cx-rt-post');
+  var postR = document.getElementById('cx-rt-post-r');
+  var life  = document.getElementById('cx-rt-life');
+  var lifeR = document.getElementById('cx-rt-life-r');
+
+  function compute() {
+    var ca   = parseInt(cage.value) || 30;
+    var ra   = parseInt(rage.value) || 60;
+    var E    = parseFloat(exp.value) || 0;
+    var gi   = (parseFloat(infl.value) || 0) / 100;
+    var gPre = (parseFloat(pre.value) || 0) / 100;
+    var gPost= (parseFloat(post.value) || 0) / 100;
+    var L    = parseInt(life.value) || 25;
+
+    var ytr = Math.max(0, ra - ca);
+    var n   = ytr * 12;
+
+    // Monthly expenses at retirement (inflation-adjusted)
+    var expRet = E * Math.pow(1 + gi, ytr);
+
+    // Corpus required: present value of annuity at retirement
+    // Real monthly return post-retirement
+    var iPost = gPost / 12;
+    var iInfl = gi / 12;
+    var iReal = (1 + iPost) / (1 + iInfl) - 1;
+    var lifeMonths = L * 12;
+    var corpus;
+    if (Math.abs(iReal) < 1e-9) {
+      corpus = expRet * lifeMonths;
+    } else {
+      corpus = expRet * (1 - Math.pow(1 + iReal, -lifeMonths)) / iReal;
+    }
+
+    // Monthly SIP to build corpus
+    var iPre = gPre / 12;
+    var sip;
+    if (n <= 0) {
+      sip = corpus;
+    } else if (iPre === 0) {
+      sip = corpus / n;
+    } else {
+      sip = corpus * iPre / ((Math.pow(1 + iPre, n) - 1) * (1 + iPre));
+    }
+
+    document.getElementById('cx-rt-corpus').textContent  = fmtINR(corpus);
+    document.getElementById('cx-rt-exp-ret').textContent = fmtINR(expRet);
+    document.getElementById('cx-rt-ytr').textContent     = ytr + ' yr' + (ytr !== 1 ? 's' : '');
+    document.getElementById('cx-rt-sip').textContent     = fmtINR(sip);
+    document.getElementById('cx-rt-note').textContent    =
+      'Start a ' + fmtINR(sip) + '/mo SIP today to retire comfortably at ' + ra;
+
+    document.querySelector('#cx-retire [data-out="cage"]').textContent = ca;
+    document.querySelector('#cx-retire [data-out="rage"]').textContent = ra;
+    document.querySelector('#cx-retire [data-out="exp"]').textContent  = fmtINR(E);
+    document.querySelector('#cx-retire [data-out="infl"]').textContent = (gi*100).toFixed(2) + '%';
+    document.querySelector('#cx-retire [data-out="pre"]').textContent  = (gPre*100).toFixed(2) + '%';
+    document.querySelector('#cx-retire [data-out="post"]').textContent = (gPost*100).toFixed(2) + '%';
+    document.querySelector('#cx-retire [data-out="life"]').textContent = L + ' yrs';
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(cage, cageR);
+  syncPair(rage, rageR);
+  syncPair(exp, expR);
+  syncPair(infl, inflR);
+  syncPair(pre, preR);
+  syncPair(post, postR);
+  syncPair(life, lifeR);
+  compute();
+})();
+</script>

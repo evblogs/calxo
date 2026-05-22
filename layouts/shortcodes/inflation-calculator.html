@@ -1,0 +1,141 @@
+<div class="cx-emi-widget" id="cx-infl">
+<style>
+  #cx-infl.cx-emi-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) {
+    #cx-infl.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; }
+  }
+  #cx-infl label { display: block; margin-bottom: 1.15rem; }
+  #cx-infl label > span {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem;
+  }
+  #cx-infl label > span em {
+    color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal;
+  }
+  #cx-infl input[type="range"] {
+    width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem;
+  }
+  #cx-infl input[type="number"] {
+    width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1;
+    border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600;
+    box-sizing: border-box; background: #fff;
+  }
+  #cx-infl input[type="number"]:focus {
+    outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+  }
+  #cx-infl .cx-emi-result {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #06b6d4 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  #cx-infl .cx-emi-result::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 24px 24px; pointer-events: none;
+  }
+  #cx-infl .cx-emi-result > * { position: relative; }
+  #cx-infl .cx-emi-result-label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85;
+  }
+  #cx-infl .cx-emi-result-value {
+    font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem;
+  }
+  #cx-infl .cx-emi-row {
+    display: flex; justify-content: space-between;
+    padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem;
+  }
+  #cx-infl .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-infl .cx-emi-row strong { font-weight: 700; }
+  #cx-infl .cx-highlight {
+    background: rgba(255,255,255,.15); border-radius: 8px;
+    padding: .5rem .75rem; margin-top: .6rem;
+    font-size: .83rem; opacity: .95; line-height: 1.4;
+  }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Amount today (₹) <em data-out="amount">₹50,000</em></span>
+    <input type="number" id="cx-infl-amt" min="100" max="100000000" step="1000" value="50000" inputmode="numeric">
+    <input type="range" id="cx-infl-amt-r" min="1000" max="1000000" step="1000" value="50000">
+  </label>
+  <label>
+    <span>Annual inflation rate (%) <em data-out="rate">6.00%</em></span>
+    <input type="number" id="cx-infl-rate" min="0.5" max="20" step="0.5" value="6" inputmode="decimal">
+    <input type="range" id="cx-infl-rate-r" min="1" max="15" step="0.5" value="6">
+  </label>
+  <label>
+    <span>Years <em data-out="years">10 yrs</em></span>
+    <input type="number" id="cx-infl-years" min="1" max="50" step="1" value="10" inputmode="numeric">
+    <input type="range" id="cx-infl-years-r" min="1" max="40" step="1" value="10">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Future cost of same thing</div>
+  <div class="cx-emi-result-value" id="cx-infl-future">₹0</div>
+  <div class="cx-emi-row"><span>Amount today</span> <strong id="cx-infl-now">₹0</strong></div>
+  <div class="cx-emi-row"><span>Real value of ₹ today, in future</span> <strong id="cx-infl-real">₹0</strong></div>
+  <div class="cx-emi-row"><span>Purchasing power lost</span> <strong id="cx-infl-loss">0%</strong></div>
+  <div class="cx-highlight" id="cx-infl-note">—</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+
+  var amt   = document.getElementById('cx-infl-amt');
+  var amtR  = document.getElementById('cx-infl-amt-r');
+  var rate  = document.getElementById('cx-infl-rate');
+  var rateR = document.getElementById('cx-infl-rate-r');
+  var yrs   = document.getElementById('cx-infl-years');
+  var yrsR  = document.getElementById('cx-infl-years-r');
+
+  function compute() {
+    var A = parseFloat(amt.value) || 0;
+    var r = (parseFloat(rate.value) || 0) / 100;
+    var n = parseInt(yrs.value) || 0;
+
+    var future   = A * Math.pow(1 + r, n);
+    var realVal  = A / Math.pow(1 + r, n);
+    var loss     = (1 - 1 / Math.pow(1 + r, n)) * 100;
+    var yearNow  = new Date().getFullYear();
+
+    document.getElementById('cx-infl-future').textContent = fmtINR(future);
+    document.getElementById('cx-infl-now').textContent    = fmtINR(A);
+    document.getElementById('cx-infl-real').textContent   = fmtINR(realVal);
+    document.getElementById('cx-infl-loss').textContent   = loss.toFixed(1) + '%';
+    document.getElementById('cx-infl-note').textContent   =
+      'What costs ' + fmtINR(A) + ' today will cost ' + fmtINR(future) + ' in ' + (yearNow + n);
+
+    document.querySelector('#cx-infl [data-out="amount"]').textContent = fmtINR(A);
+    document.querySelector('#cx-infl [data-out="rate"]').textContent   = r * 100 + '%';
+    document.querySelector('#cx-infl [data-out="years"]').textContent  = n + ' yr' + (n !== 1 ? 's' : '');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(amt, amtR);
+  syncPair(rate, rateR);
+  syncPair(yrs, yrsR);
+  compute();
+})();
+</script>

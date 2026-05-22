@@ -107,6 +107,12 @@ URLS = [
     "/investment/cagr-calculator/",
     "/investment/simple-interest-calculator/",
     "/investment/stock-average-calculator/",
+    "/investment/step-up-sip-calculator/",
+    "/investment/inflation-calculator/",
+    "/investment/retirement-calculator/",
+
+    # Loan — new calcs
+    "/loan/loan-prepayment-calculator/",
 
     # Health — new calcs
     "/health/bmr-calculator/",
