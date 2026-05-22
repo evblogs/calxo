@@ -1,0 +1,71 @@
+<div class="cx-emi-widget" id="cx-mrr">
+<style>
+  #cx-mrr.cx-emi-widget { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15,23,42,.04); }
+  @media (max-width: 760px) { #cx-mrr.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; } }
+  #cx-mrr label { display: block; margin-bottom: 1.15rem; }
+  #cx-mrr label > span { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
+  #cx-mrr label > span em { color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal; }
+  #cx-mrr input[type="range"] { width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem; }
+  #cx-mrr input[type="number"] { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600; box-sizing: border-box; background: #fff; }
+  #cx-mrr input[type="number"]:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  #cx-mrr .cx-emi-result { background: linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%); color: #fff; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+  #cx-mrr .cx-emi-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  #cx-mrr .cx-emi-result > * { position: relative; }
+  #cx-mrr .cx-emi-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  #cx-mrr .cx-emi-result-value { font-size: clamp(1.85rem,5vw,2.4rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem; }
+  #cx-mrr .cx-emi-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem; }
+  #cx-mrr .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-mrr .cx-emi-row strong { font-weight: 700; }
+  #cx-mrr .cx-section-head { font-size: .72rem; text-transform: uppercase; letter-spacing: 1px; opacity: .7; margin: 1rem 0 .35rem; }
+</style>
+<div class="cx-emi-inputs">
+  <label><span>Starting MRR (₹) <em data-out="start">₹5,00,000</em></span>
+    <input type="number" id="cx-mrr-start" min="0" max="1000000000" step="10000" value="500000" inputmode="numeric">
+    <input type="range" id="cx-mrr-start-r" min="0" max="5000000" step="10000" value="500000"></label>
+  <label><span>New MRR added (₹/month) <em data-out="new">₹80,000</em></span>
+    <input type="number" id="cx-mrr-new" min="0" max="100000000" step="5000" value="80000" inputmode="numeric">
+    <input type="range" id="cx-mrr-new-r" min="0" max="1000000" step="5000" value="80000"></label>
+  <label><span>Expansion MRR (₹/month) <em data-out="exp">₹20,000</em></span>
+    <input type="number" id="cx-mrr-exp" min="0" max="100000000" step="5000" value="20000" inputmode="numeric">
+    <input type="range" id="cx-mrr-exp-r" min="0" max="500000" step="5000" value="20000"></label>
+  <label><span>Churned MRR (₹/month) <em data-out="churn">₹15,000</em></span>
+    <input type="number" id="cx-mrr-churn" min="0" max="100000000" step="5000" value="15000" inputmode="numeric">
+    <input type="range" id="cx-mrr-churn-r" min="0" max="500000" step="5000" value="15000"></label>
+</div>
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label">Ending MRR</div>
+  <div class="cx-emi-result-value" id="cx-mrr-end">₹0</div>
+  <div class="cx-emi-row"><span>ARR (MRR × 12)</span><strong id="cx-mrr-arr">₹0</strong></div>
+  <div class="cx-emi-row"><span>Net new MRR</span><strong id="cx-mrr-net">₹0</strong></div>
+  <div class="cx-emi-row"><span>MRR growth rate</span><strong id="cx-mrr-growth">0%</strong></div>
+  <div class="cx-emi-row"><span>Net Revenue Retention</span><strong id="cx-mrr-nrr">0%</strong></div>
+</div>
+</div>
+<script>
+(function(){
+  var fmtINR=function(n){return '₹'+Math.round(n).toLocaleString('en-IN');};
+  var start=document.getElementById('cx-mrr-start'),startR=document.getElementById('cx-mrr-start-r');
+  var nw=document.getElementById('cx-mrr-new'),nwR=document.getElementById('cx-mrr-new-r');
+  var exp=document.getElementById('cx-mrr-exp'),expR=document.getElementById('cx-mrr-exp-r');
+  var ch=document.getElementById('cx-mrr-churn'),chR=document.getElementById('cx-mrr-churn-r');
+  function compute(){
+    var S=parseFloat(start.value)||0,N=parseFloat(nw.value)||0;
+    var E=parseFloat(exp.value)||0,C=parseFloat(ch.value)||0;
+    var net=N+E-C,end=S+net,arr=end*12;
+    var growth=S>0?(net/S)*100:0;
+    var nrr=S>0?((S+E-C)/S)*100:0;
+    document.getElementById('cx-mrr-end').textContent=fmtINR(end);
+    document.getElementById('cx-mrr-arr').textContent=fmtINR(arr);
+    document.getElementById('cx-mrr-net').textContent=(net>=0?'+':'')+fmtINR(net);
+    document.getElementById('cx-mrr-growth').textContent=(growth>=0?'+':'')+growth.toFixed(1)+'%';
+    document.getElementById('cx-mrr-nrr').textContent=nrr.toFixed(1)+'%';
+    document.querySelector('#cx-mrr [data-out="start"]').textContent=fmtINR(S);
+    document.querySelector('#cx-mrr [data-out="new"]').textContent=fmtINR(N);
+    document.querySelector('#cx-mrr [data-out="exp"]').textContent=fmtINR(E);
+    document.querySelector('#cx-mrr [data-out="churn"]').textContent=fmtINR(C);
+  }
+  function syncPair(n,r){n.addEventListener('input',function(){r.value=n.value;compute();});r.addEventListener('input',function(){n.value=r.value;compute();});}
+  syncPair(start,startR);syncPair(nw,nwR);syncPair(exp,expR);syncPair(ch,chR);
+  compute();
+})();
+</script>

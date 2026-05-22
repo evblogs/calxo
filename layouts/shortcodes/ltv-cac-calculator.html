@@ -1,0 +1,66 @@
+<div class="cx-emi-widget" id="cx-ltvcac">
+<style>
+  #cx-ltvcac.cx-emi-widget { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15,23,42,.04); }
+  @media (max-width: 760px) { #cx-ltvcac.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; } }
+  #cx-ltvcac label { display: block; margin-bottom: 1.15rem; }
+  #cx-ltvcac label > span { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
+  #cx-ltvcac label > span em { color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal; }
+  #cx-ltvcac input[type="range"] { width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem; }
+  #cx-ltvcac input[type="number"] { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600; box-sizing: border-box; background: #fff; }
+  #cx-ltvcac input[type="number"]:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  #cx-ltvcac .cx-emi-result { border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+  #cx-ltvcac .cx-emi-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  #cx-ltvcac .cx-emi-result > * { position: relative; }
+  #cx-ltvcac .cx-emi-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  #cx-ltvcac .cx-emi-result-value { font-size: clamp(2rem,6vw,3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem; }
+  #cx-ltvcac .cx-emi-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem; }
+  #cx-ltvcac .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-ltvcac .cx-emi-row strong { font-weight: 700; }
+  #cx-ltvcac .cx-verdict { border-radius: 8px; padding: .55rem .75rem; margin-top: .6rem; font-size: .85rem; font-weight: 700; text-align: center; background: rgba(255,255,255,.15); }
+</style>
+<div class="cx-emi-inputs">
+  <label><span>Customer LTV (₹) <em data-out="ltv">₹1,16,667</em></span>
+    <input type="number" id="cx-lc-ltv" min="1" max="100000000" step="1000" value="116667" inputmode="numeric">
+    <input type="range" id="cx-lc-ltv-r" min="1000" max="1000000" step="1000" value="116667"></label>
+  <label><span>Customer CAC (₹) <em data-out="cac">₹20,000</em></span>
+    <input type="number" id="cx-lc-cac" min="1" max="100000000" step="1000" value="20000" inputmode="numeric">
+    <input type="range" id="cx-lc-cac-r" min="500" max="500000" step="500" value="20000"></label>
+</div>
+<div class="cx-emi-result" id="cx-lc-panel" style="background:linear-gradient(135deg,#166534 0%,#16a34a 60%,#4ade80 100%);color:#fff;">
+  <div class="cx-emi-result-label">LTV : CAC Ratio</div>
+  <div class="cx-emi-result-value" id="cx-lc-ratio">0 : 1</div>
+  <div class="cx-emi-row"><span>LTV</span><strong id="cx-lc-ltv-out">₹0</strong></div>
+  <div class="cx-emi-row"><span>CAC</span><strong id="cx-lc-cac-out">₹0</strong></div>
+  <div class="cx-emi-row"><span>Gross profit after CAC</span><strong id="cx-lc-net">₹0</strong></div>
+  <div class="cx-verdict" id="cx-lc-verdict">—</div>
+</div>
+</div>
+<script>
+(function(){
+  var fmtINR=function(n){return '₹'+Math.round(n).toLocaleString('en-IN');};
+  var ltv=document.getElementById('cx-lc-ltv'),ltvR=document.getElementById('cx-lc-ltv-r');
+  var cac=document.getElementById('cx-lc-cac'),cacR=document.getElementById('cx-lc-cac-r');
+  var panel=document.getElementById('cx-lc-panel');
+  function compute(){
+    var L=parseFloat(ltv.value)||0,C=parseFloat(cac.value)||1;
+    var ratio=L/C,net=L-C;
+    var ratioStr=ratio.toFixed(2)+' : 1';
+    var verdict,bg;
+    if(ratio>=5){verdict='Excellent — strong unit economics';bg='linear-gradient(135deg,#166534 0%,#16a34a 60%,#4ade80 100%)';}
+    else if(ratio>=3){verdict='Healthy — VCs look for 3x+';bg='linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%)';}
+    else if(ratio>=1.5){verdict='Borderline — improve margins or cut CAC';bg='linear-gradient(135deg,#78350f 0%,#b45309 50%,#d97706 100%)';}
+    else{verdict='Danger — spending more to acquire than you earn';bg='linear-gradient(135deg,#7f1d1d 0%,#dc2626 55%,#f97316 100%)';}
+    panel.style.background=bg;
+    document.getElementById('cx-lc-ratio').textContent=ratioStr;
+    document.getElementById('cx-lc-ltv-out').textContent=fmtINR(L);
+    document.getElementById('cx-lc-cac-out').textContent=fmtINR(C);
+    document.getElementById('cx-lc-net').textContent=fmtINR(net);
+    document.getElementById('cx-lc-verdict').textContent=verdict;
+    document.querySelector('#cx-ltvcac [data-out="ltv"]').textContent=fmtINR(L);
+    document.querySelector('#cx-ltvcac [data-out="cac"]').textContent=fmtINR(C);
+  }
+  function syncPair(n,r){n.addEventListener('input',function(){r.value=n.value;compute();});r.addEventListener('input',function(){n.value=r.value;compute();});}
+  syncPair(ltv,ltvR);syncPair(cac,cacR);
+  compute();
+})();
+</script>

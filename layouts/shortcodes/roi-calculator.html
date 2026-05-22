@@ -1,0 +1,68 @@
+<div class="cx-emi-widget" id="cx-roi">
+<style>
+  #cx-roi.cx-emi-widget { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15,23,42,.04); }
+  @media (max-width: 760px) { #cx-roi.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; } }
+  #cx-roi label { display: block; margin-bottom: 1.15rem; }
+  #cx-roi label > span { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
+  #cx-roi label > span em { color: #2563eb; font-weight: 700; font-size: .98rem; font-style: normal; }
+  #cx-roi input[type="range"] { width: 100%; height: 6px; accent-color: #2563eb; margin: .35rem 0 .25rem; }
+  #cx-roi input[type="number"] { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600; box-sizing: border-box; background: #fff; }
+  #cx-roi input[type="number"]:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  #cx-roi .cx-emi-result { border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; color: #fff; }
+  #cx-roi .cx-emi-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  #cx-roi .cx-emi-result > * { position: relative; }
+  #cx-roi .cx-emi-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  #cx-roi .cx-emi-result-value { font-size: clamp(2rem,6vw,3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem; }
+  #cx-roi .cx-emi-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem; }
+  #cx-roi .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-roi .cx-emi-row strong { font-weight: 700; }
+</style>
+<div class="cx-emi-inputs">
+  <label><span>Investment / cost (₹) <em data-out="inv">₹1,00,000</em></span>
+    <input type="number" id="cx-roi-inv" min="1" max="1000000000" step="10000" value="100000" inputmode="numeric">
+    <input type="range" id="cx-roi-inv-r" min="1000" max="5000000" step="10000" value="100000"></label>
+  <label><span>Revenue / return generated (₹) <em data-out="ret">₹3,50,000</em></span>
+    <input type="number" id="cx-roi-ret" min="0" max="1000000000" step="10000" value="350000" inputmode="numeric">
+    <input type="range" id="cx-roi-ret-r" min="0" max="10000000" step="10000" value="350000"></label>
+  <label><span>Time period (months) <em data-out="mo">6 months</em></span>
+    <input type="number" id="cx-roi-mo" min="1" max="120" step="1" value="6" inputmode="numeric">
+    <input type="range" id="cx-roi-mo-r" min="1" max="60" step="1" value="6"></label>
+</div>
+<div class="cx-emi-result" id="cx-roi-panel" style="background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%)">
+  <div class="cx-emi-result-label">ROI</div>
+  <div class="cx-emi-result-value" id="cx-roi-pct">0%</div>
+  <div class="cx-emi-row"><span>Net profit</span><strong id="cx-roi-net">₹0</strong></div>
+  <div class="cx-emi-row"><span>Annualised ROI</span><strong id="cx-roi-annual">0%</strong></div>
+  <div class="cx-emi-row"><span>Return per ₹1 invested</span><strong id="cx-roi-per">₹0</strong></div>
+</div>
+</div>
+<script>
+(function(){
+  var fmtINR=function(n){return '₹'+Math.round(n).toLocaleString('en-IN');};
+  var inv=document.getElementById('cx-roi-inv'),invR=document.getElementById('cx-roi-inv-r');
+  var ret=document.getElementById('cx-roi-ret'),retR=document.getElementById('cx-roi-ret-r');
+  var mo=document.getElementById('cx-roi-mo'),moR=document.getElementById('cx-roi-mo-r');
+  var panel=document.getElementById('cx-roi-panel');
+  function compute(){
+    var I=parseFloat(inv.value)||1,R=parseFloat(ret.value)||0,M=parseFloat(mo.value)||1;
+    var net=R-I,roi=I>0?(net/I)*100:0,annual=roi/M*12;
+    var perRupee=I>0?R/I:0;
+    var bg;
+    if(roi>200)bg='linear-gradient(135deg,#166534 0%,#16a34a 60%,#4ade80 100%)';
+    else if(roi>50)bg='linear-gradient(135deg,#1e3a8a 0%,#2563eb 50%,#06b6d4 100%)';
+    else if(roi>0)bg='linear-gradient(135deg,#78350f 0%,#b45309 50%,#d97706 100%)';
+    else bg='linear-gradient(135deg,#7f1d1d 0%,#dc2626 55%,#f97316 100%)';
+    panel.style.background=bg;
+    document.getElementById('cx-roi-pct').textContent=roi.toFixed(1)+'%';
+    document.getElementById('cx-roi-net').textContent=fmtINR(net);
+    document.getElementById('cx-roi-annual').textContent=annual.toFixed(1)+'% p.a.';
+    document.getElementById('cx-roi-per').textContent='₹'+perRupee.toFixed(2);
+    document.querySelector('#cx-roi [data-out="inv"]').textContent=fmtINR(I);
+    document.querySelector('#cx-roi [data-out="ret"]').textContent=fmtINR(R);
+    document.querySelector('#cx-roi [data-out="mo"]').textContent=Math.round(M)+' months';
+  }
+  function syncPair(n,r){n.addEventListener('input',function(){r.value=n.value;compute();});r.addEventListener('input',function(){n.value=r.value;compute();});}
+  syncPair(inv,invR);syncPair(ret,retR);syncPair(mo,moR);
+  compute();
+})();
+</script>
