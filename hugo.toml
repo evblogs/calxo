@@ -140,9 +140,14 @@ weight = 2
 parent = "conversion"
 
 [[menu.main]]
+name = "Business"
+URL = "/business/"
+weight = 9
+
+[[menu.main]]
 name = "Blog"
 URL = "/blog/"
-weight = 9
+weight = 10
 
 #################### footer ################################
 

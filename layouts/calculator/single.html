@@ -899,6 +899,27 @@
 
 {{ partial "faq-schema-auto.html" . }}
 
+{{/* ── Reviewer Person entity (Prem Anand) ── */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.calxo.in/#reviewer-prem-anand",
+  "name": "Prem Anand",
+  "jobTitle": "Personal Finance Expert",
+  "url": "https://www.linkedin.com/in/prem-anand-a207771a5/",
+  "knowsAbout": [
+    "Personal finance India",
+    "Income tax calculation",
+    "EMI and loan calculation",
+    "Mutual fund SIP",
+    "GST India",
+    "Salary structuring"
+  ]
+}
+</script>
+
+{{/* ── Review schema (references Prem Anand by @id) ── */}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -911,18 +932,64 @@
     "operatingSystem": "Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
   },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "5",
+    "bestRating": "5"
+  },
   "author": {
     "@type": "Person",
-    "name": "Prem Anand",
-    "jobTitle": "Personal Finance Expert",
-    "url": "https://www.linkedin.com/in/prem-anand-a207771a5/"
+    "@id": "https://www.calxo.in/#reviewer-prem-anand",
+    "name": "Prem Anand"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Calxo",
-    "url": "https://www.calxo.in/"
+    "@id": "https://www.calxo.in/#organization",
+    "name": "Calxo"
   },
   "datePublished": "{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}"
+}
+</script>
+
+{{/* ── HowTo schema (4-step usage guide — triggers rich results) ── */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ printf "How to use the %s" .Title | jsonify }},
+  "description": {{ printf "Step-by-step guide to using the %s on Calxo — free, runs in your browser, no sign-up needed." .Title | jsonify }},
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": {{ .Title | jsonify }}
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": "1",
+      "name": "Enter your values",
+      "text": "Fill in the input fields or drag the sliders to match your numbers — amounts, rates, and tenure."
+    },
+    {
+      "@type": "HowToStep",
+      "position": "2",
+      "name": "See live results",
+      "text": "Results update instantly as you type. No submit button needed — see your answer in real time."
+    },
+    {
+      "@type": "HowToStep",
+      "position": "3",
+      "name": "Adjust and compare scenarios",
+      "text": "Change any value to compare different situations — try different interest rates, amounts, or time periods."
+    },
+    {
+      "@type": "HowToStep",
+      "position": "4",
+      "name": "Save or share",
+      "text": "Copy the shareable URL to bookmark your scenario, or use the embed code to add this calculator to your own website."
+    }
+  ]
 }
 </script>
 

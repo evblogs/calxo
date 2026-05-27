@@ -1,5 +1,6 @@
 {{ $data := index $.Site.Data "petrol-prices" }}
 {{ $updated := $data.updated }}
+{{ $defaultCity := .Get "city" | default "Delhi" }}
 <div class="cx-pet-widget" id="cx-pet">
 <style>
   #cx-pet { background: linear-gradient(150deg,#ffffff 0%,#f8fafc 100%); border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem; margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15,23,42,.04); }
@@ -52,13 +53,18 @@ var CX_PETROL = [
   {{ end }}
 ];
 var CX_UPDATED = {{ $updated | jsonify }};
+var CX_DEFAULT_CITY = {{ $defaultCity | jsonify }};
 </script>
 
 <div class="cx-pet-top">
   <div>
     <label>
       <span>Select your city</span>
-      <select id="cx-pet-city"></select>
+      <select id="cx-pet-city">
+        {{ range $data.cities -}}
+        <option value="{{ .city }}"{{ if eq .city $defaultCity }} selected{{ end }}>{{ .city }} ({{ .state }})</option>
+        {{ end }}
+      </select>
     </label>
     <div class="cx-pet-toggle">
       <button id="cx-pet-p" class="active" onclick="cxPetSwitch('petrol')">Petrol</button>
@@ -67,10 +73,14 @@ var CX_UPDATED = {{ $updated | jsonify }};
   </div>
 
   <div class="cx-result">
-    <div class="cx-result-label" id="cx-pet-label">PETROL PRICE IN DELHI</div>
-    <div class="cx-result-value" id="cx-pet-price">₹94.77</div>
+    <div class="cx-result-label" id="cx-pet-label">PETROL PRICE IN {{ $defaultCity | upper }}</div>
+    {{ range $data.cities -}}
+    {{ if eq .city $defaultCity -}}
+    <div class="cx-result-value" id="cx-pet-price">₹{{ printf "%.2f" .petrol }}</div>
     <div class="cx-row"><span>Fuel type</span><strong id="cx-pet-type">Petrol</strong></div>
-    <div class="cx-row"><span>State</span><strong id="cx-pet-state">Delhi</strong></div>
+    <div class="cx-row"><span>State</span><strong id="cx-pet-state">{{ .state }}</strong></div>
+    {{ end -}}
+    {{ end }}
     <div class="cx-row"><span>Effective from</span><strong>6:00 AM daily</strong></div>
     <div class="cx-updated" id="cx-pet-updated">Prices as of {{ $updated }}</div>
   </div>
@@ -88,7 +98,16 @@ var CX_UPDATED = {{ $updated | jsonify }};
           <th>Diesel (₹/L)</th>
         </tr>
       </thead>
-      <tbody id="cx-pet-tbody"></tbody>
+      <tbody id="cx-pet-tbody">
+        {{ range $data.cities -}}
+        <tr data-city="{{ .city }}"{{ if eq .city $defaultCity }} class="hl"{{ end }}>
+          <td>{{ .city }}</td>
+          <td class="state-col">{{ .state }}</td>
+          <td class="price">₹{{ printf "%.2f" .petrol }}</td>
+          <td class="price">₹{{ printf "%.2f" .diesel }}</td>
+        </tr>
+        {{ end }}
+      </tbody>
     </table>
   </div>
 </div>
@@ -99,21 +118,6 @@ var CX_UPDATED = {{ $updated | jsonify }};
 (function () {
   var fuelType = 'petrol';
   var citySelect = document.getElementById('cx-pet-city');
-  var tbody = document.getElementById('cx-pet-tbody');
-
-  CX_PETROL.forEach(function(c) {
-    var opt = document.createElement('option');
-    opt.value = c.city;
-    opt.textContent = c.city + ' (' + c.state + ')';
-    citySelect.appendChild(opt);
-
-    var tr = document.createElement('tr');
-    tr.dataset.city = c.city;
-    tr.innerHTML = '<td>' + c.city + '</td><td class="state-col">' + c.state + '</td>' +
-      '<td class="price">₹' + c.petrol.toFixed(2) + '</td>' +
-      '<td class="price">₹' + c.diesel.toFixed(2) + '</td>';
-    tbody.appendChild(tr);
-  });
 
   function render() {
     var cityName = citySelect.value;
@@ -139,6 +143,5 @@ var CX_UPDATED = {{ $updated | jsonify }};
   };
 
   citySelect.addEventListener('change', render);
-  render();
 })();
 </script>
