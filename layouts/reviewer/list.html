@@ -1,0 +1,145 @@
+{{ define "main" }}
+
+<!-- ── Reviewer profile header ── -->
+<section class="pt-5 pb-4" style="background:#f0fdf4;border-bottom:1px solid #bbf7d0;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+
+          <!-- Avatar -->
+          <div style="width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;">
+            <span style="font-size:1.9rem;font-weight:700;color:#fff;letter-spacing:-1px;">PA</span>
+            <!-- Verified checkmark badge -->
+            <span style="position:absolute;bottom:2px;right:2px;width:22px;height:22px;background:#22c55e;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+          </div>
+
+          <div>
+            <h1 style="font-size:1.7rem;font-weight:700;color:#14532d;margin:0 0 4px;">{{ .Title }}</h1>
+            <p style="color:#166534;font-size:.95rem;margin:0 0 10px;font-weight:500;">Personal Finance Expert &amp; Calculator Reviewer · Calxo.in</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" target="_blank" rel="noopener noreferrer"
+                 style="display:inline-flex;align-items:center;gap:6px;background:#0a66c2;color:#fff;padding:5px 14px;border-radius:5px;font-size:.82rem;font-weight:600;text-decoration:none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Review scope stats ── -->
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        {{ $calcCount := len (where .Site.RegularPages "Type" "calculator") }}
+        <div class="row g-3 mb-5">
+          <div class="col-4">
+            <div style="background:#fff;border:1px solid #bbf7d0;border-radius:10px;padding:1rem;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:700;color:#15803d;">{{ $calcCount }}+</div>
+              <div style="font-size:.78rem;color:#6b7280;font-weight:500;">Calculators reviewed</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div style="background:#fff;border:1px solid #bbf7d0;border-radius:10px;padding:1rem;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:700;color:#15803d;">FY 2025-26</div>
+              <div style="font-size:.78rem;color:#6b7280;font-weight:500;">Current review cycle</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div style="background:#fff;border:1px solid #bbf7d0;border-radius:10px;padding:1rem;text-align:center;">
+              <div style="font-size:1.6rem;font-weight:700;color:#15803d;">48h</div>
+              <div style="font-size:.78rem;color:#6b7280;font-weight:500;">Discrepancy turnaround</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="content mb-5">
+          {{ .Content }}
+        </div>
+
+        <!-- Areas of expertise -->
+        <div class="mb-5">
+          <h2 style="font-size:1rem;font-weight:700;color:#111827;margin-bottom:12px;">Areas reviewed</h2>
+          <div class="d-flex flex-wrap gap-2">
+            {{ range slice "Income tax (new &amp; old regime)" "EMI &amp; loan formulas" "SIP &amp; mutual fund returns" "HRA exemption (Sec 10(13A))" "EPF &amp; gratuity" "Capital gains (STCG &amp; LTCG)" "GST calculation" "NPS &amp; UPS pension" }}
+            <span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:500;">{{ . | safeHTML }}</span>
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- Review process -->
+        <div class="mb-5">
+          <h2 style="font-size:1rem;font-weight:700;color:#111827;margin-bottom:12px;">Review process</h2>
+          <div style="display:flex;flex-direction:column;gap:.75rem;">
+            {{ range slice
+              (dict "step" "1" "title" "Formula check" "desc" "Each calculator formula is traced to its source statute — RBI Master Directions, Income Tax Act, EPFO circulars, or GST Council notifications.")
+              (dict "step" "2" "title" "Rate verification" "desc" "Current rates (tax slabs, PF %, gratuity ceiling, TDS thresholds) are cross-checked against the most recent CBDT, EPFO and RBI publications.")
+              (dict "step" "3" "title" "Edge case testing" "desc" "Marginal relief, surcharge thresholds, partial-year scenarios and boundary conditions are tested with worked examples.")
+              (dict "step" "4" "title" "Sign-off" "desc" "Only calculators that pass all three checks carry the Reviewed by Prem Anand badge. The review is repeated each financial year.")
+            }}
+            <div style="display:flex;gap:.9rem;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#16a34a;color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ .step }}</div>
+              <div>
+                <div style="font-weight:600;color:#111827;font-size:.9rem;">{{ .title }}</div>
+                <div style="color:#6b7280;font-size:.85rem;margin-top:2px;">{{ .desc }}</div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:.9rem 1.2rem;font-size:.82rem;color:#78350f;">
+          <strong>Disclosure:</strong> Prem Anand reviews Calxo's calculator methodologies for formula accuracy — this is not personalised financial advice. For decisions involving significant money, consult a SEBI-registered investment advisor or Chartered Accountant.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Schema.org: Person (reviewer) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.calxo.in/about/prem-anand/#person",
+  "name": "Prem Anand",
+  "url": "https://www.calxo.in/about/prem-anand/",
+  "jobTitle": "Personal Finance Expert",
+  "sameAs": [
+    "https://www.linkedin.com/in/prem-anand-a207771a5/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "@id": "https://www.calxo.in/#organization",
+    "name": "Calxo",
+    "url": "https://www.calxo.in/"
+  },
+  "knowsAbout": [
+    "Indian income tax",
+    "EMI and loan calculation",
+    "SIP and mutual fund investing",
+    "HRA exemption India",
+    "EPF and gratuity",
+    "Capital gains tax India",
+    "GST India",
+    "NPS and UPS pension"
+  ],
+  "description": "Prem Anand is a Personal Finance Expert who reviews all calculator methodologies on Calxo.in for formula accuracy and FY 2025-26 compliance."
+}
+</script>
+
+{{ end }}
