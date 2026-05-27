@@ -225,6 +225,41 @@
   .cx-meta-left a:hover strong { color: #2563eb; }
   .cx-meta-left .cx-byline-sep { margin: 0 .5rem; color: #cbd5e1; }
 
+  /* ═══════════ Reviewer badge ═══════════ */
+  .cx-reviewer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 999px;
+    padding: .35rem .85rem .35rem .55rem;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #15803d;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin: .4rem 0 1rem;
+    text-decoration: none;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .cx-reviewer-badge:hover {
+    background: #dcfce7;
+    border-color: #86efac;
+    color: #15803d;
+    text-decoration: none;
+  }
+  .cx-reviewer-badge-icon {
+    width: 20px; height: 20px;
+    background: #16a34a;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
   /* Slim trust banner — single line */
   .cx-trust-slim {
     display: flex;
@@ -630,11 +665,16 @@
 
       <h1 itemprop="headline">{{ with .Params.h1 }}{{ . }}{{ else }}{{ .Title }}{{ end }}</h1>
 
+      <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" class="cx-reviewer-badge" target="_blank" rel="noopener" aria-label="Reviewed by Prem Anand, Personal Finance Expert">
+        <span class="cx-reviewer-badge-icon" aria-hidden="true">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Reviewed by Prem Anand, Personal Finance Expert
+      </a>
+
       <div class="cx-meta-row">
         <div class="cx-meta-left">
           <span>By <a href="/about/vignesh/" itemprop="author"><strong>Vignesh</strong></a></span>
-          <span class="cx-byline-sep">•</span>
-          <span>Reviewed by <a href="https://www.linkedin.com/in/prem-anand-a207771a5/" rel="noopener" target="_blank"><strong>Prem Anand</strong></a></span>
           <span class="cx-byline-sep">•</span>
           <time itemprop="dateModified" datetime="{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}">Updated {{ if .Lastmod }}{{ .Lastmod.Format "Jan 2, 2006" }}{{ else }}{{ .Date.Format "Jan 2, 2006" }}{{ end }}</time>
           <span class="cx-byline-sep">•</span>
@@ -858,6 +898,33 @@
 </script>
 
 {{ partial "faq-schema-auto.html" . }}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": {{ .Title | jsonify }},
+    "url": "{{ .Permalink }}",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Prem Anand",
+    "jobTitle": "Personal Finance Expert",
+    "url": "https://www.linkedin.com/in/prem-anand-a207771a5/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Calxo",
+    "url": "https://www.calxo.in/"
+  },
+  "datePublished": "{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}"
+}
+</script>
 
 {{/* Tabbed Share/Embed/Cite modal interactions */}}
 <script>
