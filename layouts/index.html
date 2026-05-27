@@ -1,528 +1,337 @@
 {{ define "main" }}
 <style>
-/* ═══════════════════════ Blue Theme Global Overrides ═══════════════════════ */
-:root {
-  --dbg:    #1e40af;
-  --dbg2:   #1a38a2;
-  --dcard:  rgba(0,0,0,.22);
-  --dcard2: rgba(0,0,0,.32);
-  --dborder: rgba(255,255,255,.14);
-  --dprimary: #22d3ee;
-  --dprimary-glow: rgba(34,211,238,.14);
-  --dgreen: #22c55e;
-  --dgreen-glow: rgba(34,197,94,.14);
-  --dtext:  #fff;
-  --dmute:  rgba(255,255,255,.72);
-}
-body {
-  background: #1e40af !important;
-  background-image:
-    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px) !important;
-  background-size: 52px 52px !important;
-  color: var(--dtext) !important;
-}
+/* ════════════════════════════════════════════════════════
+   BLUE + WHITE DUAL THEME
+   Blue (#1e40af) with white grid for hero/alt sections
+   White (#fff / #f8fafc) for content sections
+════════════════════════════════════════════════════════ */
+
+/* Nav — solid blue */
 .navigation {
-  background: rgba(15,30,130,.92) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border-bottom: 1px solid rgba(255,255,255,.15) !important;
+  background: #1e40af !important;
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
-.navigation * { color: rgba(255,255,255,.85) !important; }
+.navigation * { color: rgba(255,255,255,.88) !important; }
 .navigation a:hover { color: #fff !important; }
 .navigation .navbar-brand, .navigation .navbar-brand * { color: #fff !important; }
+
+/* Footer — dark blue */
 footer.bg-light {
   background: #0f2070 !important;
-  border-top: 1px solid rgba(255,255,255,.12) !important;
+  border-top: 1px solid rgba(255,255,255,.1) !important;
 }
-footer.bg-light * { color: rgba(255,255,255,.65) !important; }
+footer.bg-light * { color: rgba(255,255,255,.6) !important; }
 footer.bg-light a:hover { color: #fff !important; }
 
-/* ═══════════════════════ HERO ═══════════════════════ */
-.cx-hero {
-  background: var(--dbg);
-  padding: 5rem 1.5rem 4rem;
+/* ── Blue section base (reused on hero, popular, new calcs, blog) ── */
+.cx-blue-sec {
+  background: #1e40af;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 52px 52px;
   position: relative;
+}
+
+/* ════════════════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════════════════ */
+.cx-hero {
+  padding: 5rem 1.5rem 4rem;
   overflow: hidden;
   min-height: 520px;
   display: flex;
   align-items: center;
 }
-/* Radial glow blobs */
 .cx-hero-glow1 {
-  position: absolute;
-  width: 700px; height: 700px;
+  position: absolute; width: 700px; height: 700px;
   background: radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 68%);
-  top: -250px; left: -200px;
-  pointer-events: none;
-  z-index: 0;
+  top: -250px; left: -200px; pointer-events: none; z-index: 0;
 }
 .cx-hero-glow2 {
-  position: absolute;
-  width: 500px; height: 500px;
+  position: absolute; width: 500px; height: 500px;
   background: radial-gradient(circle, rgba(34,211,238,.14) 0%, transparent 65%);
-  top: 30px; right: -100px;
-  pointer-events: none;
-  z-index: 0;
-}
-/* Subtle grid pattern — hero has its own layer on top of body grid */
-.cx-hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
-  background-size: 52px 52px;
-  pointer-events: none;
-  z-index: 0;
+  top: 30px; right: -100px; pointer-events: none; z-index: 0;
 }
 .cx-hero-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  width: 100%;
+  max-width: 1040px; margin: 0 auto;
+  position: relative; z-index: 1;
+  text-align: center; width: 100%;
 }
-/* Badge pill */
 .cx-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.25);
-  color: rgba(255,255,255,.92);
-  font-size: .8rem;
-  font-weight: 600;
-  padding: .4rem 1.1rem;
-  border-radius: 20px;
-  margin-bottom: 1.6rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  color: rgba(255,255,255,.92); font-size: .8rem; font-weight: 600;
+  padding: .4rem 1.1rem; border-radius: 20px; margin-bottom: 1.6rem;
 }
 .cx-hero-badge .green { color: #86efac; }
-/* Headings */
 .cx-hero h1 {
-  font-size: clamp(2.1rem, 5vw, 3.6rem);
-  font-weight: 800;
-  line-height: 1.12;
-  margin-bottom: 1.2rem;
-  letter-spacing: -1.5px;
-  color: #fff;
+  font-size: clamp(2.1rem, 5vw, 3.6rem); font-weight: 800;
+  line-height: 1.12; margin-bottom: 1.2rem; letter-spacing: -1.5px; color: #fff;
 }
 .cx-h1-accent {
   background: linear-gradient(90deg, #fff, #93c5fd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .cx-hero .lead {
-  font-size: clamp(.95rem, 1.6vw, 1.15rem);
-  color: var(--dmute);
-  max-width: 640px;
-  margin: 0 auto 2.2rem;
-  line-height: 1.68;
+  font-size: clamp(.95rem, 1.6vw, 1.15rem); color: rgba(255,255,255,.78);
+  max-width: 640px; margin: 0 auto 2.2rem; line-height: 1.68;
 }
 
-/* ── Search bar ── */
-.cx-search-wrap {
-  position: relative;
-  z-index: 50;
-  max-width: 580px;
-  margin: 0 auto;
-}
+/* Search */
+.cx-search-wrap { position: relative; z-index: 50; max-width: 580px; margin: 0 auto; }
 .cx-search {
-  background: rgba(0,0,0,.28);
-  border: 1.5px solid rgba(255,255,255,.28);
-  border-radius: 14px;
-  padding: .35rem .35rem .35rem 1.25rem;
-  display: flex;
-  gap: .5rem;
-  align-items: center;
-  box-shadow: 0 8px 28px rgba(0,0,0,.2);
+  background: rgba(0,0,0,.28); border: 1.5px solid rgba(255,255,255,.28);
+  border-radius: 14px; padding: .35rem .35rem .35rem 1.25rem;
+  display: flex; gap: .5rem; align-items: center; box-shadow: 0 8px 28px rgba(0,0,0,.2);
 }
 .cx-search input {
-  flex: 1;
-  border: 0;
-  outline: 0;
-  font-size: 1rem;
-  padding: .88rem 0;
-  background: transparent;
-  color: #fff;
+  flex: 1; border: 0; outline: 0; font-size: 1rem; padding: .88rem 0;
+  background: transparent; color: #fff;
 }
 .cx-search input::placeholder { color: rgba(255,255,255,.45); }
 .cx-search button {
-  background: #fff;
-  color: #1e40af;
-  border: 0;
-  padding: .75rem 1.5rem;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: .95rem;
-  transition: all .16s;
-  white-space: nowrap;
-  flex-shrink: 0;
+  background: #fff; color: #1e40af; border: 0; padding: .75rem 1.5rem;
+  border-radius: 10px; font-weight: 700; cursor: pointer; font-size: .95rem;
+  transition: all .16s; white-space: nowrap; flex-shrink: 0;
 }
-.cx-search button:hover { background: #dbeafe; box-shadow: 0 0 18px rgba(255,255,255,.25); }
+.cx-search button:hover { background: #dbeafe; }
 
-/* Autocomplete dropdown */
+/* Autocomplete dropdown (dark blue bg for contrast) */
 .cx-suggest {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0; right: 0;
-  background: #162d96;
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 12px;
-  box-shadow: 0 24px 60px rgba(0,0,0,.4);
-  z-index: 60;
-  max-height: 460px;
-  overflow-y: auto;
-  padding: .35rem;
-  text-align: left;
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: #162d96; border: 1px solid rgba(255,255,255,.18); border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.4); z-index: 60; max-height: 460px;
+  overflow-y: auto; padding: .35rem; text-align: left;
 }
 .cx-suggest[hidden] { display: none; }
-.cx-suggest-section {
-  font-size: .68rem; text-transform: uppercase; letter-spacing: 1.3px;
-  color: rgba(255,255,255,.4); font-weight: 700; padding: .65rem .9rem .35rem;
-}
-.cx-suggest-item {
-  display: block; padding: .7rem .9rem; border-radius: 8px;
-  text-decoration: none; color: inherit; transition: background .12s; cursor: pointer;
-}
-.cx-suggest-item:hover, .cx-suggest-item.cx-suggest-active {
-  background: rgba(255,255,255,.12); text-decoration: none;
-}
-.cx-suggest-cat {
-  font-size: .68rem; text-transform: uppercase; letter-spacing: 1.2px;
-  color: #93c5fd; font-weight: 700; margin-bottom: .15rem;
-}
+.cx-suggest-section { font-size: .68rem; text-transform: uppercase; letter-spacing: 1.3px; color: rgba(255,255,255,.38); font-weight: 700; padding: .65rem .9rem .35rem; }
+.cx-suggest-item { display: block; padding: .7rem .9rem; border-radius: 8px; text-decoration: none; color: inherit; transition: background .12s; cursor: pointer; }
+.cx-suggest-item:hover, .cx-suggest-item.cx-suggest-active { background: rgba(255,255,255,.12); text-decoration: none; }
+.cx-suggest-cat { font-size: .68rem; text-transform: uppercase; letter-spacing: 1.2px; color: #93c5fd; font-weight: 700; margin-bottom: .15rem; }
 .cx-suggest-title { font-size: .94rem; font-weight: 700; color: #fff; line-height: 1.3; }
-.cx-suggest-title mark {
-  background: rgba(255,255,255,.2); color: #fff; padding: 0 .15rem; border-radius: 2px;
-}
-.cx-suggest-desc {
-  font-size: .82rem; color: rgba(255,255,255,.58); line-height: 1.45; margin-top: .15rem;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.cx-suggest-empty { padding: 1.5rem; text-align: center; color: rgba(255,255,255,.6); font-size: .9rem; }
-.cx-suggest-footer {
-  border-top: 1px solid rgba(255,255,255,.1); padding: .7rem .9rem;
-  font-size: .82rem; color: rgba(255,255,255,.4); display: flex; justify-content: space-between;
-  align-items: center; margin-top: .25rem;
-}
+.cx-suggest-title mark { background: rgba(255,255,255,.2); color: #fff; padding: 0 .15rem; border-radius: 2px; }
+.cx-suggest-desc { font-size: .82rem; color: rgba(255,255,255,.55); line-height: 1.45; margin-top: .15rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cx-suggest-empty { padding: 1.5rem; text-align: center; color: rgba(255,255,255,.55); font-size: .9rem; }
+.cx-suggest-footer { border-top: 1px solid rgba(255,255,255,.1); padding: .7rem .9rem; font-size: .82rem; color: rgba(255,255,255,.38); display: flex; justify-content: space-between; align-items: center; margin-top: .25rem; }
 .cx-suggest-footer a { color: #93c5fd; font-weight: 600; text-decoration: none; }
 .cx-suggest-footer a:hover { text-decoration: underline; }
-.cx-suggest-footer kbd {
-  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
-  border-bottom-width: 2px; border-radius: 4px; padding: 1px 5px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; color: rgba(255,255,255,.6);
-}
+.cx-suggest-footer kbd { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-bottom-width: 2px; border-radius: 4px; padding: 1px 5px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; color: rgba(255,255,255,.55); }
 
-/* Quick tag strip */
-.cx-hero-tags {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: .45rem; margin-top: 1.8rem; font-size: .84rem;
-}
+/* Hero tags */
+.cx-hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; margin-top: 1.8rem; font-size: .84rem; }
 .cx-hero-tags a {
   background: rgba(255,255,255,.1); padding: .4rem .95rem; border-radius: 20px;
   border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.88) !important;
   text-decoration: none !important; font-weight: 500; transition: all .15s;
 }
-.cx-hero-tags a:hover {
-  background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.4);
-  color: #fff !important;
-}
-.cx-hero-tags a.cx-tag-new {
-  background: rgba(34,197,94,.18); border-color: rgba(34,197,94,.35);
-  color: #86efac !important;
-}
+.cx-hero-tags a:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.4); color: #fff !important; }
+.cx-hero-tags a.cx-tag-new { background: rgba(34,197,94,.18); border-color: rgba(34,197,94,.35); color: #86efac !important; }
 
-/* ═══════════════════════ STATS BAR ═══════════════════════ */
+/* ════════════════════════════════════════════════════════
+   STATS BAR — White
+════════════════════════════════════════════════════════ */
 .cx-stats {
-  background: rgba(0,0,0,.2);
-  border-top: 1px solid rgba(255,255,255,.14);
-  border-bottom: 1px solid rgba(255,255,255,.14);
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
   padding: 1.6rem 1.5rem;
 }
-.cx-stats-inner {
-  max-width: 1180px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center;
-}
+.cx-stats-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; }
 @media (max-width: 640px) { .cx-stats-inner { grid-template-columns: repeat(2, 1fr); } }
-.cx-stat-num { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -1px; line-height: 1; }
-.cx-stat-num .accent { color: var(--dgreen); }
-.cx-stat-lbl { font-size: .8rem; color: var(--dmute); margin-top: .3rem; }
+.cx-stat-num { font-size: 2rem; font-weight: 800; color: #0f172a; letter-spacing: -1px; line-height: 1; }
+.cx-stat-num .accent { color: #1e40af; }
+.cx-stat-lbl { font-size: .8rem; color: #64748b; margin-top: .3rem; }
 
-/* ═══════════════════════ SHARED SECTION HELPERS ═══════════════════════ */
+/* ════════════════════════════════════════════════════════
+   SHARED EYEBROW / HEADING HELPERS
+   Two variants: on blue (.on-blue) and on white (default)
+════════════════════════════════════════════════════════ */
 .cx-section-head { text-align: center; margin-bottom: 2.5rem; }
 .cx-eyebrow {
   display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1.5px; color: #fff; background: rgba(255,255,255,.14);
-  border: 1px solid rgba(255,255,255,.25); padding: .32rem .9rem;
-  border-radius: 20px; margin-bottom: 1rem;
+  letter-spacing: 1.5px; padding: .32rem .9rem; border-radius: 20px; margin-bottom: 1rem;
 }
-.cx-section-h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #fff;
-  margin-bottom: .5rem; letter-spacing: -0.3px; line-height: 1.2;
-}
-.cx-section-sub { color: var(--dmute); font-size: .95rem; max-width: 560px; margin: 0 auto; }
+/* white section eyebrow */
+.cx-eyebrow { color: #1e40af; background: #dbeafe; border: 1px solid #bfdbfe; }
+/* blue section eyebrow override (add class) */
+.cx-eyebrow.on-blue { color: #fff; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); }
+.cx-section-h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.3px; line-height: 1.2; margin-bottom: .5rem; }
+.cx-section-h2 { color: #0f172a; }
+.cx-section-h2.on-blue { color: #fff; }
+.cx-section-sub { font-size: .95rem; max-width: 560px; margin: 0 auto; }
+.cx-section-sub { color: #64748b; }
+.cx-section-sub.on-blue { color: rgba(255,255,255,.72); }
 
-/* ═══════════════════════ TAX WIDGET ═══════════════════════ */
-.cx-tax-section {
-  padding: 4.5rem 1.5rem;
-  background: transparent;
-}
-.cx-tax-inner {
-  max-width: 1180px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;
-}
-@media (max-width: 820px) { .cx-tax-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
-.cx-tax-info { }
-.cx-tax-info .cx-eyebrow { display: block; text-align: left; }
-.cx-tax-h2 {
-  font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: #fff;
-  line-height: 1.22; margin-bottom: .9rem; letter-spacing: -0.3px;
-}
-.cx-tax-lead {
-  color: var(--dmute); line-height: 1.68; margin-bottom: 1.6rem; font-size: .95rem;
-}
-.cx-tax-cta {
-  display: inline-flex; align-items: center; gap: .5rem;
-  background: #fff; color: #1e40af !important; padding: .78rem 1.6rem;
-  border-radius: 10px; font-weight: 700; text-decoration: none !important;
-  font-size: .95rem; transition: all .16s;
-}
-.cx-tax-cta:hover { background: #dbeafe; box-shadow: 0 0 22px rgba(255,255,255,.2); color: #1e40af !important; }
-.cx-tax-widget {
-  background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.18);
-  border-radius: 20px; padding: 2rem;
-}
-.cx-tax-widget-q {
-  font-size: .88rem; color: var(--dmute); margin-bottom: 1rem;
-  font-weight: 600; text-transform: uppercase; letter-spacing: .5px;
-}
-.cx-tax-opts { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
-.cx-tax-opt {
-  background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.18);
-  border-radius: 10px; padding: .85rem 1.1rem; cursor: pointer;
-  font-size: .9rem; font-weight: 500; color: rgba(255,255,255,.82);
-  transition: all .16s; text-align: left; width: 100%;
-}
-.cx-tax-opt:hover { border-color: rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.12); }
-.cx-tax-opt.selected { border-color: #fff; background: #fff; color: #1e40af; font-weight: 700; }
-.cx-tax-result {
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.25);
-  border-radius: 10px; padding: 1rem 1.1rem;
-  font-size: .88rem; color: #fff; line-height: 1.58;
-  display: none;
-}
-.cx-tax-result.visible { display: block; }
-
-/* ═══════════════════════ FEATURE CATEGORY CARDS ═══════════════════════ */
-.cx-feat-section {
-  padding: 4.5rem 1.5rem;
-  background: rgba(0,0,0,.18);
-  border-top: 1px solid rgba(255,255,255,.12);
-  border-bottom: 1px solid rgba(255,255,255,.12);
-}
+/* ════════════════════════════════════════════════════════
+   FEATURE CATEGORY CARDS — White section
+════════════════════════════════════════════════════════ */
+.cx-feat-section { padding: 4.5rem 1.5rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
 .cx-feat-inner { max-width: 1180px; margin: 0 auto; }
-.cx-feat-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
-}
+.cx-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 @media (max-width: 900px) { .cx-feat-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px)  { .cx-feat-grid { grid-template-columns: 1fr; } }
 .cx-feat {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-  border-radius: 16px; padding: 1.65rem;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.65rem;
   text-decoration: none !important; transition: all .22s; display: block;
   color: inherit; position: relative; overflow: hidden;
 }
-/* accent top bar using CSS custom property per card */
 .cx-feat::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--cx-feat-clr, #22d3ee); border-radius: 16px 16px 0 0;
+  background: var(--cx-feat-clr, #1e40af); border-radius: 16px 16px 0 0;
 }
 .cx-feat:hover {
-  border-color: rgba(255,255,255,.35);
-  background: rgba(255,255,255,.14);
+  border-color: var(--cx-feat-clr, #1e40af);
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0,0,0,.25);
+  box-shadow: 0 12px 32px rgba(0,0,0,.1);
 }
 .cx-feat-icon {
-  width: 48px; height: 48px;
-  background: var(--cx-feat-bg, rgba(99,102,241,.1));
+  width: 48px; height: 48px; background: var(--cx-feat-bg, #dbeafe);
   border-radius: 12px; display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1rem;
-  color: var(--cx-feat-clr, #6366f1);
+  margin-bottom: 1rem; color: var(--cx-feat-clr, #1e40af);
 }
-.cx-feat-name { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .38rem; }
-.cx-feat-desc { font-size: .84rem; color: var(--dmute); line-height: 1.58; }
-.cx-feat-arrow {
-  display: inline-flex; align-items: center; gap: .3rem;
-  margin-top: .9rem; font-size: .75rem; font-weight: 700;
-  color: var(--cx-feat-clr, #6366f1); text-transform: uppercase; letter-spacing: .5px;
-}
+.cx-feat-name { font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-bottom: .38rem; }
+.cx-feat-desc { font-size: .84rem; color: #64748b; line-height: 1.58; }
+.cx-feat-arrow { display: inline-flex; align-items: center; gap: .3rem; margin-top: .9rem; font-size: .75rem; font-weight: 700; color: var(--cx-feat-clr, #1e40af); text-transform: uppercase; letter-spacing: .5px; }
 
-/* ═══════════════════════ POPULAR CALCULATORS ═══════════════════════ */
-.cx-pop-section { padding: 4.5rem 1.5rem; background: transparent; }
+/* ════════════════════════════════════════════════════════
+   POPULAR CALCULATORS — Blue section
+════════════════════════════════════════════════════════ */
+.cx-pop-section { padding: 4.5rem 1.5rem; }
 .cx-pop-inner { max-width: 1180px; margin: 0 auto; }
-.cx-pop-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-}
+.cx-pop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 @media (max-width: 900px) { .cx-pop-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 500px) { .cx-pop-grid { grid-template-columns: 1fr; } }
 .cx-pop {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
   border-radius: 14px; padding: 1.4rem;
   text-decoration: none !important; transition: all .2s; display: block;
 }
-.cx-pop:hover {
-  border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.14);
-  transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.2);
-}
+.cx-pop:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.18); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.2); }
 .cx-pop-icon { font-size: 1.5rem; margin-bottom: .8rem; display: block; }
 .cx-pop-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .35rem; line-height: 1.3; }
-.cx-pop-desc { font-size: .83rem; color: var(--dmute); line-height: 1.5; }
+.cx-pop-desc { font-size: .83rem; color: rgba(255,255,255,.7); line-height: 1.5; }
 
-/* ═══════════════════════ NEW CALCULATORS ═══════════════════════ */
-.cx-new-section {
-  padding: 4.5rem 1.5rem;
-  background: rgba(0,0,0,.18);
-  border-top: 1px solid rgba(255,255,255,.12);
+/* ════════════════════════════════════════════════════════
+   TAX WIDGET — White section
+════════════════════════════════════════════════════════ */
+.cx-tax-section { padding: 4.5rem 1.5rem; background: #fff; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.cx-tax-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+@media (max-width: 820px) { .cx-tax-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+.cx-tax-h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: #0f172a; line-height: 1.22; margin-bottom: .9rem; letter-spacing: -0.3px; }
+.cx-tax-lead { color: #64748b; line-height: 1.68; margin-bottom: 1.6rem; font-size: .95rem; }
+.cx-tax-cta {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: #1e40af; color: #fff !important; padding: .78rem 1.6rem;
+  border-radius: 10px; font-weight: 700; text-decoration: none !important; font-size: .95rem; transition: all .16s;
 }
+.cx-tax-cta:hover { background: #1a38a2; box-shadow: 0 6px 20px rgba(30,64,175,.3); color: #fff !important; }
+.cx-tax-widget { background: #f0f7ff; border: 1px solid #bfdbfe; border-radius: 20px; padding: 2rem; }
+.cx-tax-widget-q { font-size: .88rem; color: #64748b; margin-bottom: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.cx-tax-opts { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
+.cx-tax-opt {
+  background: #fff; border: 1.5px solid #bfdbfe; border-radius: 10px; padding: .85rem 1.1rem;
+  cursor: pointer; font-size: .9rem; font-weight: 500; color: #374151;
+  transition: all .16s; text-align: left; width: 100%;
+}
+.cx-tax-opt:hover { border-color: #1e40af; color: #1e40af; background: #eff6ff; }
+.cx-tax-opt.selected { border-color: #1e40af; background: #1e40af; color: #fff; font-weight: 700; }
+.cx-tax-result { background: #1e40af; border: 1px solid #1e40af; border-radius: 10px; padding: 1rem 1.1rem; font-size: .88rem; color: #fff; line-height: 1.58; display: none; }
+.cx-tax-result.visible { display: block; }
+
+/* ════════════════════════════════════════════════════════
+   NEW CALCULATORS — Blue section
+════════════════════════════════════════════════════════ */
+.cx-new-section { padding: 4.5rem 1.5rem; }
 .cx-new-inner { max-width: 1180px; margin: 0 auto; }
-.cx-new-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-}
+.cx-new-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 @media (max-width: 900px) { .cx-new-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 500px) { .cx-new-grid { grid-template-columns: 1fr; } }
 .cx-new-card {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
   border-radius: 14px; padding: 1.4rem;
   text-decoration: none !important; display: block; transition: all .2s;
 }
-.cx-new-card:hover {
-  border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.14);
-  transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.2);
-}
-.cx-new-badge {
-  display: inline-block; background: rgba(34,197,94,.1); color: #4ade80;
-  font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-  padding: .2rem .55rem; border-radius: 20px; margin-bottom: .75rem;
-  border: 1px solid rgba(34,197,94,.2);
-}
+.cx-new-card:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.18); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.2); }
+.cx-new-badge { display: inline-block; background: rgba(34,197,94,.2); color: #86efac; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: .2rem .55rem; border-radius: 20px; margin-bottom: .75rem; border: 1px solid rgba(34,197,94,.3); }
 .cx-new-icon { font-size: 1.4rem; margin-bottom: .65rem; display: block; }
 .cx-new-title { font-size: .98rem; font-weight: 700; color: #fff; margin-bottom: .3rem; line-height: 1.38; }
-.cx-new-desc { font-size: .81rem; color: var(--dmute); line-height: 1.5; }
-.cx-new-date { font-size: .7rem; color: #374151; margin-top: .65rem; }
+.cx-new-desc { font-size: .81rem; color: rgba(255,255,255,.7); line-height: 1.5; }
+.cx-new-date { font-size: .7rem; color: rgba(255,255,255,.4); margin-top: .65rem; }
 
-/* ═══════════════════════ WHY CALXO ═══════════════════════ */
-.cx-why-section {
-  padding: 4.5rem 1.5rem;
-  background: transparent;
-  border-top: 1px solid rgba(255,255,255,.12);
-}
+/* ════════════════════════════════════════════════════════
+   WHY CALXO — White section
+════════════════════════════════════════════════════════ */
+.cx-why-section { padding: 4.5rem 1.5rem; background: #f8fafc; border-top: 1px solid #e2e8f0; }
 .cx-why-inner { max-width: 1180px; margin: 0 auto; }
-.cx-why-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-}
+.cx-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 @media (max-width: 800px) { .cx-why-grid { grid-template-columns: 1fr; } }
-.cx-why-card {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-  border-radius: 16px; padding: 2rem; text-align: center;
-}
-.cx-why-icon {
-  width: 58px; height: 58px; margin: 0 auto 1.1rem;
-  background: rgba(255,255,255,.14); border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem;
-}
-.cx-why-card h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
-.cx-why-card p { color: var(--dmute); font-size: .9rem; line-height: 1.62; }
+.cx-why-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; }
+.cx-why-icon { width: 58px; height: 58px; margin: 0 auto 1.1rem; background: #dbeafe; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+.cx-why-card h3 { font-size: 1.05rem; font-weight: 700; color: #0f172a; margin-bottom: .5rem; }
+.cx-why-card p { color: #64748b; font-size: .9rem; line-height: 1.62; }
 
-/* ═══════════════════════ BLOG STRIP ═══════════════════════ */
-.cx-blog-section {
-  padding: 4.5rem 1.5rem;
-  background: rgba(0,0,0,.18);
-  border-top: 1px solid rgba(255,255,255,.12);
-}
+/* ════════════════════════════════════════════════════════
+   BLOG STRIP — Blue section
+════════════════════════════════════════════════════════ */
+.cx-blog-section { padding: 4.5rem 1.5rem; border-top: 1px solid rgba(255,255,255,.1); }
 .cx-blog-inner { max-width: 1180px; margin: 0 auto; }
-.cx-blog-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
-}
+.cx-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
 @media (max-width: 800px) { .cx-blog-grid { grid-template-columns: 1fr; } }
 .cx-blog-card {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16);
   border-radius: 14px; padding: 1.45rem;
   text-decoration: none !important; display: block; transition: all .2s;
 }
-.cx-blog-card:hover {
-  border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.14);
-  transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.2);
-}
-.cx-blog-cat {
-  font-size: .68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1px; color: #93c5fd; margin-bottom: .5rem;
-}
-.cx-blog-title {
-  font-size: 1rem; font-weight: 700; color: #f1f5f9; line-height: 1.45; margin-bottom: .5rem;
-}
-.cx-blog-date { font-size: .78rem; color: #374151; }
+.cx-blog-card:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.18); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.2); }
+.cx-blog-cat { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #93c5fd; margin-bottom: .5rem; }
+.cx-blog-title { font-size: 1rem; font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: .5rem; }
+.cx-blog-date { font-size: .78rem; color: rgba(255,255,255,.45); }
 
-/* View all button */
+/* View all */
 .cx-view-all { text-align: center; margin-top: 2.2rem; }
-.cx-view-btn {
-  display: inline-flex; align-items: center; gap: .4rem;
-  border: 1.5px solid var(--dborder); color: var(--dmute) !important;
-  padding: .72rem 1.7rem; border-radius: 10px; font-weight: 600;
-  text-decoration: none !important; font-size: .9rem; transition: all .16s;
-}
-.cx-view-btn:hover {
-  border-color: rgba(99,102,241,.38); color: #a5b4fc !important;
-  background: rgba(99,102,241,.06);
-}
+.cx-view-btn { display: inline-flex; align-items: center; gap: .4rem; border: 1.5px solid rgba(255,255,255,.28); color: rgba(255,255,255,.85) !important; padding: .72rem 1.7rem; border-radius: 10px; font-weight: 600; text-decoration: none !important; font-size: .9rem; transition: all .16s; }
+.cx-view-btn:hover { border-color: rgba(255,255,255,.6); color: #fff !important; background: rgba(255,255,255,.1); }
 </style>
 
 {{/* ─────────────────────── Hugo data variables ─────────────────────── */}}
 {{ $totalCalcs := len (where .Site.RegularPages "Params.type" "calculator") }}
 {{ $popular := slice
-  (slice "EMI Calculator"       "🏦" "/loan/emi-calculator/"             "Reducing-balance EMI for home, personal, and car loans")
-  (slice "SIP Calculator"       "📊" "/investment/sip-calculator/"       "Monthly SIP maturity using the AMFI future-value formula")
-  (slice "Income Tax Calculator" "📑" "/tax/income-tax-calculator/"      "FY 2025-26 new and old regime with ₹12L rebate")
-  (slice "GST Calculator"       "🧾" "/gst/gst-calculator/"             "Add or remove GST at any Indian slab with IGST split")
-  (slice "FD Calculator"        "🏧" "/investment/fd-calculator/"        "Fixed deposit maturity with quarterly compounding")
-  (slice "PPF Calculator"       "🪙" "/investment/ppf-calculator/"       "Public Provident Fund 15-year maturity at current 7.1%")
-  (slice "HRA Exemption"        "🏠" "/salary/hra-calculator/"           "Section 10(13A) HRA exempt under the three-component rule")
-  (slice "CTC to In-Hand"       "💵" "/salary/takehome-calculator/"      "Actual take-home after PF, gratuity, professional tax, TDS")
+  (slice "EMI Calculator"        "🏦" "/loan/emi-calculator/"             "Reducing-balance EMI for home, personal, and car loans")
+  (slice "SIP Calculator"        "📊" "/investment/sip-calculator/"       "Monthly SIP maturity using the AMFI future-value formula")
+  (slice "Income Tax Calculator" "📑" "/tax/income-tax-calculator/"       "FY 2025-26 new and old regime with ₹12L rebate")
+  (slice "GST Calculator"        "🧾" "/gst/gst-calculator/"              "Add or remove GST at any Indian slab with IGST split")
+  (slice "FD Calculator"         "🏧" "/investment/fd-calculator/"        "Fixed deposit maturity with quarterly compounding")
+  (slice "PPF Calculator"        "🪙" "/investment/ppf-calculator/"       "Public Provident Fund 15-year maturity at current 7.1%")
+  (slice "HRA Exemption"         "🏠" "/salary/hra-calculator/"           "Section 10(13A) HRA exempt under the three-component rule")
+  (slice "CTC to In-Hand"        "💵" "/salary/takehome-calculator/"      "Actual take-home after PF, gratuity, professional tax, TDS")
 }}
 {{ $newCalcs := first 4 (sort (where .Site.RegularPages "Params.type" "calculator") "Date" "desc") }}
 
 
 <!-- ════════════════════════════════════════════════════════
-     HERO
+     HERO — Blue + white grid
 ════════════════════════════════════════════════════════ -->
-<section class="cx-hero">
+<section class="cx-hero cx-blue-sec">
   <div class="cx-hero-glow1" aria-hidden="true"></div>
   <div class="cx-hero-glow2" aria-hidden="true"></div>
-  <div class="cx-hero-grid"  aria-hidden="true"></div>
 
   <div class="cx-hero-inner">
-
     <div class="cx-hero-badge">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
       Free Indian finance calculators · <span class="green">FY 2025-26</span>
     </div>
 
     <h1>India's Fastest Finance<br><span class="cx-h1-accent">Calculators.</span></h1>
-
     <p class="lead">EMI, SIP, income tax, GST, salary, PPF and {{ $totalCalcs }}+ more. All Indian rules, current rates, zero sign-up.</p>
 
     <div class="cx-search-wrap">
       <form class="cx-search" action="/search/" method="get" id="cxHeroSearchForm" autocomplete="off" role="search">
         <input type="text" name="q" id="cxHeroSearchInput"
                placeholder="Search calculators (e.g. EMI, SIP, capital gains)"
-               autocomplete="off" aria-autocomplete="list"
-               aria-controls="cxHeroSuggest" aria-expanded="false">
+               autocomplete="off" aria-autocomplete="list" aria-controls="cxHeroSuggest" aria-expanded="false">
         <button type="submit">Search</button>
       </form>
       <div class="cx-suggest" id="cxHeroSuggest" role="listbox" aria-label="Search suggestions" hidden></div>
@@ -550,13 +359,12 @@ footer.bg-light a:hover { color: #fff !important; }
       <a href="/investment/scss-calculator/">SCSS</a>
       <a href="/investment/nsc-calculator/">NSC</a>
     </div>
-
   </div>
 </section>
 
 
 <!-- ════════════════════════════════════════════════════════
-     STATS BAR
+     STATS BAR — White
 ════════════════════════════════════════════════════════ -->
 <div class="cx-stats" aria-label="Site statistics">
   <div class="cx-stats-inner">
@@ -581,55 +389,19 @@ footer.bg-light a:hover { color: #fff !important; }
 
 
 <!-- ════════════════════════════════════════════════════════
-     TAX REGIME WIDGET
-════════════════════════════════════════════════════════ -->
-<section class="cx-tax-section" aria-label="Which tax regime is better for you">
-  <div class="cx-tax-inner">
-
-    <div class="cx-tax-info">
-      <div class="cx-eyebrow" style="text-align:left;display:inline-block;">Quick Answer</div>
-      <h2 class="cx-tax-h2">Which tax regime saves more for you?</h2>
-      <p class="cx-tax-lead">After Budget 2025, income up to ₹12 lakh is tax-free under the new regime for most salaried people. The old regime still wins if your deductions are large enough. Pick your income bracket below.</p>
-      <a href="/tax/old-vs-new-tax-regime/" class="cx-tax-cta">
-        Full comparison calculator
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
-
-    <div class="cx-tax-widget">
-      <div class="cx-tax-widget-q">Your annual income (approx. CTC)</div>
-      <div class="cx-tax-opts">
-        <button class="cx-tax-opt" onclick="taxAnswer(this,'below7')">Below ₹7 lakh</button>
-        <button class="cx-tax-opt" onclick="taxAnswer(this,'7to15')">₹7 lakh to ₹15 lakh</button>
-        <button class="cx-tax-opt" onclick="taxAnswer(this,'15to25')">₹15 lakh to ₹25 lakh</button>
-        <button class="cx-tax-opt" onclick="taxAnswer(this,'above25')">Above ₹25 lakh</button>
-      </div>
-      <div class="cx-tax-result" id="taxResult" role="status" aria-live="polite">
-        <span id="taxResultText"></span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ════════════════════════════════════════════════════════
-     FEATURE CATEGORY CARDS
+     FEATURE CATEGORIES — White section
 ════════════════════════════════════════════════════════ -->
 <section class="cx-feat-section" aria-label="Calculator categories">
   <div class="cx-feat-inner">
-
     <div class="cx-section-head">
       <div class="cx-eyebrow">Browse by Category</div>
       <h2 class="cx-section-h2">Every Indian Finance Tool You Need</h2>
-      <p class="cx-section-sub">From home loan EMI to SIP returns to capital gains. All free, all updated for FY 2025-26.</p>
+      <p class="cx-section-sub">From home loan EMI to SIP returns to capital gains. All free, updated for FY 2025-26.</p>
     </div>
-
     <div class="cx-feat-grid">
 
-      <!-- Loan & EMI -->
       <a class="cx-feat" href="/categories/loan-calculators/"
-         style="--cx-feat-clr:#22d3ee;--cx-feat-bg:rgba(34,211,238,.1)">
+         style="--cx-feat-clr:#1e40af;--cx-feat-bg:#dbeafe">
         <div class="cx-feat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
@@ -638,9 +410,8 @@ footer.bg-light a:hover { color: #fff !important; }
         <div class="cx-feat-arrow">11 calculators →</div>
       </a>
 
-      <!-- Investment -->
       <a class="cx-feat" href="/categories/investment-calculators/"
-         style="--cx-feat-clr:#22c55e;--cx-feat-bg:rgba(34,197,94,.1)">
+         style="--cx-feat-clr:#16a34a;--cx-feat-bg:#dcfce7">
         <div class="cx-feat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
@@ -649,9 +420,8 @@ footer.bg-light a:hover { color: #fff !important; }
         <div class="cx-feat-arrow">27 calculators →</div>
       </a>
 
-      <!-- Tax -->
       <a class="cx-feat" href="/categories/tax-calculators/"
-         style="--cx-feat-clr:#f97316;--cx-feat-bg:rgba(249,115,22,.1)">
+         style="--cx-feat-clr:#ea580c;--cx-feat-bg:#ffedd5">
         <div class="cx-feat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
@@ -660,9 +430,8 @@ footer.bg-light a:hover { color: #fff !important; }
         <div class="cx-feat-arrow">6 calculators →</div>
       </a>
 
-      <!-- Salary & HR -->
       <a class="cx-feat" href="/categories/salary-calculators/"
-         style="--cx-feat-clr:#a855f7;--cx-feat-bg:rgba(168,85,247,.1)">
+         style="--cx-feat-clr:#7c3aed;--cx-feat-bg:#ede9fe">
         <div class="cx-feat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
         </div>
@@ -671,9 +440,8 @@ footer.bg-light a:hover { color: #fff !important; }
         <div class="cx-feat-arrow">7 calculators →</div>
       </a>
 
-      <!-- Health -->
       <a class="cx-feat" href="/categories/health-calculators/"
-         style="--cx-feat-clr:#ec4899;--cx-feat-bg:rgba(236,72,153,.1)">
+         style="--cx-feat-clr:#be185d;--cx-feat-bg:#fce7f3">
         <div class="cx-feat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
@@ -682,9 +450,8 @@ footer.bg-light a:hover { color: #fff !important; }
         <div class="cx-feat-arrow">10 calculators →</div>
       </a>
 
-      <!-- GST & Business -->
       <a class="cx-feat" href="/categories/gst-calculators/"
-         style="--cx-feat-clr:#eab308;--cx-feat-bg:rgba(234,179,8,.1)">
+         style="--cx-feat-clr:#b45309;--cx-feat-bg:#fef3c7">
         <div class="cx-feat-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8H8"/><path d="M16 12H8"/><path d="M12 16H8"/></svg>
         </div>
@@ -699,14 +466,14 @@ footer.bg-light a:hover { color: #fff !important; }
 
 
 <!-- ════════════════════════════════════════════════════════
-     POPULAR CALCULATORS
+     POPULAR CALCULATORS — Blue section
 ════════════════════════════════════════════════════════ -->
-<section class="cx-pop-section" aria-label="Most popular calculators">
+<section class="cx-pop-section cx-blue-sec" aria-label="Most popular calculators">
   <div class="cx-pop-inner">
     <div class="cx-section-head">
-      <div class="cx-eyebrow">Most Used</div>
-      <h2 class="cx-section-h2">Popular Calculators</h2>
-      <p class="cx-section-sub">The 8 calculators Indian users open every single month.</p>
+      <div class="cx-eyebrow on-blue">Most Used</div>
+      <h2 class="cx-section-h2 on-blue">Popular Calculators</h2>
+      <p class="cx-section-sub on-blue">The 8 calculators Indian users open every single month.</p>
     </div>
     <div class="cx-pop-grid">
       {{ range $popular }}
@@ -722,15 +489,45 @@ footer.bg-light a:hover { color: #fff !important; }
 
 
 <!-- ════════════════════════════════════════════════════════
-     NEW CALCULATORS (auto-pulled by date)
+     TAX REGIME WIDGET — White section
+════════════════════════════════════════════════════════ -->
+<section class="cx-tax-section" aria-label="Which tax regime is better for you">
+  <div class="cx-tax-inner">
+    <div>
+      <div class="cx-eyebrow" style="display:block;text-align:left;margin-bottom:.85rem;">Quick Answer</div>
+      <h2 class="cx-tax-h2">Which tax regime saves more for you?</h2>
+      <p class="cx-tax-lead">After Budget 2025, income up to ₹12 lakh is tax-free under the new regime for most salaried people. The old regime still wins if your deductions are large enough. Pick your income bracket.</p>
+      <a href="/tax/old-vs-new-tax-regime/" class="cx-tax-cta">
+        Full comparison calculator
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="cx-tax-widget">
+      <div class="cx-tax-widget-q">Your annual income (approx. CTC)</div>
+      <div class="cx-tax-opts">
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'below7')">Below ₹7 lakh</button>
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'7to15')">₹7 lakh to ₹15 lakh</button>
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'15to25')">₹15 lakh to ₹25 lakh</button>
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'above25')">Above ₹25 lakh</button>
+      </div>
+      <div class="cx-tax-result" id="taxResult" role="status" aria-live="polite">
+        <span id="taxResultText"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     NEW CALCULATORS — Blue section
 ════════════════════════════════════════════════════════ -->
 {{ if gt (len $newCalcs) 0 }}
-<section class="cx-new-section" aria-label="Recently added calculators">
+<section class="cx-new-section cx-blue-sec" aria-label="Recently added calculators">
   <div class="cx-new-inner">
     <div class="cx-section-head">
-      <div class="cx-eyebrow">Just Added</div>
-      <h2 class="cx-section-h2">New Calculators</h2>
-      <p class="cx-section-sub">Auto-updated as we publish more tools.</p>
+      <div class="cx-eyebrow on-blue">Just Added</div>
+      <h2 class="cx-section-h2 on-blue">New Calculators</h2>
+      <p class="cx-section-sub on-blue">Auto-updated as we publish more tools.</p>
     </div>
     <div class="cx-new-grid">
       {{ range $newCalcs }}
@@ -745,7 +542,6 @@ footer.bg-light a:hover { color: #fff !important; }
           {{ else if in . "Health Calculators" }}❤️
           {{ else if in . "GST Calculators" }}🧾
           {{ else if in . "Business Calculators" }}📊
-          {{ else if in . "Conversion Calculators" }}🔁
           {{ else }}🧮{{ end }}
         </span>
         {{ end }}
@@ -761,7 +557,7 @@ footer.bg-light a:hover { color: #fff !important; }
 
 
 <!-- ════════════════════════════════════════════════════════
-     WHY CALXO
+     WHY CALXO — White section
 ════════════════════════════════════════════════════════ -->
 <section class="cx-why-section" aria-label="Why use Calxo">
   <div class="cx-why-inner">
@@ -791,16 +587,16 @@ footer.bg-light a:hover { color: #fff !important; }
 
 
 <!-- ════════════════════════════════════════════════════════
-     BLOG STRIP
+     BLOG STRIP — Blue section
 ════════════════════════════════════════════════════════ -->
 {{ $posts := where .Site.RegularPages "Section" "blog" }}
 {{ if gt (len $posts) 0 }}
-<section class="cx-blog-section" aria-label="Personal finance guides">
+<section class="cx-blog-section cx-blue-sec" aria-label="Personal finance guides">
   <div class="cx-blog-inner">
     <div class="cx-section-head">
-      <div class="cx-eyebrow">Money Guides</div>
-      <h2 class="cx-section-h2">Plain-English Explainers</h2>
-      <p class="cx-section-sub">Real numbers, real examples. One guide per calculator topic.</p>
+      <div class="cx-eyebrow on-blue">Money Guides</div>
+      <h2 class="cx-section-h2 on-blue">Plain-English Explainers</h2>
+      <p class="cx-section-sub on-blue">Real numbers, real examples. One guide per calculator topic.</p>
     </div>
     <div class="cx-blog-grid">
       {{ range first 6 (sort $posts "Date" "desc") }}
@@ -830,150 +626,86 @@ footer.bg-light a:hover { color: #fff !important; }
   var form      = document.getElementById('cxHeroSearchForm');
   if (!input || !resultsEl || !form) return;
   var wrap = form.parentElement;
-
-  var fuse        = null;
-  var allItems    = [];
-  var activeIndex = -1;
-  var loadStarted = false;
+  var fuse = null, allItems = [], activeIndex = -1, loadStarted = false;
 
   var catLabels = {
-    'loan': 'Loan', 'investment': 'Investment', 'tax': 'Tax',
-    'salary': 'Salary & HR', 'gst': 'GST', 'health': 'Health',
-    'business': 'Business', 'math': 'Math', 'conversion': 'Conversion', 'blog': 'Blog'
+    'loan':'Loan','investment':'Investment','tax':'Tax','salary':'Salary & HR',
+    'gst':'GST','health':'Health','business':'Business','math':'Math',
+    'conversion':'Conversion','blog':'Blog'
   };
   function categoryFromUrl(url) {
-    try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
+    try { url = new URL(url, window.location.origin).pathname; } catch(e){}
     var m = url.match(/^\/([^/]+)\//);
     return m ? (catLabels[m[1]] || m[1]) : '';
   }
   function escapeHtml(s) {
-    return (s || '').replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    return (s||'').replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
     });
   }
   function highlight(text, query) {
     if (!query) return escapeHtml(text);
-    var tokens = query.split(/\s+/).filter(Boolean).map(function (t) {
-      return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    });
+    var tokens = query.split(/\s+/).filter(Boolean).map(function(t){ return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); });
     if (!tokens.length) return escapeHtml(text);
-    var re = new RegExp('(' + tokens.join('|') + ')', 'gi');
-    return escapeHtml(text).replace(re, '<mark>$1</mark>');
+    return escapeHtml(text).replace(new RegExp('('+tokens.join('|')+')','gi'),'<mark>$1</mark>');
   }
-
   function loadIndex() {
-    if (loadStarted) return;
-    loadStarted = true;
-    fetch('/index.json')
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        allItems = (Array.isArray(data) ? data : []).filter(function (it) { return it && it.title; });
-        fuse = new Fuse(allItems, {
-          keys: [
-            { name: 'title',       weight: 0.6  },
-            { name: 'description', weight: 0.25 },
-            { name: 'contents',    weight: 0.15 }
-          ],
-          includeScore: true,
-          threshold: 0.4,
-          ignoreLocation: true,
-          minMatchCharLength: 2
-        });
-        if (input.value.trim()) runSearch(input.value);
-      })
-      .catch(function () {});
+    if (loadStarted) return; loadStarted = true;
+    fetch('/index.json').then(function(r){return r.json();}).then(function(data){
+      allItems = (Array.isArray(data)?data:[]).filter(function(it){return it&&it.title;});
+      fuse = new Fuse(allItems, {keys:[{name:'title',weight:.6},{name:'description',weight:.25},{name:'contents',weight:.15}], includeScore:true, threshold:.4, ignoreLocation:true, minMatchCharLength:2});
+      if (input.value.trim()) runSearch(input.value);
+    }).catch(function(){});
   }
-
-  function open()  { resultsEl.hidden = false; input.setAttribute('aria-expanded', 'true');  }
-  function close() { resultsEl.hidden = true;  input.setAttribute('aria-expanded', 'false'); activeIndex = -1; }
-
+  function open()  { resultsEl.hidden=false; input.setAttribute('aria-expanded','true'); }
+  function close() { resultsEl.hidden=true; input.setAttribute('aria-expanded','false'); activeIndex=-1; }
   function setActive(idx) {
-    var nodes = resultsEl.querySelectorAll('.cx-suggest-item');
-    nodes.forEach(function (n) { n.classList.remove('cx-suggest-active'); });
-    if (idx >= 0 && idx < nodes.length) {
-      nodes[idx].classList.add('cx-suggest-active');
-      nodes[idx].scrollIntoView({ block: 'nearest' });
-      activeIndex = idx;
-    } else { activeIndex = -1; }
+    var nodes=resultsEl.querySelectorAll('.cx-suggest-item');
+    nodes.forEach(function(n){n.classList.remove('cx-suggest-active');});
+    if (idx>=0&&idx<nodes.length){ nodes[idx].classList.add('cx-suggest-active'); nodes[idx].scrollIntoView({block:'nearest'}); activeIndex=idx; }
+    else { activeIndex=-1; }
   }
-
   function render(items, query) {
-    activeIndex = -1;
+    activeIndex=-1;
     if (!items.length) {
-      resultsEl.innerHTML =
-        '<div class="cx-suggest-empty">No matches for <strong>"' + escapeHtml(query) + '"</strong>. ' +
-        '<a href="/search/?q=' + encodeURIComponent(query) + '">Search anyway</a></div>';
-      open();
-      return;
+      resultsEl.innerHTML='<div class="cx-suggest-empty">No matches for <strong>"'+escapeHtml(query)+'"</strong>. <a href="/search/?q='+encodeURIComponent(query)+'">Search anyway</a></div>';
+      open(); return;
     }
-    var html = '<div class="cx-suggest-section">Top matches</div>';
-    items.slice(0, 6).forEach(function (item) {
-      var url = item.permalink || item.url || '';
-      try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
-      var cat = categoryFromUrl(url);
-      html += '<a class="cx-suggest-item" href="' + escapeHtml(url) + '">' +
-        (cat ? '<div class="cx-suggest-cat">' + escapeHtml(cat) + '</div>' : '') +
-        '<div class="cx-suggest-title">' + highlight(item.title, query) + '</div>' +
-        (item.description
-          ? '<div class="cx-suggest-desc">' + highlight(item.description.slice(0, 130), query) + '</div>'
-          : '') +
-        '</a>';
+    var html='<div class="cx-suggest-section">Top matches</div>';
+    items.slice(0,6).forEach(function(item){
+      var url=item.permalink||item.url||'';
+      try{url=new URL(url,window.location.origin).pathname;}catch(e){}
+      var cat=categoryFromUrl(url);
+      html+='<a class="cx-suggest-item" href="'+escapeHtml(url)+'">'+(cat?'<div class="cx-suggest-cat">'+escapeHtml(cat)+'</div>':'')+'<div class="cx-suggest-title">'+highlight(item.title,query)+'</div>'+(item.description?'<div class="cx-suggest-desc">'+highlight(item.description.slice(0,130),query)+'</div>':'')+'</a>';
     });
-    if (items.length > 6) {
-      html += '<a class="cx-suggest-item" href="/search/?q=' + encodeURIComponent(query) + '" style="text-align:center">' +
-        '<div class="cx-suggest-title" style="color:#6366f1">View all ' + items.length + ' results</div>' +
-        '</a>';
-    }
-    html += '<div class="cx-suggest-footer">' +
-      '<span><kbd>up/down</kbd> navigate · <kbd>enter</kbd> open · <kbd>esc</kbd> close</span>' +
-      '<a href="/search/?q=' + encodeURIComponent(query) + '">All results</a>' +
-      '</div>';
-    resultsEl.innerHTML = html;
-    open();
+    if (items.length>6) html+='<a class="cx-suggest-item" href="/search/?q='+encodeURIComponent(query)+'" style="text-align:center"><div class="cx-suggest-title" style="color:#93c5fd">View all '+items.length+' results</div></a>';
+    html+='<div class="cx-suggest-footer"><span><kbd>up/down</kbd> navigate · <kbd>enter</kbd> open · <kbd>esc</kbd> close</span><a href="/search/?q='+encodeURIComponent(query)+'">All results</a></div>';
+    resultsEl.innerHTML=html; open();
   }
-
   function runSearch(q) {
-    q = (q || '').trim();
-    if (!q) { close(); return; }
-    if (!fuse) { loadIndex(); return; }
-    var matches = fuse.search(q).map(function (r) { return r.item; });
-    render(matches, q);
+    q=(q||'').trim(); if(!q){close();return;}
+    if(!fuse){loadIndex();return;}
+    render(fuse.search(q).map(function(r){return r.item;}),q);
   }
-
-  input.addEventListener('input', function () { runSearch(input.value); });
-  input.addEventListener('focus', function () {
-    loadIndex();
-    if (input.value.trim()) runSearch(input.value);
+  input.addEventListener('input',function(){runSearch(input.value);});
+  input.addEventListener('focus',function(){loadIndex();if(input.value.trim())runSearch(input.value);});
+  input.addEventListener('keydown',function(e){
+    if(resultsEl.hidden){if(e.key==='ArrowDown'&&input.value.trim())input.dispatchEvent(new Event('focus'));return;}
+    var nodes=resultsEl.querySelectorAll('.cx-suggest-item'); if(!nodes.length)return;
+    if(e.key==='ArrowDown'){e.preventDefault();setActive((activeIndex+1)%nodes.length);}
+    else if(e.key==='ArrowUp'){e.preventDefault();setActive((activeIndex-1+nodes.length)%nodes.length);}
+    else if(e.key==='Enter'){if(activeIndex>=0&&nodes[activeIndex]){e.preventDefault();window.location.href=nodes[activeIndex].href;}}
+    else if(e.key==='Escape'){close();input.blur();}
   });
-  input.addEventListener('keydown', function (e) {
-    if (resultsEl.hidden) {
-      if (e.key === 'ArrowDown' && input.value.trim()) input.dispatchEvent(new Event('focus'));
-      return;
-    }
-    var nodes = resultsEl.querySelectorAll('.cx-suggest-item');
-    if (!nodes.length) return;
-    if (e.key === 'ArrowDown')  { e.preventDefault(); setActive((activeIndex + 1) % nodes.length); }
-    else if (e.key === 'ArrowUp')   { e.preventDefault(); setActive((activeIndex - 1 + nodes.length) % nodes.length); }
-    else if (e.key === 'Enter') {
-      if (activeIndex >= 0 && nodes[activeIndex]) {
-        e.preventDefault(); window.location.href = nodes[activeIndex].href;
-      }
-    } else if (e.key === 'Escape') { close(); input.blur(); }
+  form.addEventListener('submit',function(e){
+    if(activeIndex>=0){var nodes=resultsEl.querySelectorAll('.cx-suggest-item');if(nodes[activeIndex]){e.preventDefault();window.location.href=nodes[activeIndex].href;}}
   });
-  form.addEventListener('submit', function (e) {
-    if (activeIndex >= 0) {
-      var nodes = resultsEl.querySelectorAll('.cx-suggest-item');
-      if (nodes[activeIndex]) { e.preventDefault(); window.location.href = nodes[activeIndex].href; }
-    }
-  });
-  document.addEventListener('click', function (e) {
-    if (!wrap.contains(e.target)) close();
-  });
+  document.addEventListener('click',function(e){if(!wrap.contains(e.target))close();});
 })();
 
 /* ── Tax regime widget ── */
 function taxAnswer(btn, income) {
-  document.querySelectorAll('.cx-tax-opt').forEach(function (b) { b.classList.remove('selected'); });
+  document.querySelectorAll('.cx-tax-opt').forEach(function(b){b.classList.remove('selected');});
   btn.classList.add('selected');
   var msgs = {
     'below7':  'New regime wins. Income up to ₹12L is effectively tax-free under Section 87A for FY 2025-26. The old regime rarely helps at this income level.',
