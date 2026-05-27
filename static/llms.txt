@@ -1,0 +1,129 @@
+# Calxo
+
+> Free online calculators for Indian users — EMI, SIP, income tax, salary, GST, investments and more. All calculators run entirely in your browser with no sign-up required. Built for Indian rules, rates and rupee amounts. Reviewed by Prem Anand, Personal Finance Expert.
+
+Calxo (calxo.in) is an Indian personal finance calculator hub launched in 2026. Every tool uses the actual Indian formula — RBI reducing-balance for EMI, AMFI SIP formula, CBDT post-Budget 2025 tax slabs, EPF Act rates, and so on. All content is reviewed for FY 2025-26 accuracy.
+
+## Loan Calculators
+
+- [EMI Calculator](https://www.calxo.in/loan/emi-calculator/): Calculate monthly EMI, total interest and principal-vs-interest schedule for home, personal or car loans using the standard reducing-balance formula.
+- [Home Loan Eligibility Calculator](https://www.calxo.in/loan/home-loan-eligibility/): Find how much home loan you can get on your salary using LTV, FOIR and age norms.
+- [Personal Loan EMI Calculator](https://www.calxo.in/loan/personal-loan-calculator/): Monthly EMI for unsecured personal loans with instant amortisation breakdown.
+- [Car Loan EMI Calculator](https://www.calxo.in/loan/car-loan-calculator/): Monthly instalment for any car loan amount, tenure and interest rate.
+- [Bike Loan EMI Calculator](https://www.calxo.in/loan/bike-loan-calculator/): Two-wheeler loan EMI with interest and repayment schedule.
+- [Education Loan EMI Calculator](https://www.calxo.in/loan/education-loan-calculator/): Student loan repayment with moratorium period and EMI planning.
+- [Loan Prepayment Calculator](https://www.calxo.in/loan/loan-prepayment-calculator/): How much interest you save and how much tenure reduces with a part-prepayment.
+- [Credit Card Payoff Calculator](https://www.calxo.in/loan/credit-card-payoff-calculator/): Months to pay off a credit card balance given minimum or custom monthly payments.
+- [FOIR Calculator](https://www.calxo.in/loan/foir-calculator/): Fixed Obligation to Income Ratio — check whether your EMI burden is within bank limits.
+- [Stamp Duty Calculator](https://www.calxo.in/loan/stamp-duty-calculator/): Stamp duty and registration charges for property purchase, state-by-state across India.
+
+## Investment Calculators
+
+- [SIP Calculator](https://www.calxo.in/investment/sip-calculator/): Monthly SIP maturity value using the mutual fund future-value formula for any amount, tenure and expected return.
+- [Lumpsum Calculator](https://www.calxo.in/investment/lumpsum-calculator/): One-time investment return using compound interest for any rate and period.
+- [Step-Up SIP Calculator](https://www.calxo.in/investment/step-up-sip-calculator/): SIP returns with an annual step-up percentage to model salary increments.
+- [SWP Calculator](https://www.calxo.in/investment/swp-calculator/): Systematic Withdrawal Plan — how long a corpus lasts given monthly withdrawals and expected growth.
+- [FD Calculator](https://www.calxo.in/investment/fd-calculator/): Fixed Deposit maturity with quarterly compounding as per Indian bank norms.
+- [RD Calculator](https://www.calxo.in/investment/rd-calculator/): Recurring Deposit maturity using the RBI quarterly-compounding formula.
+- [PPF Calculator](https://www.calxo.in/investment/ppf-calculator/): Public Provident Fund 15-year maturity at the current 7.1% rate with partial withdrawal and extension options.
+- [NPS Calculator](https://www.calxo.in/investment/nps-calculator/): National Pension Scheme corpus and estimated monthly pension at retirement.
+- [NPS Vatsalya Calculator](https://www.calxo.in/investment/nps-vatsalya-calculator/): NPS Vatsalya corpus if started for a child from birth.
+- [UPS Pension Calculator](https://www.calxo.in/investment/ups-pension-calculator/): Unified Pension Scheme assured pension for Central Government employees under the 2025 rules.
+- [Compound Interest Calculator](https://www.calxo.in/investment/compound-interest-calculator/): Compound interest for any frequency — annual, quarterly, monthly or daily.
+- [Simple Interest Calculator](https://www.calxo.in/investment/simple-interest-calculator/): SI formula for any principal, rate and tenure.
+- [CAGR Calculator](https://www.calxo.in/investment/cagr-calculator/): Compound Annual Growth Rate between any two values over any period.
+- [Inflation Calculator](https://www.calxo.in/investment/inflation-calculator/): Future purchasing power and real value of money at India's historical inflation rates.
+- [Retirement Calculator](https://www.calxo.in/investment/retirement-calculator/): Target retirement corpus and required monthly savings to retire at a chosen age.
+- [Gold Value Calculator](https://www.calxo.in/investment/gold-calculator/): Current value of gold jewellery or coins in grams, tola and sovereign at live rates.
+- [SSY Calculator](https://www.calxo.in/investment/ssy-calculator/): Sukanya Samriddhi Yojana maturity at current 8.2% rate for girls.
+- [Stock Average Calculator](https://www.calxo.in/investment/stock-average-calculator/): Weighted average cost price after averaging down a stock position.
+- [Crorepati Clock](https://www.calxo.in/investment/crorepati-clock/): The exact date and time you will cross ₹1 crore given your current SIP.
+
+## Tax Calculators
+
+- [Income Tax Calculator](https://www.calxo.in/tax/income-tax-calculator/): FY 2025-26 tax under new and old regime with ₹12L rebate, standard deduction, surcharge and marginal relief.
+- [Old vs New Tax Regime Calculator](https://www.calxo.in/tax/old-vs-new-tax-regime/): Side-by-side tax saving comparison for any salary with itemised deductions.
+- [Capital Gains Tax Calculator](https://www.calxo.in/tax/capital-gains-calculator/): STCG and LTCG on equity, mutual funds, property and gold under post-Budget 2024-25 rules.
+- [TDS Calculator](https://www.calxo.in/tax/tds-calculator/): Tax Deducted at Source on FD interest, rent, professional fees and contractor payments.
+- [NPS Tax Benefit Calculator](https://www.calxo.in/tax/nps-tax-benefit-calculator/): Extra ₹50,000 deduction under Section 80CCD(1B) and total tax saved.
+- [Freelancer Tax Calculator](https://www.calxo.in/tax/freelancer-tax-44ada-calculator/): Section 44ADA presumptive tax for freelancers — old vs new regime comparison.
+
+## Salary Calculators
+
+- [CTC to Take-Home Salary Calculator](https://www.calxo.in/salary/takehome-calculator/): Actual monthly in-hand after PF, gratuity, professional tax and TDS for FY 2025-26.
+- [HRA Calculator](https://www.calxo.in/salary/hra-calculator/): Section 10(13A) HRA exemption — minimum of three components method.
+- [EPF Calculator](https://www.calxo.in/salary/epf-calculator/): Employee Provident Fund corpus at retirement with employer and employee contributions.
+- [Gratuity Calculator](https://www.calxo.in/salary/gratuity-calculator/): Gratuity payable under Payment of Gratuity Act 1972 for both covered and non-covered employees.
+- [Salary Hike Calculator](https://www.calxo.in/salary/salary-hike-calculator/): New CTC after an increment — absolute hike and percentage increase.
+- [Salary to Hourly Calculator](https://www.calxo.in/salary/salary-to-hourly-calculator/): Convert annual CTC or monthly salary to hourly and daily rates.
+- [Salary Breakup Excel](https://www.calxo.in/salary/salary-breakup-excel/): Full salary structure with downloadable Excel sheet — basic, HRA, allowances, deductions.
+
+## GST Calculators
+
+- [GST Calculator](https://www.calxo.in/gst/gst-calculator/): Add or remove GST at any Indian slab (0%, 5%, 12%, 18%, 28%) with CGST/SGST/IGST split.
+- [Lifetime GST Bill](https://www.calxo.in/gst/lifetime-bill/): Total GST paid since age 18 based on spending patterns — a data-driven eye-opener.
+
+## Business & SaaS Calculators
+
+- [CAC Calculator](https://www.calxo.in/business/cac-calculator/): Customer Acquisition Cost — total marketing and sales spend divided by new customers.
+- [LTV Calculator](https://www.calxo.in/business/ltv-calculator/): Customer Lifetime Value using ARPU, gross margin and churn rate.
+- [LTV:CAC Ratio Calculator](https://www.calxo.in/business/ltv-cac-calculator/): SaaS unit economics health check — LTV divided by CAC with payback period.
+- [MRR Calculator](https://www.calxo.in/business/mrr-calculator/): Monthly Recurring Revenue from new, expansion, contraction and churned MRR.
+- [Churn Rate Calculator](https://www.calxo.in/business/churn-rate-calculator/): Monthly and annual customer churn rate and implied customer lifetime.
+- [Break-Even Calculator](https://www.calxo.in/business/break-even-calculator/): Break-even units and revenue given fixed costs, variable cost and selling price.
+- [Gross Margin Calculator](https://www.calxo.in/business/gross-margin-calculator/): Gross profit margin percentage from revenue and COGS.
+- [ROI Calculator](https://www.calxo.in/business/roi-calculator/): Return on Investment as percentage and absolute gain for any investment.
+
+## Health Calculators
+
+- [BMI Calculator](https://www.calxo.in/health/bmi-calculator/): Body Mass Index for Indian adults with WHO and Asian classification ranges.
+- [BMI Calculator for Men](https://www.calxo.in/health/bmi-calculator-men/): BMI with male-specific ideal weight ranges and interpretation.
+- [BMR Calculator](https://www.calxo.in/health/bmr-calculator/): Basal Metabolic Rate using Mifflin-St Jeor equation with activity-adjusted TDEE.
+- [TDEE Calculator](https://www.calxo.in/health/tdee-calculator/): Total Daily Energy Expenditure and calorie targets for weight loss, maintenance or gain.
+- [Body Fat Percentage Calculator](https://www.calxo.in/health/body-fat-calculator/): Body fat via Navy method and BMI method with fitness category.
+- [Ideal Weight Calculator](https://www.calxo.in/health/ideal-weight-calculator/): Ideal body weight range for men and women at any height.
+- [Calorie Deficit Calculator](https://www.calxo.in/health/calorie-deficit-calculator/): Daily calorie deficit needed to reach a target weight by a chosen date.
+- [Water Intake Calculator](https://www.calxo.in/health/water-intake-calculator/): Daily water requirement based on weight, activity and climate.
+- [Period Calculator](https://www.calxo.in/health/period-calculator/): Next period date and cycle tracking from last period date and cycle length.
+- [Ovulation Calculator](https://www.calxo.in/health/ovulation-calculator/): Fertile window and ovulation date for conception planning.
+
+## Math & General Calculators
+
+- [Percentage Calculator](https://www.calxo.in/math/percentage-calculator/): What is X% of Y, percentage change, increase, decrease and reverse percentage.
+- [Discount Calculator](https://www.calxo.in/math/discount-calculator/): Sale price, savings amount and effective discount from original price and discount %.
+- [Profit Margin Calculator](https://www.calxo.in/math/margin-calculator/): Gross margin, markup and selling price given cost and margin targets.
+- [Age Calculator](https://www.calxo.in/math/age-calculator/): Exact age in years, months and days from date of birth.
+- [Date Calculator](https://www.calxo.in/math/date-calculator/): Days between two dates, add or subtract days from a date, and countdown timer.
+
+## Conversion & Live Data
+
+- [Currency Converter](https://www.calxo.in/conversion/currency-converter/): Live INR exchange rates against USD, EUR, GBP, AED, SGD and other major currencies.
+- [Petrol Price Today](https://www.calxo.in/conversion/petrol-price-today/): City-wise petrol and diesel prices across India, updated daily.
+- [Petrol Price Delhi](https://www.calxo.in/conversion/petrol-price-delhi/): Live petrol and diesel rates for Delhi.
+- [Petrol Price Mumbai/Chennai](https://www.calxo.in/conversion/petrol-price-chennai/): Live petrol and diesel rates for Chennai.
+- [Petrol Price Bangalore](https://www.calxo.in/conversion/petrol-price-bangalore/): Live petrol and diesel rates for Bangalore.
+
+## Blog — Personal Finance Guides
+
+- [Old vs New Tax Regime FY 2025-26](https://www.calxo.in/blog/old-vs-new-tax-regime-fy-2025-26/): Which saves more tax on ₹15 lakh CTC — deep comparison with real numbers.
+- [Section 80C Deductions Guide](https://www.calxo.in/blog/section-80c-deductions-complete-guide/): Complete list of 80C investments and which ones to actually use.
+- [CTC to In-Hand Salary Calculation](https://www.calxo.in/blog/ctc-to-inhand-salary-calculation/): Why take-home is much less than CTC, explained step by step.
+- [SIP vs Lumpsum India](https://www.calxo.in/blog/sip-vs-lumpsum-india/): Which investment style wins over 10 years with real data.
+- [HRA Exemption Calculation](https://www.calxo.in/blog/how-hra-exemption-is-calculated/): The actual Section 10(13A) formula with worked examples.
+- [ELSS vs PPF Tax Saving](https://www.calxo.in/blog/elss-vs-ppf-tax-saving/): Which 80C instrument beats the other over 15 years.
+- [Home Loan vs Rent India](https://www.calxo.in/blog/home-loan-vs-rent-india/): Honest financial comparison for Indian metro cities.
+- [EPF Interest Calculation](https://www.calxo.in/blog/epf-interest-calculation-india/): How PF interest is calculated each year and why the effective rate matters.
+- [Capital Gains Tax 2025-26](https://www.calxo.in/blog/capital-gains-tax-india-2025-26/): LTCG and STCG rates on equity, property and gold after Budget 2024-25 changes.
+- [Emergency Fund India](https://www.calxo.in/blog/emergency-fund-how-much-india/): How much to keep and where — liquid fund vs savings account vs FD.
+- [TDS on Salary](https://www.calxo.in/blog/tds-on-salary-how-it-works/): How employers calculate and deduct TDS month by month.
+- [15 Lakh CTC Take-Home](https://www.calxo.in/blog/what-15-lakh-ctc-actually-means/): ₹1,00,308/month in-hand breakdown for FY 2025-26.
+- [NPS vs PPF](https://www.calxo.in/blog/nps-vs-ppf-which-is-better/): Retirement saving comparison for salaried employees.
+- [Retirement Corpus Calculation](https://www.calxo.in/blog/retirement-corpus-calculation-india/): How much corpus you actually need and the math behind it.
+- [Mutual Fund Expense Ratio](https://www.calxo.in/blog/mutual-fund-expense-ratio-impact/): How 1% extra fee costs ₹15 lakh over 20 years.
+- [Loan Amortisation India](https://www.calxo.in/blog/loan-amortization-india/): Why you pay mostly interest in the first half of a loan tenure.
+- [Gratuity Calculation Formula](https://www.calxo.in/blog/gratuity-calculation-formula-india/): What you will actually receive under the Gratuity Act.
+- [UPS vs NPS 2026](https://www.calxo.in/blog/ups-vs-nps-which-is-better-2026/): Which pension scheme is better for Central Government employees.
+
+## About
+
+- [About Calxo](https://www.calxo.in/about/): Mission, editorial process, and the team behind the calculators.
