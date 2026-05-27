@@ -1,0 +1,137 @@
+<div id="cx-pomis">
+<style>
+#cx-pomis { font-family: inherit; }
+.cx-pomis-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-pomis-wrap { grid-template-columns:1fr; } }
+.cx-pomis-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-pf-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-pf-label span { color:#6b7280; font-weight:500; }
+.cx-pf-row { display:flex; align-items:center; gap:.6rem; }
+.cx-pf-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-pf-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:110px; }
+.cx-pf-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; align-self:stretch; display:flex; align-items:center; }
+.cx-pf-box span.sfx { border-right:0; border-left:1px solid #e5e7eb; }
+.cx-pf-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-pf-box input::-webkit-outer-spin-button,.cx-pf-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-pomis-result { background:linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%); border-radius:16px; padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:1.1rem; color:#fff; position:relative; overflow:hidden; }
+.cx-pomis-result::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.cx-pomis-main { text-align:center; }
+.cx-pomis-lbl { font-size:.75rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-pomis-big { font-size:2.8rem; font-weight:800; line-height:1; letter-spacing:-1px; color:#4ade80; }
+.cx-pomis-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:0; }
+.cx-pomis-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+.cx-pomis-stat { background:rgba(255,255,255,.07); border-radius:10px; padding:.7rem .9rem; }
+.cx-pomis-stat-val { font-size:1rem; font-weight:700; }
+.cx-pomis-stat-lbl { font-size:.72rem; color:#94a3b8; margin-top:2px; }
+.cx-pomis-table { width:100%; border-collapse:collapse; font-size:.82rem; margin-top:.5rem; }
+.cx-pomis-table th { text-align:left; font-weight:600; color:#93c5fd; padding:.4rem .5rem; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid rgba(255,255,255,.12); }
+.cx-pomis-table td { padding:.4rem .5rem; color:#e2e8f0; border-bottom:1px solid rgba(255,255,255,.06); }
+.cx-pomis-table tr:last-child td { border-bottom:0; color:#4ade80; font-weight:600; }
+</style>
+
+<div class="cx-pomis-wrap">
+  <div class="cx-pomis-inputs">
+
+    <div>
+      <div class="cx-pf-label">Investment Amount <span id="pomis-lbl-amt">₹5,00,000</span></div>
+      <div class="cx-pf-row">
+        <input type="range" id="pomis-r-amt" min="1000" max="900000" step="1000" value="500000">
+        <div class="cx-pf-box"><span>₹</span><input type="number" id="pomis-i-amt" value="500000" min="1000" max="900000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-pf-label">Interest Rate (p.a.) <span id="pomis-lbl-rate">7.4%</span></div>
+      <div class="cx-pf-row">
+        <input type="range" id="pomis-r-rate" min="4" max="12" step="0.1" value="7.4">
+        <div class="cx-pf-box"><input type="number" id="pomis-i-rate" value="7.4" min="4" max="12" step="0.1"><span class="sfx">%</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-pf-label">Tenure <span id="pomis-lbl-yr">5 years</span></div>
+      <div class="cx-pf-row">
+        <input type="range" id="pomis-r-yr" min="5" max="10" step="1" value="5">
+        <div class="cx-pf-box"><input type="number" id="pomis-i-yr" value="5" min="5" max="10"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.65rem .85rem;font-size:.78rem;color:#1d4ed8;">
+      <strong>Current POMIS rate:</strong> 7.4% p.a. (Q1 FY 2025-26). Monthly interest paid to your bank. Max ₹9 lakh (single) / ₹15 lakh (joint). No 80C benefit.
+    </div>
+
+  </div>
+
+  <div class="cx-pomis-result">
+    <div class="cx-pomis-main">
+      <div class="cx-pomis-lbl">Monthly Income</div>
+      <div class="cx-pomis-big" id="pomis-monthly">₹3,083</div>
+    </div>
+
+    <hr class="cx-pomis-divider">
+
+    <div class="cx-pomis-grid">
+      <div class="cx-pomis-stat">
+        <div class="cx-pomis-stat-val" id="pomis-annual" style="color:#4ade80;">₹37,000</div>
+        <div class="cx-pomis-stat-lbl">Annual Income</div>
+      </div>
+      <div class="cx-pomis-stat">
+        <div class="cx-pomis-stat-val" id="pomis-total">₹1,85,000</div>
+        <div class="cx-pomis-stat-lbl">Total Interest (5 yrs)</div>
+      </div>
+      <div class="cx-pomis-stat">
+        <div class="cx-pomis-stat-val" id="pomis-principal">₹5,00,000</div>
+        <div class="cx-pomis-stat-lbl">Principal Returned</div>
+      </div>
+      <div class="cx-pomis-stat">
+        <div class="cx-pomis-stat-val" id="pomis-abs">37.0%</div>
+        <div class="cx-pomis-stat-lbl">Total Return %</div>
+      </div>
+    </div>
+
+    <hr class="cx-pomis-divider">
+
+    <table class="cx-pomis-table">
+      <thead><tr><th>Year</th><th>Monthly</th><th>Annual</th><th>Cumulative</th></tr></thead>
+      <tbody id="pomis-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmtR(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+  function calc(){
+    var P = parseFloat(document.getElementById('pomis-i-amt').value)||0;
+    var r = parseFloat(document.getElementById('pomis-i-rate').value)||0;
+    var n = parseInt(document.getElementById('pomis-i-yr').value)||0;
+    var monthly = P * r / 1200;
+    var annual = P * r / 100;
+    var total = annual * n;
+    var absRet = P > 0 ? (total/P*100) : 0;
+    var rows='', cum=0;
+    for(var i=1;i<=n;i++){
+      cum += annual;
+      rows+='<tr><td>Year '+i+'</td><td>'+fmtR(monthly)+'</td><td>'+fmtR(annual)+'</td><td>'+fmtR(cum)+'</td></tr>';
+    }
+    document.getElementById('pomis-monthly').textContent=fmtR(monthly);
+    document.getElementById('pomis-annual').textContent=fmtR(annual);
+    document.getElementById('pomis-total').textContent=fmtR(total);
+    document.getElementById('pomis-principal').textContent=fmtR(P);
+    document.getElementById('pomis-abs').textContent=absRet.toFixed(1)+'%';
+    document.getElementById('pomis-tbody').innerHTML=rows;
+  }
+  function syncP(rid,iid,min,max,lblId,fmt2){
+    var r=document.getElementById(rid),i=document.getElementById(iid),l=lblId?document.getElementById(lblId):null;
+    function upd(){if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;calc();}
+    r.addEventListener('input',function(){i.value=r.value;upd();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;upd();});
+    if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;
+  }
+  syncP('pomis-r-amt','pomis-i-amt',1000,900000,'pomis-lbl-amt',function(v){return '₹'+v.toLocaleString('en-IN');});
+  syncP('pomis-r-rate','pomis-i-rate',4,12,'pomis-lbl-rate',function(v){return v.toFixed(1)+'%';});
+  syncP('pomis-r-yr','pomis-i-yr',5,10,'pomis-lbl-yr',function(v){return v+' year'+(v>1?'s':'');});
+  calc();
+})();
+</script>
+</div>

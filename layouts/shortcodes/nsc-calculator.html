@@ -1,0 +1,140 @@
+<div id="cx-nsc">
+<style>
+#cx-nsc { font-family: inherit; }
+.cx-nsc-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-nsc-wrap { grid-template-columns:1fr; } }
+.cx-nsc-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-nf-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-nf-label span { color:#6b7280; font-weight:500; }
+.cx-nf-row { display:flex; align-items:center; gap:.6rem; }
+.cx-nf-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-nf-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:110px; }
+.cx-nf-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; align-self:stretch; display:flex; align-items:center; }
+.cx-nf-box span.sfx { border-right:0; border-left:1px solid #e5e7eb; }
+.cx-nf-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-nf-box input::-webkit-outer-spin-button,.cx-nf-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-nsc-result { background:linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%); border-radius:16px; padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:1.1rem; color:#fff; position:relative; overflow:hidden; }
+.cx-nsc-result::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.cx-nsc-main { text-align:center; }
+.cx-nsc-lbl { font-size:.75rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-nsc-big { font-size:2.8rem; font-weight:800; line-height:1; letter-spacing:-1px; color:#4ade80; }
+.cx-nsc-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:0; }
+.cx-nsc-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+.cx-nsc-stat { background:rgba(255,255,255,.07); border-radius:10px; padding:.7rem .9rem; }
+.cx-nsc-stat-val { font-size:1rem; font-weight:700; }
+.cx-nsc-stat-lbl { font-size:.72rem; color:#94a3b8; margin-top:2px; }
+.cx-nsc-table { width:100%; border-collapse:collapse; font-size:.82rem; margin-top:.5rem; }
+.cx-nsc-table th { text-align:left; font-weight:600; color:#93c5fd; padding:.4rem .5rem; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid rgba(255,255,255,.12); }
+.cx-nsc-table td { padding:.4rem .5rem; color:#e2e8f0; border-bottom:1px solid rgba(255,255,255,.06); }
+.cx-nsc-table tr:last-child td { border-bottom:0; color:#4ade80; font-weight:600; }
+.cx-nsc-badge { display:inline-flex; align-items:center; gap:.35rem; background:rgba(74,222,128,.15); border:1px solid rgba(74,222,128,.3); border-radius:6px; padding:.3rem .65rem; font-size:.75rem; color:#4ade80; font-weight:600; margin-top:.25rem; }
+</style>
+
+<div class="cx-nsc-wrap">
+  <div class="cx-nsc-inputs">
+
+    <div>
+      <div class="cx-nf-label">Investment Amount <span id="nsc-lbl-amt">₹1,00,000</span></div>
+      <div class="cx-nf-row">
+        <input type="range" id="nsc-r-amt" min="1000" max="1500000" step="1000" value="100000">
+        <div class="cx-nf-box"><span>₹</span><input type="number" id="nsc-i-amt" value="100000" min="1000" max="1500000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-nf-label">Interest Rate (p.a.) <span id="nsc-lbl-rate">7.7%</span></div>
+      <div class="cx-nf-row">
+        <input type="range" id="nsc-r-rate" min="4" max="12" step="0.1" value="7.7">
+        <div class="cx-nf-box"><input type="number" id="nsc-i-rate" value="7.7" min="4" max="12" step="0.1"><span class="sfx">%</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-nf-label">Tenure <span id="nsc-lbl-yr">5 years</span></div>
+      <div class="cx-nf-row">
+        <input type="range" id="nsc-r-yr" min="1" max="10" step="1" value="5">
+        <div class="cx-nf-box"><input type="number" id="nsc-i-yr" value="5" min="1" max="10"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.65rem .85rem;font-size:.78rem;color:#1d4ed8;">
+      <strong>Current NSC rate:</strong> 7.7% p.a. (Q1 FY 2025-26). Compounded annually, paid at maturity. Qualifies for 80C deduction on investment.
+    </div>
+
+  </div>
+
+  <div class="cx-nsc-result">
+    <div class="cx-nsc-main">
+      <div class="cx-nsc-lbl">Maturity Value</div>
+      <div class="cx-nsc-big" id="nsc-maturity">₹1,44,903</div>
+      <div class="cx-nsc-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        80C eligible
+      </div>
+    </div>
+
+    <hr class="cx-nsc-divider">
+
+    <div class="cx-nsc-grid">
+      <div class="cx-nsc-stat">
+        <div class="cx-nsc-stat-val" id="nsc-invested">₹1,00,000</div>
+        <div class="cx-nsc-stat-lbl">Invested</div>
+      </div>
+      <div class="cx-nsc-stat">
+        <div class="cx-nsc-stat-val" id="nsc-interest" style="color:#4ade80;">₹44,985</div>
+        <div class="cx-nsc-stat-lbl">Total Interest</div>
+      </div>
+      <div class="cx-nsc-stat">
+        <div class="cx-nsc-stat-val" id="nsc-abs">44.98%</div>
+        <div class="cx-nsc-stat-lbl">Absolute Return</div>
+      </div>
+      <div class="cx-nsc-stat">
+        <div class="cx-nsc-stat-val" id="nsc-eff">7.70%</div>
+        <div class="cx-nsc-stat-lbl">Effective Rate</div>
+      </div>
+    </div>
+
+    <hr class="cx-nsc-divider">
+
+    <table class="cx-nsc-table">
+      <thead><tr><th>Year</th><th>Opening</th><th>Interest</th><th>Closing</th></tr></thead>
+      <tbody id="nsc-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmt(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+  function calc(){
+    var P = parseFloat(document.getElementById('nsc-i-amt').value)||0;
+    var r = parseFloat(document.getElementById('nsc-i-rate').value)||0;
+    var n = parseInt(document.getElementById('nsc-i-yr').value)||0;
+    var rows='', bal=P;
+    for(var i=1;i<=n;i++){
+      var int=bal*r/100, close=bal+int;
+      rows+='<tr><td>Year '+i+'</td><td>'+fmt(bal)+'</td><td>'+fmt(int)+'</td><td>'+fmt(close)+'</td></tr>';
+      bal=close;
+    }
+    var mat=P*Math.pow(1+r/100,n), tot=mat-P, abs=P>0?(tot/P*100):0;
+    document.getElementById('nsc-maturity').textContent=fmt(mat);
+    document.getElementById('nsc-invested').textContent=fmt(P);
+    document.getElementById('nsc-interest').textContent=fmt(tot);
+    document.getElementById('nsc-abs').textContent=abs.toFixed(2)+'%';
+    document.getElementById('nsc-eff').textContent=r.toFixed(2)+'%';
+    document.getElementById('nsc-tbody').innerHTML=rows;
+  }
+  function syncP(rid,iid,min,max,lblId,fmt2){
+    var r=document.getElementById(rid),i=document.getElementById(iid),l=lblId?document.getElementById(lblId):null;
+    function upd(){if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;calc();}
+    r.addEventListener('input',function(){i.value=r.value;upd();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;upd();});
+    if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;
+  }
+  syncP('nsc-r-amt','nsc-i-amt',1000,1500000,'nsc-lbl-amt',function(v){return '₹'+v.toLocaleString('en-IN');});
+  syncP('nsc-r-rate','nsc-i-rate',4,12,'nsc-lbl-rate',function(v){return v.toFixed(1)+'%';});
+  syncP('nsc-r-yr','nsc-i-yr',1,10,'nsc-lbl-yr',function(v){return v+' year'+(v>1?'s':'');});
+  calc();
+})();
+</script>
+</div>

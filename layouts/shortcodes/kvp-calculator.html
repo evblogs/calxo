@@ -1,0 +1,149 @@
+<div id="cx-kvp">
+<style>
+#cx-kvp { font-family: inherit; }
+.cx-kvp-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-kvp-wrap { grid-template-columns:1fr; } }
+.cx-kvp-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-kf-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-kf-label span { color:#6b7280; font-weight:500; }
+.cx-kf-row { display:flex; align-items:center; gap:.6rem; }
+.cx-kf-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-kf-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:110px; }
+.cx-kf-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; align-self:stretch; display:flex; align-items:center; }
+.cx-kf-box span.sfx { border-right:0; border-left:1px solid #e5e7eb; }
+.cx-kf-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-kf-box input::-webkit-outer-spin-button,.cx-kf-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-kvp-result { background:linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%); border-radius:16px; padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:1.1rem; color:#fff; position:relative; overflow:hidden; }
+.cx-kvp-result::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.cx-kvp-main { text-align:center; }
+.cx-kvp-lbl { font-size:.75rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-kvp-big { font-size:2.8rem; font-weight:800; line-height:1; letter-spacing:-1px; color:#4ade80; }
+.cx-kvp-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:0; }
+.cx-kvp-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+.cx-kvp-stat { background:rgba(255,255,255,.07); border-radius:10px; padding:.7rem .9rem; }
+.cx-kvp-stat-val { font-size:1rem; font-weight:700; }
+.cx-kvp-stat-lbl { font-size:.72rem; color:#94a3b8; margin-top:2px; }
+.cx-kvp-table { width:100%; border-collapse:collapse; font-size:.82rem; margin-top:.5rem; }
+.cx-kvp-table th { text-align:left; font-weight:600; color:#93c5fd; padding:.4rem .5rem; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid rgba(255,255,255,.12); }
+.cx-kvp-table td { padding:.4rem .5rem; color:#e2e8f0; border-bottom:1px solid rgba(255,255,255,.06); }
+.cx-kvp-table tr.kvp-double-row td { color:#fbbf24; font-weight:700; background:rgba(251,191,36,.08); }
+.cx-kvp-table tr:last-child td { border-bottom:0; color:#4ade80; font-weight:600; }
+.cx-kvp-dbl-badge { display:inline-flex; align-items:center; gap:.35rem; background:rgba(251,191,36,.15); border:1px solid rgba(251,191,36,.4); border-radius:6px; padding:.3rem .65rem; font-size:.75rem; color:#fbbf24; font-weight:600; margin-top:.25rem; }
+</style>
+
+<div class="cx-kvp-wrap">
+  <div class="cx-kvp-inputs">
+
+    <div>
+      <div class="cx-kf-label">Investment Amount <span id="kvp-lbl-amt">₹1,00,000</span></div>
+      <div class="cx-kf-row">
+        <input type="range" id="kvp-r-amt" min="1000" max="1500000" step="1000" value="100000">
+        <div class="cx-kf-box"><span>₹</span><input type="number" id="kvp-i-amt" value="100000" min="1000" max="1500000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-kf-label">Interest Rate (p.a.) <span id="kvp-lbl-rate">7.5%</span></div>
+      <div class="cx-kf-row">
+        <input type="range" id="kvp-r-rate" min="4" max="12" step="0.1" value="7.5">
+        <div class="cx-kf-box"><input type="number" id="kvp-i-rate" value="7.5" min="4" max="12" step="0.1"><span class="sfx">%</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-kf-label">Tenure <span id="kvp-lbl-yr">10 years</span></div>
+      <div class="cx-kf-row">
+        <input type="range" id="kvp-r-yr" min="1" max="25" step="1" value="10">
+        <div class="cx-kf-box"><input type="number" id="kvp-i-yr" value="10" min="1" max="25"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.65rem .85rem;font-size:.78rem;color:#1d4ed8;">
+      <strong>Current KVP rate:</strong> 7.5% p.a. compounded annually (Q1 FY 2025-26). Money doubles in approx. 115 months (9 yrs 7 months). No 80C benefit. No max investment limit.
+    </div>
+
+  </div>
+
+  <div class="cx-kvp-result">
+    <div class="cx-kvp-main">
+      <div class="cx-kvp-lbl">Maturity Value</div>
+      <div class="cx-kvp-big" id="kvp-maturity">₹2,06,103</div>
+      <div class="cx-kvp-dbl-badge" id="kvp-dbl-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span id="kvp-dbl-text">Doubles in 115 months</span>
+      </div>
+    </div>
+
+    <hr class="cx-kvp-divider">
+
+    <div class="cx-kvp-grid">
+      <div class="cx-kvp-stat">
+        <div class="cx-kvp-stat-val" id="kvp-invested">₹1,00,000</div>
+        <div class="cx-kvp-stat-lbl">Invested</div>
+      </div>
+      <div class="cx-kvp-stat">
+        <div class="cx-kvp-stat-val" id="kvp-interest" style="color:#4ade80;">₹1,06,103</div>
+        <div class="cx-kvp-stat-lbl">Total Interest</div>
+      </div>
+      <div class="cx-kvp-stat">
+        <div class="cx-kvp-stat-val" id="kvp-abs">106.10%</div>
+        <div class="cx-kvp-stat-lbl">Absolute Return</div>
+      </div>
+      <div class="cx-kvp-stat">
+        <div class="cx-kvp-stat-val" id="kvp-eff">7.50%</div>
+        <div class="cx-kvp-stat-lbl">Effective Rate</div>
+      </div>
+    </div>
+
+    <hr class="cx-kvp-divider">
+
+    <table class="cx-kvp-table">
+      <thead><tr><th>Year</th><th>Opening</th><th>Interest</th><th>Closing</th></tr></thead>
+      <tbody id="kvp-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmtR(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+  function calc(){
+    var P = parseFloat(document.getElementById('kvp-i-amt').value)||0;
+    var r = parseFloat(document.getElementById('kvp-i-rate').value)||0;
+    var n = parseInt(document.getElementById('kvp-i-yr').value)||0;
+    var dblYrs = r > 0 ? Math.log(2)/Math.log(1+r/100) : 0;
+    var dblMonths = Math.round(dblYrs*12);
+    var dblY = Math.floor(dblMonths/12), dblM = dblMonths%12;
+    var dblTxt = r > 0 ? ('Doubles in '+dblMonths+' months ('+(dblY>0?dblY+' yr':'')+(dblM>0?' '+dblM+' mo':'')+')') : '--';
+    document.getElementById('kvp-dbl-text').textContent = dblTxt;
+    var rows='', bal=P, dblFlag=false;
+    for(var i=1;i<=n;i++){
+      var int=bal*r/100, close=bal+int;
+      var isDouble = !dblFlag && close >= P*2;
+      var cls = isDouble ? ' class="kvp-double-row"' : '';
+      if(isDouble) dblFlag=true;
+      rows+='<tr'+cls+'><td>Year '+i+'</td><td>'+fmtR(bal)+'</td><td>'+fmtR(int)+'</td><td>'+fmtR(close)+'</td></tr>';
+      bal=close;
+    }
+    var mat=P*Math.pow(1+r/100,n), tot=mat-P, abs=P>0?(tot/P*100):0;
+    document.getElementById('kvp-maturity').textContent=fmtR(mat);
+    document.getElementById('kvp-invested').textContent=fmtR(P);
+    document.getElementById('kvp-interest').textContent=fmtR(tot);
+    document.getElementById('kvp-abs').textContent=abs.toFixed(2)+'%';
+    document.getElementById('kvp-eff').textContent=r.toFixed(2)+'%';
+    document.getElementById('kvp-tbody').innerHTML=rows;
+  }
+  function syncP(rid,iid,min,max,lblId,fmt2){
+    var r=document.getElementById(rid),i=document.getElementById(iid),l=lblId?document.getElementById(lblId):null;
+    function upd(){if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;calc();}
+    r.addEventListener('input',function(){i.value=r.value;upd();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;upd();});
+    if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;
+  }
+  syncP('kvp-r-amt','kvp-i-amt',1000,1500000,'kvp-lbl-amt',function(v){return '₹'+v.toLocaleString('en-IN');});
+  syncP('kvp-r-rate','kvp-i-rate',4,12,'kvp-lbl-rate',function(v){return v.toFixed(1)+'%';});
+  syncP('kvp-r-yr','kvp-i-yr',1,25,'kvp-lbl-yr',function(v){return v+' year'+(v>1?'s':'');});
+  calc();
+})();
+</script>
+</div>

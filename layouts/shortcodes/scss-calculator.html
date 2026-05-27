@@ -1,0 +1,142 @@
+<div id="cx-scss">
+<style>
+#cx-scss { font-family: inherit; }
+.cx-scss-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-scss-wrap { grid-template-columns:1fr; } }
+.cx-scss-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-sf-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-sf-label span { color:#6b7280; font-weight:500; }
+.cx-sf-row { display:flex; align-items:center; gap:.6rem; }
+.cx-sf-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-sf-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:110px; }
+.cx-sf-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; align-self:stretch; display:flex; align-items:center; }
+.cx-sf-box span.sfx { border-right:0; border-left:1px solid #e5e7eb; }
+.cx-sf-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-sf-box input::-webkit-outer-spin-button,.cx-sf-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-scss-result { background:linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%); border-radius:16px; padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:1.1rem; color:#fff; position:relative; overflow:hidden; }
+.cx-scss-result::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.cx-scss-main { text-align:center; }
+.cx-scss-lbl { font-size:.75rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-scss-big { font-size:2.8rem; font-weight:800; line-height:1; letter-spacing:-1px; color:#4ade80; }
+.cx-scss-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:0; }
+.cx-scss-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+.cx-scss-stat { background:rgba(255,255,255,.07); border-radius:10px; padding:.7rem .9rem; }
+.cx-scss-stat-val { font-size:1rem; font-weight:700; }
+.cx-scss-stat-lbl { font-size:.72rem; color:#94a3b8; margin-top:2px; }
+.cx-scss-table { width:100%; border-collapse:collapse; font-size:.82rem; margin-top:.5rem; }
+.cx-scss-table th { text-align:left; font-weight:600; color:#93c5fd; padding:.4rem .5rem; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid rgba(255,255,255,.12); }
+.cx-scss-table td { padding:.4rem .5rem; color:#e2e8f0; border-bottom:1px solid rgba(255,255,255,.06); }
+.cx-scss-table tr:last-child td { border-bottom:0; color:#4ade80; font-weight:600; }
+.cx-scss-badge { display:inline-flex; align-items:center; gap:.35rem; background:rgba(74,222,128,.15); border:1px solid rgba(74,222,128,.3); border-radius:6px; padding:.3rem .65rem; font-size:.75rem; color:#4ade80; font-weight:600; margin-top:.25rem; }
+</style>
+
+<div class="cx-scss-wrap">
+  <div class="cx-scss-inputs">
+
+    <div>
+      <div class="cx-sf-label">Investment Amount <span id="scss-lbl-amt">₹5,00,000</span></div>
+      <div class="cx-sf-row">
+        <input type="range" id="scss-r-amt" min="1000" max="3000000" step="1000" value="500000">
+        <div class="cx-sf-box"><span>₹</span><input type="number" id="scss-i-amt" value="500000" min="1000" max="3000000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-sf-label">Interest Rate (p.a.) <span id="scss-lbl-rate">8.2%</span></div>
+      <div class="cx-sf-row">
+        <input type="range" id="scss-r-rate" min="4" max="12" step="0.1" value="8.2">
+        <div class="cx-sf-box"><input type="number" id="scss-i-rate" value="8.2" min="4" max="12" step="0.1"><span class="sfx">%</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-sf-label">Tenure <span id="scss-lbl-yr">5 years</span></div>
+      <div class="cx-sf-row">
+        <input type="range" id="scss-r-yr" min="5" max="8" step="1" value="5">
+        <div class="cx-sf-box"><input type="number" id="scss-i-yr" value="5" min="5" max="8"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.65rem .85rem;font-size:.78rem;color:#1d4ed8;">
+      <strong>Current SCSS rate:</strong> 8.2% p.a. (Q1 FY 2025-26). Interest paid quarterly. Qualifies for 80C deduction on investment. Max ₹30 lakh per individual.
+    </div>
+
+  </div>
+
+  <div class="cx-scss-result">
+    <div class="cx-scss-main">
+      <div class="cx-scss-lbl">Quarterly Income</div>
+      <div class="cx-scss-big" id="scss-quarterly">₹10,250</div>
+      <div class="cx-scss-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        80C eligible
+      </div>
+    </div>
+
+    <hr class="cx-scss-divider">
+
+    <div class="cx-scss-grid">
+      <div class="cx-scss-stat">
+        <div class="cx-scss-stat-val" id="scss-monthly">₹3,417</div>
+        <div class="cx-scss-stat-lbl">Monthly Equivalent</div>
+      </div>
+      <div class="cx-scss-stat">
+        <div class="cx-scss-stat-val" id="scss-annual" style="color:#4ade80;">₹41,000</div>
+        <div class="cx-scss-stat-lbl">Annual Income</div>
+      </div>
+      <div class="cx-scss-stat">
+        <div class="cx-scss-stat-val" id="scss-total">₹2,05,000</div>
+        <div class="cx-scss-stat-lbl">Total Interest</div>
+      </div>
+      <div class="cx-scss-stat">
+        <div class="cx-scss-stat-val" id="scss-maturity">₹5,00,000</div>
+        <div class="cx-scss-stat-lbl">Maturity Value</div>
+      </div>
+    </div>
+
+    <hr class="cx-scss-divider">
+
+    <table class="cx-scss-table">
+      <thead><tr><th>Year</th><th>Quarterly</th><th>Annual</th><th>Total Paid</th></tr></thead>
+      <tbody id="scss-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmtR(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+  function calc(){
+    var P = parseFloat(document.getElementById('scss-i-amt').value)||0;
+    var r = parseFloat(document.getElementById('scss-i-rate').value)||0;
+    var n = parseInt(document.getElementById('scss-i-yr').value)||0;
+    var quarterly = P * r / 400;
+    var annual = P * r / 100;
+    var monthly = annual / 12;
+    var total = annual * n;
+    var rows='', cum=0;
+    for(var i=1;i<=n;i++){
+      cum += annual;
+      rows+='<tr><td>Year '+i+'</td><td>'+fmtR(quarterly)+'</td><td>'+fmtR(annual)+'</td><td>'+fmtR(cum)+'</td></tr>';
+    }
+    document.getElementById('scss-quarterly').textContent = fmtR(quarterly);
+    document.getElementById('scss-monthly').textContent = fmtR(monthly);
+    document.getElementById('scss-annual').textContent = fmtR(annual);
+    document.getElementById('scss-total').textContent = fmtR(total);
+    document.getElementById('scss-maturity').textContent = fmtR(P);
+    document.getElementById('scss-tbody').innerHTML = rows;
+  }
+  function syncP(rid,iid,min,max,lblId,fmt2){
+    var r=document.getElementById(rid),i=document.getElementById(iid),l=lblId?document.getElementById(lblId):null;
+    function upd(){if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;calc();}
+    r.addEventListener('input',function(){i.value=r.value;upd();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;upd();});
+    if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;
+  }
+  syncP('scss-r-amt','scss-i-amt',1000,3000000,'scss-lbl-amt',function(v){return '₹'+v.toLocaleString('en-IN');});
+  syncP('scss-r-rate','scss-i-rate',4,12,'scss-lbl-rate',function(v){return v.toFixed(1)+'%';});
+  syncP('scss-r-yr','scss-i-yr',5,8,'scss-lbl-yr',function(v){return v+' year'+(v>1?'s':'');});
+  calc();
+})();
+</script>
+</div>

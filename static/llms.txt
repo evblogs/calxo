@@ -9,6 +9,7 @@ Calxo (calxo.in) is an Indian personal finance calculator hub launched in 2026. 
 - [EMI Calculator](https://www.calxo.in/loan/emi-calculator/): Calculate monthly EMI, total interest and principal-vs-interest schedule for home, personal or car loans using the standard reducing-balance formula.
 - [Home Loan Eligibility Calculator](https://www.calxo.in/loan/home-loan-eligibility/): Find how much home loan you can get on your salary using LTV, FOIR and age norms.
 - [Personal Loan EMI Calculator](https://www.calxo.in/loan/personal-loan-calculator/): Monthly EMI for unsecured personal loans with instant amortisation breakdown.
+- [Personal Loan Eligibility Calculator](https://www.calxo.in/loan/personal-loan-eligibility-calculator/): Maximum personal loan amount based on salary and existing EMIs using the FOIR method used by Indian banks.
 - [Car Loan EMI Calculator](https://www.calxo.in/loan/car-loan-calculator/): Monthly instalment for any car loan amount, tenure and interest rate.
 - [Bike Loan EMI Calculator](https://www.calxo.in/loan/bike-loan-calculator/): Two-wheeler loan EMI with interest and repayment schedule.
 - [Education Loan EMI Calculator](https://www.calxo.in/loan/education-loan-calculator/): Student loan repayment with moratorium period and EMI planning.
@@ -20,12 +21,17 @@ Calxo (calxo.in) is an Indian personal finance calculator hub launched in 2026. 
 ## Investment Calculators
 
 - [SIP Calculator](https://www.calxo.in/investment/sip-calculator/): Monthly SIP maturity value using the mutual fund future-value formula for any amount, tenure and expected return.
+- [XIRR Calculator](https://www.calxo.in/investment/xirr-calculator/): Annualised XIRR return on SIP or custom irregular cash flows — more accurate than CAGR for SIP investors.
 - [Lumpsum Calculator](https://www.calxo.in/investment/lumpsum-calculator/): One-time investment return using compound interest for any rate and period.
 - [Step-Up SIP Calculator](https://www.calxo.in/investment/step-up-sip-calculator/): SIP returns with an annual step-up percentage to model salary increments.
 - [SWP Calculator](https://www.calxo.in/investment/swp-calculator/): Systematic Withdrawal Plan — how long a corpus lasts given monthly withdrawals and expected growth.
 - [FD Calculator](https://www.calxo.in/investment/fd-calculator/): Fixed Deposit maturity with quarterly compounding as per Indian bank norms.
 - [RD Calculator](https://www.calxo.in/investment/rd-calculator/): Recurring Deposit maturity using the RBI quarterly-compounding formula.
 - [PPF Calculator](https://www.calxo.in/investment/ppf-calculator/): Public Provident Fund 15-year maturity at the current 7.1% rate with partial withdrawal and extension options.
+- [NSC Calculator](https://www.calxo.in/investment/nsc-calculator/): National Savings Certificate maturity at 7.7% compounded annually with year-by-year breakdown and 80C details.
+- [SCSS Calculator](https://www.calxo.in/investment/scss-calculator/): Senior Citizen Savings Scheme quarterly income at 8.2% — highest post office rate, max ₹30 lakh.
+- [KVP Calculator](https://www.calxo.in/investment/kvp-calculator/): Kisan Vikas Patra maturity and doubling period at 7.5% — money doubles in 115 months.
+- [POMIS Calculator](https://www.calxo.in/investment/pomis-calculator/): Post Office Monthly Income Scheme monthly payout at 7.4% — max ₹9 lakh single account.
 - [NPS Calculator](https://www.calxo.in/investment/nps-calculator/): National Pension Scheme corpus and estimated monthly pension at retirement.
 - [NPS Vatsalya Calculator](https://www.calxo.in/investment/nps-vatsalya-calculator/): NPS Vatsalya corpus if started for a child from birth.
 - [UPS Pension Calculator](https://www.calxo.in/investment/ups-pension-calculator/): Unified Pension Scheme assured pension for Central Government employees under the 2025 rules.
@@ -36,6 +42,7 @@ Calxo (calxo.in) is an Indian personal finance calculator hub launched in 2026. 
 - [Retirement Calculator](https://www.calxo.in/investment/retirement-calculator/): Target retirement corpus and required monthly savings to retire at a chosen age.
 - [Gold Value Calculator](https://www.calxo.in/investment/gold-calculator/): Current value of gold jewellery or coins in grams, tola and sovereign at live rates.
 - [SSY Calculator](https://www.calxo.in/investment/ssy-calculator/): Sukanya Samriddhi Yojana maturity at current 8.2% rate for girls.
+- [Dividend Yield Calculator](https://www.calxo.in/investment/dividend-yield-calculator/): Stock dividend yield %, annual income, payback period and 5-year total for any share and quantity.
 - [Stock Average Calculator](https://www.calxo.in/investment/stock-average-calculator/): Weighted average cost price after averaging down a stock position.
 - [Crorepati Clock](https://www.calxo.in/investment/crorepati-clock/): The exact date and time you will cross ₹1 crore given your current SIP.
 

@@ -1,0 +1,154 @@
+<div id="cx-ple">
+<style>
+#cx-ple { font-family: inherit; }
+.cx-ple-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-ple-wrap { grid-template-columns:1fr; } }
+.cx-ple-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-ef-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-ef-label span { color:#6b7280; font-weight:500; }
+.cx-ef-row { display:flex; align-items:center; gap:.6rem; }
+.cx-ef-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-ef-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:120px; }
+.cx-ef-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; align-self:stretch; display:flex; align-items:center; }
+.cx-ef-box span.sfx { border-right:0; border-left:1px solid #e5e7eb; }
+.cx-ef-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-ef-box input::-webkit-outer-spin-button,.cx-ef-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-ple-result { background:linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%); border-radius:16px; padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:1.1rem; color:#fff; position:relative; overflow:hidden; }
+.cx-ple-result::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.cx-ple-main { text-align:center; }
+.cx-ple-lbl { font-size:.75rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-ple-big { font-size:2.5rem; font-weight:800; line-height:1; letter-spacing:-1px; color:#4ade80; }
+.cx-ple-sub { font-size:.75rem; color:#94a3b8; margin-top:.4rem; }
+.cx-ple-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:0; }
+.cx-ple-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+.cx-ple-stat { background:rgba(255,255,255,.07); border-radius:10px; padding:.7rem .9rem; }
+.cx-ple-stat-val { font-size:1rem; font-weight:700; }
+.cx-ple-stat-lbl { font-size:.72rem; color:#94a3b8; margin-top:2px; }
+.cx-ple-range { background:rgba(255,255,255,.05); border-radius:10px; padding:.9rem 1rem; }
+.cx-ple-range-lbl { font-size:.72rem; color:#93c5fd; text-transform:uppercase; letter-spacing:.5px; margin-bottom:.5rem; }
+.cx-ple-bar { height:8px; background:rgba(255,255,255,.1); border-radius:4px; margin:.35rem 0; overflow:hidden; }
+.cx-ple-bar-fill { height:100%; background:linear-gradient(90deg,#3b82f6,#4ade80); border-radius:4px; transition:width .3s; }
+.cx-ple-bar-row { display:flex; justify-content:space-between; font-size:.72rem; color:#94a3b8; }
+</style>
+
+<div class="cx-ple-wrap">
+  <div class="cx-ple-inputs">
+
+    <div>
+      <div class="cx-ef-label">Monthly Net Salary <span id="ple-lbl-sal">₹60,000</span></div>
+      <div class="cx-ef-row">
+        <input type="range" id="ple-r-sal" min="10000" max="500000" step="1000" value="60000">
+        <div class="cx-ef-box"><span>₹</span><input type="number" id="ple-i-sal" value="60000" min="10000" max="500000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-ef-label">Existing Monthly EMIs <span id="ple-lbl-emi">₹0</span></div>
+      <div class="cx-ef-row">
+        <input type="range" id="ple-r-emi" min="0" max="100000" step="500" value="0">
+        <div class="cx-ef-box"><span>₹</span><input type="number" id="ple-i-emi" value="0" min="0" max="100000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-ef-label">Interest Rate (p.a.) <span id="ple-lbl-rate">12%</span></div>
+      <div class="cx-ef-row">
+        <input type="range" id="ple-r-rate" min="8" max="30" step="0.5" value="12">
+        <div class="cx-ef-box"><input type="number" id="ple-i-rate" value="12" min="8" max="30" step="0.5"><span class="sfx">%</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-ef-label">Loan Tenure <span id="ple-lbl-yr">5 years</span></div>
+      <div class="cx-ef-row">
+        <input type="range" id="ple-r-yr" min="1" max="7" step="1" value="5">
+        <div class="cx-ef-box"><input type="number" id="ple-i-yr" value="5" min="1" max="7"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cx-ple-result">
+    <div class="cx-ple-main">
+      <div class="cx-ple-lbl">Eligible Loan Amount</div>
+      <div class="cx-ple-big" id="ple-eligible">₹8,01,540</div>
+      <div class="cx-ple-sub">Based on 40% FOIR (conservative estimate)</div>
+    </div>
+
+    <hr class="cx-ple-divider">
+
+    <div class="cx-ple-grid">
+      <div class="cx-ple-stat">
+        <div class="cx-ple-stat-val" id="ple-emi">₹17,795</div>
+        <div class="cx-ple-stat-lbl">Est. Monthly EMI</div>
+      </div>
+      <div class="cx-ple-stat">
+        <div class="cx-ple-stat-val" id="ple-avail-emi">₹24,000</div>
+        <div class="cx-ple-stat-lbl">Available EMI (40%)</div>
+      </div>
+      <div class="cx-ple-stat">
+        <div class="cx-ple-stat-val" id="ple-max-aggressive">₹10,01,925</div>
+        <div class="cx-ple-stat-lbl">Max (50% FOIR)</div>
+      </div>
+      <div class="cx-ple-stat">
+        <div class="cx-ple-stat-val" id="ple-total-interest">₹2,67,700</div>
+        <div class="cx-ple-stat-lbl">Total Interest</div>
+      </div>
+    </div>
+
+    <hr class="cx-ple-divider">
+
+    <div class="cx-ple-range">
+      <div class="cx-ple-range-lbl">FOIR Utilisation After Loan</div>
+      <div class="cx-ple-bar"><div class="cx-ple-bar-fill" id="ple-foir-bar" style="width:40%;"></div></div>
+      <div class="cx-ple-bar-row"><span id="ple-foir-pct">40% FOIR</span><span style="color:#fbbf24;">50% = max safe</span></div>
+      <div style="font-size:.75rem;color:#94a3b8;margin-top:.5rem;">Existing EMIs + new EMI as % of your salary</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmtR(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+  function calcLoan(emi, r, n){
+    if(r === 0) return emi * n;
+    return emi * (Math.pow(1+r,n)-1) / (r * Math.pow(1+r,n));
+  }
+  function calc(){
+    var sal = parseFloat(document.getElementById('ple-i-sal').value)||0;
+    var existEmi = parseFloat(document.getElementById('ple-i-emi').value)||0;
+    var rate = parseFloat(document.getElementById('ple-i-rate').value)||0;
+    var yrs = parseInt(document.getElementById('ple-i-yr').value)||0;
+    var months = yrs * 12;
+    var r = rate / 1200;
+    var availEmi40 = Math.max(0, sal * 0.40 - existEmi);
+    var availEmi50 = Math.max(0, sal * 0.50 - existEmi);
+    var loan40 = calcLoan(availEmi40, r, months);
+    var loan50 = calcLoan(availEmi50, r, months);
+    var emiOnLoan40 = r > 0 ? loan40 * r * Math.pow(1+r,months) / (Math.pow(1+r,months)-1) : (months > 0 ? loan40/months : 0);
+    var totalInterest = (emiOnLoan40 * months) - loan40;
+    var foirPct = sal > 0 ? Math.min(100, ((existEmi + emiOnLoan40)/sal*100)) : 0;
+    document.getElementById('ple-eligible').textContent = fmtR(loan40);
+    document.getElementById('ple-emi').textContent = fmtR(emiOnLoan40);
+    document.getElementById('ple-avail-emi').textContent = fmtR(availEmi40);
+    document.getElementById('ple-max-aggressive').textContent = fmtR(loan50);
+    document.getElementById('ple-total-interest').textContent = fmtR(Math.max(0,totalInterest));
+    document.getElementById('ple-foir-bar').style.width = Math.min(100,foirPct).toFixed(1)+'%';
+    document.getElementById('ple-foir-pct').textContent = foirPct.toFixed(1)+'% FOIR';
+    document.getElementById('ple-foir-bar').style.background = foirPct > 50 ? 'linear-gradient(90deg,#ef4444,#f87171)' : 'linear-gradient(90deg,#3b82f6,#4ade80)';
+  }
+  function syncP(rid,iid,min,max,lblId,fmt2){
+    var r=document.getElementById(rid),i=document.getElementById(iid),l=lblId?document.getElementById(lblId):null;
+    function upd(){if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;calc();}
+    r.addEventListener('input',function(){i.value=r.value;upd();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;upd();});
+    if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;
+  }
+  syncP('ple-r-sal','ple-i-sal',10000,500000,'ple-lbl-sal',function(v){return '₹'+v.toLocaleString('en-IN');});
+  syncP('ple-r-emi','ple-i-emi',0,100000,'ple-lbl-emi',function(v){return '₹'+v.toLocaleString('en-IN');});
+  syncP('ple-r-rate','ple-i-rate',8,30,'ple-lbl-rate',function(v){return v.toFixed(1)+'%';});
+  syncP('ple-r-yr','ple-i-yr',1,7,'ple-lbl-yr',function(v){return v+' year'+(v>1?'s':'');});
+  calc();
+})();
+</script>
+</div>

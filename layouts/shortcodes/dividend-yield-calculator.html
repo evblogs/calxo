@@ -1,0 +1,142 @@
+<div id="cx-dy">
+<style>
+#cx-dy { font-family: inherit; }
+.cx-dy-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-dy-wrap { grid-template-columns:1fr; } }
+.cx-dy-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-df-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-df-label span { color:#6b7280; font-weight:500; }
+.cx-df-row { display:flex; align-items:center; gap:.6rem; }
+.cx-df-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-df-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:120px; }
+.cx-df-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; align-self:stretch; display:flex; align-items:center; }
+.cx-df-box span.sfx { border-right:0; border-left:1px solid #e5e7eb; }
+.cx-df-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-df-box input::-webkit-outer-spin-button,.cx-df-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-dy-result { background:linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%); border-radius:16px; padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:1.1rem; color:#fff; position:relative; overflow:hidden; }
+.cx-dy-result::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.cx-dy-main { text-align:center; }
+.cx-dy-lbl { font-size:.75rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-dy-big { font-size:3rem; font-weight:800; line-height:1; letter-spacing:-1px; color:#4ade80; }
+.cx-dy-bench { font-size:.8rem; color:#94a3b8; margin-top:.4rem; }
+.cx-dy-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:0; }
+.cx-dy-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+.cx-dy-stat { background:rgba(255,255,255,.07); border-radius:10px; padding:.7rem .9rem; }
+.cx-dy-stat-val { font-size:1rem; font-weight:700; }
+.cx-dy-stat-lbl { font-size:.72rem; color:#94a3b8; margin-top:2px; }
+.cx-dy-badge { display:inline-flex; align-items:center; gap:.35rem; border-radius:6px; padding:.3rem .65rem; font-size:.75rem; font-weight:600; margin-top:.4rem; }
+.cx-dy-badge.good { background:rgba(74,222,128,.15); border:1px solid rgba(74,222,128,.3); color:#4ade80; }
+.cx-dy-badge.avg  { background:rgba(251,191,36,.15); border:1px solid rgba(251,191,36,.3); color:#fbbf24; }
+.cx-dy-badge.low  { background:rgba(248,113,113,.15); border:1px solid rgba(248,113,113,.3); color:#f87171; }
+</style>
+
+<div class="cx-dy-wrap">
+  <div class="cx-dy-inputs">
+
+    <div>
+      <div class="cx-df-label">Annual Dividend per Share <span id="dy-lbl-div">₹10</span></div>
+      <div class="cx-df-row">
+        <input type="range" id="dy-r-div" min="0.1" max="500" step="0.1" value="10">
+        <div class="cx-df-box"><span>₹</span><input type="number" id="dy-i-div" value="10" min="0.1" max="500" step="0.1"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-df-label">Current Share Price <span id="dy-lbl-price">₹500</span></div>
+      <div class="cx-df-row">
+        <input type="range" id="dy-r-price" min="1" max="50000" step="1" value="500">
+        <div class="cx-df-box"><span>₹</span><input type="number" id="dy-i-price" value="500" min="1" max="50000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-df-label">Number of Shares <span id="dy-lbl-shares">100</span></div>
+      <div class="cx-df-row">
+        <input type="range" id="dy-r-shares" min="1" max="10000" step="1" value="100">
+        <div class="cx-df-box"><input type="number" id="dy-i-shares" value="100" min="1" max="10000"><span class="sfx">sh</span></div>
+      </div>
+    </div>
+
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:.65rem .85rem;font-size:.78rem;color:#15803d;">
+      <strong>Dividend Tax:</strong> Dividends above ₹5,000/year are subject to 10% TDS. Total dividend income is taxable at your slab rate under the new tax regime.
+    </div>
+
+  </div>
+
+  <div class="cx-dy-result">
+    <div class="cx-dy-main">
+      <div class="cx-dy-lbl">Dividend Yield</div>
+      <div class="cx-dy-big" id="dy-yield">2.00%</div>
+      <div id="dy-badge" class="cx-dy-badge avg">Average yield stock</div>
+    </div>
+
+    <hr class="cx-dy-divider">
+
+    <div class="cx-dy-grid">
+      <div class="cx-dy-stat">
+        <div class="cx-dy-stat-val" id="dy-annual-income">₹1,000</div>
+        <div class="cx-dy-stat-lbl">Annual Dividend Income</div>
+      </div>
+      <div class="cx-dy-stat">
+        <div class="cx-dy-stat-val" id="dy-monthly-income" style="color:#4ade80;">₹83</div>
+        <div class="cx-dy-stat-lbl">Monthly Equivalent</div>
+      </div>
+      <div class="cx-dy-stat">
+        <div class="cx-dy-stat-val" id="dy-invested">₹50,000</div>
+        <div class="cx-dy-stat-lbl">Total Invested</div>
+      </div>
+      <div class="cx-dy-stat">
+        <div class="cx-dy-stat-val" id="dy-payback">50.0 yrs</div>
+        <div class="cx-dy-stat-lbl">Payback Period</div>
+      </div>
+    </div>
+
+    <hr class="cx-dy-divider">
+
+    <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:.8rem 1rem;">
+      <div style="font-size:.72rem;color:#93c5fd;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.6rem;">5-Year Dividend Income</div>
+      <div style="font-size:1.4rem;font-weight:700;" id="dy-5yr">₹5,000</div>
+      <div style="font-size:.72rem;color:#94a3b8;margin-top:2px;">At constant dividend rate (pre-tax)</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmtR(n){ return '₹'+parseFloat(n.toFixed(2)).toLocaleString('en-IN'); }
+  function calc(){
+    var div = parseFloat(document.getElementById('dy-i-div').value)||0;
+    var price = parseFloat(document.getElementById('dy-i-price').value)||0;
+    var shares = parseFloat(document.getElementById('dy-i-shares').value)||0;
+    var yld = price > 0 ? (div/price*100) : 0;
+    var annualInc = div * shares;
+    var monthlyInc = annualInc / 12;
+    var invested = price * shares;
+    var payback = annualInc > 0 ? invested/annualInc : 0;
+    var fiveYr = annualInc * 5;
+    document.getElementById('dy-yield').textContent = yld.toFixed(2)+'%';
+    document.getElementById('dy-annual-income').textContent = fmtR(annualInc);
+    document.getElementById('dy-monthly-income').textContent = fmtR(monthlyInc);
+    document.getElementById('dy-invested').textContent = fmtR(invested);
+    document.getElementById('dy-payback').textContent = annualInc > 0 ? payback.toFixed(1)+' yrs' : '--';
+    document.getElementById('dy-5yr').textContent = fmtR(fiveYr);
+    var badge = document.getElementById('dy-badge');
+    if(yld >= 4){ badge.className='cx-dy-badge good'; badge.textContent='High yield stock (4%+)'; }
+    else if(yld >= 2){ badge.className='cx-dy-badge avg'; badge.textContent='Average yield stock'; }
+    else if(yld > 0){ badge.className='cx-dy-badge low'; badge.textContent='Low yield / growth stock'; }
+    else { badge.className='cx-dy-badge low'; badge.textContent='Enter values to see yield'; }
+  }
+  function syncP(rid,iid,min,max,lblId,fmt2,step){
+    var r=document.getElementById(rid),i=document.getElementById(iid),l=lblId?document.getElementById(lblId):null;
+    function upd(){if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;calc();}
+    r.addEventListener('input',function(){i.value=r.value;upd();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;upd();});
+    if(l)l.textContent=fmt2?fmt2(parseFloat(i.value)||0):i.value;
+  }
+  syncP('dy-r-div','dy-i-div',0.1,500,'dy-lbl-div',function(v){return '₹'+v;});
+  syncP('dy-r-price','dy-i-price',1,50000,'dy-lbl-price',function(v){return '₹'+v.toLocaleString('en-IN');});
+  syncP('dy-r-shares','dy-i-shares',1,10000,'dy-lbl-shares',function(v){return v;});
+  calc();
+})();
+</script>
+</div>
