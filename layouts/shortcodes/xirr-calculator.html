@@ -1,0 +1,436 @@
+<div id="cx-xirr">
+<style>
+/* ── XIRR calculator ── */
+#cx-xirr { font-family: inherit; }
+.cx-xirr-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0 2rem;
+}
+@media(max-width:760px){ .cx-xirr-wrap { grid-template-columns: 1fr; } }
+
+/* inputs */
+.cx-xirr-inputs { display: flex; flex-direction: column; gap: 1.4rem; }
+.cx-xf-label {
+  display: flex; justify-content: space-between;
+  font-size: .82rem; font-weight: 600; color: #374151; margin-bottom: .45rem;
+}
+.cx-xf-label span { color: #6b7280; font-weight: 500; }
+.cx-xf-row { display: flex; align-items: center; gap: .6rem; }
+.cx-xf-row input[type=range] {
+  flex: 1; accent-color: #2563eb; height: 4px; cursor: pointer;
+}
+.cx-xf-box {
+  display: flex; align-items: center;
+  border: 1.5px solid #d1d5db; border-radius: 7px;
+  background: #fff; overflow: hidden; flex-shrink: 0; width: 110px;
+}
+.cx-xf-box span {
+  padding: 0 .45rem; font-size: .82rem; color: #9ca3af;
+  background: #f9fafb; border-right: 1px solid #e5e7eb;
+  align-self: stretch; display: flex; align-items: center;
+}
+.cx-xf-box span.sfx { border-right: 0; border-left: 1px solid #e5e7eb; }
+.cx-xf-box input[type=number] {
+  border: 0; outline: none; width: 100%; padding: .45rem .4rem;
+  font-size: .85rem; font-weight: 600; color: #1e293b;
+  -moz-appearance: textfield;
+}
+.cx-xf-box input[type=number]::-webkit-outer-spin-button,
+.cx-xf-box input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* mode toggle */
+.cx-xirr-mode {
+  display: flex; gap: .5rem; margin-bottom: 1.4rem;
+}
+.cx-xirr-mode button {
+  flex: 1; padding: .45rem .6rem; border-radius: 6px; font-size: .8rem; font-weight: 600;
+  cursor: pointer; border: 1.5px solid #d1d5db; background: #fff; color: #6b7280;
+  transition: all .15s;
+}
+.cx-xirr-mode button.cx-active {
+  background: #2563eb; color: #fff; border-color: #2563eb;
+}
+
+/* result panel */
+.cx-xirr-result {
+  background: linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%);
+  border-radius: 16px; padding: 1.8rem 1.6rem;
+  display: flex; flex-direction: column; gap: 1.2rem; color: #fff;
+  position: relative; overflow: hidden;
+}
+.cx-xirr-result::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 18px 18px; pointer-events: none;
+}
+.cx-xirr-main { text-align: center; }
+.cx-xirr-label { font-size: .78rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 1px; margin-bottom: .3rem; }
+.cx-xirr-big { font-size: 3rem; font-weight: 800; line-height: 1; letter-spacing: -1px; }
+.cx-xirr-sub { font-size: .8rem; color: #94a3b8; margin-top: .25rem; }
+.cx-xirr-divider { border: 0; border-top: 1px solid rgba(255,255,255,.12); margin: 0; }
+.cx-xirr-stats { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.cx-xirr-stat { background: rgba(255,255,255,.07); border-radius: 10px; padding: .7rem .9rem; }
+.cx-xirr-stat-val { font-size: 1.05rem; font-weight: 700; }
+.cx-xirr-stat-lbl { font-size: .72rem; color: #94a3b8; margin-top: 2px; }
+.cx-xirr-bar-wrap { }
+.cx-xirr-bar-label { font-size: .75rem; color: #94a3b8; margin-bottom: .4rem; }
+.cx-xirr-bar { background: rgba(255,255,255,.15); border-radius: 4px; height: 8px; position: relative; }
+.cx-xirr-bar-fill { height: 100%; border-radius: 4px; background: #60a5fa; transition: width .3s ease; min-width: 2px; }
+.cx-xirr-bar-fill.cx-profit { background: #4ade80; }
+.cx-xirr-bar-fill.cx-loss  { background: #f87171; }
+.cx-xirr-bench {
+  font-size: .75rem; color: #94a3b8;
+  display: flex; align-items: center; gap: .4rem; margin-top: .3rem;
+}
+.cx-xirr-bench-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* custom cashflow table */
+.cx-xirr-custom { display: none; flex-direction: column; gap: .75rem; }
+.cx-xirr-custom.cx-show { display: flex; }
+.cx-cf-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+.cx-cf-table th { text-align: left; font-weight: 600; color: #6b7280; padding: .3rem .4rem; font-size: .75rem; }
+.cx-cf-table td { padding: .25rem .4rem; }
+.cx-cf-table input[type=date],
+.cx-cf-table input[type=number] {
+  width: 100%; border: 1.5px solid #d1d5db; border-radius: 5px;
+  padding: .3rem .4rem; font-size: .8rem; outline: none;
+}
+.cx-cf-table input:focus { border-color: #2563eb; }
+.cx-cf-table td:last-child { width: 28px; text-align: center; }
+.cx-cf-del {
+  background: none; border: none; cursor: pointer; color: #ef4444; font-size: 1rem; padding: 0;
+  line-height: 1;
+}
+.cx-cf-add {
+  background: #f0fdf4; border: 1.5px dashed #86efac; border-radius: 7px;
+  padding: .45rem; font-size: .8rem; font-weight: 600; color: #16a34a;
+  cursor: pointer; width: 100%;
+}
+.cx-cf-note { font-size: .75rem; color: #6b7280; background: #f8fafc; border-radius: 6px; padding: .5rem .7rem; }
+</style>
+
+<!-- Mode toggle -->
+<div class="cx-xirr-mode">
+  <button id="cx-xirr-btn-sip" class="cx-active" onclick="cxXirrMode('sip')">Monthly SIP</button>
+  <button id="cx-xirr-btn-cf" onclick="cxXirrMode('cf')">Custom Cash Flows</button>
+</div>
+
+<div class="cx-xirr-wrap">
+
+  <!-- ── Left: inputs ── -->
+  <div>
+    <!-- SIP inputs -->
+    <div id="cx-xirr-sip-inputs" class="cx-xirr-inputs">
+
+      <div>
+        <div class="cx-xf-label">Monthly SIP Amount <span id="lbl-sip">₹5,000</span></div>
+        <div class="cx-xf-row">
+          <input type="range" id="r-sip" min="500" max="100000" step="500" value="5000">
+          <div class="cx-xf-box">
+            <span>₹</span>
+            <input type="number" id="i-sip" value="5000" min="500" max="100000">
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="cx-xf-label">Investment Period <span id="lbl-mo">60 months (5 yr)</span></div>
+        <div class="cx-xf-row">
+          <input type="range" id="r-mo" min="6" max="360" step="1" value="60">
+          <div class="cx-xf-box">
+            <input type="number" id="i-mo" value="60" min="6" max="360">
+            <span class="sfx">mo</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="cx-xf-label">Current Portfolio Value <span id="lbl-cur">₹4,50,000</span></div>
+        <div class="cx-xf-row">
+          <input type="range" id="r-cur" min="1000" max="10000000" step="1000" value="450000">
+          <div class="cx-xf-box">
+            <span>₹</span>
+            <input type="number" id="i-cur" value="450000" min="1000" max="10000000">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Custom cash flows inputs -->
+    <div id="cx-xirr-cf-inputs" class="cx-xirr-inputs" style="display:none;">
+      <p class="cx-cf-note">Enter each investment as a negative amount and the final redemption value as a positive amount. Add the most recent date last.</p>
+      <table class="cx-cf-table">
+        <thead>
+          <tr><th>Date</th><th>Amount (₹)</th><th></th></tr>
+        </thead>
+        <tbody id="cx-cf-body"></tbody>
+      </table>
+      <button class="cx-cf-add" onclick="cxAddRow()">+ Add cash flow</button>
+      <div>
+        <div class="cx-xf-label">Current Portfolio Value <span id="lbl-cf-cur">₹0</span></div>
+        <div class="cx-xf-row">
+          <input type="range" id="r-cf-cur" min="1000" max="10000000" step="1000" value="100000">
+          <div class="cx-xf-box">
+            <span>₹</span>
+            <input type="number" id="i-cf-cur" value="100000" min="1000" max="10000000">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Right: result panel ── -->
+  <div class="cx-xirr-result">
+    <div class="cx-xirr-main">
+      <div class="cx-xirr-label">XIRR (Annualised Return)</div>
+      <div class="cx-xirr-big" id="res-xirr">--</div>
+      <div class="cx-xirr-sub" id="res-bench"></div>
+    </div>
+
+    <hr class="cx-xirr-divider">
+
+    <div class="cx-xirr-stats">
+      <div class="cx-xirr-stat">
+        <div class="cx-xirr-stat-val" id="res-inv">₹3,00,000</div>
+        <div class="cx-xirr-stat-lbl">Total Invested</div>
+      </div>
+      <div class="cx-xirr-stat">
+        <div class="cx-xirr-stat-val" id="res-cur">₹4,50,000</div>
+        <div class="cx-xirr-stat-lbl">Current Value</div>
+      </div>
+      <div class="cx-xirr-stat">
+        <div class="cx-xirr-stat-val" id="res-pnl" style="color:#4ade80;">+₹1,50,000</div>
+        <div class="cx-xirr-stat-lbl">Profit / Loss</div>
+      </div>
+      <div class="cx-xirr-stat">
+        <div class="cx-xirr-stat-val" id="res-abs">50.0%</div>
+        <div class="cx-xirr-stat-lbl">Absolute Return</div>
+      </div>
+    </div>
+
+    <hr class="cx-xirr-divider">
+
+    <div class="cx-xirr-bar-wrap">
+      <div class="cx-xirr-bar-label">Invested vs Current Value</div>
+      <div class="cx-xirr-bar" style="margin-bottom:.5rem;">
+        <div class="cx-xirr-bar-fill" id="bar-inv" style="width:60%;background:#60a5fa;"></div>
+      </div>
+      <div class="cx-xirr-bar">
+        <div class="cx-xirr-bar-fill cx-profit" id="bar-cur" style="width:90%;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:.7rem;color:#94a3b8;margin-top:.3rem;">
+        <span>Invested</span><span>Current Value</span>
+      </div>
+    </div>
+
+    <div id="res-grade" class="cx-xirr-bench">
+      <div class="cx-xirr-bench-dot" id="bench-dot" style="background:#94a3b8;"></div>
+      <span id="bench-text">Enter values to see benchmark</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+/* ── XIRR Newton-Raphson ── */
+function calcXIRR(cfs, dts) {
+  var d0 = dts[0].getTime();
+  var yrs = dts.map(function(d){ return (d.getTime() - d0) / 3.15576e10; });
+  var r = 0.1;
+  for (var k = 0; k < 300; k++) {
+    var f = 0, df = 0;
+    for (var i = 0; i < cfs.length; i++) {
+      if (yrs[i] === 0 && i === 0) { f += cfs[i]; continue; }
+      var p = Math.pow(1 + r, yrs[i]);
+      f  += cfs[i] / p;
+      df -= yrs[i] * cfs[i] / (p * (1 + r));
+    }
+    if (Math.abs(df) < 1e-14) break;
+    var step = f / df;
+    r -= step;
+    if (Math.abs(step) < 1e-9) break;
+  }
+  return r;
+}
+
+function fmtINR(n) {
+  if (isNaN(n)) return '₹0';
+  return '₹' + Math.abs(Math.round(n)).toLocaleString('en-IN');
+}
+function fmtSign(n) {
+  return (n >= 0 ? '+' : '-') + fmtINR(n);
+}
+
+/* ── SIP calculation ── */
+function runSIP() {
+  var sip    = parseFloat(document.getElementById('i-sip').value) || 0;
+  var months = parseInt(document.getElementById('i-mo').value)   || 0;
+  var curVal = parseFloat(document.getElementById('i-cur').value) || 0;
+
+  var invested = sip * months;
+  var profit   = curVal - invested;
+  var absRet   = invested > 0 ? (profit / invested) * 100 : 0;
+
+  var cfs = [], dts = [];
+  var today = new Date(); today.setHours(0,0,0,0);
+  for (var i = months; i >= 1; i--) {
+    var d = new Date(today); d.setMonth(d.getMonth() - i);
+    cfs.push(-sip); dts.push(d);
+  }
+  cfs.push(curVal); dts.push(new Date(today));
+
+  var rate = NaN;
+  try { rate = calcXIRR(cfs, dts) * 100; } catch(e){}
+
+  renderResult(rate, invested, curVal, profit, absRet);
+}
+
+/* ── Custom CF calculation ── */
+function runCF() {
+  var rows  = document.querySelectorAll('#cx-cf-body tr');
+  var curVal = parseFloat(document.getElementById('i-cf-cur').value) || 0;
+  var cfs = [], dts = [];
+
+  rows.forEach(function(row){
+    var d = row.querySelector('input[type=date]').value;
+    var v = parseFloat(row.querySelector('input[type=number]').value);
+    if (d && !isNaN(v)) { dts.push(new Date(d)); cfs.push(v); }
+  });
+  if (cfs.length < 1) return;
+
+  // Sort by date
+  var pairs = cfs.map(function(c,i){ return {c:c, d:dts[i]}; });
+  pairs.sort(function(a,b){ return a.d - b.d; });
+  cfs = pairs.map(function(p){ return p.c; });
+  dts = pairs.map(function(p){ return p.d; });
+
+  // Add current value as final positive CF (today)
+  var today = new Date(); today.setHours(0,0,0,0);
+  cfs.push(curVal); dts.push(today);
+
+  var invested = cfs.filter(function(c){ return c < 0; }).reduce(function(a,c){ return a + Math.abs(c); }, 0);
+  var profit   = curVal - invested;
+  var absRet   = invested > 0 ? (profit / invested) * 100 : 0;
+
+  var rate = NaN;
+  try { rate = calcXIRR(cfs, dts) * 100; } catch(e){}
+  renderResult(rate, invested, curVal, profit, absRet);
+}
+
+function renderResult(rate, invested, curVal, profit, absRet) {
+  var rateEl = document.getElementById('res-xirr');
+  if (isNaN(rate) || !isFinite(rate)) {
+    rateEl.textContent = '--';
+    rateEl.style.color = '#fff';
+  } else {
+    rateEl.textContent = rate.toFixed(2) + '%';
+    rateEl.style.color = rate >= 0 ? '#4ade80' : '#f87171';
+  }
+
+  document.getElementById('res-inv').textContent = fmtINR(invested);
+  document.getElementById('res-cur').textContent = fmtINR(curVal);
+
+  var pnlEl = document.getElementById('res-pnl');
+  pnlEl.textContent = fmtSign(profit);
+  pnlEl.style.color = profit >= 0 ? '#4ade80' : '#f87171';
+
+  document.getElementById('res-abs').textContent = absRet.toFixed(1) + '%';
+
+  // Bar chart
+  var mx = Math.max(invested, curVal, 1);
+  document.getElementById('bar-inv').style.width = Math.max(3, (invested / mx) * 100) + '%';
+  var barCur = document.getElementById('bar-cur');
+  barCur.style.width = Math.max(3, (curVal / mx) * 100) + '%';
+  barCur.className = 'cx-xirr-bar-fill ' + (profit >= 0 ? 'cx-profit' : 'cx-loss');
+
+  // Benchmark tag
+  var dot  = document.getElementById('bench-dot');
+  var text = document.getElementById('bench-text');
+  if (!isNaN(rate) && isFinite(rate)) {
+    if (rate < 0)       { dot.style.background='#f87171'; text.textContent='Negative return — current value is below invested'; }
+    else if (rate < 4)  { dot.style.background='#f87171'; text.textContent='Below savings account rates (~4%)'; }
+    else if (rate < 7)  { dot.style.background='#fbbf24'; text.textContent='Below PPF returns (7.1% p.a.)'; }
+    else if (rate < 10) { dot.style.background='#fbbf24'; text.textContent='Similar to FD / debt fund range'; }
+    else if (rate < 13) { dot.style.background='#4ade80'; text.textContent='Good — in line with long-term equity returns'; }
+    else if (rate < 18) { dot.style.background='#4ade80'; text.textContent='Excellent — beating broad market index'; }
+    else                { dot.style.background='#4ade80'; text.textContent='Outstanding — well above long-term equity average'; }
+  }
+}
+
+/* ── Sync slider ↔ input ── */
+function syncPair(rid, iid, min, max, label, fmt) {
+  var r = document.getElementById(rid), inp = document.getElementById(iid);
+  var lbl = label ? document.getElementById(label) : null;
+  function upd() {
+    if (lbl) lbl.textContent = fmt ? fmt(parseFloat(inp.value)||0) : inp.value;
+    cxXirrRun();
+  }
+  r.addEventListener('input',   function(){ inp.value = r.value; upd(); });
+  inp.addEventListener('input', function(){
+    var v = Math.min(max, Math.max(min, parseFloat(this.value)||0));
+    r.value = v; upd();
+  });
+  if (lbl) lbl.textContent = fmt ? fmt(parseFloat(inp.value)||0) : inp.value;
+}
+
+/* ── Mode switch ── */
+window.cxXirrMode = function(mode) {
+  var isSIP = mode === 'sip';
+  document.getElementById('cx-xirr-btn-sip').className = isSIP ? 'cx-active' : '';
+  document.getElementById('cx-xirr-btn-cf').className  = !isSIP ? 'cx-active' : '';
+  document.getElementById('cx-xirr-sip-inputs').style.display = isSIP ? '' : 'none';
+  document.getElementById('cx-xirr-cf-inputs').style.display  = !isSIP ? '' : 'none';
+  cxXirrRun();
+};
+
+window.cxXirrRun = function() {
+  var isSIP = document.getElementById('cx-xirr-btn-sip').classList.contains('cx-active');
+  if (isSIP) runSIP(); else runCF();
+};
+
+/* ── Custom CF rows ── */
+var cfRowCount = 0;
+window.cxAddRow = function() {
+  var tbody = document.getElementById('cx-cf-body');
+  var tr = document.createElement('tr');
+  var today = new Date(); today.setMonth(today.getMonth() - cfRowCount);
+  var dd = today.toISOString().split('T')[0];
+  tr.innerHTML = '<td><input type="date" value="' + dd + '" onchange="cxXirrRun()"></td>' +
+    '<td><input type="number" placeholder="-10000" value="-10000" onchange="cxXirrRun()"></td>' +
+    '<td><button class="cx-cf-del" onclick="this.closest(\'tr\').remove();cxXirrRun()">×</button></td>';
+  tbody.appendChild(tr);
+  cfRowCount++;
+  cxXirrRun();
+};
+
+/* ── Init ── */
+syncPair('r-sip', 'i-sip', 500, 100000, 'lbl-sip', function(v){ return '₹' + v.toLocaleString('en-IN'); });
+syncPair('r-mo',  'i-mo',  6,   360,    'lbl-mo',  function(v){
+  var mo = Math.round(v); var y = Math.floor(mo/12), m = mo%12;
+  return mo + ' months (' + (y ? y + 'y' : '') + (m ? ' ' + m + 'm' : '') + ')';
+});
+syncPair('r-cur', 'i-cur', 1000, 10000000, 'lbl-cur', function(v){ return '₹' + v.toLocaleString('en-IN'); });
+syncPair('r-cf-cur', 'i-cf-cur', 1000, 10000000, 'lbl-cf-cur', function(v){ return '₹' + v.toLocaleString('en-IN'); });
+
+// Pre-populate 3 CF rows
+cxAddRow(); cxAddRow(); cxAddRow();
+document.querySelectorAll('#cx-cf-body tr').forEach(function(tr, i){
+  var inp = tr.querySelectorAll('input');
+  var d = new Date(); d.setMonth(d.getMonth() - (3-i)*4);
+  inp[0].value = d.toISOString().split('T')[0];
+  inp[1].value = -10000;
+});
+
+runSIP();
+
+})();
+</script>
+</div>
