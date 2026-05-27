@@ -1,587 +1,709 @@
 {{ define "main" }}
 <style>
+/* ═══════════════════════ Dark Theme Global Overrides ═══════════════════════ */
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --primary-light: #dbeafe;
-  --accent: #06b6d4;
-  --ink: #0f172a;
-  --mute: #64748b;
-  --bg-soft: #f8fafc;
-  --border: #e2e8f0;
-  --success: #10b981;
+  --dbg:    #070b15;
+  --dbg2:   #0b1120;
+  --dcard:  #0e1628;
+  --dcard2: #111a2e;
+  --dborder: rgba(255,255,255,.07);
+  --dprimary: #6366f1;
+  --dprimary-glow: rgba(99,102,241,.14);
+  --dgreen: #22c55e;
+  --dgreen-glow: rgba(34,197,94,.12);
+  --dtext:  #f1f5f9;
+  --dmute:  #94a3b8;
 }
+body { background: var(--dbg) !important; color: var(--dtext) !important; }
+.navigation {
+  background: rgba(7,11,21,.92) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid var(--dborder) !important;
+}
+.navigation * { color: var(--dmute) !important; }
+.navigation a:hover { color: #fff !important; }
+.navigation .navbar-brand, .navigation .navbar-brand * { color: #fff !important; }
+footer.bg-light {
+  background: #040810 !important;
+  border-top: 1px solid var(--dborder) !important;
+}
+footer.bg-light * { color: var(--dmute) !important; }
+footer.bg-light a:hover { color: #fff !important; }
 
-/* HERO */
+/* ═══════════════════════ HERO ═══════════════════════ */
 .cx-hero {
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0891b2 100%);
-  color: #fff;
-  padding: 4rem 1.5rem 3rem;
+  background: var(--dbg);
+  padding: 5rem 1.5rem 4rem;
   position: relative;
-  z-index: 60;
-  /* overflow visible so the absolute-positioned search autocomplete dropdown
-     can extend beyond the hero. The clip-path on ::before keeps the grid
-     pattern from leaking. */
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
 }
-.cx-hero::before {
-  /* keep the grid-pattern overlay inside the hero by clipping just the pseudo */
-  clip-path: inset(0);
+/* Radial glow blobs */
+.cx-hero-glow1 {
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(99,102,241,.16) 0%, transparent 68%);
+  top: -250px; left: -200px;
+  pointer-events: none;
+  z-index: 0;
 }
-.cx-hero::before {
-  content: '';
+.cx-hero-glow2 {
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(34,197,94,.1) 0%, transparent 65%);
+  top: 30px; right: -100px;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Subtle grid pattern */
+.cx-hero-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size: 52px 52px;
   pointer-events: none;
+  z-index: 0;
 }
 .cx-hero-inner {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
   position: relative;
+  z-index: 1;
   text-align: center;
+  width: 100%;
 }
+/* Badge pill */
+.cx-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(99,102,241,.1);
+  border: 1px solid rgba(99,102,241,.25);
+  color: #a5b4fc;
+  font-size: .8rem;
+  font-weight: 600;
+  padding: .4rem 1.1rem;
+  border-radius: 20px;
+  margin-bottom: 1.6rem;
+}
+.cx-hero-badge .green { color: var(--dgreen); }
+/* Headings */
 .cx-hero h1 {
-  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
   font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 1rem;
-  letter-spacing: -0.5px;
+  line-height: 1.12;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1.5px;
+  color: #fff;
+}
+.cx-h1-accent {
+  background: linear-gradient(90deg, #818cf8, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .cx-hero .lead {
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
-  color: rgba(255,255,255,.85);
-  max-width: 680px;
-  margin: 0 auto 2rem;
-  line-height: 1.55;
+  font-size: clamp(.95rem, 1.6vw, 1.15rem);
+  color: var(--dmute);
+  max-width: 640px;
+  margin: 0 auto 2.2rem;
+  line-height: 1.68;
 }
+
+/* ── Search bar ── */
 .cx-search-wrap {
   position: relative;
   z-index: 50;
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 auto;
 }
 .cx-search {
-  background: #fff;
+  background: rgba(14,22,40,.95);
+  border: 1.5px solid rgba(99,102,241,.28);
   border-radius: 14px;
   padding: .35rem .35rem .35rem 1.25rem;
   display: flex;
   gap: .5rem;
   align-items: center;
-  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+  box-shadow: 0 0 44px rgba(99,102,241,.12), 0 8px 24px rgba(0,0,0,.3);
 }
 .cx-search input {
   flex: 1;
   border: 0;
   outline: 0;
   font-size: 1rem;
-  padding: .85rem 0;
-  color: var(--ink);
+  padding: .88rem 0;
+  background: transparent;
+  color: #fff;
 }
+.cx-search input::placeholder { color: #4b5563; }
 .cx-search button {
-  background: var(--primary);
+  background: var(--dprimary);
   color: #fff;
   border: 0;
-  padding: .75rem 1.4rem;
+  padding: .75rem 1.5rem;
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
   font-size: .95rem;
+  transition: all .16s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-.cx-search button:hover { background: var(--primary-dark); }
+.cx-search button:hover { background: #4f46e5; box-shadow: 0 0 18px rgba(99,102,241,.45); }
 
-/* Live autocomplete dropdown */
+/* Autocomplete dropdown */
 .cx-suggest {
   position: absolute;
   top: calc(100% + 8px);
   left: 0; right: 0;
-  background: #fff;
+  background: #0d1829;
+  border: 1px solid rgba(255,255,255,.1);
   border-radius: 12px;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, .25);
+  box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(99,102,241,.06);
   z-index: 60;
   max-height: 460px;
   overflow-y: auto;
   padding: .35rem;
   text-align: left;
-  border: 1px solid #e2e8f0;
 }
 .cx-suggest[hidden] { display: none; }
 .cx-suggest-section {
-  font-size: .68rem;
-  text-transform: uppercase;
-  letter-spacing: 1.3px;
-  color: #94a3b8;
-  font-weight: 700;
-  padding: .65rem .9rem .35rem;
+  font-size: .68rem; text-transform: uppercase; letter-spacing: 1.3px;
+  color: #374151; font-weight: 700; padding: .65rem .9rem .35rem;
 }
 .cx-suggest-item {
-  display: block;
-  padding: .7rem .9rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: inherit;
-  transition: background .12s ease;
-  cursor: pointer;
+  display: block; padding: .7rem .9rem; border-radius: 8px;
+  text-decoration: none; color: inherit; transition: background .12s; cursor: pointer;
 }
 .cx-suggest-item:hover, .cx-suggest-item.cx-suggest-active {
-  background: #eff6ff;
-  text-decoration: none;
+  background: rgba(99,102,241,.1); text-decoration: none;
 }
 .cx-suggest-cat {
-  font-size: .68rem;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: #2563eb;
-  font-weight: 700;
-  margin-bottom: .15rem;
+  font-size: .68rem; text-transform: uppercase; letter-spacing: 1.2px;
+  color: #6366f1; font-weight: 700; margin-bottom: .15rem;
 }
-.cx-suggest-title {
-  font-size: .94rem;
-  font-weight: 700;
-  color: #0f172a;
-  line-height: 1.3;
-}
+.cx-suggest-title { font-size: .94rem; font-weight: 700; color: #f1f5f9; line-height: 1.3; }
 .cx-suggest-title mark {
-  background: #fef08a;
-  color: #0f172a;
-  padding: 0 .15rem;
-  border-radius: 2px;
+  background: rgba(99,102,241,.28); color: #a5b4fc; padding: 0 .15rem; border-radius: 2px;
 }
 .cx-suggest-desc {
-  font-size: .82rem;
-  color: #64748b;
-  line-height: 1.45;
-  margin-top: .15rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: .82rem; color: #6b7280; line-height: 1.45; margin-top: .15rem;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.cx-suggest-empty {
-  padding: 1.5rem;
-  text-align: center;
-  color: #64748b;
-  font-size: .9rem;
-}
+.cx-suggest-empty { padding: 1.5rem; text-align: center; color: #6b7280; font-size: .9rem; }
 .cx-suggest-footer {
-  border-top: 1px solid #f1f5f9;
-  padding: .7rem .9rem;
-  font-size: .82rem;
-  color: #64748b;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: .25rem;
+  border-top: 1px solid rgba(255,255,255,.06); padding: .7rem .9rem;
+  font-size: .82rem; color: #374151; display: flex; justify-content: space-between;
+  align-items: center; margin-top: .25rem;
 }
-.cx-suggest-footer a {
-  color: #2563eb;
-  font-weight: 600;
-  text-decoration: none;
-}
+.cx-suggest-footer a { color: #6366f1; font-weight: 600; text-decoration: none; }
 .cx-suggest-footer a:hover { text-decoration: underline; }
 .cx-suggest-footer kbd {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-bottom-width: 2px;
-  border-radius: 4px;
-  padding: 1px 5px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: .72rem;
-  color: #1e293b;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  border-bottom-width: 2px; border-radius: 4px; padding: 1px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; color: #64748b;
 }
+
+/* Quick tag strip */
 .cx-hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .5rem;
-  margin-top: 1.5rem;
-  font-size: .85rem;
-  color: rgba(255,255,255,.75);
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: .45rem; margin-top: 1.8rem; font-size: .84rem;
 }
 .cx-hero-tags a {
-  background: rgba(255,255,255,.12);
-  padding: .45rem 1rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.35);
-  color: #fff !important;
-  text-decoration: none !important;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .15s ease;
+  background: rgba(255,255,255,.04); padding: .4rem .95rem; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.09); color: var(--dmute) !important;
+  text-decoration: none !important; font-weight: 500; transition: all .15s;
 }
 .cx-hero-tags a:hover {
-  background: #fff;
-  border-color: #fff;
-  color: #1d4ed8 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+  background: rgba(99,102,241,.14); border-color: rgba(99,102,241,.35);
+  color: #a5b4fc !important;
+}
+.cx-hero-tags a.cx-tag-new {
+  background: rgba(34,197,94,.08); border-color: rgba(34,197,94,.22);
+  color: #86efac !important;
 }
 
-/* CATEGORY GRID */
-.cx-cats {
-  max-width: 1180px;
-  margin: 50px auto 50px;
-  padding: 0 1.5rem 0;
-  position: relative;
-  z-index: 2;
+/* ═══════════════════════ STATS BAR ═══════════════════════ */
+.cx-stats {
+  background: var(--dbg2);
+  border-top: 1px solid var(--dborder);
+  border-bottom: 1px solid var(--dborder);
+  padding: 1.6rem 1.5rem;
 }
-.cx-cats-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
+.cx-stats-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center;
 }
-@media (max-width: 1100px) { .cx-cats-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 600px)  { .cx-cats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .cx-stats-inner { grid-template-columns: repeat(2, 1fr); } }
+.cx-stat-num { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -1px; line-height: 1; }
+.cx-stat-num .accent { color: var(--dgreen); }
+.cx-stat-lbl { font-size: .8rem; color: var(--dmute); margin-top: .3rem; }
 
-.cx-cat {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  text-decoration: none !important;
-  transition: all .2s;
-  display: block;
-  color: var(--ink) !important;
+/* ═══════════════════════ SHARED SECTION HELPERS ═══════════════════════ */
+.cx-section-head { text-align: center; margin-bottom: 2.5rem; }
+.cx-eyebrow {
+  display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--dprimary); background: var(--dprimary-glow);
+  border: 1px solid rgba(99,102,241,.18); padding: .32rem .9rem;
+  border-radius: 20px; margin-bottom: 1rem;
 }
-.cx-cat:hover {
+.cx-section-h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #fff;
+  margin-bottom: .5rem; letter-spacing: -0.3px; line-height: 1.2;
+}
+.cx-section-sub { color: var(--dmute); font-size: .95rem; max-width: 560px; margin: 0 auto; }
+
+/* ═══════════════════════ TAX WIDGET ═══════════════════════ */
+.cx-tax-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--dbg);
+}
+.cx-tax-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;
+}
+@media (max-width: 820px) { .cx-tax-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+.cx-tax-info { }
+.cx-tax-info .cx-eyebrow { display: block; text-align: left; }
+.cx-tax-h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: #fff;
+  line-height: 1.22; margin-bottom: .9rem; letter-spacing: -0.3px;
+}
+.cx-tax-lead {
+  color: var(--dmute); line-height: 1.68; margin-bottom: 1.6rem; font-size: .95rem;
+}
+.cx-tax-cta {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--dprimary); color: #fff !important; padding: .78rem 1.6rem;
+  border-radius: 10px; font-weight: 700; text-decoration: none !important;
+  font-size: .95rem; transition: all .16s;
+}
+.cx-tax-cta:hover { background: #4f46e5; box-shadow: 0 0 22px rgba(99,102,241,.4); color: #fff !important; }
+.cx-tax-widget {
+  background: var(--dcard); border: 1px solid var(--dborder);
+  border-radius: 20px; padding: 2rem;
+}
+.cx-tax-widget-q {
+  font-size: .88rem; color: var(--dmute); margin-bottom: 1rem;
+  font-weight: 600; text-transform: uppercase; letter-spacing: .5px;
+}
+.cx-tax-opts { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
+.cx-tax-opt {
+  background: rgba(255,255,255,.035); border: 1.5px solid var(--dborder);
+  border-radius: 10px; padding: .85rem 1.1rem; cursor: pointer;
+  font-size: .9rem; font-weight: 500; color: var(--dmute);
+  transition: all .16s; text-align: left; width: 100%;
+}
+.cx-tax-opt:hover { border-color: rgba(99,102,241,.4); color: #c7d2fe; }
+.cx-tax-opt.selected { border-color: var(--dprimary); background: rgba(99,102,241,.1); color: #a5b4fc; }
+.cx-tax-result {
+  background: linear-gradient(135deg, rgba(34,197,94,.07), rgba(99,102,241,.07));
+  border: 1px solid rgba(34,197,94,.18);
+  border-radius: 10px; padding: 1rem 1.1rem;
+  font-size: .88rem; color: #bbf7d0; line-height: 1.58;
+  display: none;
+}
+.cx-tax-result.visible { display: block; }
+
+/* ═══════════════════════ FEATURE CATEGORY CARDS ═══════════════════════ */
+.cx-feat-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--dbg2);
+  border-top: 1px solid var(--dborder);
+  border-bottom: 1px solid var(--dborder);
+}
+.cx-feat-inner { max-width: 1180px; margin: 0 auto; }
+.cx-feat-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+}
+@media (max-width: 900px) { .cx-feat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .cx-feat-grid { grid-template-columns: 1fr; } }
+.cx-feat {
+  background: var(--dcard); border: 1px solid var(--dborder);
+  border-radius: 16px; padding: 1.65rem;
+  text-decoration: none !important; transition: all .22s; display: block;
+  color: inherit; position: relative; overflow: hidden;
+}
+/* accent top bar using CSS custom property per card */
+.cx-feat::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--cx-feat-clr, #6366f1); border-radius: 16px 16px 0 0;
+}
+.cx-feat:hover {
+  border-color: var(--cx-feat-clr, #6366f1);
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(37,99,235,.12);
-  border-color: var(--primary);
+  box-shadow: 0 16px 36px rgba(0,0,0,.3);
 }
-.cx-cat-icon {
-  font-size: 2rem;
-  margin-bottom: .5rem;
-  display: block;
-}
-.cx-cat-name {
-  font-size: .95rem;
-  font-weight: 700;
-  color: var(--ink) !important;
-  margin-bottom: .15rem;
-}
-.cx-cat-cnt {
-  font-size: .78rem;
-  color: var(--mute);
-}
-
-/* SECTION HEADING */
-.cx-section {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 3rem;
-}
-.cx-section.alt { background: var(--bg-soft); max-width: 100%; padding-left: 0; padding-right: 0; }
-.cx-section.alt > .cx-section-inner { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
-.cx-section-head {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-.cx-section-eyebrow {
-  display: inline-block;
-  font-size: .8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--primary);
-  background: var(--primary-light);
-  padding: .35rem 1rem;
-  border-radius: 20px;
+.cx-feat-icon {
+  width: 48px; height: 48px;
+  background: var(--cx-feat-bg, rgba(99,102,241,.1));
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
   margin-bottom: 1rem;
+  color: var(--cx-feat-clr, #6366f1);
 }
-.cx-section-head h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 800;
-  color: var(--ink);
-  margin-bottom: .5rem;
-  letter-spacing: -0.3px;
-}
-.cx-section-head p {
-  color: var(--mute);
-  font-size: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
+.cx-feat-name { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .38rem; }
+.cx-feat-desc { font-size: .84rem; color: var(--dmute); line-height: 1.58; }
+.cx-feat-arrow {
+  display: inline-flex; align-items: center; gap: .3rem;
+  margin-top: .9rem; font-size: .75rem; font-weight: 700;
+  color: var(--cx-feat-clr, #6366f1); text-transform: uppercase; letter-spacing: .5px;
 }
 
-/* POPULAR CALC GRID */
+/* ═══════════════════════ POPULAR CALCULATORS ═══════════════════════ */
+.cx-pop-section { padding: 4.5rem 1.5rem; background: var(--dbg); }
+.cx-pop-inner { max-width: 1180px; margin: 0 auto; }
 .cx-pop-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
 }
 @media (max-width: 900px) { .cx-pop-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 500px) { .cx-pop-grid { grid-template-columns: 1fr; } }
-
 .cx-pop {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.4rem;
-  text-decoration: none !important;
-  transition: all .2s;
-  display: block;
+  background: var(--dcard); border: 1px solid var(--dborder);
+  border-radius: 14px; padding: 1.4rem;
+  text-decoration: none !important; transition: all .2s; display: block;
 }
 .cx-pop:hover {
-  border-color: var(--primary);
-  box-shadow: 0 8px 24px rgba(37,99,235,.1);
-  transform: translateY(-2px);
+  border-color: rgba(99,102,241,.38); background: var(--dcard2);
+  transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,.3);
 }
-.cx-pop-icon {
-  width: 44px;
-  height: 44px;
-  background: var(--primary-light);
-  color: var(--primary);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  margin-bottom: .85rem;
-}
-.cx-pop-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: .35rem;
-}
-.cx-pop-desc {
-  font-size: .85rem;
-  color: var(--mute);
-  line-height: 1.5;
-}
+.cx-pop-icon { font-size: 1.5rem; margin-bottom: .8rem; display: block; }
+.cx-pop-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .35rem; line-height: 1.3; }
+.cx-pop-desc { font-size: .83rem; color: var(--dmute); line-height: 1.5; }
 
-/* WHY SECTION */
-.cx-why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+/* ═══════════════════════ NEW CALCULATORS ═══════════════════════ */
+.cx-new-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--dbg2);
+  border-top: 1px solid var(--dborder);
 }
-@media (max-width: 800px) { .cx-why-grid { grid-template-columns: 1fr; } }
-.cx-why {
-  text-align: center;
-  padding: 1.5rem;
-}
-.cx-why-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1rem;
-  background: var(--primary-light);
-  color: var(--primary);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-}
-.cx-why h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: .5rem;
-  color: var(--ink);
-}
-.cx-why p {
-  color: var(--mute);
-  font-size: .92rem;
-  line-height: 1.55;
-}
-
-/* NEW CALCULATORS */
+.cx-new-inner { max-width: 1180px; margin: 0 auto; }
 .cx-new-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
 }
 @media (max-width: 900px) { .cx-new-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 500px) { .cx-new-grid { grid-template-columns: 1fr; } }
 .cx-new-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.4rem;
-  text-decoration: none !important;
-  transition: all .2s;
-  display: block;
-  position: relative;
+  background: var(--dcard); border: 1px solid var(--dborder);
+  border-radius: 14px; padding: 1.4rem;
+  text-decoration: none !important; display: block; transition: all .2s;
 }
 .cx-new-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 8px 24px rgba(37,99,235,.1);
-  transform: translateY(-2px);
+  border-color: rgba(34,197,94,.3); transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.3);
 }
 .cx-new-badge {
-  display: inline-block;
-  background: #dcfce7;
-  color: #166534;
-  font-size: .68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: .2rem .55rem;
-  border-radius: 20px;
-  margin-bottom: .75rem;
+  display: inline-block; background: rgba(34,197,94,.1); color: #4ade80;
+  font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  padding: .2rem .55rem; border-radius: 20px; margin-bottom: .75rem;
+  border: 1px solid rgba(34,197,94,.2);
 }
-.cx-new-icon {
-  font-size: 1.6rem;
-  margin-bottom: .6rem;
-  display: block;
-}
-.cx-new-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: .3rem;
-  line-height: 1.35;
-}
-.cx-new-desc {
-  font-size: .83rem;
-  color: var(--mute);
-  line-height: 1.5;
-}
-.cx-new-date {
-  font-size: .72rem;
-  color: #94a3b8;
-  margin-top: .6rem;
-}
+.cx-new-icon { font-size: 1.4rem; margin-bottom: .65rem; display: block; }
+.cx-new-title { font-size: .98rem; font-weight: 700; color: #fff; margin-bottom: .3rem; line-height: 1.38; }
+.cx-new-desc { font-size: .81rem; color: var(--dmute); line-height: 1.5; }
+.cx-new-date { font-size: .7rem; color: #374151; margin-top: .65rem; }
 
-/* BLOG STRIP */
+/* ═══════════════════════ WHY CALXO ═══════════════════════ */
+.cx-why-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--dbg);
+  border-top: 1px solid var(--dborder);
+}
+.cx-why-inner { max-width: 1180px; margin: 0 auto; }
+.cx-why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+@media (max-width: 800px) { .cx-why-grid { grid-template-columns: 1fr; } }
+.cx-why-card {
+  background: var(--dcard); border: 1px solid var(--dborder);
+  border-radius: 16px; padding: 2rem; text-align: center;
+}
+.cx-why-icon {
+  width: 58px; height: 58px; margin: 0 auto 1.1rem;
+  background: rgba(99,102,241,.1); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.cx-why-card h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+.cx-why-card p { color: var(--dmute); font-size: .9rem; line-height: 1.62; }
+
+/* ═══════════════════════ BLOG STRIP ═══════════════════════ */
+.cx-blog-section {
+  padding: 4.5rem 1.5rem;
+  background: var(--dbg2);
+  border-top: 1px solid var(--dborder);
+}
+.cx-blog-inner { max-width: 1180px; margin: 0 auto; }
 .cx-blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
 }
 @media (max-width: 800px) { .cx-blog-grid { grid-template-columns: 1fr; } }
 .cx-blog-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all .2s;
-  text-decoration: none !important;
-  display: block;
+  background: var(--dcard); border: 1px solid var(--dborder);
+  border-radius: 14px; padding: 1.45rem;
+  text-decoration: none !important; display: block; transition: all .2s;
 }
-.cx-blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.07); }
-.cx-blog-body { padding: 1.25rem; }
+.cx-blog-card:hover {
+  border-color: rgba(99,102,241,.28); transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.3);
+}
 .cx-blog-cat {
-  font-size: .72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--primary);
-  margin-bottom: .5rem;
+  font-size: .68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--dprimary); margin-bottom: .5rem;
 }
 .cx-blog-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.4;
-  margin-bottom: .5rem;
+  font-size: 1rem; font-weight: 700; color: #f1f5f9; line-height: 1.45; margin-bottom: .5rem;
 }
-.cx-blog-date {
-  font-size: .8rem;
-  color: var(--mute);
+.cx-blog-date { font-size: .78rem; color: #374151; }
+
+/* View all button */
+.cx-view-all { text-align: center; margin-top: 2.2rem; }
+.cx-view-btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  border: 1.5px solid var(--dborder); color: var(--dmute) !important;
+  padding: .72rem 1.7rem; border-radius: 10px; font-weight: 600;
+  text-decoration: none !important; font-size: .9rem; transition: all .16s;
 }
-.cx-blog-empty {
-  text-align: center;
-  color: var(--mute);
-  padding: 2rem;
-  background: #fff;
-  border: 1px dashed var(--border);
-  border-radius: 12px;
+.cx-view-btn:hover {
+  border-color: rgba(99,102,241,.38); color: #a5b4fc !important;
+  background: rgba(99,102,241,.06);
 }
 </style>
 
-{{ $cats := slice
-  (slice "Loan" "💰" "/categories/loan-calculators/" "EMI, home loan, personal loan")
-  (slice "Investment" "📈" "/categories/investment-calculators/" "SIP, FD, PPF, mutual fund")
-  (slice "Tax" "📋" "/categories/tax-calculators/" "Income tax, capital gains")
-  (slice "Salary & HR" "💼" "/categories/salary-calculators/" "CTC, gratuity, HRA")
-  (slice "GST" "🧾" "/categories/gst-calculators/" "GST inclusive / exclusive")
-  (slice "Conversion" "🔁" "/categories/conversion-calculators/" "Unit, currency, length")
-}}
-
+{{/* ─────────────────────── Hugo data variables ─────────────────────── */}}
+{{ $totalCalcs := len (where .Site.RegularPages "Params.type" "calculator") }}
 {{ $popular := slice
-  (slice "EMI Calculator" "🏦" "/loan/emi-calculator/" "Calculate monthly loan EMI for home, personal, car loans")
-  (slice "SIP Calculator" "📊" "/investment/sip-calculator/" "See how much your SIP grows over time")
-  (slice "Income Tax Calculator" "📑" "/tax/income-tax-calculator/" "Calculate tax for FY 2026-27 (old & new regime)")
-  (slice "GST Calculator" "🧾" "/gst/gst-calculator/" "Add or remove GST from any amount")
-  (slice "FD Calculator" "🏧" "/investment/fd-calculator/" "Fixed deposit maturity & interest")
-  (slice "PPF Calculator" "🪙" "/investment/ppf-calculator/" "15-year PPF maturity projection")
-  (slice "HRA Exemption Calculator" "🏠" "/tax/hra-calculator/" "Calculate HRA exempt from income tax")
-  (slice "CTC to In-Hand Salary" "💵" "/salary/ctc-to-in-hand-calculator/" "Convert CTC to take-home salary")
+  (slice "EMI Calculator"       "🏦" "/loan/emi-calculator/"             "Reducing-balance EMI for home, personal, and car loans")
+  (slice "SIP Calculator"       "📊" "/investment/sip-calculator/"       "Monthly SIP maturity using the AMFI future-value formula")
+  (slice "Income Tax Calculator" "📑" "/tax/income-tax-calculator/"      "FY 2025-26 new and old regime with ₹12L rebate")
+  (slice "GST Calculator"       "🧾" "/gst/gst-calculator/"             "Add or remove GST at any Indian slab with IGST split")
+  (slice "FD Calculator"        "🏧" "/investment/fd-calculator/"        "Fixed deposit maturity with quarterly compounding")
+  (slice "PPF Calculator"       "🪙" "/investment/ppf-calculator/"       "Public Provident Fund 15-year maturity at current 7.1%")
+  (slice "HRA Exemption"        "🏠" "/salary/hra-calculator/"           "Section 10(13A) HRA exempt under the three-component rule")
+  (slice "CTC to In-Hand"       "💵" "/salary/takehome-calculator/"      "Actual take-home after PF, gratuity, professional tax, TDS")
 }}
+{{ $newCalcs := first 4 (sort (where .Site.RegularPages "Params.type" "calculator") "Date" "desc") }}
 
-<!-- HERO -->
+
+<!-- ════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════ -->
 <section class="cx-hero">
+  <div class="cx-hero-glow1" aria-hidden="true"></div>
+  <div class="cx-hero-glow2" aria-hidden="true"></div>
+  <div class="cx-hero-grid"  aria-hidden="true"></div>
+
   <div class="cx-hero-inner">
-    <h1>Free Online Calculators for India</h1>
-    <p class="lead">Fast, accurate, mobile-friendly calculators for EMI, SIP, tax, GST, salary, and more. Designed for Indian users. No sign-up, no ads in the math.</p>
+
+    <div class="cx-hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      Free Indian finance calculators · <span class="green">FY 2025-26</span>
+    </div>
+
+    <h1>India's Fastest Finance<br><span class="cx-h1-accent">Calculators.</span></h1>
+
+    <p class="lead">EMI, SIP, income tax, GST, salary, PPF and {{ $totalCalcs }}+ more. All Indian rules, current rates, zero sign-up.</p>
+
     <div class="cx-search-wrap">
       <form class="cx-search" action="/search/" method="get" id="cxHeroSearchForm" autocomplete="off" role="search">
-        <input type="text" name="q" id="cxHeroSearchInput" placeholder="Search calculators (e.g. EMI, SIP, GST)" autocomplete="off"
-               aria-autocomplete="list" aria-controls="cxHeroSuggest" aria-expanded="false">
+        <input type="text" name="q" id="cxHeroSearchInput"
+               placeholder="Search calculators (e.g. EMI, SIP, capital gains)"
+               autocomplete="off" aria-autocomplete="list"
+               aria-controls="cxHeroSuggest" aria-expanded="false">
         <button type="submit">Search</button>
       </form>
       <div class="cx-suggest" id="cxHeroSuggest" role="listbox" aria-label="Search suggestions" hidden></div>
     </div>
+
     <div class="cx-hero-tags">
-      <a href="/investment/crorepati-clock/" style="background:#fde68a;color:#78350f !important;border-color:#fcd34d">Crorepati Clock 🆕</a>
-      <a href="/gst/lifetime-bill/" style="background:#fecaca;color:#7f1d1d !important;border-color:#fca5a5">GST Since 18 🆕</a>
-      <a href="/math/percentage-calculator/" style="background:#dbeafe;color:#1e3a8a !important;border-color:#93c5fd">Percentage 🆕</a>
-      <a href="/math/discount-calculator/" style="background:#d1fae5;color:#064e3b !important;border-color:#6ee7b7">Discount 🆕</a>
-      <a href="/health/bmi-calculator/" style="background:#ede9fe;color:#4c1d95 !important;border-color:#c4b5fd">BMI 🆕</a>
-      <a href="/loan/emi-calculator/">EMI Calculator</a>
-      <a href="/loan/personal-loan-calculator/">Personal Loan</a>
-      <a href="/investment/sip-calculator/">SIP Calculator</a>
+      <a class="cx-tag-new" href="/investment/crorepati-clock/">Crorepati Clock</a>
+      <a class="cx-tag-new" href="/gst/lifetime-bill/">GST Since 18</a>
+      <a class="cx-tag-new" href="/investment/xirr-calculator/">XIRR</a>
+      <a class="cx-tag-new" href="/investment/dividend-yield-calculator/">Dividend Yield</a>
+      <a href="/loan/emi-calculator/">EMI</a>
+      <a href="/investment/sip-calculator/">SIP</a>
       <a href="/tax/income-tax-calculator/">Income Tax</a>
-      <a href="/gst/gst-calculator/">GST</a>
-      <a href="/investment/fd-calculator/">FD Maturity</a>
-      <a href="/salary/hra-calculator/">HRA Exemption</a>
-      <a href="/loan/foir-calculator/">Loan Eligibility</a>
-      <a href="/salary/takehome-calculator/">Take-Home</a>
-      <a href="/loan/bike-loan-calculator/">Bike Loan</a>
-      <a href="/salary/salary-hike-calculator/">Salary Hike</a>
-      <a href="/math/margin-calculator/">Margin</a>
-      <a href="/health/tdee-calculator/">TDEE</a>
-      <a href="/health/calorie-deficit-calculator/">Calorie Deficit</a>
-      <a href="/salary/salary-to-hourly-calculator/">Salary to Hourly</a>
+      <a href="/investment/fd-calculator/">FD</a>
       <a href="/investment/ppf-calculator/">PPF</a>
+      <a href="/salary/hra-calculator/">HRA Exemption</a>
+      <a href="/salary/takehome-calculator/">Take-Home</a>
       <a href="/tax/capital-gains-calculator/">Capital Gains</a>
       <a href="/salary/epf-calculator/">EPF</a>
-      <a href="/math/age-calculator/">Age Calculator</a>
-      <a href="/tax/old-vs-new-tax-regime/">Old vs New Regime</a>
       <a href="/investment/nps-calculator/">NPS</a>
       <a href="/loan/home-loan-eligibility/">Home Loan Eligibility</a>
+      <a href="/health/bmi-calculator/">BMI</a>
+      <a href="/tax/old-vs-new-tax-regime/">Old vs New Regime</a>
+      <a href="/math/age-calculator/">Age Calculator</a>
+      <a href="/investment/scss-calculator/">SCSS</a>
+      <a href="/investment/nsc-calculator/">NSC</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════════════ -->
+<div class="cx-stats" aria-label="Site statistics">
+  <div class="cx-stats-inner">
+    <div>
+      <div class="cx-stat-num"><span class="accent">{{ $totalCalcs }}</span>+</div>
+      <div class="cx-stat-lbl">Free Calculators</div>
+    </div>
+    <div>
+      <div class="cx-stat-num"><span class="accent">8</span></div>
+      <div class="cx-stat-lbl">Categories</div>
+    </div>
+    <div>
+      <div class="cx-stat-num">FY<span class="accent">25-26</span></div>
+      <div class="cx-stat-lbl">Budget-Updated</div>
+    </div>
+    <div>
+      <div class="cx-stat-num"><span class="accent">0</span></div>
+      <div class="cx-stat-lbl">Sign-Up Required</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+     TAX REGIME WIDGET
+════════════════════════════════════════════════════════ -->
+<section class="cx-tax-section" aria-label="Which tax regime is better for you">
+  <div class="cx-tax-inner">
+
+    <div class="cx-tax-info">
+      <div class="cx-eyebrow" style="text-align:left;display:inline-block;">Quick Answer</div>
+      <h2 class="cx-tax-h2">Which tax regime saves more for you?</h2>
+      <p class="cx-tax-lead">After Budget 2025, income up to ₹12 lakh is tax-free under the new regime for most salaried people. The old regime still wins if your deductions are large enough. Pick your income bracket below.</p>
+      <a href="/tax/old-vs-new-tax-regime/" class="cx-tax-cta">
+        Full comparison calculator
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <div class="cx-tax-widget">
+      <div class="cx-tax-widget-q">Your annual income (approx. CTC)</div>
+      <div class="cx-tax-opts">
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'below7')">Below ₹7 lakh</button>
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'7to15')">₹7 lakh to ₹15 lakh</button>
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'15to25')">₹15 lakh to ₹25 lakh</button>
+        <button class="cx-tax-opt" onclick="taxAnswer(this,'above25')">Above ₹25 lakh</button>
+      </div>
+      <div class="cx-tax-result" id="taxResult" role="status" aria-live="polite">
+        <span id="taxResultText"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FEATURE CATEGORY CARDS
+════════════════════════════════════════════════════════ -->
+<section class="cx-feat-section" aria-label="Calculator categories">
+  <div class="cx-feat-inner">
+
+    <div class="cx-section-head">
+      <div class="cx-eyebrow">Browse by Category</div>
+      <h2 class="cx-section-h2">Every Indian Finance Tool You Need</h2>
+      <p class="cx-section-sub">From home loan EMI to SIP returns to capital gains. All free, all updated for FY 2025-26.</p>
+    </div>
+
+    <div class="cx-feat-grid">
+
+      <!-- Loan & EMI -->
+      <a class="cx-feat" href="/categories/loan-calculators/"
+         style="--cx-feat-clr:#3b82f6;--cx-feat-bg:rgba(59,130,246,.1)">
+        <div class="cx-feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <div class="cx-feat-name">Loan &amp; EMI</div>
+        <div class="cx-feat-desc">Home loan, personal loan, car loan EMI, eligibility, prepayment, and stamp duty across all states.</div>
+        <div class="cx-feat-arrow">11 calculators →</div>
+      </a>
+
+      <!-- Investment -->
+      <a class="cx-feat" href="/categories/investment-calculators/"
+         style="--cx-feat-clr:#22c55e;--cx-feat-bg:rgba(34,197,94,.1)">
+        <div class="cx-feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div class="cx-feat-name">Investment</div>
+        <div class="cx-feat-desc">SIP, FD, PPF, NPS, NSC, SCSS, KVP, POMIS, gold, retirement corpus, XIRR, and more.</div>
+        <div class="cx-feat-arrow">27 calculators →</div>
+      </a>
+
+      <!-- Tax -->
+      <a class="cx-feat" href="/categories/tax-calculators/"
+         style="--cx-feat-clr:#f97316;--cx-feat-bg:rgba(249,115,22,.1)">
+        <div class="cx-feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="cx-feat-name">Tax</div>
+        <div class="cx-feat-desc">Income tax, capital gains, TDS, NPS benefits, freelancer 44ADA, old vs new regime comparison.</div>
+        <div class="cx-feat-arrow">6 calculators →</div>
+      </a>
+
+      <!-- Salary & HR -->
+      <a class="cx-feat" href="/categories/salary-calculators/"
+         style="--cx-feat-clr:#a855f7;--cx-feat-bg:rgba(168,85,247,.1)">
+        <div class="cx-feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="cx-feat-name">Salary &amp; HR</div>
+        <div class="cx-feat-desc">CTC to in-hand, HRA, EPF, gratuity, hike percentage, hourly rate, and full salary structure.</div>
+        <div class="cx-feat-arrow">7 calculators →</div>
+      </a>
+
+      <!-- Health -->
+      <a class="cx-feat" href="/categories/health-calculators/"
+         style="--cx-feat-clr:#ec4899;--cx-feat-bg:rgba(236,72,153,.1)">
+        <div class="cx-feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="cx-feat-name">Health</div>
+        <div class="cx-feat-desc">BMI, BMR, TDEE, body fat, calorie deficit, water intake, period tracker, and ovulation.</div>
+        <div class="cx-feat-arrow">10 calculators →</div>
+      </a>
+
+      <!-- GST & Business -->
+      <a class="cx-feat" href="/categories/gst-calculators/"
+         style="--cx-feat-clr:#eab308;--cx-feat-bg:rgba(234,179,8,.1)">
+        <div class="cx-feat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8H8"/><path d="M16 12H8"/><path d="M12 16H8"/></svg>
+        </div>
+        <div class="cx-feat-name">GST &amp; Business</div>
+        <div class="cx-feat-desc">GST inclusive/exclusive, lifetime GST bill, MRR, churn rate, CAC, LTV, margins, break-even.</div>
+        <div class="cx-feat-arrow">10 calculators →</div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- CATEGORIES -->
-<section class="cx-cats">
-  <div class="cx-cats-grid">
-    {{ range $cats }}
-    <a class="cx-cat" href="{{ index . 2 }}">
-      <span class="cx-cat-icon">{{ index . 1 | safeHTML }}</span>
-      <div class="cx-cat-name">{{ index . 0 }}</div>
-      <div class="cx-cat-cnt">{{ index . 3 }}</div>
-    </a>
-    {{ end }}
-  </div>
-</section>
 
-<!-- POPULAR CALCULATORS -->
-<section class="cx-section alt">
-  <div class="cx-section-inner">
+<!-- ════════════════════════════════════════════════════════
+     POPULAR CALCULATORS
+════════════════════════════════════════════════════════ -->
+<section class="cx-pop-section" aria-label="Most popular calculators">
+  <div class="cx-pop-inner">
     <div class="cx-section-head">
-      <span class="cx-section-eyebrow">Most Used</span>
-      <h2>Popular Calculators</h2>
-      <p>The 8 calculators Indian users search for the most every month.</p>
+      <div class="cx-eyebrow">Most Used</div>
+      <h2 class="cx-section-h2">Popular Calculators</h2>
+      <p class="cx-section-sub">The 8 calculators Indian users open every single month.</p>
     </div>
     <div class="cx-pop-grid">
       {{ range $popular }}
       <a class="cx-pop" href="{{ index . 2 }}">
-        <div class="cx-pop-icon">{{ index . 1 | safeHTML }}</div>
+        <span class="cx-pop-icon" aria-hidden="true">{{ index . 1 | safeHTML }}</span>
         <div class="cx-pop-title">{{ index . 0 }}</div>
         <div class="cx-pop-desc">{{ index . 3 }}</div>
       </a>
@@ -590,110 +712,126 @@
   </div>
 </section>
 
-<!-- NEW CALCULATORS — auto-pulled by date, no manual updates needed -->
-{{ $newCalcs := where .Site.RegularPages "Params.type" "calculator" }}
-{{ $newCalcs = first 4 (sort $newCalcs "Date" "desc") }}
+
+<!-- ════════════════════════════════════════════════════════
+     NEW CALCULATORS (auto-pulled by date)
+════════════════════════════════════════════════════════ -->
 {{ if gt (len $newCalcs) 0 }}
-<section class="cx-section">
-  <div class="cx-section-head">
-    <span class="cx-section-eyebrow">Just Added</span>
-    <h2>New Calculators</h2>
-    <p>Recently published tools — updated as we add more.</p>
-  </div>
-  <div class="cx-new-grid">
-    {{ range $newCalcs }}
-    <a class="cx-new-card" href="{{ .Permalink }}">
-      <span class="cx-new-badge">New</span>
-      {{ with .Params.categories }}<span class="cx-new-icon">
-        {{ if in . "Investment Calculators" }}📈
-        {{ else if in . "Loan Calculators" }}🏦
-        {{ else if in . "Salary" }}💼
-        {{ else if in . "Tax" }}📋
-        {{ else if in . "Conversion Calculators" }}🔁
-        {{ else if in . "GST Calculators" }}🧾
-        {{ else }}🧮{{ end }}
-      </span>{{ end }}
-      <div class="cx-new-title">{{ .Title | truncate 55 }}</div>
-      <div class="cx-new-desc">{{ .Description | truncate 80 }}</div>
-      <div class="cx-new-date">Added {{ .Date.Format "Jan 02, 2006" }}</div>
-    </a>
-    {{ end }}
+<section class="cx-new-section" aria-label="Recently added calculators">
+  <div class="cx-new-inner">
+    <div class="cx-section-head">
+      <div class="cx-eyebrow">Just Added</div>
+      <h2 class="cx-section-h2">New Calculators</h2>
+      <p class="cx-section-sub">Auto-updated as we publish more tools.</p>
+    </div>
+    <div class="cx-new-grid">
+      {{ range $newCalcs }}
+      <a class="cx-new-card" href="{{ .Permalink }}">
+        <span class="cx-new-badge">New</span>
+        {{ with .Params.categories }}
+        <span class="cx-new-icon" aria-hidden="true">
+          {{ if in . "Investment Calculators" }}📈
+          {{ else if in . "Loan Calculators" }}🏦
+          {{ else if in . "Salary Calculators" }}💼
+          {{ else if in . "Tax Calculators" }}📋
+          {{ else if in . "Health Calculators" }}❤️
+          {{ else if in . "GST Calculators" }}🧾
+          {{ else if in . "Business Calculators" }}📊
+          {{ else if in . "Conversion Calculators" }}🔁
+          {{ else }}🧮{{ end }}
+        </span>
+        {{ end }}
+        <div class="cx-new-title">{{ .Title | truncate 55 }}</div>
+        <div class="cx-new-desc">{{ .Description | truncate 90 }}</div>
+        <div class="cx-new-date">Added {{ .Date.Format "Jan 2006" }}</div>
+      </a>
+      {{ end }}
+    </div>
   </div>
 </section>
 {{ end }}
 
-<!-- WHY CALXO -->
-<section class="cx-section">
-  <div class="cx-section-head">
-    <span class="cx-section-eyebrow">Why Calxo</span>
-    <h2>Built for Indian Users</h2>
-  </div>
-  <div class="cx-why-grid">
-    <div class="cx-why">
-      <div class="cx-why-icon">🇮🇳</div>
-      <h3>Made for India</h3>
-      <p>Every calculator uses Indian rules: INR, GST slabs, income tax regimes (old and new), 80C limits, EPF rules.</p>
+
+<!-- ════════════════════════════════════════════════════════
+     WHY CALXO
+════════════════════════════════════════════════════════ -->
+<section class="cx-why-section" aria-label="Why use Calxo">
+  <div class="cx-why-inner">
+    <div class="cx-section-head">
+      <div class="cx-eyebrow">Why Calxo</div>
+      <h2 class="cx-section-h2">Built for Indian Users</h2>
     </div>
-    <div class="cx-why">
-      <div class="cx-why-icon">⚡</div>
-      <h3>Fast &amp; Mobile-First</h3>
-      <p>Pages load in under a second. Designed thumb-first for the 80% of Indians who calculate on a phone.</p>
-    </div>
-    <div class="cx-why">
-      <div class="cx-why-icon">🔒</div>
-      <h3>No Sign-Up, No Tracking</h3>
-      <p>Use any calculator instantly. We don't ask for your email or store your inputs.</p>
+    <div class="cx-why-grid">
+      <div class="cx-why-card">
+        <div class="cx-why-icon" aria-hidden="true">🇮🇳</div>
+        <h3>Made for India</h3>
+        <p>Every calculator uses Indian rules: INR, GST slabs, old and new income tax regimes, 80C limits, EPF rates, RBI reducing-balance formula for EMI.</p>
+      </div>
+      <div class="cx-why-card">
+        <div class="cx-why-icon" aria-hidden="true">⚡</div>
+        <h3>Fast and Mobile-First</h3>
+        <p>Pages load in under a second. Designed thumb-first for the 80% of Indians who calculate on a phone, not a desktop.</p>
+      </div>
+      <div class="cx-why-card">
+        <div class="cx-why-icon" aria-hidden="true">🔒</div>
+        <h3>No Sign-Up, No Tracking</h3>
+        <p>Use any calculator instantly. Your numbers stay in your browser. We don't store inputs, sell data, or ask for your email.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- LATEST BLOG POSTS -->
-<section class="cx-section alt">
-  <div class="cx-section-inner">
+
+<!-- ════════════════════════════════════════════════════════
+     BLOG STRIP
+════════════════════════════════════════════════════════ -->
+{{ $posts := where .Site.RegularPages "Section" "blog" }}
+{{ if gt (len $posts) 0 }}
+<section class="cx-blog-section" aria-label="Personal finance guides">
+  <div class="cx-blog-inner">
     <div class="cx-section-head">
-      <span class="cx-section-eyebrow">Latest from the Blog</span>
-      <h2>Money Guides &amp; How-Tos</h2>
-      <p>Plain-English explainers for every calculator you'll find here.</p>
+      <div class="cx-eyebrow">Money Guides</div>
+      <h2 class="cx-section-h2">Plain-English Explainers</h2>
+      <p class="cx-section-sub">Real numbers, real examples. One guide per calculator topic.</p>
     </div>
-    {{ $posts := where .Site.RegularPages "Section" "blog" }}
-    {{ if gt (len $posts) 0 }}
     <div class="cx-blog-grid">
       {{ range first 6 (sort $posts "Date" "desc") }}
       <a class="cx-blog-card" href="{{ .Permalink }}">
-        <div class="cx-blog-body">
-          {{ with .Params.categories }}<div class="cx-blog-cat">{{ index . 0 }}</div>{{ end }}
-          <div class="cx-blog-title">{{ .Title }}</div>
-          <div class="cx-blog-date">{{ .PublishDate.Format "Jan 02, 2006" }} · {{ .ReadingTime }} min read</div>
-        </div>
+        {{ with .Params.categories }}<div class="cx-blog-cat">{{ index . 0 }}</div>{{ end }}
+        <div class="cx-blog-title">{{ .Title }}</div>
+        <div class="cx-blog-date">{{ .PublishDate.Format "Jan 02, 2006" }} · {{ .ReadingTime }} min read</div>
       </a>
       {{ end }}
     </div>
-    {{ else }}
-    <div class="cx-blog-empty">
-      Blog posts coming soon. We're publishing one detailed guide per calculator.
+    <div class="cx-view-all">
+      <a href="/blog/" class="cx-view-btn">All guides</a>
     </div>
-    {{ end }}
   </div>
 </section>
+{{ end }}
 
-{{/* ═══════════════════════ Hero search live autocomplete ═══════════════════════ */}}
+
+<!-- ════════════════════════════════════════════════════════
+     FUSE.JS SEARCH AUTOCOMPLETE
+════════════════════════════════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 <script>
 (function () {
-  var input = document.getElementById('cxHeroSearchInput');
+  var input     = document.getElementById('cxHeroSearchInput');
   var resultsEl = document.getElementById('cxHeroSuggest');
-  var form = document.getElementById('cxHeroSearchForm');
+  var form      = document.getElementById('cxHeroSearchForm');
   if (!input || !resultsEl || !form) return;
   var wrap = form.parentElement;
 
-  var fuse = null;
-  var allItems = [];
+  var fuse        = null;
+  var allItems    = [];
   var activeIndex = -1;
   var loadStarted = false;
 
   var catLabels = {
     'loan': 'Loan', 'investment': 'Investment', 'tax': 'Tax',
-    'salary': 'Salary & HR', 'gst': 'GST', 'conversion': 'Conversion', 'blog': 'Blog'
+    'salary': 'Salary & HR', 'gst': 'GST', 'health': 'Health',
+    'business': 'Business', 'math': 'Math', 'conversion': 'Conversion', 'blog': 'Blog'
   };
   function categoryFromUrl(url) {
     try { url = new URL(url, window.location.origin).pathname; } catch (e) {}
@@ -724,9 +862,9 @@
         allItems = (Array.isArray(data) ? data : []).filter(function (it) { return it && it.title; });
         fuse = new Fuse(allItems, {
           keys: [
-            { name: 'title', weight: 0.6 },
+            { name: 'title',       weight: 0.6  },
             { name: 'description', weight: 0.25 },
-            { name: 'contents', weight: 0.15 }
+            { name: 'contents',    weight: 0.15 }
           ],
           includeScore: true,
           threshold: 0.4,
@@ -738,8 +876,8 @@
       .catch(function () {});
   }
 
-  function open() { resultsEl.hidden = false; input.setAttribute('aria-expanded', 'true'); }
-  function close() { resultsEl.hidden = true; input.setAttribute('aria-expanded', 'false'); activeIndex = -1; }
+  function open()  { resultsEl.hidden = false; input.setAttribute('aria-expanded', 'true');  }
+  function close() { resultsEl.hidden = true;  input.setAttribute('aria-expanded', 'false'); activeIndex = -1; }
 
   function setActive(idx) {
     var nodes = resultsEl.querySelectorAll('.cx-suggest-item');
@@ -756,7 +894,7 @@
     if (!items.length) {
       resultsEl.innerHTML =
         '<div class="cx-suggest-empty">No matches for <strong>"' + escapeHtml(query) + '"</strong>. ' +
-        '<a href="/search/?q=' + encodeURIComponent(query) + '">Search anyway →</a></div>';
+        '<a href="/search/?q=' + encodeURIComponent(query) + '">Search anyway</a></div>';
       open();
       return;
     }
@@ -768,17 +906,19 @@
       html += '<a class="cx-suggest-item" href="' + escapeHtml(url) + '">' +
         (cat ? '<div class="cx-suggest-cat">' + escapeHtml(cat) + '</div>' : '') +
         '<div class="cx-suggest-title">' + highlight(item.title, query) + '</div>' +
-        (item.description ? '<div class="cx-suggest-desc">' + highlight(item.description.slice(0, 130), query) + '</div>' : '') +
+        (item.description
+          ? '<div class="cx-suggest-desc">' + highlight(item.description.slice(0, 130), query) + '</div>'
+          : '') +
         '</a>';
     });
     if (items.length > 6) {
       html += '<a class="cx-suggest-item" href="/search/?q=' + encodeURIComponent(query) + '" style="text-align:center">' +
-        '<div class="cx-suggest-title" style="color:#2563eb">View all ' + items.length + ' results →</div>' +
+        '<div class="cx-suggest-title" style="color:#6366f1">View all ' + items.length + ' results</div>' +
         '</a>';
     }
     html += '<div class="cx-suggest-footer">' +
-      '<span><kbd>↑</kbd><kbd>↓</kbd> navigate <kbd>↵</kbd> open <kbd>esc</kbd> close</span>' +
-      '<a href="/search/?q=' + encodeURIComponent(query) + '">All results →</a>' +
+      '<span><kbd>up/down</kbd> navigate · <kbd>enter</kbd> open · <kbd>esc</kbd> close</span>' +
+      '<a href="/search/?q=' + encodeURIComponent(query) + '">All results</a>' +
       '</div>';
     resultsEl.innerHTML = html;
     open();
@@ -804,30 +944,38 @@
     }
     var nodes = resultsEl.querySelectorAll('.cx-suggest-item');
     if (!nodes.length) return;
-    if (e.key === 'ArrowDown') { e.preventDefault(); setActive((activeIndex + 1) % nodes.length); }
-    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((activeIndex - 1 + nodes.length) % nodes.length); }
+    if (e.key === 'ArrowDown')  { e.preventDefault(); setActive((activeIndex + 1) % nodes.length); }
+    else if (e.key === 'ArrowUp')   { e.preventDefault(); setActive((activeIndex - 1 + nodes.length) % nodes.length); }
     else if (e.key === 'Enter') {
       if (activeIndex >= 0 && nodes[activeIndex]) {
-        e.preventDefault();
-        window.location.href = nodes[activeIndex].href;
+        e.preventDefault(); window.location.href = nodes[activeIndex].href;
       }
     } else if (e.key === 'Escape') { close(); input.blur(); }
   });
-
   form.addEventListener('submit', function (e) {
     if (activeIndex >= 0) {
       var nodes = resultsEl.querySelectorAll('.cx-suggest-item');
-      if (nodes[activeIndex]) {
-        e.preventDefault();
-        window.location.href = nodes[activeIndex].href;
-      }
+      if (nodes[activeIndex]) { e.preventDefault(); window.location.href = nodes[activeIndex].href; }
     }
   });
-
   document.addEventListener('click', function (e) {
     if (!wrap.contains(e.target)) close();
   });
 })();
+
+/* ── Tax regime widget ── */
+function taxAnswer(btn, income) {
+  document.querySelectorAll('.cx-tax-opt').forEach(function (b) { b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  var msgs = {
+    'below7':  'New regime wins. Income up to ₹12L is effectively tax-free under Section 87A for FY 2025-26. The old regime rarely helps at this income level.',
+    '7to15':   'New regime wins for most. Lower slabs plus the ₹75K standard deduction offset most old-regime 80C benefits. Run the full calculator to be sure.',
+    '15to25':  'Compare both carefully. If your 80C + HRA + home loan interest deductions exceed ₹3.75L, old regime may save more. At ₹20L with max deductions it can be close.',
+    'above25': 'Run the full calculator. At high incomes, surcharge structure and the total size of your deductions (80C, 80D, home loan, NPS) determine the winner. No universal answer here.'
+  };
+  document.getElementById('taxResultText').textContent = msgs[income];
+  document.getElementById('taxResult').classList.add('visible');
+}
 </script>
 
 {{ end }}
