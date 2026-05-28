@@ -158,3 +158,27 @@ The old regime only beats the new for Rs. 12 lakh CTC if your total deductions (
 For exact numbers at different CTC levels, check our [take-home salary calculator](/salary/takehome-calculator/), and see the [10 lakh CTC breakdown](/blog/10-lakh-ctc-take-home-salary/), [15 lakh CTC breakdown](/blog/what-15-lakh-ctc-actually-means/), [20 lakh CTC breakdown](/blog/20-lakh-ctc-take-home-salary/), and [25 lakh CTC breakdown](/blog/25-lakh-ctc-take-home-salary/). For tax optimization, the [income tax calculator](/tax/income-tax-calculator/) and [old vs new regime guide](/blog/old-vs-new-tax-regime-fy-2025-26/) will save you hours of guesswork.
 
 If you have an offer letter in hand, run your own numbers on Calxo and plan smart. Rahul in Bengaluru did — and now his “Rs. 1 lakh per month” dream is a realistic, tax-free Rs. 85,000 take-home. That’s the real face of Rs. 12 lakh CTC in India.
+
+## CTC salary ladder
+
+| CTC | Monthly take-home | Tax / year |
+|---|---|---|
+| [₹5L](/blog/5-lakh-ctc-take-home-salary/) | ₹35,465 | Zero |
+| [₹6L](/blog/6-lakh-ctc-take-home-salary/) | ₹42,598 | Zero |
+| [₹7L](/blog/7-lakh-ctc-take-home-salary/) | ₹49,730 | Zero |
+| [₹8L](/blog/8-lakh-ctc-take-home-salary/) | ₹56,863 | Zero |
+| [₹9L](/blog/9-lakh-ctc-take-home-salary/) | ₹63,996 | Zero |
+| [₹10L](/blog/10-lakh-ctc-take-home-salary/) | ₹71,129 | Zero |
+| [₹11L](/blog/11-lakh-ctc-take-home-salary/) | ₹78,262 | Zero |
+| **[₹12L](/blog/12-lakh-ctc-take-home-salary/)** | **₹85,395** | **Zero** |
+| [₹15L](/blog/15-lakh-ctc-take-home-salary/) | ₹1,00,308 | ₹77,832 |
+| [₹18L](/blog/18-lakh-ctc-take-home-salary/) | ₹1,18,134 | ₹1,20,699 |
+| [₹20L](/blog/20-lakh-ctc-take-home-salary/) | ₹1,29,339 | ₹1,57,435 |
+| [₹25L](/blog/25-lakh-ctc-take-home-salary/) | ₹1,56,134 | ₹2,63,868 |
+| [₹30L](/blog/30-lakh-ctc-take-home-salary/) | ₹1,80,693 | ₹3,97,129 |
+| [₹35L](/blog/35-lakh-ctc-take-home-salary/) | ₹2,04,451 | ₹5,40,017 |
+| [₹40L](/blog/40-lakh-ctc-take-home-salary/) | ₹2,28,208 | ₹6,82,906 |
+| [₹45L](/blog/45-lakh-ctc-take-home-salary/) | ₹2,51,965 | ₹8,25,794 |
+| [₹50L](/blog/50-lakh-ctc-take-home-salary/) | ₹2,75,722 | ₹9,68,682 |
+
+All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use [Take-Home Calculator](/salary/takehome-calculator/) for your exact CTC and structure.

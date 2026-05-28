@@ -125,6 +125,30 @@ Tax saved: ₹1,00,000 falls in the 20% slab, so you save ₹20,000 + 4% cess = 
 
 Also see: [15 lakh CTC breakdown](/blog/15-lakh-ctc-take-home-salary/) for the step below, and [25 lakh CTC breakdown](/blog/25-lakh-ctc-take-home-salary/) for the next level.
 
+## CTC salary ladder
+
+| CTC | Monthly take-home | Tax / year |
+|---|---|---|
+| [₹5L](/blog/5-lakh-ctc-take-home-salary/) | ₹35,465 | Zero |
+| [₹6L](/blog/6-lakh-ctc-take-home-salary/) | ₹42,598 | Zero |
+| [₹7L](/blog/7-lakh-ctc-take-home-salary/) | ₹49,730 | Zero |
+| [₹8L](/blog/8-lakh-ctc-take-home-salary/) | ₹56,863 | Zero |
+| [₹9L](/blog/9-lakh-ctc-take-home-salary/) | ₹63,996 | Zero |
+| [₹10L](/blog/10-lakh-ctc-take-home-salary/) | ₹71,129 | Zero |
+| [₹11L](/blog/11-lakh-ctc-take-home-salary/) | ₹78,262 | Zero |
+| [₹12L](/blog/12-lakh-ctc-take-home-salary/) | ₹85,395 | Zero |
+| [₹15L](/blog/15-lakh-ctc-take-home-salary/) | ₹1,00,308 | ₹77,832 |
+| [₹18L](/blog/18-lakh-ctc-take-home-salary/) | ₹1,18,134 | ₹1,20,699 |
+| **[₹20L](/blog/20-lakh-ctc-take-home-salary/)** | **₹1,29,339** | **₹1,57,435** |
+| [₹25L](/blog/25-lakh-ctc-take-home-salary/) | ₹1,56,134 | ₹2,63,868 |
+| [₹30L](/blog/30-lakh-ctc-take-home-salary/) | ₹1,80,693 | ₹3,97,129 |
+| [₹35L](/blog/35-lakh-ctc-take-home-salary/) | ₹2,04,451 | ₹5,40,017 |
+| [₹40L](/blog/40-lakh-ctc-take-home-salary/) | ₹2,28,208 | ₹6,82,906 |
+| [₹45L](/blog/45-lakh-ctc-take-home-salary/) | ₹2,51,965 | ₹8,25,794 |
+| [₹50L](/blog/50-lakh-ctc-take-home-salary/) | ₹2,75,722 | ₹9,68,682 |
+
+All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use [Take-Home Calculator](/salary/takehome-calculator/) for your exact CTC and structure.
+
 ## Sources
 
 - Income Tax Act 1961: Section 115BAC - new regime slabs, Finance Act 2025

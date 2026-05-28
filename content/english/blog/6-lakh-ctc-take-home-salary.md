@@ -1,54 +1,117 @@
 ---
-title: "6 Lakh CTC: Actual Take-Home Salary After All Deductions"
-description: "What 6 LPA actually means in hand after PF, tax, and deductions."
-date: 2026-05-15
-lastmod: 2026-05-15
+title: "6 Lakh CTC Take-Home Salary 2025-26: ₹42,598/Month In-Hand (Zero Tax)"
+description: "₹6L CTC = ₹42,598/month take-home. Zero income tax under new regime. Full component table, PF is the biggest deduction, 40% vs 50% basic comparison."
+date: 2026-05-28
+lastmod: 2026-05-28
 author: vignesh
 categories:
 - Salary
-tags:
-- CTC
-- salary
-- take-home
+tags: ["Salary", "CTC", "FY 2025-26", "take-home"]
+ai_summary:
+- 6 lakh CTC gives ₹42,598/month in-hand under new regime (Karnataka, 50% basic structure)
+- Zero income tax, taxable income of ₹4,74,570 falls entirely within the nil and 5% slabs, wiped clean by 87A rebate
+- Employee PF (₹3,000/month) is the biggest deduction, not tax
+- 40% basic structure gives ₹43,798/month, a small ₹1,200 more each month
+- Both regimes give zero tax at 6L CTC, the difference is PF corpus, not tax savings
+related_calcs:
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
+  - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
 ---
+
+Arjun got placed at a Bengaluru IT services company fresh out of college. ₹6 LPA. He called his cousin and said "₹50,000 a month, bhai!" His first payslip: ₹42,598. The math he hadn't done: PF takes ₹3,000/month and professional tax ₹200/month. Income tax is zero. Not partly zero, not offset by rebate, actually, fully zero.
 
 {{< takehome-calculator ctc="600000" >}}
 
-## Understanding 6 Lakh CTC in Hand Salary
+{{< infographic-stat
+  number="₹42,598"
+  label="Monthly in-hand from ₹6L CTC (new regime, Karnataka, 50% basic)"
+  sub="FY 2025-26, zero income tax" >}}
 
-6 lakh CTC (Cost to Company) is a common salary package in India. But what does it mean for your actual take-home pay? Many people assume that 6 lakh CTC equals ₹50,000 per month, but that’s not how it actually splits. Your in-hand salary, the money that lands in your account every month, depends on a mix of statutory deductions, taxes, and your company's salary structure. Let's break it down.
+## What ₹6 lakh CTC actually contains
 
-### Components of CTC
+At 50% basic structure:
 
-The CTC includes various components: basic pay, house rent allowance (HRA), leave travel allowance (LTA), professional tax, and more. These elements are combined to form the advertised CTC package. However, not all components contribute to take-home salary. For someone with a 6 lakh CTC, basic pay typically forms the largest chunk at 40-50% of the total. This translates to about ₹2.4 lakh annually. The more exciting allowances, like performance bonuses and provident fund contributions, can lessen the monthly in-hand amount if misunderstood.
+| Component | Annual | Monthly |
+|---|---|---|
+| Basic salary | ₹3,00,000 | ₹25,000 |
+| HRA (50% of basic) | ₹1,50,000 | ₹12,500 |
+| Special allowance | ₹99,570 | ₹8,298 |
+| Employer PF (12% of basic) | ₹36,000 | ₹3,000 |
+| Gratuity provision (4.81%) | ₹14,430 | ₹1,203 |
+| **Total CTC** | **₹6,00,000** | **₹50,000** |
 
-### Deductions at Play
+Employer PF plus gratuity = ₹50,430. These components sit inside the ₹6L CTC and are never paid as monthly cash. Your actual gross (what you receive, before deductions) is ₹5,49,570/year.
 
-Now comes the part that most people dread. Deductions. Statutory deductions eat into your nice, round 6 lakh CTC figure. The Employees' Provident Fund (EPF) is mandatory, contributing 12% of basic pay from both employee and employer sides. So, if your basic pay is ₹24,000 per month, both you and your company contribute ₹2,880 each month. That's ₹5,760 right there for EPF. Then, there's the professional tax, state-dependent, usually around ₹200 per month.
+## Take-home calculation: new regime
 
-### The Impact of Taxation
+| Item | Annual | Monthly |
+|---|---|---|
+| Gross salary (excl. employer PF + gratuity) | ₹5,49,570 | ₹45,798 |
+| Less: Employee PF (12% of basic) | ₹36,000 | ₹3,000 |
+| Less: Professional tax (Karnataka) | ₹2,400 | ₹200 |
+| Less: Income tax | ₹0 | ₹0 |
+| **In-hand** | **₹5,11,170** | **₹42,598** |
 
-Income tax is another major deduction for a 6 lakh CTC holder. While the tax regime offers an 87A rebate, ensuring no tax for those earning up to ₹5 lakh of net income, crossing this threshold activates the tax slabs. Assuming no tax-saving measures are taken, you'd face a nominal tax deduction monthly. But why ignore benefits like ELSS or PPF, which can save you up to ₹1.5 lakh under section 80C? My friend Rakesh from Mumbai saves tax this way, smartly using these exemptions to maximize his take-home salary.
+Tax working: Gross ₹5,49,570 minus standard deduction ₹75,000 = taxable ₹4,74,570. New regime slab: nil (0-4L) + 5% on ₹74,570 = ₹3,729. Section 87A rebate up to ₹60,000 wipes the entire tax. Final income tax: zero.
 
-### A Sample Calculation
+## PF is the real deduction, not tax
 
-Let’s put all of this into perspective with an example. Suppose your CTC is 6 lakh, divided as follows:
+Most entry-level employees assume tax is the enemy. At ₹6L CTC, PF is actually the only significant deduction. ₹3,000/month out of gross ₹45,798 = 6.6% of gross going to your EPF account. That money belongs to you and earns 8.25% interest, tax-free. It's not lost. But it does mean your take-home is ₹42,598, not ₹45,798.
 
-| Component                  | Annual Amount (₹) |
-|----------------------------|-------------------|
-| Basic Pay                  | 2,40,000          |
-| House Rent Allowance (HRA) | 1,20,000          |
-| Leave Travel Allowance     | 20,000            |
-| Special Allowance          | 2,20,000          |
+Professional tax ₹200/month is the other deduction. That's it. Tax = zero. The simplicity of ₹6L CTC deductions is what makes this salary band so clean for budgeting.
 
-Your EPF deduction (12% of basic) reduces the in-hand amount further. Monthly, this means your salary before tax and deductions is ₹50,000. From that, subtract EPF and professional tax. Then think about income tax. Link into our [CTC to In-Hand Calculator](/salary/takehome-calculator/) for precise calculations based on personal scenarios.
+## 40% basic vs 50% basic at ₹6L CTC
 
-### Realistic Take-Home Salary
+Some companies, especially IT services firms with large fresher batches, keep basic at 40% of CTC to reduce their PF liability:
 
-Taking everything into account, someone with a 6 lakh CTC might see around ₹38,000 to ₹41,000 in hand monthly. The in-hand figure fluctuates depending on variables like bonus payouts, deviations in claim executions (like HRA exemptions), and the tax regime opted. My friend Alok, working in Hyderabad, felt confused when it wasn’t ₹50,000 in hand after a salary structure change. His in-hand amount was chopped by tax calculations and lesser understood allowances.
+| Structure | Basic (annual) | Employee PF/yr | Monthly take-home (KA) |
+|---|---|---|---|
+| 40% basic | ₹2,40,000 | ₹28,800 | ~₹43,798 |
+| 50% basic | ₹3,00,000 | ₹36,000 | ₹42,598 |
 
-### Optimizing the In-Hand Salary
+The difference: ₹1,200/month more in hand with 40% basic. The trade-off: ₹7,200 less going into your EPF account each year. Over 30 years, that ₹7,200/year difference at 8.25% interest rate compounds to roughly ₹8.5L. Whether ₹100/month extra in hand is worth ₹8.5L less at retirement is a personal call. Most 22-year-olds take the cash. Most 50-year-olds wish they hadn't.
 
-Understanding how CTC components affect your monthly earnings is critical. You can optimize take-home pay by choosing the right investments and allowances. Prefer voluntary savings schemes or opt for alternative benefit adjustments during salary negotiations. Companies allow flexible benefits, customizing exactly how elements like medical insurance or food coupons integrate into the overall package.
+You usually don't get to choose the structure. But if you do, and you plan to stay in the same company for several years, argue for higher basic.
 
-Don't just accept the 6 lakh CTC story at face value. Evaluate the specifics for a true picture of your in-hand salary. Knowing this helps better financial planning, adjusting savings goals and monthly budgets smartly.
+## City-wise take-home
+
+| City | PT (annual) | Monthly in-hand |
+|---|---|---|
+| Delhi (no PT) | ₹0 | ₹42,798 |
+| Bengaluru / Hyderabad | ₹2,400 | ₹42,598 |
+| Mumbai | ₹2,500 | ₹42,590 |
+| Chennai | ₹2,400 | ₹42,598 |
+
+The range is ₹200/month. Delhi tops it. Every other major city is nearly identical.
+
+## CTC salary ladder
+
+| CTC | Monthly take-home | Tax / year |
+|---|---|---|
+| [₹5L](/blog/5-lakh-ctc-take-home-salary/) | ₹35,465 | Zero |
+| **[₹6L](/blog/6-lakh-ctc-take-home-salary/)** | **₹42,598** | **Zero** |
+| [₹7L](/blog/7-lakh-ctc-take-home-salary/) | ₹49,730 | Zero |
+| [₹8L](/blog/8-lakh-ctc-take-home-salary/) | ₹56,863 | Zero |
+| [₹9L](/blog/9-lakh-ctc-take-home-salary/) | ₹63,996 | Zero |
+| [₹10L](/blog/10-lakh-ctc-take-home-salary/) | ₹71,129 | Zero |
+| [₹11L](/blog/11-lakh-ctc-take-home-salary/) | ₹78,262 | Zero |
+| [₹12L](/blog/12-lakh-ctc-take-home-salary/) | ₹85,395 | Zero |
+| [₹15L](/blog/15-lakh-ctc-take-home-salary/) | ₹1,00,308 | ₹77,832 |
+| [₹18L](/blog/18-lakh-ctc-take-home-salary/) | ₹1,18,134 | ₹1,20,699 |
+| [₹20L](/blog/20-lakh-ctc-take-home-salary/) | ₹1,29,339 | ₹1,57,435 |
+| [₹25L](/blog/25-lakh-ctc-take-home-salary/) | ₹1,56,134 | ₹2,63,868 |
+| [₹30L](/blog/30-lakh-ctc-take-home-salary/) | ₹1,80,693 | ₹3,97,129 |
+| [₹35L](/blog/35-lakh-ctc-take-home-salary/) | ₹2,04,451 | ₹5,40,017 |
+| [₹40L](/blog/40-lakh-ctc-take-home-salary/) | ₹2,28,208 | ₹6,82,906 |
+| [₹45L](/blog/45-lakh-ctc-take-home-salary/) | ₹2,51,965 | ₹8,25,794 |
+| [₹50L](/blog/50-lakh-ctc-take-home-salary/) | ₹2,75,722 | ₹9,68,682 |
+
+All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use [Take-Home Calculator](/salary/takehome-calculator/) for your exact CTC and structure.
+
+## Sources
+
+- Income Tax Act 1961: Section 115BAC, new regime slabs, Finance Act 2025 (standard deduction ₹75,000)
+- Section 87A: rebate up to ₹60,000 for taxable income at or below ₹12,00,000 (new regime)
+- EPFO: 12% employee + 12% employer PF contribution on basic salary
+- Payment of Gratuity Act 1972: 4.81% gratuity provision formula
