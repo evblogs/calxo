@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Bangalore Today — ₹102.92/Litre (24 May 2026)"
+title: "Petrol Price in Bangalore Today — ₹102.92/Litre (29 May 2026)"
 description: "Today's petrol price in Bangalore (Bengaluru) is ₹102.92/litre and diesel is ₹88.60/litre. Updated daily at 6 AM. Karnataka's VAT makes Bangalore fuel costlier than Delhi by ₹8."
 date: 2026-04-29
-lastmod: 2026-05-24
+lastmod: 2026-05-29
 type: "calculator"
 url: /conversion/petrol-price-bangalore/
 keywords: "petrol price in bangalore today, petrol price bangalore, diesel price bangalore today, fuel price bengaluru 2026"
