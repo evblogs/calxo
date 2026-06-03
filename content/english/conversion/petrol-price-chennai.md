@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Chennai Today — ₹100.76/Litre (2 June 2026)"
+title: "Petrol Price in Chennai Today — ₹100.76/Litre (3 June 2026)"
 description: "Today's petrol price in Chennai is ₹100.76/litre and diesel is ₹92.34/litre. Updated daily at 6 AM. Tamil Nadu's VAT on fuel and additional cess push Chennai prices above Delhi by ₹6."
 date: 2026-04-29
-lastmod: 2026-06-02
+lastmod: 2026-06-03
 type: "calculator"
 url: /conversion/petrol-price-chennai/
 keywords: "petrol price in chennai today, petrol price chennai, diesel price chennai today, fuel price chennai 2026, petrol price today chennai"
