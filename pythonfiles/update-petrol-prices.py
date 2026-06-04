@@ -234,8 +234,16 @@ def main():
         city_prices = city_lookup_final.get(city_name) if city_name else None
         update_page_lastmod(page, today, city_prices)
 
-    print("\n  Pushing to git...")
-    git_commit_push(today)
+    # In CI the workflow regenerates the city pages and commits everything in
+    # one shot, so skip the script's own git push when CALXO_SKIP_GIT is set
+    # (or --no-git is passed).
+    import os, sys
+    skip_git = os.environ.get("CALXO_SKIP_GIT") or "--no-git" in sys.argv
+    if skip_git:
+        print("\n  CALXO_SKIP_GIT set — skipping git (workflow will commit).")
+    else:
+        print("\n  Pushing to git...")
+        git_commit_push(today)
     print("\n  Done. Netlify will rebuild in ~1 minute.")
 
 
