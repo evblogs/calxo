@@ -1,0 +1,60 @@
+name: Daily Petrol Price Refresh
+
+on:
+  schedule:
+    # 03:30 UTC = 9:00 AM IST — after the 6 AM OMC price revision
+    - cron: '30 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Avoid overlapping runs if a previous one is still going
+concurrency:
+  group: petrol-price-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Configure git
+        run: |
+          git config user.name  "Calxo Content Bot"
+          git config user.email "avmedianews321@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/evblogs/calxo.git
+
+      - name: Scrape latest fuel prices
+        env:
+          CALXO_SKIP_GIT: '1'
+        run: python pythonfiles/update-petrol-prices.py
+
+      - name: Regenerate city pages from fresh data
+        run: python pythonfiles/generate-petrol-pages.py
+
+      - name: Commit and push
+        run: |
+          git add data/petrol-prices.json content/english/conversion/petrol-price-*.md
+          if git diff --cached --quiet; then
+            echo "No price changes today — nothing to commit."
+          else
+            git commit -m "[auto] Refresh petrol prices — $(date -u +%Y-%m-%d)"
+            git pull --rebase origin master || true
+            git push origin master
+          fi

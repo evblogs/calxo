@@ -28,3 +28,4 @@ pythonfiles/*.json.key
 
 # Log files
 pythonfiles/*.log
+__pycache__/
