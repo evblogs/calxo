@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Ahmedabad Today: ₹93.08/Litre (29 May 2026)"
+title: "Petrol Price in Ahmedabad Today: ₹93.08/Litre (3 June 2026)"
 description: "Today's petrol price in Ahmedabad is ₹93.08/litre and diesel is ₹88.58/litre. Updated daily at 6 AM. Ahmedabad fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
-date: 2026-05-29
-lastmod: 2026-05-29
+date: 2026-06-03
+lastmod: 2026-06-03
 type: "calculator"
 url: /conversion/petrol-price-ahmedabad/
 keywords: "petrol price in ahmedabad today, petrol price ahmedabad, diesel price ahmedabad today, fuel price ahmedabad 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Ahmedabad is **₹93.08 per litre** and diesel is **₹88.58 per litre** (as of 29 May 2026). Prices update every day at 6:00 AM. That makes Ahmedabad, a Tier 1 metro in Gujarat, about ₹1.69/litre cheaper than Delhi (₹94.77).
+Today's petrol price in Ahmedabad is **₹93.08 per litre** and diesel is **₹88.58 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Ahmedabad, a Tier 1 metro in Gujarat, about ₹1.69/litre cheaper than Delhi (₹94.77).
 
 Gujarat keeps fuel tax low to support its transport and logistics economy, so Ahmedabad is among the cheapest metros.
 
@@ -42,11 +42,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
+| June 2026 | 93.08 | 88.58 |
 | May 2026 | 93.08 | 88.58 |
 | April 2026 | 93.08 | 88.58 |
 | March 2026 | 93.08 | 88.58 |
 | February 2026 | 93.08 | 88.58 |
-| January 2026 | 93.08 | 88.58 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Ahmedabad figure moves only in paise on most days.
 

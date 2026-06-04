@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Surat Today: ₹93.48/Litre (29 May 2026)"
+title: "Petrol Price in Surat Today: ₹93.48/Litre (3 June 2026)"
 description: "Today's petrol price in Surat is ₹93.48/litre and diesel is ₹88.07/litre. Updated daily at 6 AM. Surat fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
-date: 2026-05-29
-lastmod: 2026-05-29
+date: 2026-06-03
+lastmod: 2026-06-03
 type: "calculator"
 url: /conversion/petrol-price-surat/
 keywords: "petrol price in surat today, petrol price surat, diesel price surat today, fuel price surat 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Surat is **₹93.48 per litre** and diesel is **₹88.07 per litre** (as of 29 May 2026). Prices update every day at 6:00 AM. That makes Surat, a Tier 2 city in Gujarat, about ₹1.29/litre cheaper than Delhi (₹94.77).
+Today's petrol price in Surat is **₹93.48 per litre** and diesel is **₹88.07 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Surat, a Tier 2 city in Gujarat, about ₹1.29/litre cheaper than Delhi (₹94.77).
 
 Surat benefits from Gujarat's low fuel tax, keeping it among the cheapest big cities in western India.
 
@@ -42,11 +42,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
+| June 2026 | 93.48 | 88.07 |
 | May 2026 | 93.48 | 88.07 |
 | April 2026 | 93.48 | 88.07 |
 | March 2026 | 93.48 | 88.07 |
 | February 2026 | 93.48 | 88.07 |
-| January 2026 | 93.48 | 88.07 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Surat figure moves only in paise on most days.
 

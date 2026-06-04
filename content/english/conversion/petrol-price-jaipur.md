@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Jaipur Today: ₹104.55/Litre (29 May 2026)"
+title: "Petrol Price in Jaipur Today: ₹104.55/Litre (3 June 2026)"
 description: "Today's petrol price in Jaipur is ₹104.55/litre and diesel is ₹89.96/litre. Updated daily at 6 AM. Jaipur fuel price, Rajasthan VAT breakup and a monthly fuel-cost calculator."
-date: 2026-05-29
-lastmod: 2026-05-29
+date: 2026-06-03
+lastmod: 2026-06-03
 type: "calculator"
 url: /conversion/petrol-price-jaipur/
 keywords: "petrol price in jaipur today, petrol price jaipur, diesel price jaipur today, fuel price jaipur 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Jaipur is **₹104.55 per litre** and diesel is **₹89.96 per litre** (as of 29 May 2026). Prices update every day at 6:00 AM. That makes Jaipur, a Tier 2 city in Rajasthan, about ₹9.78/litre costlier than Delhi (₹94.77).
+Today's petrol price in Jaipur is **₹104.55 per litre** and diesel is **₹89.96 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Jaipur, a Tier 2 city in Rajasthan, about ₹9.78/litre costlier than Delhi (₹94.77).
 
 Rajasthan has historically run one of India's highest petrol VAT rates, so Jaipur prices stay well above neighbouring Delhi.
 
@@ -42,11 +42,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
+| June 2026 | 104.55 | 89.96 |
 | May 2026 | 104.55 | 89.96 |
 | April 2026 | 104.55 | 89.96 |
 | March 2026 | 104.55 | 89.96 |
 | February 2026 | 104.55 | 89.96 |
-| January 2026 | 104.55 | 89.96 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Jaipur figure moves only in paise on most days.
 

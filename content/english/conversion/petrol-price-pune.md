@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Pune Today: ₹103.57/Litre (29 May 2026)"
+title: "Petrol Price in Pune Today: ₹103.57/Litre (3 June 2026)"
 description: "Today's petrol price in Pune is ₹103.57/litre and diesel is ₹90.40/litre. Updated daily at 6 AM. Pune fuel price, Maharashtra VAT breakup and a monthly fuel-cost calculator."
-date: 2026-05-29
-lastmod: 2026-05-29
+date: 2026-06-03
+lastmod: 2026-06-03
 type: "calculator"
 url: /conversion/petrol-price-pune/
 keywords: "petrol price in pune today, petrol price pune, diesel price pune today, fuel price pune 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Pune is **₹103.57 per litre** and diesel is **₹90.40 per litre** (as of 29 May 2026). Prices update every day at 6:00 AM. That makes Pune, a Tier 1 metro in Maharashtra, about ₹8.80/litre costlier than Delhi (₹94.77).
+Today's petrol price in Pune is **₹103.57 per litre** and diesel is **₹90.40 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Pune, a Tier 1 metro in Maharashtra, about ₹8.80/litre costlier than Delhi (₹94.77).
 
 Pune pays the same Maharashtra VAT slab as Mumbai but skips the city surcharge, so it is a few rupees cheaper.
 
@@ -42,11 +42,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
+| June 2026 | 103.57 | 90.40 |
 | May 2026 | 103.57 | 90.40 |
 | April 2026 | 103.57 | 90.40 |
 | March 2026 | 103.57 | 90.40 |
 | February 2026 | 103.57 | 90.40 |
-| January 2026 | 103.57 | 90.40 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Pune figure moves only in paise on most days.
 

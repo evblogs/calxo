@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Nagpur Today: ₹103.88/Litre (29 May 2026)"
+title: "Petrol Price in Nagpur Today: ₹103.88/Litre (3 June 2026)"
 description: "Today's petrol price in Nagpur is ₹103.88/litre and diesel is ₹91.00/litre. Updated daily at 6 AM. Nagpur fuel price, Maharashtra VAT breakup and a monthly fuel-cost calculator."
-date: 2026-05-29
-lastmod: 2026-05-29
+date: 2026-06-03
+lastmod: 2026-06-03
 type: "calculator"
 url: /conversion/petrol-price-nagpur/
 keywords: "petrol price in nagpur today, petrol price nagpur, diesel price nagpur today, fuel price nagpur 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Nagpur is **₹103.88 per litre** and diesel is **₹91.00 per litre** (as of 29 May 2026). Prices update every day at 6:00 AM. That makes Nagpur, a Tier 2 city in Maharashtra, about ₹9.11/litre costlier than Delhi (₹94.77).
+Today's petrol price in Nagpur is **₹103.88 per litre** and diesel is **₹91.00 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Nagpur, a Tier 2 city in Maharashtra, about ₹9.11/litre costlier than Delhi (₹94.77).
 
 Nagpur pays Maharashtra's VAT slab without the Mumbai surcharge, sitting mid-pack among Tier 2 cities.
 
@@ -42,11 +42,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
+| June 2026 | 103.88 | 91.00 |
 | May 2026 | 103.88 | 91.00 |
 | April 2026 | 103.88 | 91.00 |
 | March 2026 | 103.88 | 91.00 |
 | February 2026 | 103.88 | 91.00 |
-| January 2026 | 103.88 | 91.00 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Nagpur figure moves only in paise on most days.
 
