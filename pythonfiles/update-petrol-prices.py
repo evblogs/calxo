@@ -6,7 +6,7 @@ Run nightly via launchd. Commits + pushes → triggers Netlify rebuild.
 Cron: run at 6:30 AM IST (after OMC revision at 6 AM)
 """
 
-import json, re, time, subprocess, random
+import json, re, time, subprocess, random, os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from pathlib import Path
@@ -240,6 +240,76 @@ def fetch_price(city_name, gr_slug):
     return p, d, f"{names} (median of {len(results)})"
 
 
+# ── Official source: data.gov.in OGD daily fuel-price API ──────────────────
+# This is the only source that reliably works from a datacenter/CI IP. It
+# needs a free API key (register at https://data.gov.in -> My Account -> API
+# key) supplied via the DATA_GOV_API_KEY secret, and a resource id pointing at
+# the current daily fuel-price dataset via DATAGOV_RESOURCE_ID. Both are read
+# from the environment so nothing is hardcoded; absent either, this is inert.
+DATAGOV_RESOURCE_ID = os.environ.get("DATAGOV_RESOURCE_ID", "")
+
+_CITY_NORMALISE = {
+    "bangalore": "Bengaluru", "bengaluru": "Bengaluru",
+    "trivandrum": "Thiruvananthapuram", "vizag": "Visakhapatnam",
+}
+
+
+def _norm_city(name):
+    return _CITY_NORMALISE.get(name.strip().lower(), name.strip().title())
+
+
+def _num(v):
+    try:
+        f = float(str(v).replace(",", "").strip())
+        return f if PRICE_MIN <= f <= PRICE_MAX else None
+    except (TypeError, ValueError):
+        return None
+
+
+def fetch_datagov(api_key, want_cities):
+    """Return {our_city_name: (petrol, diesel, date|None)} from data.gov.in.
+
+    Records are parsed by fuzzy key match so the loader survives minor schema
+    changes. Only cities we track, with both fuels in a sane range, are kept.
+    """
+    if not api_key or not DATAGOV_RESOURCE_ID:
+        return {}
+    url = f"https://api.data.gov.in/resource/{DATAGOV_RESOURCE_ID}"
+    params = {"api-key": api_key, "format": "json", "limit": 2000}
+    try:
+        resp = requests.get(url, params=params, headers=_headers(), timeout=15)
+        resp.raise_for_status()
+        records = resp.json().get("records", [])
+    except Exception as e:
+        print(f"  data.gov.in fetch failed: {e}")
+        return {}
+
+    wanted = {c.lower(): c for c in want_cities}
+    out = {}
+    for rec in records:
+        low = {(k or "").lower(): v for k, v in rec.items()}
+        city_v = next((low[k] for k in low if k in
+                       ("city", "centre", "center", "location",
+                        "metrocity", "metro_cities")), None)
+        if city_v is None:
+            continue
+        target = wanted.get(_norm_city(str(city_v)).lower())
+        if not target:
+            continue
+        petrol = next((_num(low[k]) for k in low
+                       if "petrol" in k and _num(low[k]) is not None), None)
+        diesel = next((_num(low[k]) for k in low
+                       if "diesel" in k and _num(low[k]) is not None), None)
+        if petrol is None or diesel is None:
+            continue
+        dval = next((low[k] for k in low if "date" in k), None)
+        dt = _extract_date(str(dval)) if dval else None
+        prev = out.get(target)
+        if not prev or (dt and (prev[2] is None or dt > prev[2])):
+            out[target] = (petrol, diesel, dt)
+    return out
+
+
 def load_existing():
     with open(DATA_FILE) as f:
         return json.load(f)
@@ -322,12 +392,24 @@ def main():
 
     updated_count = 0
     failed = []
-    provenance = {}
+    used_datagov = False
 
-    # Fetch all cities concurrently; each city itself queries several sources
-    # and keeps whichever has the freshest 'as on' date.
+    # Primary, CI-reliable source: official data.gov.in API (if configured).
+    want = [name for _, name, _ in CITY_MAP]
+    datagov = fetch_datagov(os.environ.get("DATA_GOV_API_KEY"), want)
+    if datagov:
+        used_datagov = True
+        print(f"  data.gov.in returned {len(datagov)} cities")
+
+    # Per city: prefer the official API, else best-effort multi-site scrape
+    # (the scrape generally only succeeds from a residential IP, not CI).
     def work(entry):
         slug, city_name, state = entry
+        dg = datagov.get(city_name)
+        if dg and dg[0] and dg[1]:
+            dt = dg[2]
+            prov = f"data.gov.in (as on {dt.isoformat()})" if dt else "data.gov.in"
+            return city_name, state, dg[0], dg[1], prov
         petrol, diesel, prov = fetch_price(city_name, slug)
         return city_name, state, petrol, diesel, prov
 
@@ -337,27 +419,38 @@ def main():
             city_name, state, petrol, diesel, prov = fut.result()
             if petrol and diesel:
                 city_lookup[city_name] = {
-                    "city": city_name,
-                    "state": state,
-                    "petrol": petrol,
-                    "diesel": diesel,
+                    "city": city_name, "state": state,
+                    "petrol": petrol, "diesel": diesel,
                 }
-                provenance[city_name] = prov
                 print(f"  ✓ {city_name}: petrol ₹{petrol} | diesel ₹{diesel}  [{prov}]")
                 updated_count += 1
             else:
-                print(f"  ✗ {city_name}: all sources failed — keeping previous price")
+                print(f"  ✗ {city_name}: no live source returned data — keeping previous price")
                 failed.append(city_name)
 
-    # Rebuild ordered city list
+    # Rebuild ordered city list. 'updated' is the display date (advances daily,
+    # matching the OMC daily-revision cycle). 'prices_verified' is honest: it
+    # only moves to today when a real source actually returned prices.
+    prev_verified = existing.get("prices_verified") or existing.get("updated")
     existing["cities"] = [city_lookup[name] for _, name, _ in CITY_MAP if name in city_lookup]
     existing["updated"] = today
-    existing["source"] = "Multi-source (goodreturns / NDTV / BankBazaar / CarDekho), freshest wins"
+    if updated_count > 0:
+        existing["prices_verified"] = today
+        src = ("data.gov.in API + best-effort scrape" if used_datagov
+               else "best-effort multi-site scrape")
+        existing["source"] = f"{src} — {updated_count}/{len(CITY_MAP)} cities refreshed {today}"
+    else:
+        existing["prices_verified"] = prev_verified
+        existing["source"] = (
+            f"Prices held since {prev_verified} (no live source returned data "
+            f"this run); displayed date reflects the daily revision cycle")
     save(existing)
 
-    print(f"\n  Updated: {updated_count}/{len(CITY_MAP)} cities | Failed: {len(failed)}")
-    if failed:
-        print(f"  Failed cities: {', '.join(failed)}")
+    print(f"\n  Refreshed with live data: {updated_count}/{len(CITY_MAP)} | "
+          f"held from previous: {len(failed)}")
+    if updated_count == 0:
+        print("  NOTE: no live prices fetched. Set DATA_GOV_API_KEY + "
+              "DATAGOV_RESOURCE_ID, or run from a residential IP, for real updates.")
 
     # Update lastmod + prices in all petrol content pages
     print("\n  Updating page front matter...")
@@ -370,7 +463,7 @@ def main():
     # In CI the workflow regenerates the city pages and commits everything in
     # one shot, so skip the script's own git push when CALXO_SKIP_GIT is set
     # (or --no-git is passed).
-    import os, sys
+    import sys
     skip_git = os.environ.get("CALXO_SKIP_GIT") or "--no-git" in sys.argv
     if skip_git:
         print("\n  CALXO_SKIP_GIT set — skipping git (workflow will commit).")

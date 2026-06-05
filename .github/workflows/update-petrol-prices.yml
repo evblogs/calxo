@@ -40,9 +40,13 @@ jobs:
           git config user.email "avmedianews321@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/evblogs/calxo.git
 
-      - name: Scrape latest fuel prices
+      - name: Fetch latest fuel prices
         env:
           CALXO_SKIP_GIT: '1'
+          # Optional: set these repo secrets/vars to get real live prices.
+          # Without them the job advances the date and holds previous prices.
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+          DATAGOV_RESOURCE_ID: ${{ vars.DATAGOV_RESOURCE_ID }}
         run: python pythonfiles/update-petrol-prices.py
 
       - name: Regenerate city pages from fresh data
