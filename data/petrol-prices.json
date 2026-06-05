@@ -1,6 +1,6 @@
 {
   "updated": "2026-06-05",
-  "source": "Multi-source (goodreturns / NDTV / BankBazaar / CarDekho), freshest wins",
+  "source": "Prices held since 2026-06-05 (no live source returned data this run); displayed date reflects the daily revision cycle",
   "cities": [
     {
       "city": "Delhi",
@@ -182,5 +182,6 @@
       "petrol": 93.63,
       "diesel": 86.93
     }
-  ]
+  ],
+  "prices_verified": "2026-06-05"
 }
