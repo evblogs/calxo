@@ -305,7 +305,9 @@ def main():
         authed = google_requests.AuthorizedSession(creds)
     except Exception as e:
         print(f"\n  ERROR loading credentials: {e}")
-        return
+        print(f"  (looked for key at: {CREDENTIALS_FILE})")
+        print("  In CI this usually means the GSC_KEY_JSON secret is unset/empty.")
+        sys.exit(1)
 
     print()
     results = {"success": [], "error": []}
