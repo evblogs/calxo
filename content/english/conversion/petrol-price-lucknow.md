@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Lucknow Today: ₹94.69/Litre (3 June 2026)"
+title: "Petrol Price in Lucknow Today: ₹94.69/Litre (5 June 2026)"
 description: "Today's petrol price in Lucknow is ₹94.69/litre and diesel is ₹87.88/litre. Updated daily at 6 AM. Lucknow fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-lucknow/
 keywords: "petrol price in lucknow today, petrol price lucknow, diesel price lucknow today, fuel price lucknow 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Lucknow is **₹94.69 per litre** and diesel is **₹87.88 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Lucknow, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹94.77).
+Today's petrol price in Lucknow is **₹94.69 per litre** and diesel is **₹87.88 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Lucknow, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹94.77).
 
 Uttar Pradesh charges the higher of a percentage or a fixed per-litre rate, keeping Lucknow close to Delhi levels.
 

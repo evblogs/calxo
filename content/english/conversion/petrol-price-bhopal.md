@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Bhopal Today: ₹107.63/Litre (3 June 2026)"
+title: "Petrol Price in Bhopal Today: ₹107.63/Litre (5 June 2026)"
 description: "Today's petrol price in Bhopal is ₹107.63/litre and diesel is ₹93.54/litre. Updated daily at 6 AM. Bhopal fuel price, Madhya Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-bhopal/
 keywords: "petrol price in bhopal today, petrol price bhopal, diesel price bhopal today, fuel price bhopal 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Bhopal is **₹107.63 per litre** and diesel is **₹93.54 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Bhopal, a Tier 2 city in Madhya Pradesh, about ₹12.86/litre costlier than Delhi (₹94.77).
+Today's petrol price in Bhopal is **₹107.63 per litre** and diesel is **₹93.54 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Bhopal, a Tier 2 city in Madhya Pradesh, about ₹12.86/litre costlier than Delhi (₹94.77).
 
 Madhya Pradesh adds a fixed cess on top of percentage VAT, which is why Bhopal often tops ₹107/litre.
 

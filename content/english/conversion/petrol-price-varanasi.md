@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Varanasi Today: ₹95.15/Litre (3 June 2026)"
+title: "Petrol Price in Varanasi Today: ₹95.15/Litre (5 June 2026)"
 description: "Today's petrol price in Varanasi is ₹95.15/litre and diesel is ₹88.10/litre. Updated daily at 6 AM. Varanasi fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-varanasi/
 keywords: "petrol price in varanasi today, petrol price varanasi, diesel price varanasi today, fuel price varanasi 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Varanasi is **₹95.15 per litre** and diesel is **₹88.10 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Varanasi, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹94.77).
+Today's petrol price in Varanasi is **₹95.15 per litre** and diesel is **₹88.10 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Varanasi, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹94.77).
 
 Varanasi pays the same UP slab as the rest of the state, so its price barely moves from the Lucknow figure.
 

@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Patna Today: ₹105.48/Litre (3 June 2026)"
+title: "Petrol Price in Patna Today: ₹105.48/Litre (5 June 2026)"
 description: "Today's petrol price in Patna is ₹105.48/litre and diesel is ₹92.35/litre. Updated daily at 6 AM. Patna fuel price, Bihar VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-patna/
 keywords: "petrol price in patna today, petrol price patna, diesel price patna today, fuel price patna 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Patna is **₹105.48 per litre** and diesel is **₹92.35 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Patna, a Tier 2 city in Bihar, about ₹10.71/litre costlier than Delhi (₹94.77).
+Today's petrol price in Patna is **₹105.48 per litre** and diesel is **₹92.35 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Patna, a Tier 2 city in Bihar, about ₹10.71/litre costlier than Delhi (₹94.77).
 
 Bihar layers an additional irrecoverable tax over VAT, so Patna petrol stays above the ₹105 mark.
 

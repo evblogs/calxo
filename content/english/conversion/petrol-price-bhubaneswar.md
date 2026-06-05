@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Bhubaneswar Today: ₹101.66/Litre (3 June 2026)"
+title: "Petrol Price in Bhubaneswar Today: ₹101.66/Litre (5 June 2026)"
 description: "Today's petrol price in Bhubaneswar is ₹101.66/litre and diesel is ₹93.34/litre. Updated daily at 6 AM. Bhubaneswar fuel price, Odisha VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-bhubaneswar/
 keywords: "petrol price in bhubaneswar today, petrol price bhubaneswar, diesel price bhubaneswar today, fuel price bhubaneswar 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Bhubaneswar is **₹101.66 per litre** and diesel is **₹93.34 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Bhubaneswar, a Tier 2 city in Odisha, about ₹6.89/litre costlier than Delhi (₹94.77).
+Today's petrol price in Bhubaneswar is **₹101.66 per litre** and diesel is **₹93.34 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Bhubaneswar, a Tier 2 city in Odisha, about ₹6.89/litre costlier than Delhi (₹94.77).
 
 Odisha runs a flat 28% petrol VAT, so Bhubaneswar prices track the eastern-state average closely.
 

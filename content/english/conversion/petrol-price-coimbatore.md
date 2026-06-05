@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Coimbatore Today: ₹100.72/Litre (3 June 2026)"
+title: "Petrol Price in Coimbatore Today: ₹100.72/Litre (5 June 2026)"
 description: "Today's petrol price in Coimbatore is ₹100.72/litre and diesel is ₹92.30/litre. Updated daily at 6 AM. Coimbatore fuel price, Tamil Nadu VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-coimbatore/
 keywords: "petrol price in coimbatore today, petrol price coimbatore, diesel price coimbatore today, fuel price coimbatore 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Coimbatore is **₹100.72 per litre** and diesel is **₹92.30 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹5.95/litre costlier than Delhi (₹94.77).
+Today's petrol price in Coimbatore is **₹100.72 per litre** and diesel is **₹92.30 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹5.95/litre costlier than Delhi (₹94.77).
 
 Tamil Nadu uses a low percentage plus a fixed per-litre charge, so Coimbatore mirrors Chennai almost exactly.
 

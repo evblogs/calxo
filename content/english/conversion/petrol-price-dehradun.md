@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Dehradun Today: ₹93.63/Litre (3 June 2026)"
+title: "Petrol Price in Dehradun Today: ₹93.63/Litre (5 June 2026)"
 description: "Today's petrol price in Dehradun is ₹93.63/litre and diesel is ₹86.93/litre. Updated daily at 6 AM. Dehradun fuel price, Uttarakhand VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-dehradun/
 keywords: "petrol price in dehradun today, petrol price dehradun, diesel price dehradun today, fuel price dehradun 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Dehradun is **₹93.63 per litre** and diesel is **₹86.93 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Dehradun, a Tier 2 city in Uttarakhand, about ₹1.14/litre cheaper than Delhi (₹94.77).
+Today's petrol price in Dehradun is **₹93.63 per litre** and diesel is **₹86.93 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Dehradun, a Tier 2 city in Uttarakhand, about ₹1.14/litre cheaper than Delhi (₹94.77).
 
 Uttarakhand runs a lower VAT than the plains states, making Dehradun cheaper than most of UP and Delhi.
 

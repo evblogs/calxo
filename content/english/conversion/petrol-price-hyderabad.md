@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Hyderabad Today: ₹107.41/Litre (3 June 2026)"
+title: "Petrol Price in Hyderabad Today: ₹107.41/Litre (5 June 2026)"
 description: "Today's petrol price in Hyderabad is ₹107.41/litre and diesel is ₹95.65/litre. Updated daily at 6 AM. Hyderabad fuel price, Telangana VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-hyderabad/
 keywords: "petrol price in hyderabad today, petrol price hyderabad, diesel price hyderabad today, fuel price hyderabad 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Hyderabad is **₹107.41 per litre** and diesel is **₹95.65 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Hyderabad, a Tier 1 metro in Telangana, about ₹12.64/litre costlier than Delhi (₹94.77).
+Today's petrol price in Hyderabad is **₹107.41 per litre** and diesel is **₹95.65 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Hyderabad, a Tier 1 metro in Telangana, about ₹12.64/litre costlier than Delhi (₹94.77).
 
 Telangana levies the highest petrol VAT among the big metros, so Hyderabad is usually the most expensive metro to fill up in.
 

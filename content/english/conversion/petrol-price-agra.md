@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Agra Today: ₹94.82/Litre (3 June 2026)"
+title: "Petrol Price in Agra Today: ₹94.82/Litre (5 June 2026)"
 description: "Today's petrol price in Agra is ₹94.82/litre and diesel is ₹87.92/litre. Updated daily at 6 AM. Agra fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-agra/
 keywords: "petrol price in agra today, petrol price agra, diesel price agra today, fuel price agra 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Agra is **₹94.82 per litre** and diesel is **₹87.92 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Agra, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹94.77).
+Today's petrol price in Agra is **₹94.82 per litre** and diesel is **₹87.92 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Agra, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹94.77).
 
 Agra follows the standard UP higher-of VAT formula, putting it within paise of Lucknow and Delhi.
 

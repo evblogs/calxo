@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Indore Today: ₹107.10/Litre (3 June 2026)"
+title: "Petrol Price in Indore Today: ₹107.10/Litre (5 June 2026)"
 description: "Today's petrol price in Indore is ₹107.10/litre and diesel is ₹93.50/litre. Updated daily at 6 AM. Indore fuel price, Madhya Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-indore/
 keywords: "petrol price in indore today, petrol price indore, diesel price indore today, fuel price indore 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Indore is **₹107.10 per litre** and diesel is **₹93.50 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Indore, a Tier 2 city in Madhya Pradesh, about ₹12.33/litre costlier than Delhi (₹94.77).
+Today's petrol price in Indore is **₹107.10 per litre** and diesel is **₹93.50 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Indore, a Tier 2 city in Madhya Pradesh, about ₹12.33/litre costlier than Delhi (₹94.77).
 
 Indore pays the same Madhya Pradesh slab as Bhopal, keeping both among the costliest Tier 2 cities.
 

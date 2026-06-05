@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Kochi Today: ₹107.14/Litre (3 June 2026)"
+title: "Petrol Price in Kochi Today: ₹107.14/Litre (5 June 2026)"
 description: "Today's petrol price in Kochi is ₹107.14/litre and diesel is ₹95.01/litre. Updated daily at 6 AM. Kochi fuel price, Kerala VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-03
-lastmod: 2026-06-03
+date: 2026-06-05
+lastmod: 2026-06-05
 type: "calculator"
 url: /conversion/petrol-price-kochi/
 keywords: "petrol price in kochi today, petrol price kochi, diesel price kochi today, fuel price kochi 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Kochi is **₹107.14 per litre** and diesel is **₹95.01 per litre** (as of 3 June 2026). Prices update every day at 6:00 AM. That makes Kochi, a Tier 2 city in Kerala, about ₹12.37/litre costlier than Delhi (₹94.77).
+Today's petrol price in Kochi is **₹107.14 per litre** and diesel is **₹95.01 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Kochi, a Tier 2 city in Kerala, about ₹12.37/litre costlier than Delhi (₹94.77).
 
 Kochi pays the same Kerala slab as the capital, keeping it among the priciest southern cities.
 
