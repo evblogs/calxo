@@ -7,11 +7,13 @@ Run: python3 calxo_gsc_index.py
 Add new pages to URLS list — already-submitted ones are skipped automatically.
 """
 
-import json, time
+import json, time, os
 from pathlib import Path
 from datetime import datetime
 
-CREDENTIALS_FILE = "/Users/luckychamp/gojournal/pythonfiles/gsc-key.json"
+# Local default (Mac); CI/other hosts override via GSC_CREDENTIALS_PATH.
+CREDENTIALS_FILE = os.environ.get(
+    "GSC_CREDENTIALS_PATH", "/Users/luckychamp/gojournal/pythonfiles/gsc-key.json")
 BASE_URL         = "https://www.calxo.in"
 TRACKER_FILE     = Path(__file__).parent / "calxo_gsc_submitted.json"
 

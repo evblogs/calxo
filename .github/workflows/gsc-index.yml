@@ -1,0 +1,72 @@
+name: GSC Manual Indexer
+
+# On-demand: run from the Actions tab (Run workflow). Submits any not-yet-
+# submitted URLs in pythonfiles/calxo_gsc_index.py to the Google Indexing API
+# using the GSC_KEY_JSON service-account secret, then commits the updated
+# tracker so the same URLs are not resubmitted next time.
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Resubmit ALL URLs, ignoring the tracker'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gsc-index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install google-auth google-auth-httplib2 requests
+
+      - name: Write GSC key file
+        run: echo '${{ secrets.GSC_KEY_JSON }}' > "$GITHUB_WORKSPACE/pythonfiles/gsc-key.json"
+
+      - name: Configure git
+        run: |
+          git config user.name  "Calxo Content Bot"
+          git config user.email "avmedianews321@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/evblogs/calxo.git
+
+      - name: Submit URLs to Google Indexing API
+        env:
+          GSC_CREDENTIALS_PATH: ${{ github.workspace }}/pythonfiles/gsc-key.json
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            python pythonfiles/calxo_gsc_index.py --force
+          else
+            python pythonfiles/calxo_gsc_index.py
+          fi
+
+      - name: Commit updated submission tracker
+        run: |
+          rm -f "$GITHUB_WORKSPACE/pythonfiles/gsc-key.json"
+          git add pythonfiles/calxo_gsc_submitted.json || true
+          if git diff --cached --quiet; then
+            echo "Tracker unchanged — nothing to commit."
+          else
+            git commit -m "chore: update GSC submission tracker [skip ci]"
+            git pull --rebase origin master || true
+            git push origin master
+          fi
