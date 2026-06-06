@@ -1,6 +1,6 @@
 ---
-title: "Petrol Price in Hyderabad Today: ₹107.41/Litre (6 June 2026)"
-description: "Today's petrol price in Hyderabad is ₹107.41/litre and diesel is ₹95.65/litre. Updated daily at 6 AM. Hyderabad fuel price, Telangana VAT breakup and a monthly fuel-cost calculator."
+title: "Petrol Price in Hyderabad Today: ₹115.73/Litre (6 June 2026)"
+description: "Today's petrol price in Hyderabad is ₹115.73/litre and diesel is ₹103.82/litre. Updated daily at 6 AM. Hyderabad fuel price, Telangana VAT breakup and a monthly fuel-cost calculator."
 date: 2026-06-06
 lastmod: 2026-06-06
 type: "calculator"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Hyderabad is **₹107.41 per litre** and diesel is **₹95.65 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Hyderabad, a Tier 1 metro in Telangana, about ₹12.64/litre costlier than Delhi (₹94.77).
+Today's petrol price in Hyderabad is **₹115.73 per litre** and diesel is **₹103.82 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Hyderabad, a Tier 1 metro in Telangana, about ₹13.61/litre costlier than Delhi (₹102.12).
 
 Telangana levies the highest petrol VAT among the big metros, so Hyderabad is usually the most expensive metro to fill up in.
 
@@ -32,9 +32,9 @@ Every litre of petrol in Hyderabad carries two central charges that are the same
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Telangana state tax (VAT/cess)** | **~27.64** |
+| **Telangana state tax (VAT/cess)** | **~35.96** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~107.41** |
+| **Total pump price** | **~115.73** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -42,37 +42,37 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 107.41 | 95.65 |
-| May 2026 | 107.41 | 95.65 |
-| April 2026 | 107.41 | 95.65 |
-| March 2026 | 107.41 | 95.65 |
-| February 2026 | 107.41 | 95.65 |
+| June 2026 | 115.73 | 103.82 |
+| May 2026 | 115.73 | 103.82 |
+| April 2026 | 115.73 | 103.82 |
+| March 2026 | 115.73 | 103.82 |
+| February 2026 | 115.73 | 103.82 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Hyderabad figure moves only in paise on most days.
 
 ## Monthly fuel cost for Hyderabad commuters
 
-At ₹107.41/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹115.73/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,882 |
-| Honda City | 18 km/L | ₹5,967 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,161 |
-| Royal Enfield 350 | 35 km/L | ₹3,069 |
-| Honda Activa 6G | 50 km/L | ₹2,148 |
+| Maruti Suzuki Swift | 22 km/L | ₹5,260 |
+| Honda City | 18 km/L | ₹6,429 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,715 |
+| Royal Enfield 350 | 35 km/L | ₹3,307 |
+| Honda Activa 6G | 50 km/L | ₹2,315 |
 
-Someone in Hyderabad driving a Maruti Swift 1,500 km a month spends roughly **₹7,323/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Hyderabad driving a Maruti Swift 1,500 km a month spends roughly **₹7,891/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Hyderabad vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| Delhi | ₹94.77 | ₹87.67 |
-| Mumbai | ₹103.44 | ₹89.97 |
-| Bengaluru | ₹102.92 | ₹88.60 |
-| **Hyderabad** | **₹107.41** | ₹95.65 |
-| Ahmedabad | ₹93.08 | ₹88.58 |
+| Delhi | ₹102.12 | ₹95.20 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹110.89 | ₹98.80 |
+| **Hyderabad** | **₹115.73** | ₹103.82 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -84,7 +84,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Hyderabad
 
 ### Is petrol cheaper in Visakhapatnam or Hyderabad?
 
-Right now Hyderabad is ₹107.41/litre and Visakhapatnam is around ₹109.47. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Hyderabad is ₹115.73/litre and Visakhapatnam is around ₹116.39. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Hyderabad?
 

@@ -1,6 +1,6 @@
 ---
-title: "Petrol Price in Varanasi Today: ₹95.15/Litre (6 June 2026)"
-description: "Today's petrol price in Varanasi is ₹95.15/litre and diesel is ₹88.10/litre. Updated daily at 6 AM. Varanasi fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
+title: "Petrol Price in Varanasi Today: ₹102.23/Litre (6 June 2026)"
+description: "Today's petrol price in Varanasi is ₹102.23/litre and diesel is ₹95.72/litre. Updated daily at 6 AM. Varanasi fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
 date: 2026-06-06
 lastmod: 2026-06-06
 type: "calculator"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Varanasi is **₹95.15 per litre** and diesel is **₹88.10 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Varanasi, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹94.77).
+Today's petrol price in Varanasi is **₹102.23 per litre** and diesel is **₹95.72 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Varanasi, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
 
 Varanasi pays the same UP slab as the rest of the state, so its price barely moves from the Lucknow figure.
 
@@ -32,9 +32,9 @@ Every litre of petrol in Varanasi carries two central charges that are the same 
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Uttar Pradesh state tax (VAT/cess)** | **~15.38** |
+| **Uttar Pradesh state tax (VAT/cess)** | **~22.46** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~95.15** |
+| **Total pump price** | **~102.23** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -42,38 +42,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 95.15 | 88.10 |
-| May 2026 | 95.15 | 88.10 |
-| April 2026 | 95.15 | 88.10 |
-| March 2026 | 95.15 | 88.10 |
-| February 2026 | 95.15 | 88.10 |
+| June 2026 | 102.23 | 95.72 |
+| May 2026 | 102.23 | 95.72 |
+| April 2026 | 102.23 | 95.72 |
+| March 2026 | 102.23 | 95.72 |
+| February 2026 | 102.23 | 95.72 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Varanasi figure moves only in paise on most days.
 
 ## Monthly fuel cost for Varanasi commuters
 
-At ₹95.15/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹102.23/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,325 |
-| Honda City | 18 km/L | ₹5,286 |
-| Hyundai Creta (petrol) | 15 km/L | ₹6,343 |
-| Royal Enfield 350 | 35 km/L | ₹2,719 |
-| Honda Activa 6G | 50 km/L | ₹1,903 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,647 |
+| Honda City | 18 km/L | ₹5,679 |
+| Hyundai Creta (petrol) | 15 km/L | ₹6,815 |
+| Royal Enfield 350 | 35 km/L | ₹2,921 |
+| Honda Activa 6G | 50 km/L | ₹2,045 |
 
-Someone in Varanasi driving a Maruti Swift 1,500 km a month spends roughly **₹6,488/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Varanasi driving a Maruti Swift 1,500 km a month spends roughly **₹6,970/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Varanasi vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| Delhi | ₹94.77 | ₹87.67 |
-| Mumbai | ₹103.44 | ₹89.97 |
-| Bengaluru | ₹102.92 | ₹88.60 |
-| Hyderabad | ₹107.41 | ₹95.65 |
-| Ahmedabad | ₹93.08 | ₹88.58 |
-| **Varanasi** | **₹95.15** | ₹88.10 |
+| Delhi | ₹102.12 | ₹95.20 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹110.89 | ₹98.80 |
+| Hyderabad | ₹115.73 | ₹103.82 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
+| **Varanasi** | **₹102.23** | ₹95.72 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -85,7 +85,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Varanasi 
 
 ### Is petrol cheaper in Lucknow or Varanasi?
 
-Right now Varanasi is ₹95.15/litre and Lucknow is around ₹94.69. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Varanasi is ₹102.23/litre and Lucknow is around ₹101.89. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Varanasi?
 

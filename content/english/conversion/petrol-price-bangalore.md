@@ -1,5 +1,5 @@
 ---
-title: "Petrol Price in Bangalore Today — ₹102.92/Litre (6 June 2026)"
+title: "Petrol Price in Bangalore Today — ₹110.89/Litre (6 June 2026)"
 description: "Today's petrol price in Bangalore (Bengaluru) is ₹102.92/litre and diesel is ₹88.60/litre. Updated daily at 6 AM. Karnataka's VAT makes Bangalore fuel costlier than Delhi by ₹8."
 date: 2026-04-29
 lastmod: 2026-06-06
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Bangalore (Bengaluru) is **₹102.92 per litre** and diesel is **₹88.60 per litre** (as of 29 April 2026). Prices are set by oil marketing companies and updated daily at 6:00 AM.
+Today's petrol price in Bangalore (Bengaluru) is **₹110.89 per litre** and diesel is **₹98.80 per litre** (as of 29 April 2026). Prices are set by oil marketing companies and updated daily at 6:00 AM.
 
 Bangalore pays ₹8.15 more per litre than Delhi — entirely because Karnataka charges ~25.9% state VAT on petrol vs Delhi's ~19.4%.
 

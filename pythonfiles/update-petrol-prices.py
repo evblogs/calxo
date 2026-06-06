@@ -94,7 +94,23 @@ def _sane(val):
 
 
 def _extract_fuel_price(soup, text, fuel):
-    """Pull a single fuel price from the page using layered strategies."""
+    """Pull a single fuel price from the page using layered strategies.
+
+    Strategy 0 (added 2026-06-06) is the most reliable signal we've found:
+    `₹ NN.NN / 1 ltr` (or `/ Litre`) is bankbazaar's exact rendering of the
+    headline current-day rate, and the dedicated petrol/diesel page only
+    contains the rate for its own fuel — so the first such match IS the
+    answer. cardekho serves the same markup with `₹NN.NN /L`.
+    """
+    # 0) Direct headline pattern — `₹ NN.NN / 1 ltr` / `/Litre` / `/L`.
+    pat = re.compile(
+        r'(?:Rs\.?|₹)\s*([\d]{2,3}\.[\d]{1,2})\s*/\s*(?:1\s*)?(?:ltr|litre|L)\b',
+        re.I,
+    )
+    m = pat.search(text)
+    if m and _sane(float(m.group(1))):
+        return float(m.group(1))
+
     # 1) Structured selectors (cheap, precise when present).
     dec = re.compile(r'[\d]{2,3}\.[\d]{1,2}')
     for sel in (f'[data-fuel="{fuel}"] .current-price',
@@ -158,22 +174,56 @@ def _extract_date(text):
     return None
 
 
-def fetch_from_url(url):
-    """Fetch one source URL. Returns (petrol, diesel, as_on_date|None) or None."""
+def _fetch_one(url, fuel):
+    """Fetch one URL and return (price, as_on_date|None) for the given fuel."""
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             resp = requests.get(url, headers=_headers(), timeout=REQUEST_TIMEOUT)
             resp.raise_for_status()
             soup = BeautifulSoup(resp.text, "html.parser")
             text = soup.get_text(" ", strip=True)
-            petrol = _extract_fuel_price(soup, text, "petrol")
-            diesel = _extract_fuel_price(soup, text, "diesel")
-            if _sane(petrol) and _sane(diesel):
-                return petrol, diesel, _extract_date(text)
+            price = _extract_fuel_price(soup, text, fuel)
+            if _sane(price):
+                return price, _extract_date(text)
         except Exception:
             pass
         time.sleep(0.4 * attempt)
     return None
+
+
+def fetch_from_url(url, diesel_url=None):
+    """Fetch one source's data. Returns (petrol, diesel, as_on_date|None) or None.
+
+    When `diesel_url` is provided, diesel is fetched from a separate URL
+    (bankbazaar, for example, splits petrol and diesel onto different pages
+    rather than showing both on one). When omitted, both are extracted from
+    the same page (cardekho, goodreturns)."""
+    got_p = _fetch_one(url, "petrol")
+    if not got_p:
+        return None
+    petrol, p_date = got_p
+
+    if diesel_url:
+        got_d = _fetch_one(diesel_url, "diesel")
+        if not got_d:
+            return None
+        diesel, d_date = got_d
+    else:
+        # Extract diesel from the same page
+        try:
+            resp = requests.get(url, headers=_headers(), timeout=REQUEST_TIMEOUT)
+            soup = BeautifulSoup(resp.text, "html.parser")
+            text = soup.get_text(" ", strip=True)
+            diesel = _extract_fuel_price(soup, text, "diesel")
+            d_date = _extract_date(text)
+        except Exception:
+            return None
+        if not _sane(diesel):
+            return None
+
+    # Prefer the later "as on" date if the two URLs disagree (they usually agree).
+    as_on = max(filter(None, [p_date, d_date]), default=None)
+    return petrol, diesel, as_on
 
 
 # Per-source slug aliases (sites name a few cities differently).
@@ -192,11 +242,22 @@ def _slug_for(source, city_name, gr_slug):
 
 
 # Source URL builders. Add/remove freely — failures are tolerated.
+# Each source: (name, petrol_url_fn, diesel_url_fn|None).
+# When diesel_url_fn is None, diesel is extracted from the same page as petrol.
+# Bankbazaar splits petrol and diesel onto separate pages.
 SOURCES = [
-    ("goodreturns", lambda s: f"https://www.goodreturns.in/petrol-price/{s}.html"),
-    ("ndtv",        lambda s: f"https://www.ndtv.com/fuel-prices/petrol-price-in-{s}-city"),
-    ("bankbazaar",  lambda s: f"https://www.bankbazaar.com/fuel/petrol-price-in-{s}.html"),
-    ("cardekho",    lambda s: f"https://www.cardekho.com/petrol-price-in-{s}-city"),
+    ("goodreturns",
+        lambda s: f"https://www.goodreturns.in/petrol-price/{s}.html",
+        None),
+    ("ndtv",
+        lambda s: f"https://www.ndtv.com/fuel-prices/petrol-price-in-{s}-city",
+        None),
+    ("bankbazaar",
+        lambda s: f"https://www.bankbazaar.com/fuel/petrol-price-{s}.html",
+        lambda s: f"https://www.bankbazaar.com/fuel/diesel-price-{s}.html"),
+    ("cardekho",
+        lambda s: f"https://www.cardekho.com/petrol-price-in-{s}-city",
+        lambda s: f"https://www.cardekho.com/diesel-price-in-{s}-city"),
 ]
 
 
@@ -217,9 +278,11 @@ def fetch_price(city_name, gr_slug):
     Returns (petrol, diesel, provenance_str) or (None, None, None).
     """
     results = []  # list of (source, petrol, diesel, date|None)
-    for source, build in SOURCES:
+    for source, build_petrol, build_diesel in SOURCES:
         slug = _slug_for(source, city_name, gr_slug)
-        got = fetch_from_url(build(slug))
+        petrol_url = build_petrol(slug)
+        diesel_url = build_diesel(slug) if build_diesel else None
+        got = fetch_from_url(petrol_url, diesel_url=diesel_url)
         if got:
             p, d, dt = got
             results.append((source, p, d, dt))

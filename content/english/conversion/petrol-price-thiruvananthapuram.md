@@ -1,6 +1,6 @@
 ---
-title: "Petrol Price in Thiruvananthapuram Today: ₹107.62/Litre (6 June 2026)"
-description: "Today's petrol price in Thiruvananthapuram is ₹107.62/litre and diesel is ₹96.02/litre. Updated daily at 6 AM. Thiruvananthapuram fuel price, Kerala VAT breakup and a monthly fuel-cost calculator."
+title: "Petrol Price in Thiruvananthapuram Today: ₹115.49/Litre (6 June 2026)"
+description: "Today's petrol price in Thiruvananthapuram is ₹115.49/litre and diesel is ₹104.40/litre. Updated daily at 6 AM. Thiruvananthapuram fuel price, Kerala VAT breakup and a monthly fuel-cost calculator."
 date: 2026-06-06
 lastmod: 2026-06-06
 type: "calculator"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Thiruvananthapuram is **₹107.62 per litre** and diesel is **₹96.02 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Thiruvananthapuram, a Tier 2 city in Kerala, about ₹12.85/litre costlier than Delhi (₹94.77).
+Today's petrol price in Thiruvananthapuram is **₹115.49 per litre** and diesel is **₹104.40 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Thiruvananthapuram, a Tier 2 city in Kerala, about ₹13.37/litre costlier than Delhi (₹102.12).
 
 Kerala combines high percentage VAT with an additional social-security cess, so the state capital stays above ₹107.
 
@@ -32,9 +32,9 @@ Every litre of petrol in Thiruvananthapuram carries two central charges that are
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Kerala state tax (VAT/cess)** | **~27.85** |
+| **Kerala state tax (VAT/cess)** | **~35.72** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~107.62** |
+| **Total pump price** | **~115.49** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -42,38 +42,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 107.62 | 96.02 |
-| May 2026 | 107.62 | 96.02 |
-| April 2026 | 107.62 | 96.02 |
-| March 2026 | 107.62 | 96.02 |
-| February 2026 | 107.62 | 96.02 |
+| June 2026 | 115.49 | 104.40 |
+| May 2026 | 115.49 | 104.40 |
+| April 2026 | 115.49 | 104.40 |
+| March 2026 | 115.49 | 104.40 |
+| February 2026 | 115.49 | 104.40 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Thiruvananthapuram figure moves only in paise on most days.
 
 ## Monthly fuel cost for Thiruvananthapuram commuters
 
-At ₹107.62/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹115.49/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,892 |
-| Honda City | 18 km/L | ₹5,979 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,175 |
-| Royal Enfield 350 | 35 km/L | ₹3,075 |
-| Honda Activa 6G | 50 km/L | ₹2,152 |
+| Maruti Suzuki Swift | 22 km/L | ₹5,250 |
+| Honda City | 18 km/L | ₹6,416 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,699 |
+| Royal Enfield 350 | 35 km/L | ₹3,300 |
+| Honda Activa 6G | 50 km/L | ₹2,310 |
 
-Someone in Thiruvananthapuram driving a Maruti Swift 1,500 km a month spends roughly **₹7,338/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Thiruvananthapuram driving a Maruti Swift 1,500 km a month spends roughly **₹7,874/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Thiruvananthapuram vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| Delhi | ₹94.77 | ₹87.67 |
-| Mumbai | ₹103.44 | ₹89.97 |
-| Bengaluru | ₹102.92 | ₹88.60 |
-| Hyderabad | ₹107.41 | ₹95.65 |
-| Ahmedabad | ₹93.08 | ₹88.58 |
-| **Thiruvananthapuram** | **₹107.62** | ₹96.02 |
+| Delhi | ₹102.12 | ₹95.20 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹110.89 | ₹98.80 |
+| Hyderabad | ₹115.73 | ₹103.82 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
+| **Thiruvananthapuram** | **₹115.49** | ₹104.40 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -85,7 +85,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Thiruvana
 
 ### Is petrol cheaper in Kochi or Thiruvananthapuram?
 
-Right now Thiruvananthapuram is ₹107.62/litre and Kochi is around ₹107.14. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Thiruvananthapuram is ₹115.49/litre and Kochi is around ₹115.34. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Thiruvananthapuram?
 

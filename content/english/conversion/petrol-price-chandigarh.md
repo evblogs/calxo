@@ -1,6 +1,6 @@
 ---
-title: "Petrol Price in Chandigarh Today: ₹94.24/Litre (6 June 2026)"
-description: "Today's petrol price in Chandigarh is ₹94.24/litre and diesel is ₹83.02/litre. Updated daily at 6 AM. Chandigarh fuel price, Chandigarh VAT breakup and a monthly fuel-cost calculator."
+title: "Petrol Price in Chandigarh Today: ₹101.51/Litre (6 June 2026)"
+description: "Today's petrol price in Chandigarh is ₹101.51/litre and diesel is ₹89.47/litre. Updated daily at 6 AM. Chandigarh fuel price, Chandigarh VAT breakup and a monthly fuel-cost calculator."
 date: 2026-06-06
 lastmod: 2026-06-06
 type: "calculator"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Chandigarh is **₹94.24 per litre** and diesel is **₹83.02 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Chandigarh, a Tier 2 city in Chandigarh, about ₹0.53/litre cheaper than Delhi (₹94.77).
+Today's petrol price in Chandigarh is **₹101.51 per litre** and diesel is **₹89.47 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Chandigarh, a Tier 2 city in Chandigarh, about ₹0.61/litre cheaper than Delhi (₹102.12).
 
 As a Union Territory, Chandigarh keeps VAT low, making it one of the cheapest places in north India to buy petrol.
 
@@ -32,9 +32,9 @@ Every litre of petrol in Chandigarh carries two central charges that are the sam
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Chandigarh state tax (VAT/cess)** | **~14.47** |
+| **Chandigarh state tax (VAT/cess)** | **~21.74** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~94.24** |
+| **Total pump price** | **~101.51** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -42,38 +42,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 94.24 | 83.02 |
-| May 2026 | 94.24 | 83.02 |
-| April 2026 | 94.24 | 83.02 |
-| March 2026 | 94.24 | 83.02 |
-| February 2026 | 94.24 | 83.02 |
+| June 2026 | 101.51 | 89.47 |
+| May 2026 | 101.51 | 89.47 |
+| April 2026 | 101.51 | 89.47 |
+| March 2026 | 101.51 | 89.47 |
+| February 2026 | 101.51 | 89.47 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Chandigarh figure moves only in paise on most days.
 
 ## Monthly fuel cost for Chandigarh commuters
 
-At ₹94.24/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹101.51/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,284 |
-| Honda City | 18 km/L | ₹5,236 |
-| Hyundai Creta (petrol) | 15 km/L | ₹6,283 |
-| Royal Enfield 350 | 35 km/L | ₹2,693 |
-| Honda Activa 6G | 50 km/L | ₹1,885 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,614 |
+| Honda City | 18 km/L | ₹5,639 |
+| Hyundai Creta (petrol) | 15 km/L | ₹6,767 |
+| Royal Enfield 350 | 35 km/L | ₹2,900 |
+| Honda Activa 6G | 50 km/L | ₹2,030 |
 
-Someone in Chandigarh driving a Maruti Swift 1,500 km a month spends roughly **₹6,425/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Chandigarh driving a Maruti Swift 1,500 km a month spends roughly **₹6,921/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Chandigarh vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| Delhi | ₹94.77 | ₹87.67 |
-| Mumbai | ₹103.44 | ₹89.97 |
-| Bengaluru | ₹102.92 | ₹88.60 |
-| Hyderabad | ₹107.41 | ₹95.65 |
-| Ahmedabad | ₹93.08 | ₹88.58 |
-| **Chandigarh** | **₹94.24** | ₹83.02 |
+| Delhi | ₹102.12 | ₹95.20 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹110.89 | ₹98.80 |
+| Hyderabad | ₹115.73 | ₹103.82 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
+| **Chandigarh** | **₹101.51** | ₹89.47 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -85,7 +85,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Chandigar
 
 ### Is petrol cheaper in Ludhiana or Chandigarh?
 
-Right now Chandigarh is ₹94.24/litre and Ludhiana is around ₹97.11. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Chandigarh is ₹101.51/litre and Ludhiana is around ₹105.12. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Chandigarh?
 
