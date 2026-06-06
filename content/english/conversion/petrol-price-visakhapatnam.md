@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Visakhapatnam Today: ₹109.47/Litre (5 June 2026)"
+title: "Petrol Price in Visakhapatnam Today: ₹109.47/Litre (6 June 2026)"
 description: "Today's petrol price in Visakhapatnam is ₹109.47/litre and diesel is ₹95.62/litre. Updated daily at 6 AM. Visakhapatnam fuel price, Andhra Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-05
-lastmod: 2026-06-05
+date: 2026-06-06
+lastmod: 2026-06-06
 type: "calculator"
 url: /conversion/petrol-price-visakhapatnam/
 keywords: "petrol price in visakhapatnam today, petrol price visakhapatnam, diesel price visakhapatnam today, fuel price visakhapatnam 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Visakhapatnam is **₹109.47 per litre** and diesel is **₹95.62 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Visakhapatnam, a Tier 2 city in Andhra Pradesh, about ₹14.70/litre costlier than Delhi (₹94.77).
+Today's petrol price in Visakhapatnam is **₹109.47 per litre** and diesel is **₹95.62 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Visakhapatnam, a Tier 2 city in Andhra Pradesh, about ₹14.70/litre costlier than Delhi (₹94.77).
 
 Andhra Pradesh stacks percentage VAT, a fixed levy and a cess, which is why Vizag is often the costliest city on this list.
 

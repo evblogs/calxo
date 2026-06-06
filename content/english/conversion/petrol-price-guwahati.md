@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Guwahati Today: ₹94.53/Litre (5 June 2026)"
+title: "Petrol Price in Guwahati Today: ₹94.53/Litre (6 June 2026)"
 description: "Today's petrol price in Guwahati is ₹94.53/litre and diesel is ₹87.77/litre. Updated daily at 6 AM. Guwahati fuel price, Assam VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-05
-lastmod: 2026-06-05
+date: 2026-06-06
+lastmod: 2026-06-06
 type: "calculator"
 url: /conversion/petrol-price-guwahati/
 keywords: "petrol price in guwahati today, petrol price guwahati, diesel price guwahati today, fuel price guwahati 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Guwahati is **₹94.53 per litre** and diesel is **₹87.77 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Guwahati, a Tier 2 city in Assam, roughly the same as Delhi (₹94.77).
+Today's petrol price in Guwahati is **₹94.53 per litre** and diesel is **₹87.77 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Guwahati, a Tier 2 city in Assam, roughly the same as Delhi (₹94.77).
 
 Assam applies a higher-of VAT formula, though periodic rebates keep Guwahati near the national average.
 

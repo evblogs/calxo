@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Vadodara Today: ₹93.30/Litre (5 June 2026)"
+title: "Petrol Price in Vadodara Today: ₹93.30/Litre (6 June 2026)"
 description: "Today's petrol price in Vadodara is ₹93.30/litre and diesel is ₹88.12/litre. Updated daily at 6 AM. Vadodara fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-05
-lastmod: 2026-06-05
+date: 2026-06-06
+lastmod: 2026-06-06
 type: "calculator"
 url: /conversion/petrol-price-vadodara/
 keywords: "petrol price in vadodara today, petrol price vadodara, diesel price vadodara today, fuel price vadodara 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Vadodara is **₹93.30 per litre** and diesel is **₹88.12 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Vadodara, a Tier 2 city in Gujarat, about ₹1.47/litre cheaper than Delhi (₹94.77).
+Today's petrol price in Vadodara is **₹93.30 per litre** and diesel is **₹88.12 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Vadodara, a Tier 2 city in Gujarat, about ₹1.47/litre cheaper than Delhi (₹94.77).
 
 Vadodara pays the same low Gujarat slab as Ahmedabad and Surat, so all three stay close to ₹93/litre.
 

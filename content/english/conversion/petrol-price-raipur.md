@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Raipur Today: ₹102.51/Litre (5 June 2026)"
+title: "Petrol Price in Raipur Today: ₹102.51/Litre (6 June 2026)"
 description: "Today's petrol price in Raipur is ₹102.51/litre and diesel is ₹93.54/litre. Updated daily at 6 AM. Raipur fuel price, Chhattisgarh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-05
-lastmod: 2026-06-05
+date: 2026-06-06
+lastmod: 2026-06-06
 type: "calculator"
 url: /conversion/petrol-price-raipur/
 keywords: "petrol price in raipur today, petrol price raipur, diesel price raipur today, fuel price raipur 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Raipur is **₹102.51 per litre** and diesel is **₹93.54 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Raipur, a Tier 2 city in Chhattisgarh, about ₹7.74/litre costlier than Delhi (₹94.77).
+Today's petrol price in Raipur is **₹102.51 per litre** and diesel is **₹93.54 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Raipur, a Tier 2 city in Chhattisgarh, about ₹7.74/litre costlier than Delhi (₹94.77).
 
 Chhattisgarh charges VAT plus a fixed cess, putting Raipur in the upper band of central India prices.
 

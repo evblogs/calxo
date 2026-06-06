@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Delhi Today — ₹94.77/Litre (5 June 2026)"
+title: "Petrol Price in Delhi Today — ₹94.77/Litre (6 June 2026)"
 description: "Today's petrol price in Delhi is ₹94.77/litre and diesel is ₹87.67/litre. Updated daily at 6 AM. Delhi has the lowest petrol price among all major metros due to low state VAT."
 date: 2026-04-29
-lastmod: 2026-06-05
+lastmod: 2026-06-06
 type: "calculator"
 url: /conversion/petrol-price-delhi/
 keywords: "petrol price in delhi today, petrol price delhi, diesel price delhi today, fuel price delhi 2026"

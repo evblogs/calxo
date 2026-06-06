@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Mumbai Today: ₹103.44/Litre (5 June 2026)"
+title: "Petrol Price in Mumbai Today: ₹103.44/Litre (6 June 2026)"
 description: "Today's petrol price in Mumbai is ₹103.44/litre and diesel is ₹89.97/litre. Updated daily at 6 AM. Mumbai fuel price, Maharashtra VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-05
-lastmod: 2026-06-05
+date: 2026-06-06
+lastmod: 2026-06-06
 type: "calculator"
 url: /conversion/petrol-price-mumbai/
 keywords: "petrol price in mumbai today, petrol price mumbai, diesel price mumbai today, fuel price mumbai 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Mumbai is **₹103.44 per litre** and diesel is **₹89.97 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Mumbai, a Tier 1 metro in Maharashtra, about ₹8.67/litre costlier than Delhi (₹94.77).
+Today's petrol price in Mumbai is **₹103.44 per litre** and diesel is **₹89.97 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Mumbai, a Tier 1 metro in Maharashtra, about ₹8.67/litre costlier than Delhi (₹94.77).
 
 Maharashtra runs one of the steepest petrol VAT slabs in the country, which is why Mumbai routinely crosses ₹100/litre.
 

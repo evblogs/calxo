@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Ranchi Today: ₹97.49/Litre (5 June 2026)"
+title: "Petrol Price in Ranchi Today: ₹97.49/Litre (6 June 2026)"
 description: "Today's petrol price in Ranchi is ₹97.49/litre and diesel is ₹90.44/litre. Updated daily at 6 AM. Ranchi fuel price, Jharkhand VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-05
-lastmod: 2026-06-05
+date: 2026-06-06
+lastmod: 2026-06-06
 type: "calculator"
 url: /conversion/petrol-price-ranchi/
 keywords: "petrol price in ranchi today, petrol price ranchi, diesel price ranchi today, fuel price ranchi 2026"
@@ -11,7 +11,7 @@ categories:
 author: vignesh
 ---
 
-Today's petrol price in Ranchi is **₹97.49 per litre** and diesel is **₹90.44 per litre** (as of 5 June 2026). Prices update every day at 6:00 AM. That makes Ranchi, a Tier 2 city in Jharkhand, about ₹2.72/litre costlier than Delhi (₹94.77).
+Today's petrol price in Ranchi is **₹97.49 per litre** and diesel is **₹90.44 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Ranchi, a Tier 2 city in Jharkhand, about ₹2.72/litre costlier than Delhi (₹94.77).
 
 Jharkhand uses a higher-of formula on petrol VAT, keeping Ranchi cheaper than neighbouring Patna.
 
