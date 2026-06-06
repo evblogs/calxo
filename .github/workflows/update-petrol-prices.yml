@@ -2,8 +2,13 @@ name: Daily Petrol Price Refresh
 
 on:
   schedule:
-    # 03:30 UTC = 9:00 AM IST — after the 6 AM OMC price revision
-    - cron: '30 3 * * *'
+    # 01:00 UTC = 06:30 AM IST — first run window after the daily 6:00 AM
+    # OMC price revision. Runs in the cloud (GitHub-hosted runner), so it
+    # fires whether the Mac is on or off.
+    - cron: '0 1 * * *'
+    # 01:30 UTC = 07:00 AM IST — retry window in case the 6:30 run hit a
+    # transient scrape failure (cardekho/bankbazaar Cloudflare hiccups).
+    - cron: '30 1 * * *'
   workflow_dispatch:
 
 permissions:
@@ -42,6 +47,11 @@ jobs:
 
       - name: Fetch latest fuel prices
         env:
+          # Pin the runner's wall clock to IST so date.today() in the Python
+          # script and `date` in the shell both agree with the OMC daily
+          # revision cycle. Without this the UTC-based runner can spend the
+          # late-evening IST window on yesterday's date.
+          TZ: Asia/Kolkata
           CALXO_SKIP_GIT: '1'
           # Optional: set these repo secrets/vars to get real live prices.
           # Without them the job advances the date and holds previous prices.
@@ -50,15 +60,25 @@ jobs:
         run: python pythonfiles/update-petrol-prices.py
 
       - name: Regenerate city pages from fresh data
+        env:
+          TZ: Asia/Kolkata
         run: python pythonfiles/generate-petrol-pages.py
 
       - name: Commit and push
+        env:
+          TZ: Asia/Kolkata
         run: |
           git add data/petrol-prices.json content/english/conversion/petrol-price-*.md
           if git diff --cached --quiet; then
-            echo "No price changes today — nothing to commit."
+            # No file diff = either we already ran today, OR something is
+            # silently masking the daily-date bump (a bug worth catching).
+            # Log it but don't fail the workflow; the next scheduled run
+            # will retry. The architecture guarantees a diff on the first
+            # run of a new IST date.
+            echo "No file diff after refresh + regenerate."
+            echo "If this fires on a fresh IST date, investigate update_page_lastmod / generate-petrol-pages.py."
           else
-            git commit -m "[auto] Refresh petrol prices — $(date -u +%Y-%m-%d)"
+            git commit -m "[auto] Refresh petrol prices — $(date +%Y-%m-%d)"
             git pull --rebase origin master || true
             git push origin master
           fi
