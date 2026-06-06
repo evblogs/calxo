@@ -1,12 +1,22 @@
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>" | safeHTML }}
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   {{- range .Site.Pages }}
-    {{- if and (not .Params.private) (not .Params.noindex) }}
+    {{- $p := . }}
+    {{- if and (not $p.Params.private) (not $p.Params.noindex) }}
     <url>
-      <loc>{{ .Permalink }}</loc>
-      <lastmod>{{ or .Lastmod .Date | time.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
+      <loc>{{ $p.Permalink }}</loc>
+      <lastmod>{{ or $p.Lastmod $p.Date | time.Format "2006-01-02T15:04:05Z07:00" }}</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
+      {{- with $p.Params.image }}
+      <image:image>
+        <image:loc>{{ . | absURL }}</image:loc>
+        {{- $cap := or $p.Params.image_alt $p.Title }}
+        <image:caption>{{ $cap }}</image:caption>
+        <image:title>{{ $cap }}</image:title>
+      </image:image>
+      {{- end }}
     </url>
     {{- end }}
   {{- end }}

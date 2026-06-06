@@ -9,11 +9,22 @@ keywords: "petrol price in coimbatore today, petrol price coimbatore, diesel pri
 categories:
 - Conversion Calculators
 author: vignesh
+image: /images/petrol/petrol-price-coimbatore.png
+image_alt: "Today's petrol price in Coimbatore is ₹108.32 per litre and diesel is ₹100.14 per litre on 6 June 2026"
 ---
 
 Today's petrol price in Coimbatore is **₹108.32 per litre** and diesel is **₹100.14 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹6.20/litre costlier than Delhi (₹102.12).
 
 Tamil Nadu uses a low percentage plus a fixed per-litre charge, so Coimbatore mirrors Chennai almost exactly.
+
+<figure class="cx-price-card">
+  <img src="/images/petrol/petrol-price-coimbatore.png"
+       alt="Today's petrol price in Coimbatore is ₹108.32 per litre and diesel is ₹100.14 per litre as of 6 June 2026"
+       title="Petrol & diesel price in Coimbatore — 6 June 2026"
+       width="1200" height="630" loading="eager" decoding="async"
+       style="width:100%;height:auto;border-radius:14px;display:block;">
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Coimbatore — generated 6 June 2026.</figcaption>
+</figure>
 
 {{< petrol-price city="Coimbatore" >}}
 
@@ -96,3 +107,27 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
 - Indian Oil Corporation: daily retail selling price data (iocl.com)
 - BPCL and HPCL retail fuel price data
 - Ministry of Petroleum and Natural Gas: fuel price data portal
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
+  "url": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
+  "name": "Petrol & diesel price in Coimbatore on 6 June 2026",
+  "description": "Today's petrol price in Coimbatore is ₹108.32 per litre and diesel is ₹100.14 per litre as of 6 June 2026",
+  "width": 1200,
+  "height": 630,
+  "uploadDate": "2026-06-06T06:00:00+05:30",
+  "creditText": "Calxo.in",
+  "creator": {
+    "@type": "Organization",
+    "@id": "https://www.calxo.in/#organization",
+    "name": "Calxo"
+  },
+  "copyrightNotice": "Calxo.in",
+  "license": "https://www.calxo.in/about/",
+  "encodingFormat": "image/png",
+  "representativeOfPage": true
+}
+</script>

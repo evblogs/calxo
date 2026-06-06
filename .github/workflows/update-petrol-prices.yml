@@ -37,7 +37,15 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4
+        run: pip install requests beautifulsoup4 Pillow
+
+      - name: Install fonts
+        # DejaVu Sans Bold has the ₹ glyph and is required by
+        # generate-petrol-images.py. Pre-installed on ubuntu-latest, but
+        # this guarantees it across runner image revisions.
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y --no-install-recommends fonts-dejavu-core
 
       - name: Configure git
         run: |
@@ -64,11 +72,18 @@ jobs:
           TZ: Asia/Kolkata
         run: python pythonfiles/generate-petrol-pages.py
 
+      - name: Regenerate per-city price card images
+        env:
+          TZ: Asia/Kolkata
+        run: python pythonfiles/generate-petrol-images.py
+
       - name: Commit and push
         env:
           TZ: Asia/Kolkata
         run: |
-          git add data/petrol-prices.json content/english/conversion/petrol-price-*.md
+          git add data/petrol-prices.json \
+                  content/english/conversion/petrol-price-*.md \
+                  static/images/petrol/petrol-price-*.png
           if git diff --cached --quiet; then
             # No file diff = either we already ran today, OR something is
             # silently masking the daily-date bump (a bug worth catching).

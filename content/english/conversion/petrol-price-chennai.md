@@ -9,11 +9,22 @@ keywords: "petrol price in chennai today, petrol price chennai, diesel price che
 categories:
 - Conversion Calculators
 author: vignesh
+image: /images/petrol/petrol-price-chennai.png
+image_alt: "Today's petrol price in Chennai is ₹107.84 per litre and diesel is ₹99.65 per litre on 6 June 2026"
 ---
 
 Today's petrol price in Chennai is **₹107.84 per litre** and diesel is **₹99.65 per litre** (as of 6 June 2026). Oil marketing companies revise prices at 6:00 AM every day.
 
 Chennai's petrol is ₹5.99 more expensive than Delhi's and ₹2.16 cheaper than Bangalore's — Tamil Nadu's VAT and cess structure sits in the middle of Indian states.
+
+<figure class="cx-price-card">
+  <img src="/images/petrol/petrol-price-chennai.png"
+       alt="Today's petrol price in Chennai is ₹107.84 per litre and diesel is ₹99.65 per litre as of 6 June 2026"
+       title="Petrol & diesel price in Chennai — 6 June 2026"
+       width="1200" height="630" loading="eager" decoding="async"
+       style="width:100%;height:auto;border-radius:14px;display:block;">
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Chennai — generated 6 June 2026.</figcaption>
+</figure>
 
 {{< petrol-price >}}
 
@@ -103,3 +114,21 @@ CNG infrastructure in Chennai is limited compared to Delhi or Mumbai. IGL and MN
 - Indian Oil Corporation: daily RSP (retail selling price) data
 - Tamil Nadu Government: petroleum products VAT schedule
 - Ministry of Petroleum: fuel pricing formula and data portal
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-chennai.png",
+  "url": "https://www.calxo.in/images/petrol/petrol-price-chennai.png",
+  "name": "Petrol & diesel price in Chennai on 6 June 2026",
+  "description": "Today's petrol price in Chennai is ₹107.84 per litre and diesel is ₹99.65 per litre as of 6 June 2026",
+  "width": 1200,
+  "height": 630,
+  "creditText": "Calxo.in",
+  "creator": { "@type": "Organization", "@id": "https://www.calxo.in/#organization", "name": "Calxo" },
+  "copyrightNotice": "Calxo.in",
+  "encodingFormat": "image/png",
+  "representativeOfPage": true
+}
+</script>

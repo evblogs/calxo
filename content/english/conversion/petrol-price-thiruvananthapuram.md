@@ -9,11 +9,22 @@ keywords: "petrol price in thiruvananthapuram today, petrol price thiruvananthap
 categories:
 - Conversion Calculators
 author: vignesh
+image: /images/petrol/petrol-price-thiruvananthapuram.png
+image_alt: "Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.40 per litre on 6 June 2026"
 ---
 
 Today's petrol price in Thiruvananthapuram is **₹115.49 per litre** and diesel is **₹104.40 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Thiruvananthapuram, a Tier 2 city in Kerala, about ₹13.37/litre costlier than Delhi (₹102.12).
 
 Kerala combines high percentage VAT with an additional social-security cess, so the state capital stays above ₹107.
+
+<figure class="cx-price-card">
+  <img src="/images/petrol/petrol-price-thiruvananthapuram.png"
+       alt="Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.40 per litre as of 6 June 2026"
+       title="Petrol & diesel price in Thiruvananthapuram — 6 June 2026"
+       width="1200" height="630" loading="eager" decoding="async"
+       style="width:100%;height:auto;border-radius:14px;display:block;">
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Thiruvananthapuram — generated 6 June 2026.</figcaption>
+</figure>
 
 {{< petrol-price city="Thiruvananthapuram" >}}
 
@@ -96,3 +107,27 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
 - Indian Oil Corporation: daily retail selling price data (iocl.com)
 - BPCL and HPCL retail fuel price data
 - Ministry of Petroleum and Natural Gas: fuel price data portal
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-thiruvananthapuram.png",
+  "url": "https://www.calxo.in/images/petrol/petrol-price-thiruvananthapuram.png",
+  "name": "Petrol & diesel price in Thiruvananthapuram on 6 June 2026",
+  "description": "Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.40 per litre as of 6 June 2026",
+  "width": 1200,
+  "height": 630,
+  "uploadDate": "2026-06-06T06:00:00+05:30",
+  "creditText": "Calxo.in",
+  "creator": {
+    "@type": "Organization",
+    "@id": "https://www.calxo.in/#organization",
+    "name": "Calxo"
+  },
+  "copyrightNotice": "Calxo.in",
+  "license": "https://www.calxo.in/about/",
+  "encodingFormat": "image/png",
+  "representativeOfPage": true
+}
+</script>

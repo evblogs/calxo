@@ -9,9 +9,20 @@ keywords: "petrol price today, petrol price today in delhi, petrol price today i
 categories:
 - Conversion Calculators
 author: vignesh
+image: /images/petrol/petrol-price-today.png
+image_alt: "Petrol price today in India — Delhi ₹102.12 per litre, range across 30 cities ₹100.50 to ₹116.39 (6 June 2026)"
 ---
 
 Petrol prices in India change every day at 6:00 AM. Oil marketing companies (Indian Oil, BPCL, HPCL) revise rates based on international crude prices, the rupee-dollar exchange rate, and state-level taxes. The price you see at the pump is rarely just the base fuel cost — taxes make up 50-60% of what you actually pay.
+
+<figure class="cx-price-card">
+  <img src="/images/petrol/petrol-price-today.png"
+       alt="Petrol price today in India — Delhi ₹102.12 per litre, with cheapest at ₹100.50 in Dehradun and highest at ₹116.39 in Visakhapatnam (6 June 2026)"
+       title="Petrol price across 30 Indian cities — 6 June 2026"
+       width="1200" height="630" loading="eager" decoding="async"
+       style="width:100%;height:auto;border-radius:14px;display:block;">
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Petrol &amp; diesel price snapshot across 30 Indian cities — 6 June 2026.</figcaption>
+</figure>
 
 {{< petrol-price >}}
 
@@ -81,3 +92,21 @@ That depends on Brent crude staying below $80/barrel and the rupee not weakening
 - Indian Oil Corporation: daily price revision data
 - Petroleum Planning and Analysis Cell (PPAC), Ministry of Petroleum
 - State commercial tax department notifications for VAT rates
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-today.png",
+  "url": "https://www.calxo.in/images/petrol/petrol-price-today.png",
+  "name": "Petrol price across 30 Indian cities on 6 June 2026",
+  "description": "Petrol price today in India — Delhi ₹102.12 per litre, range across 30 cities ₹100.50 to ₹116.39 (6 June 2026)",
+  "width": 1200,
+  "height": 630,
+  "creditText": "Calxo.in",
+  "creator": { "@type": "Organization", "@id": "https://www.calxo.in/#organization", "name": "Calxo" },
+  "copyrightNotice": "Calxo.in",
+  "encodingFormat": "image/png",
+  "representativeOfPage": true
+}
+</script>

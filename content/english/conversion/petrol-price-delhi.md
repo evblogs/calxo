@@ -9,11 +9,22 @@ keywords: "petrol price in delhi today, petrol price delhi, diesel price delhi t
 categories:
 - Conversion Calculators
 author: vignesh
+image: /images/petrol/petrol-price-delhi.png
+image_alt: "Today's petrol price in Delhi is ₹102.12 per litre and diesel is ₹95.20 per litre on 6 June 2026"
 ---
 
 Today's petrol price in Delhi is **₹102.12 per litre** and diesel is **₹95.20 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM.
 
 Delhi consistently has the lowest petrol price among all major Indian metros — lower than Mumbai (₹103.44), Bengaluru (₹102.92), and Hyderabad (₹107.41). The reason is Delhi's low state VAT on fuel.
+
+<figure class="cx-price-card">
+  <img src="/images/petrol/petrol-price-delhi.png"
+       alt="Today's petrol price in Delhi is ₹102.12 per litre and diesel is ₹95.20 per litre as of 6 June 2026"
+       title="Petrol & diesel price in Delhi — 6 June 2026"
+       width="1200" height="630" loading="eager" decoding="async"
+       style="width:100%;height:auto;border-radius:14px;display:block;">
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Delhi — generated 6 June 2026.</figcaption>
+</figure>
 
 {{< petrol-price >}}
 
@@ -99,3 +110,21 @@ You can check on the Indian Oil, BPCL, or HPCL apps. IOCL has an SMS service: SM
 - Indian Oil Corporation: daily RSP data (iocl.com)
 - BPCL and HPCL retail fuel price data
 - Ministry of Petroleum and Natural Gas: fuel price data portal
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-delhi.png",
+  "url": "https://www.calxo.in/images/petrol/petrol-price-delhi.png",
+  "name": "Petrol & diesel price in Delhi on 6 June 2026",
+  "description": "Today's petrol price in Delhi is ₹102.12 per litre and diesel is ₹95.20 per litre as of 6 June 2026",
+  "width": 1200,
+  "height": 630,
+  "creditText": "Calxo.in",
+  "creator": { "@type": "Organization", "@id": "https://www.calxo.in/#organization", "name": "Calxo" },
+  "copyrightNotice": "Calxo.in",
+  "encodingFormat": "image/png",
+  "representativeOfPage": true
+}
+</script>
