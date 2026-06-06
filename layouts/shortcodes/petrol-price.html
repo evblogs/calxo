@@ -62,9 +62,15 @@ var CX_DEFAULT_CITY = {{ $defaultCity | jsonify }};
       <span>Select your city</span>
       <select id="cx-pet-city">
         {{ range $data.cities -}}
-        <option value="{{ .city }}"{{ if eq .city $defaultCity }} selected{{ end }}>{{ .city }} ({{ .state }})</option>
+        {{/* Slug mirrors generate-petrol-pages.py (Bengaluru → bangalore). */}}
+        {{ $slug := lower (replace .city " " "-") }}
+        {{ if eq .city "Bengaluru" }}{{ $slug = "bangalore" }}{{ end }}
+        <option value="{{ .city }}" data-slug="{{ $slug }}" data-url="/conversion/petrol-price-{{ $slug }}/"{{ if eq .city $defaultCity }} selected{{ end }}>{{ .city }} ({{ .state }})</option>
         {{ end }}
       </select>
+      <p class="cx-pet-hint" style="margin-top:.45rem;font-size:.78rem;color:#64748b;">
+        Selecting a city opens its own page with today's rate, history and tax breakdown.
+      </p>
     </label>
     <div class="cx-pet-toggle">
       <button id="cx-pet-p" class="active" onclick="cxPetSwitch('petrol')">Petrol</button>
@@ -118,6 +124,7 @@ var CX_DEFAULT_CITY = {{ $defaultCity | jsonify }};
 (function () {
   var fuelType = 'petrol';
   var citySelect = document.getElementById('cx-pet-city');
+  if (!citySelect) return;
 
   function render() {
     var cityName = citySelect.value;
@@ -125,11 +132,12 @@ var CX_DEFAULT_CITY = {{ $defaultCity | jsonify }};
     if (!found) return;
     var price = fuelType === 'petrol' ? found.petrol : found.diesel;
     var label = (fuelType === 'petrol' ? 'PETROL' : 'DIESEL') + ' PRICE IN ' + cityName.toUpperCase();
-    document.getElementById('cx-pet-label').textContent = label;
-    document.getElementById('cx-pet-price').textContent = '₹' + price.toFixed(2);
-    document.getElementById('cx-pet-type').textContent = fuelType === 'petrol' ? 'Petrol' : 'Diesel';
-    document.getElementById('cx-pet-state').textContent = found.state;
-    document.getElementById('cx-pet-updated').textContent = 'Prices as of ' + CX_UPDATED;
+    var el;
+    if (el = document.getElementById('cx-pet-label')) el.textContent = label;
+    if (el = document.getElementById('cx-pet-price')) el.textContent = '₹' + price.toFixed(2);
+    if (el = document.getElementById('cx-pet-type'))  el.textContent = fuelType === 'petrol' ? 'Petrol' : 'Diesel';
+    if (el = document.getElementById('cx-pet-state')) el.textContent = found.state;
+    if (el = document.getElementById('cx-pet-updated')) el.textContent = 'Prices as of ' + CX_UPDATED;
     document.querySelectorAll('#cx-pet-tbody tr').forEach(function(r){
       r.classList.toggle('hl', r.dataset.city === cityName);
     });
@@ -137,11 +145,29 @@ var CX_DEFAULT_CITY = {{ $defaultCity | jsonify }};
 
   window.cxPetSwitch = function(type) {
     fuelType = type;
-    document.getElementById('cx-pet-p').classList.toggle('active', type === 'petrol');
-    document.getElementById('cx-pet-d').classList.toggle('active', type === 'diesel');
+    var pBtn = document.getElementById('cx-pet-p');
+    var dBtn = document.getElementById('cx-pet-d');
+    if (pBtn) pBtn.classList.toggle('active', type === 'petrol');
+    if (dBtn) dBtn.classList.toggle('active', type === 'diesel');
     render();
   };
 
-  citySelect.addEventListener('change', render);
+  // Picking a city in the dropdown navigates to that city's own page —
+  // unique URL, unique title, unique tables, unique og:image. We compare
+  // pathnames (not raw strings) so canonifyURLs-induced host prefixes
+  // don't trick the check into looping on the page you're already on.
+  citySelect.addEventListener('change', function () {
+    var opt = citySelect.options[citySelect.selectedIndex];
+    var rawUrl = opt && opt.dataset && opt.dataset.url;
+    if (!rawUrl) { render(); return; }
+    var targetPath;
+    try { targetPath = new URL(rawUrl, location.href).pathname; }
+    catch (e) { render(); return; }
+    if (targetPath === location.pathname) { render(); return; }
+    // Quick repaint of the result panel so the click feels instant,
+    // then navigate.
+    render();
+    window.location.href = rawUrl;
+  });
 })();
 </script>

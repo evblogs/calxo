@@ -68,8 +68,9 @@ footer.bg-light a:hover { color: #1e40af !important; }
 }
 .cx-hero-badge .green { color: #86efac; }
 .cx-hero h1 {
-  font-size: 38px !important; font-weight: 800;
-  line-height: 1.12; margin-bottom: 1.2rem; letter-spacing: -1.5px; color: #fff;
+  /* 60px desktop, scales down on mobile so it never overflows the viewport. */
+  font-size: clamp(34px, 6vw, 60px) !important; font-weight: 800;
+  line-height: 1.1; margin-bottom: 1.2rem; letter-spacing: -1.8px; color: #fff;
 }
 .cx-h1-accent {
   background: linear-gradient(90deg, #fff, #93c5fd);
