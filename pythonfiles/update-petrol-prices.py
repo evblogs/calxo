@@ -385,7 +385,9 @@ def save(data):
 
 
 def update_page_lastmod(page_path, today, city_prices=None):
-    """Update lastmod in a petrol page's front matter. Optionally update title/description price."""
+    """Update lastmod in a petrol page's front matter. Optionally also sync
+    the visible title, description, and lead-paragraph prices/dates so the
+    page never reads like fresher data than it shows."""
     if not page_path.exists():
         print(f"  SKIP {page_path.name} — file not found")
         return False
@@ -394,33 +396,51 @@ def update_page_lastmod(page_path, today, city_prices=None):
     # Update lastmod
     text = re.sub(r'lastmod:\s*\S+', f'lastmod: {today}', text)
 
-    # For city pages, update the price in title and description if prices changed
     if city_prices:
-        city = city_prices["city"]
         petrol = city_prices["petrol"]
         diesel = city_prices["diesel"]
-        # Update title price (e.g. "₹94.77/Litre")
+
+        # Title: `₹94.77/Litre` → `₹102.12/Litre`
         text = re.sub(
             r'(title:.*?₹)[\d.]+(/Litre)',
             lambda m: f'{m.group(1)}{petrol:.2f}{m.group(2)}',
             text
         )
-        # Update description petrol price
+
+        # Description (front matter): "petrol price in X is ₹NN.NN/litre"
+        text = re.sub(
+            r'(description:.*?petrol price[^"]*?₹)[\d.]+(/litre)',
+            lambda m: f'{m.group(1)}{petrol:.2f}{m.group(2)}',
+            text, flags=re.IGNORECASE,
+        )
+        # Description (front matter): "diesel is ₹NN.NN/litre"
+        text = re.sub(
+            r'(description:.*?diesel[^"]*?₹)[\d.]+(/litre)',
+            lambda m: f'{m.group(1)}{diesel:.2f}{m.group(2)}',
+            text, flags=re.IGNORECASE,
+        )
+
+        # Body bold: "**₹NN.NN per litre**"
         text = re.sub(
             r'(petrol price in .+? is \*\*₹)[\d.]+( per litre)',
             lambda m: f'{m.group(1)}{petrol:.2f}{m.group(2)}',
             text, flags=re.IGNORECASE
         )
-        # Update description diesel price
         text = re.sub(
             r'(diesel is \*\*₹)[\d.]+( per litre)',
             lambda m: f'{m.group(1)}{diesel:.2f}{m.group(2)}',
             text, flags=re.IGNORECASE
         )
-        # Update the date in title parenthesis e.g. "(29 April 2026)"
+
+        # Date in any parens: catches both `(6 June 2026)` and
+        # `(as of 6 June 2026)`. We anchor on the month+year tail so a stale
+        # prefix like "as of" doesn't keep us out.
         from datetime import datetime
         date_str = datetime.strptime(today, "%Y-%m-%d").strftime("%-d %B %Y")
-        text = re.sub(r'\(\d+ \w+ 20\d\d\)', f'({date_str})', text)
+        # `(... 29 April 2026)` → `(6 June 2026)` only when the inside is JUST a date
+        text = re.sub(r'\((?:as of\s*)?\d{1,2}\s+\w+\s+20\d\d\)',
+                      lambda m: f'(as of {date_str})' if m.group(0).lower().startswith('(as of') else f'({date_str})',
+                      text)
 
     page_path.write_text(text)
     print(f"  ✓ Updated lastmod in {page_path.name}")
