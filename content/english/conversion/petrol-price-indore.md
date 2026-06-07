@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Indore Today: ₹114.48/Litre (6 June 2026)"
+title: "Petrol Price in Indore Today: ₹114.48/Litre (7 June 2026)"
 description: "Today's petrol price in Indore is ₹114.48/litre and diesel is ₹99.61/litre. Updated daily at 6 AM. Indore fuel price, Madhya Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-06
-lastmod: 2026-06-06
+date: 2026-06-07
+lastmod: 2026-06-07
 type: "calculator"
 url: /conversion/petrol-price-indore/
 keywords: "petrol price in indore today, petrol price indore, diesel price indore today, fuel price indore 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-indore.png
-image_alt: "Today's petrol price in Indore is ₹114.48 per litre and diesel is ₹99.61 per litre on 6 June 2026"
+image_alt: "Today's petrol price in Indore is ₹114.48 per litre and diesel is ₹99.61 per litre on 7 June 2026"
 ---
 
-Today's petrol price in Indore is **₹114.48 per litre** and diesel is **₹99.61 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Indore, a Tier 2 city in Madhya Pradesh, about ₹12.36/litre costlier than Delhi (₹102.12).
+Today's petrol price in Indore is **₹114.48 per litre** and diesel is **₹99.61 per litre** (as of 7 June 2026). Prices update every day at 6:00 AM. That makes Indore, a Tier 2 city in Madhya Pradesh, about ₹12.36/litre costlier than Delhi (₹102.12).
 
 Indore pays the same Madhya Pradesh slab as Bhopal, keeping both among the costliest Tier 2 cities.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-indore.png"
-       alt="Today's petrol price in Indore is ₹114.48 per litre and diesel is ₹99.61 per litre as of 6 June 2026"
-       title="Petrol & diesel price in Indore — 6 June 2026"
+       alt="Today's petrol price in Indore is ₹114.48 per litre and diesel is ₹99.61 per litre as of 7 June 2026"
+       title="Petrol & diesel price in Indore — 7 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Indore — generated 6 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Indore — generated 7 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Indore" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-indore.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-indore.png",
-  "name": "Petrol & diesel price in Indore on 6 June 2026",
-  "description": "Today's petrol price in Indore is ₹114.48 per litre and diesel is ₹99.61 per litre as of 6 June 2026",
+  "name": "Petrol & diesel price in Indore on 7 June 2026",
+  "description": "Today's petrol price in Indore is ₹114.48 per litre and diesel is ₹99.61 per litre as of 7 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-06T06:00:00+05:30",
+  "uploadDate": "2026-06-07T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",

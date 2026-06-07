@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Pune Today: ₹111.49/Litre (6 June 2026)"
+title: "Petrol Price in Pune Today: ₹111.49/Litre (7 June 2026)"
 description: "Today's petrol price in Pune is ₹111.49/litre and diesel is ₹98.16/litre. Updated daily at 6 AM. Pune fuel price, Maharashtra VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-06
-lastmod: 2026-06-06
+date: 2026-06-07
+lastmod: 2026-06-07
 type: "calculator"
 url: /conversion/petrol-price-pune/
 keywords: "petrol price in pune today, petrol price pune, diesel price pune today, fuel price pune 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-pune.png
-image_alt: "Today's petrol price in Pune is ₹111.49 per litre and diesel is ₹98.16 per litre on 6 June 2026"
+image_alt: "Today's petrol price in Pune is ₹111.49 per litre and diesel is ₹98.16 per litre on 7 June 2026"
 ---
 
-Today's petrol price in Pune is **₹111.49 per litre** and diesel is **₹98.16 per litre** (as of 6 June 2026). Prices update every day at 6:00 AM. That makes Pune, a Tier 1 metro in Maharashtra, about ₹9.37/litre costlier than Delhi (₹102.12).
+Today's petrol price in Pune is **₹111.49 per litre** and diesel is **₹98.16 per litre** (as of 7 June 2026). Prices update every day at 6:00 AM. That makes Pune, a Tier 1 metro in Maharashtra, about ₹9.37/litre costlier than Delhi (₹102.12).
 
 Pune pays the same Maharashtra VAT slab as Mumbai but skips the city surcharge, so it is a few rupees cheaper.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-pune.png"
-       alt="Today's petrol price in Pune is ₹111.49 per litre and diesel is ₹98.16 per litre as of 6 June 2026"
-       title="Petrol & diesel price in Pune — 6 June 2026"
+       alt="Today's petrol price in Pune is ₹111.49 per litre and diesel is ₹98.16 per litre as of 7 June 2026"
+       title="Petrol & diesel price in Pune — 7 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Pune — generated 6 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Pune — generated 7 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Pune" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-pune.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-pune.png",
-  "name": "Petrol & diesel price in Pune on 6 June 2026",
-  "description": "Today's petrol price in Pune is ₹111.49 per litre and diesel is ₹98.16 per litre as of 6 June 2026",
+  "name": "Petrol & diesel price in Pune on 7 June 2026",
+  "description": "Today's petrol price in Pune is ₹111.49 per litre and diesel is ₹98.16 per litre as of 7 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-06T06:00:00+05:30",
+  "uploadDate": "2026-06-07T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
