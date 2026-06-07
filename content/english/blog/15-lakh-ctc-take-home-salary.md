@@ -128,7 +128,7 @@ The ₹2L variable comes as a lump sum once or twice a year. Budget on the fixed
 - [HRA Exemption Calculator](/salary/hra-calculator/) - calculate exact HRA benefit by city and rent amount
 - [EPF Calculator](/salary/epf-calculator/) - project your PF corpus over 10-20 years
 
-Also see: [12 lakh CTC in-hand breakdown](/blog/12-lakh-ctc-take-home-salary/) for the zero-tax picture, and [20 lakh CTC breakdown](/blog/20-lakh-ctc-take-home-salary/) for the next step up.
+Also see: [14 lakh CTC breakdown](/blog/14-lakh-ctc-take-home-salary/) for the step below, where marginal relief keeps tax tiny, and [16 lakh CTC breakdown](/blog/16-lakh-ctc-take-home-salary/) for the next step up.
 
 ## CTC salary ladder
 
@@ -142,7 +142,11 @@ Also see: [12 lakh CTC in-hand breakdown](/blog/12-lakh-ctc-take-home-salary/) f
 | [₹10L](/blog/10-lakh-ctc-take-home-salary/) | ₹71,129 | Zero |
 | [₹11L](/blog/11-lakh-ctc-take-home-salary/) | ₹78,262 | Zero |
 | [₹12L](/blog/12-lakh-ctc-take-home-salary/) | ₹85,395 | Zero |
+| [₹13L](/blog/13-lakh-ctc-take-home-salary/) | ₹92,528 | Zero |
+| [₹14L](/blog/14-lakh-ctc-take-home-salary/) | ₹99,026 | ₹7,623 |
 | **[₹15L](/blog/15-lakh-ctc-take-home-salary/)** | **₹1,00,308** | **₹77,832** |
+| [₹16L](/blog/16-lakh-ctc-take-home-salary/) | ₹1,06,250 | ₹92,121 |
+| [₹17L](/blog/17-lakh-ctc-take-home-salary/) | ₹1,12,192 | ₹1,06,410 |
 | [₹18L](/blog/18-lakh-ctc-take-home-salary/) | ₹1,18,134 | ₹1,20,699 |
 | [₹20L](/blog/20-lakh-ctc-take-home-salary/) | ₹1,29,339 | ₹1,57,435 |
 | [₹25L](/blog/25-lakh-ctc-take-home-salary/) | ₹1,56,134 | ₹2,63,868 |
@@ -151,6 +155,9 @@ Also see: [12 lakh CTC in-hand breakdown](/blog/12-lakh-ctc-take-home-salary/) f
 | [₹40L](/blog/40-lakh-ctc-take-home-salary/) | ₹2,28,208 | ₹6,82,906 |
 | [₹45L](/blog/45-lakh-ctc-take-home-salary/) | ₹2,51,965 | ₹8,25,794 |
 | [₹50L](/blog/50-lakh-ctc-take-home-salary/) | ₹2,75,722 | ₹9,68,682 |
+| [₹60L](/blog/60-lakh-ctc-take-home-salary/) | ₹3,12,783 | ₹13,79,904 |
+| [₹75L](/blog/75-lakh-ctc-take-home-salary/) | ₹3,80,482 | ₹18,51,435 |
+| [₹1Cr](/blog/1-crore-ctc-take-home-salary/) | ₹4,93,315 | ₹26,37,320 |
 
 All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use [Take-Home Calculator](/salary/takehome-calculator/) for your exact CTC and structure.
 

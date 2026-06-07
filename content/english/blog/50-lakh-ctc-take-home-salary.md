@@ -137,6 +137,25 @@ The negotiation focus shifts dramatically at this band:
 - [Old vs New Regime](/tax/old-vs-new-tax-regime/): find which regime saves more
 - [Retirement Calculator](/investment/retirement-calculator/): model your corpus from salary saves
 
+Also see: [45 lakh CTC breakdown](/blog/45-lakh-ctc-take-home-salary/) for the step below, and [60 lakh CTC breakdown](/blog/60-lakh-ctc-take-home-salary/) where the surcharge appears.
+
+## CTC salary ladder
+
+| CTC | Monthly take-home | Tax / year |
+|---|---|---|
+| [₹20L](/blog/20-lakh-ctc-take-home-salary/) | ₹1,29,339 | ₹1,57,435 |
+| [₹25L](/blog/25-lakh-ctc-take-home-salary/) | ₹1,56,134 | ₹2,63,868 |
+| [₹30L](/blog/30-lakh-ctc-take-home-salary/) | ₹1,80,693 | ₹3,97,129 |
+| [₹35L](/blog/35-lakh-ctc-take-home-salary/) | ₹2,04,451 | ₹5,40,017 |
+| [₹40L](/blog/40-lakh-ctc-take-home-salary/) | ₹2,28,208 | ₹6,82,906 |
+| [₹45L](/blog/45-lakh-ctc-take-home-salary/) | ₹2,51,965 | ₹8,25,794 |
+| **[₹50L](/blog/50-lakh-ctc-take-home-salary/)** | **₹2,75,722** | **₹9,68,682** |
+| [₹60L](/blog/60-lakh-ctc-take-home-salary/) | ₹3,12,783 | ₹13,79,904 |
+| [₹75L](/blog/75-lakh-ctc-take-home-salary/) | ₹3,80,482 | ₹18,51,435 |
+| [₹1Cr](/blog/1-crore-ctc-take-home-salary/) | ₹4,93,315 | ₹26,37,320 |
+
+All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use the [Take-Home Calculator](/salary/takehome-calculator/) for your exact CTC and structure.
+
 ## Sources
 
 - Income Tax Act 1961: Section 115BAC (new regime), Section 2(29C) surcharge rules

@@ -15,13 +15,13 @@ related_calcs:
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
 ---
 
-Rahul, a software engineer in Bengaluru, just landed a job offer with a CTC of Rs. 12,00,000. His family is thrilled, and his friends are already joking about his “1 lakh per month” salary. But when his first payslip lands, the number is much lower — closer to Rs. 85,000 per month. This is the classic Indian salary reality check. If you or someone you know is staring at that Rs. 12 lakh CTC offer letter, read on for a full, real-world breakdown of how much you actually get in hand, why the tax is zero, and how city, PF, and salary structure change your take-home.
+Rahul, a software engineer in Bengaluru, just landed a job offer with a CTC of Rs. 12,00,000. His family is thrilled, and his friends are already joking about his “1 lakh per month” salary. But when his first payslip lands, the number is much lower, closer to Rs. 85,000 per month. This is the classic Indian salary reality check. If you or someone you know is staring at that Rs. 12 lakh CTC offer letter, read on for a full, real-world breakdown of how much you actually get in hand, why the tax is zero, and how city, PF, and salary structure change your take-home.
 
 {{< takehome-calculator ctc="1200000" >}}
 
 ## The zero-tax boundary
 
-Let’s start with a myth-buster. Nearly every CTC calculator gets this wrong: Rs. 12 lakh CTC is not a taxable salary under the new regime for FY 2025-26. That’s right — your income tax is zero. Here’s why.
+Let’s start with a myth-buster. Nearly every CTC calculator gets this wrong: Rs. 12 lakh CTC is not a taxable salary under the new regime for FY 2025-26. That’s right, your income tax is zero. Here’s why.
 
 Look at Structure B, the common product company salary split. The annual gross is Rs. 10,99,140. Subtract the Rs. 75,000 standard deduction. Now your taxable income is Rs. 10,24,140. Under the new regime, this is taxed as Rs. 20,000 (5% on Rs. 4-8 lakh slab) plus Rs. 22,414 (10% on Rs. 8-10.24 lakh slab), totaling Rs. 42,414. But Section 87A gives a rebate of up to Rs. 60,000 if your taxable income is below Rs. 7 lakh, and up to Rs. 62,500 for incomes up to Rs. 7.5 lakh. For incomes like this, the rebate equals your entire calculated tax if your total tax is less than Rs. 60,000. So your final income tax is precisely zero, not a rupee more.
 
@@ -157,12 +157,14 @@ The old regime only beats the new for Rs. 12 lakh CTC if your total deductions (
 
 For exact numbers at different CTC levels, check our [take-home salary calculator](/salary/takehome-calculator/), and see the [10 lakh CTC breakdown](/blog/10-lakh-ctc-take-home-salary/), [15 lakh CTC breakdown](/blog/what-15-lakh-ctc-actually-means/), [20 lakh CTC breakdown](/blog/20-lakh-ctc-take-home-salary/), and [25 lakh CTC breakdown](/blog/25-lakh-ctc-take-home-salary/). For tax optimization, the [income tax calculator](/tax/income-tax-calculator/) and [old vs new regime guide](/blog/old-vs-new-tax-regime-fy-2025-26/) will save you hours of guesswork.
 
-If you have an offer letter in hand, run your own numbers on Calxo and plan smart. Rahul in Bengaluru did — and now his “Rs. 1 lakh per month” dream is a realistic, tax-free Rs. 85,000 take-home. That’s the real face of Rs. 12 lakh CTC in India.
+If you have an offer letter in hand, run your own numbers on Calxo and plan smart. Rahul in Bengaluru did, and now his “Rs. 1 lakh per month” dream is a realistic, tax-free Rs. 85,000 take-home. That’s the real face of Rs. 12 lakh CTC in India.
 
 ## CTC salary ladder
 
 | CTC | Monthly take-home | Tax / year |
 |---|---|---|
+| [₹3L](/blog/3-lakh-ctc-take-home-salary/) | ₹21,199 | Zero |
+| [₹4L](/blog/4-lakh-ctc-take-home-salary/) | ₹28,332 | Zero |
 | [₹5L](/blog/5-lakh-ctc-take-home-salary/) | ₹35,465 | Zero |
 | [₹6L](/blog/6-lakh-ctc-take-home-salary/) | ₹42,598 | Zero |
 | [₹7L](/blog/7-lakh-ctc-take-home-salary/) | ₹49,730 | Zero |
@@ -171,7 +173,11 @@ If you have an offer letter in hand, run your own numbers on Calxo and plan smar
 | [₹10L](/blog/10-lakh-ctc-take-home-salary/) | ₹71,129 | Zero |
 | [₹11L](/blog/11-lakh-ctc-take-home-salary/) | ₹78,262 | Zero |
 | **[₹12L](/blog/12-lakh-ctc-take-home-salary/)** | **₹85,395** | **Zero** |
+| [₹13L](/blog/13-lakh-ctc-take-home-salary/) | ₹92,528 | Zero |
+| [₹14L](/blog/14-lakh-ctc-take-home-salary/) | ₹99,026 | ₹7,623 |
 | [₹15L](/blog/15-lakh-ctc-take-home-salary/) | ₹1,00,308 | ₹77,832 |
+| [₹16L](/blog/16-lakh-ctc-take-home-salary/) | ₹1,06,250 | ₹92,121 |
+| [₹17L](/blog/17-lakh-ctc-take-home-salary/) | ₹1,12,192 | ₹1,06,410 |
 | [₹18L](/blog/18-lakh-ctc-take-home-salary/) | ₹1,18,134 | ₹1,20,699 |
 | [₹20L](/blog/20-lakh-ctc-take-home-salary/) | ₹1,29,339 | ₹1,57,435 |
 | [₹25L](/blog/25-lakh-ctc-take-home-salary/) | ₹1,56,134 | ₹2,63,868 |
@@ -180,5 +186,8 @@ If you have an offer letter in hand, run your own numbers on Calxo and plan smar
 | [₹40L](/blog/40-lakh-ctc-take-home-salary/) | ₹2,28,208 | ₹6,82,906 |
 | [₹45L](/blog/45-lakh-ctc-take-home-salary/) | ₹2,51,965 | ₹8,25,794 |
 | [₹50L](/blog/50-lakh-ctc-take-home-salary/) | ₹2,75,722 | ₹9,68,682 |
+| [₹60L](/blog/60-lakh-ctc-take-home-salary/) | ₹3,12,783 | ₹13,79,904 |
+| [₹75L](/blog/75-lakh-ctc-take-home-salary/) | ₹3,80,482 | ₹18,51,435 |
+| [₹1Cr](/blog/1-crore-ctc-take-home-salary/) | ₹4,93,315 | ₹26,37,320 |
 
 All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use [Take-Home Calculator](/salary/takehome-calculator/) for your exact CTC and structure.
