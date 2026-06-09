@@ -1,6 +1,6 @@
 ---
-title: "Petrol Price in Coimbatore Today: ₹108.45/Litre (9 June 2026)"
-description: "Today's petrol price in Coimbatore is ₹108.45/litre and diesel is ₹100.27/litre. Updated daily at 6 AM. Coimbatore fuel price, Tamil Nadu VAT breakup and a monthly fuel-cost calculator."
+title: "Petrol Price in Coimbatore Today: ₹108.23/Litre (9 June 2026)"
+description: "Today's petrol price in Coimbatore is ₹108.23/litre and diesel is ₹108.23/litre. Updated daily at 6 AM. Coimbatore fuel price, Tamil Nadu VAT breakup and a monthly fuel-cost calculator."
 date: 2026-06-09
 lastmod: 2026-06-09
 type: "calculator"
@@ -10,16 +10,16 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-coimbatore.png
-image_alt: "Today's petrol price in Coimbatore is ₹108.45 per litre and diesel is ₹100.27 per litre on 9 June 2026"
+image_alt: "Today's petrol price in Coimbatore is ₹108.23 per litre and diesel is ₹108.23 per litre on 9 June 2026"
 ---
 
-Today's petrol price in Coimbatore is **₹108.45 per litre** and diesel is **₹100.27 per litre** (as of 9 June 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹6.33/litre costlier than Delhi (₹102.12).
+Today's petrol price in Coimbatore is **₹108.23 per litre** and diesel is **₹108.23 per litre** (as of 9 June 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹6.11/litre costlier than Delhi (₹102.12).
 
 Tamil Nadu uses a low percentage plus a fixed per-litre charge, so Coimbatore mirrors Chennai almost exactly.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-coimbatore.png"
-       alt="Today's petrol price in Coimbatore is ₹108.45 per litre and diesel is ₹100.27 per litre as of 9 June 2026"
+       alt="Today's petrol price in Coimbatore is ₹108.23 per litre and diesel is ₹108.23 per litre as of 9 June 2026"
        title="Petrol & diesel price in Coimbatore — 9 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
@@ -43,9 +43,9 @@ Every litre of petrol in Coimbatore carries two central charges that are the sam
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Tamil Nadu state tax (VAT/cess)** | **~28.68** |
+| **Tamil Nadu state tax (VAT/cess)** | **~28.46** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~108.45** |
+| **Total pump price** | **~108.23** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,38 +53,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 108.45 | 100.27 |
-| May 2026 | 108.45 | 100.27 |
-| April 2026 | 108.45 | 100.27 |
-| March 2026 | 108.45 | 100.27 |
-| February 2026 | 108.45 | 100.27 |
+| June 2026 | 108.23 | 108.23 |
+| May 2026 | 108.23 | 108.23 |
+| April 2026 | 108.23 | 108.23 |
+| March 2026 | 108.23 | 108.23 |
+| February 2026 | 108.23 | 108.23 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Coimbatore figure moves only in paise on most days.
 
 ## Monthly fuel cost for Coimbatore commuters
 
-At ₹108.45/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹108.23/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,930 |
-| Honda City | 18 km/L | ₹6,025 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,230 |
-| Royal Enfield 350 | 35 km/L | ₹3,099 |
-| Honda Activa 6G | 50 km/L | ₹2,169 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,920 |
+| Honda City | 18 km/L | ₹6,013 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,215 |
+| Royal Enfield 350 | 35 km/L | ₹3,092 |
+| Honda Activa 6G | 50 km/L | ₹2,165 |
 
-Someone in Coimbatore driving a Maruti Swift 1,500 km a month spends roughly **₹7,394/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Coimbatore driving a Maruti Swift 1,500 km a month spends roughly **₹7,379/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Coimbatore vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.18 | ₹97.83 |
-| Bengaluru | ₹110.89 | ₹98.80 |
-| Hyderabad | ₹115.69 | ₹103.82 |
-| Ahmedabad | ₹101.60 | ₹97.71 |
-| **Coimbatore** | **₹108.45** | ₹100.27 |
+| Mumbai | ₹111.21 | ₹97.83 |
+| Bengaluru | ₹110.93 | ₹98.80 |
+| Hyderabad | ₹115.73 | ₹115.73 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
+| **Coimbatore** | **₹108.23** | ₹108.23 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Coimbator
 
 ### Is petrol cheaper in Kochi or Coimbatore?
 
-Right now Coimbatore is ₹108.45/litre and Kochi is around ₹115.34. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Coimbatore is ₹108.23/litre and Kochi is around ₹115.34. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Coimbatore?
 
@@ -115,7 +115,7 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
   "name": "Petrol & diesel price in Coimbatore on 9 June 2026",
-  "description": "Today's petrol price in Coimbatore is ₹108.45 per litre and diesel is ₹100.27 per litre as of 9 June 2026",
+  "description": "Today's petrol price in Coimbatore is ₹108.23 per litre and diesel is ₹108.23 per litre as of 9 June 2026",
   "width": 1200,
   "height": 630,
   "uploadDate": "2026-06-09T06:00:00+05:30",

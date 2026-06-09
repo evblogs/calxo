@@ -80,10 +80,10 @@ Someone in Agra driving a Maruti Swift 1,500 km a month spends roughly **₹6,92
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.18 | ₹97.83 |
-| Bengaluru | ₹110.89 | ₹98.80 |
-| Hyderabad | ₹115.69 | ₹103.82 |
-| Ahmedabad | ₹101.60 | ₹97.71 |
+| Mumbai | ₹111.21 | ₹97.83 |
+| Bengaluru | ₹110.93 | ₹98.80 |
+| Hyderabad | ₹115.73 | ₹115.73 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
 | **Agra** | **₹101.54** | ₹95.02 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.

@@ -80,10 +80,10 @@ Someone in Chandigarh driving a Maruti Swift 1,500 km a month spends roughly **�
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.18 | ₹97.83 |
-| Bengaluru | ₹110.89 | ₹98.80 |
-| Hyderabad | ₹115.69 | ₹103.82 |
-| Ahmedabad | ₹101.60 | ₹97.71 |
+| Mumbai | ₹111.21 | ₹97.83 |
+| Bengaluru | ₹110.93 | ₹98.80 |
+| Hyderabad | ₹115.73 | ₹115.73 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
 | **Chandigarh** | **₹101.54** | ₹89.47 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Chandigar
 
 ### Is petrol cheaper in Ludhiana or Chandigarh?
 
-Right now Chandigarh is ₹101.54/litre and Ludhiana is around ₹105.14. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Chandigarh is ₹101.54/litre and Ludhiana is around ₹105.60. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Chandigarh?
 
