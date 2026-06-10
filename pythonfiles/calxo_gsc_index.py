@@ -68,6 +68,7 @@ URLS = [
     "/salary/salary-hike-calculator/",
     "/salary/salary-breakup-excel/",
     "/salary/salary-to-hourly-calculator/",
+    "/salary/maternity-leave-calculator/",
 
     # Blog
     "/blog/",
