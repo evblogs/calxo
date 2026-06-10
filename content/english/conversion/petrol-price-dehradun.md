@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Dehradun Today: ₹100.50/Litre (9 June 2026)"
-description: "Today's petrol price in Dehradun is ₹100.50/litre and diesel is ₹95.90/litre. Updated daily at 6 AM. Dehradun fuel price, Uttarakhand VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-09
-lastmod: 2026-06-09
+title: "Petrol Price in Dehradun Today: ₹100.54/Litre (10 June 2026)"
+description: "Today's petrol price in Dehradun is ₹100.54/litre and diesel is ₹95.95/litre. Updated daily at 6 AM. Dehradun fuel price, Uttarakhand VAT breakup and a monthly fuel-cost calculator."
+date: 2026-06-10
+lastmod: 2026-06-10
 type: "calculator"
 url: /conversion/petrol-price-dehradun/
 keywords: "petrol price in dehradun today, petrol price dehradun, diesel price dehradun today, fuel price dehradun 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-dehradun.png
-image_alt: "Today's petrol price in Dehradun is ₹100.50 per litre and diesel is ₹95.90 per litre on 9 June 2026"
+image_alt: "Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre on 10 June 2026"
 ---
 
-Today's petrol price in Dehradun is **₹100.50 per litre** and diesel is **₹95.90 per litre** (as of 9 June 2026). Prices update every day at 6:00 AM. That makes Dehradun, a Tier 2 city in Uttarakhand, about ₹1.62/litre cheaper than Delhi (₹102.12).
+Today's petrol price in Dehradun is **₹100.54 per litre** and diesel is **₹95.95 per litre** (as of 10 June 2026). Prices update every day at 6:00 AM. That makes Dehradun, a Tier 2 city in Uttarakhand, about ₹1.58/litre cheaper than Delhi (₹102.12).
 
 Uttarakhand runs a lower VAT than the plains states, making Dehradun cheaper than most of UP and Delhi.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-dehradun.png"
-       alt="Today's petrol price in Dehradun is ₹100.50 per litre and diesel is ₹95.90 per litre as of 9 June 2026"
-       title="Petrol & diesel price in Dehradun — 9 June 2026"
+       alt="Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre as of 10 June 2026"
+       title="Petrol & diesel price in Dehradun — 10 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Dehradun — generated 9 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Dehradun — generated 10 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Dehradun" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Dehradun carries two central charges that are the same 
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Uttarakhand state tax (VAT/cess)** | **~20.73** |
+| **Uttarakhand state tax (VAT/cess)** | **~20.77** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~100.50** |
+| **Total pump price** | **~100.54** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,38 +53,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 100.50 | 95.90 |
-| May 2026 | 100.50 | 95.90 |
-| April 2026 | 100.50 | 95.90 |
-| March 2026 | 100.50 | 95.90 |
-| February 2026 | 100.50 | 95.90 |
+| June 2026 | 100.54 | 95.95 |
+| May 2026 | 100.54 | 95.95 |
+| April 2026 | 100.54 | 95.95 |
+| March 2026 | 100.54 | 95.95 |
+| February 2026 | 100.54 | 95.95 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Dehradun figure moves only in paise on most days.
 
 ## Monthly fuel cost for Dehradun commuters
 
-At ₹100.50/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹100.54/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,568 |
-| Honda City | 18 km/L | ₹5,583 |
-| Hyundai Creta (petrol) | 15 km/L | ₹6,700 |
-| Royal Enfield 350 | 35 km/L | ₹2,871 |
-| Honda Activa 6G | 50 km/L | ₹2,010 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,570 |
+| Honda City | 18 km/L | ₹5,586 |
+| Hyundai Creta (petrol) | 15 km/L | ₹6,703 |
+| Royal Enfield 350 | 35 km/L | ₹2,873 |
+| Honda Activa 6G | 50 km/L | ₹2,011 |
 
-Someone in Dehradun driving a Maruti Swift 1,500 km a month spends roughly **₹6,852/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Dehradun driving a Maruti Swift 1,500 km a month spends roughly **₹6,855/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Dehradun vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹110.93 | ₹98.80 |
-| Hyderabad | ₹115.73 | ₹115.73 |
-| Ahmedabad | ₹101.83 | ₹97.92 |
-| **Dehradun** | **₹100.50** | ₹95.90 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹110.89 | ₹98.80 |
+| Hyderabad | ₹115.69 | ₹103.82 |
+| Ahmedabad | ₹101.60 | ₹97.71 |
+| **Dehradun** | **₹100.54** | ₹95.95 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Dehradun 
 
 ### Is petrol cheaper in Noida or Dehradun?
 
-Right now Dehradun is ₹100.50/litre and Noida is around ₹102.12. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Dehradun is ₹100.54/litre and Noida is around ₹102.62. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Dehradun?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-dehradun.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-dehradun.png",
-  "name": "Petrol & diesel price in Dehradun on 9 June 2026",
-  "description": "Today's petrol price in Dehradun is ₹100.50 per litre and diesel is ₹95.90 per litre as of 9 June 2026",
+  "name": "Petrol & diesel price in Dehradun on 10 June 2026",
+  "description": "Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre as of 10 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-09T06:00:00+05:30",
+  "uploadDate": "2026-06-10T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
