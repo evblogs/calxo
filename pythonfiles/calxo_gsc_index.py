@@ -105,6 +105,7 @@ URLS = [
     "/blog/8-lakh-ctc-take-home-salary/",
     "/blog/home-loan-vs-renting-india/",
     "/blog/loan-amortization-interest-heavy-start/",
+    "/blog/maternity-leave-rules-india/",
 
     # Investment — new calcs
     "/investment/cagr-calculator/",
