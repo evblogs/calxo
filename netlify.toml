@@ -2,7 +2,10 @@
   publish = "public"
   command = "hugo --gc --minify --cleanDestinationDir --baseURL https://www.calxo.in/"
 
-[context.production.environment]
+# Pin Hugo for ALL contexts (production, deploy-preview, branch-deploy).
+# Previously HUGO_VERSION lived under [context.production.environment], so PR
+# deploy previews fell back to Netlify's default Hugo and failed to build.
+[build.environment]
   HUGO_VERSION = "0.158.0"
   HUGO_ENV = "production"
 
