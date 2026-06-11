@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Varanasi Today: ₹102.51/Litre (10 June 2026)"
+title: "Petrol Price in Varanasi Today: ₹102.51/Litre (11 June 2026)"
 description: "Today's petrol price in Varanasi is ₹102.51/litre and diesel is ₹95.96/litre. Updated daily at 6 AM. Varanasi fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-10
-lastmod: 2026-06-10
+date: 2026-06-11
+lastmod: 2026-06-11
 type: "calculator"
 url: /conversion/petrol-price-varanasi/
 keywords: "petrol price in varanasi today, petrol price varanasi, diesel price varanasi today, fuel price varanasi 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-varanasi.png
-image_alt: "Today's petrol price in Varanasi is ₹102.51 per litre and diesel is ₹95.96 per litre on 10 June 2026"
+image_alt: "Today's petrol price in Varanasi is ₹102.51 per litre and diesel is ₹95.96 per litre on 11 June 2026"
 ---
 
-Today's petrol price in Varanasi is **₹102.51 per litre** and diesel is **₹95.96 per litre** (as of 10 June 2026). Prices update every day at 6:00 AM. That makes Varanasi, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
+Today's petrol price in Varanasi is **₹102.51 per litre** and diesel is **₹95.96 per litre** (as of 11 June 2026). Prices update every day at 6:00 AM. That makes Varanasi, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
 
 Varanasi pays the same UP slab as the rest of the state, so its price barely moves from the Lucknow figure.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-varanasi.png"
-       alt="Today's petrol price in Varanasi is ₹102.51 per litre and diesel is ₹95.96 per litre as of 10 June 2026"
-       title="Petrol & diesel price in Varanasi — 10 June 2026"
+       alt="Today's petrol price in Varanasi is ₹102.51 per litre and diesel is ₹95.96 per litre as of 11 June 2026"
+       title="Petrol & diesel price in Varanasi — 11 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Varanasi — generated 10 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Varanasi — generated 11 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Varanasi" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-varanasi.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-varanasi.png",
-  "name": "Petrol & diesel price in Varanasi on 10 June 2026",
-  "description": "Today's petrol price in Varanasi is ₹102.51 per litre and diesel is ₹95.96 per litre as of 10 June 2026",
+  "name": "Petrol & diesel price in Varanasi on 11 June 2026",
+  "description": "Today's petrol price in Varanasi is ₹102.51 per litre and diesel is ₹95.96 per litre as of 11 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-10T06:00:00+05:30",
+  "uploadDate": "2026-06-11T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
