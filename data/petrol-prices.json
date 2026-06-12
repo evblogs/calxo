@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-11",
-  "source": "best-effort multi-site scrape \u2014 30/30 cities refreshed 2026-06-11",
+  "updated": "2026-06-12",
+  "source": "best-effort multi-site scrape \u2014 30/30 cities refreshed 2026-06-12",
   "cities": [
     {
       "city": "Delhi",
@@ -183,5 +183,5 @@
       "diesel": 95.95
     }
   ],
-  "prices_verified": "2026-06-11"
+  "prices_verified": "2026-06-12"
 }
