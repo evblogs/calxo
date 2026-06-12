@@ -1,8 +1,8 @@
 ---
 title: "Maternity Leave Calculator: 26 Weeks Paid Leave in India (Maternity Benefit Act, 1961)"
 description: "Free maternity leave calculator for India. Works out your leave start date, rejoin date and total maternity benefit pay under the Maternity Benefit Act, 1961 (amended 2017): 26 weeks for the first two children, 12 weeks for the third onward and for adoption."
-date: 2026-06-10
-lastmod: 2026-06-10
+date: 2026-06-12
+lastmod: 2026-06-12
 type: "calculator"
 url: /salary/maternity-leave-calculator/
 keywords: "maternity leave calculator india, maternity benefit act 1961, 26 weeks maternity leave, maternity leave rules india, maternity benefit pay, paid maternity leave calculator, calxo"

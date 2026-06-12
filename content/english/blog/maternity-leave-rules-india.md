@@ -1,8 +1,8 @@
 ---
 title: "Maternity Leave in India 2026: 26 Weeks, Full Pay, and the Date Most People Get Wrong"
 description: "Maternity leave in India is 26 weeks of fully paid leave for your first two children under the Maternity Benefit Act, 1961. Here's how the pay is worked out, who qualifies, and the one date almost everyone calculates wrong."
-date: 2026-06-10
-lastmod: 2026-06-10
+date: 2026-06-12
+lastmod: 2026-06-12
 author: vignesh
 categories:
 - Salary
