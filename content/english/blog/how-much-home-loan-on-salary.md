@@ -11,6 +11,10 @@ tags:
 - loan eligibility
 - FOIR
 image: ""
+related_calcs:
+  - { label: "Home Loan Eligibility Calculator", url: "/loan/home-loan-eligibility/" }
+  - { label: "FOIR Calculator", url: "/loan/foir-calculator/" }
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
 ---
 
 Before you start touring properties, before you call a builder, before you mentally furnish a flat you've seen online, figure out this one number. How much will the bank actually lend you?

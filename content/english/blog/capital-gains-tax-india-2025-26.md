@@ -12,6 +12,10 @@ tags:
 - STCG
 - income tax
 - mutual funds
+related_calcs:
+  - { label: "Capital Gains Tax Calculator", url: "/tax/capital-gains-calculator/" }
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
 ---
 
 ## Understanding Capital Gains Tax in FY 2025-26

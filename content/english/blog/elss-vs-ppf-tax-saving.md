@@ -12,6 +12,10 @@ tags:
 - 80C
 - tax saving
 - mutual funds
+related_calcs:
+  - { label: "PPF Calculator", url: "/investment/ppf-calculator/" }
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
 ---
 
 ## Overview of ELSS and PPF

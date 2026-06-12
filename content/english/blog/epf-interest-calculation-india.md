@@ -11,6 +11,10 @@ tags:
 - PF
 - provident fund
 - salary
+related_calcs:
+  - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+  - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
 ---
 
 ## Understanding EPF Interest in India

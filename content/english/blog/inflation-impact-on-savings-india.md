@@ -12,6 +12,10 @@ tags:
 - FD
 - savings
 - purchasing power
+related_calcs:
+  - { label: "Inflation Calculator", url: "/investment/inflation-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "FD Calculator", url: "/investment/fd-calculator/" }
 ---
 
 ## Inflation's Impact on Savings

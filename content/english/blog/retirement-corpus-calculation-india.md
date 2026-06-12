@@ -12,6 +12,10 @@ tags:
 - financial planning
 - FIRE
 - NPS
+related_calcs:
+  - { label: "Retirement Calculator", url: "/investment/retirement-calculator/" }
+  - { label: "NPS Calculator", url: "/investment/nps-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
 ---
 
 ## Retirement Corpus Calculation in India

@@ -11,6 +11,10 @@ tags:
 - financial planning
 - assets
 - liabilities
+related_calcs:
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "Retirement Calculator", url: "/investment/retirement-calculator/" }
 ---
 
 ## Understanding Net Worth

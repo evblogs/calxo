@@ -11,6 +11,10 @@ tags:
 - reverse GST
 - tax calculation
 - invoice
+related_calcs:
+  - { label: "GST Calculator", url: "/gst/gst-calculator/" }
+  - { label: "Lifetime GST Bill", url: "/gst/lifetime-bill/" }
+  - { label: "Percentage Calculator", url: "/math/percentage-calculator/" }
 ---
 
 ## Reverse GST Calculation

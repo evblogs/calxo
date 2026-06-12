@@ -11,6 +11,10 @@ tags:
 - car loan
 - resale value
 - insurance
+related_calcs:
+  - { label: "Car Loan EMI Calculator", url: "/loan/car-loan-calculator/" }
+  - { label: "Inflation Calculator", url: "/investment/inflation-calculator/" }
+  - { label: "Percentage Calculator", url: "/math/percentage-calculator/" }
 ---
 
 ## Understanding Car Depreciation

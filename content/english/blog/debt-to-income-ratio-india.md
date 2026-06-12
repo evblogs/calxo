@@ -11,6 +11,10 @@ tags:
 - FOIR
 - loan eligibility
 - EMI
+related_calcs:
+  - { label: "FOIR Calculator", url: "/loan/foir-calculator/" }
+  - { label: "Home Loan Eligibility Calculator", url: "/loan/home-loan-eligibility/" }
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
 ---
 
 ## Understanding the Debt-to-Income Ratio

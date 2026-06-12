@@ -12,6 +12,10 @@ tags:
 - girl child
 - tax saving
 - 80C
+related_calcs:
+  - { label: "Sukanya Samriddhi (SSY) Calculator", url: "/investment/ssy-calculator/" }
+  - { label: "PPF Calculator", url: "/investment/ppf-calculator/" }
+  - { label: "Compound Interest Calculator", url: "/investment/compound-interest-calculator/" }
 ---
 
 ### Sukanya Samriddhi Yojana: A Long-Term Investment

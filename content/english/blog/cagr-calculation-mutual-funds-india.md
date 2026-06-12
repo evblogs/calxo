@@ -11,6 +11,10 @@ tags:
 - mutual funds
 - returns
 - NAV
+related_calcs:
+  - { label: "CAGR Calculator", url: "/investment/cagr-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "XIRR Calculator", url: "/investment/xirr-calculator/" }
 ---
 
 ## Understanding CAGR in Mutual Fund Returns

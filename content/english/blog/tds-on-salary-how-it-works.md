@@ -11,6 +11,10 @@ tags:
 - salary
 - income tax
 - Form 16
+related_calcs:
+  - { label: "TDS Calculator", url: "/tax/tds-calculator/" }
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
 ---
 
 ## Understanding TDS on Salary

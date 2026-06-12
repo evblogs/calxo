@@ -13,6 +13,10 @@ tags:
 - ELSS
 - LIC
 - income tax
+related_calcs:
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
+  - { label: "PPF Calculator", url: "/investment/ppf-calculator/" }
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
 ---
 
 ## Section 80C Deductions Every Taxpayer Should Know

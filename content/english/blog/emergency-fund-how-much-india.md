@@ -11,6 +11,10 @@ tags:
 - liquid fund
 - savings
 - financial planning
+related_calcs:
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "FD Calculator", url: "/investment/fd-calculator/" }
+  - { label: "RD Calculator", url: "/investment/rd-calculator/" }
 ---
 
 ## Importance of an Emergency Fund

@@ -12,6 +12,10 @@ tags:
 - gold ETF
 - investment
 - returns
+related_calcs:
+  - { label: "Gold Value Calculator", url: "/investment/gold-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "CAGR Calculator", url: "/investment/cagr-calculator/" }
 ---
 
 ## Gold Investment: A Rich Tradition

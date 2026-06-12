@@ -12,6 +12,10 @@ tags:
 - property
 - EMI
 - real estate
+related_calcs:
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
+  - { label: "Home Loan Eligibility Calculator", url: "/loan/home-loan-eligibility/" }
+  - { label: "HRA Calculator", url: "/salary/hra-calculator/" }
 ---
 
 ## Real Estate Prices in Major Indian Cities

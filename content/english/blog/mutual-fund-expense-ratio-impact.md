@@ -11,6 +11,10 @@ tags:
 - mutual funds
 - index fund
 - direct plan
+related_calcs:
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "CAGR Calculator", url: "/investment/cagr-calculator/" }
+  - { label: "Lumpsum Calculator", url: "/investment/lumpsum-calculator/" }
 ---
 
 ## Understanding the Mutual Fund Expense Ratio in India

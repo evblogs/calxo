@@ -11,6 +11,10 @@ tags:
 - salary
 - resignation
 - retirement
+related_calcs:
+  - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
+  - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
 ---
 
 ## Formula for Gratuity in India

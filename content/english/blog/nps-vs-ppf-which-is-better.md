@@ -12,6 +12,10 @@ tags:
 - retirement
 - 80C
 - 80CCD
+related_calcs:
+  - { label: "NPS Calculator", url: "/investment/nps-calculator/" }
+  - { label: "PPF Calculator", url: "/investment/ppf-calculator/" }
+  - { label: "NPS Tax Benefit Calculator", url: "/tax/nps-tax-benefit-calculator/" }
 ---
 
 ## National Pension System (NPS)

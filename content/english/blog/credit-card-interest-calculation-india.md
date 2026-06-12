@@ -11,6 +11,10 @@ tags:
 - interest
 - minimum payment
 - debt
+related_calcs:
+  - { label: "Credit Card Payoff Calculator", url: "/loan/credit-card-payoff-calculator/" }
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
+  - { label: "Personal Loan EMI Calculator", url: "/loan/personal-loan-calculator/" }
 ---
 
 ## Credit Card Interest in India

@@ -11,6 +11,10 @@ tags:
 - registration charges
 - property
 - home buying
+related_calcs:
+  - { label: "Stamp Duty Calculator", url: "/loan/stamp-duty-calculator/" }
+  - { label: "Home Loan Eligibility Calculator", url: "/loan/home-loan-eligibility/" }
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
 ---
 
 ## Understanding Stamp Duty and Registration

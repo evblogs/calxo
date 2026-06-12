@@ -11,6 +11,10 @@ tags:
 - doubling time
 - compound interest
 - investment
+related_calcs:
+  - { label: "Compound Interest Calculator", url: "/investment/compound-interest-calculator/" }
+  - { label: "CAGR Calculator", url: "/investment/cagr-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
 ---
 
 ## Rule of 72: Doubling Your Money

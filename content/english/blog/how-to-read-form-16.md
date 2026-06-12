@@ -12,6 +12,10 @@ tags:
 - income tax
 - salary
 - ITR
+related_calcs:
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "TDS Calculator", url: "/tax/tds-calculator/" }
 ---
 
 ## Basics of Form 16

@@ -11,6 +11,10 @@ tags:
 - FD
 - savings
 - interest calculation
+related_calcs:
+  - { label: "Compound Interest Calculator", url: "/investment/compound-interest-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "FD Calculator", url: "/investment/fd-calculator/" }
 ---
 
 ## Compound Interest Calculation

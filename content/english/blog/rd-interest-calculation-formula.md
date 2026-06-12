@@ -11,6 +11,10 @@ tags:
 - recurring deposit
 - interest calculation
 - savings
+related_calcs:
+  - { label: "RD Calculator", url: "/investment/rd-calculator/" }
+  - { label: "FD Calculator", url: "/investment/fd-calculator/" }
+  - { label: "Compound Interest Calculator", url: "/investment/compound-interest-calculator/" }
 ---
 
 ## Understanding Recurring Deposit Basics

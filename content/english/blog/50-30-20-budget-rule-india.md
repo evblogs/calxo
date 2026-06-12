@@ -11,6 +11,10 @@ tags:
 - 50/30/20 rule
 - savings
 - salary
+related_calcs:
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
 ---
 
 ## Understanding the 50/30/20 Rule

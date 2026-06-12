@@ -11,6 +11,10 @@ tags:
 - public provident fund
 - tax saving
 - 80C
+related_calcs:
+  - { label: "PPF Calculator", url: "/investment/ppf-calculator/" }
+  - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+  - { label: "Compound Interest Calculator", url: "/investment/compound-interest-calculator/" }
 ---
 
 ## Understanding the PPF Framework

@@ -12,6 +12,10 @@ tags:
 - EMI
 - interest
 - principal
+related_calcs:
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
+  - { label: "Loan Prepayment Calculator", url: "/loan/loan-prepayment-calculator/" }
+  - { label: "Home Loan Eligibility Calculator", url: "/loan/home-loan-eligibility/" }
 ---
 
 ## Loan Amortization Basics

@@ -12,6 +12,10 @@ tags:
 - fixed deposit
 - recurring deposit
 - savings
+related_calcs:
+  - { label: "FD Calculator", url: "/investment/fd-calculator/" }
+  - { label: "RD Calculator", url: "/investment/rd-calculator/" }
+  - { label: "Compound Interest Calculator", url: "/investment/compound-interest-calculator/" }
 ---
 
 ## Comparing Fixed Deposits and Recurring Deposits

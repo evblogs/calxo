@@ -11,6 +11,10 @@ tags:
 - prepayment
 - EMI
 - interest saving
+related_calcs:
+  - { label: "Loan Prepayment Calculator", url: "/loan/loan-prepayment-calculator/" }
+  - { label: "EMI Calculator", url: "/loan/emi-calculator/" }
+  - { label: "Home Loan Eligibility Calculator", url: "/loan/home-loan-eligibility/" }
 ---
 
 ## Home Loan Prepayment Benefits

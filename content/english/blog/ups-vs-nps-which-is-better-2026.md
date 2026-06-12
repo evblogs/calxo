@@ -12,6 +12,10 @@ tags:
 - pension
 - central government
 - retirement
+related_calcs:
+  - { label: "UPS Pension Calculator", url: "/investment/ups-pension-calculator/" }
+  - { label: "NPS Calculator", url: "/investment/nps-calculator/" }
+  - { label: "Retirement Calculator", url: "/investment/retirement-calculator/" }
 ---
 
 ## Pension Schemes for Central Government Employees

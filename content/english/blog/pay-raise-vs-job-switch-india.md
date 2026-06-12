@@ -11,6 +11,10 @@ tags:
 - job switch
 - increment
 - career
+related_calcs:
+  - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+  - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
+  - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
 ---
 
 ## Pay Raise vs Job Switch: The Real Numbers Behind the Decision
