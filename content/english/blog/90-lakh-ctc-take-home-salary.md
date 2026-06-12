@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Aditya signed a ₹90 lakh package as a VP of sales in Patna. At this level a new line shows up that nobody at lower salaries deals with: surcharge. Taxable income crosses ₹50 lakh, so a 10% surcharge stacks on the income tax itself. Monthly in-hand is ₹4,48,182, roughly 60% of CTC, with ₹23,22,966 a year going to tax including that surcharge.

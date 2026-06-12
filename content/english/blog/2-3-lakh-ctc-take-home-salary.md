@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Ananya took a retail store associate job in Chennai on ₹2.3 lakh a year. The offer letter showed ₹19,167 a month, so Ananya planned around that figure. The first salary credit was ₹16,206. None of the gap is income tax, because at ₹2.3 lakh you pay zero. It is provident fund and a little professional tax, plus the slice of CTC that an offer letter counts but a bank account never receives.

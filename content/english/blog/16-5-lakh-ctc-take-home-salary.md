@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Nisha negotiated a ₹16.5 lakh package as a senior engineer in Vadodara, up from a lower band, and expected the raise to land in full. It did not. Monthly in-hand is ₹1,09,221, which is about 79% of CTC. The 87A rebate is gone at this level, so income tax of ₹99,266 a year is now a real line on the payslip, not a number the rebate quietly erases.

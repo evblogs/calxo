@@ -18,6 +18,7 @@ related_calcs:
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Old vs New Tax Regime", url: "/tax/old-vs-new-tax-regime/" }
+calc_layout: true
 ---
 
 Rahul was at ₹11L CTC before switching to a ₹12L role at a Bengaluru product company. Monthly at 11L: ₹78,262. Monthly at 12L: ₹85,395. The jump: ₹7,133/month. Both: zero income tax. Then he got another hike to ₹15L. Monthly: ₹1,00,308. The jump this time: ₹14,913/month for a ₹3L CTC increase. But ₹77,832 went to income tax that year. The zero-tax zone ended at ₹12L. At ₹11L, you're in the last clean stretch.

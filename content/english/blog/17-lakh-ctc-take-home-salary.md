@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Rohan moved from ₹14L to ₹17L when he jumped to a fintech in Bengaluru. The raise looked like ₹25,000 more a month on paper. The payslip told a quieter story: his in-hand went from ₹99,026 to ₹1,12,192, a real gain of about ₹13,166 a month. The other half of the raise went to tax and PF. At 17 lakh CTC your annual income tax crosses ₹1 lakh for the first time, landing at ₹1,06,410. This is also the rough crossover point where, if you rent in a metro and have a home loan, the old regime finally starts to compete with the new one.

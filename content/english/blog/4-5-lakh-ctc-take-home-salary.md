@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Arjun signed a ₹4.5 lakh offer as a support engineer in Indore. The letter said ₹37,500 a month. The bank credit was ₹31,898. At ₹4.5 lakh there is still no income tax to blame, the whole gap is your own EPF, a ₹2,400 professional tax, and the employer PF plus gratuity that live inside CTC and never reach you. In-hand works out to about 85% of CTC, close to the best ratio you will ever see.

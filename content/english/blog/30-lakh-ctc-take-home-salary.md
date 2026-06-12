@@ -19,6 +19,7 @@ related_calcs:
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Meera accepted a ₹30 lakh CTC offer from a Bengaluru product company last month. She mentally divided by 12 and thought "₹2.5 lakh a month." Her first salary credit: ₹1,83,742. This gap between offer letter and bank account is where most senior employees get surprised. At ₹30L CTC, you're solidly in the 20% tax slab, employer PF is ₹1.8L sitting inside your CTC, and the 87A rebate that wiped out tax for ₹12L earners is completely gone.

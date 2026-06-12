@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Lakshmi crossed into a ₹36 lakh package as a senior product manager in Madurai. The headline sounds like ₹3,00,000 a month. The account sees ₹2,09,202. Income tax alone is ₹5,68,595 a year here, the 30% slab is in play on the top slice of income, and take-home settles near 70% of CTC. This is the band where structuring the CTC actually starts paying back.

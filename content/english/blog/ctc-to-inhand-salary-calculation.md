@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Tax Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Someone earning ₹12L CTC in Bengaluru gets ₹85,395 credited to their account every month. Someone earning ₹12L in Delhi gets ₹85,595. That ₹200 difference is the entire city effect for new regime earners. Not ₹10,000. Not ₹5,000. ₹200. Most salary advice in India treats city as a huge variable. It isn't. The real variables are your salary structure, your PF deduction, and whether your income tax is zero (which it is for most people below ₹12L CTC).

@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Aishwarya got a ₹16L offer from a product company in Hyderabad after three years at a services firm. She had read that salary up to ₹12L is tax-free now, so she assumed her tax would be small. The payslip said ₹92,121 for the year, about ₹7,677 a month going to TDS. At 16 lakh CTC the rebate is long gone, marginal relief no longer applies, and the 15% slab is quietly working through a big chunk of your income. Her in-hand settled at ₹1,06,250. Still a strong number, but the tax is real now in a way it was not at ₹13L or ₹14L.

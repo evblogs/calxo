@@ -13,6 +13,7 @@ related_calcs:
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
+calc_layout: true
 ---
 
 Ankit from Bengaluru had been dreaming about his first salary ever since he got the Rs. 10 lakh CTC offer letter from that big IT MNC. But his excitement crashed when he saw the first payslip: take-home was just Rs. 72,000, not the “83,333 per month” he’d calculated by simply dividing CTC by 12. “Arre bhai, where did my money go? My parents thought I’d be getting 80k plus!” he messaged me in a panic. And Ankit is not alone. Every fresher, every campus hire, every friend’s cousin who lands a 10 lakh CTC, gets the same shock. Let’s break down exactly why this happens, why you pay zero income tax, and how your city, company, and even your rent choices change your take-home salary.

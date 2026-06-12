@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Rahul negotiated a ₹22.5 lakh package as a senior engineer in Kolkata, up from a lower band, and expected the raise to land in full. It did not. Monthly in-hand is ₹1,43,202, which is about 76% of CTC. The 87A rebate is gone at this level, so income tax of ₹2,05,065 a year is now a real line on the payslip, not a number the rebate quietly erases.

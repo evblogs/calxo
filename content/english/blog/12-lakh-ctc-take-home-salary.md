@@ -13,6 +13,7 @@ related_calcs:
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
+calc_layout: true
 ---
 
 Rahul, a software engineer in Bengaluru, just landed a job offer with a CTC of Rs. 12,00,000. His family is thrilled, and his friends are already joking about his “1 lakh per month” salary. But when his first payslip lands, the number is much lower, closer to Rs. 85,000 per month. This is the classic Indian salary reality check. If you or someone you know is staring at that Rs. 12 lakh CTC offer letter, read on for a full, real-world breakdown of how much you actually get in hand, why the tax is zero, and how city, PF, and salary structure change your take-home.

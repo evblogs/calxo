@@ -19,6 +19,7 @@ related_calcs:
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "Old vs New Tax Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Sneha moved from a ₹12L role to ₹18L at a Gurgaon SaaS company last quarter. She was expecting roughly ₹1.5 lakh a month. The first credit was ₹1,18,420. The bump from 12L to 18L felt like a 50% jump on paper but only an 18% jump in actual cash. This is the classic ₹18L surprise. You cross the ₹12L 87A threshold for the first time, real income tax starts hitting your salary, and the marginal benefit of every CTC rupee shrinks.

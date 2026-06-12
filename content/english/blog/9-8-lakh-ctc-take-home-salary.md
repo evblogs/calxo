@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Sandeep moved to a ₹9.8 lakh role as a QA engineer in Mysuru and had to pick a tax regime on the joining form. New regime: ₹69,703 a month, zero income tax. Old regime with no real deductions: ₹62,594 a month, because ₹9.8 lakh gets taxed ₹85,307 there. Same CTC, ₹7,109 a month difference, decided by one checkbox. At ₹9.8 lakh the new regime wins by a distance.

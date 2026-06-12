@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Pooja moved to a ₹11.5 lakh role as a marketing associate in Bhubaneswar and had to pick a tax regime on the joining form. New regime: ₹81,829 a month, zero income tax. Old regime with no real deductions: ₹71,992 a month, because ₹11.5 lakh gets taxed ₹1,18,043 there. Same CTC, ₹9,837 a month difference, decided by one checkbox. At ₹11.5 lakh the new regime wins by a distance.

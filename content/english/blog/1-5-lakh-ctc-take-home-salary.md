@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Sneha took a field sales executive job in Bengaluru on ₹1.5 lakh a year. The offer letter showed ₹12,500 a month, so Sneha planned around that figure. The first salary credit was ₹10,499. None of the gap is income tax, because at ₹1.5 lakh you pay zero. It is provident fund and a little professional tax, plus the slice of CTC that an offer letter counts but a bank account never receives.

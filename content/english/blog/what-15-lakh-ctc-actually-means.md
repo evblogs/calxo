@@ -19,6 +19,7 @@ ai_summary: |
   - **Cash that hits payroll** = annual gross of ₹13.74L (Basic ₹7.5L + HRA ₹3L + Special Allowance ~₹3.24L). Negotiate against this, not the ₹15L headline.
   - **Locked away** = ₹1.80L in EPF (employer + employee combined) earning 8.25%. Gratuity provision is on paper only, you forfeit it if you exit before 5 years.
   - The new regime stops giving zero tax above ₹12.75L gross because the 87A rebate caps out at ₹12L taxable. Restructuring CTC with employer NPS (80CCD(2)) up to 10% of basic is one of the few legal ways to pull tax down further under the new regime.
+calc_layout: true
 ---
 
 A friend joined a Bengaluru SaaS company last month at ₹15 lakh CTC. First salary credit hit her account: ₹1,00,308. She messaged me: "the offer said 1.25 a month, where did the rest go?"

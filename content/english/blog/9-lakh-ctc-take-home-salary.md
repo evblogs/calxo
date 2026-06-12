@@ -18,6 +18,7 @@ related_calcs:
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "SIP Calculator", url: "/investment/sip-calculator/" }
+calc_layout: true
 ---
 
 Kavya got promoted after her third year at a Chennai IT firm. Moved from ₹7L to ₹9L CTC. Both salaries sit in the zero-tax zone. But the monthly jump, from ₹49,730 to ₹63,996, was ₹14,266 more every month. Clean. No tax eating into the increment. The ₹2L CTC hike converted almost entirely to take-home, minus only the PF increase. That's what the no-tax zone below ₹12L CTC actually means in rupees.

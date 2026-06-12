@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Arjun signed a ₹4L CTC offer as a junior associate at a logistics company in Indore. The letter said ₹33,333 a month. He told his family he would send ₹10,000 home and still have ₹23,000 to live on. The first credit was ₹28,332, not ₹33,333, so his "₹23,000 to live on" was actually closer to ₹18,000 after the money he had promised. None of the gap was income tax, because at 4 lakh CTC you pay none. It was provident fund and a small professional tax, plus the parts of CTC that an offer letter counts but a salary account never sees.

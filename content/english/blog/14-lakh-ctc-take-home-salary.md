@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Vikram switched jobs in Gurgaon and his CTC went from ₹13L to ₹14L. He expected the tax-free run to end with a thud. It didn't. His income tax for the year came to ₹7,623, about ₹635 a month. The reason is a rule almost nobody explains: marginal relief. Once your taxable income crosses ₹12L by a small amount, the law refuses to tax you more than the amount by which you crossed. So at 14 lakh CTC you pay a token tax, and your in-hand lands at ₹99,026. The strange part comes next. Going from 14L to 15L barely moves your take-home, because that's where the real tax kicks in.

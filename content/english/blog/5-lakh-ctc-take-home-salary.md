@@ -17,6 +17,7 @@ related_calcs:
   - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Sneha got her first offer letter: ₹5 LPA at a Pune IT firm. Her parents were thrilled. "₹5 lakh a year means ₹41,667 a month!" First payslip landed: ₹35,465. Nobody had warned her. The gap of ₹6,200 is entirely PF and professional tax, no income tax at all. At ₹5L CTC, the income tax bill is exactly zero.

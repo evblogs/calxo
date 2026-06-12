@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Naveen moved to a ₹9.5 lakh role as a software engineer in Coimbatore and had to pick a tax regime on the joining form. New regime: ₹67,563 a month, zero income tax. Old regime with no real deductions: ₹60,930 a month, because ₹9.5 lakh gets taxed ₹79,592 there. Same CTC, ₹6,633 a month difference, decided by one checkbox. At ₹9.5 lakh the new regime wins by a distance.

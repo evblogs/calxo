@@ -18,6 +18,7 @@ related_calcs:
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Vikram switched jobs: from ₹6L at an IT services company to ₹8L at a mid-size Hyderabad product firm. He had already checked Calxo before joining. He knew the take-home was ₹56,863. His PF deduction went up from ₹3,000 to ₹4,000/month. Income tax: still zero. The ₹2L CTC hike added ₹14,265/month cleanly, because there was no tax leaking out from the increment.

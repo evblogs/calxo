@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "Capital Gains Calculator", url: "/tax/capital-gains-calculator/" }
+calc_layout: true
 ---
 
 Arjun leads an engineering team in Hyderabad at ₹35 lakh CTC. He was expecting close to ₹2.5 lakh a month. His first payslip showed ₹2,11,400. "I'm earning more than my father earned in his best year, but I still feel like I need a raise," he told me. That feeling has a name: lifestyle inflation meeting India's tax structure. At ₹35L, you're in the 20% and 25% slabs, the effective tax drag is real, and the gap between CTC and in-hand is among the widest in the salary spectrum.

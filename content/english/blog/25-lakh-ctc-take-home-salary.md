@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Divya switched from a ₹20L offer to a ₹25L package at a Bengaluru fintech. She had been taking home ₹1,29,339. She expected ₹5L more per year to mean ₹41,667 more a month. Actual difference: ₹26,795/month. The other ₹14,872 went to income tax (₹1,06,433 more per year) and higher PF deductions (₹30,000 more). That is the ₹25L surprise. By this level, tax drag is real and unavoidable, but there is one specific move that can recover ₹25,000-₹31,000/year of it.

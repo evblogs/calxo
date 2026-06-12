@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Karthik got promoted at his Chennai product company and moved from ₹15L to a ₹20L CTC package. The math in his head: ₹5L extra a year, that's ₹41,667 more every month. His first payslip at the new salary: ₹1,29,339. He had been taking home ₹1,00,308. The actual jump was ₹29,031/month. Tax ate nearly ₹10,000 of the raise, PF swallowed another ₹2,500, and employer contributions padded the CTC number without adding any cash.

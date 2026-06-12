@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Capital Gains Calculator", url: "/tax/capital-gains-calculator/" }
   - { label: "Old vs New Tax Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
+calc_layout: true
 ---
 
 Rohan accepted a Director role at a Mumbai fintech at ₹40 lakh CTC. He had calculated, optimistically, that ₹40,00,000 divided by 12 was ₹3.33 lakh per month. His first payslip showed ₹2,29,150. The gap between offer letter and bank account is roughly ₹1.04 lakh per month, which is significantly more than what a fresher even earns. At ₹40L, the income tax bite is the largest single deduction, and most professionals at this band underestimate it by ₹2-3 lakh.

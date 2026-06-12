@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Sneha cleared her appraisal at a Pune SaaS company and her CTC moved from ₹11.5L to ₹13L. She braced for a tax hit, because everyone in her team who crossed ₹12L was suddenly complaining about TDS showing up on the payslip. Her first revised slip: ₹92,528 in-hand, income tax still zero. She got lucky with the structure. At 13 lakh CTC, the standard deduction plus your own PF plus the gratuity provision pull taxable income just under the ₹12L line, so the 87A rebate wipes out the entire tax. One step higher and that stops working.

@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Ritika moved to a ₹9.6 lakh role as a business analyst in Nagpur and had to pick a tax regime on the joining form. New regime: ₹68,276 a month, zero income tax. Old regime with no real deductions: ₹61,485 a month, because ₹9.6 lakh gets taxed ₹81,497 there. Same CTC, ₹6,791 a month difference, decided by one checkbox. At ₹9.6 lakh the new regime wins by a distance.

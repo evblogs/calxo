@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Gaurav crossed into a ₹37 lakh package as a regional sales head in Ranchi. The headline sounds like ₹3,08,333 a month. The account sees ₹2,13,954. Income tax alone is ₹5,97,173 a year here, the 30% slab is in play on the top slice of income, and take-home settles near 69% of CTC. This is the band where structuring the CTC actually starts paying back.

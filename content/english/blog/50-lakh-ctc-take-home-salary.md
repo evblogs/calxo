@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Capital Gains Calculator", url: "/tax/capital-gains-calculator/" }
   - { label: "Old vs New Tax Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "Retirement Calculator", url: "/investment/retirement-calculator/" }
+calc_layout: true
 ---
 
 Vikram joined a Bengaluru fintech as VP-Engineering at ₹50 lakh CTC. He had read enough Reddit posts to know the in-hand wouldn't be ₹4.16 lakh a month, but he still flinched when his first payslip showed ₹2,76,300. ₹50L CTC sits at a strange psychological boundary. It is the salary band where Indian professionals start calling themselves "highly paid" but the actual cash flow gap from CTC to bank account is the widest in the entire salary spectrum, almost ₹1.4 lakh a month.

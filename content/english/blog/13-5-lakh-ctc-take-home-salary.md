@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Aakash moved to a ₹13.5 lakh role as an accounts executive in Chandigarh and had to pick a tax regime on the joining form. New regime: ₹96,094 a month, zero income tax. Old regime with no real deductions: ₹81,495 a month, because ₹13.5 lakh gets taxed ₹1,75,198 there. Same CTC, ₹14,600 a month difference, decided by one checkbox. At ₹13.5 lakh the new regime wins by a distance.

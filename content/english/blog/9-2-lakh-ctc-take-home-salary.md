@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Divya moved to a ₹9.2 lakh role as an accounts executive in Ahmedabad and had to pick a tax regime on the joining form. New regime: ₹65,423 a month, zero income tax. Old regime with no real deductions: ₹59,266 a month, because ₹9.2 lakh gets taxed ₹73,876 there. Same CTC, ₹6,156 a month difference, decided by one checkbox. At ₹9.2 lakh the new regime wins by a distance.

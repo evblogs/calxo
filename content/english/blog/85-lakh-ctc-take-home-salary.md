@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Swati signed a ₹85 lakh package as a director of engineering in Guwahati. At this level a new line shows up that nobody at lower salaries deals with: surcharge. Taxable income crosses ₹50 lakh, so a 10% surcharge stacks on the income tax itself. Monthly in-hand is ₹4,25,615, roughly 60% of CTC, with ₹21,65,789 a year going to tax including that surcharge.

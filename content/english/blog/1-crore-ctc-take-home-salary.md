@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "NPS Tax Benefit Calculator", url: "/tax/nps-tax-benefit-calculator/" }
   - { label: "Capital Gains Calculator", url: "/tax/capital-gains-calculator/" }
+calc_layout: true
 ---
 
 Sanjay hit a ₹1 crore CTC as a business head at a Gurgaon firm, the round number he had chased for fifteen years. The reality of the payslip is more sobering than the milestone. His in-hand is ₹4,93,315 a month, ₹59.2L for the year. He keeps 59.2% of his ₹1 crore. Over ₹26L goes to income tax and surcharge, ₹6L to PF, and the rest is employer contributions that pad the CTC without ever reaching him. There is one pleasant surprise buried in the math: the surcharge is still 10%, not the 15% he expected at a crore, because the threshold is on taxable income, not CTC, and his taxable income lands just under the line.

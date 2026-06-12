@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "NPS Tax Benefit Calculator", url: "/tax/nps-tax-benefit-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Deepak made it to senior engineering manager at a Bengaluru product company and his CTC crossed into ₹60L. He had stopped doing the CTC-divided-by-twelve math years ago, but he still expected to keep more than he did. His in-hand: ₹3,12,783 a month, ₹37.5L for the year. That is 62.6% of his CTC. The other 37% goes to income tax, a surcharge on that tax, his PF, and the employer contributions baked into the headline number. At 60 lakh you have entered the surcharge zone, where the government adds a 10% levy on top of your already-30% slab tax. Here is the full picture.

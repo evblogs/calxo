@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Rohit took a customer-support trainee job in Pune on ₹1 lakh a year. The offer letter showed ₹8,333 a month, so Rohit planned around that figure. The first salary credit was ₹6,933. None of the gap is income tax, because at ₹1 lakh you pay zero. It is provident fund and a little professional tax, plus the slice of CTC that an offer letter counts but a bank account never receives.

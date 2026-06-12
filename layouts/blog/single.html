@@ -9,6 +9,40 @@
   }
   @media (max-width: 1080px) { .cx-post-layout { grid-template-columns: 1fr; } .cx-post-aside { display: none; } }
 
+  /* ── 3-column variant: left nav + content + right sidebar (calculator-embed posts) ── */
+  .cx-post-layout.cx-post-layout--3col { grid-template-columns: 260px minmax(0, 1fr) 300px; gap: 2.25rem; }
+  @media (max-width: 1080px) {
+    .cx-post-layout.cx-post-layout--3col { grid-template-columns: 1fr; }
+    .cx-post-layout--3col .cx-left-nav { display: none; }
+  }
+
+  /* Left navigation tree (shared look with calculator pages) */
+  .cx-left-nav {
+    position: sticky; top: 1rem;
+    max-height: calc(100vh - 2rem); overflow-y: auto;
+    padding: 1rem .25rem 1.5rem;
+    border-right: 1px solid #e2e8f0;
+    font-size: .9rem;
+  }
+  .cx-nav-title { font-weight: 700; font-size: 1rem; color: #0f172a; padding: 0 1rem 1rem; margin-bottom: .25rem; letter-spacing: -.2px; }
+  .cx-nav-tree { display: flex; flex-direction: column; }
+  .cx-nav-home { padding: .55rem 1rem; color: #1e293b; text-decoration: none; font-weight: 500; border-left: 3px solid transparent; transition: background .15s ease; }
+  .cx-nav-home:hover { background: #f1f5f9; color: #0f172a; }
+  .cx-nav-home.cx-nav-active { background: #dbeafe; color: #1d4ed8; font-weight: 700; border-left-color: #2563eb; }
+  .cx-nav-group { border: 0; }
+  .cx-nav-group > .cx-nav-summary { list-style: none; cursor: pointer; padding: .55rem 1rem; color: #1e293b; font-weight: 500; display: flex; align-items: center; gap: .5rem; border-left: 3px solid transparent; user-select: none; transition: background .15s ease; }
+  .cx-nav-group > .cx-nav-summary:hover { background: #f1f5f9; color: #0f172a; }
+  .cx-nav-group[open] > .cx-nav-summary { background: #f8fafc; color: #0f172a; font-weight: 600; }
+  .cx-nav-summary::-webkit-details-marker { display: none; }
+  .cx-nav-arrow { width: 0; height: 0; border-left: 5px solid #475569; border-top: 4px solid transparent; border-bottom: 4px solid transparent; transition: transform .15s ease; flex-shrink: 0; }
+  .cx-nav-group[open] > .cx-nav-summary .cx-nav-arrow { transform: rotate(90deg); }
+  .cx-nav-children { list-style: none; padding: 0; margin: 0; }
+  .cx-nav-link { display: block; padding: .5rem 1rem .5rem 2.4rem; color: #475569; text-decoration: none; font-size: .87rem; border-left: 3px solid transparent; transition: background .15s ease, color .15s ease; }
+  .cx-nav-link:hover { background: #f1f5f9; color: #0f172a; }
+  .cx-nav-link.cx-nav-active { background: #dbeafe; color: #1d4ed8; font-weight: 700; border-left-color: #2563eb; }
+  .cx-nav-overview { font-style: italic; color: #64748b; }
+  .cx-nav-overview.cx-nav-active { font-style: normal; }
+
   .cx-post-breadcrumb {
     font-size: .82rem;
     color: #64748b;
@@ -549,7 +583,8 @@
 </style>
 
 <div class="cx-post-wrap">
-  <div class="cx-post-layout">
+  <div class="cx-post-layout{{ if .Params.calc_layout }} cx-post-layout--3col{{ end }}">
+    {{ if .Params.calc_layout }}{{ partial "calc-left-nav.html" . }}{{ end }}
     <article class="cx-post" itemscope itemtype="https://schema.org/Article">
       <nav class="cx-post-breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> &rsaquo;

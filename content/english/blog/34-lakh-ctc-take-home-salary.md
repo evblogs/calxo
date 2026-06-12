@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Harish crossed into a ₹34 lakh package as an engineering manager in Rajkot. The headline sounds like ₹2,83,333 a month. The account sees ₹1,99,699. Income tax alone is ₹5,11,440 a year here, the 30% slab is in play on the top slice of income, and take-home settles near 70% of CTC. This is the band where structuring the CTC actually starts paying back.

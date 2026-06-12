@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Karthik finished his MBA last year and joined a Chennai consulting firm at ₹7 lakh CTC. He mentally divided 7,00,000 by 12 and walked into his first month expecting ₹58,000. The bank credit showed ₹49,840. He texted his cousin who is in HR: "yaar, did they cheat me?" Nobody cheated him. ₹7 lakh CTC genuinely converts to roughly ₹49,000-₹50,000 in your account every month, and the math is consistent regardless of where in India you work.

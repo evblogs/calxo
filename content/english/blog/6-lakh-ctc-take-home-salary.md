@@ -17,6 +17,7 @@ related_calcs:
   - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Arjun got placed at a Bengaluru IT services company fresh out of college. ₹6 LPA. He called his cousin and said "₹50,000 a month, bhai!" His first payslip: ₹42,598. The math he hadn't done: PF takes ₹3,000/month and professional tax ₹200/month. Income tax is zero. Not partly zero, not offset by rebate, actually, fully zero.

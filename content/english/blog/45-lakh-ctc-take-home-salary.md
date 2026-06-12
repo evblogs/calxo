@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Capital Gains Calculator", url: "/tax/capital-gains-calculator/" }
   - { label: "Old vs New Tax Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Anjali got promoted to Senior Manager at a Bengaluru analytics firm last quarter. New CTC: ₹45 lakh. She had budgeted around ₹3 lakh a month based on rough division. Her first payslip showed ₹2,51,800. The shock here is different from the ₹18L or ₹25L surprise. At ₹45L, the headline tax number jumps past ₹8 lakh annually, which is itself the entire CTC of a fresh engineer. Each rupee of extra CTC at this level effectively gives you 60 paise after tax.

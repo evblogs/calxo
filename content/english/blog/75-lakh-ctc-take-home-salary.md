@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "NPS Tax Benefit Calculator", url: "/tax/nps-tax-benefit-calculator/" }
   - { label: "Capital Gains Calculator", url: "/tax/capital-gains-calculator/" }
+calc_layout: true
 ---
 
 Meghna took a director role at a Mumbai startup on a ₹75L CTC, a big step up from her ₹50L package. The offer letter was a wall of components: fixed pay, target variable, a joining bonus, an ESOP grant, retention pay. Stripped down to what actually credits monthly, her in-hand is ₹3,80,482, about ₹45.6L for the year. That is 60.9% of her ₹75L CTC. At this level the tax math is settled, you pay 30% plus a 10% surcharge plus cess on the top slice, so the bigger lever is no longer regime choice. It is how much of your ₹75L is guaranteed fixed pay versus variable that may or may not pay out.

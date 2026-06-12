@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Old vs New Regime", url: "/tax/old-vs-new-tax-regime/" }
   - { label: "HRA Exemption Calculator", url: "/salary/hra-calculator/" }
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
+calc_layout: true
 ---
 
 Priya left a ₹12L CTC role in Hyderabad for a ₹15L offer in Pune. She calculated: ₹15L minus ₹12L = ₹3L more per year, so roughly ₹25,000 extra every month. First payslip arrived. Monthly credit: ₹1,00,308. She had been getting ₹85,395 at the old job. The actual jump: ₹14,913/month. The missing ₹10,000 went straight to income tax - specifically the disappearance of the Section 87A rebate that had kept her tax at zero.

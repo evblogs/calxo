@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Tanvi negotiated a ₹28 lakh package as a senior analyst in Faridabad, up from a lower band, and expected the raise to land in full. It did not. Monthly in-hand is ₹1,71,191, which is about 73% of CTC. The 87A rebate is gone at this level, so income tax of ₹3,39,974 a year is now a real line on the payslip, not a number the rebate quietly erases.

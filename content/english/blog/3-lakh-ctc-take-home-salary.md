@@ -19,6 +19,7 @@ related_calcs:
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Pooja took her first job at a customer-support firm in Coimbatore on a ₹3L CTC. The HR person said "twenty-five thousand a month" during the call, so she planned her rent and her phone EMI around ₹25,000. Her first salary credited ₹21,199. The ₹3,801 difference was not income tax. She pays no income tax at all. It was her own provident fund and a small professional tax, plus two components of the CTC that were never going to reach her bank in the first place. This is the same shock most freshers get, so here is exactly where every rupee of a 3 lakh CTC goes.

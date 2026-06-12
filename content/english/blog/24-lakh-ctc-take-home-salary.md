@@ -19,6 +19,7 @@ related_calcs:
   - { label: "EPF Calculator", url: "/salary/epf-calculator/" }
   - { label: "Gratuity Calculator", url: "/salary/gratuity-calculator/" }
   - { label: "Salary Hike Calculator", url: "/salary/salary-hike-calculator/" }
+calc_layout: true
 ---
 
 Deepa negotiated a ₹24 lakh package as a product manager in Mumbai, up from a lower band, and expected the raise to land in full. It did not. Monthly in-hand is ₹1,50,986, which is about 75% of CTC. The 87A rebate is gone at this level, so income tax of ₹2,40,053 a year is now a real line on the payslip, not a number the rebate quietly erases.
