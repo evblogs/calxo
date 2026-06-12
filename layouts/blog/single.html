@@ -1,6 +1,8 @@
 {{ define "main" }}
 <style>
   .cx-post-wrap { max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+  /* Wider container for 3-col calculator-embed posts (more room for the content column) */
+  .cx-post-wrap--wide { max-width: 1500px; }
   .cx-post-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 300px;
@@ -582,7 +584,7 @@
   }
 </style>
 
-<div class="cx-post-wrap">
+<div class="cx-post-wrap{{ if .Params.calc_layout }} cx-post-wrap--wide{{ end }}">
   <div class="cx-post-layout{{ if .Params.calc_layout }} cx-post-layout--3col{{ end }}">
     {{ if .Params.calc_layout }}{{ partial "calc-left-nav.html" . }}{{ end }}
     <article class="cx-post" itemscope itemtype="https://schema.org/Article">
