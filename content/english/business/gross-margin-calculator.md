@@ -44,3 +44,5 @@ Gross profit is the absolute rupee amount: Revenue - COGS. Gross margin is the p
 Use gross profit for absolute cash flow planning -- how many rupees are available to cover operating expenses before hitting break-even. Use gross margin percentage for benchmarking against industry standards and tracking efficiency over time.
 
 Check your [break-even point](/business/break-even-calculator/) to see how gross margin feeds into profitability.
+
+If model inference is part of your cost of goods, the [LLM cost calculator](/business/llm-cost-calculator/) shows what each model adds per request, so you can see the hit to gross margin before you ship.
