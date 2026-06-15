@@ -138,6 +138,8 @@ URLS = [
     "/blog/85-lakh-ctc-take-home-salary/",
     "/blog/90-lakh-ctc-take-home-salary/",
 
+    "/business/llm-cost-calculator/",
+
     # Investment — new calcs
     "/investment/cagr-calculator/",
     "/investment/simple-interest-calculator/",
