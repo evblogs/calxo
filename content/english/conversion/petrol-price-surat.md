@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Surat Today: ₹101.73/Litre (14 June 2026)"
+title: "Petrol Price in Surat Today: ₹101.73/Litre (15 June 2026)"
 description: "Today's petrol price in Surat is ₹101.73/litre and diesel is ₹97.84/litre. Updated daily at 6 AM. Surat fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-14
-lastmod: 2026-06-14
+date: 2026-06-15
+lastmod: 2026-06-15
 type: "calculator"
 url: /conversion/petrol-price-surat/
 keywords: "petrol price in surat today, petrol price surat, diesel price surat today, fuel price surat 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-surat.png
-image_alt: "Today's petrol price in Surat is ₹101.73 per litre and diesel is ₹97.84 per litre on 14 June 2026"
+image_alt: "Today's petrol price in Surat is ₹101.73 per litre and diesel is ₹97.84 per litre on 15 June 2026"
 ---
 
-Today's petrol price in Surat is **₹101.73 per litre** and diesel is **₹97.84 per litre** (as of 14 June 2026). Prices update every day at 6:00 AM. That makes Surat, a Tier 2 city in Gujarat, roughly the same as Delhi (₹102.12).
+Today's petrol price in Surat is **₹101.73 per litre** and diesel is **₹97.84 per litre** (as of 15 June 2026). Prices update every day at 6:00 AM. That makes Surat, a Tier 2 city in Gujarat, roughly the same as Delhi (₹102.12).
 
 Surat benefits from Gujarat's low fuel tax, keeping it among the cheapest big cities in western India.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-surat.png"
-       alt="Today's petrol price in Surat is ₹101.73 per litre and diesel is ₹97.84 per litre as of 14 June 2026"
-       title="Petrol & diesel price in Surat — 14 June 2026"
+       alt="Today's petrol price in Surat is ₹101.73 per litre and diesel is ₹97.84 per litre as of 15 June 2026"
+       title="Petrol & diesel price in Surat — 15 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Surat — generated 14 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Surat — generated 15 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Surat" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-surat.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-surat.png",
-  "name": "Petrol & diesel price in Surat on 14 June 2026",
-  "description": "Today's petrol price in Surat is ₹101.73 per litre and diesel is ₹97.84 per litre as of 14 June 2026",
+  "name": "Petrol & diesel price in Surat on 15 June 2026",
+  "description": "Today's petrol price in Surat is ₹101.73 per litre and diesel is ₹97.84 per litre as of 15 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-14T06:00:00+05:30",
+  "uploadDate": "2026-06-15T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
