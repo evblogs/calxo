@@ -146,7 +146,7 @@
 
 <script>
 (function () {
-  var DATA = {{ index site.Data "llm-pricing" | jsonify }};
+  var DATA = {{ index site.Data "llm-pricing" | jsonify | safeJS }};
   var MODELS = DATA.models, FX = DATA.fx_usd_inr || 86;
   var cur = 'usd', sortKey = 'month', sortDir = 1;
   var hidden = {};
