@@ -54,3 +54,5 @@ Ignoring time: comparing a 6-month ROI with an 18-month ROI without annualising 
 Forgetting indirect costs: a ₹2L marketing campaign that consumed 40 hours of team time has a hidden cost of ₹40,000+ in salary. Include it.
 
 Use with the [gross margin calculator](/business/gross-margin-calculator/) to make sure the revenue side of your ROI calc reflects actual contribution, not just top-line revenue.
+
+Shipping an AI feature? Price the model spend with the [LLM cost calculator](/business/llm-cost-calculator/) before it goes into the cost side of your ROI, because token bills can swing the return more than people expect.
