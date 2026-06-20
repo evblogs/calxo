@@ -9,10 +9,10 @@ categories:
 tags: ["Salary", "Tax planning", "FY 2025-26", "CTC"]
 ai_summary:
 - 35 lakh CTC gives ₹2,10,000–₹2,18,000/month in-hand under new tax regime
-- Income tax lands around ₹5.5 lakh/year — effective rate is 15.7% on CTC
+- Income tax lands around ₹5.5 lakh/year, effective rate is 15.7% on CTC
 - Employer PF ₹2.1L and gratuity provision ₹84,175 are CTC components you never see in your account
 - Old regime rarely wins at this level unless you have a large home loan + maxed deductions
-- ESOP/RSU vesting is common at this salary band — each vesting is a separate tax event
+- ESOP/RSU vesting is common at this salary band, each vesting is a separate tax event
 related_calcs:
   - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
   - { label: "Income Tax Calculator (FY 2025-26)", url: "/tax/income-tax-calculator/" }
@@ -52,7 +52,7 @@ Employer PF + gratuity = ₹2.94L sitting inside CTC, not in your account.
 | Less: Income tax (new regime) | ₹5,47,560 | ₹45,630 |
 | **In-hand** | **₹22,85,865** | **₹2,11,322** |
 
-Income tax working (new regime): Gross taxable = ₹28,55,825 minus standard deduction ₹75,000 minus employee PF ₹2,10,000 = taxable ₹25,70,825. Slabs: ₹0 (0-4L) + ₹20,000 (4-8L) + ₹40,000 (8-12L) + ₹60,000 (12-16L) + ₹80,000 (16-20L) + ₹1,14,206 (20-25.7L at 25%) = ₹3,14,206 subtotal + 25% on ₹70,825 = ₹3,32,013 + 4% cess ₹13,280 = approximately ₹3,45,293. The exact number depends on your structure — run it above.
+Income tax working (new regime): Gross taxable = ₹28,55,825 minus standard deduction ₹75,000 minus employee PF ₹2,10,000 = taxable ₹25,70,825. Slabs: ₹0 (0-4L) + ₹20,000 (4-8L) + ₹40,000 (8-12L) + ₹60,000 (12-16L) + ₹80,000 (16-20L) + ₹1,14,206 (20-25.7L at 25%) = ₹3,14,206 subtotal + 25% on ₹70,825 = ₹3,32,013 + 4% cess ₹13,280 = approximately ₹3,45,293. The exact number depends on your structure, run it above.
 
 ## City-wise take-home at ₹35L CTC
 
@@ -69,9 +69,9 @@ HRA exemption benefit is higher in metros if you're paying rent (₹40,000+/mont
 
 Most ₹35L CTC packages in product/tech companies include ESOPs or RSUs. The tax treatment is separate from salary and catches many people off guard.
 
-**RSU vesting:** On vesting date, the fair market value of shares is treated as perquisite income — added to your salary and taxed at your slab rate (20-30%). If 100 RSUs vest at ₹500/share, ₹50,000 is added to your taxable income that month.
+**RSU vesting:** On vesting date, the fair market value of shares is treated as perquisite income, added to your salary and taxed at your slab rate (20-30%). If 100 RSUs vest at ₹500/share, ₹50,000 is added to your taxable income that month.
 
-**Sale of shares:** When you sell the vested shares, the gain from vesting price to sale price is capital gains — 15% STCG (held less than 12 months) or 12.5% LTCG above ₹1.25L (held more than 12 months).
+**Sale of shares:** When you sell the vested shares, the gain from vesting price to sale price is capital gains, 15% STCG (held less than 12 months) or 12.5% LTCG above ₹1.25L (held more than 12 months).
 
 This means a ₹35L salary + ₹5L RSU vesting in one year could push your total tax to ₹7-8L. Use the [capital gains calculator](/tax/capital-gains-calculator/) to plan vesting schedules.
 
@@ -88,11 +88,11 @@ If you're renting in a metro at ₹45,000+/month, maxing 80C, and have a home lo
 
 ## Related calculators
 
-- [Take-Home Salary Calculator](/salary/takehome-calculator/) — plug in your actual structure and city
-- [Old vs New Tax Regime](/tax/old-vs-new-tax-regime/) — find which regime saves more
-- [Income Tax Calculator](/tax/income-tax-calculator/) — slab-by-slab breakdown
-- [Capital Gains Calculator](/tax/capital-gains-calculator/) — plan ESOP/RSU tax impact
-- [HRA Exemption Calculator](/salary/hra-calculator/) — calculate HRA benefit by city and rent
+- [Take-Home Salary Calculator](/salary/takehome-calculator/), plug in your actual structure and city
+- [Old vs New Tax Regime](/tax/old-vs-new-tax-regime/), find which regime saves more
+- [Income Tax Calculator](/tax/income-tax-calculator/), slab-by-slab breakdown
+- [Capital Gains Calculator](/tax/capital-gains-calculator/), plan ESOP/RSU tax impact
+- [HRA Exemption Calculator](/salary/hra-calculator/), calculate HRA benefit by city and rent
 
 ## CTC salary ladder
 
@@ -120,7 +120,7 @@ All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use [Tak
 
 ## Sources
 
-- Income Tax Act 1961: Section 115BAC — new tax regime slabs, Finance Act 2025
+- Income Tax Act 1961: Section 115BAC, new tax regime slabs, Finance Act 2025
 - CBDT: Perquisite valuation rules for ESOPs and RSUs (Rule 3, Income Tax Rules 1962)
 - EPFO: PF contribution rates and ceiling
 - Payment of Gratuity Act 1972: 4.81% gratuity provision formula

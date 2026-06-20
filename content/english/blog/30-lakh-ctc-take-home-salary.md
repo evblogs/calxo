@@ -9,9 +9,9 @@ categories:
 tags: ["Salary", "Tax planning", "FY 2025-26", "CTC"]
 ai_summary:
 - 30 lakh CTC gives ₹1,82,000–₹1,90,000/month in-hand under new tax regime (depends on city and structure)
-- Income tax is ₹3.9 lakh/year — the 87A rebate is gone at this income level
+- Income tax is ₹3.9 lakh/year, the 87A rebate is gone at this income level
 - Employer PF contribution ₹1.8L/year is part of CTC but you don't see it in your account
-- Old regime saves tax only if 80C + HRA + 80D deductions exceed ₹5.5 lakh — rare at this salary
+- Old regime saves tax only if 80C + HRA + 80D deductions exceed ₹5.5 lakh, rare at this salary
 - Negotiating employer NPS under 80CCD(2) is the most effective tax-saving tool at ₹30L CTC
 related_calcs:
   - { label: "Take-Home Salary Calculator", url: "/salary/takehome-calculator/" }
@@ -41,7 +41,7 @@ A standard 50% basic structure at ₹30L CTC looks like this:
 | Employer NPS (optional) | ₹1,07,310 | ₹8,943 |
 | **Total CTC** | **₹30,00,000** | **₹2,50,000** |
 
-The employer PF and gratuity provision — ₹2.52L combined — are part of the ₹30L CTC but don't hit your bank account.
+The employer PF and gratuity provision, ₹2.52L combined, are part of the ₹30L CTC but don't hit your bank account.
 
 ## Take-home calculation: new regime
 
@@ -86,18 +86,18 @@ At ₹30L CTC, restructuring to include employer NPS under 80CCD(2) is the highe
 ## What to negotiate when your CTC is ₹30L
 
 At this income level, negotiation focus shifts from headline CTC to structure:
-- Push for higher basic — affects PF corpus, gratuity, and HRA basis
+- Push for higher basic, affects PF corpus, gratuity, and HRA basis
 - Ask for employer NPS contribution as CTC component
 - Clarify if annual bonus/variable is inside or outside the ₹30L figure
 - Confirm whether LTA is paid or included in special allowance (tax-exempt vs taxable)
 
 ## Related calculators
 
-- [Take-Home Salary Calculator](/salary/takehome-calculator/) — full in-hand breakdown with all deductions
-- [Old vs New Tax Regime](/tax/old-vs-new-tax-regime/) — find which regime saves more at your deduction level
-- [Income Tax Calculator](/tax/income-tax-calculator/) — slab-wise tax breakdown
-- [EPF Calculator](/salary/epf-calculator/) — project your PF corpus at retirement
-- [HRA Exemption Calculator](/salary/hra-calculator/) — calculate exact HRA tax benefit by city and rent
+- [Take-Home Salary Calculator](/salary/takehome-calculator/), full in-hand breakdown with all deductions
+- [Old vs New Tax Regime](/tax/old-vs-new-tax-regime/), find which regime saves more at your deduction level
+- [Income Tax Calculator](/tax/income-tax-calculator/), slab-wise tax breakdown
+- [EPF Calculator](/salary/epf-calculator/), project your PF corpus at retirement
+- [HRA Exemption Calculator](/salary/hra-calculator/), calculate exact HRA tax benefit by city and rent
 
 ## CTC salary ladder
 
@@ -125,7 +125,7 @@ All figures: new regime, Karnataka PT, 50% basic structure, FY 2025-26. Use [Tak
 
 ## Sources
 
-- Income Tax Act 1961: Section 115BAC (new regime), Finance Act 2025 — updated slabs and standard deduction ₹75,000
+- Income Tax Act 1961: Section 115BAC (new regime), Finance Act 2025, updated slabs and standard deduction ₹75,000
 - EPFO: 12% employee + 12% employer PF contribution rate
 - Payment of Gratuity Act 1972: 4.81% provision formula
 - CBDT: 80CCD(2) employer NPS deduction under new regime
