@@ -1,6 +1,6 @@
 ---
-title: "18 Lakh CTC Take-Home Salary 2025-26: ₹1,18,000/Month In-Hand Breakdown"
-description: "₹18L CTC = ₹1,18,000-₹1,22,000/month in-hand. Income tax ₹1.2L, EPF ₹1.08L, full breakdown of new vs old regime for FY 2025-26."
+title: "₹18 Lakh CTC In-Hand Salary: ₹1,18,134/Month (2025-26)"
+description: "₹18 lakh CTC = ₹1,18,134/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

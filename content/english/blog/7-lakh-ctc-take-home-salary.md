@@ -1,6 +1,6 @@
 ---
-title: "7 Lakh CTC Take-Home Salary 2025-26: ₹49,730/Month In-Hand Breakdown"
-description: "₹7L CTC = ₹49,000-₹50,000/month in-hand. Zero income tax via 87A rebate, ₹42,000 employee PF deduction, full salary breakup for FY 2025-26."
+title: "₹7 Lakh CTC In-Hand Salary: ₹49,730/Month (2025-26)"
+description: "₹7 lakh CTC = ₹49,730/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

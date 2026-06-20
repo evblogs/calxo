@@ -1,6 +1,6 @@
 ---
-title: "36 Lakh CTC Take-Home Salary 2025-26: ₹2,09,202/Month In-Hand Breakdown"
-description: "₹36L CTC = ₹2,09,202/month in-hand (new regime, 50% basic). Income tax ₹5,68,595/year. Full component breakdown of employer PF, gratuity, professional tax and the gap between offer letter and bank credit."
+title: "₹36 Lakh CTC In-Hand Salary: ₹2,09,202/Month (2025-26)"
+description: "₹36 lakh CTC = ₹2,09,202/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-11
 lastmod: 2026-06-11
 author: vignesh

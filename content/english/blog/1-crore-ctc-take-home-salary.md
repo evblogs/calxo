@@ -1,6 +1,6 @@
 ---
-title: "1 Crore CTC Take-Home Salary 2025-26: ₹4,93,315/Month In-Hand Breakdown"
-description: "₹1 crore CTC = ₹4,93,315/month in-hand under the new regime. Income tax ₹26,37,320/year. Why the surcharge is still 10% and not 15% at 1 crore, and why you keep under 60% of CTC. Full breakdown."
+title: "₹1 Crore CTC In-Hand Salary: ₹4,93,315/Month (2025-26)"
+description: "₹1 crore CTC = ₹4,93,315/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

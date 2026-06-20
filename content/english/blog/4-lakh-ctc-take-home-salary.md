@@ -1,6 +1,6 @@
 ---
-title: "4 Lakh CTC Take-Home Salary 2025-26: ₹28,332/Month In-Hand Breakdown"
-description: "₹4L CTC = ₹28,332/month in-hand. Zero income tax. Full breakdown of why ₹33,333/month on the offer letter becomes ₹28,332 after PF, gratuity and professional tax. Entry-level salary guide."
+title: "₹4 Lakh CTC In-Hand Salary: ₹28,332/Month (2025-26)"
+description: "₹4 lakh CTC = ₹28,332/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

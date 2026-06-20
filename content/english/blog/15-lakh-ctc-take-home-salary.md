@@ -1,6 +1,6 @@
 ---
-title: "15 Lakh CTC Take-Home Salary 2025-26: ₹1,00,308/Month In-Hand Breakdown"
-description: "₹15L CTC = ₹1,00,308/month in-hand (50% basic, new regime). The tax-free rebate ends here - income tax is ₹77,832/year. Full component table, city-wise breakdown, old vs new regime."
+title: "₹15 Lakh CTC In-Hand Salary: ₹1,00,308/Month (2025-26)"
+description: "₹15 lakh CTC = ₹1,00,308/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

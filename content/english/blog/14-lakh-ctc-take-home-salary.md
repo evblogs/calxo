@@ -1,6 +1,6 @@
 ---
-title: "14 Lakh CTC Take-Home Salary 2025-26: ₹99,026/Month In-Hand (Where Tax Begins)"
-description: "₹14L CTC = ₹99,026/month in-hand under the new regime. Income tax is only ₹7,623/year because marginal relief caps it. Why 14L and 15L take home almost the same. Full component table, city-wise, old vs new."
+title: "₹14 Lakh CTC In-Hand Salary: ₹99,026/Month (2025-26)"
+description: "₹14 lakh CTC = ₹99,026/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

@@ -1,6 +1,6 @@
 ---
-title: "50 Lakh CTC Take-Home Salary 2025-26: ₹2,75,700/Month In-Hand Breakdown"
-description: "₹50L CTC = ₹2,75,000-₹2,84,000/month in-hand. Income tax ₹9.69L, EPF ₹3L, surcharge analysis and full salary breakdown for FY 2025-26."
+title: "₹50 Lakh CTC In-Hand Salary: ₹2,75,722/Month (2025-26)"
+description: "₹50 lakh CTC = ₹2,75,722/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

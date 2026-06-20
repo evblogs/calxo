@@ -1,6 +1,6 @@
 ---
-title: "20 Lakh CTC Take-Home Salary 2025-26: ₹1,29,339/Month In-Hand Breakdown"
-description: "₹20L CTC = ₹1,29,339/month in-hand (50% basic, new regime). Income tax is ₹1,57,435/year - your first 1L+ tax bill. Full component table, city-wise, old vs new regime."
+title: "₹20 Lakh CTC In-Hand Salary: ₹1,29,339/Month (2025-26)"
+description: "₹20 lakh CTC = ₹1,29,339/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

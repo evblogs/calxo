@@ -1,6 +1,6 @@
 ---
-title: "13 Lakh CTC Take-Home Salary 2025-26: ₹92,528/Month In-Hand (Last Zero-Tax Band)"
-description: "₹13L CTC = ₹92,528/month in-hand under the new regime, and income tax is still zero. 13 lakh is the highest CTC where the 87A rebate fully covers your tax. Full component table, city-wise, old vs new regime."
+title: "₹13 Lakh CTC In-Hand Salary: ₹92,528/Month (2025-26)"
+description: "₹13 lakh CTC = ₹92,528/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

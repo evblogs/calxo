@@ -1,6 +1,6 @@
 ---
-title: "15 Lakh CTC Take-Home Salary 2025-26: ₹1,00,308/Month In-Hand Breakdown"
-description: "₹15L CTC = ₹1,00,308/month in-hand under new tax regime. Line-by-line breakdown: employer PF ₹90K, TDS ₹77,833, professional tax. Old vs new regime compared."
+title: "₹15 Lakh CTC In-Hand Salary: ₹1,00,308/Month (2025-26)"
+description: "₹15 lakh CTC = ₹1,00,308/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-04-26
 lastmod: 2026-04-26
 author: vignesh

@@ -1,6 +1,6 @@
 ---
-title: "60 Lakh CTC Take-Home Salary 2025-26: ₹3,12,783/Month In-Hand Breakdown"
-description: "₹60L CTC = ₹3,12,783/month in-hand under the new regime. Income tax ₹13,79,904/year including a 10% surcharge. Where surcharge begins to bite and you keep only 62.6% of CTC. Full breakdown."
+title: "₹60 Lakh CTC In-Hand Salary: ₹3,12,783/Month (2025-26)"
+description: "₹60 lakh CTC = ₹3,12,783/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

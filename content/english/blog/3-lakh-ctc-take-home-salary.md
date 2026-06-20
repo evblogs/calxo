@@ -1,6 +1,6 @@
 ---
-title: "3 Lakh CTC Take-Home Salary 2025-26: ₹21,199/Month In-Hand Breakdown"
-description: "₹3L CTC = ₹21,199/month in-hand. Zero income tax. Why your offer letter's ₹25,000/month becomes ₹21,199 after PF and professional tax. Full component breakdown for entry-level salaries."
+title: "₹3 Lakh CTC In-Hand Salary: ₹21,199/Month (2025-26)"
+description: "₹3 lakh CTC = ₹21,199/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

@@ -1,6 +1,6 @@
 ---
-title: "75 Lakh CTC Take-Home Salary 2025-26: ₹3,80,482/Month In-Hand Breakdown"
-description: "₹75L CTC = ₹3,80,482/month in-hand under the new regime. Income tax ₹18,51,435/year including 10% surcharge. You keep 60.9% of CTC. Why fixed vs variable split matters most at this level."
+title: "₹75 Lakh CTC In-Hand Salary: ₹3,80,482/Month (2025-26)"
+description: "₹75 lakh CTC = ₹3,80,482/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

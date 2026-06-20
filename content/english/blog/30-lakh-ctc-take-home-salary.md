@@ -1,6 +1,6 @@
 ---
-title: "30 Lakh CTC Take-Home Salary 2025-26: ₹1,82,000/Month In-Hand Breakdown"
-description: "₹30L CTC = ₹1,82,000–₹1,90,000/month in-hand. Full breakdown: income tax ₹3.9L, employer PF ₹1.8L, old vs new regime compared. Includes city-wise table."
+title: "₹30 Lakh CTC In-Hand Salary: ₹1,80,693/Month (2025-26)"
+description: "₹30 lakh CTC = ₹1,80,693/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-16
 lastmod: 2026-05-16
 author: vignesh

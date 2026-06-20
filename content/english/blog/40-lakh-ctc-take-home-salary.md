@@ -1,6 +1,6 @@
 ---
-title: "40 Lakh CTC Take-Home Salary 2025-26: ₹2,28,000/Month In-Hand Breakdown"
-description: "₹40L CTC = ₹2,28,000-₹2,36,000/month in-hand. Income tax ₹6.83L, employer PF ₹2.4L, full breakdown for FY 2025-26 with ESOP tax notes."
+title: "₹40 Lakh CTC In-Hand Salary: ₹2,28,208/Month (2025-26)"
+description: "₹40 lakh CTC = ₹2,28,208/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

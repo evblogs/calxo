@@ -1,6 +1,6 @@
 ---
-title: "6 Lakh CTC Take-Home Salary 2025-26: ₹42,598/Month In-Hand (Zero Tax)"
-description: "₹6L CTC = ₹42,598/month take-home. Zero income tax under new regime. Full component table, PF is the biggest deduction, 40% vs 50% basic comparison."
+title: "₹6 Lakh CTC In-Hand Salary: ₹42,598/Month (2025-26)"
+description: "₹6 lakh CTC = ₹42,598/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

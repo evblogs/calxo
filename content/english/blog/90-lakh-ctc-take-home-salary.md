@@ -1,6 +1,6 @@
 ---
-title: "90 Lakh CTC Take-Home Salary 2025-26: ₹4,48,182/Month In-Hand Breakdown"
-description: "₹90L CTC = ₹4,48,182/month in-hand (new regime, 50% basic). Income tax ₹23,22,966/year. Full component breakdown of employer PF, gratuity, professional tax and the gap between offer letter and bank credit."
+title: "₹90 Lakh CTC In-Hand Salary: ₹4,48,182/Month (2025-26)"
+description: "₹90 lakh CTC = ₹4,48,182/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-11
 lastmod: 2026-06-11
 author: vignesh

@@ -1,6 +1,6 @@
 ---
-title: "5 Lakh CTC Take-Home Salary 2025-26: ₹35,465/Month In-Hand (Zero Tax)"
-description: "₹5L CTC = ₹35,465/month take-home. Zero income tax under new regime. Full component table, why 87A rebate helps, how to maximize in-hand at entry level."
+title: "₹5 Lakh CTC In-Hand Salary: ₹35,465/Month (2025-26)"
+description: "₹5 lakh CTC = ₹35,465/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

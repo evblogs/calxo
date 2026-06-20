@@ -1,6 +1,6 @@
 ---
-title: "11 Lakh CTC Take-Home Salary 2025-26: ₹78,262/Month In-Hand (Zero Tax)"
-description: "₹11L CTC = ₹78,262/month take-home. Zero income tax under new regime. Full component breakdown, last stop before 87A rebate runs out, comparison of 11L vs 12L vs 15L increments."
+title: "₹11 Lakh CTC In-Hand Salary: ₹78,262/Month (2025-26)"
+description: "₹11 lakh CTC = ₹78,262/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-28
 lastmod: 2026-05-28
 author: vignesh

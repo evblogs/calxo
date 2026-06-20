@@ -1,6 +1,6 @@
 ---
-title: "17 Lakh CTC Take-Home Salary 2025-26: ₹1,12,192/Month In-Hand Breakdown"
-description: "₹17L CTC = ₹1,12,192/month in-hand under the new regime. Income tax crosses ₹1 lakh at ₹1,06,410/year. The CTC where old regime with HRA and full deductions starts to compete. Full breakdown."
+title: "₹17 Lakh CTC In-Hand Salary: ₹1,12,192/Month (2025-26)"
+description: "₹17 lakh CTC = ₹1,12,192/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-06-07
 lastmod: 2026-06-07
 author: vignesh

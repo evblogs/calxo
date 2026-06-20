@@ -1,6 +1,6 @@
 ---
-title: "12 Lakh CTC Take-Home Salary 2025-26: Full In-Hand Breakdown (Zero Tax Explained)"
-description: "Rs. 12L CTC = Rs. 84,000-92,000/month take-home. Zero income tax under new regime (87A rebate). IT services vs product company structures, city-wise table, HRA calculation."
+title: "₹12 Lakh CTC In-Hand Salary: ₹85,395/Month (2025-26)"
+description: "₹12 lakh CTC = ₹85,395/month in-hand salary (new regime, FY 2025-26, 50% basic). Full component breakdown plus a free take-home calculator."
 date: 2026-05-01
 lastmod: 2026-05-01
 author: vignesh
