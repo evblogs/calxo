@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Dehradun Today: ₹100.54/Litre (20 June 2026)"
+title: "Petrol Price in Dehradun Today: ₹100.54/Litre (21 June 2026)"
 description: "Today's petrol price in Dehradun is ₹100.54/litre and diesel is ₹95.95/litre. Updated daily at 6 AM. Dehradun fuel price, Uttarakhand VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-20
-lastmod: 2026-06-20
+date: 2026-06-21
+lastmod: 2026-06-21
 type: "calculator"
 url: /conversion/petrol-price-dehradun/
 keywords: "petrol price in dehradun today, petrol price dehradun, diesel price dehradun today, fuel price dehradun 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-dehradun.png
-image_alt: "Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre on 20 June 2026"
+image_alt: "Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre on 21 June 2026"
 ---
 
-Today's petrol price in Dehradun is **₹100.54 per litre** and diesel is **₹95.95 per litre** (as of 20 June 2026). Prices update every day at 6:00 AM. That makes Dehradun, a Tier 2 city in Uttarakhand, about ₹1.58/litre cheaper than Delhi (₹102.12).
+Today's petrol price in Dehradun is **₹100.54 per litre** and diesel is **₹95.95 per litre** (as of 21 June 2026). Prices update every day at 6:00 AM. That makes Dehradun, a Tier 2 city in Uttarakhand, about ₹1.58/litre cheaper than Delhi (₹102.12).
 
 Uttarakhand runs a lower VAT than the plains states, making Dehradun cheaper than most of UP and Delhi.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-dehradun.png"
-       alt="Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre as of 20 June 2026"
-       title="Petrol & diesel price in Dehradun — 20 June 2026"
+       alt="Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre as of 21 June 2026"
+       title="Petrol & diesel price in Dehradun — 21 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Dehradun — generated 20 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Dehradun — generated 21 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Dehradun" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-dehradun.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-dehradun.png",
-  "name": "Petrol & diesel price in Dehradun on 20 June 2026",
-  "description": "Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre as of 20 June 2026",
+  "name": "Petrol & diesel price in Dehradun on 21 June 2026",
+  "description": "Today's petrol price in Dehradun is ₹100.54 per litre and diesel is ₹95.95 per litre as of 21 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-20T06:00:00+05:30",
+  "uploadDate": "2026-06-21T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
