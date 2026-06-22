@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-21",
-  "source": "best-effort multi-site scrape \u2014 30/30 cities refreshed 2026-06-21",
+  "updated": "2026-06-22",
+  "source": "best-effort multi-site scrape \u2014 30/30 cities refreshed 2026-06-22",
   "cities": [
     {
       "city": "Delhi",
@@ -102,7 +102,7 @@
       "city": "Raipur",
       "state": "Chhattisgarh",
       "petrol": 108.06,
-      "diesel": 101.32
+      "diesel": 108.06
     },
     {
       "city": "Bhubaneswar",
@@ -183,5 +183,5 @@
       "diesel": 95.95
     }
   ],
-  "prices_verified": "2026-06-21"
+  "prices_verified": "2026-06-22"
 }
