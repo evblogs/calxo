@@ -107,24 +107,29 @@ URL = "/salary/"
 weight = 4
 
 [[menu.main]]
+name = "Insurance"
+URL = "/insurance/"
+weight = 5
+
+[[menu.main]]
 name = "GST"
 URL = "/gst/"
-weight = 5
+weight = 6
 
 [[menu.main]]
 name = "Health"
 URL = "/health/"
-weight = 6
+weight = 7
 
 [[menu.main]]
 name = "Math"
 URL = "/math/"
-weight = 7
+weight = 8
 
 [[menu.main]]
 name = "Conversion"
 URL = "/conversion/"
-weight = 8
+weight = 9
 identifier = "conversion"
 
 [[menu.main]]
@@ -142,12 +147,12 @@ parent = "conversion"
 [[menu.main]]
 name = "Business"
 URL = "/business/"
-weight = 9
+weight = 10
 
 [[menu.main]]
 name = "Blog"
 URL = "/blog/"
-weight = 10
+weight = 11
 
 #################### footer ################################
 

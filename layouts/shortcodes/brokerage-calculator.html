@@ -1,0 +1,271 @@
+<div id="cx-bk">
+<style>
+#cx-bk { font-family: inherit; }
+.cx-bk-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-bk-wrap { grid-template-columns:1fr; } }
+.cx-bk-inputs { display:flex; flex-direction:column; gap:1.2rem; }
+.cx-bk-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-bk-label span { color:#6b7280; font-weight:500; }
+.cx-bk-row { display:flex; align-items:center; gap:.6rem; }
+.cx-bk-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-bk-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:120px; }
+.cx-bk-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; align-self:stretch; display:flex; align-items:center; }
+.cx-bk-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-bk-box input::-webkit-outer-spin-button,.cx-bk-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-bk-pills { display:flex; gap:.4rem; flex-wrap:wrap; }
+.cx-bk-pill { flex:1; padding:.5rem .5rem; border:1px solid #cbd5e1; border-radius:7px; background:#fff; font-size:.78rem; font-weight:600; color:#475569; cursor:pointer; text-align:center; transition:all .15s; }
+.cx-bk-pill.is-on { background:#2563eb; color:#fff; border-color:#2563eb; }
+.cx-bk-select { width:100%; padding:.55rem .7rem; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; font-size:.85rem; font-weight:600; color:#1e293b; }
+.cx-bk-result { background:linear-gradient(145deg,#1e3a5f 0%,#0f2244 100%); border-radius:16px; padding:1.6rem 1.4rem; color:#fff; position:relative; overflow:hidden; }
+.cx-bk-result::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.cx-bk-main { text-align:center; margin-bottom:1rem; }
+.cx-bk-lbl { font-size:.7rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.25rem; }
+.cx-bk-big { font-size:2.2rem; font-weight:800; line-height:1; letter-spacing:-1px; }
+.cx-bk-big.pos { color:#4ade80; }
+.cx-bk-big.neg { color:#f87171; }
+.cx-bk-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:.75rem 0; }
+.cx-bk-row2 { display:flex; justify-content:space-between; font-size:.82rem; padding:.3rem 0; color:#e2e8f0; }
+.cx-bk-row2.tot { border-top:1px solid rgba(255,255,255,.18); margin-top:.25rem; padding-top:.55rem; font-weight:700; color:#fff; }
+.cx-bk-row2 span:last-child { color:#fff; font-weight:600; }
+.cx-bk-note { font-size:.7rem; color:#93c5fd; background:rgba(59,130,246,.12); border-radius:6px; padding:.4rem .55rem; margin-top:.6rem; line-height:1.4; }
+</style>
+
+<div class="cx-bk-wrap">
+  <div class="cx-bk-inputs">
+
+    <div>
+      <div class="cx-bk-label">Trade type</div>
+      <div class="cx-bk-pills" id="bk-type">
+        <button type="button" class="cx-bk-pill is-on" data-type="delivery">Delivery</button>
+        <button type="button" class="cx-bk-pill" data-type="intraday">Intraday</button>
+        <button type="button" class="cx-bk-pill" data-type="futures">Futures</button>
+        <button type="button" class="cx-bk-pill" data-type="options">Options</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-bk-label">Broker</div>
+      <select class="cx-bk-select" id="bk-broker">
+        <option value="zerodha">Zerodha (₹20/order or 0.03%)</option>
+        <option value="upstox">Upstox (₹20/order or 0.05%)</option>
+        <option value="angelone">Angel One (₹20/order or 0.25%)</option>
+        <option value="groww">Groww (₹20/order or 0.05%)</option>
+        <option value="icici">ICICI Direct (0.275% delivery)</option>
+        <option value="hdfc">HDFC Securities (0.32% delivery)</option>
+        <option value="custom">Custom rate</option>
+      </select>
+    </div>
+
+    <div id="bk-custom-row" style="display:none">
+      <div class="cx-bk-label">Brokerage % per order <span id="bk-lbl-rate">0.03%</span></div>
+      <div class="cx-bk-row">
+        <input type="range" id="bk-r-rate" min="0" max="1" step="0.005" value="0.03">
+        <div class="cx-bk-box"><input type="number" id="bk-i-rate" value="0.03" min="0" max="1" step="0.005"><span class="sfx">%</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-bk-label">Buy price (₹/share) <span id="bk-lbl-buy">₹100</span></div>
+      <div class="cx-bk-row">
+        <input type="range" id="bk-r-buy" min="1" max="5000" step="1" value="100">
+        <div class="cx-bk-box"><span>₹</span><input type="number" id="bk-i-buy" value="100" min="0.5" max="100000" step="0.5"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-bk-label">Sell price (₹/share) <span id="bk-lbl-sell">₹110</span></div>
+      <div class="cx-bk-row">
+        <input type="range" id="bk-r-sell" min="1" max="5000" step="1" value="110">
+        <div class="cx-bk-box"><span>₹</span><input type="number" id="bk-i-sell" value="110" min="0.5" max="100000" step="0.5"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-bk-label">Quantity (shares) <span id="bk-lbl-qty">100</span></div>
+      <div class="cx-bk-row">
+        <input type="range" id="bk-r-qty" min="1" max="10000" step="1" value="100">
+        <div class="cx-bk-box"><input type="number" id="bk-i-qty" value="100" min="1" max="100000" step="1"><span class="sfx">qty</span></div>
+      </div>
+    </div>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.6rem .8rem;font-size:.75rem;color:#1d4ed8;line-height:1.5;">
+      <strong>STT, exchange, SEBI, stamp duty, GST</strong> are computed using the current NSE/BSE/CBDT rates (FY 2025-26). DP charges of ₹15.34 apply only on equity delivery sell.
+    </div>
+
+  </div>
+
+  <div class="cx-bk-result">
+    <div class="cx-bk-main">
+      <div class="cx-bk-lbl">Net Profit / Loss</div>
+      <div class="cx-bk-big" id="bk-net">+₹914</div>
+      <div style="font-size:.75rem;color:#93c5fd;margin-top:.25rem">After all brokerage + taxes + charges</div>
+    </div>
+
+    <hr class="cx-bk-divider">
+
+    <div class="cx-bk-row2"><span>Turnover (buy + sell)</span><span id="bk-turnover">₹21,000</span></div>
+    <div class="cx-bk-row2"><span>Gross P/L</span><span id="bk-gross">+₹1,000</span></div>
+    <div class="cx-bk-row2"><span>Brokerage</span><span id="bk-broke">₹0</span></div>
+    <div class="cx-bk-row2"><span>STT</span><span id="bk-stt">₹21</span></div>
+    <div class="cx-bk-row2"><span>Exchange charges</span><span id="bk-exch">₹0.68</span></div>
+    <div class="cx-bk-row2"><span>SEBI charges</span><span id="bk-sebi">₹0.02</span></div>
+    <div class="cx-bk-row2"><span>Stamp duty (buy)</span><span id="bk-stamp">₹1.50</span></div>
+    <div class="cx-bk-row2"><span>GST (18%)</span><span id="bk-gst">₹0.13</span></div>
+    <div class="cx-bk-row2"><span>DP charges</span><span id="bk-dp">₹15.34</span></div>
+    <div class="cx-bk-row2 tot"><span>Total charges</span><span id="bk-charges">₹37.97</span></div>
+    <div class="cx-bk-row2"><span>Breakeven (sell price)</span><span id="bk-break">₹100.38</span></div>
+
+    <div class="cx-bk-note" id="bk-note">Delivery: Zero brokerage. STT 0.1% both legs. DP charges ₹15.34 on sell.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmt(n){ var s = Math.abs(n) < 100 ? n.toFixed(2) : Math.round(n).toLocaleString('en-IN'); return '₹'+s; }
+  function pct(n){ return n.toFixed(2)+'%'; }
+
+  var BROKERS = {
+    zerodha:  { delivery:0,     intraday:{type:'min',pct:0.03,flat:20}, futures:{type:'min',pct:0.03,flat:20}, options:{type:'flat',flat:20} },
+    upstox:   { delivery:0,     intraday:{type:'min',pct:0.05,flat:20}, futures:{type:'min',pct:0.05,flat:20}, options:{type:'flat',flat:20} },
+    angelone: { delivery:0,     intraday:{type:'min',pct:0.25,flat:20}, futures:{type:'min',pct:0.25,flat:20}, options:{type:'flat',flat:20} },
+    groww:    { delivery:0,     intraday:{type:'min',pct:0.05,flat:20}, futures:{type:'min',pct:0.05,flat:20}, options:{type:'flat',flat:20} },
+    icici:    { delivery:0.275, intraday:{type:'pct',pct:0.05},          futures:{type:'min',pct:0.05,flat:50},  options:{type:'flat',flat:95} },
+    hdfc:     { delivery:0.32,  intraday:{type:'pct',pct:0.05},          futures:{type:'min',pct:0.05,flat:50},  options:{type:'flat',flat:100} }
+  };
+
+  function calcBrokerage(brokerKey, tradeType, buyVal, sellVal){
+    var customRate = parseFloat(document.getElementById('bk-i-rate').value) || 0;
+    if (brokerKey === 'custom'){
+      // custom rate applied on both legs (% per order)
+      return (buyVal + sellVal) * customRate / 100;
+    }
+    var b = BROKERS[brokerKey];
+    var legs = [buyVal, sellVal];
+    var total = 0;
+    for (var i = 0; i < legs.length; i++){
+      var val = legs[i];
+      if (tradeType === 'delivery'){
+        total += val * (typeof b.delivery === 'number' ? b.delivery : 0) / 100;
+      } else {
+        var conf = b[tradeType];
+        if (conf.type === 'flat') total += conf.flat;
+        else if (conf.type === 'pct') total += val * conf.pct / 100;
+        else if (conf.type === 'min') total += Math.min(val * conf.pct / 100, conf.flat);
+      }
+    }
+    return total;
+  }
+
+  function calcSTT(tradeType, buyVal, sellVal){
+    if (tradeType === 'delivery') return (buyVal + sellVal) * 0.001;     // 0.1% both sides
+    if (tradeType === 'intraday') return sellVal * 0.00025;              // 0.025% sell
+    if (tradeType === 'futures')  return sellVal * 0.0002;               // 0.02% sell
+    if (tradeType === 'options')  return sellVal * 0.001;                // 0.1% on premium sell
+    return 0;
+  }
+
+  function calcExchange(tradeType, buyVal, sellVal){
+    var total = buyVal + sellVal;
+    if (tradeType === 'delivery' || tradeType === 'intraday') return total * 0.0000322;
+    if (tradeType === 'futures') return total * 0.0000173;
+    if (tradeType === 'options') return total * 0.000353;
+    return 0;
+  }
+
+  function calcSEBI(buyVal, sellVal){
+    return (buyVal + sellVal) * 0.000001;     // ₹10 per crore = 0.0001% / 100 = 0.000001
+  }
+
+  function calcStamp(tradeType, buyVal){
+    if (tradeType === 'delivery') return buyVal * 0.00015;     // 0.015%
+    if (tradeType === 'intraday') return buyVal * 0.00003;     // 0.003%
+    if (tradeType === 'futures')  return buyVal * 0.00002;     // 0.002%
+    if (tradeType === 'options')  return buyVal * 0.00003;     // 0.003%
+    return 0;
+  }
+
+  function calcDP(tradeType){
+    return tradeType === 'delivery' ? 15.34 : 0;
+  }
+
+  var tradeType = 'delivery';
+
+  function calc(){
+    var buy = parseFloat(document.getElementById('bk-i-buy').value) || 0;
+    var sell = parseFloat(document.getElementById('bk-i-sell').value) || 0;
+    var qty = parseInt(document.getElementById('bk-i-qty').value) || 0;
+    var broker = document.getElementById('bk-broker').value;
+
+    var buyVal = buy * qty;
+    var sellVal = sell * qty;
+    var turnover = buyVal + sellVal;
+    var gross = sellVal - buyVal;
+
+    var brokerage = calcBrokerage(broker, tradeType, buyVal, sellVal);
+    var stt = calcSTT(tradeType, buyVal, sellVal);
+    var exch = calcExchange(tradeType, buyVal, sellVal);
+    var sebi = calcSEBI(buyVal, sellVal);
+    var stamp = calcStamp(tradeType, buyVal);
+    var gst = (brokerage + exch + sebi) * 0.18;
+    var dp = calcDP(tradeType);
+
+    var totalCharges = brokerage + stt + exch + sebi + stamp + gst + dp;
+    var net = gross - totalCharges;
+    var breakeven = qty > 0 ? buy + totalCharges/qty : 0;
+
+    document.getElementById('bk-net').textContent = (net >= 0 ? '+' : '') + fmt(net);
+    document.getElementById('bk-net').className = 'cx-bk-big ' + (net >= 0 ? 'pos' : 'neg');
+    document.getElementById('bk-turnover').textContent = fmt(turnover);
+    document.getElementById('bk-gross').textContent = (gross >= 0 ? '+' : '') + fmt(gross);
+    document.getElementById('bk-broke').textContent = fmt(brokerage);
+    document.getElementById('bk-stt').textContent = fmt(stt);
+    document.getElementById('bk-exch').textContent = fmt(exch);
+    document.getElementById('bk-sebi').textContent = fmt(sebi);
+    document.getElementById('bk-stamp').textContent = fmt(stamp);
+    document.getElementById('bk-gst').textContent = fmt(gst);
+    document.getElementById('bk-dp').textContent = fmt(dp);
+    document.getElementById('bk-charges').textContent = fmt(totalCharges);
+    document.getElementById('bk-break').textContent = fmt(breakeven);
+
+    var notes = {
+      delivery: 'Delivery: STT 0.1% both legs (highest). DP charge ₹15.34 only on sell. Brokerage often zero with discount brokers.',
+      intraday: 'Intraday: STT 0.025% on sell only. Brokerage min(0.03%, ₹20) per order at Zerodha. No DP charges.',
+      futures: 'Futures: STT 0.02% on sell side. Min brokerage applies. Watch position margin requirements.',
+      options: 'Options: STT 0.1% on premium sell. Flat ₹20/order brokerage. Highest exchange transaction charge (0.0353%).'
+    };
+    document.getElementById('bk-note').textContent = notes[tradeType];
+
+    document.getElementById('bk-lbl-buy').textContent = '₹' + buy.toLocaleString('en-IN');
+    document.getElementById('bk-lbl-sell').textContent = '₹' + sell.toLocaleString('en-IN');
+    document.getElementById('bk-lbl-qty').textContent = qty.toLocaleString('en-IN');
+    document.getElementById('bk-lbl-rate').textContent = (parseFloat(document.getElementById('bk-i-rate').value)||0).toFixed(3) + '%';
+  }
+
+  function syncP(rid,iid,min,max){
+    var r=document.getElementById(rid),i=document.getElementById(iid);
+    r.addEventListener('input',function(){i.value=r.value;calc();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;calc();});
+  }
+  syncP('bk-r-buy','bk-i-buy',0.5,100000);
+  syncP('bk-r-sell','bk-i-sell',0.5,100000);
+  syncP('bk-r-qty','bk-i-qty',1,100000);
+  syncP('bk-r-rate','bk-i-rate',0,1);
+
+  document.getElementById('bk-broker').addEventListener('change', function(){
+    document.getElementById('bk-custom-row').style.display = (this.value === 'custom' ? 'block' : 'none');
+    calc();
+  });
+
+  document.querySelectorAll('#bk-type .cx-bk-pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#bk-type .cx-bk-pill').forEach(function(x){x.classList.remove('is-on');});
+      this.classList.add('is-on');
+      tradeType = this.getAttribute('data-type');
+      calc();
+    });
+  });
+
+  calc();
+})();
+</script>
+</div>

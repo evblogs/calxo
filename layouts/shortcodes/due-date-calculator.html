@@ -1,0 +1,251 @@
+<div id="cx-dd">
+<style>
+#cx-dd { font-family: inherit; }
+.cx-dd-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-dd-wrap { grid-template-columns:1fr; } }
+.cx-dd-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-dd-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-dd-label span { color:#6b7280; font-weight:500; }
+.cx-dd-row { display:flex; align-items:center; gap:.6rem; }
+.cx-dd-row input[type=range] { flex:1; accent-color:#ec4899; height:4px; cursor:pointer; }
+.cx-dd-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:120px; }
+.cx-dd-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; }
+.cx-dd-box input[type=number],.cx-dd-box input[type=date] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-dd-box input::-webkit-outer-spin-button,.cx-dd-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-dd-method { display:flex; gap:.4rem; }
+.cx-dd-method-btn { flex:1; padding:.55rem .4rem; border:1px solid #cbd5e1; border-radius:7px; background:#fff; font-size:.78rem; font-weight:600; color:#475569; cursor:pointer; text-align:center; }
+.cx-dd-method-btn.is-on { background:#ec4899; color:#fff; border-color:#ec4899; }
+.cx-dd-result { background:linear-gradient(145deg,#831843 0%,#4a0e2c 100%); border-radius:16px; padding:1.7rem 1.5rem; color:#fff; }
+.cx-dd-main { text-align:center; margin-bottom:1rem; }
+.cx-dd-lbl { font-size:.72rem; color:#fbcfe8; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-dd-big { font-size:2rem; font-weight:800; letter-spacing:-1px; color:#fde68a; line-height:1.1; }
+.cx-dd-sub { font-size:.85rem; color:#fbcfe8; margin-top:.4rem; }
+.cx-dd-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:.9rem 0; }
+.cx-dd-grid { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+.cx-dd-stat { background:rgba(255,255,255,.07); border-radius:9px; padding:.65rem .85rem; }
+.cx-dd-stat-val { font-size:.95rem; font-weight:700; }
+.cx-dd-stat-lbl { font-size:.7rem; color:#fbcfe8; margin-top:2px; }
+.cx-dd-prog-wrap { margin-top:.9rem; }
+.cx-dd-prog-bar { height:10px; background:rgba(255,255,255,.12); border-radius:5px; overflow:hidden; }
+.cx-dd-prog-fill { height:100%; background:linear-gradient(90deg,#fde68a,#fbbf24); transition:width .4s ease; }
+.cx-dd-trimester { display:flex; justify-content:space-between; font-size:.7rem; color:#fbcfe8; margin-top:.4rem; }
+.cx-dd-tri-label { padding:.2rem .5rem; border-radius:4px; }
+.cx-dd-tri-label.is-on { background:rgba(253,224,71,.2); color:#fde68a; font-weight:700; }
+.cx-dd-note { font-size:.72rem; color:#fbcfe8; background:rgba(236,72,153,.15); border-radius:6px; padding:.5rem .7rem; margin-top:.9rem; line-height:1.5; }
+</style>
+
+<div class="cx-dd-wrap">
+  <div class="cx-dd-inputs">
+
+    <div>
+      <div class="cx-dd-label">Calculate from</div>
+      <div class="cx-dd-method" id="dd-method">
+        <button type="button" class="cx-dd-method-btn is-on" data-m="lmp">Last period date</button>
+        <button type="button" class="cx-dd-method-btn" data-m="conception">Conception date</button>
+        <button type="button" class="cx-dd-method-btn" data-m="ultrasound">Ultrasound</button>
+      </div>
+    </div>
+
+    <div id="dd-lmp-block">
+      <div class="cx-dd-label">First day of last period (LMP)</div>
+      <div class="cx-dd-box" style="width:100%"><input type="date" id="dd-lmp"></div>
+    </div>
+
+    <div id="dd-conc-block" style="display:none">
+      <div class="cx-dd-label">Conception date</div>
+      <div class="cx-dd-box" style="width:100%"><input type="date" id="dd-conc"></div>
+    </div>
+
+    <div id="dd-us-block" style="display:none">
+      <div class="cx-dd-label">Ultrasound date</div>
+      <div class="cx-dd-box" style="width:100%; margin-bottom:.8rem;"><input type="date" id="dd-us-date"></div>
+      <div class="cx-dd-label">Gestational age at ultrasound (weeks) <span id="dd-lbl-usw">8w</span></div>
+      <div class="cx-dd-row">
+        <input type="range" id="dd-r-usw" min="4" max="40" step="1" value="8">
+        <div class="cx-dd-box"><input type="number" id="dd-i-usw" value="8" min="4" max="40"><span class="sfx">wk</span></div>
+      </div>
+    </div>
+
+    <div id="dd-cycle-block">
+      <div class="cx-dd-label">Cycle length <span id="dd-lbl-cyc">28 days</span></div>
+      <div class="cx-dd-row">
+        <input type="range" id="dd-r-cyc" min="22" max="40" step="1" value="28">
+        <div class="cx-dd-box"><input type="number" id="dd-i-cyc" value="28" min="22" max="40"><span class="sfx">days</span></div>
+      </div>
+    </div>
+
+    <div style="background:#fce7f3;border:1px solid #fbcfe8;border-radius:8px;padding:.7rem .85rem;font-size:.78rem;color:#9d174d;line-height:1.55;">
+      <strong>Pregnancy is 40 weeks</strong> measured from the first day of your last period (LMP), not conception. Only ~5% of babies arrive on the exact due date; about 80% arrive within two weeks of it.
+    </div>
+
+  </div>
+
+  <div class="cx-dd-result">
+    <div class="cx-dd-main">
+      <div class="cx-dd-lbl">Estimated Due Date</div>
+      <div class="cx-dd-big" id="dd-edd">Tue, 28 Jul 2026</div>
+      <div class="cx-dd-sub" id="dd-eddsub">8 months 5 days from today</div>
+    </div>
+
+    <hr class="cx-dd-divider">
+
+    <div class="cx-dd-grid">
+      <div class="cx-dd-stat">
+        <div class="cx-dd-stat-val" id="dd-week">12w 3d</div>
+        <div class="cx-dd-stat-lbl">Current pregnancy age</div>
+      </div>
+      <div class="cx-dd-stat">
+        <div class="cx-dd-stat-val" id="dd-trim">2nd trimester</div>
+        <div class="cx-dd-stat-lbl">Trimester</div>
+      </div>
+      <div class="cx-dd-stat">
+        <div class="cx-dd-stat-val" id="dd-remaining">27 weeks</div>
+        <div class="cx-dd-stat-lbl">Weeks remaining</div>
+      </div>
+      <div class="cx-dd-stat">
+        <div class="cx-dd-stat-val" id="dd-conception">Sat, 21 Oct 2025</div>
+        <div class="cx-dd-stat-lbl">Likely conception date</div>
+      </div>
+    </div>
+
+    <div class="cx-dd-prog-wrap">
+      <div class="cx-dd-prog-bar"><div class="cx-dd-prog-fill" id="dd-prog" style="width:31%"></div></div>
+      <div class="cx-dd-trimester">
+        <span class="cx-dd-tri-label" id="dd-t1">T1: 0-12w</span>
+        <span class="cx-dd-tri-label is-on" id="dd-t2">T2: 13-27w</span>
+        <span class="cx-dd-tri-label" id="dd-t3">T3: 28-40w</span>
+      </div>
+    </div>
+
+    <div class="cx-dd-note" id="dd-note">Schedule first prenatal visit by week 8-10. NT scan recommended at 11-14 weeks for Down syndrome screening.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function fmtDate(d){
+    return DAYS[d.getDay()]+', '+d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear();
+  }
+
+  function todayISO(){
+    var d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+
+  var method = 'lmp';
+
+  function calc(){
+    var cycle = parseInt(document.getElementById('dd-i-cyc').value)||28;
+    var lmpDate, eddDate, concDate;
+
+    if (method === 'lmp'){
+      var lmpStr = document.getElementById('dd-lmp').value;
+      if (!lmpStr) return;
+      lmpDate = new Date(lmpStr);
+      // EDD = LMP + 280 days + (cycle - 28) days
+      eddDate = new Date(lmpDate.getTime() + (280 + cycle - 28)*86400000);
+      concDate = new Date(lmpDate.getTime() + (cycle - 14)*86400000);
+    } else if (method === 'conception'){
+      var concStr = document.getElementById('dd-conc').value;
+      if (!concStr) return;
+      concDate = new Date(concStr);
+      // EDD = conception + 266 days
+      eddDate = new Date(concDate.getTime() + 266*86400000);
+      lmpDate = new Date(eddDate.getTime() - 280*86400000);
+    } else if (method === 'ultrasound'){
+      var usDateStr = document.getElementById('dd-us-date').value;
+      var usWeeks = parseInt(document.getElementById('dd-i-usw').value)||8;
+      if (!usDateStr) return;
+      var usDate = new Date(usDateStr);
+      // Pregnancy is 40 weeks from LMP. At ultrasound, baby is usWeeks old. So LMP was usWeeks*7 days before ultrasound.
+      lmpDate = new Date(usDate.getTime() - usWeeks*7*86400000);
+      eddDate = new Date(lmpDate.getTime() + 280*86400000);
+      concDate = new Date(lmpDate.getTime() + 14*86400000);
+    }
+
+    var today = new Date();
+    var daysPregnant = Math.floor((today.getTime() - lmpDate.getTime()) / 86400000);
+    var weeks = Math.max(0, Math.floor(daysPregnant / 7));
+    var extraDays = Math.max(0, daysPregnant % 7);
+    var remaining = Math.max(0, Math.ceil((eddDate.getTime() - today.getTime()) / 86400000 / 7));
+
+    var trimester = weeks <= 12 ? 1 : (weeks <= 27 ? 2 : 3);
+    var trimText = trimester+'';
+    var trimSuffix = trimester === 1 ? 'st' : (trimester === 2 ? 'nd' : 'rd');
+
+    document.getElementById('dd-edd').textContent = fmtDate(eddDate);
+    var daysToEdd = Math.ceil((eddDate.getTime() - today.getTime()) / 86400000);
+    if (daysToEdd > 0){
+      var monthsTo = Math.floor(daysToEdd / 30);
+      var daysRem = daysToEdd % 30;
+      document.getElementById('dd-eddsub').textContent = monthsTo+' month'+(monthsTo!==1?'s':'')+' '+daysRem+' day'+(daysRem!==1?'s':'')+' from today';
+    } else if (daysToEdd < 0) {
+      document.getElementById('dd-eddsub').textContent = 'EDD passed '+Math.abs(daysToEdd)+' days ago';
+    } else {
+      document.getElementById('dd-eddsub').textContent = 'EDD is today!';
+    }
+
+    document.getElementById('dd-week').textContent = weeks+'w '+extraDays+'d';
+    document.getElementById('dd-trim').textContent = trimText+trimSuffix+' trimester';
+    document.getElementById('dd-remaining').textContent = remaining+' week'+(remaining!==1?'s':'');
+    document.getElementById('dd-conception').textContent = fmtDate(concDate);
+
+    var progress = Math.min(100, Math.max(0, (daysPregnant/280)*100));
+    document.getElementById('dd-prog').style.width = progress+'%';
+
+    document.getElementById('dd-t1').classList.toggle('is-on', trimester === 1);
+    document.getElementById('dd-t2').classList.toggle('is-on', trimester === 2);
+    document.getElementById('dd-t3').classList.toggle('is-on', trimester === 3);
+
+    var notes = {
+      1: 'Schedule first prenatal visit by week 8-10. NT scan recommended at 11-14 weeks for Down syndrome screening.',
+      2: 'Anomaly scan at 18-22 weeks. Energy levels typically improve. Start glucose tolerance test planning for week 24-28.',
+      3: 'Weekly visits start from week 36. Pack hospital bag by week 36. Watch for labor signs: contractions, water breaking, bloody show.'
+    };
+    document.getElementById('dd-note').textContent = notes[trimester];
+
+    document.getElementById('dd-lbl-cyc').textContent = cycle+' days';
+    document.getElementById('dd-lbl-usw').textContent = (document.getElementById('dd-i-usw').value||8)+'w';
+  }
+
+  function syncP(rid,iid,min,max){
+    var r=document.getElementById(rid),i=document.getElementById(iid);
+    r.addEventListener('input',function(){i.value=r.value;calc();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseInt(this.value)||0));r.value=v;calc();});
+  }
+  syncP('dd-r-cyc','dd-i-cyc',22,40);
+  syncP('dd-r-usw','dd-i-usw',4,40);
+
+  document.getElementById('dd-lmp').addEventListener('change', calc);
+  document.getElementById('dd-conc').addEventListener('change', calc);
+  document.getElementById('dd-us-date').addEventListener('change', calc);
+
+  document.querySelectorAll('#dd-method .cx-dd-method-btn').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#dd-method .cx-dd-method-btn').forEach(function(x){x.classList.remove('is-on');});
+      this.classList.add('is-on');
+      method = this.getAttribute('data-m');
+      document.getElementById('dd-lmp-block').style.display = (method === 'lmp' ? 'block' : 'none');
+      document.getElementById('dd-conc-block').style.display = (method === 'conception' ? 'block' : 'none');
+      document.getElementById('dd-us-block').style.display = (method === 'ultrasound' ? 'block' : 'none');
+      document.getElementById('dd-cycle-block').style.display = (method === 'lmp' ? 'block' : 'none');
+      calc();
+    });
+  });
+
+  // Default: LMP 60 days ago
+  var def = new Date();
+  def.setDate(def.getDate() - 60);
+  document.getElementById('dd-lmp').value = def.getFullYear()+'-'+String(def.getMonth()+1).padStart(2,'0')+'-'+String(def.getDate()).padStart(2,'0');
+  document.getElementById('dd-us-date').value = todayISO();
+  var concDef = new Date();
+  concDef.setDate(concDef.getDate() - 50);
+  document.getElementById('dd-conc').value = concDef.getFullYear()+'-'+String(concDef.getMonth()+1).padStart(2,'0')+'-'+String(concDef.getDate()).padStart(2,'0');
+
+  calc();
+})();
+</script>
+</div>

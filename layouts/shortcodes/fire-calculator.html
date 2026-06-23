@@ -1,0 +1,214 @@
+<div id="cx-fire">
+<style>
+#cx-fire { font-family: inherit; }
+.cx-fire-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-fire-wrap { grid-template-columns:1fr; } }
+.cx-fire-inputs { display:flex; flex-direction:column; gap:1.3rem; }
+.cx-fire-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-fire-label span { color:#6b7280; font-weight:500; }
+.cx-fire-row { display:flex; align-items:center; gap:.6rem; }
+.cx-fire-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-fire-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:140px; }
+.cx-fire-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; }
+.cx-fire-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-fire-box input::-webkit-outer-spin-button,.cx-fire-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-fire-pills { display:flex; gap:.4rem; flex-wrap:wrap; }
+.cx-fire-pill { flex:1; padding:.5rem .4rem; border:1px solid #cbd5e1; border-radius:7px; background:#fff; font-size:.78rem; font-weight:600; color:#475569; cursor:pointer; text-align:center; }
+.cx-fire-pill.is-on { background:#dc2626; color:#fff; border-color:#dc2626; }
+.cx-fire-result { background:linear-gradient(145deg,#7f1d1d 0%,#3b0a0a 100%); border-radius:16px; padding:1.7rem 1.5rem; color:#fff; }
+.cx-fire-main { text-align:center; margin-bottom:1rem; }
+.cx-fire-lbl { font-size:.72rem; color:#fca5a5; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-fire-big { font-size:2.4rem; font-weight:800; letter-spacing:-1px; color:#fbbf24; line-height:1; }
+.cx-fire-sub { font-size:.85rem; color:#fecaca; margin-top:.5rem; }
+.cx-fire-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:.85rem 0; }
+.cx-fire-grid { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+.cx-fire-stat { background:rgba(255,255,255,.07); border-radius:9px; padding:.65rem .8rem; }
+.cx-fire-stat-val { font-size:.95rem; font-weight:700; }
+.cx-fire-stat-lbl { font-size:.7rem; color:#fecaca; margin-top:2px; }
+.cx-fire-status { padding:.65rem .85rem; border-radius:8px; font-size:.85rem; font-weight:600; margin-top:.85rem; text-align:center; }
+.cx-fire-status.go { background:rgba(34,197,94,.15); color:#86efac; border:1px solid rgba(34,197,94,.3); }
+.cx-fire-status.late { background:rgba(251,146,60,.15); color:#fdba74; border:1px solid rgba(251,146,60,.3); }
+.cx-fire-status.gap { background:rgba(239,68,68,.18); color:#fca5a5; border:1px solid rgba(239,68,68,.35); }
+</style>
+
+<div class="cx-fire-wrap">
+  <div class="cx-fire-inputs">
+
+    <div>
+      <div class="cx-fire-label">FIRE type</div>
+      <div class="cx-fire-pills" id="fire-type">
+        <button type="button" class="cx-fire-pill is-on" data-type="lean">Lean FIRE (25x)</button>
+        <button type="button" class="cx-fire-pill" data-type="regular">Regular FIRE (30x)</button>
+        <button type="button" class="cx-fire-pill" data-type="fat">Fat FIRE (33x)</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-fire-label">Current age <span id="fire-lbl-age">30 years</span></div>
+      <div class="cx-fire-row">
+        <input type="range" id="fire-r-age" min="20" max="55" step="1" value="30">
+        <div class="cx-fire-box"><input type="number" id="fire-i-age" value="30" min="20" max="55" step="1"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-fire-label">Target retire age <span id="fire-lbl-ret">45 years</span></div>
+      <div class="cx-fire-row">
+        <input type="range" id="fire-r-ret" min="30" max="65" step="1" value="45">
+        <div class="cx-fire-box"><input type="number" id="fire-i-ret" value="45" min="30" max="65" step="1"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-fire-label">Annual expenses (today, ₹) <span id="fire-lbl-exp">₹10,00,000</span></div>
+      <div class="cx-fire-row">
+        <input type="range" id="fire-r-exp" min="200000" max="10000000" step="50000" value="1000000">
+        <div class="cx-fire-box"><span>₹</span><input type="number" id="fire-i-exp" value="1000000" min="100000" max="100000000" step="50000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-fire-label">Current corpus (₹) <span id="fire-lbl-cur">₹10,00,000</span></div>
+      <div class="cx-fire-row">
+        <input type="range" id="fire-r-cur" min="0" max="50000000" step="100000" value="1000000">
+        <div class="cx-fire-box"><span>₹</span><input type="number" id="fire-i-cur" value="1000000" min="0" max="500000000" step="100000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-fire-label">Current monthly SIP (₹) <span id="fire-lbl-sip">₹30,000</span></div>
+      <div class="cx-fire-row">
+        <input type="range" id="fire-r-sip" min="0" max="500000" step="1000" value="30000">
+        <div class="cx-fire-box"><span>₹</span><input type="number" id="fire-i-sip" value="30000" min="0" max="5000000" step="1000"></div>
+      </div>
+    </div>
+
+    <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:.65rem .85rem;font-size:.78rem;color:#92400e;line-height:1.5;">
+      <strong>FIRE math assumes:</strong> 6% inflation, 12% pre-retirement equity returns, 8% post-retirement returns. Lean FIRE = current lifestyle, Regular = small lifestyle upgrade, Fat = significant upgrade.
+    </div>
+
+  </div>
+
+  <div class="cx-fire-result">
+    <div class="cx-fire-main">
+      <div class="cx-fire-lbl">Your FIRE corpus target</div>
+      <div class="cx-fire-big" id="fire-corpus">₹5.99 Cr</div>
+      <div class="cx-fire-sub" id="fire-cursub">At retirement, will fund inflation-adjusted lifestyle for 40+ years</div>
+    </div>
+
+    <hr class="cx-fire-divider">
+
+    <div class="cx-fire-grid">
+      <div class="cx-fire-stat">
+        <div class="cx-fire-stat-val" id="fire-projection">₹4.20 Cr</div>
+        <div class="cx-fire-stat-lbl">Projected corpus at retire age</div>
+      </div>
+      <div class="cx-fire-stat">
+        <div class="cx-fire-stat-val" id="fire-required-sip">₹47,500</div>
+        <div class="cx-fire-stat-lbl">SIP needed to reach FIRE</div>
+      </div>
+      <div class="cx-fire-stat">
+        <div class="cx-fire-stat-val" id="fire-future-exp">₹23.97 L</div>
+        <div class="cx-fire-stat-lbl">Annual expense at retire age</div>
+      </div>
+      <div class="cx-fire-stat">
+        <div class="cx-fire-stat-val" id="fire-years">15 years</div>
+        <div class="cx-fire-stat-lbl">Years to FIRE</div>
+      </div>
+    </div>
+
+    <div class="cx-fire-status gap" id="fire-status">⚠ Gap of ₹1.79 Cr. Increase SIP by ₹17,500/mo to bridge it.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmt(n){ if (n<100000) return '₹'+Math.round(n).toLocaleString('en-IN'); if (n<10000000) return '₹'+(n/100000).toFixed(2)+' L'; return '₹'+(n/10000000).toFixed(2)+' Cr'; }
+  function fmtPlain(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+
+  var INFL = 0.06, PRE_RET = 0.12, POST_RET = 0.08;
+  var fireType = 'lean';
+
+  function calc(){
+    var age = parseInt(document.getElementById('fire-i-age').value)||30;
+    var ret = parseInt(document.getElementById('fire-i-ret').value)||45;
+    var exp = parseFloat(document.getElementById('fire-i-exp').value)||1000000;
+    var cur = parseFloat(document.getElementById('fire-i-cur').value)||0;
+    var sip = parseFloat(document.getElementById('fire-i-sip').value)||0;
+
+    if (ret <= age) ret = age + 1;
+    var years = ret - age;
+
+    var multiplier = fireType === 'lean' ? 25 : (fireType === 'regular' ? 30 : 33);
+    var lifestyleUpgrade = fireType === 'lean' ? 1.0 : (fireType === 'regular' ? 1.25 : 1.6);
+
+    var futureExp = exp * lifestyleUpgrade * Math.pow(1+INFL, years);
+    var corpusTarget = futureExp * multiplier;
+
+    // Projected corpus from current investments
+    var nMonths = years * 12;
+    var rMonthly = PRE_RET / 12;
+    var fvLumpsum = cur * Math.pow(1+PRE_RET, years);
+    var fvSIP = sip * (Math.pow(1+rMonthly, nMonths) - 1) / rMonthly * (1+rMonthly);
+    var projected = fvLumpsum + fvSIP;
+
+    var gap = corpusTarget - projected;
+    var requiredSIP;
+    if (gap <= 0) {
+      requiredSIP = sip;
+    } else {
+      var fvFactor = (Math.pow(1+rMonthly, nMonths) - 1) / rMonthly * (1+rMonthly);
+      var sipToBridge = gap / fvFactor;
+      requiredSIP = sip + sipToBridge;
+    }
+
+    document.getElementById('fire-corpus').textContent = fmt(corpusTarget);
+    document.getElementById('fire-cursub').textContent = 'At retirement (age '+ret+'), funds your inflation-adjusted lifestyle for 40+ years';
+    document.getElementById('fire-projection').textContent = fmt(projected);
+    document.getElementById('fire-required-sip').textContent = fmtPlain(requiredSIP);
+    document.getElementById('fire-future-exp').textContent = fmt(futureExp);
+    document.getElementById('fire-years').textContent = years+' years';
+
+    var st = document.getElementById('fire-status');
+    if (gap <= 0) {
+      st.className = 'cx-fire-status go';
+      st.textContent = '✓ On track. Projected corpus exceeds target by '+fmt(-gap)+'.';
+    } else if (gap < corpusTarget * 0.2) {
+      st.className = 'cx-fire-status late';
+      st.textContent = '⚠ Small shortfall of '+fmt(gap)+'. Increase SIP by ₹'+Math.round(requiredSIP - sip).toLocaleString('en-IN')+'/mo.';
+    } else {
+      st.className = 'cx-fire-status gap';
+      st.textContent = '✗ Significant gap of '+fmt(gap)+'. Need SIP of '+fmtPlain(requiredSIP)+'/mo (currently '+fmtPlain(sip)+').';
+    }
+
+    document.getElementById('fire-lbl-age').textContent = age+' years';
+    document.getElementById('fire-lbl-ret').textContent = ret+' years';
+    document.getElementById('fire-lbl-exp').textContent = fmt(exp);
+    document.getElementById('fire-lbl-cur').textContent = fmt(cur);
+    document.getElementById('fire-lbl-sip').textContent = fmtPlain(sip);
+  }
+
+  function syncP(rid,iid,min,max){
+    var r=document.getElementById(rid),i=document.getElementById(iid);
+    r.addEventListener('input',function(){i.value=r.value;calc();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;calc();});
+  }
+  syncP('fire-r-age','fire-i-age',20,55);
+  syncP('fire-r-ret','fire-i-ret',30,65);
+  syncP('fire-r-exp','fire-i-exp',100000,100000000);
+  syncP('fire-r-cur','fire-i-cur',0,500000000);
+  syncP('fire-r-sip','fire-i-sip',0,5000000);
+
+  document.querySelectorAll('#fire-type .cx-fire-pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#fire-type .cx-fire-pill').forEach(function(x){x.classList.remove('is-on');});
+      this.classList.add('is-on');
+      fireType = this.getAttribute('data-type');
+      calc();
+    });
+  });
+
+  calc();
+})();
+</script>
+</div>

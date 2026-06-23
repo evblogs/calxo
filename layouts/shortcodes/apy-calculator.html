@@ -1,0 +1,158 @@
+<div id="cx-apy">
+<style>
+#cx-apy { font-family: inherit; }
+.cx-apy-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-apy-wrap { grid-template-columns:1fr; } }
+.cx-apy-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-apy-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-apy-label span { color:#6b7280; font-weight:500; }
+.cx-apy-row { display:flex; align-items:center; gap:.6rem; }
+.cx-apy-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-apy-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:110px; }
+.cx-apy-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; }
+.cx-apy-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-apy-box input::-webkit-outer-spin-button,.cx-apy-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-apy-pills { display:grid; grid-template-columns:repeat(5,1fr); gap:.35rem; }
+.cx-apy-pill { padding:.55rem .3rem; border:1px solid #cbd5e1; border-radius:7px; background:#fff; font-size:.75rem; font-weight:700; color:#475569; cursor:pointer; text-align:center; }
+.cx-apy-pill.is-on { background:#2563eb; color:#fff; border-color:#2563eb; }
+.cx-apy-result { background:linear-gradient(145deg,#7c2d12 0%,#431407 100%); border-radius:16px; padding:1.7rem 1.5rem; color:#fff; }
+.cx-apy-main { text-align:center; margin-bottom:1rem; }
+.cx-apy-lbl { font-size:.72rem; color:#fdba74; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-apy-big { font-size:2.5rem; font-weight:800; letter-spacing:-1px; color:#fbbf24; line-height:1; }
+.cx-apy-sub { font-size:.85rem; color:#fed7aa; margin-top:.4rem; }
+.cx-apy-divider { border:0; border-top:1px solid rgba(255,255,255,.12); margin:.85rem 0; }
+.cx-apy-grid { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+.cx-apy-stat { background:rgba(255,255,255,.07); border-radius:9px; padding:.65rem .8rem; }
+.cx-apy-stat-val { font-size:.95rem; font-weight:700; }
+.cx-apy-stat-lbl { font-size:.7rem; color:#fed7aa; margin-top:2px; }
+.cx-apy-note { font-size:.72rem; color:#fed7aa; background:rgba(251,191,36,.12); border-radius:6px; padding:.5rem .7rem; margin-top:.85rem; line-height:1.5; }
+</style>
+
+<div class="cx-apy-wrap">
+  <div class="cx-apy-inputs">
+
+    <div>
+      <div class="cx-apy-label">Entry age <span id="apy-lbl-age">25 years</span></div>
+      <div class="cx-apy-row">
+        <input type="range" id="apy-r-age" min="18" max="40" step="1" value="25">
+        <div class="cx-apy-box"><input type="number" id="apy-i-age" value="25" min="18" max="40" step="1"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-apy-label">Desired monthly pension at 60</div>
+      <div class="cx-apy-pills" id="apy-pension">
+        <button type="button" class="cx-apy-pill" data-pension="1000">₹1,000</button>
+        <button type="button" class="cx-apy-pill" data-pension="2000">₹2,000</button>
+        <button type="button" class="cx-apy-pill" data-pension="3000">₹3,000</button>
+        <button type="button" class="cx-apy-pill" data-pension="4000">₹4,000</button>
+        <button type="button" class="cx-apy-pill is-on" data-pension="5000">₹5,000</button>
+      </div>
+    </div>
+
+    <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:.75rem .9rem;font-size:.8rem;color:#92400e;line-height:1.55;">
+      <strong>APY (Atal Pension Yojana)</strong> is a government-guaranteed pension for unorganised sector workers. Entry age 18-40. Pension starts at age 60. On death, the spouse continues to receive the same pension. Government may co-contribute 50% of contribution (max ₹1,000/yr) for eligible subscribers.
+    </div>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.7rem .85rem;font-size:.78rem;color:#1d4ed8;line-height:1.5;">
+      <strong>Tax benefit:</strong> Contributions qualify for Section 80CCD(1B) deduction, up to ₹50,000 over and above the 80C limit of ₹1.5 lakh.
+    </div>
+
+  </div>
+
+  <div class="cx-apy-result">
+    <div class="cx-apy-main">
+      <div class="cx-apy-lbl">Monthly contribution required</div>
+      <div class="cx-apy-big" id="apy-contrib">₹376</div>
+      <div class="cx-apy-sub" id="apy-sub">For ₹5,000/mo pension from age 60, entry at 25</div>
+    </div>
+
+    <hr class="cx-apy-divider">
+
+    <div class="cx-apy-grid">
+      <div class="cx-apy-stat">
+        <div class="cx-apy-stat-val" id="apy-total">₹1,57,920</div>
+        <div class="cx-apy-stat-lbl">Total contribution till age 60</div>
+      </div>
+      <div class="cx-apy-stat">
+        <div class="cx-apy-stat-val" id="apy-yearly">₹4,512</div>
+        <div class="cx-apy-stat-lbl">Annual contribution</div>
+      </div>
+      <div class="cx-apy-stat">
+        <div class="cx-apy-stat-val" id="apy-corpus">₹8.5 Lakh</div>
+        <div class="cx-apy-stat-lbl">Corpus at 60 (death benefit to nominee)</div>
+      </div>
+      <div class="cx-apy-stat">
+        <div class="cx-apy-stat-val" id="apy-years">35 years</div>
+        <div class="cx-apy-stat-lbl">Contribution period</div>
+      </div>
+    </div>
+
+    <div class="cx-apy-note" id="apy-note">Lifetime pension guaranteed by Government of India. After your death, spouse gets same pension; after both, the indicative corpus goes to nominee.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmt(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+  function fmtLakh(n){ if (n<100000) return '₹'+Math.round(n).toLocaleString('en-IN'); if (n<10000000) return '₹'+(n/100000).toFixed(2)+' Lakh'; return '₹'+(n/10000000).toFixed(2)+' Cr'; }
+
+  // Official PFRDA APY monthly contribution table (₹ per month)
+  // Rows: entry age 18..40, Cols: pension 1000, 2000, 3000, 4000, 5000
+  var TABLE = {
+    18:[42,84,126,168,210], 19:[46,92,138,183,228], 20:[50,100,150,198,248],
+    21:[54,108,162,215,269], 22:[59,117,177,234,292], 23:[64,127,192,254,318],
+    24:[70,139,208,277,346], 25:[76,151,226,301,376], 26:[82,164,246,327,409],
+    27:[90,178,268,356,446], 28:[97,194,292,388,485], 29:[106,212,318,423,529],
+    30:[116,231,347,462,577], 31:[126,252,379,504,630], 32:[138,276,414,551,689],
+    33:[151,302,453,602,752], 34:[165,330,495,659,824], 35:[181,362,543,722,902],
+    36:[198,396,594,792,990], 37:[218,436,654,870,1087], 38:[240,480,720,957,1196],
+    39:[264,528,792,1054,1318], 40:[291,582,873,1164,1454]
+  };
+  var CORPUS = {1000:170000, 2000:340000, 3000:510000, 4000:680000, 5000:850000};
+
+  var pension = 5000;
+
+  function calc(){
+    var age = parseInt(document.getElementById('apy-i-age').value)||25;
+    age = Math.min(40, Math.max(18, age));
+    var col = [1000,2000,3000,4000,5000].indexOf(pension);
+    var monthly = TABLE[age][col];
+    var years = 60 - age;
+    var annual = monthly * 12;
+    var total = annual * years;
+
+    document.getElementById('apy-contrib').textContent = fmt(monthly);
+    document.getElementById('apy-sub').textContent = 'For ₹'+pension.toLocaleString('en-IN')+'/mo pension from age 60, entry at '+age;
+    document.getElementById('apy-total').textContent = fmt(total);
+    document.getElementById('apy-yearly').textContent = fmt(annual);
+    document.getElementById('apy-corpus').textContent = fmtLakh(CORPUS[pension]);
+    document.getElementById('apy-years').textContent = years+' years';
+
+    if (age >= 35) document.getElementById('apy-note').textContent = 'Joining late means higher monthly contribution. At age 40 (max entry), the ₹5,000 pension costs ₹1,454/month. Earlier is dramatically cheaper.';
+    else if (age <= 25) document.getElementById('apy-note').textContent = 'Joining early is APY\'s best feature. Each year of delay raises your contribution by ~8-9%. ₹5,000 pension at age 18 costs only ₹210/month.';
+    else document.getElementById('apy-note').textContent = 'Lifetime pension guaranteed by Government of India. After your death, spouse gets same pension; after both, the indicative corpus goes to nominee.';
+
+    document.getElementById('apy-lbl-age').textContent = age+' year'+(age>1?'s':'');
+  }
+
+  function syncP(rid,iid,min,max){
+    var r=document.getElementById(rid),i=document.getElementById(iid);
+    r.addEventListener('input',function(){i.value=r.value;calc();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseInt(this.value)||0));r.value=v;calc();});
+  }
+  syncP('apy-r-age','apy-i-age',18,40);
+
+  document.querySelectorAll('#apy-pension .cx-apy-pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#apy-pension .cx-apy-pill').forEach(function(x){x.classList.remove('is-on');});
+      this.classList.add('is-on');
+      pension = parseInt(this.getAttribute('data-pension'));
+      calc();
+    });
+  });
+
+  calc();
+})();
+</script>
+</div>

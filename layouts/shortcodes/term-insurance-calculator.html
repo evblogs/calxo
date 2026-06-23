@@ -1,0 +1,176 @@
+<div id="cx-ti">
+<style>
+#cx-ti { font-family: inherit; }
+.cx-ti-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin:1.5rem 0 2rem; }
+@media(max-width:760px){ .cx-ti-wrap { grid-template-columns:1fr; } }
+.cx-ti-inputs { display:flex; flex-direction:column; gap:1.4rem; }
+.cx-ti-label { display:flex; justify-content:space-between; font-size:.82rem; font-weight:600; color:#374151; margin-bottom:.45rem; }
+.cx-ti-label span { color:#6b7280; font-weight:500; }
+.cx-ti-row { display:flex; align-items:center; gap:.6rem; }
+.cx-ti-row input[type=range] { flex:1; accent-color:#2563eb; height:4px; cursor:pointer; }
+.cx-ti-box { display:flex; align-items:center; border:1.5px solid #d1d5db; border-radius:7px; background:#fff; overflow:hidden; flex-shrink:0; width:120px; }
+.cx-ti-box span { padding:0 .45rem; font-size:.82rem; color:#9ca3af; background:#f9fafb; border-right:1px solid #e5e7eb; }
+.cx-ti-box input[type=number] { border:0; outline:none; width:100%; padding:.45rem .4rem; font-size:.85rem; font-weight:600; color:#1e293b; -moz-appearance:textfield; }
+.cx-ti-box input::-webkit-outer-spin-button,.cx-ti-box input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.cx-ti-pills { display:flex; gap:.4rem; flex-wrap:wrap; }
+.cx-ti-pill { flex:1; padding:.5rem .5rem; border:1px solid #cbd5e1; border-radius:7px; background:#fff; font-size:.78rem; font-weight:600; color:#475569; cursor:pointer; text-align:center; }
+.cx-ti-pill.is-on { background:#2563eb; color:#fff; border-color:#2563eb; }
+.cx-ti-result { background:linear-gradient(145deg,#0f4c81 0%,#072448 100%); border-radius:16px; padding:1.7rem 1.5rem; color:#fff; }
+.cx-ti-main { text-align:center; margin-bottom:1rem; }
+.cx-ti-lbl { font-size:.72rem; color:#93c5fd; text-transform:uppercase; letter-spacing:1px; margin-bottom:.3rem; }
+.cx-ti-big { font-size:2.5rem; font-weight:800; letter-spacing:-1px; color:#4ade80; line-height:1; }
+.cx-ti-sub { font-size:.85rem; color:#cbd5e1; margin-top:.4rem; }
+.cx-ti-grid { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin-top:1rem; }
+.cx-ti-stat { background:rgba(255,255,255,.07); border-radius:9px; padding:.7rem .85rem; }
+.cx-ti-stat-val { font-size:1rem; font-weight:700; }
+.cx-ti-stat-lbl { font-size:.7rem; color:#94a3b8; margin-top:2px; }
+.cx-ti-note { font-size:.72rem; color:#bfdbfe; background:rgba(59,130,246,.12); border-radius:6px; padding:.5rem .7rem; margin-top:.85rem; line-height:1.5; }
+</style>
+
+<div class="cx-ti-wrap">
+  <div class="cx-ti-inputs">
+
+    <div>
+      <div class="cx-ti-label">Your age <span id="ti-lbl-age">30 years</span></div>
+      <div class="cx-ti-row">
+        <input type="range" id="ti-r-age" min="18" max="65" step="1" value="30">
+        <div class="cx-ti-box"><input type="number" id="ti-i-age" value="30" min="18" max="65" step="1"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-ti-label">Sum assured <span id="ti-lbl-sa">₹1,00,00,000</span></div>
+      <div class="cx-ti-row">
+        <input type="range" id="ti-r-sa" min="2500000" max="100000000" step="500000" value="10000000">
+        <div class="cx-ti-box"><span>₹</span><input type="number" id="ti-i-sa" value="10000000" min="2500000" max="500000000" step="500000"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-ti-label">Policy term <span id="ti-lbl-term">30 years</span></div>
+      <div class="cx-ti-row">
+        <input type="range" id="ti-r-term" min="5" max="40" step="1" value="30">
+        <div class="cx-ti-box"><input type="number" id="ti-i-term" value="30" min="5" max="40" step="1"><span class="sfx">yr</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-ti-label">Gender</div>
+      <div class="cx-ti-pills" id="ti-gender">
+        <button type="button" class="cx-ti-pill is-on" data-gender="male">Male</button>
+        <button type="button" class="cx-ti-pill" data-gender="female">Female</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="cx-ti-label">Smoker / Tobacco use</div>
+      <div class="cx-ti-pills" id="ti-smoker">
+        <button type="button" class="cx-ti-pill is-on" data-smoker="no">Non-smoker</button>
+        <button type="button" class="cx-ti-pill" data-smoker="yes">Smoker</button>
+      </div>
+    </div>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.6rem .8rem;font-size:.75rem;color:#1d4ed8;line-height:1.5;">
+      Estimates use median market rates for FY 2025-26 across LIC Tech Term, HDFC Click 2 Protect, Max Life Smart Secure, and Tata AIA Sampoorna Raksha. Actual premiums vary by underwriting.
+    </div>
+
+  </div>
+
+  <div class="cx-ti-result">
+    <div class="cx-ti-main">
+      <div class="cx-ti-lbl">Estimated Annual Premium</div>
+      <div class="cx-ti-big" id="ti-annual">₹12,500</div>
+      <div class="cx-ti-sub">For ₹1 crore cover, 30-year term</div>
+    </div>
+
+    <div class="cx-ti-grid">
+      <div class="cx-ti-stat">
+        <div class="cx-ti-stat-val" id="ti-monthly">₹1,083</div>
+        <div class="cx-ti-stat-lbl">Monthly equivalent</div>
+      </div>
+      <div class="cx-ti-stat">
+        <div class="cx-ti-stat-val" id="ti-perlakh">₹125</div>
+        <div class="cx-ti-stat-lbl">Per ₹1 lakh cover</div>
+      </div>
+      <div class="cx-ti-stat">
+        <div class="cx-ti-stat-val" id="ti-total">₹3.75L</div>
+        <div class="cx-ti-stat-lbl">Total premium (term)</div>
+      </div>
+      <div class="cx-ti-stat">
+        <div class="cx-ti-stat-val" id="ti-ratio">2,667x</div>
+        <div class="cx-ti-stat-lbl">Cover : annual premium</div>
+      </div>
+    </div>
+
+    <div class="cx-ti-note" id="ti-note">Premium increases ~8-10% per year of age over 25. Lock in coverage early. Riders (critical illness, accidental death) add 15-25% to premium.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function fmt(n){ if (n<100000) return '₹'+Math.round(n).toLocaleString('en-IN'); if (n<10000000) return '₹'+(n/100000).toFixed(2)+'L'; return '₹'+(n/10000000).toFixed(2)+'Cr'; }
+  function fmtPlain(n){ return '₹'+Math.round(n).toLocaleString('en-IN'); }
+
+  function calc(){
+    var age = parseInt(document.getElementById('ti-i-age').value)||30;
+    var sa = parseFloat(document.getElementById('ti-i-sa').value)||10000000;
+    var term = parseInt(document.getElementById('ti-i-term').value)||30;
+    var gender = document.querySelector('#ti-gender .is-on').getAttribute('data-gender');
+    var smoker = document.querySelector('#ti-smoker .is-on').getAttribute('data-smoker');
+
+    // Base: ₹11,000/year per ₹1 crore for 30-yr-old male non-smoker, 30-year term
+    var basePerCr = 11000;
+    var ageFactor = Math.pow(1.08, age - 25);
+    var genderFactor = gender === 'male' ? 1.0 : 0.86;
+    var smokerFactor = smoker === 'yes' ? 1.55 : 1.0;
+    var termFactor = term <= 15 ? 0.78 : (term <= 25 ? 0.92 : (term <= 35 ? 1.0 : 1.18));
+
+    var annualPremium = basePerCr * (sa/10000000) * ageFactor * genderFactor * smokerFactor * termFactor;
+    var monthlyPremium = annualPremium / 12;
+    var totalPremium = annualPremium * term;
+    var perLakh = annualPremium / (sa/100000);
+    var ratio = Math.round(sa / annualPremium);
+
+    document.getElementById('ti-annual').textContent = fmtPlain(annualPremium);
+    document.getElementById('ti-monthly').textContent = fmtPlain(monthlyPremium);
+    document.getElementById('ti-perlakh').textContent = fmtPlain(perLakh);
+    document.getElementById('ti-total').textContent = fmt(totalPremium);
+    document.getElementById('ti-ratio').textContent = ratio.toLocaleString('en-IN')+'x';
+    document.getElementById('ti-sub' in document ? '' : 'ti-annual'); // no-op
+    document.querySelector('.cx-ti-sub').textContent = 'For '+fmt(sa)+' cover, '+term+'-year term, '+gender+', '+(smoker==='yes'?'smoker':'non-smoker');
+
+    if (age > 50) document.getElementById('ti-note').textContent = 'At your age, premiums are rising sharply. Many insurers cap entry age at 60-65. Lock in now before health changes force a decline.';
+    else if (age < 30) document.getElementById('ti-note').textContent = 'Strong age band. A 30-year policy taken now locks in low premiums until you are 55-60, when family financial dependency typically ends.';
+    else document.getElementById('ti-note').textContent = 'Premium rises ~8-10% per year of delay. A ₹1 crore policy at 30 vs 35 costs roughly ₹3-4 lakh more over the term.';
+
+    document.getElementById('ti-lbl-age').textContent = age+' year'+(age>1?'s':'');
+    document.getElementById('ti-lbl-sa').textContent = fmt(sa);
+    document.getElementById('ti-lbl-term').textContent = term+' year'+(term>1?'s':'');
+  }
+
+  function syncP(rid,iid,min,max){
+    var r=document.getElementById(rid),i=document.getElementById(iid);
+    r.addEventListener('input',function(){i.value=r.value;calc();});
+    i.addEventListener('input',function(){var v=Math.min(max,Math.max(min,parseFloat(this.value)||0));r.value=v;calc();});
+  }
+  syncP('ti-r-age','ti-i-age',18,65);
+  syncP('ti-r-sa','ti-i-sa',2500000,500000000);
+  syncP('ti-r-term','ti-i-term',5,40);
+
+  document.querySelectorAll('#ti-gender .cx-ti-pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#ti-gender .cx-ti-pill').forEach(function(x){x.classList.remove('is-on');});
+      this.classList.add('is-on'); calc();
+    });
+  });
+  document.querySelectorAll('#ti-smoker .cx-ti-pill').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('#ti-smoker .cx-ti-pill').forEach(function(x){x.classList.remove('is-on');});
+      this.classList.add('is-on'); calc();
+    });
+  });
+
+  calc();
+})();
+</script>
+</div>
