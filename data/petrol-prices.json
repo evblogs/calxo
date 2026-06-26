@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-25",
-  "source": "best-effort multi-site scrape \u2014 30/30 cities refreshed 2026-06-25",
+  "updated": "2026-06-26",
+  "source": "best-effort multi-site scrape \u2014 30/30 cities refreshed 2026-06-26",
   "cities": [
     {
       "city": "Delhi",
@@ -11,67 +11,67 @@
     {
       "city": "Mumbai",
       "state": "Maharashtra",
-      "petrol": 111.21,
+      "petrol": 111.18,
       "diesel": 97.83
     },
     {
       "city": "Chennai",
       "state": "Tamil Nadu",
-      "petrol": 107.75,
-      "diesel": 99.56
+      "petrol": 107.74,
+      "diesel": 99.55
     },
     {
       "city": "Kolkata",
       "state": "West Bengal",
-      "petrol": 113.51,
+      "petrol": 113.47,
       "diesel": 99.82
     },
     {
       "city": "Bengaluru",
       "state": "Karnataka",
-      "petrol": 110.97,
-      "diesel": 98.87
+      "petrol": 110.89,
+      "diesel": 98.8
     },
     {
       "city": "Hyderabad",
       "state": "Telangana",
-      "petrol": 115.73,
+      "petrol": 115.69,
       "diesel": 103.82
     },
     {
       "city": "Pune",
       "state": "Maharashtra",
-      "petrol": 111.49,
-      "diesel": 98.15
+      "petrol": 111.89,
+      "diesel": 98.54
     },
     {
       "city": "Ahmedabad",
       "state": "Gujarat",
-      "petrol": 101.8,
-      "diesel": 97.92
+      "petrol": 101.99,
+      "diesel": 98.1
     },
     {
       "city": "Jaipur",
       "state": "Rajasthan",
-      "petrol": 113.1,
-      "diesel": 98.17
+      "petrol": 112.66,
+      "diesel": 97.78
     },
     {
       "city": "Lucknow",
       "state": "Uttar Pradesh",
-      "petrol": 101.86,
-      "diesel": 95.36
+      "petrol": 102.05,
+      "diesel": 95.55
     },
     {
       "city": "Noida",
       "state": "Uttar Pradesh",
-      "petrol": 103.13,
-      "diesel": 96.53
+      "petrol": 103.79,
+      "diesel": 97.15
     },
     {
       "city": "Chandigarh",
       "state": "Chandigarh",
-      "petrol": 101.54,
+      "petrol": 101.51,
       "diesel": 89.47
     },
     {
@@ -83,14 +83,14 @@
     {
       "city": "Indore",
       "state": "Madhya Pradesh",
-      "petrol": 114.6,
-      "diesel": 99.72
+      "petrol": 114.84,
+      "diesel": 99.94
     },
     {
       "city": "Patna",
       "state": "Bihar",
-      "petrol": 113.37,
-      "diesel": 99.36
+      "petrol": 113.54,
+      "diesel": 99.54
     },
     {
       "city": "Ranchi",
@@ -107,20 +107,20 @@
     {
       "city": "Bhubaneswar",
       "state": "Odisha",
-      "petrol": 109.05,
-      "diesel": 100.76
+      "petrol": 108.81,
+      "diesel": 100.52
     },
     {
       "city": "Guwahati",
       "state": "Assam",
-      "petrol": 105.73,
+      "petrol": 105.74,
       "diesel": 97.23
     },
     {
       "city": "Thiruvananthapuram",
       "state": "Kerala",
       "petrol": 115.49,
-      "diesel": 104.31
+      "diesel": 104.41
     },
     {
       "city": "Kochi",
@@ -131,50 +131,50 @@
     {
       "city": "Coimbatore",
       "state": "Tamil Nadu",
-      "petrol": 108.68,
-      "diesel": 100.49
+      "petrol": 108.22,
+      "diesel": 100.06
     },
     {
       "city": "Visakhapatnam",
       "state": "Andhra Pradesh",
-      "petrol": 116.55,
-      "diesel": 104.26
+      "petrol": 116.39,
+      "diesel": 104.11
     },
     {
       "city": "Nagpur",
       "state": "Maharashtra",
-      "petrol": 111.69,
-      "diesel": 98.38
+      "petrol": 112.01,
+      "diesel": 98.68
     },
     {
       "city": "Surat",
       "state": "Gujarat",
-      "petrol": 101.68,
-      "diesel": 97.79
+      "petrol": 101.71,
+      "diesel": 97.84
     },
     {
       "city": "Vadodara",
       "state": "Gujarat",
-      "petrol": 101.92,
-      "diesel": 98.04
+      "petrol": 101.42,
+      "diesel": 97.54
     },
     {
       "city": "Ludhiana",
       "state": "Punjab",
-      "petrol": 105.16,
-      "diesel": 95.09
+      "petrol": 105.79,
+      "diesel": 94.93
     },
     {
       "city": "Agra",
       "state": "Uttar Pradesh",
-      "petrol": 101.65,
-      "diesel": 95.13
+      "petrol": 101.67,
+      "diesel": 95.14
     },
     {
       "city": "Varanasi",
       "state": "Uttar Pradesh",
-      "petrol": 102.07,
-      "diesel": 95.57
+      "petrol": 102.51,
+      "diesel": 95.96
     },
     {
       "city": "Dehradun",
@@ -183,5 +183,5 @@
       "diesel": 96.26
     }
   ],
-  "prices_verified": "2026-06-25"
+  "prices_verified": "2026-06-26"
 }

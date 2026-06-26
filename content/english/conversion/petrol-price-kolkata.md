@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Kolkata Today: ₹113.51/Litre (25 June 2026)"
-description: "Today's petrol price in Kolkata is ₹113.51/litre and diesel is ₹99.82/litre. Updated daily at 6 AM. Kolkata fuel price, West Bengal VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-25
-lastmod: 2026-06-25
+title: "Petrol Price in Kolkata Today: ₹113.47/Litre (26 June 2026)"
+description: "Today's petrol price in Kolkata is ₹113.47/litre and diesel is ₹99.82/litre. Updated daily at 6 AM. Kolkata fuel price, West Bengal VAT breakup and a monthly fuel-cost calculator."
+date: 2026-06-26
+lastmod: 2026-06-26
 type: "calculator"
 url: /conversion/petrol-price-kolkata/
 keywords: "petrol price in kolkata today, petrol price kolkata, diesel price kolkata today, fuel price kolkata 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-kolkata.png
-image_alt: "Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre on 25 June 2026"
+image_alt: "Today's petrol price in Kolkata is ₹113.47 per litre and diesel is ₹99.82 per litre on 26 June 2026"
 ---
 
-Today's petrol price in Kolkata is **₹113.51 per litre** and diesel is **₹99.82 per litre** (as of 25 June 2026). Prices update every day at 6:00 AM. That makes Kolkata, a Tier 1 metro in West Bengal, about ₹11.39/litre costlier than Delhi (₹102.12).
+Today's petrol price in Kolkata is **₹113.47 per litre** and diesel is **₹99.82 per litre** (as of 26 June 2026). Prices update every day at 6:00 AM. That makes Kolkata, a Tier 1 metro in West Bengal, about ₹11.35/litre costlier than Delhi (₹102.12).
 
 West Bengal charges a flat sales-tax cess on top of percentage VAT, pushing Kolkata above most northern metros.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-kolkata.png"
-       alt="Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre as of 25 June 2026"
-       title="Petrol & diesel price in Kolkata — 25 June 2026"
+       alt="Today's petrol price in Kolkata is ₹113.47 per litre and diesel is ₹99.82 per litre as of 26 June 2026"
+       title="Petrol & diesel price in Kolkata — 26 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Kolkata — generated 25 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Kolkata — generated 26 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Kolkata" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Kolkata carries two central charges that are the same a
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **West Bengal state tax (VAT/cess)** | **~33.74** |
+| **West Bengal state tax (VAT/cess)** | **~33.70** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~113.51** |
+| **Total pump price** | **~113.47** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,38 +53,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 113.51 | 99.82 |
-| May 2026 | 113.51 | 99.82 |
-| April 2026 | 113.51 | 99.82 |
-| March 2026 | 113.51 | 99.82 |
-| February 2026 | 113.51 | 99.82 |
+| June 2026 | 113.47 | 99.82 |
+| May 2026 | 113.47 | 99.82 |
+| April 2026 | 113.47 | 99.82 |
+| March 2026 | 113.47 | 99.82 |
+| February 2026 | 113.47 | 99.82 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Kolkata figure moves only in paise on most days.
 
 ## Monthly fuel cost for Kolkata commuters
 
-At ₹113.51/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹113.47/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹5,160 |
-| Honda City | 18 km/L | ₹6,306 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,567 |
-| Royal Enfield 350 | 35 km/L | ₹3,243 |
-| Honda Activa 6G | 50 km/L | ₹2,270 |
+| Maruti Suzuki Swift | 22 km/L | ₹5,158 |
+| Honda City | 18 km/L | ₹6,304 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,565 |
+| Royal Enfield 350 | 35 km/L | ₹3,242 |
+| Honda Activa 6G | 50 km/L | ₹2,269 |
 
-Someone in Kolkata driving a Maruti Swift 1,500 km a month spends roughly **₹7,739/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Kolkata driving a Maruti Swift 1,500 km a month spends roughly **₹7,737/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Kolkata vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹110.97 | ₹98.87 |
-| Hyderabad | ₹115.73 | ₹103.82 |
-| Ahmedabad | ₹101.80 | ₹97.92 |
-| **Kolkata** | **₹113.51** | ₹99.82 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹110.89 | ₹98.80 |
+| Hyderabad | ₹115.69 | ₹103.82 |
+| Ahmedabad | ₹101.99 | ₹98.10 |
+| **Kolkata** | **₹113.47** | ₹99.82 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Kolkata r
 
 ### Is petrol cheaper in Bhubaneswar or Kolkata?
 
-Right now Kolkata is ₹113.51/litre and Bhubaneswar is around ₹109.05. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Kolkata is ₹113.47/litre and Bhubaneswar is around ₹108.81. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Kolkata?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-kolkata.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-kolkata.png",
-  "name": "Petrol & diesel price in Kolkata on 25 June 2026",
-  "description": "Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre as of 25 June 2026",
+  "name": "Petrol & diesel price in Kolkata on 26 June 2026",
+  "description": "Today's petrol price in Kolkata is ₹113.47 per litre and diesel is ₹99.82 per litre as of 26 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-25T06:00:00+05:30",
+  "uploadDate": "2026-06-26T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",

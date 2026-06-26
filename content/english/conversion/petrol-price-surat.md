@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Surat Today: ₹101.68/Litre (25 June 2026)"
-description: "Today's petrol price in Surat is ₹101.68/litre and diesel is ₹97.79/litre. Updated daily at 6 AM. Surat fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-25
-lastmod: 2026-06-25
+title: "Petrol Price in Surat Today: ₹101.71/Litre (26 June 2026)"
+description: "Today's petrol price in Surat is ₹101.71/litre and diesel is ₹97.84/litre. Updated daily at 6 AM. Surat fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
+date: 2026-06-26
+lastmod: 2026-06-26
 type: "calculator"
 url: /conversion/petrol-price-surat/
 keywords: "petrol price in surat today, petrol price surat, diesel price surat today, fuel price surat 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-surat.png
-image_alt: "Today's petrol price in Surat is ₹101.68 per litre and diesel is ₹97.79 per litre on 25 June 2026"
+image_alt: "Today's petrol price in Surat is ₹101.71 per litre and diesel is ₹97.84 per litre on 26 June 2026"
 ---
 
-Today's petrol price in Surat is **₹101.68 per litre** and diesel is **₹97.79 per litre** (as of 25 June 2026). Prices update every day at 6:00 AM. That makes Surat, a Tier 2 city in Gujarat, roughly the same as Delhi (₹102.12).
+Today's petrol price in Surat is **₹101.71 per litre** and diesel is **₹97.84 per litre** (as of 26 June 2026). Prices update every day at 6:00 AM. That makes Surat, a Tier 2 city in Gujarat, roughly the same as Delhi (₹102.12).
 
 Surat benefits from Gujarat's low fuel tax, keeping it among the cheapest big cities in western India.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-surat.png"
-       alt="Today's petrol price in Surat is ₹101.68 per litre and diesel is ₹97.79 per litre as of 25 June 2026"
-       title="Petrol & diesel price in Surat — 25 June 2026"
+       alt="Today's petrol price in Surat is ₹101.71 per litre and diesel is ₹97.84 per litre as of 26 June 2026"
+       title="Petrol & diesel price in Surat — 26 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Surat — generated 25 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Surat — generated 26 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Surat" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Surat carries two central charges that are the same acr
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Gujarat state tax (VAT/cess)** | **~21.91** |
+| **Gujarat state tax (VAT/cess)** | **~21.94** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~101.68** |
+| **Total pump price** | **~101.71** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,38 +53,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 101.68 | 97.79 |
-| May 2026 | 101.68 | 97.79 |
-| April 2026 | 101.68 | 97.79 |
-| March 2026 | 101.68 | 97.79 |
-| February 2026 | 101.68 | 97.79 |
+| June 2026 | 101.71 | 97.84 |
+| May 2026 | 101.71 | 97.84 |
+| April 2026 | 101.71 | 97.84 |
+| March 2026 | 101.71 | 97.84 |
+| February 2026 | 101.71 | 97.84 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Surat figure moves only in paise on most days.
 
 ## Monthly fuel cost for Surat commuters
 
-At ₹101.68/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹101.71/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,622 |
-| Honda City | 18 km/L | ₹5,649 |
-| Hyundai Creta (petrol) | 15 km/L | ₹6,779 |
-| Royal Enfield 350 | 35 km/L | ₹2,905 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,623 |
+| Honda City | 18 km/L | ₹5,651 |
+| Hyundai Creta (petrol) | 15 km/L | ₹6,781 |
+| Royal Enfield 350 | 35 km/L | ₹2,906 |
 | Honda Activa 6G | 50 km/L | ₹2,034 |
 
-Someone in Surat driving a Maruti Swift 1,500 km a month spends roughly **₹6,933/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Surat driving a Maruti Swift 1,500 km a month spends roughly **₹6,935/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Surat vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹110.97 | ₹98.87 |
-| Hyderabad | ₹115.73 | ₹103.82 |
-| Ahmedabad | ₹101.80 | ₹97.92 |
-| **Surat** | **₹101.68** | ₹97.79 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹110.89 | ₹98.80 |
+| Hyderabad | ₹115.69 | ₹103.82 |
+| Ahmedabad | ₹101.99 | ₹98.10 |
+| **Surat** | **₹101.71** | ₹97.84 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Surat rat
 
 ### Is petrol cheaper in Vadodara or Surat?
 
-Right now Surat is ₹101.68/litre and Vadodara is around ₹101.92. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Surat is ₹101.71/litre and Vadodara is around ₹101.42. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Surat?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-surat.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-surat.png",
-  "name": "Petrol & diesel price in Surat on 25 June 2026",
-  "description": "Today's petrol price in Surat is ₹101.68 per litre and diesel is ₹97.79 per litre as of 25 June 2026",
+  "name": "Petrol & diesel price in Surat on 26 June 2026",
+  "description": "Today's petrol price in Surat is ₹101.71 per litre and diesel is ₹97.84 per litre as of 26 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-25T06:00:00+05:30",
+  "uploadDate": "2026-06-26T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
