@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Ranchi Today: ₹105.93/Litre (26 June 2026)"
-description: "Today's petrol price in Ranchi is ₹105.93/litre and diesel is ₹101.06/litre. Updated daily at 6 AM. Ranchi fuel price, Jharkhand VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-26
-lastmod: 2026-06-26
+title: "Petrol Price in Ranchi Today: ₹105.26/Litre (27 June 2026)"
+description: "Today's petrol price in Ranchi is ₹105.26/litre and diesel is ₹100.49/litre. Updated daily at 6 AM. Ranchi fuel price, Jharkhand VAT breakup and a monthly fuel-cost calculator."
+date: 2026-06-27
+lastmod: 2026-06-27
 type: "calculator"
 url: /conversion/petrol-price-ranchi/
 keywords: "petrol price in ranchi today, petrol price ranchi, diesel price ranchi today, fuel price ranchi 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-ranchi.png
-image_alt: "Today's petrol price in Ranchi is ₹105.93 per litre and diesel is ₹101.06 per litre on 26 June 2026"
+image_alt: "Today's petrol price in Ranchi is ₹105.26 per litre and diesel is ₹100.49 per litre on 27 June 2026"
 ---
 
-Today's petrol price in Ranchi is **₹105.93 per litre** and diesel is **₹101.06 per litre** (as of 26 June 2026). Prices update every day at 6:00 AM. That makes Ranchi, a Tier 2 city in Jharkhand, about ₹3.81/litre costlier than Delhi (₹102.12).
+Today's petrol price in Ranchi is **₹105.26 per litre** and diesel is **₹100.49 per litre** (as of 27 June 2026). Prices update every day at 6:00 AM. That makes Ranchi, a Tier 2 city in Jharkhand, about ₹3.14/litre costlier than Delhi (₹102.12).
 
 Jharkhand uses a higher-of formula on petrol VAT, keeping Ranchi cheaper than neighbouring Patna.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-ranchi.png"
-       alt="Today's petrol price in Ranchi is ₹105.93 per litre and diesel is ₹101.06 per litre as of 26 June 2026"
-       title="Petrol & diesel price in Ranchi — 26 June 2026"
+       alt="Today's petrol price in Ranchi is ₹105.26 per litre and diesel is ₹100.49 per litre as of 27 June 2026"
+       title="Petrol & diesel price in Ranchi — 27 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ranchi — generated 26 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ranchi — generated 27 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Ranchi" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Ranchi carries two central charges that are the same ac
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Jharkhand state tax (VAT/cess)** | **~26.16** |
+| **Jharkhand state tax (VAT/cess)** | **~25.49** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~105.93** |
+| **Total pump price** | **~105.26** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,38 +53,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 105.93 | 101.06 |
-| May 2026 | 105.93 | 101.06 |
-| April 2026 | 105.93 | 101.06 |
-| March 2026 | 105.93 | 101.06 |
-| February 2026 | 105.93 | 101.06 |
+| June 2026 | 105.26 | 100.49 |
+| May 2026 | 105.26 | 100.49 |
+| April 2026 | 105.26 | 100.49 |
+| March 2026 | 105.26 | 100.49 |
+| February 2026 | 105.26 | 100.49 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Ranchi figure moves only in paise on most days.
 
 ## Monthly fuel cost for Ranchi commuters
 
-At ₹105.93/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹105.26/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,815 |
-| Honda City | 18 km/L | ₹5,885 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,062 |
-| Royal Enfield 350 | 35 km/L | ₹3,027 |
-| Honda Activa 6G | 50 km/L | ₹2,119 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,785 |
+| Honda City | 18 km/L | ₹5,848 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,017 |
+| Royal Enfield 350 | 35 km/L | ₹3,007 |
+| Honda Activa 6G | 50 km/L | ₹2,105 |
 
-Someone in Ranchi driving a Maruti Swift 1,500 km a month spends roughly **₹7,223/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Ranchi driving a Maruti Swift 1,500 km a month spends roughly **₹7,177/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Ranchi vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.18 | ₹97.83 |
-| Bengaluru | ₹110.89 | ₹98.80 |
+| Mumbai | ₹111.21 | ₹97.83 |
+| Bengaluru | ₹110.93 | ₹98.80 |
 | Hyderabad | ₹115.69 | ₹103.82 |
-| Ahmedabad | ₹101.99 | ₹98.10 |
-| **Ranchi** | **₹105.93** | ₹101.06 |
+| Ahmedabad | ₹101.83 | ₹97.92 |
+| **Ranchi** | **₹105.26** | ₹100.49 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Ranchi ra
 
 ### Is petrol cheaper in Patna or Ranchi?
 
-Right now Ranchi is ₹105.93/litre and Patna is around ₹113.54. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Ranchi is ₹105.26/litre and Patna is around ₹113.46. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Ranchi?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-ranchi.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-ranchi.png",
-  "name": "Petrol & diesel price in Ranchi on 26 June 2026",
-  "description": "Today's petrol price in Ranchi is ₹105.93 per litre and diesel is ₹101.06 per litre as of 26 June 2026",
+  "name": "Petrol & diesel price in Ranchi on 27 June 2026",
+  "description": "Today's petrol price in Ranchi is ₹105.26 per litre and diesel is ₹100.49 per litre as of 27 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-26T06:00:00+05:30",
+  "uploadDate": "2026-06-27T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
