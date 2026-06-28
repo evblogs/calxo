@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Indore Today: ₹114.40/Litre (27 June 2026)"
-description: "Today's petrol price in Indore is ₹114.40/litre and diesel is ₹99.54/litre. Updated daily at 6 AM. Indore fuel price, Madhya Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-27
-lastmod: 2026-06-27
+title: "Petrol Price in Indore Today: ₹114.47/Litre (28 June 2026)"
+description: "Today's petrol price in Indore is ₹114.47/litre and diesel is ₹99.57/litre. Updated daily at 6 AM. Indore fuel price, Madhya Pradesh VAT breakup and a monthly fuel-cost calculator."
+date: 2026-06-28
+lastmod: 2026-06-28
 type: "calculator"
 url: /conversion/petrol-price-indore/
 keywords: "petrol price in indore today, petrol price indore, diesel price indore today, fuel price indore 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-indore.png
-image_alt: "Today's petrol price in Indore is ₹114.40 per litre and diesel is ₹99.54 per litre on 27 June 2026"
+image_alt: "Today's petrol price in Indore is ₹114.47 per litre and diesel is ₹99.57 per litre on 28 June 2026"
 ---
 
-Today's petrol price in Indore is **₹114.40 per litre** and diesel is **₹99.54 per litre** (as of 27 June 2026). Prices update every day at 6:00 AM. That makes Indore, a Tier 2 city in Madhya Pradesh, about ₹12.28/litre costlier than Delhi (₹102.12).
+Today's petrol price in Indore is **₹114.47 per litre** and diesel is **₹99.57 per litre** (as of 28 June 2026). Prices update every day at 6:00 AM. That makes Indore, a Tier 2 city in Madhya Pradesh, about ₹12.35/litre costlier than Delhi (₹102.12).
 
 Indore pays the same Madhya Pradesh slab as Bhopal, keeping both among the costliest Tier 2 cities.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-indore.png"
-       alt="Today's petrol price in Indore is ₹114.40 per litre and diesel is ₹99.54 per litre as of 27 June 2026"
-       title="Petrol & diesel price in Indore — 27 June 2026"
+       alt="Today's petrol price in Indore is ₹114.47 per litre and diesel is ₹99.57 per litre as of 28 June 2026"
+       title="Petrol & diesel price in Indore — 28 June 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Indore — generated 27 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Indore — generated 28 June 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Indore" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Indore carries two central charges that are the same ac
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Madhya Pradesh state tax (VAT/cess)** | **~34.63** |
+| **Madhya Pradesh state tax (VAT/cess)** | **~34.70** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~114.40** |
+| **Total pump price** | **~114.47** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,27 +53,27 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| June 2026 | 114.40 | 99.54 |
-| May 2026 | 114.40 | 99.54 |
-| April 2026 | 114.40 | 99.54 |
-| March 2026 | 114.40 | 99.54 |
-| February 2026 | 114.40 | 99.54 |
+| June 2026 | 114.47 | 99.57 |
+| May 2026 | 114.47 | 99.57 |
+| April 2026 | 114.47 | 99.57 |
+| March 2026 | 114.47 | 99.57 |
+| February 2026 | 114.47 | 99.57 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Indore figure moves only in paise on most days.
 
 ## Monthly fuel cost for Indore commuters
 
-At ₹114.40/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹114.47/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹5,200 |
-| Honda City | 18 km/L | ₹6,356 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,627 |
-| Royal Enfield 350 | 35 km/L | ₹3,269 |
-| Honda Activa 6G | 50 km/L | ₹2,288 |
+| Maruti Suzuki Swift | 22 km/L | ₹5,203 |
+| Honda City | 18 km/L | ₹6,359 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,631 |
+| Royal Enfield 350 | 35 km/L | ₹3,271 |
+| Honda Activa 6G | 50 km/L | ₹2,289 |
 
-Someone in Indore driving a Maruti Swift 1,500 km a month spends roughly **₹7,800/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Indore driving a Maruti Swift 1,500 km a month spends roughly **₹7,805/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Indore vs other cities
 
@@ -81,10 +81,10 @@ Someone in Indore driving a Maruti Swift 1,500 km a month spends roughly **₹7,
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹110.93 | ₹98.80 |
-| Hyderabad | ₹115.69 | ₹103.82 |
-| Ahmedabad | ₹101.83 | ₹97.92 |
-| **Indore** | **₹114.40** | ₹99.54 |
+| Bengaluru | ₹110.61 | ₹98.54 |
+| Hyderabad | ₹115.72 | ₹103.82 |
+| Ahmedabad | ₹101.99 | ₹98.10 |
+| **Indore** | **₹114.47** | ₹99.57 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Indore ra
 
 ### Is petrol cheaper in Bhopal or Indore?
 
-Right now Indore is ₹114.40/litre and Bhopal is around ₹114.57. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Indore is ₹114.47/litre and Bhopal is around ₹114.54. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Indore?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-indore.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-indore.png",
-  "name": "Petrol & diesel price in Indore on 27 June 2026",
-  "description": "Today's petrol price in Indore is ₹114.40 per litre and diesel is ₹99.54 per litre as of 27 June 2026",
+  "name": "Petrol & diesel price in Indore on 28 June 2026",
+  "description": "Today's petrol price in Indore is ₹114.47 per litre and diesel is ₹99.57 per litre as of 28 June 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-27T06:00:00+05:30",
+  "uploadDate": "2026-06-28T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
