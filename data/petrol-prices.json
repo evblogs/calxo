@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-30",
-  "source": "best-effort multi-site scrape \u2014 28/30 cities refreshed 2026-06-30",
+  "updated": "2026-07-01",
+  "source": "Prices held since 2026-06-30 (no live source returned data this run); displayed date reflects the daily revision cycle",
   "cities": [
     {
       "city": "Delhi",

@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Coimbatore Today: ₹108.43/Litre (30 June 2026)"
+title: "Petrol Price in Coimbatore Today: ₹108.43/Litre (1 July 2026)"
 description: "Today's petrol price in Coimbatore is ₹108.43/litre and diesel is ₹100.26/litre. Updated daily at 6 AM. Coimbatore fuel price, Tamil Nadu VAT breakup and a monthly fuel-cost calculator."
-date: 2026-06-30
-lastmod: 2026-06-30
+date: 2026-07-01
+lastmod: 2026-07-01
 type: "calculator"
 url: /conversion/petrol-price-coimbatore/
 keywords: "petrol price in coimbatore today, petrol price coimbatore, diesel price coimbatore today, fuel price coimbatore 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-coimbatore.png
-image_alt: "Today's petrol price in Coimbatore is ₹108.43 per litre and diesel is ₹100.26 per litre on 30 June 2026"
+image_alt: "Today's petrol price in Coimbatore is ₹108.43 per litre and diesel is ₹100.26 per litre on 1 July 2026"
 ---
 
-Today's petrol price in Coimbatore is **₹108.43 per litre** and diesel is **₹100.26 per litre** (as of 30 June 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹6.31/litre costlier than Delhi (₹102.12).
+Today's petrol price in Coimbatore is **₹108.43 per litre** and diesel is **₹100.26 per litre** (as of 1 July 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹6.31/litre costlier than Delhi (₹102.12).
 
 Tamil Nadu uses a low percentage plus a fixed per-litre charge, so Coimbatore mirrors Chennai almost exactly.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-coimbatore.png"
-       alt="Today's petrol price in Coimbatore is ₹108.43 per litre and diesel is ₹100.26 per litre as of 30 June 2026"
-       title="Petrol & diesel price in Coimbatore — 30 June 2026"
+       alt="Today's petrol price in Coimbatore is ₹108.43 per litre and diesel is ₹100.26 per litre as of 1 July 2026"
+       title="Petrol & diesel price in Coimbatore — 1 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Coimbatore — generated 30 June 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Coimbatore — generated 1 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Coimbatore" >}}
@@ -53,11 +53,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
+| July 2026 | 108.43 | 100.26 |
 | June 2026 | 108.43 | 100.26 |
 | May 2026 | 108.43 | 100.26 |
 | April 2026 | 108.43 | 100.26 |
 | March 2026 | 108.43 | 100.26 |
-| February 2026 | 108.43 | 100.26 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Coimbatore figure moves only in paise on most days.
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
-  "name": "Petrol & diesel price in Coimbatore on 30 June 2026",
-  "description": "Today's petrol price in Coimbatore is ₹108.43 per litre and diesel is ₹100.26 per litre as of 30 June 2026",
+  "name": "Petrol & diesel price in Coimbatore on 1 July 2026",
+  "description": "Today's petrol price in Coimbatore is ₹108.43 per litre and diesel is ₹100.26 per litre as of 1 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-06-30T06:00:00+05:30",
+  "uploadDate": "2026-07-01T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
