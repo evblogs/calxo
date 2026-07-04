@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Chennai Today — ₹107.76/Litre (3 July 2026)"
+title: "Petrol Price in Chennai Today — ₹107.76/Litre (4 July 2026)"
 description: "Today's petrol price in Chennai is ₹107.76/litre and diesel is ₹99.55/litre. Updated daily at 6 AM. Tamil Nadu's VAT on fuel and additional cess push Chennai prices above Delhi by ₹6."
 date: 2026-04-29
-lastmod: 2026-07-03
+lastmod: 2026-07-04
 type: "calculator"
 url: /conversion/petrol-price-chennai/
 keywords: "petrol price in chennai today, petrol price chennai, diesel price chennai today, fuel price chennai 2026, petrol price today chennai"
@@ -13,7 +13,7 @@ image: /images/petrol/petrol-price-chennai.png
 image_alt: "Today's petrol price in Chennai is ₹107.84 per litre and diesel is ₹99.65 per litre on 6 June 2026"
 ---
 
-Today's petrol price in Chennai is **₹107.76 per litre** and diesel is **₹99.55 per litre** (as of 3 July 2026). Oil marketing companies revise prices at 6:00 AM every day.
+Today's petrol price in Chennai is **₹107.76 per litre** and diesel is **₹99.55 per litre** (as of 4 July 2026). Oil marketing companies revise prices at 6:00 AM every day.
 
 Chennai's petrol is ₹5.99 more expensive than Delhi's and ₹2.16 cheaper than Bangalore's — Tamil Nadu's VAT and cess structure sits in the middle of Indian states.
 
@@ -99,7 +99,7 @@ Chennai is mid-range among metros — cheaper than Hyderabad, Mumbai, and Bangal
 
 ### What is today's diesel price in Chennai?
 
-Today's diesel price in Chennai is ₹92.34 per litre (as of 3 July 2026). Note that Chennai's diesel is among the more expensive in India — Tamil Nadu's cess on diesel is relatively high compared to states like Chandigarh (₹83.02) or Gujarat (₹88.07).
+Today's diesel price in Chennai is ₹92.34 per litre (as of 4 July 2026). Note that Chennai's diesel is among the more expensive in India — Tamil Nadu's cess on diesel is relatively high compared to states like Chandigarh (₹83.02) or Gujarat (₹88.07).
 
 ### How do I check petrol price in Chennai tomorrow?
 
