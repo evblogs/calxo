@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Noida Today: ₹102.33/Litre (4 July 2026)"
+title: "Petrol Price in Noida Today: ₹102.33/Litre (5 July 2026)"
 description: "Today's petrol price in Noida is ₹102.33/litre and diesel is ₹95.77/litre. Updated daily at 6 AM. Noida fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-04
-lastmod: 2026-07-04
+date: 2026-07-05
+lastmod: 2026-07-05
 type: "calculator"
 url: /conversion/petrol-price-noida/
 keywords: "petrol price in noida today, petrol price noida, diesel price noida today, fuel price noida 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-noida.png
-image_alt: "Today's petrol price in Noida is ₹102.33 per litre and diesel is ₹95.77 per litre on 4 July 2026"
+image_alt: "Today's petrol price in Noida is ₹102.33 per litre and diesel is ₹95.77 per litre on 5 July 2026"
 ---
 
-Today's petrol price in Noida is **₹102.33 per litre** and diesel is **₹95.77 per litre** (as of 4 July 2026). Prices update every day at 6:00 AM. That makes Noida, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
+Today's petrol price in Noida is **₹102.33 per litre** and diesel is **₹95.77 per litre** (as of 5 July 2026). Prices update every day at 6:00 AM. That makes Noida, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
 
 Noida sits in UP but borders Delhi, so its pump price is almost identical to the capital.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-noida.png"
-       alt="Today's petrol price in Noida is ₹102.33 per litre and diesel is ₹95.77 per litre as of 4 July 2026"
-       title="Petrol & diesel price in Noida — 4 July 2026"
+       alt="Today's petrol price in Noida is ₹102.33 per litre and diesel is ₹95.77 per litre as of 5 July 2026"
+       title="Petrol & diesel price in Noida — 5 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Noida — generated 4 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Noida — generated 5 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Noida" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-noida.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-noida.png",
-  "name": "Petrol & diesel price in Noida on 4 July 2026",
-  "description": "Today's petrol price in Noida is ₹102.33 per litre and diesel is ₹95.77 per litre as of 4 July 2026",
+  "name": "Petrol & diesel price in Noida on 5 July 2026",
+  "description": "Today's petrol price in Noida is ₹102.33 per litre and diesel is ₹95.77 per litre as of 5 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-04T06:00:00+05:30",
+  "uploadDate": "2026-07-05T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
