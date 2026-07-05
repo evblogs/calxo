@@ -9,7 +9,7 @@ categories:
 tags: ["Salary", "Tax planning", "FY 2025-26", "CTC"]
 ai_summary:
 - ₹12.5 lakh CTC gives ₹88,961/month in-hand under the new regime (50% basic, Karnataka PT)
-- Income tax is still zero: taxable income of ₹10,69,938 stays under the ₹12 lakh rebate ceiling
+- Income tax is still zero because taxable income of ₹10,69,938 stays under the ₹12 lakh rebate ceiling
 - Slab tax of ₹46,994 is fully cancelled by the ₹60,000 section 87A rebate
 - Employer PF ₹75,000 and gratuity ₹30,062 sit inside CTC and never reach your bank
 - This is roughly the last rung where a salaried person pays no income tax in the new regime

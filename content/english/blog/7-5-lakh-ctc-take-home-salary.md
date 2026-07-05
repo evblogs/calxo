@@ -9,7 +9,7 @@ categories:
 tags: ["Salary", "Tax planning", "FY 2025-26", "CTC"]
 ai_summary:
 - ₹7.5 lakh CTC gives ₹53,297/month in-hand under the new regime (50% basic, Karnataka PT)
-- Income tax is zero: slab tax of ₹10,598 is fully wiped by the ₹60,000 section 87A rebate
+- Income tax is zero because the ₹60,000 section 87A rebate fully wipes the ₹10,598 slab tax
 - Employer PF ₹45,000 and gratuity ₹18,038 sit inside CTC and never reach your bank
 - In-hand is about 85% of CTC, since no tax is due up to ₹12 lakh taxable in the new regime
 - Old regime with no deductions would tax this CTC ₹41,488, so the new regime is the clear pick
