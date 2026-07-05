@@ -1,0 +1,17 @@
+# Calxo GSC pending indexing queue — created 2026-07-05
+# These CTC posts returned "URL is unknown to Google" (not yet crawled).
+# Daily Request Indexing quota was EXCEEDED, so request these AFTER the
+# quota resets (~24h). 88-93 confirmed not-indexed; 94-99 presumed (same
+# newest batch) — re-inspect each before requesting.
+
+https://www.calxo.in/blog/88-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/89-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/91-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/92-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/93-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/94-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/95-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/96-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/97-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/98-lakh-ctc-take-home-salary/
+https://www.calxo.in/blog/99-lakh-ctc-take-home-salary/
