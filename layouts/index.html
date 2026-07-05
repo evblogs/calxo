@@ -299,6 +299,8 @@ footer.bg-light a:hover { color: #1e40af !important; }
 
 {{/* ─────────────────────── Hugo data variables ─────────────────────── */}}
 {{ $totalCalcs := len (where .Site.RegularPages "Params.type" "calculator") }}
+{{ $ctcGuides := 0 }}
+{{ range .Site.RegularPages }}{{ if strings.Contains .RelPermalink "-ctc-take-home-salary/" }}{{ $ctcGuides = add $ctcGuides 1 }}{{ end }}{{ end }}
 {{ $popular := slice
   (slice "EMI Calculator"        "🏦" "/loan/emi-calculator/"             "Reducing-balance EMI for home, personal, and car loans")
   (slice "SIP Calculator"        "📊" "/investment/sip-calculator/"       "Monthly SIP maturity using the AMFI future-value formula")
@@ -382,8 +384,8 @@ footer.bg-light a:hover { color: #1e40af !important; }
       <div class="cx-stat-lbl">Budget-Updated</div>
     </div>
     <div>
-      <div class="cx-stat-num"><span class="accent">0</span></div>
-      <div class="cx-stat-lbl">Sign-Up Required</div>
+      <div class="cx-stat-num"><span class="accent">{{ $ctcGuides }}</span>+</div>
+      <div class="cx-stat-lbl">CTC Salary Guides</div>
     </div>
   </div>
 </div>
