@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Kochi Today: ₹115.34/Litre (6 July 2026)"
+title: "Petrol Price in Kochi Today: ₹115.34/Litre (7 July 2026)"
 description: "Today's petrol price in Kochi is ₹115.34/litre and diesel is ₹104.15/litre. Updated daily at 6 AM. Kochi fuel price, Kerala VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-06
-lastmod: 2026-07-06
+date: 2026-07-07
+lastmod: 2026-07-07
 type: "calculator"
 url: /conversion/petrol-price-kochi/
 keywords: "petrol price in kochi today, petrol price kochi, diesel price kochi today, fuel price kochi 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-kochi.png
-image_alt: "Today's petrol price in Kochi is ₹115.34 per litre and diesel is ₹104.15 per litre on 6 July 2026"
+image_alt: "Today's petrol price in Kochi is ₹115.34 per litre and diesel is ₹104.15 per litre on 7 July 2026"
 ---
 
-Today's petrol price in Kochi is **₹115.34 per litre** and diesel is **₹104.15 per litre** (as of 6 July 2026). Prices update every day at 6:00 AM. That makes Kochi, a Tier 2 city in Kerala, about ₹13.22/litre costlier than Delhi (₹102.12).
+Today's petrol price in Kochi is **₹115.34 per litre** and diesel is **₹104.15 per litre** (as of 7 July 2026). Prices update every day at 6:00 AM. That makes Kochi, a Tier 2 city in Kerala, about ₹13.22/litre costlier than Delhi (₹102.12).
 
 Kochi pays the same Kerala slab as the capital, keeping it among the priciest southern cities.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-kochi.png"
-       alt="Today's petrol price in Kochi is ₹115.34 per litre and diesel is ₹104.15 per litre as of 6 July 2026"
-       title="Petrol & diesel price in Kochi — 6 July 2026"
+       alt="Today's petrol price in Kochi is ₹115.34 per litre and diesel is ₹104.15 per litre as of 7 July 2026"
+       title="Petrol & diesel price in Kochi — 7 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Kochi — generated 6 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Kochi — generated 7 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Kochi" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-kochi.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-kochi.png",
-  "name": "Petrol & diesel price in Kochi on 6 July 2026",
-  "description": "Today's petrol price in Kochi is ₹115.34 per litre and diesel is ₹104.15 per litre as of 6 July 2026",
+  "name": "Petrol & diesel price in Kochi on 7 July 2026",
+  "description": "Today's petrol price in Kochi is ₹115.34 per litre and diesel is ₹104.15 per litre as of 7 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-06T06:00:00+05:30",
+  "uploadDate": "2026-07-07T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
