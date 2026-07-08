@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Lucknow Today: ₹101.86/Litre (7 July 2026)"
+title: "Petrol Price in Lucknow Today: ₹101.86/Litre (8 July 2026)"
 description: "Today's petrol price in Lucknow is ₹101.86/litre and diesel is ₹95.36/litre. Updated daily at 6 AM. Lucknow fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-07
-lastmod: 2026-07-07
+date: 2026-07-08
+lastmod: 2026-07-08
 type: "calculator"
 url: /conversion/petrol-price-lucknow/
 keywords: "petrol price in lucknow today, petrol price lucknow, diesel price lucknow today, fuel price lucknow 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-lucknow.png
-image_alt: "Today's petrol price in Lucknow is ₹101.86 per litre and diesel is ₹95.36 per litre on 7 July 2026"
+image_alt: "Today's petrol price in Lucknow is ₹101.86 per litre and diesel is ₹95.36 per litre on 8 July 2026"
 ---
 
-Today's petrol price in Lucknow is **₹101.86 per litre** and diesel is **₹95.36 per litre** (as of 7 July 2026). Prices update every day at 6:00 AM. That makes Lucknow, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
+Today's petrol price in Lucknow is **₹101.86 per litre** and diesel is **₹95.36 per litre** (as of 8 July 2026). Prices update every day at 6:00 AM. That makes Lucknow, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
 
 Uttar Pradesh charges the higher of a percentage or a fixed per-litre rate, keeping Lucknow close to Delhi levels.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-lucknow.png"
-       alt="Today's petrol price in Lucknow is ₹101.86 per litre and diesel is ₹95.36 per litre as of 7 July 2026"
-       title="Petrol & diesel price in Lucknow — 7 July 2026"
+       alt="Today's petrol price in Lucknow is ₹101.86 per litre and diesel is ₹95.36 per litre as of 8 July 2026"
+       title="Petrol & diesel price in Lucknow — 8 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Lucknow — generated 7 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Lucknow — generated 8 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Lucknow" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-lucknow.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-lucknow.png",
-  "name": "Petrol & diesel price in Lucknow on 7 July 2026",
-  "description": "Today's petrol price in Lucknow is ₹101.86 per litre and diesel is ₹95.36 per litre as of 7 July 2026",
+  "name": "Petrol & diesel price in Lucknow on 8 July 2026",
+  "description": "Today's petrol price in Lucknow is ₹101.86 per litre and diesel is ₹95.36 per litre as of 8 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-07T06:00:00+05:30",
+  "uploadDate": "2026-07-08T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",

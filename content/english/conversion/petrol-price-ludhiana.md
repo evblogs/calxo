@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Ludhiana Today: ₹105.79/Litre (7 July 2026)"
+title: "Petrol Price in Ludhiana Today: ₹105.79/Litre (8 July 2026)"
 description: "Today's petrol price in Ludhiana is ₹105.79/litre and diesel is ₹95.69/litre. Updated daily at 6 AM. Ludhiana fuel price, Punjab VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-07
-lastmod: 2026-07-07
+date: 2026-07-08
+lastmod: 2026-07-08
 type: "calculator"
 url: /conversion/petrol-price-ludhiana/
 keywords: "petrol price in ludhiana today, petrol price ludhiana, diesel price ludhiana today, fuel price ludhiana 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-ludhiana.png
-image_alt: "Today's petrol price in Ludhiana is ₹105.79 per litre and diesel is ₹95.69 per litre on 7 July 2026"
+image_alt: "Today's petrol price in Ludhiana is ₹105.79 per litre and diesel is ₹95.69 per litre on 8 July 2026"
 ---
 
-Today's petrol price in Ludhiana is **₹105.79 per litre** and diesel is **₹95.69 per litre** (as of 7 July 2026). Prices update every day at 6:00 AM. That makes Ludhiana, a Tier 2 city in Punjab, about ₹3.67/litre costlier than Delhi (₹102.12).
+Today's petrol price in Ludhiana is **₹105.79 per litre** and diesel is **₹95.69 per litre** (as of 8 July 2026). Prices update every day at 6:00 AM. That makes Ludhiana, a Tier 2 city in Punjab, about ₹3.67/litre costlier than Delhi (₹102.12).
 
 Punjab keeps petrol VAT moderate, so Ludhiana is noticeably cheaper than the Rajasthan and MP belts.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-ludhiana.png"
-       alt="Today's petrol price in Ludhiana is ₹105.79 per litre and diesel is ₹95.69 per litre as of 7 July 2026"
-       title="Petrol & diesel price in Ludhiana — 7 July 2026"
+       alt="Today's petrol price in Ludhiana is ₹105.79 per litre and diesel is ₹95.69 per litre as of 8 July 2026"
+       title="Petrol & diesel price in Ludhiana — 8 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ludhiana — generated 7 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ludhiana — generated 8 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Ludhiana" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-ludhiana.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-ludhiana.png",
-  "name": "Petrol & diesel price in Ludhiana on 7 July 2026",
-  "description": "Today's petrol price in Ludhiana is ₹105.79 per litre and diesel is ₹95.69 per litre as of 7 July 2026",
+  "name": "Petrol & diesel price in Ludhiana on 8 July 2026",
+  "description": "Today's petrol price in Ludhiana is ₹105.79 per litre and diesel is ₹95.69 per litre as of 8 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-07T06:00:00+05:30",
+  "uploadDate": "2026-07-08T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
