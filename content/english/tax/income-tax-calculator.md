@@ -11,9 +11,9 @@ categories:
 author: vignesh
 ---
 
-The calculator below uses the **FY 2025-26 (AY 2026-27)** slabs as announced in Union Budget 2025. Switch between new and old regime, toggle whether you're salaried (for the standard deduction), and you'll see the full breakdown — slabs, 87A rebate, surcharge, marginal relief and 4% cess — exactly as the Income Tax Department computes it.
+Salaried individuals earning up to **₹12.75 lakh pay zero income tax** under the new regime for FY 2025-26, thanks to the ₹75,000 standard deduction plus the ₹60,000 87A rebate. For most middle-income earners the new regime now wins; the old regime only makes sense if your deductions (80C, 80D, HRA, home loan interest) cross roughly ₹4–4.5 lakh.
 
-The big change this year is that the new regime's 87A rebate has been raised to **₹60,000**, which means salaried individuals earning up to **₹12.75 lakh pay zero tax** under the new regime. For most middle-income earners, the new regime now wins; the old regime only makes sense if your deductions (80C + 80D + HRA + home loan interest) cross roughly ₹4–4.5 lakh.
+The calculator below uses the **FY 2025-26 (AY 2026-27)** slabs announced in Union Budget 2025. Switch between new and old regime, toggle whether you're salaried (for the standard deduction), and you'll see the full breakdown (slabs, 87A rebate, surcharge, marginal relief and 4% cess) exactly as the Income Tax Department computes it.
 
 {{< income-tax-calculator >}}
 

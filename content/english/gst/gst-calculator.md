@@ -11,6 +11,8 @@ categories:
 author: vignesh
 ---
 
+To add 18% GST to a ₹1,000 base you pay ₹1,180: ₹180 tax, split into ₹90 CGST and ₹90 SGST within a state. To pull GST out of a ₹1,180 tax-inclusive total, divide by 1.18, which gives a ₹1,000 base and ₹180 GST. Swap 18% for any slab (5%, 12%, 28%) and the method is identical.
+
 The calculator below handles both directions of GST that small businesses, freelancers and finance teams actually need: **adding GST to a base price** when you're raising an invoice, and **extracting GST from a tax-inclusive total** when a vendor's MRP or invoice already includes it. It also splits the GST correctly into CGST + SGST for intra-state transactions, or IGST for inter-state (B2B between states, or export under LUT).
 
 Pick a slab (most goods and services in India sit at 18%), choose add or remove mode, and you're done.

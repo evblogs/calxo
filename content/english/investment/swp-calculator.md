@@ -16,7 +16,9 @@ related_calcs:
   - { label: "PPF Calculator", url: "/investment/ppf-calculator/" }
 ---
 
-An SWP (Systematic Withdrawal Plan) lets you withdraw a fixed amount from your mutual fund every month while the remaining corpus stays invested and earns returns. It's the mirror image of a SIP — instead of putting money in regularly, you take money out regularly.
+How long an SWP lasts comes down to one comparison: your monthly withdrawal versus what the corpus earns that month. A ₹1 crore corpus at 8% earns about ₹67,000 a month (8% ÷ 12), so a ₹60,000 monthly withdrawal leaves it growing, while ₹80,000 slowly drains it to zero in about 22 years. The calculator below shows the exact month your corpus runs out for any corpus, withdrawal, and return rate.
+
+An SWP (Systematic Withdrawal Plan) lets you withdraw a fixed amount from your mutual fund every month while the remaining corpus stays invested and earns returns. It's the mirror image of a SIP: instead of putting money in regularly, you take money out regularly.
 
 The calculator below shows you the remaining corpus after your chosen withdrawal period, the total amount withdrawn, and whether your corpus survives the full duration.
 

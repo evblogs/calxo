@@ -11,6 +11,8 @@ categories:
 author: vignesh
 ---
 
+A 10% hike turns a ₹10 lakh CTC into ₹11 lakh right away, and landing 10% every year compounds it to about ₹16.1 lakh in five years (₹10L grown by 1.1, five times over). Getting a hike consistently matters far more than the size of any single one.
+
 Enter your current CTC, the hike percentage your company offered, and how many years you want to project. The calculator shows your new annual CTC, monthly take-home increase, and a compounding projection table.
 
 {{< salary-hike-calculator >}}
