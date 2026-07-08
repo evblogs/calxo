@@ -307,6 +307,7 @@ URLS = [
     "/business/break-even-calculator/",
     "/business/gross-margin-calculator/",
     "/business/roi-calculator/",
+    "/business/keyword-traffic-calculator/",
 
     # Static
     "/about/",
