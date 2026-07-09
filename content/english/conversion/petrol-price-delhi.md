@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Delhi Today — ₹102.12/Litre (8 July 2026)"
+title: "Petrol Price in Delhi Today — ₹102.12/Litre (9 July 2026)"
 description: "Today's petrol price in Delhi is ₹102.12/litre and diesel is ₹95.20/litre. Updated daily at 6 AM. Delhi has the lowest petrol price among all major metros due to low state VAT."
 date: 2026-04-29
-lastmod: 2026-07-08
+lastmod: 2026-07-09
 type: "calculator"
 url: /conversion/petrol-price-delhi/
 keywords: "petrol price in delhi today, petrol price delhi, diesel price delhi today, fuel price delhi 2026"
@@ -13,7 +13,7 @@ image: /images/petrol/petrol-price-delhi.png
 image_alt: "Today's petrol price in Delhi is ₹102.12 per litre and diesel is ₹95.20 per litre on 6 June 2026"
 ---
 
-Today's petrol price in Delhi is **₹102.12 per litre** and diesel is **₹95.20 per litre** (as of 8 July 2026). Prices update every day at 6:00 AM.
+Today's petrol price in Delhi is **₹102.12 per litre** and diesel is **₹95.20 per litre** (as of 9 July 2026). Prices update every day at 6:00 AM.
 
 Delhi consistently has the lowest petrol price among all major Indian metros — lower than Mumbai (₹103.44), Bengaluru (₹102.92), and Hyderabad (₹107.41). The reason is Delhi's low state VAT on fuel.
 
