@@ -19,6 +19,7 @@ TRACKER_FILE     = Path(__file__).parent / "calxo_gsc_submitted.json"
 
 # All pages — add new ones here. Already-submitted URLs are skipped.
 URLS = [
+    "/investment/sovereign-to-grams/",
     # Home
     "/",
 

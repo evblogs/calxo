@@ -1,0 +1,106 @@
+<div class="cx-emi-widget" id="cx-svg">
+<style>
+  #cx-svg.cx-emi-widget {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.85rem;
+    margin: 1.5rem 0 2.5rem; box-shadow: 0 4px 20px rgba(15, 23, 42, .04);
+  }
+  @media (max-width: 760px) { #cx-svg.cx-emi-widget { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem; } }
+  #cx-svg label { display: block; margin-bottom: 1.15rem; }
+  #cx-svg label > span { display: flex; justify-content: space-between; align-items: baseline; font-size: .88rem; font-weight: 600; color: #0f172a; margin-bottom: .4rem; }
+  #cx-svg label > span em { color: #b45309; font-weight: 700; font-size: .98rem; font-style: normal; }
+  #cx-svg input[type="range"] { width: 100%; height: 6px; accent-color: #b45309; margin: .35rem 0 .25rem; }
+  #cx-svg input[type="number"], #cx-svg select { width: 100%; padding: .6rem .8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: .98rem; color: #0f172a; font-weight: 600; box-sizing: border-box; background: #fff; }
+  #cx-svg select { cursor: pointer; }
+  #cx-svg input[type="number"]:focus, #cx-svg select:focus { outline: none; border-color: #b45309; box-shadow: 0 0 0 3px rgba(180, 83, 9, .15); }
+  #cx-svg .cx-emi-result {
+    background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%);
+    color: #fff; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;
+  }
+  #cx-svg .cx-emi-result::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  #cx-svg .cx-emi-result > * { position: relative; }
+  #cx-svg .cx-emi-result-label { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .85; }
+  #cx-svg .cx-emi-result-value { font-size: clamp(1.85rem, 5vw, 2.4rem); font-weight: 800; letter-spacing: -1px; line-height: 1.05; margin: .25rem 0 1.1rem; }
+  #cx-svg .cx-emi-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: .9rem; }
+  #cx-svg .cx-emi-row:last-of-type { border-bottom: none; }
+  #cx-svg .cx-emi-row strong { font-weight: 700; }
+  #cx-svg .cx-rate-note { font-size: .75rem; opacity: .8; margin-top: .6rem; line-height: 1.4; }
+</style>
+
+<div class="cx-emi-inputs">
+  <label>
+    <span>Quantity <em data-out="qty">60</em></span>
+    <input type="number" id="cx-svg-qty" min="0.1" max="100000" step="0.5" value="60" inputmode="decimal">
+    <input type="range" id="cx-svg-qty-r" min="1" max="500" step="1" value="60">
+  </label>
+  <label>
+    <span>Unit</span>
+    <select id="cx-svg-unit">
+      <option value="8" selected>Sovereign / Pavan (8 g)</option>
+      <option value="11.6638">Tola (11.66 g)</option>
+      <option value="1">Grams</option>
+      <option value="1000">Kilograms</option>
+    </select>
+  </label>
+  <label>
+    <span>Gold rate per gram (₹, 22K) <em data-out="rate">13,300</em></span>
+    <input type="number" id="cx-svg-rate" min="1000" max="50000" step="50" value="13300" inputmode="numeric">
+    <input type="range" id="cx-svg-rate-r" min="8000" max="20000" step="50" value="13300">
+  </label>
+</div>
+
+<div class="cx-emi-result">
+  <div class="cx-emi-result-label" id="cx-svg-hdr">60 sovereign of gold</div>
+  <div class="cx-emi-result-value" id="cx-svg-grams">= 480 grams</div>
+  <div class="cx-emi-row"><span>In tola</span> <strong id="cx-svg-tola">0</strong></div>
+  <div class="cx-emi-row"><span>In kilograms</span> <strong id="cx-svg-kg">0</strong></div>
+  <div class="cx-emi-row"><span>In sovereign / pavan</span> <strong id="cx-svg-sov">0</strong></div>
+  <div class="cx-emi-row"><span>Approx value (22K)</span> <strong id="cx-svg-val">₹0</strong></div>
+  <div class="cx-rate-note">1 sovereign (pavan, savaran, thulam) = 8 g. 1 tola = 11.6638 g. Value uses your 22K rate; making charges and GST are not included.</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var fmtINR = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var trim = function (n) { return (Math.round(n * 1000) / 1000).toLocaleString('en-IN'); };
+
+  var qty  = document.getElementById('cx-svg-qty');
+  var qtyR = document.getElementById('cx-svg-qty-r');
+  var unit = document.getElementById('cx-svg-unit');
+  var rate = document.getElementById('cx-svg-rate');
+  var rateR = document.getElementById('cx-svg-rate-r');
+  var unitName = { '8': 'sovereign', '11.6638': 'tola', '1': 'gram', '1000': 'kilogram' };
+
+  function compute() {
+    var q = parseFloat(qty.value) || 0;
+    var u = parseFloat(unit.value) || 1;
+    var r = parseFloat(rate.value) || 0;
+
+    var grams = q * u;
+    var name = unitName[unit.value] || 'unit';
+    var plural = (q === 1) ? name : (name === 'kilogram' ? 'kilograms' : name + 's');
+
+    document.getElementById('cx-svg-hdr').textContent = trim(q) + ' ' + plural + ' of gold';
+    document.getElementById('cx-svg-grams').textContent = '= ' + trim(grams) + ' grams';
+    document.getElementById('cx-svg-tola').textContent = trim(grams / 11.6638) + ' tola';
+    document.getElementById('cx-svg-kg').textContent = trim(grams / 1000) + ' kg';
+    document.getElementById('cx-svg-sov').textContent = trim(grams / 8) + ' sovereign';
+    document.getElementById('cx-svg-val').textContent = fmtINR(grams * r);
+
+    document.querySelector('#cx-svg [data-out="qty"]').textContent = trim(q);
+    document.querySelector('#cx-svg [data-out="rate"]').textContent = Math.round(r).toLocaleString('en-IN');
+  }
+
+  function syncPair(numEl, rangeEl) {
+    numEl.addEventListener('input', function () { rangeEl.value = numEl.value; compute(); });
+    rangeEl.addEventListener('input', function () { numEl.value = rangeEl.value; compute(); });
+  }
+
+  syncPair(qty, qtyR);
+  syncPair(rate, rateR);
+  unit.addEventListener('change', compute);
+  compute();
+})();
+</script>
