@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Guwahati Today: ₹105.73/Litre (10 July 2026)"
+title: "Petrol Price in Guwahati Today: ₹105.73/Litre (11 July 2026)"
 description: "Today's petrol price in Guwahati is ₹105.73/litre and diesel is ₹97.23/litre. Updated daily at 6 AM. Guwahati fuel price, Assam VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-10
-lastmod: 2026-07-10
+date: 2026-07-11
+lastmod: 2026-07-11
 type: "calculator"
 url: /conversion/petrol-price-guwahati/
 keywords: "petrol price in guwahati today, petrol price guwahati, diesel price guwahati today, fuel price guwahati 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-guwahati.png
-image_alt: "Today's petrol price in Guwahati is ₹105.73 per litre and diesel is ₹97.23 per litre on 10 July 2026"
+image_alt: "Today's petrol price in Guwahati is ₹105.73 per litre and diesel is ₹97.23 per litre on 11 July 2026"
 ---
 
-Today's petrol price in Guwahati is **₹105.73 per litre** and diesel is **₹97.23 per litre** (as of 10 July 2026). Prices update every day at 6:00 AM. That makes Guwahati, a Tier 2 city in Assam, about ₹3.61/litre costlier than Delhi (₹102.12).
+Today's petrol price in Guwahati is **₹105.73 per litre** and diesel is **₹97.23 per litre** (as of 11 July 2026). Prices update every day at 6:00 AM. That makes Guwahati, a Tier 2 city in Assam, about ₹3.61/litre costlier than Delhi (₹102.12).
 
 Assam applies a higher-of VAT formula, though periodic rebates keep Guwahati near the national average.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-guwahati.png"
-       alt="Today's petrol price in Guwahati is ₹105.73 per litre and diesel is ₹97.23 per litre as of 10 July 2026"
-       title="Petrol & diesel price in Guwahati — 10 July 2026"
+       alt="Today's petrol price in Guwahati is ₹105.73 per litre and diesel is ₹97.23 per litre as of 11 July 2026"
+       title="Petrol & diesel price in Guwahati — 11 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Guwahati — generated 10 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Guwahati — generated 11 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Guwahati" >}}
@@ -81,7 +81,7 @@ Someone in Guwahati driving a Maruti Swift 1,500 km a month spends roughly **₹
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹110.93 | ₹98.80 |
+| Bengaluru | ₹111.68 | ₹99.56 |
 | Hyderabad | ₹115.69 | ₹103.82 |
 | Ahmedabad | ₹102.15 | ₹98.27 |
 | **Guwahati** | **₹105.73** | ₹97.23 |
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Guwahati 
 
 ### Is petrol cheaper in Patna or Guwahati?
 
-Right now Guwahati is ₹105.73/litre and Patna is around ₹113.37. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Guwahati is ₹105.73/litre and Patna is around ₹114.55. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Guwahati?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-guwahati.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-guwahati.png",
-  "name": "Petrol & diesel price in Guwahati on 10 July 2026",
-  "description": "Today's petrol price in Guwahati is ₹105.73 per litre and diesel is ₹97.23 per litre as of 10 July 2026",
+  "name": "Petrol & diesel price in Guwahati on 11 July 2026",
+  "description": "Today's petrol price in Guwahati is ₹105.73 per litre and diesel is ₹97.23 per litre as of 11 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-10T06:00:00+05:30",
+  "uploadDate": "2026-07-11T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
