@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Thiruvananthapuram Today: ₹115.49/Litre (11 July 2026)"
-description: "Today's petrol price in Thiruvananthapuram is ₹115.49/litre and diesel is ₹104.41/litre. Updated daily at 6 AM. Thiruvananthapuram fuel price, Kerala VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-11
-lastmod: 2026-07-11
+title: "Petrol Price in Thiruvananthapuram Today: ₹115.49/Litre (12 July 2026)"
+description: "Today's petrol price in Thiruvananthapuram is ₹115.49/litre and diesel is ₹104.40/litre. Updated daily at 6 AM. Thiruvananthapuram fuel price, Kerala VAT breakup and a monthly fuel-cost calculator."
+date: 2026-07-12
+lastmod: 2026-07-12
 type: "calculator"
 url: /conversion/petrol-price-thiruvananthapuram/
 keywords: "petrol price in thiruvananthapuram today, petrol price thiruvananthapuram, diesel price thiruvananthapuram today, fuel price thiruvananthapuram 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-thiruvananthapuram.png
-image_alt: "Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.41 per litre on 11 July 2026"
+image_alt: "Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.40 per litre on 12 July 2026"
 ---
 
-Today's petrol price in Thiruvananthapuram is **₹115.49 per litre** and diesel is **₹104.41 per litre** (as of 11 July 2026). Prices update every day at 6:00 AM. That makes Thiruvananthapuram, a Tier 2 city in Kerala, about ₹13.37/litre costlier than Delhi (₹102.12).
+Today's petrol price in Thiruvananthapuram is **₹115.49 per litre** and diesel is **₹104.40 per litre** (as of 12 July 2026). Prices update every day at 6:00 AM. That makes Thiruvananthapuram, a Tier 2 city in Kerala, about ₹13.37/litre costlier than Delhi (₹102.12).
 
 Kerala combines high percentage VAT with an additional social-security cess, so the state capital stays above ₹107.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-thiruvananthapuram.png"
-       alt="Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.41 per litre as of 11 July 2026"
-       title="Petrol & diesel price in Thiruvananthapuram — 11 July 2026"
+       alt="Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.40 per litre as of 12 July 2026"
+       title="Petrol & diesel price in Thiruvananthapuram — 12 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Thiruvananthapuram — generated 11 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Thiruvananthapuram — generated 12 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Thiruvananthapuram" >}}
@@ -53,11 +53,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| July 2026 | 115.49 | 104.41 |
-| June 2026 | 115.49 | 104.41 |
-| May 2026 | 115.49 | 104.41 |
-| April 2026 | 115.49 | 104.41 |
-| March 2026 | 115.49 | 104.41 |
+| July 2026 | 115.49 | 104.40 |
+| June 2026 | 115.49 | 104.40 |
+| May 2026 | 115.49 | 104.40 |
+| April 2026 | 115.49 | 104.40 |
+| March 2026 | 115.49 | 104.40 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Thiruvananthapuram figure moves only in paise on most days.
 
@@ -82,9 +82,9 @@ Someone in Thiruvananthapuram driving a Maruti Swift 1,500 km a month spends rou
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
 | Bengaluru | ₹111.68 | ₹99.56 |
-| Hyderabad | ₹115.69 | ₹103.82 |
+| Hyderabad | ₹116.99 | ₹105.03 |
 | Ahmedabad | ₹102.15 | ₹98.27 |
-| **Thiruvananthapuram** | **₹115.49** | ₹104.41 |
+| **Thiruvananthapuram** | **₹115.49** | ₹104.40 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-thiruvananthapuram.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-thiruvananthapuram.png",
-  "name": "Petrol & diesel price in Thiruvananthapuram on 11 July 2026",
-  "description": "Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.41 per litre as of 11 July 2026",
+  "name": "Petrol & diesel price in Thiruvananthapuram on 12 July 2026",
+  "description": "Today's petrol price in Thiruvananthapuram is ₹115.49 per litre and diesel is ₹104.40 per litre as of 12 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-11T06:00:00+05:30",
+  "uploadDate": "2026-07-12T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
