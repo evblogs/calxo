@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Patna Today: ₹113.37/Litre (12 July 2026)"
+title: "Petrol Price in Patna Today: ₹113.37/Litre (13 July 2026)"
 description: "Today's petrol price in Patna is ₹113.37/litre and diesel is ₹99.36/litre. Updated daily at 6 AM. Patna fuel price, Bihar VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-12
-lastmod: 2026-07-12
+date: 2026-07-13
+lastmod: 2026-07-13
 type: "calculator"
 url: /conversion/petrol-price-patna/
 keywords: "petrol price in patna today, petrol price patna, diesel price patna today, fuel price patna 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-patna.png
-image_alt: "Today's petrol price in Patna is ₹113.37 per litre and diesel is ₹99.36 per litre on 12 July 2026"
+image_alt: "Today's petrol price in Patna is ₹113.37 per litre and diesel is ₹99.36 per litre on 13 July 2026"
 ---
 
-Today's petrol price in Patna is **₹113.37 per litre** and diesel is **₹99.36 per litre** (as of 12 July 2026). Prices update every day at 6:00 AM. That makes Patna, a Tier 2 city in Bihar, about ₹11.25/litre costlier than Delhi (₹102.12).
+Today's petrol price in Patna is **₹113.37 per litre** and diesel is **₹99.36 per litre** (as of 13 July 2026). Prices update every day at 6:00 AM. That makes Patna, a Tier 2 city in Bihar, about ₹11.25/litre costlier than Delhi (₹102.12).
 
 Bihar layers an additional irrecoverable tax over VAT, so Patna petrol stays above the ₹105 mark.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-patna.png"
-       alt="Today's petrol price in Patna is ₹113.37 per litre and diesel is ₹99.36 per litre as of 12 July 2026"
-       title="Petrol & diesel price in Patna — 12 July 2026"
+       alt="Today's petrol price in Patna is ₹113.37 per litre and diesel is ₹99.36 per litre as of 13 July 2026"
+       title="Petrol & diesel price in Patna — 13 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Patna — generated 12 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Patna — generated 13 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Patna" >}}
@@ -83,7 +83,7 @@ Someone in Patna driving a Maruti Swift 1,500 km a month spends roughly **₹7,7
 | Mumbai | ₹111.21 | ₹97.83 |
 | Bengaluru | ₹111.68 | ₹99.56 |
 | Hyderabad | ₹116.99 | ₹105.03 |
-| Ahmedabad | ₹102.15 | ₹98.27 |
+| Ahmedabad | ₹102.58 | ₹98.70 |
 | **Patna** | **₹113.37** | ₹99.36 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Patna rat
 
 ### Is petrol cheaper in Ranchi or Patna?
 
-Right now Patna is ₹113.37/litre and Ranchi is around ₹106.19. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Patna is ₹113.37/litre and Ranchi is around ₹106.59. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Patna?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-patna.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-patna.png",
-  "name": "Petrol & diesel price in Patna on 12 July 2026",
-  "description": "Today's petrol price in Patna is ₹113.37 per litre and diesel is ₹99.36 per litre as of 12 July 2026",
+  "name": "Petrol & diesel price in Patna on 13 July 2026",
+  "description": "Today's petrol price in Patna is ₹113.37 per litre and diesel is ₹99.36 per litre as of 13 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-12T06:00:00+05:30",
+  "uploadDate": "2026-07-13T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",

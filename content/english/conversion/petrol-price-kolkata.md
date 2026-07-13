@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Kolkata Today: ₹113.51/Litre (12 July 2026)"
+title: "Petrol Price in Kolkata Today: ₹113.51/Litre (13 July 2026)"
 description: "Today's petrol price in Kolkata is ₹113.51/litre and diesel is ₹99.82/litre. Updated daily at 6 AM. Kolkata fuel price, West Bengal VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-12
-lastmod: 2026-07-12
+date: 2026-07-13
+lastmod: 2026-07-13
 type: "calculator"
 url: /conversion/petrol-price-kolkata/
 keywords: "petrol price in kolkata today, petrol price kolkata, diesel price kolkata today, fuel price kolkata 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-kolkata.png
-image_alt: "Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre on 12 July 2026"
+image_alt: "Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre on 13 July 2026"
 ---
 
-Today's petrol price in Kolkata is **₹113.51 per litre** and diesel is **₹99.82 per litre** (as of 12 July 2026). Prices update every day at 6:00 AM. That makes Kolkata, a Tier 1 metro in West Bengal, about ₹11.39/litre costlier than Delhi (₹102.12).
+Today's petrol price in Kolkata is **₹113.51 per litre** and diesel is **₹99.82 per litre** (as of 13 July 2026). Prices update every day at 6:00 AM. That makes Kolkata, a Tier 1 metro in West Bengal, about ₹11.39/litre costlier than Delhi (₹102.12).
 
 West Bengal charges a flat sales-tax cess on top of percentage VAT, pushing Kolkata above most northern metros.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-kolkata.png"
-       alt="Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre as of 12 July 2026"
-       title="Petrol & diesel price in Kolkata — 12 July 2026"
+       alt="Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre as of 13 July 2026"
+       title="Petrol & diesel price in Kolkata — 13 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Kolkata — generated 12 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Kolkata — generated 13 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Kolkata" >}}
@@ -83,7 +83,7 @@ Someone in Kolkata driving a Maruti Swift 1,500 km a month spends roughly **₹7
 | Mumbai | ₹111.21 | ₹97.83 |
 | Bengaluru | ₹111.68 | ₹99.56 |
 | Hyderabad | ₹116.99 | ₹105.03 |
-| Ahmedabad | ₹102.15 | ₹98.27 |
+| Ahmedabad | ₹102.58 | ₹98.70 |
 | **Kolkata** | **₹113.51** | ₹99.82 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Kolkata r
 
 ### Is petrol cheaper in Bhubaneswar or Kolkata?
 
-Right now Kolkata is ₹113.51/litre and Bhubaneswar is around ₹110.49. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Kolkata is ₹113.51/litre and Bhubaneswar is around ₹108.97. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Kolkata?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-kolkata.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-kolkata.png",
-  "name": "Petrol & diesel price in Kolkata on 12 July 2026",
-  "description": "Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre as of 12 July 2026",
+  "name": "Petrol & diesel price in Kolkata on 13 July 2026",
+  "description": "Today's petrol price in Kolkata is ₹113.51 per litre and diesel is ₹99.82 per litre as of 13 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-12T06:00:00+05:30",
+  "uploadDate": "2026-07-13T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
