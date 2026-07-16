@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-15",
-  "source": "best-effort multi-site scrape \u2014 28/30 cities refreshed 2026-07-15",
+  "updated": "2026-07-16",
+  "source": "best-effort multi-site scrape \u2014 28/30 cities refreshed 2026-07-16",
   "cities": [
     {
       "city": "Delhi",
@@ -17,7 +17,7 @@
     {
       "city": "Chennai",
       "state": "Tamil Nadu",
-      "petrol": 107.76,
+      "petrol": 107.77,
       "diesel": 99.55
     },
     {
@@ -41,20 +41,20 @@
     {
       "city": "Pune",
       "state": "Maharashtra",
-      "petrol": 112.02,
-      "diesel": 98.66
+      "petrol": 111.85,
+      "diesel": 98.5
     },
     {
       "city": "Ahmedabad",
       "state": "Gujarat",
-      "petrol": 102.15,
-      "diesel": 98.27
+      "petrol": 101.81,
+      "diesel": 97.92
     },
     {
       "city": "Jaipur",
       "state": "Rajasthan",
-      "petrol": 113.19,
-      "diesel": 98.25
+      "petrol": 112.66,
+      "diesel": 97.78
     },
     {
       "city": "Lucknow",
@@ -65,8 +65,8 @@
     {
       "city": "Noida",
       "state": "Uttar Pradesh",
-      "petrol": 102.34,
-      "diesel": 95.79
+      "petrol": 102.32,
+      "diesel": 95.77
     },
     {
       "city": "Chandigarh",
@@ -77,7 +77,7 @@
     {
       "city": "Bhopal",
       "state": "Madhya Pradesh",
-      "petrol": 114.54,
+      "petrol": 114.57,
       "diesel": 99.64
     },
     {
@@ -120,7 +120,7 @@
       "city": "Thiruvananthapuram",
       "state": "Kerala",
       "petrol": 115.49,
-      "diesel": 104.4
+      "diesel": 104.41
     },
     {
       "city": "Kochi",
@@ -143,14 +143,14 @@
     {
       "city": "Nagpur",
       "state": "Maharashtra",
-      "petrol": 111.72,
+      "petrol": 111.69,
       "diesel": 98.38
     },
     {
       "city": "Surat",
       "state": "Gujarat",
-      "petrol": 101.82,
-      "diesel": 97.95
+      "petrol": 101.88,
+      "diesel": 98.02
     },
     {
       "city": "Vadodara",
@@ -183,5 +183,5 @@
       "diesel": 95.05
     }
   ],
-  "prices_verified": "2026-07-15"
+  "prices_verified": "2026-07-16"
 }
