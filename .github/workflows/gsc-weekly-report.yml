@@ -1,0 +1,76 @@
+name: GSC Weekly Report
+
+# Pulls the last 7 days of Search Console performance data (clicks,
+# impressions, CTR, position + top queries/pages), compares week-over-week,
+# saves a dated markdown report under pythonfiles/gsc_weekly_reports/, posts
+# a summary to Slack, and commits the report. Runs every Monday; can also be
+# triggered manually from the Actions tab.
+on:
+  schedule:
+    - cron: '30 4 * * 1'   # Mondays 04:30 UTC (10:00 IST)
+  workflow_dispatch:
+    inputs:
+      end:
+        description: 'End date YYYY-MM-DD (optional; defaults to 3 days ago)'
+        type: string
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gsc-weekly-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install google-auth google-auth-httplib2 requests
+
+      - name: Write GSC key file
+        run: echo '${{ secrets.GSC_KEY_JSON }}' > "$GITHUB_WORKSPACE/pythonfiles/gsc-key.json"
+
+      - name: Configure git
+        run: |
+          git config user.name  "Calxo Content Bot"
+          git config user.email "avmedianews321@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/evblogs/calxo.git
+
+      - name: Pull weekly GSC report
+        env:
+          GSC_CREDENTIALS_PATH: ${{ github.workspace }}/pythonfiles/gsc-key.json
+          GSC_SITE_URL: ${{ vars.GSC_SITE_URL || 'sc-domain:calxo.in' }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -n "${{ inputs.end }}" ]; then
+            python pythonfiles/calxo_gsc_report.py --end "${{ inputs.end }}"
+          else
+            python pythonfiles/calxo_gsc_report.py
+          fi
+
+      - name: Commit report
+        run: |
+          rm -f "$GITHUB_WORKSPACE/pythonfiles/gsc-key.json"
+          git add pythonfiles/gsc_weekly_reports/ || true
+          if git diff --cached --quiet; then
+            echo "No report changes — nothing to commit."
+          else
+            git commit -m "chore: weekly GSC performance report [skip ci]"
+            git pull --rebase origin master || true
+            git push origin master
+          fi
