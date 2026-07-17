@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Ahmedabad Today: ₹101.81/Litre (16 July 2026)"
-description: "Today's petrol price in Ahmedabad is ₹101.81/litre and diesel is ₹97.92/litre. Updated daily at 6 AM. Ahmedabad fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-16
-lastmod: 2026-07-16
+title: "Petrol Price in Ahmedabad Today: ₹102.15/Litre (17 July 2026)"
+description: "Today's petrol price in Ahmedabad is ₹102.15/litre and diesel is ₹98.27/litre. Updated daily at 6 AM. Ahmedabad fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
+date: 2026-07-17
+lastmod: 2026-07-17
 type: "calculator"
 url: /conversion/petrol-price-ahmedabad/
 keywords: "petrol price in ahmedabad today, petrol price ahmedabad, diesel price ahmedabad today, fuel price ahmedabad 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-ahmedabad.png
-image_alt: "Today's petrol price in Ahmedabad is ₹101.81 per litre and diesel is ₹97.92 per litre on 16 July 2026"
+image_alt: "Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre on 17 July 2026"
 ---
 
-Today's petrol price in Ahmedabad is **₹101.81 per litre** and diesel is **₹97.92 per litre** (as of 16 July 2026). Prices update every day at 6:00 AM. That makes Ahmedabad, a Tier 1 metro in Gujarat, roughly the same as Delhi (₹102.12).
+Today's petrol price in Ahmedabad is **₹102.15 per litre** and diesel is **₹98.27 per litre** (as of 17 July 2026). Prices update every day at 6:00 AM. That makes Ahmedabad, a Tier 1 metro in Gujarat, roughly the same as Delhi (₹102.12).
 
 Gujarat keeps fuel tax low to support its transport and logistics economy, so Ahmedabad is among the cheapest metros.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-ahmedabad.png"
-       alt="Today's petrol price in Ahmedabad is ₹101.81 per litre and diesel is ₹97.92 per litre as of 16 July 2026"
-       title="Petrol & diesel price in Ahmedabad — 16 July 2026"
+       alt="Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre as of 17 July 2026"
+       title="Petrol & diesel price in Ahmedabad — 17 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ahmedabad — generated 16 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ahmedabad — generated 17 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Ahmedabad" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Ahmedabad carries two central charges that are the same
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Gujarat state tax (VAT/cess)** | **~22.04** |
+| **Gujarat state tax (VAT/cess)** | **~22.38** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~101.81** |
+| **Total pump price** | **~102.15** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,27 +53,27 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| July 2026 | 101.81 | 97.92 |
-| June 2026 | 101.81 | 97.92 |
-| May 2026 | 101.81 | 97.92 |
-| April 2026 | 101.81 | 97.92 |
-| March 2026 | 101.81 | 97.92 |
+| July 2026 | 102.15 | 98.27 |
+| June 2026 | 102.15 | 98.27 |
+| May 2026 | 102.15 | 98.27 |
+| April 2026 | 102.15 | 98.27 |
+| March 2026 | 102.15 | 98.27 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Ahmedabad figure moves only in paise on most days.
 
 ## Monthly fuel cost for Ahmedabad commuters
 
-At ₹101.81/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹102.15/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,628 |
-| Honda City | 18 km/L | ₹5,656 |
-| Hyundai Creta (petrol) | 15 km/L | ₹6,787 |
-| Royal Enfield 350 | 35 km/L | ₹2,909 |
-| Honda Activa 6G | 50 km/L | ₹2,036 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,643 |
+| Honda City | 18 km/L | ₹5,675 |
+| Hyundai Creta (petrol) | 15 km/L | ₹6,810 |
+| Royal Enfield 350 | 35 km/L | ₹2,919 |
+| Honda Activa 6G | 50 km/L | ₹2,043 |
 
-Someone in Ahmedabad driving a Maruti Swift 1,500 km a month spends roughly **₹6,942/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Ahmedabad driving a Maruti Swift 1,500 km a month spends roughly **₹6,965/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Ahmedabad vs other cities
 
@@ -81,9 +81,9 @@ Someone in Ahmedabad driving a Maruti Swift 1,500 km a month spends roughly **�
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹111.68 | ₹99.56 |
+| Bengaluru | ₹110.44 | ₹98.39 |
 | Hyderabad | ₹115.69 | ₹103.82 |
-| **Ahmedabad** | **₹101.81** | ₹97.92 |
+| **Ahmedabad** | **₹102.15** | ₹98.27 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -95,7 +95,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Ahmedabad
 
 ### Is petrol cheaper in Surat or Ahmedabad?
 
-Right now Ahmedabad is ₹101.81/litre and Surat is around ₹101.88. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Ahmedabad is ₹102.15/litre and Surat is around ₹101.82. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Ahmedabad?
 
@@ -113,11 +113,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-ahmedabad.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-ahmedabad.png",
-  "name": "Petrol & diesel price in Ahmedabad on 16 July 2026",
-  "description": "Today's petrol price in Ahmedabad is ₹101.81 per litre and diesel is ₹97.92 per litre as of 16 July 2026",
+  "name": "Petrol & diesel price in Ahmedabad on 17 July 2026",
+  "description": "Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre as of 17 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-16T06:00:00+05:30",
+  "uploadDate": "2026-07-17T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
