@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Bhopal Today: ₹114.54/Litre (21 July 2026)"
+title: "Petrol Price in Bhopal Today: ₹114.54/Litre (22 July 2026)"
 description: "Today's petrol price in Bhopal is ₹114.54/litre and diesel is ₹99.64/litre. Updated daily at 6 AM. Bhopal fuel price, Madhya Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-21
-lastmod: 2026-07-21
+date: 2026-07-22
+lastmod: 2026-07-22
 type: "calculator"
 url: /conversion/petrol-price-bhopal/
 keywords: "petrol price in bhopal today, petrol price bhopal, diesel price bhopal today, fuel price bhopal 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-bhopal.png
-image_alt: "Today's petrol price in Bhopal is ₹114.54 per litre and diesel is ₹99.64 per litre on 21 July 2026"
+image_alt: "Today's petrol price in Bhopal is ₹114.54 per litre and diesel is ₹99.64 per litre on 22 July 2026"
 ---
 
-Today's petrol price in Bhopal is **₹114.54 per litre** and diesel is **₹99.64 per litre** (as of 21 July 2026). Prices update every day at 6:00 AM. That makes Bhopal, a Tier 2 city in Madhya Pradesh, about ₹12.42/litre costlier than Delhi (₹102.12).
+Today's petrol price in Bhopal is **₹114.54 per litre** and diesel is **₹99.64 per litre** (as of 22 July 2026). Prices update every day at 6:00 AM. That makes Bhopal, a Tier 2 city in Madhya Pradesh, about ₹12.42/litre costlier than Delhi (₹102.12).
 
 Madhya Pradesh adds a fixed cess on top of percentage VAT, which is why Bhopal often tops ₹107/litre.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-bhopal.png"
-       alt="Today's petrol price in Bhopal is ₹114.54 per litre and diesel is ₹99.64 per litre as of 21 July 2026"
-       title="Petrol & diesel price in Bhopal — 21 July 2026"
+       alt="Today's petrol price in Bhopal is ₹114.54 per litre and diesel is ₹99.64 per litre as of 22 July 2026"
+       title="Petrol & diesel price in Bhopal — 22 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Bhopal — generated 21 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Bhopal — generated 22 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Bhopal" >}}
@@ -81,7 +81,7 @@ Someone in Bhopal driving a Maruti Swift 1,500 km a month spends roughly **₹7,
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹110.82 | ₹98.77 |
+| Bengaluru | ₹111.68 | ₹99.56 |
 | Hyderabad | ₹115.69 | ₹103.82 |
 | Ahmedabad | ₹102.15 | ₹98.27 |
 | **Bhopal** | **₹114.54** | ₹99.64 |
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-bhopal.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-bhopal.png",
-  "name": "Petrol & diesel price in Bhopal on 21 July 2026",
-  "description": "Today's petrol price in Bhopal is ₹114.54 per litre and diesel is ₹99.64 per litre as of 21 July 2026",
+  "name": "Petrol & diesel price in Bhopal on 22 July 2026",
+  "description": "Today's petrol price in Bhopal is ₹114.54 per litre and diesel is ₹99.64 per litre as of 22 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-21T06:00:00+05:30",
+  "uploadDate": "2026-07-22T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
