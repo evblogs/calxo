@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Ahmedabad Today: ₹102.15/Litre (22 July 2026)"
+title: "Petrol Price in Ahmedabad Today: ₹102.15/Litre (23 July 2026)"
 description: "Today's petrol price in Ahmedabad is ₹102.15/litre and diesel is ₹98.27/litre. Updated daily at 6 AM. Ahmedabad fuel price, Gujarat VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-22
-lastmod: 2026-07-22
+date: 2026-07-23
+lastmod: 2026-07-23
 type: "calculator"
 url: /conversion/petrol-price-ahmedabad/
 keywords: "petrol price in ahmedabad today, petrol price ahmedabad, diesel price ahmedabad today, fuel price ahmedabad 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-ahmedabad.png
-image_alt: "Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre on 22 July 2026"
+image_alt: "Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre on 23 July 2026"
 ---
 
-Today's petrol price in Ahmedabad is **₹102.15 per litre** and diesel is **₹98.27 per litre** (as of 22 July 2026). Prices update every day at 6:00 AM. That makes Ahmedabad, a Tier 1 metro in Gujarat, roughly the same as Delhi (₹102.12).
+Today's petrol price in Ahmedabad is **₹102.15 per litre** and diesel is **₹98.27 per litre** (as of 23 July 2026). Prices update every day at 6:00 AM. That makes Ahmedabad, a Tier 1 metro in Gujarat, roughly the same as Delhi (₹102.12).
 
 Gujarat keeps fuel tax low to support its transport and logistics economy, so Ahmedabad is among the cheapest metros.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-ahmedabad.png"
-       alt="Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre as of 22 July 2026"
-       title="Petrol & diesel price in Ahmedabad — 22 July 2026"
+       alt="Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre as of 23 July 2026"
+       title="Petrol & diesel price in Ahmedabad — 23 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ahmedabad — generated 22 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Ahmedabad — generated 23 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Ahmedabad" >}}
@@ -81,7 +81,7 @@ Someone in Ahmedabad driving a Maruti Swift 1,500 km a month spends roughly **�
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹111.68 | ₹99.56 |
+| Bengaluru | ₹111.37 | ₹99.26 |
 | Hyderabad | ₹115.69 | ₹103.82 |
 | **Ahmedabad** | **₹102.15** | ₹98.27 |
 
@@ -113,11 +113,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-ahmedabad.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-ahmedabad.png",
-  "name": "Petrol & diesel price in Ahmedabad on 22 July 2026",
-  "description": "Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre as of 22 July 2026",
+  "name": "Petrol & diesel price in Ahmedabad on 23 July 2026",
+  "description": "Today's petrol price in Ahmedabad is ₹102.15 per litre and diesel is ₹98.27 per litre as of 23 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-22T06:00:00+05:30",
+  "uploadDate": "2026-07-23T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",

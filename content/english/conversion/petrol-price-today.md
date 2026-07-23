@@ -2,7 +2,7 @@
 title: "Petrol Price Today in India — City-wise Petrol & Diesel Rates"
 description: "Today's petrol and diesel prices across 30 Indian cities — Delhi, Mumbai, Bengaluru, Chennai, Hyderabad, Pune and more. Updated daily at 6 AM."
 date: 2026-04-28
-lastmod: 2026-07-22
+lastmod: 2026-07-23
 type: "calculator"
 url: /conversion/petrol-price-today/
 keywords: "petrol price today, petrol price today in delhi, petrol price today in mumbai, diesel price today, fuel price india 2026"
