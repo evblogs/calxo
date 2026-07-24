@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Lucknow Today: ₹102.63/Litre (23 July 2026)"
-description: "Today's petrol price in Lucknow is ₹102.63/litre and diesel is ₹96.07/litre. Updated daily at 6 AM. Lucknow fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-23
-lastmod: 2026-07-23
+title: "Petrol Price in Lucknow Today: ₹101.89/Litre (24 July 2026)"
+description: "Today's petrol price in Lucknow is ₹101.89/litre and diesel is ₹95.36/litre. Updated daily at 6 AM. Lucknow fuel price, Uttar Pradesh VAT breakup and a monthly fuel-cost calculator."
+date: 2026-07-24
+lastmod: 2026-07-24
 type: "calculator"
 url: /conversion/petrol-price-lucknow/
 keywords: "petrol price in lucknow today, petrol price lucknow, diesel price lucknow today, fuel price lucknow 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-lucknow.png
-image_alt: "Today's petrol price in Lucknow is ₹102.63 per litre and diesel is ₹96.07 per litre on 23 July 2026"
+image_alt: "Today's petrol price in Lucknow is ₹101.89 per litre and diesel is ₹95.36 per litre on 24 July 2026"
 ---
 
-Today's petrol price in Lucknow is **₹102.63 per litre** and diesel is **₹96.07 per litre** (as of 23 July 2026). Prices update every day at 6:00 AM. That makes Lucknow, a Tier 2 city in Uttar Pradesh, about ₹0.51/litre costlier than Delhi (₹102.12).
+Today's petrol price in Lucknow is **₹101.89 per litre** and diesel is **₹95.36 per litre** (as of 24 July 2026). Prices update every day at 6:00 AM. That makes Lucknow, a Tier 2 city in Uttar Pradesh, roughly the same as Delhi (₹102.12).
 
 Uttar Pradesh charges the higher of a percentage or a fixed per-litre rate, keeping Lucknow close to Delhi levels.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-lucknow.png"
-       alt="Today's petrol price in Lucknow is ₹102.63 per litre and diesel is ₹96.07 per litre as of 23 July 2026"
-       title="Petrol & diesel price in Lucknow — 23 July 2026"
+       alt="Today's petrol price in Lucknow is ₹101.89 per litre and diesel is ₹95.36 per litre as of 24 July 2026"
+       title="Petrol & diesel price in Lucknow — 24 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Lucknow — generated 23 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Lucknow — generated 24 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Lucknow" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Lucknow carries two central charges that are the same a
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Uttar Pradesh state tax (VAT/cess)** | **~22.86** |
+| **Uttar Pradesh state tax (VAT/cess)** | **~22.12** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~102.63** |
+| **Total pump price** | **~101.89** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,38 +53,38 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| July 2026 | 102.63 | 96.07 |
-| June 2026 | 102.63 | 96.07 |
-| May 2026 | 102.63 | 96.07 |
-| April 2026 | 102.63 | 96.07 |
-| March 2026 | 102.63 | 96.07 |
+| July 2026 | 101.89 | 95.36 |
+| June 2026 | 101.89 | 95.36 |
+| May 2026 | 101.89 | 95.36 |
+| April 2026 | 101.89 | 95.36 |
+| March 2026 | 101.89 | 95.36 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Lucknow figure moves only in paise on most days.
 
 ## Monthly fuel cost for Lucknow commuters
 
-At ₹102.63/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹101.89/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,665 |
-| Honda City | 18 km/L | ₹5,702 |
-| Hyundai Creta (petrol) | 15 km/L | ₹6,842 |
-| Royal Enfield 350 | 35 km/L | ₹2,932 |
-| Honda Activa 6G | 50 km/L | ₹2,053 |
+| Maruti Suzuki Swift | 22 km/L | ₹4,631 |
+| Honda City | 18 km/L | ₹5,661 |
+| Hyundai Creta (petrol) | 15 km/L | ₹6,793 |
+| Royal Enfield 350 | 35 km/L | ₹2,911 |
+| Honda Activa 6G | 50 km/L | ₹2,038 |
 
-Someone in Lucknow driving a Maruti Swift 1,500 km a month spends roughly **₹6,998/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Lucknow driving a Maruti Swift 1,500 km a month spends roughly **₹6,947/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Lucknow vs other cities
 
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹111.37 | ₹99.26 |
-| Hyderabad | ₹115.69 | ₹103.82 |
-| Ahmedabad | ₹102.15 | ₹98.27 |
-| **Lucknow** | **₹102.63** | ₹96.07 |
+| Mumbai | ₹111.18 | ₹97.83 |
+| Bengaluru | ₹111.68 | ₹99.56 |
+| Hyderabad | ₹117.07 | ₹105.22 |
+| Ahmedabad | ₹102.01 | ₹98.13 |
+| **Lucknow** | **₹101.89** | ₹95.36 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Lucknow r
 
 ### Is petrol cheaper in Noida or Lucknow?
 
-Right now Lucknow is ₹102.63/litre and Noida is around ₹102.17. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Lucknow is ₹101.89/litre and Noida is around ₹102.11. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Lucknow?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-lucknow.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-lucknow.png",
-  "name": "Petrol & diesel price in Lucknow on 23 July 2026",
-  "description": "Today's petrol price in Lucknow is ₹102.63 per litre and diesel is ₹96.07 per litre as of 23 July 2026",
+  "name": "Petrol & diesel price in Lucknow on 24 July 2026",
+  "description": "Today's petrol price in Lucknow is ₹101.89 per litre and diesel is ₹95.36 per litre as of 24 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-23T06:00:00+05:30",
+  "uploadDate": "2026-07-24T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
