@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Chandigarh Today: ₹101.54/Litre (24 July 2026)"
+title: "Petrol Price in Chandigarh Today: ₹101.54/Litre (25 July 2026)"
 description: "Today's petrol price in Chandigarh is ₹101.54/litre and diesel is ₹89.47/litre. Updated daily at 6 AM. Chandigarh fuel price, Chandigarh VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-24
-lastmod: 2026-07-24
+date: 2026-07-25
+lastmod: 2026-07-25
 type: "calculator"
 url: /conversion/petrol-price-chandigarh/
 keywords: "petrol price in chandigarh today, petrol price chandigarh, diesel price chandigarh today, fuel price chandigarh 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-chandigarh.png
-image_alt: "Today's petrol price in Chandigarh is ₹101.54 per litre and diesel is ₹89.47 per litre on 24 July 2026"
+image_alt: "Today's petrol price in Chandigarh is ₹101.54 per litre and diesel is ₹89.47 per litre on 25 July 2026"
 ---
 
-Today's petrol price in Chandigarh is **₹101.54 per litre** and diesel is **₹89.47 per litre** (as of 24 July 2026). Prices update every day at 6:00 AM. That makes Chandigarh, a Tier 2 city in Chandigarh, about ₹0.58/litre cheaper than Delhi (₹102.12).
+Today's petrol price in Chandigarh is **₹101.54 per litre** and diesel is **₹89.47 per litre** (as of 25 July 2026). Prices update every day at 6:00 AM. That makes Chandigarh, a Tier 2 city in Chandigarh, about ₹0.58/litre cheaper than Delhi (₹102.12).
 
 As a Union Territory, Chandigarh keeps VAT low, making it one of the cheapest places in north India to buy petrol.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-chandigarh.png"
-       alt="Today's petrol price in Chandigarh is ₹101.54 per litre and diesel is ₹89.47 per litre as of 24 July 2026"
-       title="Petrol & diesel price in Chandigarh — 24 July 2026"
+       alt="Today's petrol price in Chandigarh is ₹101.54 per litre and diesel is ₹89.47 per litre as of 25 July 2026"
+       title="Petrol & diesel price in Chandigarh — 25 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Chandigarh — generated 24 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Chandigarh — generated 25 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Chandigarh" >}}
@@ -80,10 +80,10 @@ Someone in Chandigarh driving a Maruti Swift 1,500 km a month spends roughly **�
 | City | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
-| Mumbai | ₹111.18 | ₹97.83 |
+| Mumbai | ₹111.21 | ₹97.83 |
 | Bengaluru | ₹111.68 | ₹99.56 |
-| Hyderabad | ₹117.07 | ₹105.22 |
-| Ahmedabad | ₹102.01 | ₹98.13 |
+| Hyderabad | ₹115.69 | ₹103.82 |
+| Ahmedabad | ₹102.15 | ₹98.27 |
 | **Chandigarh** | **₹101.54** | ₹89.47 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-chandigarh.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-chandigarh.png",
-  "name": "Petrol & diesel price in Chandigarh on 24 July 2026",
-  "description": "Today's petrol price in Chandigarh is ₹101.54 per litre and diesel is ₹89.47 per litre as of 24 July 2026",
+  "name": "Petrol & diesel price in Chandigarh on 25 July 2026",
+  "description": "Today's petrol price in Chandigarh is ₹101.54 per litre and diesel is ₹89.47 per litre as of 25 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-24T06:00:00+05:30",
+  "uploadDate": "2026-07-25T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
