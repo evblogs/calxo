@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Bhubaneswar Today: ₹109.43/Litre (29 July 2026)"
-description: "Today's petrol price in Bhubaneswar is ₹109.43/litre and diesel is ₹101.14/litre. Updated daily at 6 AM. Bhubaneswar fuel price, Odisha VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-29
-lastmod: 2026-07-29
+title: "Petrol Price in Bhubaneswar Today: ₹110.49/Litre (30 July 2026)"
+description: "Today's petrol price in Bhubaneswar is ₹110.49/litre and diesel is ₹102.19/litre. Updated daily at 6 AM. Bhubaneswar fuel price, Odisha VAT breakup and a monthly fuel-cost calculator."
+date: 2026-07-30
+lastmod: 2026-07-30
 type: "calculator"
 url: /conversion/petrol-price-bhubaneswar/
 keywords: "petrol price in bhubaneswar today, petrol price bhubaneswar, diesel price bhubaneswar today, fuel price bhubaneswar 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-bhubaneswar.png
-image_alt: "Today's petrol price in Bhubaneswar is ₹109.43 per litre and diesel is ₹101.14 per litre on 29 July 2026"
+image_alt: "Today's petrol price in Bhubaneswar is ₹110.49 per litre and diesel is ₹102.19 per litre on 30 July 2026"
 ---
 
-Today's petrol price in Bhubaneswar is **₹109.43 per litre** and diesel is **₹101.14 per litre** (as of 29 July 2026). Prices update every day at 6:00 AM. That makes Bhubaneswar, a Tier 2 city in Odisha, about ₹7.31/litre costlier than Delhi (₹102.12).
+Today's petrol price in Bhubaneswar is **₹110.49 per litre** and diesel is **₹102.19 per litre** (as of 30 July 2026). Prices update every day at 6:00 AM. That makes Bhubaneswar, a Tier 2 city in Odisha, about ₹8.37/litre costlier than Delhi (₹102.12).
 
 Odisha runs a flat 28% petrol VAT, so Bhubaneswar prices track the eastern-state average closely.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-bhubaneswar.png"
-       alt="Today's petrol price in Bhubaneswar is ₹109.43 per litre and diesel is ₹101.14 per litre as of 29 July 2026"
-       title="Petrol & diesel price in Bhubaneswar — 29 July 2026"
+       alt="Today's petrol price in Bhubaneswar is ₹110.49 per litre and diesel is ₹102.19 per litre as of 30 July 2026"
+       title="Petrol & diesel price in Bhubaneswar — 30 July 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Bhubaneswar — generated 29 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Bhubaneswar — generated 30 July 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Bhubaneswar" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Bhubaneswar carries two central charges that are the sa
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Odisha state tax (VAT/cess)** | **~29.66** |
+| **Odisha state tax (VAT/cess)** | **~30.72** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~109.43** |
+| **Total pump price** | **~110.49** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,27 +53,27 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| July 2026 | 109.43 | 101.14 |
-| June 2026 | 109.43 | 101.14 |
-| May 2026 | 109.43 | 101.14 |
-| April 2026 | 109.43 | 101.14 |
-| March 2026 | 109.43 | 101.14 |
+| July 2026 | 110.49 | 102.19 |
+| June 2026 | 110.49 | 102.19 |
+| May 2026 | 110.49 | 102.19 |
+| April 2026 | 110.49 | 102.19 |
+| March 2026 | 110.49 | 102.19 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Bhubaneswar figure moves only in paise on most days.
 
 ## Monthly fuel cost for Bhubaneswar commuters
 
-At ₹109.43/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹110.49/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹4,974 |
-| Honda City | 18 km/L | ₹6,079 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,295 |
-| Royal Enfield 350 | 35 km/L | ₹3,127 |
-| Honda Activa 6G | 50 km/L | ₹2,189 |
+| Maruti Suzuki Swift | 22 km/L | ₹5,022 |
+| Honda City | 18 km/L | ₹6,138 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,366 |
+| Royal Enfield 350 | 35 km/L | ₹3,157 |
+| Honda Activa 6G | 50 km/L | ₹2,210 |
 
-Someone in Bhubaneswar driving a Maruti Swift 1,500 km a month spends roughly **₹7,461/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Bhubaneswar driving a Maruti Swift 1,500 km a month spends roughly **₹7,533/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Bhubaneswar vs other cities
 
@@ -82,9 +82,9 @@ Someone in Bhubaneswar driving a Maruti Swift 1,500 km a month spends roughly **
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
 | Bengaluru | ₹111.68 | ₹99.56 |
-| Hyderabad | ₹115.69 | ₹103.82 |
-| Ahmedabad | ₹102.15 | ₹98.27 |
-| **Bhubaneswar** | **₹109.43** | ₹101.14 |
+| Hyderabad | ₹115.73 | ₹103.82 |
+| Ahmedabad | ₹101.81 | ₹97.92 |
+| **Bhubaneswar** | **₹110.49** | ₹102.19 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Bhubanesw
 
 ### Is petrol cheaper in Visakhapatnam or Bhubaneswar?
 
-Right now Bhubaneswar is ₹109.43/litre and Visakhapatnam is around ₹117.25. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Bhubaneswar is ₹110.49/litre and Visakhapatnam is around ₹118.33. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Bhubaneswar?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-bhubaneswar.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-bhubaneswar.png",
-  "name": "Petrol & diesel price in Bhubaneswar on 29 July 2026",
-  "description": "Today's petrol price in Bhubaneswar is ₹109.43 per litre and diesel is ₹101.14 per litre as of 29 July 2026",
+  "name": "Petrol & diesel price in Bhubaneswar on 30 July 2026",
+  "description": "Today's petrol price in Bhubaneswar is ₹110.49 per litre and diesel is ₹102.19 per litre as of 30 July 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-29T06:00:00+05:30",
+  "uploadDate": "2026-07-30T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
