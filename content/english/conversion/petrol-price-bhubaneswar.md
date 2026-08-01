@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Bhubaneswar Today: ₹108.85/Litre (31 July 2026)"
+title: "Petrol Price in Bhubaneswar Today: ₹108.85/Litre (1 August 2026)"
 description: "Today's petrol price in Bhubaneswar is ₹108.85/litre and diesel is ₹100.56/litre. Updated daily at 6 AM. Bhubaneswar fuel price, Odisha VAT breakup and a monthly fuel-cost calculator."
-date: 2026-07-31
-lastmod: 2026-07-31
+date: 2026-08-01
+lastmod: 2026-08-01
 type: "calculator"
 url: /conversion/petrol-price-bhubaneswar/
 keywords: "petrol price in bhubaneswar today, petrol price bhubaneswar, diesel price bhubaneswar today, fuel price bhubaneswar 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-bhubaneswar.png
-image_alt: "Today's petrol price in Bhubaneswar is ₹108.85 per litre and diesel is ₹100.56 per litre on 31 July 2026"
+image_alt: "Today's petrol price in Bhubaneswar is ₹108.85 per litre and diesel is ₹100.56 per litre on 1 August 2026"
 ---
 
-Today's petrol price in Bhubaneswar is **₹108.85 per litre** and diesel is **₹100.56 per litre** (as of 31 July 2026). Prices update every day at 6:00 AM. That makes Bhubaneswar, a Tier 2 city in Odisha, about ₹6.73/litre costlier than Delhi (₹102.12).
+Today's petrol price in Bhubaneswar is **₹108.85 per litre** and diesel is **₹100.56 per litre** (as of 1 August 2026). Prices update every day at 6:00 AM. That makes Bhubaneswar, a Tier 2 city in Odisha, about ₹6.73/litre costlier than Delhi (₹102.12).
 
 Odisha runs a flat 28% petrol VAT, so Bhubaneswar prices track the eastern-state average closely.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-bhubaneswar.png"
-       alt="Today's petrol price in Bhubaneswar is ₹108.85 per litre and diesel is ₹100.56 per litre as of 31 July 2026"
-       title="Petrol & diesel price in Bhubaneswar — 31 July 2026"
+       alt="Today's petrol price in Bhubaneswar is ₹108.85 per litre and diesel is ₹100.56 per litre as of 1 August 2026"
+       title="Petrol & diesel price in Bhubaneswar — 1 August 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Bhubaneswar — generated 31 July 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Bhubaneswar — generated 1 August 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Bhubaneswar" >}}
@@ -53,11 +53,11 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
+| August 2026 | 108.85 | 100.56 |
 | July 2026 | 108.85 | 100.56 |
 | June 2026 | 108.85 | 100.56 |
 | May 2026 | 108.85 | 100.56 |
 | April 2026 | 108.85 | 100.56 |
-| March 2026 | 108.85 | 100.56 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Bhubaneswar figure moves only in paise on most days.
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-bhubaneswar.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-bhubaneswar.png",
-  "name": "Petrol & diesel price in Bhubaneswar on 31 July 2026",
-  "description": "Today's petrol price in Bhubaneswar is ₹108.85 per litre and diesel is ₹100.56 per litre as of 31 July 2026",
+  "name": "Petrol & diesel price in Bhubaneswar on 1 August 2026",
+  "description": "Today's petrol price in Bhubaneswar is ₹108.85 per litre and diesel is ₹100.56 per litre as of 1 August 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-07-31T06:00:00+05:30",
+  "uploadDate": "2026-08-01T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
