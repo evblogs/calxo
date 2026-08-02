@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Jaipur Today: ₹113.50/Litre (1 August 2026)"
-description: "Today's petrol price in Jaipur is ₹113.50/litre and diesel is ₹98.50/litre. Updated daily at 6 AM. Jaipur fuel price, Rajasthan VAT breakup and a monthly fuel-cost calculator."
-date: 2026-08-01
-lastmod: 2026-08-01
+title: "Petrol Price in Jaipur Today: ₹113.97/Litre (2 August 2026)"
+description: "Today's petrol price in Jaipur is ₹113.97/litre and diesel is ₹98.96/litre. Updated daily at 6 AM. Jaipur fuel price, Rajasthan VAT breakup and a monthly fuel-cost calculator."
+date: 2026-08-02
+lastmod: 2026-08-02
 type: "calculator"
 url: /conversion/petrol-price-jaipur/
 keywords: "petrol price in jaipur today, petrol price jaipur, diesel price jaipur today, fuel price jaipur 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-jaipur.png
-image_alt: "Today's petrol price in Jaipur is ₹113.50 per litre and diesel is ₹98.50 per litre on 1 August 2026"
+image_alt: "Today's petrol price in Jaipur is ₹113.97 per litre and diesel is ₹98.96 per litre on 2 August 2026"
 ---
 
-Today's petrol price in Jaipur is **₹113.50 per litre** and diesel is **₹98.50 per litre** (as of 1 August 2026). Prices update every day at 6:00 AM. That makes Jaipur, a Tier 2 city in Rajasthan, about ₹11.38/litre costlier than Delhi (₹102.12).
+Today's petrol price in Jaipur is **₹113.97 per litre** and diesel is **₹98.96 per litre** (as of 2 August 2026). Prices update every day at 6:00 AM. That makes Jaipur, a Tier 2 city in Rajasthan, about ₹11.85/litre costlier than Delhi (₹102.12).
 
 Rajasthan has historically run one of India's highest petrol VAT rates, so Jaipur prices stay well above neighbouring Delhi.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-jaipur.png"
-       alt="Today's petrol price in Jaipur is ₹113.50 per litre and diesel is ₹98.50 per litre as of 1 August 2026"
-       title="Petrol & diesel price in Jaipur — 1 August 2026"
+       alt="Today's petrol price in Jaipur is ₹113.97 per litre and diesel is ₹98.96 per litre as of 2 August 2026"
+       title="Petrol & diesel price in Jaipur — 2 August 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Jaipur — generated 1 August 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Jaipur — generated 2 August 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Jaipur" >}}
@@ -43,9 +43,9 @@ Every litre of petrol in Jaipur carries two central charges that are the same ac
 |---|---|
 | Base price (ex-refinery) | ~56.00 |
 | Central excise duty | 19.90 |
-| **Rajasthan state tax (VAT/cess)** | **~33.73** |
+| **Rajasthan state tax (VAT/cess)** | **~34.20** |
 | Dealer commission | ~3.87 |
-| **Total pump price** | **~113.50** |
+| **Total pump price** | **~113.97** |
 
 The base price and excise duty are fixed nationally. State tax is the variable layer, so two cities can sell the same fuel at very different pump prices purely because of state politics.
 
@@ -53,27 +53,27 @@ The base price and excise duty are fixed nationally. State tax is the variable l
 
 | Month | Petrol (₹/L) | Diesel (₹/L) |
 |---|---|---|
-| August 2026 | 113.50 | 98.50 |
-| July 2026 | 113.50 | 98.50 |
-| June 2026 | 113.50 | 98.50 |
-| May 2026 | 113.50 | 98.50 |
-| April 2026 | 113.50 | 98.50 |
+| August 2026 | 113.97 | 98.96 |
+| July 2026 | 113.97 | 98.96 |
+| June 2026 | 113.97 | 98.96 |
+| May 2026 | 113.97 | 98.96 |
+| April 2026 | 113.97 | 98.96 |
 
 Pump prices across India have been broadly stable since the May 2022 excise cut, when fuel was reduced by about ₹8/litre nationally. Daily revisions by the oil marketing companies have stayed small since then, so the Jaipur figure moves only in paise on most days.
 
 ## Monthly fuel cost for Jaipur commuters
 
-At ₹113.50/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
+At ₹113.97/litre, here is what 1,000 km a month costs on common vehicles. The formula is simple: monthly fuel cost = (monthly km ÷ mileage) × petrol price.
 
 | Vehicle | Mileage | 1,000 km/month cost |
 |---|---|---|
-| Maruti Suzuki Swift | 22 km/L | ₹5,159 |
-| Honda City | 18 km/L | ₹6,306 |
-| Hyundai Creta (petrol) | 15 km/L | ₹7,567 |
-| Royal Enfield 350 | 35 km/L | ₹3,243 |
-| Honda Activa 6G | 50 km/L | ₹2,270 |
+| Maruti Suzuki Swift | 22 km/L | ₹5,180 |
+| Honda City | 18 km/L | ₹6,332 |
+| Hyundai Creta (petrol) | 15 km/L | ₹7,598 |
+| Royal Enfield 350 | 35 km/L | ₹3,256 |
+| Honda Activa 6G | 50 km/L | ₹2,279 |
 
-Someone in Jaipur driving a Maruti Swift 1,500 km a month spends roughly **₹7,739/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
+Someone in Jaipur driving a Maruti Swift 1,500 km a month spends roughly **₹7,771/month** on petrol alone. Want to plan the running cost of a vehicle loan alongside fuel? Try the [car loan calculator](/loan/car-loan-calculator/) and the [bike loan calculator](/loan/bike-loan-calculator/).
 
 ## Jaipur vs other cities
 
@@ -81,10 +81,10 @@ Someone in Jaipur driving a Maruti Swift 1,500 km a month spends roughly **₹7,
 |---|---|---|
 | Delhi | ₹102.12 | ₹95.20 |
 | Mumbai | ₹111.21 | ₹97.83 |
-| Bengaluru | ₹110.44 | ₹98.39 |
+| Bengaluru | ₹111.68 | ₹99.56 |
 | Hyderabad | ₹115.73 | ₹103.82 |
-| Ahmedabad | ₹102.01 | ₹98.13 |
-| **Jaipur** | **₹113.50** | ₹98.50 |
+| Ahmedabad | ₹102.15 | ₹98.27 |
+| **Jaipur** | **₹113.97** | ₹98.96 |
 
 The gap between cities is almost entirely state tax. Same crude, same refining, same central excise, different state VAT.
 
@@ -96,7 +96,7 @@ Indian Oil, BPCL and HPCL revise fuel prices at 6:00 AM every day. The Jaipur ra
 
 ### Is petrol cheaper in Delhi or Jaipur?
 
-Right now Jaipur is ₹113.50/litre and Delhi is around ₹102.12. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
+Right now Jaipur is ₹113.97/litre and Delhi is around ₹102.12. The difference comes down to state tax, since both cities draw fuel from the same oil marketing companies.
 
 ### How do I check the live petrol price in Jaipur?
 
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-jaipur.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-jaipur.png",
-  "name": "Petrol & diesel price in Jaipur on 1 August 2026",
-  "description": "Today's petrol price in Jaipur is ₹113.50 per litre and diesel is ₹98.50 per litre as of 1 August 2026",
+  "name": "Petrol & diesel price in Jaipur on 2 August 2026",
+  "description": "Today's petrol price in Jaipur is ₹113.97 per litre and diesel is ₹98.96 per litre as of 2 August 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-08-01T06:00:00+05:30",
+  "uploadDate": "2026-08-02T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
