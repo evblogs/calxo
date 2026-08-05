@@ -1,8 +1,8 @@
 ---
-title: "Petrol Price in Coimbatore Today: ₹108.47/Litre (4 August 2026)"
+title: "Petrol Price in Coimbatore Today: ₹108.47/Litre (5 August 2026)"
 description: "Today's petrol price in Coimbatore is ₹108.47/litre and diesel is ₹100.30/litre. Updated daily at 6 AM. Coimbatore fuel price, Tamil Nadu VAT breakup and a monthly fuel-cost calculator."
-date: 2026-08-04
-lastmod: 2026-08-04
+date: 2026-08-05
+lastmod: 2026-08-05
 type: "calculator"
 url: /conversion/petrol-price-coimbatore/
 keywords: "petrol price in coimbatore today, petrol price coimbatore, diesel price coimbatore today, fuel price coimbatore 2026"
@@ -10,20 +10,20 @@ categories:
 - Conversion Calculators
 author: vignesh
 image: /images/petrol/petrol-price-coimbatore.png
-image_alt: "Today's petrol price in Coimbatore is ₹108.47 per litre and diesel is ₹100.30 per litre on 4 August 2026"
+image_alt: "Today's petrol price in Coimbatore is ₹108.47 per litre and diesel is ₹100.30 per litre on 5 August 2026"
 ---
 
-Today's petrol price in Coimbatore is **₹108.47 per litre** and diesel is **₹100.30 per litre** (as of 4 August 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹6.35/litre costlier than Delhi (₹102.12).
+Today's petrol price in Coimbatore is **₹108.47 per litre** and diesel is **₹100.30 per litre** (as of 5 August 2026). Prices update every day at 6:00 AM. That makes Coimbatore, a Tier 2 city in Tamil Nadu, about ₹6.35/litre costlier than Delhi (₹102.12).
 
 Tamil Nadu uses a low percentage plus a fixed per-litre charge, so Coimbatore mirrors Chennai almost exactly.
 
 <figure class="cx-price-card">
   <img src="/images/petrol/petrol-price-coimbatore.png"
-       alt="Today's petrol price in Coimbatore is ₹108.47 per litre and diesel is ₹100.30 per litre as of 4 August 2026"
-       title="Petrol & diesel price in Coimbatore — 4 August 2026"
+       alt="Today's petrol price in Coimbatore is ₹108.47 per litre and diesel is ₹100.30 per litre as of 5 August 2026"
+       title="Petrol & diesel price in Coimbatore — 5 August 2026"
        width="1200" height="630" loading="eager" decoding="async"
        style="width:100%;height:auto;border-radius:14px;display:block;">
-  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Coimbatore — generated 4 August 2026.</figcaption>
+  <figcaption style="font-size:.82rem;color:#64748b;margin-top:.45rem;">Today's petrol &amp; diesel price card for Coimbatore — generated 5 August 2026.</figcaption>
 </figure>
 
 {{< petrol-price city="Coimbatore" >}}
@@ -114,11 +114,11 @@ You can use the Indian Oil, BPCL or HPCL apps, or IOCL's SMS service: send "RSP"
   "@type": "ImageObject",
   "contentUrl": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
   "url": "https://www.calxo.in/images/petrol/petrol-price-coimbatore.png",
-  "name": "Petrol & diesel price in Coimbatore on 4 August 2026",
-  "description": "Today's petrol price in Coimbatore is ₹108.47 per litre and diesel is ₹100.30 per litre as of 4 August 2026",
+  "name": "Petrol & diesel price in Coimbatore on 5 August 2026",
+  "description": "Today's petrol price in Coimbatore is ₹108.47 per litre and diesel is ₹100.30 per litre as of 5 August 2026",
   "width": 1200,
   "height": 630,
-  "uploadDate": "2026-08-04T06:00:00+05:30",
+  "uploadDate": "2026-08-05T06:00:00+05:30",
   "creditText": "Calxo.in",
   "creator": {
     "@type": "Organization",
